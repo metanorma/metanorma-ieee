@@ -44,6 +44,28 @@ module Metanorma
       def doc_converter(node)
         IsoDoc::IEEE::WordConvert.new(doc_extract_attributes(node))
       end
+
+=begin
+`docnumber`:: In IEEE terms: the designation number for the document.
+
+`draft`:: The draft number.
+
+`doctype`::
+Document type. Choices:
++
+--
+* `standard` (default): This document is a Standard
+* `recommended-practice`: This document is a Recommended Practice
+* `guide`: This document is a Guide
+--
+
+`docsubtype`::
+Document type. Choices:
++
+--
+* `trial-use`: Document published for a limited period of time.
+--
+=end
     end
   end
 end
