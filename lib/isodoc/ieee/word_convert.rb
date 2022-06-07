@@ -18,12 +18,12 @@ module IsoDoc
           headerfont: (if options[:script] == "Hans"
                          '"Source Han Sans",sans-serif'
                        else
-                         '"Times New Roman",serif'
+                         '"Arial",sans-serif'
                        end),
           monospacefont: '"Courier New",monospace',
           normalfontsize: "12.0pt",
           footnotefontsize: "11.0pt",
-          smallerfontsize: "11.0pt",
+          smallerfontsize: "10.0pt",
           monospacefontsize: "10.0pt" }
       end
 
