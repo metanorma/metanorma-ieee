@@ -2,6 +2,10 @@ require "spec_helper"
 require "fileutils"
 
 RSpec.describe Metanorma::IEEE do
+  before(:all) do
+    @blank_hdr = blank_hdr_gen
+  end
+
   it "has a version number" do
     expect(Metanorma::IEEE::VERSION).not_to be nil
   end

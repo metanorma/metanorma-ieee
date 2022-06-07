@@ -55,14 +55,10 @@ RSpec.describe Metanorma::IEEE::Processor do
         <main class='main-section'>
           <button onclick='topFunction()' id='myBtn' title='Go to top'>Top</button>
           <p class='zzSTDTitle1'/>
-          <p class='zzSTDTitle2'/>
           <div id='H'>
-            <h1 id='toc0'>Terms</h1>
-            <div id='J'>
-              <p class='TermNum' id='J'>
-                <b>1.1.&#xA0; Term2</b>:
-              </p>
-            </div>
+            <h1>Terms</h1>
+            <h2 class='TermNum' id='J'>1.1.</h2>
+            <p class='Terms' style='text-align:left;'>Term2</p>
           </div>
         </main>
       OUTPUT
