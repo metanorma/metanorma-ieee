@@ -1,0 +1,30 @@
+= metanorma-ieee: Metanorma for IEEE
+
+image:https://img.shields.io/gem/v/metanorma-ieee.svg["Gem Version", link="https://rubygems.org/gems/metanorma-ieee"]
+image:https://github.com/metanorma/metanorma-ieee/workflows/rake/badge.svg["Build Status", link="https://github.com/metanorma/metanorma-ieee/actions?workflow=rake"]
+image:https://codeclimate.com/github/metanorma/metanorma-ieee/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/metanorma/metanorma-ieee"]
+image:https://img.shields.io/github/issues-pr-raw/metanorma/metanorma-ieee.svg["Pull Requests", link="https://github.com/metanorma/metanorma-ieee/pulls"]
+image:https://img.shields.io/github/commits-since/metanorma/metanorma-ieee/latest.svg["Commits since latest",link="https://github.com/metanorma/metanorma-ieee/releases"]
+
+== Functionality
+
+This gem processes https://www.metanorma.com[Metanorma documents] following a template for generating ITU
+standards and documents.
+
+The implementation inherits from https://github.com/metanorma/metanorma-standoc.
+
+== Usage
+
+== Usage and installation
+
+See https://www.metanorma.com.
+
+== Documentation
+
+See https://www.metanorma.com/author/ieee/[Write IEEE documents with Metanorma].
+
+== Examples
+
+* Example documents are available at the https://github.com/metanorma/mn-samples-ieee[mn-samples-ieee] repository.
+* Document templates are available at the https://github.com/metanorma/mn-templates-ieee[mn-templates-ieee] repository.
+
