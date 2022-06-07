@@ -2,10 +2,10 @@ require "isodoc"
 
 module IsoDoc
   module IEEE
-    class Counter < IsoDoc::XrefGen::Counter
+    class Counter < ::IsoDoc::XrefGen::Counter
     end
-  end
 
-  class Xref < IsoDoc::Xref
+    class Xref < ::IsoDoc::Xref
+    end
   end
 end

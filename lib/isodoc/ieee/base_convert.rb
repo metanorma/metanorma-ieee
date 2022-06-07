@@ -2,7 +2,7 @@ require "isodoc"
 require "fileutils"
 
 module IsoDoc
-  module ITU
+  module IEEE
     module BaseConvert
     end
   end
