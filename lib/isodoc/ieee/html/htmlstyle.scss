@@ -1,0 +1,628 @@
+$recBandColor: #a3d88f;
+$tecPaperColor: #ff6b6b;
+$guidePaperColor: #750697;
+$doctype-colors-list: (
+  recommendation: $recBandColor,
+  recommendation-amendment: $recBandColor,
+  recommendation-supplement: $recBandColor,
+  recommendation-corrigendum: $recBandColor,
+  recommendation-errata: $recBandColor,
+  recommendation-annex: $recBandColor,
+  technical-paper: $tecPaperColor,
+  technical-report: $tecPaperColor,
+  focus-group: $guidePaperColor,
+  implementers-guide: $guidePaperColor,
+  joint-itu-iso-iec: #edc9ff,
+  service-publication: $guidePaperColor,
+  resolution: #f2b79f,
+  handbook: $guidePaperColor,
+  question: $guidePaperColor
+);
+
+
+$docstage-colors-list: (
+  in-force: #d9f39d,
+  in-force-prepublished: #fdf906,
+  superseded: #fd06fd,
+  superseded-draft: #fd06fd,
+  withdrawn: #7e0d13,
+);
+
+
+@import 'base_style/all';
+@import 'coverpage';
+
+
+dl.glossary dt {
+  font-weight: bold;
+}
+
+body {
+  @include bodyStyle1($normalfontsize, 1.6em, #141115, #fff);
+}
+
+nav {
+  @include sidebarNav(
+    $offsetLeft: 45px,
+    $colorBg: #fff,
+    $width: 323px);
+
+  #toc {
+    @include sidebarToc();
+  }
+}
+
+#toc, #toc > ul :is(.h1, .h2, .h3, .h4, .h5, .h6) {
+  font-family: $bodyfont;
+  font-weight: 400;
+
+  @include toc($colorLink: #141115, $colorLinkActiveBg: #da1d52, $colorLinkActiveFg: white);
+
+  .h1 {
+    text-transform: uppercase;
+  }
+
+  li {
+    a {
+      font-size: $normalfontsize;
+    }
+    &:hover a {
+      background: none;
+      box-shadow: none;
+    }
+    &:before {
+      content: " ";
+      display: none;
+    }
+  }
+
+  @media print {
+    .toc-active a {
+      color: #4D7EA5;
+    }
+
+    .toc-active, li:hover {
+      background: white;
+      box-shadow: none !important;
+    }
+
+    li:hover a {
+      color: black;
+    }
+  }
+}
+
+#toc > ul :is(.h1, .h2, .h3, .h4, .h5, .h6) {
+   margin-top: 0;
+   margin-bottom: 0;
+   font-size: 100%;
+ }
+
+
+#toc-list {
+  ul {
+    margin-bottom: 0.25em;
+  }
+  li {
+    list-style-type: none;
+  }
+}
+
+#toggle {
+  @include sidebarNavToggle(
+    $colorBg: #da1d52,
+    $colorFg: white);
+}
+
+.container {
+  @include sidebarNavContainer(360px);
+}
+
+
+.rule {
+  @include rule(1px, #00539F, 2em 0);
+
+  &.toc {
+    @include tocSeparator();
+  }
+}
+.rule-2 {
+  width: 100%;
+  height: 1px;
+  background-color: #00539F;
+}
+.rule-thick {
+  width: 100%;
+  height: 3px;
+  background-color: #00539F;
+  margin-top: 3em;
+}
+
+@media screen and (min-width: 768px) {
+  h1.toc-contents {
+      margin-top: 1em;
+  }
+
+  ul#toc-list, ul#toc-list > :is(.h1, .h2, .h3, .h4, .h5, .h6) {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+
+.figure {
+  @include figureBlock();
+  @include monospaceBlockStyle();
+
+  background-color: #f6f6f6;
+  font-size: $monospacefontsize;
+}
+
+.SourceTitle {
+  @include blockTitle();
+}
+
+@include listBlock();
+
+pre {
+  @include sourceBlock(#f6f6f6);
+  font-size: $monospacefontsize;
+}
+
+.example pre, .example .pseudocode {
+  background: none;
+  margin: 0;
+  padding: 0 0 0 2em;
+}
+
+.document-stage-band {
+  @include docBand($order: 1, $textLength: 160px, $color: white, $fontWeight: 300);
+}
+.document-type-band {
+  @include docBand($order: 2, $offset: 180px);
+
+  .document-type {
+    top: 20px;
+  }
+}
+
+.logo-wrapper {
+  width: 100%;
+  display: block;
+  height: 100px;
+  padding-top: 75px;
+  position:relative;
+
+  img, svg {
+    float: right;
+    padding-right: 42px;
+  }
+}
+
+#ITU-logo {
+  width: 150px;
+  height: auto;
+  margin-left: auto;
+}
+
+svg {
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+}
+
+.authors-container {
+  margin-top: 2em;
+}
+
+.affiliation {
+  font-style: italic;
+}
+
+
+/* Headings */
+
+h1, h2, h3, h4, h5, h6, .h1Annex, p.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 400;
+  margin-top: 1.6em;
+  margin-bottom: 0.3em;
+}
+
+h1, h2, h3, h4, .h1Annex, p.h1, .h2, .h3, .h4 {
+  @media print {
+    page-break-after: avoid;
+    margin-top: 1.2em;
+  }
+}
+
+h1, .h1Annex, p.h1 {
+  font-size: 1.4em;
+  text-transform: uppercase;
+  margin-top: 2em;
+
+  &#content {
+    margin-top: 2em;
+  }
+
+  @media print {
+    font-size: 1.5em;
+    line-height: 1.5;
+
+    &.content {
+      margin-top: 2em;
+      line-height: 2.5em;
+    }
+  }
+}
+
+p.supertitle {
+  font-size: 1.4em;
+  text-transform: uppercase;
+  margin-top: 2em;
+
+  @media print {
+    font-size: 1.5em;
+    line-height: 1.5;
+
+    &.content {
+      margin-top: 2em;
+      line-height: 2.5em;
+    }
+  }
+
+}
+
+h2, .h2 {
+  margin-top: 1.7em;
+  font-size: 1.5em;
+
+  p {
+    display: inline;
+  }
+
+  @media print {
+    font-size: 1.2em;
+  }
+}
+
+h3, .h3 {
+  margin-top: 1.5em;
+  font-size: 1.4em;
+
+  @media print {
+    font-size: 1em;
+  }
+}
+
+h4, .h4 {
+  font-size: 1.2em;
+}
+
+
+/* Terms */
+
+.TermNum {
+  font-weight: 400;
+}
+
+h2.TermNum {
+  margin-bottom: 0;
+}
+
+p.AltTerms {
+  font-size: 20px;
+  margin-top: 1em;
+}
+
+
+/* Links, selection */
+
+a, a:visited {
+  text-decoration: none;
+  color: #00539F;
+}
+
+a:hover {
+  color: white;
+  background: #00539F;
+  box-shadow: 3px 0 0 #00539F, -3px 0 0 #00539F;
+}
+
+::selection {
+  background: #00539F; /* WebKit/Blink Browsers */
+  color: white;
+}
+::-moz-selection {
+  background: #00539F; /* Gecko Browsers */
+  color: white;
+}
+
+
+/* Lists */
+
+ul, ol {
+  margin-left: 1.2em;
+}
+
+ul {
+  > li {
+    list-style: none;
+
+    &:before {
+      content: "\2014";
+      display: inline-block;
+      width: 1em;
+      margin-left: -1.2em;
+    }
+
+    p:first-child {
+      display: inline;
+    }
+
+    &:first-child {
+      margin-top: 1em;
+    }
+  }
+}
+
+ul ul > li:first-child {
+      margin-top: 0;
+}
+ol ul > li:first-child {
+      margin-top: 0;
+}
+
+
+/* Bibliograhy */
+
+p.Biblio, p.NormRef {
+  margin-top: 1em;
+  margin-left: 2em;
+}
+
+
+/* Blocks */
+
+.Note {
+  background-color: #ffca3a;
+  color: #141115;
+  padding: 1.2em;
+  margin: 1em 0 1em 0;
+
+  p {
+    margin: 0;
+  }
+}
+
+.Admonition {
+  background-color: #ffcccc;
+  color: #47430c;
+  padding: 1.2em;
+  margin: 1em 0 1em 0;
+
+  p {
+    margin: 0;
+  }
+}
+
+.example {
+  @include exampleBlock(#e1eef1, null, 1.2em, 2em);
+
+  .example-title {
+    margin-top: 0;
+    margin-left: -1.5em;
+  }
+
+  pre, .pseudocode {
+    background: none;
+    margin: 0;
+    padding: 0 0 0 2em;
+  }
+}
+
+.pseudocode {
+  background-color: #f6f6f6;
+  padding: 1.2em;
+  margin: 2em 0 1em 0;
+  padding-left: 2em;
+
+  .example-title {
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top:0;
+    margin-left:-1.5em;
+  }
+}
+
+.recommend {
+  background-color: #ccffcc;
+  padding: 1.2em;
+  margin: 2em 0 1em 0;
+}
+
+.recommend {
+  @include recommendationBlock();
+}
+
+.require {
+  @include recommendationBlock();
+}
+
+.permission {
+  @include recommendationBlock();
+}
+
+
+/* Tables */
+
+table.biblio td {
+  padding-right: 0.5em;
+}
+
+table:not(.biblio) {
+  @include table($border: none);
+
+  &, th, td {
+    border: none !important;
+  }
+
+  color: #141115;
+
+  tr:nth-child(even) {
+    background: #f1f8ff;
+  }
+  tr:nth-child(odd) {
+    background: #f6f8fa;
+  }
+}
+
+p.TableTitle {
+  text-align: center;
+  margin-top: 2.5em;
+  font-weight: 400;
+}
+
+
+/* Footnotes */
+
+a.footnote-number {
+  vertical-align: super;
+  font-size: 0.8em;
+}
+
+.footnote {
+  font-size: $footnotefontsize;
+}
+
+.Quote {
+  background-color: #f6f6f6;
+  font-style: italic;
+  width: 80%;
+  padding: 1.5em;
+  margin-top: 2em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.formula {
+  @include formulaBlock(#f6f6f6);
+}
+
+dl.formula_dl {
+background-color: #f6f6f6;
+margin-left: 1.4cm;
+margin-right: 1.4cm;
+}
+
+
+.contact-info {
+  padding: 2em;
+  margin-top: 5em;
+  width: 280px;
+  text-align: left;
+  color: #00539F!important;
+  background-color: #f1f8ff;
+  border-radius: 25px;
+
+  a, a:hover {
+    color: #00539F;
+  }
+  a:hover {
+    text-decoration: underline;
+    background: none;
+    box-shadow: 0 0 0 0;
+  }
+
+  p, a {
+    font-family: $monospacefont;
+    font-variant-ligatures: none;
+    font-weight: 400;
+  }
+
+  .name {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .address {
+    font-size: 12px;
+    line-height: 1.3em;
+    margin-top:0;
+  }
+}
+
+
+span.keyword {
+  font-weight: 600;
+}
+
+
+p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+#myBtn {
+  @include toTopBtn($color: white, $colorBg: #00539F);
+
+  @media print {
+    background-color: white;
+  }
+}
+
+a.anchorjs-link {
+  @include anchorLink(#2e81c2);
+}
+
+@page {
+  margin: 2cm 1cm;
+}
+
+@media print {
+  .document-info,  nav {
+    page-break-before: always;
+  }
+
+  nav {
+    page-break-after: always;
+    line-height: 1;
+    position: relative;
+    width: auto;
+    font-size: 0.9em;
+    overflow: auto;
+    padding: 0;
+    margin-right: 0;
+    background-color: white;
+  }
+
+  .note, .figure, pre, table {
+    page-break-inside: avoid;
+  }
+
+  .wrapper-top {
+    top: 0;
+    padding-top: 4cm;
+    padding-bottom: 4cm;
+  }
+
+  .wrapper-top-bottom {
+    margin-top: -5px;
+    display: none;
+  }
+
+  .Note {
+    background-color: #fff495;
+    color: #47430c;
+    padding: 5px;
+    margin: 2em 0 1em 0;
+
+    p {
+      padding: 0 5px 0 5px;
+    }
+  }
+}
