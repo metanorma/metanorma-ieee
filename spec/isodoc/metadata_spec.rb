@@ -20,9 +20,10 @@ RSpec.describe Metanorma::IEEE do
       <title language='fr' format='text/plain' type='amendment'>Titre de Amendment</title>
       <title language='en' format='text/plain' type='corrigendum'>Corrigendum Title</title>
       <title language='fr' format='text/plain' type='corrigendum'>Titre de Corrigendum</title>
-        <docidentifier type="ITU-provisional">ABC</docidentifier>
-        <docidentifier type="ITU">ITU-R 1000</docidentifier>
-        <docidentifier type="ITU-lang">ITU-R 1000-E</docidentifier>
+        <docidentifier type="IEEE" scope="PDF">ABC</docidentifier>
+        <docidentifier type="IEEE" scope="print">DEF</docidentifier>
+        <docidentifier type="ISBN" scope="PDF">GHI</docidentifier>
+        <docidentifier type="ISBN" scope="print">JKL</docidentifier>
         <docnumber>1000</docnumber>
         <date type='published'>2018-09-01</date>
                  <date type='published' format='ddMMMyyyy'>1.IX.2018</date>
@@ -74,59 +75,9 @@ RSpec.describe Metanorma::IEEE do
         <ext>
         <doctype>recommended-practice</doctype>
         <docsubtype>trial-use</docsubtype>
-            <editorialgroup>
-            <bureau>R</bureau>
-            <group type="A">
-              <name>I</name>
-              <acronym>C</acronym>
-              <period>
-                <start>E</start>
-                <end>G</end>
-              </period>
-            </group>
-            <subgroup type="A1">
-              <name>I1</name>
-              <acronym>C1</acronym>
-              <period>
-                <start>E1</start>
-                <end>G1</end>
-              </period>
-            </subgroup>
-            <workgroup type="A2">
-              <name>I2</name>
-              <acronym>C2</acronym>
-              <period>
-                <start>E2</start>
-                <end>G2</end>
-              </period>
-            </workgroup>
-          </editorialgroup>
           <editorialgroup>
-            <bureau>T</bureau>
-            <group type="B">
-              <name>J</name>
-              <acronym>D</acronym>
-              <period>
-                <start>F</start>
-                <end>H</end>
-              </period>
-            </group>
-            <subgroup type="B1">
-              <name>J1</name>
-              <acronym>D1</acronym>
-              <period>
-                <start>F1</start>
-                <end>H1</end>
-              </period>
-            </subgroup>
-            <workgroup type="B2">
-              <name>J2</name>
-              <acronym>D2</acronym>
-              <period>
-                <start>F2</start>
-                <end>H2</end>
-              </period>
-            </workgroup>
+            <society>Society</society>
+            <technical-committee>Tech Committee</technical-committee>
           </editorialgroup>
        <recommendationstatus>
         <from>D3</from>

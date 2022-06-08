@@ -45,27 +45,31 @@ module Metanorma
         IsoDoc::IEEE::WordConvert.new(doc_extract_attributes(node))
       end
 
-=begin
-`docnumber`:: In IEEE terms: the designation number for the document.
+      def metadata_committee(node, xml)
+        return unless node.attr("committee") || node.attr("society")
 
-`draft`:: The draft number.
+        xml.editorialgroup do |a|
+          committee_component("society", node, a)
+          committee_component("committee", node, a)
+        end
+      end
 
-`doctype`::
-Document type. Choices:
-+
---
-* `standard` (default): This document is a Standard
-* `recommended-practice`: This document is a Recommended Practice
-* `guide`: This document is a Guide
---
+      def metadata_other_id(node, xml)
+        a = node.attr("isbn-pdf") and
+          xml.docidentifier a, type: "ISBN", scope: "PDF"
+        a = node.attr("isbn-print") and
+          xml.docidentifier a, type: "ISBN", scope: "print"
+      end
 
-`docsubtype`::
-Document type. Choices:
-+
---
-* `trial-use`: Document published for a limited period of time.
---
-=end
+      def metadata_id(node, xml)
+        id = node.attr("docnumber") || ""
+        xml.docidentifier id, type: "IEEE"
+        id = node.attr("stdid-pdf") and
+          xml.docidentifier id, type: "IEEE", scope: "PDF"
+        id = node.attr("stdid-print") and
+          xml.docidentifier id, type: "IEEE", scope: "print"
+        xml.docnumber node.attr("docnumber")
+      end
     end
   end
 end

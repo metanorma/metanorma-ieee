@@ -22,6 +22,34 @@ module IsoDoc
         s = isoxml.at(ns("//bibdata/ext/docsubtype"))&.text and
           set(:docsubtype, s.split(/[- ]/).map(&:capitalize).join(" "))
       end
+
+      def author(xml, _out)
+        super
+        tc(xml)
+      end
+
+      def tc(xml)
+        tc = xml.at(ns("//bibdata/ext/editorialgroup/"\
+                       "technical-committee")) or return nil
+        set(:committee, tc.text)
+      end
+
+      def otherid(isoxml, _out)
+        id = "bibdata/docidentifier[@type = 'ISBN']"
+        dn = isoxml.at(ns("//#{id}[@scope = 'PDF']"))
+        set(:isbn_pdf, dn&.text || "978-0-XXXX-XXXX-X")
+        dn = isoxml.at(ns("//#{id}[@scope = 'print']"))
+        set(:isbn_print, dn&.text || "978-0-XXXX-XXXX-X")
+      end
+
+      def docid(isoxml, _out)
+        super
+        id = "bibdata/docidentifier[@type = 'IEEE']"
+        dn = isoxml.at(ns("//#{id}[@scope = 'PDF']"))
+        set(:stdid_pdf, dn&.text || "STDXXXXX")
+        dn = isoxml.at(ns("//#{id}[@scope = 'print']"))
+        set(:stdid_print, dn&.text || "STDPDXXXXX")
+      end
     end
   end
 end

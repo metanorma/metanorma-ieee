@@ -1,184 +1,331 @@
-{% if doctype != "Resolution" %}
-<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0"
- style='border-collapse:collapse;mso-table-layout-alt:fixed;mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>
- <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
-  <td width="663" valign="top" style='width:497.25pt;padding:0cm 5.4pt 0cm 5.4pt'>
-  <p class="RecNo"><span style='mso-bookmark:_Hlk526346232'><a name="irecnoe"></a><span
-      lang="FR-CH" style='mso-ansi-language:FR-CH;font-size:14pt;font-weight:bold;'>{% if doctype != "Service Publication" %}{{ doctype_display }} {% endif %}{{ docnumber }}<o:p></o:p></span></span></p>
-  <p class="Rectitle" align="center"><span style='mso-bookmark:_Hlk526346232'><span lang="FR-CH"
-      style='mso-ansi-language:FR-CH;font-size:14pt;font-weight:bold;'>{{ doctitle }}<o:p></o:p></span></span></p>
-  {% if annexid %}
-  <p class="Rectitle" align="center"><span style='mso-bookmark:_Hlk526346232'><span lang="FR-CH"
-      style='mso-ansi-language:FR-CH;font-size:14pt;font-weight:bold;'>{{ annexid }}<o:p></o:p></span></span></p>
-  {% endif %}
-  {% if annextitle %}
-  <p class="Rectitle" align="center"><span style='mso-bookmark:_Hlk526346232'><span lang="FR-CH"
-      style='mso-ansi-language:FR-CH;font-size:14pt;font-weight:bold;'>{{ annextitle }}<o:p></o:p></span></span></p>
-  {% endif %}
-  {% if amendmentid %}
-  <p class="Rectitle" align="center"><span style='mso-bookmark:_Hlk526346232'><span lang="FR-CH"
-      style='mso-ansi-language:FR-CH;font-size:14pt;font-weight:bold;'>{{ amendmentid }}<o:p></o:p></span></span></p>
-  {% endif %}
-  {% if amendmenttitle %}
-  <p class="Rectitle" align="center"><span style='mso-bookmark:_Hlk526346232'><span lang="FR-CH"
-      style='mso-ansi-language:FR-CH;font-size:14pt;font-weight:bold;'>{{ amendmenttitle }}<o:p></o:p></span></span></p>
-  {% endif %}
-  {% if corrigendumid %}
-  <p class="Rectitle" align="center"><span style='mso-bookmark:_Hlk526346232'><span lang="FR-CH"
-      style='mso-ansi-language:FR-CH;font-size:14pt;font-weight:bold;'>{{ corrigendumid }}<o:p></o:p></span></span></p>
-  {% endif %}
-  {% if corrigendumtitle %}
-  <p class="Rectitle" align="center"><span style='mso-bookmark:_Hlk526346232'><span lang="FR-CH"
-      style='mso-ansi-language:FR-CH;font-size:14pt;font-weight:bold;'>{{ corrigendumtitle }}<o:p></o:p></span></span></p>
-  {% endif %}
-  <span style='mso-bookmark:_Hlk526346232'></span>
-  <p class="MsoNormal"><span style='mso-bookmark:_Hlk526346232'><span lang="FR-CH"
-  style='mso-ansi-language:FR-CH'><o:p>&#xa0;</o:p></span></span></p>
-  </td>
-  <span style='mso-bookmark:_Hlk526346232'></span>
- </tr>
-</table>
+<div class="WordSection2">
 
-<p class="MsoNormal"><span style='mso-bookmark:_Hlk526346232'><span lang="FR-CH"
-style='mso-ansi-language:FR-CH'><o:p>&#xa0;</o:p></span></span></p>
+<p class="IEEEStdsAbstractBody"><a name="_Ref51236265"><span
+class="IEEEStdsAbstractHeader"><span lang="EN-US">Abstract:</span></span><span
+lang="EN-US"><span id="abstract-destination"/></span></a></p>
 
-{% if doctype != "Service Publication" %}
+<p class="IEEEStdsKeywords"><a name="_Ref51926020"><span
+class="IEEEStdsKeywordsHeader"><span lang="EN-US"><o:p>&#xa0;</o:p></span></span></a></p>
 
-<p class="MsoNormal"><o:wrapblock><v:shapetype id="_x0000_t202"
-  coordsize="21600,21600" o:spt="202" path="m,l,21600r21600,l21600,xe">
-  <v:stroke joinstyle="miter"/>
-  <v:path gradientshapeok="t" o:connecttype="rect"/>
- </v:shapetype><v:shape id="Text_x0020_Box_x0020_1" o:spid="_x0000_s1026"
-  type="#_x0000_t202" style='position:absolute;margin-left:-8pt;margin-top:141.75pt;
-  width:448.15pt;height:69.8pt;z-index:-251657216;visibility:visible;
-  mso-wrap-style:square;mso-width-percent:0;mso-height-percent:0;
-  mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;
-  mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;
-  mso-position-horizontal-relative:text;mso-position-vertical:absolute;
-  mso-position-vertical-relative:top-margin-area;mso-width-percent:0;
-  mso-height-percent:0;mso-width-relative:margin;mso-height-relative:margin;
-  v-text-anchor:top' o:gfxdata="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
-" o:allowoverlap="f" filled="f" stroked="f" strokeweight=".5pt">
-  <v:fill o:detectmouseclick="t"/>
-  <v:textbox style='mso-fit-shape-to-text:t'>
-      <div id="abstractbox">
-  	 </div>
-     </v:textbox>
-  <w:wrap type="topAndBottom" anchory="margin"/>
-  <w:anchorlock/>
- </v:shape></o:wrapblock><br
-style='mso-ignore:vglayout' clear="ALL">
-<span lang="EN-US" style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+<p class="IEEEStdsKeywords"><span style='mso-bookmark:_Ref51926020'><span
+class=IEEEStdsKeywordsHeader><span lang="EN-US">Keywords:</span></span><span
+lang="EN-US">{{ keywords | join ', ' }}</span></span></p>
 
+<p class="IEEEStdsParagraph"><span lang="EN-US"><o:p>&#xa0;</o:p></span></p>
 
+<p class="IEEEStdsCRFootnote"><a style='mso-footnote-id:ftn1' href="#_ftn1"
+name="_ftnref1" title=""><span class="MsoFootnoteReference"><span lang="EN-US"
+style='font-family:Symbol;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+"Times New Roman";mso-char-type:symbol;mso-symbol-font-family:Symbol'><span
+style='mso-char-type:symbol;mso-symbol-font-family:Symbol'>·</span></span></span></a></p>
 
- 
+</div>
 
-<p class="MsoNormal"><span style='mso-bookmark:_Hlk526346232'><span lang="EN-US"
-style='mso-ansi-language:EN-US'><o:p>&#xa0;</o:p></span></span></p>
+<span lang="EN-US" style='font-size:10.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";color:white;mso-ansi-language:EN-US;
+mso-fareast-language:JA;mso-bidi-language:AR-SA'><br clear="all"
+style='page-break-before:always;mso-break-type:section-break'>
+</span>
 
-<p class="MsoNormal"><span style='mso-bookmark:_Hlk526346232'><span lang="EN-US"
-style='mso-ansi-language:EN-US'><o:p>&#xa0;</o:p></span></span></p>
+<!-- points to feedback statement as footnote -->
 
-<!--
-<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="663"
- style='width:497.4pt;border-collapse:collapse;mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>
- <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
-  <td width="663" valign="top" style='width:497.4pt;padding:0cm 5.4pt 0cm 5.4pt'>
--->
-    <div id="historybox">
-    </div>
-<!--
-  <span style='mso-bookmark:_Hlk526346232'></span>
-  <p class="Headingb" style='margin-bottom:6.0pt'><span style='mso-bookmark:_Hlk526346232'><span
-  lang="EN-US" style='mso-ansi-language:EN-US'><o:p></o:p></span></span></p>
-  </td>
-  <span style='mso-bookmark:_Hlk526346232'></span>
- </tr>
-</table>
--->
-
-<p class="MsoNormal"><span style='mso-bookmark:_Hlk526346232'><span lang="EN-US"
-style='mso-ansi-language:EN-US'><o:p>&#xa0;</o:p></span></span></p>
-
-<div id="sourcebox"/>
-
-<p class="MsoNormal"><span style='mso-bookmark:_Hlk526346232'><span lang="EN-US"
-style='mso-ansi-language:EN-US'><o:p>&#xa0;</o:p></span></span></p>
-
-<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0"
- style='border-collapse:collapse;mso-table-layout-alt:fixed;mso-padding-alt:
- 0cm 5.4pt 0cm 5.4pt'>
- <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
-  <td width="663" valign="top" style='width:497.25pt;padding:0cm 5.4pt 0cm 5.4pt'>
-    <div id="keywordsbox">
-    </div>
-  </td>
-  <span style='mso-bookmark:_Hlk526346232'></span>
- </tr>
-</table>
-
-<div id="change_logbox"/>
-
-  {% endif %}
-
-<p class="MsoNormal"><span style='mso-bookmark:_Hlk526346232'><span lang="EN-US"
-style='mso-ansi-language:EN-US'><o:p>&#xa0;</o:p></span></span></p>
-{% endif %}
-
-  {% if doctype == "Service Publication" %}
-  {% else %}
-  {% if doctype != "Resolution" %}
-<p><br clear="all"
-         style='page-break-before:always'></p>
-{% endif %}
+<div class="WordSection3">
 
 <div id="boilerplate-legal-destination"/>
-<div id="boilerplate-license-destination"/>
-<div id="boilerplate-copyright-destination"/>
 
-  {% if doctype != "Resolution" %}
+</div>
+
+
+<span lang="EN-US" style='font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";mso-ansi-language:
+EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'><br clear="all"
+style='mso-special-character:line-break;page-break-before:always'>
+</span>
+
+<p class="MsoNormal"><b style='mso-bidi-font-weight:normal'><span lang="EN-US"
+style='font-family:"Arial",sans-serif;mso-bidi-font-family:"Times New Roman"'><o:p>&#xa0;</o:p></span></b></p>
+
+<p class="IEEEStdsLevel1frontmatter"><span lang="EN-US">Participants</span></p>
+
+<p class="IEEEStdsParagraph"><span lang="EN-US">At the time this draft</span><!--[if supportFields]><span
+lang="EN-US"><span style='mso-element:field-begin'></span> DOCVARIABLE
+&quot;txtTrialUse&quot; \* MERGEFORMAT<span style='mso-spacerun:yes'> 
+</span>\*Lower<span style='mso-element:field-separator'></span></span><![endif]--><span
+lang="EN-US"> </span><!--[if supportFields]><span lang="EN-US"><span
+style='mso-element:field-end'></span></span><![endif]--><span lang="EN-US"><span
+style='mso-field-code:" DOCVARIABLE \0022txtGorRPorSTD\0022 \\* MERGEFORMAT \\*Lower"'>&lt;<span
+class=SpellE>gde</span>./rec. <span class="SpellE">prac</span>./std.&gt;</span>
+was completed, the </span><!--[if supportFields]><span lang="EN-US"><span
+style='mso-element:field-begin'></span><span
+style='mso-spacerun:yes'> </span>DOCVARIABLE &quot;varWorkingGroup&quot; \*
+MERGEFORMAT <span style='mso-element:field-separator'></span></span><![endif]--><span
+lang="EN-US">&lt;Working Group Name&gt;</span><!--[if supportFields]><span
+lang="EN-US"><span style='mso-element:field-end'></span></span><![endif]--><span
+lang="EN-US"> Working Group had the following membership:</span></p>
+
+<p class="IEEEStdsNamesCtrCxSpFirst"><!--[if supportFields]><span
+class=IEEEStdsParaBold><span lang="EN-US"><span style='mso-element:field-begin'></span><span
+style='mso-spacerun:yes'> </span>DOCVARIABLE &quot;varWkGrpChair&quot; \*
+MERGEFORMAT <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+class=IEEEStdsParaBold><span lang="EN-US">&lt;Chair Name&gt;</span></span><!--[if supportFields]><span
+class=IEEEStdsParaBold><span lang="EN-US"><span style='mso-element:field-end'></span></span></span><![endif]--><span
+lang="EN-US">,<span class="IEEEStdsAddItal"> Chair</span></span></p>
+
+<p class="IEEEStdsNamesCtrCxSpLast"><!--[if supportFields]><span
+class=IEEEStdsParaBold><span lang="EN-US"><span style='mso-element:field-begin'></span><span
+style='mso-spacerun:yes'> </span>DOCVARIABLE &quot;varWkGrpViceChair&quot; \*
+MERGEFORMAT <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+class=IEEEStdsParaBold><span lang="EN-US">&lt;Vice-chair Name&gt;</span></span><!--[if supportFields]><span
+class=IEEEStdsParaBold><span lang="EN-US"><span style='mso-element:field-end'></span></span></span><![endif]--><span
+lang="EN-US">, <span class="IEEEStdsAddItal">Vice Chair</span></span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US"><o:p>&#xa0;</o:p></span></p>
+
+</div>
+
+<span lang="EN-US" style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";mso-ansi-language:
+EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'><br clear="all"
+style='page-break-before:auto;mso-break-type:section-break'>
+</span>
+
+<div class="WordSection4">
+
+<p class="IEEEStdsNamesList"><span lang=PT-BR style='mso-ansi-language:PT-BR'>Participant1<o:p></o:p></span></p>
+
+<p class="IEEEStdsNamesList"><span lang=PT-BR style='mso-ansi-language:PT-BR'>Participant2<o:p></o:p></span></p>
+
+<p class="IEEEStdsNamesList"><span lang=PT-BR style='mso-ansi-language:PT-BR'>Participant3<o:p></o:p></span></p>
+
+<p class="IEEEStdsNamesList"><span lang=PT-BR style='mso-ansi-language:PT-BR'>Participant4<o:p></o:p></span></p>
+
+<p class="IEEEStdsNamesList"><span lang=PT-BR style='mso-ansi-language:PT-BR'>Participant5<o:p></o:p></span></p>
+
+<p class="IEEEStdsNamesList"><span lang=PT-BR style='mso-ansi-language:PT-BR'>Participant6<o:p></o:p></span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">Participant7</span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">Participant8</span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">Participant9</span></p>
+
+</div>
+
+<span lang="EN-US" style='font-size:10.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US;mso-fareast-language:
+JA;mso-bidi-language:AR-SA'><br clear="all" style='page-break-before:auto;
+mso-break-type:section-break'>
+</span>
+
+<div class="WordSection5">
+
+<p class="IEEEStdsParagraph"><span lang="EN-US"><o:p>&#xa0;</o:p></span></p>
+
+<p class="IEEEStdsParagraph"><span lang="EN-US">The following members of the &lt;individual/entity&gt;
+Standards Association balloting group voted on this</span><!--[if supportFields]><span
+lang="EN-US"><span style='mso-element:field-begin'></span> DOCVARIABLE
+&quot;txtTrialUse&quot; \*Lower \* MERGEFORMAT <span style='mso-element:field-separator'></span></span><![endif]--><span
+lang="EN-US"><span style='mso-spacerun:yes'> </span></span><!--[if supportFields]><span
+lang="EN-US"><span style='mso-element:field-end'></span></span><![endif]--><span
+lang="EN-US"><span style='mso-field-code:" DOCVARIABLE \0022txtGorRPorSTD\0022 \\*Lower \\* MERGEFORMAT "'>&lt;<span
+class=SpellE>gde</span>./rec. <span class="SpellE">prac</span>./std.&gt;</span>.
+Balloters may have voted for approval, disapproval, or abstention.</span></p>
+
+<p class="IEEEStdsInstrCallout"><span lang="EN-US">[To be supplied by IEEE]</span></p>
+
+</div>
+
+<span lang="EN-US" style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";mso-ansi-language:
+EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'><br clear="all"
+style='page-break-before:auto;mso-break-type:section-break'>
+</span>
+
+<div class="WordSection6">
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">Balloter1</span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">Balloter2</span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">Balloter3</span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">Balloter4</span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">Balloter5</span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">Balloter6</span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">Balloter7</span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">Balloter8</span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">Balloter9</span></p>
+
+</div>
+
+<span lang="EN-US" style='font-size:10.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US;mso-fareast-language:
+JA;mso-bidi-language:AR-SA'><br clear="all" style='page-break-before:auto;
+mso-break-type:section-break'>
+</span>
+
+<div class="WordSection7">
+
+<p class="IEEEStdsParagraph"><span lang="EN-US"><o:p>&#xa0;</o:p></span></p>
+
+<p class="IEEEStdsParagraph"><span lang="EN-US">When the IEEE SA Standards Board
+approved this</span><!--[if supportFields]><span lang="EN-US"><span
+style='mso-element:field-begin'></span> DOCVARIABLE &quot;txtTrialUse&quot; \*
+MERGEFORMAT<span style='mso-spacerun:yes'>  </span>\*Lower<span
+style='mso-element:field-separator'></span></span><![endif]--><span lang="EN-US">
+</span><!--[if supportFields]><span lang="EN-US"><span style='mso-element:field-end'></span></span><![endif]--><span
+lang="EN-US"><span style='mso-field-code:" DOCVARIABLE \0022txtGorRPorSTD\0022 \\* MERGEFORMAT \\*Lower"'>&lt;<span
+class=SpellE>gde</span>./rec. <span class="SpellE">prac</span>./std.&gt;</span>
+on </span><!--[if supportFields]><span lang="EN-US"><span style='mso-element:
+field-begin'></span><span style='mso-spacerun:yes'> </span>DOCVARIABLE<span
+style='mso-spacerun:yes'>  </span>varApprovedDate<span
+style='mso-spacerun:yes'>  </span>\* MERGEFORMAT <span style='mso-element:field-separator'></span></span><![endif]--><span
+lang="EN-US">&lt;Date Approved&gt;</span><!--[if supportFields]><span lang="EN-US"><span
+style='mso-element:field-end'></span></span><![endif]--><span lang="EN-US">, it
+had the following membership:</span></p>
+
+<p class="IEEEStdsInstrCallout"><span lang="EN-US">[To be supplied by IEEE]</span></p>
+
+</div>
+
+<span lang="EN-US" style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";mso-ansi-language:
+EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'><br clear="all"
+style='page-break-before:auto;mso-break-type:section-break'>
+</span>
+
+<div class="WordSection8">
+
+<p class="IEEEStdsNamesCtrCxSpFirst"><span class="IEEEStdsParaBold"><span
+lang="EN-US">&lt;Name&gt;</span></span><span lang="EN-US">, <span
+class=IEEEStdsAddItal>Chair</span></span></p>
+
+<p class="IEEEStdsNamesCtrCxSpMiddle"><span class="IEEEStdsParaBold"><span
+lang="EN-US">&lt;Name&gt;</span></span><span lang="EN-US">, <span
+class=IEEEStdsAddItal>Vice Chair</span></span></p>
+
+<p class="IEEEStdsNamesCtrCxSpMiddle"><span class="IEEEStdsParaBold"><span
+lang="EN-US">&lt;Name&gt;</span></span><span lang="EN-US">, <span
+class=IEEEStdsAddItal>Past Chair</span></span></p>
+
+<p class="IEEEStdsNamesCtrCxSpLast"><b><span lang="EN-US" style='font-family:TimesNewRomanPS-BoldMT;
+mso-fareast-language:EN-US'>Konstantinos <span class="SpellE">Karachalios</span></span></b><span
+lang="EN-US">, <span class="IEEEStdsAddItal">Secretary</span></span></p>
+
+</div>
+
+<span lang="EN-US" style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family:
+"Times New Roman",serif;mso-fareast-font-family:"Times New Roman";mso-ansi-language:
+EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'><br clear="all"
+style='page-break-before:auto;mso-break-type:section-break'>
+</span>
+
+<div class="WordSection9">
+
+<p class="IEEEStdsNamesList style='margin-left:0cm;text-indent:0cm'"><span
+lang="EN-US">SBMember1</span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">SBMember2</span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">SBMember3</span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">SBMember4</span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">SBMember5</span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">SBMember6</span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">SBMember7</span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">SBMember8</span></p>
+
+<p class="IEEEStdsNamesList"><span lang="EN-US">SBMember9</span></p>
+
+</div>
+
+<span lang="EN-US" style='font-size:10.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US;mso-fareast-language:
+JA;mso-bidi-language:AR-SA'><br clear="all" style='page-break-before:auto;
+mso-break-type:section-break'>
+</span>
+
+<div class="WordSection10">
+
+<p class="IEEEStdsParaMemEmeritus"><span lang="EN-US">*Member Emeritus</span></p>
+
+<p class="IEEEStdsParagraph"><span lang="EN-US"><o:p>&#xa0;</o:p></span></p>
+
+</div>
+
 <b style='mso-bidi-font-weight:normal'><span lang="EN-US" style='font-size:12.0pt;
-mso-bidi-font-size:10.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
-"Times New Roman";mso-ansi-language:EN-US;mso-fareast-language:EN-US;
-mso-bidi-language:AR-SA'><br clear="all" style='page-break-before:always'/>
+mso-bidi-font-size:10.0pt;font-family:"Arial",sans-serif;mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:"Times New Roman";mso-ansi-language:
+EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'><br clear="all"
+style='page-break-before:always;mso-break-type:section-break'>
 </span></b>
 
-<p class="MsoNormal" align="center" style='text-align:center'>
-<b>{{ labels["table_of_contents"] }}</b></p>
-<p class="MsoNormal" style='tab-stops:right 17.0cm'><span style='mso-tab-count:1'/>
-  <b>{{ labels["page"] }}</b></p>
+<div class="WordSection11">
 
-WORDTOC
+<p class="IEEEStdsLevel1frontmatter"><span lang="EN-US">Introduction</span></p>
 
-{% endif %}
-{% endif %}
+<div style='mso-element:para-border-div;border:solid windowtext 1.0pt;
+mso-border-alt:solid windowtext .5pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<p class="IEEEStdsIntroduction"><span lang="EN-US">This introduction is not part of
+P</span><!--[if supportFields]><span lang="EN-US"><span style='mso-element:field-begin'></span>
+DOCVARIABLE &quot;varDesignation&quot; \* MERGEFORMAT <span style='mso-element:
+field-separator'></span></span><![endif]--><span lang="EN-US">&lt;designation&gt;</span><!--[if supportFields]><span
+lang="EN-US"><span style='mso-element:field-end'></span></span><![endif]--><span
+lang="EN-US">/D<span style='mso-field-code:" DOCVARIABLE varDraftNumber \\* MERGEFORMAT "'>&lt;<span
+class=SpellE>draft_number</span>&gt;</span>, Draft</span><!--[if supportFields]><span
+lang="EN-US"><span style='mso-element:field-begin'></span> DOCVARIABLE
+&quot;txtTrialUse&quot;<span style='mso-spacerun:yes'>  </span>\* MERGEFORMAT <span
+style='mso-element:field-separator'></span></span><![endif]--><span lang="EN-US"><span
+style='mso-spacerun:yes'> </span></span><!--[if supportFields]><span
+lang="EN-US"><span style='mso-element:field-end'></span></span><![endif]--><span
+lang="EN-US"><span style='mso-field-code:" DOCVARIABLE \0022txtGorRPorSTD\0022 \\* MERGEFORMAT "'>&lt;<span
+class=SpellE>Gde</span>./Rec. <span class="SpellE">Prac</span>./Std.&gt;</span>
+for </span><!--[if supportFields]><span lang="EN-US"><span style='mso-element:
+field-begin'></span><span style='mso-spacerun:yes'> </span>DOCVARIABLE
+&quot;varTitlePAR&quot; \* MERGEFORMAT <span style='mso-element:field-separator'></span></span><![endif]--><span
+lang="EN-US">&lt;Complete Title Matching PAR&gt;</span><!--[if supportFields]><span
+lang="EN-US"><span style='mso-element:field-end'></span></span><![endif]--><span
+lang="EN-US">.</span></p>
+
+</div>
+
+<p class="IEEEStdsParagraph"><span lang="EN-US">&lt;Select this text and type or
+paste introduction text&gt;</span></p>
+
+<p class="IEEEStdsParagraph"><span lang="EN-US"><o:p>&#xa0;</o:p></span></p>
+
+</div>
+
+<span lang="EN-US" style='font-size:10.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US;mso-fareast-language:
+JA;mso-bidi-language:AR-SA'><br clear="all" style='page-break-before:always;
+mso-break-type:section-break'>
+</span>
+
+<div class="WordSection12">
+
+<p class="IEEEStdsLevel1frontmatter"><span lang="EN-US">Contents</span></p>
+
+<p class="IEEEStdsParagraph"><span lang="EN-US">&lt;After draft body is complete,
+select this text and click Insert Special-&gt;Add (Table of) Contents&gt;</span></p>
+
+<p class="IEEEStdsParagraph"><span lang="EN-US"><o:p>&#xa0;</o:p></span></p>
+
+</div>
+
+<span lang="EN-US" style='font-size:10.0pt;font-family:"Times New Roman",serif;
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US;mso-fareast-language:
+JA;mso-bidi-language:AR-SA'><br clear="all" style='page-break-before:always;
+mso-break-type:section-break'>
+</span>
+
