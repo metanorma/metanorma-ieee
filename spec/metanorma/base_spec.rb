@@ -58,19 +58,19 @@ RSpec.describe Metanorma::IEEE do
       :committee: TC
       :technical-committee-number: 1
       :technical-committee-type: A
-      :subcommittee: SC
+      :balloting-group: SC
       :subcommittee-number: 2
       :subcommittee-type: B
-      :workgroup: WG
+      :working-group: WG
       :workgroup-number: 3
       :workgroup-type: C
-      :technical-committee_2: TC1
+      :committee_2: TC1
       :technical-committee-number_2: 11
       :technical-committee-type_2: A1
       :subcommittee_2: SC1
       :subcommittee-number_2: 21
       :subcommittee-type_2: B1
-      :workgroup_2: WG1
+      :working-group_2: WG1
       :workgroup-number_2: 31
       :workgroup-type_2: C1
       :society: SECRETARIAT
@@ -89,6 +89,15 @@ RSpec.describe Metanorma::IEEE do
       :horizontal: true
       :confirmed-date: 1000-12-01
       :issued-date: 1001-12-01
+      :wg_chair: AB
+      :wg_vicechair: CD
+      :wg_members: E, F, Jr.; GH; IJ
+      :balloting_group_members: KL; MN
+      :std_board_chair: OP
+      :std_board_vicechair: QR
+      :std_board_pastchair: ST
+      :std_board_secretary: UV
+      :std_board_members: WX; YZ
     INPUT
     expect(xmlpp(output.sub(%r{<boilerplate>.*</boilerplate>}m, "")))
       .to be_equivalent_to xmlpp(<<~"OUTPUT")

@@ -2,6 +2,8 @@ require "asciidoctor"
 require "metanorma/standoc/converter"
 require "fileutils"
 require "metanorma-utils"
+require_relative "front"
+require_relative "cleanup"
 
 module Metanorma
   module IEEE
@@ -43,32 +45,6 @@ module Metanorma
 
       def doc_converter(node)
         IsoDoc::IEEE::WordConvert.new(doc_extract_attributes(node))
-      end
-
-      def metadata_committee(node, xml)
-        return unless node.attr("committee") || node.attr("society")
-
-        xml.editorialgroup do |a|
-          committee_component("society", node, a)
-          committee_component("committee", node, a)
-        end
-      end
-
-      def metadata_other_id(node, xml)
-        a = node.attr("isbn-pdf") and
-          xml.docidentifier a, type: "ISBN", scope: "PDF"
-        a = node.attr("isbn-print") and
-          xml.docidentifier a, type: "ISBN", scope: "print"
-      end
-
-      def metadata_id(node, xml)
-        id = node.attr("docnumber") || ""
-        xml.docidentifier id, type: "IEEE"
-        id = node.attr("stdid-pdf") and
-          xml.docidentifier id, type: "IEEE", scope: "PDF"
-        id = node.attr("stdid-print") and
-          xml.docidentifier id, type: "IEEE", scope: "print"
-        xml.docnumber node.attr("docnumber")
       end
     end
   end

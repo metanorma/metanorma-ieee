@@ -26,12 +26,63 @@ module IsoDoc
       def author(xml, _out)
         super
         tc(xml)
+        wc(xml)
+        bg(xml)
+        std_group(xml)
       end
 
       def tc(xml)
         tc = xml.at(ns("//bibdata/ext/editorialgroup/"\
-                       "technical-committee")) or return nil
+                       "committee")) or return nil
         set(:committee, tc.text)
+      end
+
+      def editor_names(xml, role)
+        xml.xpath(ns("//bibdata/contributor[role/@type = 'editor']"\
+                     "[role = '#{role}']/person/name/completename"))
+          &.each&.map(&:text)
+      end
+
+      def editor_name(xml, role)
+        editor_names(xml, role)&.first
+      end
+
+      def wg(xml)
+        wg = xml.at(ns("//bibdata/ext/editorialgroup/"\
+                       "working-group")) or return nil
+        set(:working_group, wg.text)
+        m = {}
+        ["Chair", "Vice-Chair"].each do |r|
+          a = editor_name(xml, "Working Group #{r}") and
+            m[r.downcase.gsub(/ /, "-")] = a
+        end
+        a = editor_names(xml, "Working Group Member") and m["members"] = a
+        set(:wg_members, m)
+      end
+
+      def bg(xml)
+        bg = xml.at(ns("//bibdata/ext/editorialgroup/"\
+                       "balloting-group")) or return nil
+        set(:balloting_group, bg.text)
+        m = {}
+        m["members"] = editor_names(xml, "Balloting Group Member")
+        m["members"].empty? and (1..9).each do |i|
+          m["members"] << "Balloter#{i}"
+        end
+        set(:balloting_group_members, m)
+      end
+
+      def std_group(xml)
+        m = {}
+        ["Chair", "Vice-Chair", "Past Chair", "Secretary"].each do |r|
+          m[r.downcase.gsub(/ /, "-")] =
+            editor_name(xml, "Standards Board #{r}") || "<Name>"
+        end
+        m["members"] = editor_names(xml, "Standards Board Member")
+        m["members"].empty? and (1..9).each do |i|
+          m["members"] << "SBMember#{i}"
+        end
+        set(:std_board, m)
       end
 
       def otherid(isoxml, _out)

@@ -77,6 +77,7 @@ RSpec.describe Metanorma::IEEE do
         <docsubtype>trial-use</docsubtype>
           <editorialgroup>
             <society>Society</society>
+            <working-group>WG</working-group>
             <technical-committee>Tech Committee</technical-committee>
           </editorialgroup>
        <recommendationstatus>

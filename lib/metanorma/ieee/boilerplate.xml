@@ -1,8 +1,8 @@
 <boilerplate>
   <copyright-statement>
     <clause>
-      <p align="left" id="copyright">Copyright © {{ docyear }} by The Institute of Electrical and Electronics Engineers, Inc. +
-Three Park Avenue +
+      <p align="left" id="copyright">Copyright © {{ docyear }} by The Institute of Electrical and Electronics Engineers, Inc.<br/>
+      Three Park Avenue<br/>
         New York, New York 10016-5997, USA</p>
       <p>All rights reserved.</p>
     </clause>
@@ -17,7 +17,7 @@ Piscataway, NJ 08854, USA</p>
 </clause>
 </license-statement>
 <legal-statement>
-  <clause>
+  <clause id="boilerplate-disclaimers">
 <title>Important Notices and Disclaimers Concerning IEEE Standards
 Documents<title>
 
@@ -166,7 +166,7 @@ available for use and adoption by public authorities and private users, IEEE
 does not waive any rights in copyright to the documents.</p>
 </clause>
 
-<clause><title>Photocopie</title>
+<clause><title>Photocopies</title>
 
 <p>Subject to payment of
 the appropriate licensing fees, IEEE will grant users a limited, non-exclusive
@@ -249,8 +249,7 @@ their own responsibility. Further information may be obtained from the IEEE
 Standards Association./span></p>
 </clause>
 
-<clause><title>IMPORTANT
-NOTICE</title>
+<clause><title>IMPORTANT NOTICE</title>
 
 <p>IEEE Standards do not
 guarantee or ensure safety, security, health, or environmental protection, or
@@ -263,6 +262,34 @@ during implementation of the standard. Implementers and users of IEEE Standards
 documents are responsible for determining and complying with all appropriate
 safety, security, environmental, health, and interference protection practices
 and all applicable laws and regulations.</p>
+</clause>
+</clause>
+<clause id="boilerplate-participants">
+  <title>Participants</title>
+  <clause>
+  <p>At the time this draft {{ doctype }} was completed, the {{ working_group }} Working Group had the following membership:</p>
+  <p align="center"><strong>{{ wg_members["chair"] }}</strong>, <em>Chair</em></p>
+  <p align="center"><strong>{{ wg_members["vice-chair"] }}</strong>, <em>Vice Chair</em></p>
+  {% for m in wg_members["members"] %}
+  <p>{{ m }}</p>
+  {% endfor %}
+</clause>
+<clause>
+  <p>The following members of the {{ balloting_group }} Standards Association balloting group voted on this {{ doctype }}. Balloters may have voted for approval, disapproval, or abstention.</p>
+  {% for m in balloting_group_members %}
+  <p>{{ m }}</p>
+  {% endfor %}
+</clause>
+<clause>
+  <p>When the IEEE SA Standards Board approved this {{ doctype }} on {{ confirmed_date }}, it had the following membership:</p>
+  <p align="center"><strong>{{ std_board["chair"] }}</strong>, <em>Chair</em></p>
+  <p align="center"><strong>{{ std_board["vice-chair"] }}</strong>, <em>Vice Chair</em></p>
+  <p align="center"><strong>{{ std_board["past-chair"] }}</strong>, <em>Past Chair</em></p>
+  <p align="center"><strong>{{ std_board["secretary"] }}</strong>, <em>Secretary</em></p>
+  {% for m in std_board["members"] %}
+  <p>{{ m }}</p>
+  {% endfor %}
+  <p>*Member Emeritus</p>
 </clause>
 </clause>
   </legal-statement>

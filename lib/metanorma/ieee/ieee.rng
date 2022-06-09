@@ -19,6 +19,7 @@
     <define name="editorialgroup">
       <element name="editorialgroup">
         <ref name="society"/>
+        <ref name="working-group"/>
         <oneOrMore>
           <ref name="committee"/>
         </oneOrMore>
@@ -39,6 +40,11 @@
   </include>
   <define name="DocumentSubtype">
     <value>trial-use</value>
+  </define>
+  <define name="working-group">
+    <element name="working-group">
+      <text/>
+    </element>
   </define>
   <define name="committee">
     <element name="committee">
