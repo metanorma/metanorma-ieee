@@ -26,7 +26,7 @@ module IsoDoc
       def author(xml, _out)
         super
         tc(xml)
-        wc(xml)
+        wg(xml)
         bg(xml)
         std_group(xml)
       end
@@ -76,7 +76,7 @@ module IsoDoc
         m = {}
         ["Chair", "Vice-Chair", "Past Chair", "Secretary"].each do |r|
           m[r.downcase.gsub(/ /, "-")] =
-            editor_name(xml, "Standards Board #{r}") || "<Name>"
+            editor_name(xml, "Standards Board #{r}") || "&lt;Name&gt;"
         end
         m["members"] = editor_names(xml, "Standards Board Member")
         m["members"].empty? and (1..9).each do |i|

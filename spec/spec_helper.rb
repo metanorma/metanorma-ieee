@@ -112,10 +112,11 @@ def boilerplate(xmldoc)
   ret = Nokogiri::XML(
     conv.boilerplate_isodoc(xmldoc).populate_template(file, nil)
     .gsub(/<p>/, "<p id='_'>")
+    .gsub(/<p (?!id=)/, "<p id='_' ")
     .gsub(/<ol>/, "<ol id='_'>"),
   )
   conv.smartquotes_cleanup(ret)
-  HTMLEntities.new.decode(ret.to_xml)
+  strip_guid(ret.to_xml)
 end
 
 def ieeedoc(lang)
@@ -200,22 +201,11 @@ end
 BLANK_HDR = <<~"HDR".freeze
   <?xml version="1.0" encoding="UTF-8"?>
   <ieee-standard xmlns="https://www.metanorma.org/ns/ieee" type="semantic" version="#{Metanorma::IEEE::VERSION}">
-  <bibdata type="standard">
-   <title language="en" format="text/plain" type="main">Document title</title>
-
-    <contributor>
-      <role type="author"/>
-      <organization>
-        <name>International Telecommunication Union</name>
-      </organization>
-    </contributor>
-    <contributor>
-      <role type="publisher"/>
-      <organization>
-        <name>International Telecommunication Union</name>
-      </organization>
-    </contributor>
-
+         <bibdata type="standard">
+       <title language="en" format="text/plain">Document title</title>
+       <contributor><role type="publisher"/><organization>
+       <name>Institute of Electrical and Electronic Engineers</name>
+       <abbreviation>IEEE</abbreviation></organization></contributor>
     <language>en</language>
     <script>Latn</script>
    <status>
@@ -226,16 +216,13 @@ BLANK_HDR = <<~"HDR".freeze
       <from>#{Time.new.year}</from>
       <owner>
         <organization>
-        <name>International Telecommunication Union</name>
+        <name>Institute of Electrical and Electronic Engineers</name>
+       <abbreviation>IEEE</abbreviation>
         </organization>
       </owner>
     </copyright>
     <ext>
-           <doctype>recommendation</doctype>
-           <editorialgroup>
-           <bureau>T</bureau>
-           </editorialgroup>
-           <ip-notice-received>false</ip-notice-received>
+           <doctype>standard</doctype>
    </ext>
   </bibdata>
 HDR

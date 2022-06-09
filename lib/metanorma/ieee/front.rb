@@ -47,7 +47,7 @@ module Metanorma
         end
       end
 
-      def metadata_multi_editors(_name, role, xml)
+      def metadata_multi_editors(names, role, xml)
         csv_split(names).each do |n|
           metadata_editor(n, role, xml)
         end
@@ -78,6 +78,40 @@ module Metanorma
           metadata_editor(a, "Standards Board Secretary", xml)
         a = node.attr("balloting_group_members") and
           metadata_multi_editors(a, "Standards Board Member", xml)
+      end
+
+      def metadata_publisher(node, xml)
+        publishers = node.attr("publisher") || "IEEE"
+        csv_split(publishers).each do |p|
+          xml.contributor do |c|
+            c.role **{ type: "publisher" }
+            c.organization do |a|
+              organization(a, p, true, node, !node.attr("publisher"))
+            end
+          end
+        end
+      end
+
+      def metadata_copyright(node, xml)
+        publishers = node.attr("copyright-holder") || node.attr("publisher") ||
+          "IEEE"
+        csv_split(publishers).each do |p|
+          xml.copyright do |c|
+            c.from (node.attr("copyright-year") || Date.today.year)
+            c.owner do |owner|
+              owner.organization do |o|
+                organization(
+                  o, p, true, node,
+                  !(node.attr("copyright-holder") || node.attr("publisher"))
+                )
+              end
+            end
+          end
+        end
+      end
+
+      def org_abbrev
+        { "Institute of Electrical and Electronic Engineers" => "IEEE" }
       end
     end
   end

@@ -3407,9 +3407,7 @@ p.supertitle
         mso-hyphenate:none;
         font-family:$bodyfont;
         mso-fareast-font-family:$bodyfont;
-        {% if doctype == "Resolution" %}
         text-align: center;
-        {% endif %}
     color:black;
         mso-font-kerning:0pt;
         mso-ansi-language:EN-GB;

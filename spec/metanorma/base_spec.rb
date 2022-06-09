@@ -101,6 +101,178 @@ RSpec.describe Metanorma::IEEE do
     INPUT
     expect(xmlpp(output.sub(%r{<boilerplate>.*</boilerplate>}m, "")))
       .to be_equivalent_to xmlpp(<<~"OUTPUT")
+           <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='0.0.1'>
+         <bibdata type='standard'>
+           <title language='en' format='text/plain'>Document title</title>
+           <title language='intro-en' format='text/plain'>Introduction</title>
+           <title language='main-en' format='text/plain'>Main Title -- Title</title>
+           <title language='part-en' format='text/plain'>Title Part</title>
+           <title language='intro-fr' format='text/plain'>Introduction Française</title>
+           <title language='main-fr' format='text/plain'>Titre Principal</title>
+           <title language='part-fr' format='text/plain'>Part du Titre</title>
+           <docidentifier type='IEEE'>1000</docidentifier>
+           <docnumber>1000</docnumber>
+           <date type='confirmed'>
+             <on>1000-12-01</on>
+           </date>
+           <date type='issued'>
+             <on>1001-12-01</on>
+           </date>
+           <contributor>
+             <role type='editor'>Working Group Chair</role>
+             <person>
+               <name>
+                 <completename>AB</completename>
+               </name>
+             </person>
+           </contributor>
+           <contributor>
+             <role type='editor'>Working Group Vice-Chair</role>
+             <person>
+               <name>
+                 <completename>CD</completename>
+               </name>
+             </person>
+           </contributor>
+           <contributor>
+             <role type='editor'>Working Group Member</role>
+             <person>
+               <name>
+                 <completename>E, F, Jr.</completename>
+               </name>
+             </person>
+           </contributor>
+           <contributor>
+             <role type='editor'>Working Group Member</role>
+             <person>
+               <name>
+                 <completename>GH</completename>
+               </name>
+             </person>
+           </contributor>
+           <contributor>
+             <role type='editor'>Working Group Member</role>
+             <person>
+               <name>
+                 <completename>IJ</completename>
+               </name>
+             </person>
+           </contributor>
+           <contributor>
+             <role type='editor'>Balloting Group Member</role>
+             <person>
+               <name>
+                 <completename>KL</completename>
+               </name>
+             </person>
+           </contributor>
+           <contributor>
+             <role type='editor'>Balloting Group Member</role>
+             <person>
+               <name>
+                 <completename>MN</completename>
+               </name>
+             </person>
+           </contributor>
+           <contributor>
+             <role type='editor'>Standards Board Chair</role>
+             <person>
+               <name>
+                 <completename>OP</completename>
+               </name>
+             </person>
+           </contributor>
+           <contributor>
+             <role type='editor'>Standards Board Vice-Chair</role>
+             <person>
+               <name>
+                 <completename>QR</completename>
+               </name>
+             </person>
+           </contributor>
+           <contributor>
+             <role type='editor'>Standards Board Past Chair</role>
+             <person>
+               <name>
+                 <completename>ST</completename>
+               </name>
+             </person>
+           </contributor>
+           <contributor>
+             <role type='editor'>Standards Board Secretary</role>
+             <person>
+               <name>
+                 <completename>UV</completename>
+               </name>
+             </person>
+           </contributor>
+           <contributor>
+             <role type='editor'>Standards Board Member</role>
+             <person>
+               <name>
+                 <completename>KL</completename>
+               </name>
+             </person>
+           </contributor>
+           <contributor>
+             <role type='editor'>Standards Board Member</role>
+             <person>
+               <name>
+                 <completename>MN</completename>
+               </name>
+             </person>
+           </contributor>
+           <contributor>
+             <role type='publisher'/>
+             <organization>
+               <name>Institute of Electrical and Electronic Engineers</name>
+               <abbreviation>IEEE</abbreviation>
+             </organization>
+           </contributor>
+           <edition>2</edition>
+           <version>
+             <revision-date>2000-01-01</revision-date>
+             <draft>0.3.4</draft>
+           </version>
+           <language>en</language>
+           <script>Latn</script>
+           <status>
+             <stage>20</stage>
+             <substage>20</substage>
+             <iteration>3</iteration>
+           </status>
+           <copyright>
+             <from>2000</from>
+             <owner>
+               <organization>
+                 <name>Institute of Electrical and Electronic Engineers</name>
+                 <abbreviation>IEEE</abbreviation>
+               </organization>
+             </owner>
+           </copyright>
+           <ext>
+             <doctype>standard</doctype>
+             <editorialgroup>
+               <society>SECRETARIAT</society>
+               <balloting-group>SC</balloting-group>
+               <working-group>WG</working-group>
+               <working-group>WG1</working-group>
+               <committee>TC</committee>
+               <committee>TC1</committee>
+             </editorialgroup>
+             <ics>
+               <code>1</code>
+             </ics>
+             <ics>
+               <code>2</code>
+             </ics>
+             <ics>
+               <code>3</code>
+             </ics>
+           </ext>
+         </bibdata>
+         <sections> </sections>
+       </ieee-standard>
     OUTPUT
   end
 end
