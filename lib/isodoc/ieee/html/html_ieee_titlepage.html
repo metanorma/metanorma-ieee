@@ -1,143 +1,44 @@
-<div class="document-stage-band" id="{{ stage | downcase | replace: ' ', '-' }}-band">
-  <p class="document-stage">{{ stage }}</p>
+<div id='toggle'> <span>•</span> </div>
+
+<div class="doctitle-en"><span>P{{ docnumeric }}™{% if draft %}/D{{ draft }}{% endif %}</span><br/>
+   <span lang="EN-US">{% if draft %}Draft{% endif %} {{ doctype_abbrev }} for {{ doctitle }}</span></div>
+{% if doctitleamdlabel %}
+<div class="doctitle-part">{{ doctitleamdlabel }}{% if doctitleamd %}: {{ doctitleamd }}{% endif %}</div>
+{% endif %}
+{% if doctitlecorrlabel %}
+<div class="doctitle-part">{{ doctitlecorrlabel }}</div>
+{% endif %}
 </div>
 
-<div class="document-type-band" id="{{ doctype | downcase | replace: ' ', '-' }}-band">
-  <p class="document-type">IEEE {{ doctype_display }}</p>
+<div><p>Developed by the</p>
+  <p><b>{{ committee }}</b></p>
+<p>of the</p>
+<p><b>IEEE {{ society }}</b></p>
+<p>Approved {{ issued_date }}</p>
+<p>IEEE SA Standards Board</p>
 </div>
 
 
 
-<div id='toggle'> <span>&#x2022;</span> </div>
 
-<header>
-
-  <!--<div class="WordSection1">-->
-  <div class="coverpage">
-    <div class="wrapper-top">
-
-      {% if unpublished %}
-      {% if doctype == "Technical Report" or doctype == "Technical Paper" or doctype == "Implementers Guide" %}
-      <table>
-        <tr><th>Question(s):</th><td colspan="2">{{ group }}</td><th colspan="2">Meeting, date:</th><td colspan="3">{{ meeting }}{% if meeting and meeting_date %}, {% endif %}{{ meeting_date }}</td></tr>
-        <tr><th>Study Group:</th><td>{{ subgroup }}</td><th>Working Party:</th><td>{{ workgroup }}</td><th colspan="3">Intended type of document (R-C-TD):</th><td>{{ intended_type }}</td></tr>
-        <tr><th>Source:</th><td colspan="7">{{ source }}</td></tr>
-        <tr><th>Title:</th><td colspan="7">{{ doctitle }}</td></tr>
-        {% for author in authors %}
-        <tr><th rowspan="3">Contact:</th><td>Name:</td><td colspan="3">{{ author }}</td><td>Tel:</td><td colspan="2">{{ phones[forloop.index0] }}</td></tr>
-        <tr><td>Organization:</td><td colspan="3">{{ affiliations[forloop.index0] }}</td><td>Fax:</td><td colspan="2">{{ faxes[forloop.index0] }}</td></tr>
-        <tr><td>Country:</td><td colspan="3">{{ addresses[forloop.index0] }}</td><td>E-mail:</td><td colspan="2">{{ emails[forloop.index0] }}</td></tr>
-        {% endfor %}
-      </table>
-
-      {% endif %}
-      {% endif %}
-
-      <div class="coverpage-doc-identity">
-        <div class="doc-type">
-          International Telecommunications Union
-        </div>
-
-        <div class="ITU-sector">
-          ITU-{{bureau}}</div>
-
-        <div class="doc-info-left">
-          <div class="doc-identifier">
-            {% if doctype != "Recommendation" %}{{doctype }} {% endif %}{{ docnumeric }}
-            {% if amendmentid %}<div class="doc-subidentifier">{{ amendmentid }}</div>{% endif %} 
-            {% if corrigendumid %}<div class="doc-subidentifier">{{ corrigendumid }}</div>{% endif %}       
-            {% if edition %} <div> Revision {{ edition }}</div> {% endif %}
-            <div> {{ draftinfo }}</div>
-          </div>
-          {% if pubdate_monthyear %}
-          <div class="publication-month">
-            ({{ pubdate_monthyear }})
-          </div>
-          {% endif %}
-        </div>
-
-        <div class="doc-category">
-          {% if bureau == "T" %}Telecommunication <br/>Standardization Sector <br/>of ITU{% endif %}
-          {% if bureau == "D" %}Telecommunication <br/>Development Sector <br/>of ITU{% endif %}
-          {% if bureau == "R" %}Radiocommunication <br/>Sector of ITU{% endif %}
-        </div>
-
-        <div class="coverpage-title">
-          {% if series %}
-          <span class="doc-series">Series {{ series }}</span>
-          {% endif %}
-            {% if series1 %}
-          <span class="doc-subSeries">
-            {{ series1 }} {% if series2 %}&mdash; {{ series2 }}{% endif %}
-          </span>
-            {% endif %}
-        {% if meeting %}
-          <span class="doc-series">{{ meeting | upcase }}</span>
-        {% endif %}
-        {% if meeting_place or meeting_date %}
-        <span class="doc-subSeries">{{ meeting_place }}{% if meeting_place and meeting_date %}, {% endif %}{{ meeting_date }}</span>
-        {% endif %}
-
-          <span class="doc-title">{{ doctitle }}</span>
-          {% if docsubtitle %}
-          <br/><span class="doc-subtitle">{{ docsubtitle }}</span>
-          {% endif %}
-          {% if positiontitle %}
-          <br/><span class="doc-annextitle">{{ positiontitle }}</span>
-          {% endif %}
-          {% if annextitle %}
-          <br/><span class="doc-annextitle">{{ annexid }}{% if annexid and annextitle %}: {% endif %}{{ annextitle }}</span>
-          {% endif %}
-          {% if amendmentid %}
-          <br/><span class="doc-annextitle">{{ amendmentid }}{% if amendmenttitle %}: {{ amendmenttitle}}{% endif %}</span>
-          {% endif %} 
-          {% if corrigendumid %}
-          <br/><span class="doc-annextitle">{{ corrigendumid }}{% if corrigendumtitle %}: {{ corrigendumtitle}}{% endif %}</span>
-          {% endif %} 
-        </div>
-
-
-      </div>
-
-
-      <div class="doc-footer">
-
-        {% if keywords %}
-        <div class="keywords">
-          <b>Keywords</b>: {{ keywords | join ', ' }}
-        </div>
-        {% endif %}
-        <div>
-          <span class="doc-type">{% if stage == "Draft" %}Draft {% endif %}{% if recommendationnumber %}{{ recommendationnumber }} {% endif %}{{ doctype_display }}</span>
-          <span class="ITU-sector">ITU-{{ bureau }}</span>
-          <span class="doc-identifier">{{ docnumeric }}</span>
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="WordSection11">
-        {% if unpublished %}
-<div class="coverpage-warning">
-        <div id="draft-warning-destination"/>
-        </div>
-        {% endif %}
-        <div class="coverpage-warning" id="coverpage-note-destination"/>
-
-<div class="info-section">
-  <div id="boilerplate-copyright-destination"/>
-
-    <div class="contact-info">
-    </div>
-
-
-  </div>
-
-  <div class="rule"></div>
+<div class="coverpage_docstage">
+  {% if unpublished %}
+  <p>{{ stageabbr }} stage</p>
+  {% endif %}
 </div>
-    </div>
 
+{% if unpublished %}
+<div class="coverpage_warning">
+  <div id="boilerplate-license-destination"/>
+</div>
+{% endif %}
+<div class="coverpage-warning" id="coverpage-note-destination"/>
 
-</header>
+{% if ics %}
+<p><b>ICS:</b> {{ ics }}</p>
+{% endif %}
+
+{% if keywords.size > 0 %}
+<p><b>Descriptors:</b> {{ keywords | join: ", " }}
+{% endif %}
 
