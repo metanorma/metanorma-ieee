@@ -89,7 +89,6 @@ ASCIIDOC_BLANK_HDR = <<~"HDR".freeze
   :docfile: test.adoc
   :nodoc:
   :novalid:
-  :legacy-do-not-insert-missing-sections:
 
 HDR
 

@@ -29,10 +29,10 @@ module Metanorma
         return unless intro = xml.at("//introduction/title")
 
         template = <<~ADM
-          This introduction is not part of P{{ docnumeric }}{% if draft %}/D{{ draft }}{% endif %}, {%if draft%}Draft{%endif%} {{ doctype }} for {{ doctitle }}
+          This introduction is not part of P{{ docnumeric }}{% if draft %}/D{{ draft }}{% endif %}, {{ doctitle }}
         ADM
         adm = isodoc.populate_template(template)
-        intro.title.next = "<admonition>#{adm}</admonition>"
+        intro.next = "<admonition>#{adm}</admonition>"
       end
     end
   end
