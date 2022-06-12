@@ -97,6 +97,7 @@ VALIDATING_BLANK_HDR = <<~"HDR".freeze
   Author
   :docfile: test.adoc
   :nodoc:
+  :no-isobib:
 
 HDR
 

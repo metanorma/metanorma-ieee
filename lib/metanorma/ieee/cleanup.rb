@@ -37,7 +37,9 @@ module Metanorma
 
       def obligations_cleanup_norm(xml)
         super
-        xml.xpath("//sections/clause").each { |r| r["obligation"] = "normative" }
+        xml.xpath("//sections/clause").each do |r|
+          r["obligation"] = "normative"
+        end
       end
 
       def sections_cleanup(xml)
@@ -55,6 +57,16 @@ module Metanorma
         (xml.xpath("//clause[@type = 'overview']") -
          xml.xpath("//sections/clause[1]"))
           .each { |c| c.delete("type") }
+      end
+
+      def note_cleanup(xmldoc)
+        super
+        n = xmldoc.at("//preface//note[not(@type = 'boilerplate')] | "\
+                      "//sections//note[not(@type = 'boilerplate')] | "\
+                      "//annex//note[not(@type = 'boilerplate')]") or
+          return
+        ins = n.at("./p[last()]")
+        ins << "<fn><p>@i18n.note_inform_fn</p></fn>"
       end
     end
   end

@@ -5,6 +5,112 @@ RSpec.describe Metanorma::IEEE do
     FileUtils.rm_f "test.err"
   end
 
+  it "Warns of illegal doctype" do
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :doctype: pizza
+
+      text
+    INPUT
+    expect(File.read("test.err"))
+      .to include "pizza is not a recognised document type"
+  end
+
+  it "Warns of uncapitalised word in title other than preposition (or article)" do
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :doctype: pizza
+
+      text
+    INPUT
+    expect(File.read("test.err"))
+      .to include "Title contains uncapitalised word other than preposition"
+
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      = Document save for the Title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :doctype: pizza
+
+      text
+    INPUT
+    expect(File.read("test.err"))
+      .not_to include "Title contains uncapitalised word other than preposition"
+  end
+
+  it "warns of undated reference in normative references" do
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      #{VALIDATING_BLANK_HDR}
+
+      == Scope
+      <<iso123,clause=1>>
+
+      [bibliography]
+      == Normative References
+      * [[[iso123,ISO 123]]] _Standard_
+    INPUT
+    expect(File.read("test.err"))
+      .to include "Normative reference iso123 is not dated"
+
+    VCR.use_cassette "iso123" do
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+
+        == Scope
+        <<iso123,clause=1>>
+
+        [bibliography]
+        == Normative References
+        * [[[iso123,ISO 123]]] _Standard_
+      INPUT
+      expect(File.read("test.err"))
+        .not_to include "Normative reference iso123 is not dated"
+    end
+  end
+
+  it "warns that undated reference has locality" do
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      #{VALIDATING_BLANK_HDR}
+
+      == Scope
+      <<iso123,clause=1>>
+
+      [bibliography]
+      == Normative References
+      * [[[iso123,ISO 123]]] _Standard_
+    INPUT
+    expect(File.read("test.err"))
+      .to include "undated reference ISO 123 should not contain "\
+                  "specific elements"
+
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      #{VALIDATING_BLANK_HDR}
+
+      == Scope
+      <<iso123,clause=1>>
+
+      [bibliography]
+      == Normative References
+      * [[[iso123,ISO 123-2000]]] _Standard_
+    INPUT
+    expect(File.read("test.err"))
+      .not_to include "undated reference ISO 123-2000 should not contain "\
+                      "specific elements"
+  end
+
   context "Warns of missing overview" do
     it "Overview clause missing" do
       Asciidoctor.convert(<<~"INPUT", *OPTIONS)

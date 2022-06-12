@@ -9,11 +9,29 @@ module Metanorma
 
       def content_validate(doc)
         super
+        bibdata_validate(doc.root)
         title_validate(doc.root)
+        locality_erefs_validate(doc.root)
+        bibitem_validate(doc.root)
+      end
+
+      def bibdata_validate(doc)
+        doctype_validate(doc)
+        # stage_validate(doc)
+        # substage_validate(doc)
+      end
+
+      def doctype_validate(xmldoc)
+        doctype = xmldoc&.at("//bibdata/ext/doctype")&.text
+        %w(standard recommended-practice guide
+           amendment technical-corrigendum).include? doctype or
+          @log.add("Document Attributes", nil,
+                   "#{doctype} is not a recognised document type")
       end
 
       def title_validate(xml)
         title_validate_type(xml)
+        title_validate_capitalisation(xml)
       end
 
       # Style Manual 11.3
@@ -38,6 +56,28 @@ module Metanorma
         end.join(" ")
         ret = "Trial-Use" if ret == "Trial Use"
         ret
+      end
+
+      # Style Manual 11.3
+      def title_validate_capitalisation(xml)
+        title = xml.at("//bibdata/title") or return
+        found = false
+        title.text.split(/[ -]/).each do |w|
+          /^[[:upper:]]/.match?(w) or preposition?(w) or
+            found = true
+        end
+        found and @log.add("Style", title,
+                           "Title contains uncapitalised word other than preposition")
+      end
+
+      def preposition?(word)
+        %w(aboard about above across after against along amid among anti around
+           as at before behind below beneath beside besides between beyond but
+           by concerning considering despite down during except excepting
+           excluding following for from in inside into like minus near of off
+           on onto opposite outside over past per plus regarding round save
+           since than through to toward towards under underneath unlike until
+           up upon versus via with within without a an the).include?(word)
       end
 
       def section_validate(doc)
@@ -130,6 +170,30 @@ module Metanorma
         names.empty? ||
           @log.add("Style", elem,
                    "There are sections after the final Bibliography")
+      end
+
+      # Style manual 12.3.2
+      def locality_erefs_validate(root)
+        root.xpath("//eref[descendant::locality]").each do |t|
+          if !/[:-](\d+{4})$/.match?(t["citeas"])
+            @log.add("Style", t,
+                     "undated reference #{t['citeas']} should not contain "\
+                     "specific elements")
+          end
+        end
+      end
+
+      def bibitem_validate(root)
+        normative_dated_refs(root)
+      end
+
+      # Style manual 12.3.1
+      def normative_dated_refs(root)
+        root.xpath("//references[@normative = 'true']/bibitem").each do |b|
+          b.at(".//date") or
+            @log.add("Style", b,
+                     "Normative reference #{b&.at('./@id')&.text} is not dated.")
+        end
       end
     end
   end
