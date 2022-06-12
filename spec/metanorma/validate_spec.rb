@@ -184,4 +184,113 @@ RSpec.describe Metanorma::IEEE do
       expect(File.read("test.err")).not_to include "Definitions missing"
     end
   end
+
+  context "Section ordering" do
+    it "Warning if missing abstract" do
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        == Symbols and Abbreviated Terms
+
+        Paragraph
+      INPUT
+      expect(File.read("test.err"))
+        .to include "Initial section must be (content) Abstract"
+
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib:
+        :doctype: amendment
+
+        [abstract]
+        == Abstract
+
+        == Symbols and Abbreviated Terms
+
+        Paragraph
+      INPUT
+      expect(File.read("test.err"))
+        .not_to include "Initial section must be (content) Abstract"
+    end
+
+    it "Warning if do not start with overview" do
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+        [abstract]
+        == Abstract
+
+        == Symbols and Abbreviated Terms
+
+        Paragraph
+      INPUT
+      expect(File.read("test.err"))
+        .to include "Prefatory material must be followed by (clause) Overview"
+
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib:
+        :doctype: amendment
+
+        [abstract]
+        == Abstract
+
+        == Symbols and Abbreviated Terms
+
+        Paragraph
+      INPUT
+      expect(File.read("test.err"))
+        .not_to include "Prefatory material must be followed by (clause) Overview"
+    end
+
+    it "Warning if normative references not followed by terms and definitions" do
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        [abstract]
+        == Abstract
+
+        == Overview
+
+        [bibliography]
+        == Normative References
+
+        == Symbols and Abbreviated Terms
+
+        Paragraph
+      INPUT
+      expect(File.read("test.err"))
+        .to include "Normative References must be followed by "\
+                    "Definitions"
+
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib:
+        :doctype: amendment
+
+        [abstract]
+        == Abstract
+
+        == Overview
+
+        [bibliography]
+        == Normative References
+
+        == Symbols and Abbreviated Terms
+
+        Paragraph
+      INPUT
+      expect(File.read("test.err"))
+        .not_to include "Normative References must be followed by "\
+                        "Definitions"
+    end
+  end
 end
