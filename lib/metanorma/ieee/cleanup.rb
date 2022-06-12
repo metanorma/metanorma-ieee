@@ -68,6 +68,33 @@ module Metanorma
         ins = n.at("./p[last()]")
         ins << "<fn><p>@i18n.note_inform_fn</p></fn>"
       end
+
+      def sort_biblio(bib)
+        bib.sort do |a, b|
+          sort_biblio_key(a) <=> sort_biblio_key(b)
+        end
+      end
+
+      OTHERIDS = "@type = 'DOI' or @type = 'metanorma' or @type = 'ISSN' or "\
+                 "@type = 'ISBN'".freeze
+
+      def sort_biblio_key(bib)
+        id = bib.at("./docidentifier[not(#{OTHERIDS})]")
+        title = bib.at("./title[@type = 'main']") ||
+          bib.at("./title") || bib.at("./formattedref")
+        "#{id&.text || 'ZZZZZ'} :: #{title&.text}"
+      end
+
+      def normref_cleanup(xmldoc)
+        super
+        normref_reorder(xmldoc)
+      end
+
+      def normref_reorder(xmldoc)
+        xmldoc.xpath("//references[@normative = 'true']").each do |r|
+          biblio_reorder1(r)
+        end
+      end
     end
   end
 end
