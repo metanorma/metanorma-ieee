@@ -121,6 +121,39 @@ module Metanorma
           m[e["bibitemid"]] = true
         end
       end
+
+      def termdef_cleanup(xmldoc)
+        term_reorder(xmldoc)
+        super
+      end
+
+      def term_reorder(xmldoc)
+        xmldoc.xpath("//terms").each do |t|
+          term_reorder1(t)
+        end
+      end
+
+      def term_reorder1(terms)
+        ins = terms.at("./term")&.previous_element or return
+        coll = terms.xpath("./term")
+        ret = sort_terms(coll)
+        coll.each(&:remove)
+        ret.reverse.each { |t| ins.next = t }
+      end
+
+      def sort_terms(terms)
+        terms.sort do |a, b|
+          sort_terms_key(a) <=> sort_terms_key(b)
+        end
+      end
+
+      def sort_terms_key(term)
+        d = term.at("./preferred/expression/name | "\
+                    "./preferred/letter-designation/name | "\
+                    "./preferred/graphical-symbol/figure/name | "\
+                    "./preferred/graphical-symbol/figure/@id")
+        d.text.downcase
+      end
     end
   end
 end

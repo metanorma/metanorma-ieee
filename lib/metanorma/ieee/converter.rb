@@ -14,6 +14,13 @@ module Metanorma
 
       register_for "ieee"
 
+      def sectiontype_streamline(ret)
+        case ret
+        when "definitions" then "terms and definitions"
+        else super
+        end
+      end
+
       def clause_parse(attrs, xml, node)
         case node.title
         when "Purpose" then attrs[:type] = "purpose"
