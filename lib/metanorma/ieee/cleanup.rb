@@ -34,6 +34,28 @@ module Metanorma
         adm = isodoc.populate_template(template)
         intro.next = "<admonition>#{adm}</admonition>"
       end
+
+      def obligations_cleanup_norm(xml)
+        super
+        xml.xpath("//sections/clause").each { |r| r["obligation"] = "normative" }
+      end
+
+      def sections_cleanup(xml)
+        super
+        overview_cleanup(xml)
+      end
+
+      def overview_cleanup(xml)
+        %w(scope purpose word-usage).each do |x|
+          (xml.xpath("//clause[@type = '#{x}']") -
+            xml.xpath("//sections/clause[1][@type = 'overview']"\
+                      "//clause[@type = '#{x}']"))
+            .each { |c| c.delete("type") }
+        end
+        (xml.xpath("//clause[@type = 'overview']") -
+         xml.xpath("//sections/clause[1]"))
+          .each { |c| c.delete("type") }
+      end
     end
   end
 end

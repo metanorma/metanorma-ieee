@@ -14,6 +14,16 @@ module Metanorma
 
       register_for "ieee"
 
+      def clause_parse(attrs, xml, node)
+        case node.title
+        when "Purpose" then attrs[:type] = "purpose"
+        when "Overview" then attrs[:type] = "overview"
+        when "Scope" then attrs[:type] = "scope"
+        when "Word Usage" then attrs[:type] = "word-usage"
+        end
+        super
+      end
+
       def outputs(node, ret)
         File.open("#{@filename}.xml", "w:UTF-8") { |f| f.write(ret) }
         presentation_xml_converter(node).convert("#{@filename}.xml")

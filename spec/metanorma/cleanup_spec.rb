@@ -124,4 +124,52 @@ RSpec.describe Metanorma::IEEE do
     expect(xmlpp(strip_guid(ret.to_xml)))
       .to be_equivalent_to xmlpp(output)
   end
+
+  it "removes extraneous instances of overview clauses" do
+    input = <<~INPUT
+      #{ASCIIDOC_BLANK_HDR}
+
+      == Overview
+
+      === Scope
+
+      === Purpose
+
+      == Scope
+
+      == Purpose
+
+      == Overview
+
+    INPUT
+    output = <<~OUTPUT
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+               <sections>
+           <clause id='_' type='overview' inline-header='false' obligation='normative'>
+             <title>Overview</title>
+             <clause id='_' type='scope' inline-header='false' obligation='normative'>
+               <title>Scope</title>
+             </clause>
+             <clause id='_' type='purpose' inline-header='false' obligation='normative'>
+               <title>Purpose</title>
+             </clause>
+           </clause>
+           <clause id='_' inline-header='false' obligation='normative'>
+             <title>Scope</title>
+           </clause>
+           <clause id='_' inline-header='false' obligation='normative'>
+             <title>Purpose</title>
+           </clause>
+           <clause id='_' inline-header='false' obligation='normative'>
+             <title>Overview</title>
+           </clause>
+         </sections>
+       </ieee-standard>
+    OUTPUT
+    ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
+    ret.at("//xmlns:bibdata").remove
+    ret.at("//xmlns:boilerplate").remove
+    expect(xmlpp(strip_guid(ret.to_xml)))
+      .to be_equivalent_to xmlpp(output)
+  end
 end
