@@ -95,6 +95,32 @@ module Metanorma
           biblio_reorder1(r)
         end
       end
+
+      # end of citeas generation
+      def quotesource_cleanup(xmldoc)
+        super
+        trademark_ieee_erefs(xmldoc)
+      end
+
+      # Style manual 12.3.5
+      def trademark_ieee_erefs(xmldoc)
+        ieee = xmldoc.xpath("//references/bibitem")
+          .each_with_object({}) do |b, m|
+          n = b.at("./contributor[role/@type = 'publisher']/organization/name")
+          n&.text == "Institute of Electrical and Electronics Engineers" and
+            m[b["id"]] = true
+        end
+        trademark_ieee_erefs1(xmldoc, "//preface//eref", ieee)
+        trademark_ieee_erefs1(xmldoc, "//sections//eref | //annex//eref", ieee)
+      end
+
+      def trademark_ieee_erefs1(xmldoc, path, ieee)
+        xmldoc.xpath(path).each_with_object({}) do |e, m|
+          ieee[e["bibitemid"]] or next
+          m[e["bibitemid"]] or e["citeas"] += "\u2122"
+          m[e["bibitemid"]] = true
+        end
+      end
     end
   end
 end
