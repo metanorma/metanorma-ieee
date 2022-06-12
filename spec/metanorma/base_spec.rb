@@ -98,6 +98,10 @@ RSpec.describe Metanorma::IEEE do
       :std_board_pastchair: ST
       :std_board_secretary: UV
       :std_board_members: WX; YZ
+      :isbn-pdf: ABC
+      :isbn-print: DEF
+      :stdid-pdf: GHI
+      :stdid-print: JKL
     INPUT
     expect(xmlpp(output.sub(%r{<boilerplate>.*</boilerplate>}m, "")))
       .to be_equivalent_to xmlpp(<<~"OUTPUT")
@@ -111,6 +115,10 @@ RSpec.describe Metanorma::IEEE do
             <title language='main-fr' format='text/plain'>Titre Principal</title>
             <title language='part-fr' format='text/plain'>Part du Titre</title>
             <docidentifier type='IEEE'>1000</docidentifier>
+           <docidentifier type='IEEE' scope='PDF'>GHI</docidentifier>
+           <docidentifier type='IEEE' scope='print'>JKL</docidentifier>
+           <docidentifier type='ISBN' scope='PDF'>ABC</docidentifier>
+           <docidentifier type='ISBN' scope='print'>DEF</docidentifier>
             <docnumber>1000</docnumber>
             <date type='confirmed'>
               <on>1000-12-01</on>

@@ -253,7 +253,7 @@ RSpec.describe Metanorma::IEEE do
       OUTPUT
   end
 
-  it "processes metadata with no nominated contributors" do
+  it "processes metadata with no nominated contributors or scoped identifiers" do
     csdc = IsoDoc::IEEE::HtmlConvert.new({})
     docxml, = csdc.convert_init(<<~"INPUT", "test", true)
       <ieee-standard xmlns="https://www.calconnect.org/standards/ieee">
@@ -267,10 +267,6 @@ RSpec.describe Metanorma::IEEE do
       <title language='fr' format='text/plain' type='amendment'>Titre de Amendment</title>
       <title language='en' format='text/plain' type='corrigendum'>Corrigendum Title</title>
       <title language='fr' format='text/plain' type='corrigendum'>Titre de Corrigendum</title>
-        <docidentifier type="IEEE" scope="PDF">ABC</docidentifier>
-        <docidentifier type="IEEE" scope="print">DEF</docidentifier>
-        <docidentifier type="ISBN" scope="PDF">GHI</docidentifier>
-        <docidentifier type="ISBN" scope="print">JKL</docidentifier>
         <docnumber>1000</docnumber>
         <date type='published'>2018-09-01</date>
                  <date type='published' format='ddMMMyyyy'>1.IX.2018</date>
@@ -335,14 +331,13 @@ RSpec.describe Metanorma::IEEE do
     INPUT
     expect(htmlencode(metadata(csdc.info(docxml, nil)).to_s
       .gsub(/, :/, ",\n:"))).to be_equivalent_to <<~"OUTPUT"
-           {:accesseddate=>"XXX",
+       {:accesseddate=>"XXX",
        :balloting_group=>"BG",
        :balloting_group_members=>{"members"=>["Balloter1", "Balloter2", "Balloter3", "Balloter4", "Balloter5", "Balloter6", "Balloter7", "Balloter8", "Balloter9"]},
        :circulateddate=>"XXX",
        :confirmeddate=>"XXX",
        :copieddate=>"XXX",
        :createddate=>"XXX",
-       :docnumber=>"ABC",
        :docnumeric=>"1000",
        :docsubtype=>"Trial Use",
        :doctitle=>"Main Titlein multiple lines",
@@ -355,8 +350,8 @@ RSpec.describe Metanorma::IEEE do
        :draftinfo=>" (draft 3.4, 2000-01-01)",
        :edition=>"2",
        :implementeddate=>"XXX",
-       :isbn_pdf=>"GHI",
-       :isbn_print=>"JKL",
+       :isbn_pdf=>"978-0-XXXX-XXXX-X",
+       :isbn_print=>"978-0-XXXX-XXXX-X",
        :issueddate=>"XXX",
        :iteration=>"3",
        :keywords=>["word2", "word1"],
@@ -371,8 +366,8 @@ RSpec.describe Metanorma::IEEE do
        :stage_display=>"Final Draft",
        :stageabbr=>"FD",
        :std_board=>{"chair"=>"&lt;Name&gt;", "vice-chair"=>"&lt;Name&gt;", "past-chair"=>"&lt;Name&gt;", "secretary"=>"&lt;Name&gt;", "members"=>["SBMember1", "SBMember2", "SBMember3", "SBMember4", "SBMember5", "SBMember6", "SBMember7", "SBMember8", "SBMember9"]},
-       :stdid_pdf=>"ABC",
-       :stdid_print=>"DEF",
+       :stdid_pdf=>"STDXXXXX",
+       :stdid_print=>"STDPDXXXXX",
        :transmitteddate=>"XXX",
        :unchangeddate=>"XXX",
        :unpublished=>true,

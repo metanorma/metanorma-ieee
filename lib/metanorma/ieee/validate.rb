@@ -1,6 +1,12 @@
 module Metanorma
   module IEEE
     class Converter < Standoc::Converter
+      def validate(doc)
+        content_validate(doc)
+        schema_validate(formattedstr_strip(doc.dup),
+                        File.join(File.dirname(__FILE__), "ieee.rng"))
+      end
+
       def content_validate(doc)
         super
         title_validate(doc.root)
@@ -20,7 +26,8 @@ module Metanorma
         target += subtype ? "#{strict_capitalize_phrase(subtype.text)} " : ""
         target += type ? "#{strict_capitalize_phrase(type.text)} " : ""
         /^#{target}/.match?(title.text) or
-          @log.add("Style", title, "Expected title to start as: #{target}")
+          @log.add("Style", title,
+                   "Expected title to start as: #{target}")
       end
 
       def strict_capitalize_phrase(str)

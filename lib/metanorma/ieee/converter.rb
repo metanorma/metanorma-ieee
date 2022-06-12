@@ -26,12 +26,6 @@ module Metanorma
                                        nil, false, "#{@filename}.pdf")
       end
 
-      def validate(doc)
-        content_validate(doc)
-        schema_validate(formattedstr_strip(doc.dup),
-                        File.join(File.dirname(__FILE__), "ieee.rng"))
-      end
-
       def presentation_xml_converter(node)
         IsoDoc::IEEE::PresentationXMLConvert.new(html_extract_attributes(node))
       end
