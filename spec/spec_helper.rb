@@ -49,7 +49,7 @@ OPTIONS = [backend: :ieee, header_footer: true].freeze
 
 def metadata(xml)
   xml.sort.to_h.delete_if do |_k, v|
-    v.nil? || v.respond_to?(:empty?) && v.empty?
+    v.nil? || (v.respond_to?(:empty?) && v.empty?)
   end
 end
 
@@ -107,7 +107,7 @@ def boilerplate(xmldoc)
               "boilerplate.xml"), encoding: "utf-8"
   )
   conv = Metanorma::IEEE::Converter.new(nil, backend: :ieee,
-                                              header_footer: true)
+                                             header_footer: true)
   conv.init(Asciidoctor::Document.new([]))
   ret = Nokogiri::XML(
     conv.boilerplate_isodoc(xmldoc).populate_template(file, nil)
@@ -235,7 +235,7 @@ def blank_hdr_gen
 end
 
 HTML_HDR = <<~"HDR".freeze
-  <body lang="EN-US" link="blue" vlink="#954F72" xml:lang="EN-US" class="container">
+  <body lang='en'>
   <div class="title-section">
     <p>&#160;</p>
   </div>

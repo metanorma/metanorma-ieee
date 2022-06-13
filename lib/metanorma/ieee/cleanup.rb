@@ -125,7 +125,6 @@ module Metanorma
       def termdef_cleanup(xmldoc)
         term_reorder(xmldoc)
         super
-        term_related_reorder(xmldoc)
       end
 
       def term_reorder(xmldoc)
@@ -154,26 +153,6 @@ module Metanorma
                     "./preferred/graphical-symbol/figure/name | "\
                     "./preferred/graphical-symbol/figure/@id")
         d.text.downcase
-      end
-
-      def term_related_reorder(xmldoc)
-        xmldoc.xpath("//term").each do |term|
-          ins = term.at("./related")&.previous_element or next
-          coll = term.xpath("./related")
-          ret = sort_related(coll)
-          coll.each(&:remove)
-          ret.reverse.each { |t| ins.next = t }
-        end
-      end
-
-      def sort_related(coll)
-        coll.sort do |a, b|
-          sort_related_key(a) <=> sort_related_key(b)
-        end
-      end
-
-      def sort_related_key(related)
-        "#{related['type']} :: #{sort_terms_key(related)}"
       end
     end
   end

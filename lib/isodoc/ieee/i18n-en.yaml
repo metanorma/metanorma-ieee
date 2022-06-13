@@ -10,3 +10,14 @@ biblio_pref:
       Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only. 
 note_inform_fn:
   Notes to text, tables, and figures are for information only and do not contain requirements needed to implement the standard.
+relatedterms:
+  deprecates: Deprecates
+  supersedes: Supersedes
+  narrower: Narrower
+  broader: Broader
+  equivalent: Syn
+  compare: Compare
+  contrast: Contrast
+  see: See
+  seealso: See also
+
