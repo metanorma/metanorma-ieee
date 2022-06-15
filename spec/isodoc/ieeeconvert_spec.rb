@@ -65,4 +65,53 @@ RSpec.describe Metanorma::IEEE do
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
   .convert("test", input, true))).to be_equivalent_to xmlpp(output)
   end
+
+  it "cross-references formulae" do
+    input = <<~INPUT
+                  <itu-standard xmlns="http://riboseinc.com/isoxml">
+                  <preface>
+          <foreword>
+          <p>
+          <xref target="N1"/>
+          <xref target="N2"/>
+          <xref target="N3"/>
+          <xref target="N4"/>
+          </p>
+          </foreword>
+          <introduction id="intro">
+          <formula id="N1">
+        <stem type="AsciiMath">r = 1 %</stem>
+        </formula>
+        <clause id="xyz"><title>Preparatory</title>
+          <formula id="N2" inequality="true">
+        <stem type="AsciiMath">r = 1 %</stem>
+        </formula>
+      </clause>
+          </introduction>
+          <annex id="A">
+                    <formula id="N3">
+        <stem type="AsciiMath">r = 1 %</stem>
+        </formula>
+        <clause id="xyz"><title>Preparatory</title>
+          <formula id="N4" inequality="true">
+        <stem type="AsciiMath">r = 1 %</stem>
+        </formula>
+          </annex>
+          </itu-standard>
+    INPUT
+    output = <<~OUTPUT
+      <foreword displayorder='1'>
+         <p>
+           <xref target='N1'>Equation (1)</xref>
+           <xref target='N2'>Inequality (2)</xref>
+           <xref target='N3'>Equation (A.1)</xref>
+           <xref target='N4'>Inequality (A.2)</xref>
+         </p>
+       </foreword>
+    OUTPUT
+    expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert.new({})
+      .convert("test", input, true))
+      .at("//xmlns:foreword").to_xml))
+      .to be_equivalent_to xmlpp(output)
+  end
 end
