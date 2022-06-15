@@ -1,3 +1,5 @@
+require_relative "validate_section"
+
 module Metanorma
   module IEEE
     class Converter < Standoc::Converter
@@ -13,6 +15,7 @@ module Metanorma
         title_validate(doc.root)
         locality_erefs_validate(doc.root)
         bibitem_validate(doc.root)
+        listcount_validate(doc)
       end
 
       def bibdata_validate(doc)
@@ -80,100 +83,6 @@ module Metanorma
            up upon versus via with within without a an the).include?(word)
       end
 
-      def section_validate(doc)
-        doctype = doc&.at("//bibdata/ext/doctype")&.text
-        unless %w(amendment technical-corrigendum).include? doctype
-          sections_presence_validate(doc.root)
-          sections_sequence_validate(doc.root)
-        end
-        subclause_validate(doc.root)
-        onlychild_clause_validate(doc.root)
-        super
-      end
-
-      def sections_presence_validate(root)
-        root.at("//sections/clause[@type = 'overview']") or
-          @log.add("Style", nil, "Overview clause missing")
-        root.at("//sections/clause[@type = 'overview']/clause[@type = 'scope']") or
-          @log.add("Style", nil, "Scope subclause missing")
-        root.at("//sections/clause[@type = 'overview']/clause[@type = 'word-usage']") or
-          @log.add("Style", nil, "Word Usage subclause missing")
-        root.at("//references[@normative = 'true']") or
-          @log.add("Style", nil, "Normative references missing")
-        root.at("//terms") or
-          @log.add("Style", nil, "Definitions missing")
-      end
-
-      def seqcheck(names, msg, accepted)
-        n = names.shift
-        return [] if n.nil?
-
-        test = accepted.map { |a| n.at(a) }
-        if test.all?(&:nil?)
-          @log.add("Style", nil, msg)
-        end
-        names
-      end
-
-      # spec of permissible section sequence
-      # we skip normative references, it goes to end of list
-      SEQ = [
-        { msg: "Initial section must be (content) Abstract",
-          val: ["./self::abstract"] },
-        { msg: "Prefatory material must be followed by (clause) Overview",
-          val: ["./self::clause[@type = 'overview']"] },
-        { msg: "Normative References must be followed by "\
-               "Definitions",
-          val: ["./self::terms | .//terms"] },
-      ].freeze
-
-      SECTIONS_XPATH =
-        "//preface/abstract | //sections/terms | .//annex | "\
-        "//sections/definitions | //sections/clause | "\
-        "//references[not(parent::clause)] | "\
-        "//clause[descendant::references][not(parent::clause)]".freeze
-
-      def sections_sequence_validate(root)
-        names, n = sections_sequence_validate_start(root)
-        names, n = sections_sequence_validate_body(names, n)
-        sections_sequence_validate_end(names, n)
-      end
-
-      def sections_sequence_validate_start(root)
-        names = root.xpath(SECTIONS_XPATH)
-        names = seqcheck(names, SEQ[0][:msg], SEQ[0][:val])
-        n = names[0]
-        names = seqcheck(names, SEQ[1][:msg], SEQ[1][:val])
-        names = seqcheck(names, SEQ[2][:msg], SEQ[2][:val])
-        n = names.shift
-        n = names.shift if n&.at("./self::definitions")
-        [names, n]
-      end
-
-      def sections_sequence_validate_body(names, elem)
-        [names, elem]
-      end
-
-      def sections_sequence_validate_end(names, elem)
-        while elem&.name == "annex"
-          elem = names.shift
-          if elem.nil?
-            @log.add("Style", nil, "Document must include (references) "\
-                                   "Normative References")
-          end
-        end
-        elem&.at("./self::references[@normative = 'true']") ||
-          @log.add("Style", nil, "Document must include (references) "\
-                                 "Normative References")
-        elem = names&.shift
-        elem&.at("./self::references[@normative = 'false']") ||
-          @log.add("Style", elem,
-                   "Final section must be (references) Bibliography")
-        names.empty? ||
-          @log.add("Style", elem,
-                   "There are sections after the final Bibliography")
-      end
-
       # Style manual 12.3.2
       def locality_erefs_validate(root)
         root.xpath("//eref[descendant::locality]").each do |t|
@@ -198,24 +107,84 @@ module Metanorma
         end
       end
 
-      # Style manual 13.1
-      def subclause_validate(root)
-        root.xpath("//clause/clause/clause/clause/clause/clause")
-          .each do |c|
-          style_warning(c, "Exceeds the maximum clause depth of 5", nil)
+      # Style manual 13.3
+      def listcount_validate(doc)
+        doc.xpath("//clause | //annex").each do |c|
+          next if c.xpath(".//ol").empty?
+
+          ols = c.xpath(".//ol") -
+            c.xpath(".//ul//ol | .//ol//ol | .//clause//ol")
+          ols.size > 1 and
+            style_warning(c, "More than 1 ordered list in a numbered clause",
+                          nil)
         end
       end
 
-      # Style manual 13.1
-      def onlychild_clause_validate(root)
-        root.xpath(Standoc::Utils::SUBCLAUSE_XPATH).each do |c|
-          next unless c.xpath("../clause").size == 1
+      ASSETS_TO_STYLE =
+        "//termsource | //formula | //termnote | "\
+        "//p[not(ancestor::boilerplate)] | //li[not(p)] | //dt | "\
+        "//dd[not(p)] | //td[not(p)][not(ancestor::boilerplate)] | "\
+        "//th[not(p)][not(ancestor::boilerplate)] | //example".freeze
 
-          title = c.at("./title")
-          location = c["id"] || "#{c.text[0..60]}..."
-          location += ":#{title.text}" if c["id"] && !title.nil?
-          @log.add("Style", nil, "#{location}: subclause is only child")
-        end
+      def extract_text(node)
+        return "" if node.nil?
+
+        node1 = Nokogiri::XML.fragment(node.to_s)
+        node1.xpath("//link | //locality | //localityStack").each(&:remove)
+        ret = ""
+        node1.traverse { |x| ret += x.text if x.text? }
+        HTMLEntities.new.decode(ret)
+      end
+
+      def asset_style(root)
+        root.xpath(ASSETS_TO_STYLE).each { |e| style(e, extract_text(e)) }
+      end
+
+      def style_regex(regex, warning, node, text)
+        (m = regex.match(text)) && style_warning(node, warning, m[:num])
+      end
+
+      def style_warning(node, msg, text = nil)
+        return if @novalid
+
+        w = msg
+        w += ": #{text}" if text
+        @log.add("Style", node, w)
+      end
+
+      def style(node, text)
+        return if @novalid
+
+        style_number(node, text)
+        style_percent(node, text)
+        style_units(node, text)
+      end
+
+      # Style manual 14.2
+      def style_number(node, text)
+        style_regex(/\b(?<num>[0-9]+,[0-9]+)/i,
+                    "possible decimal comma", node, text)
+        style_regex(/(?:^|\s)(?<num>[\u2212-]?\.[0-9]+)/i,
+                    "decimal without initial zero", node, text)
+      end
+
+      # Style manual 14.2
+      def style_percent(node, text)
+        style_regex(/\b(?<num>[0-9.]+%)/,
+                    "no space before percent sign", node, text)
+      end
+
+      # leaving out as problematic: N J K C S T H h d B o E
+      SI_UNIT = "(m|cm|mm|km|μm|nm|g|kg|mgmol|cd|rad|sr|Hz|Hz|MHz|Pa|hPa|kJ|"\
+                "V|kV|W|MW|kW|F|μF|Ω|Wb|°C|lm|lx|Bq|Gy|Sv|kat|l|t|eV|u|Np|Bd|"\
+                "bit|kB|MB|Hart|nat|Sh|var)".freeze
+
+      # Style manual 14.2
+      def style_units(node, text)
+        style_regex(/(\b|^)(?<num>[0-9][0-9.]*#{SI_UNIT})\b/o,
+                    "no space between number and SI unit", node, text)
+        style_regex(/(\b|^)(?<num>[0-9.]+\s*\u00b1\s*[0-9.]+\s*#{SI_UNIT})\b/o,
+                    "unit is needed on both value and tolerance", node, text)
       end
     end
   end

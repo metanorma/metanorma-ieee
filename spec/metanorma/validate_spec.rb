@@ -161,6 +161,51 @@ RSpec.describe Metanorma::IEEE do
     expect(File.read("test.err")).to include "subclause is only child"
   end
 
+  it "Warn if more than one ordered lists in a clause" do
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      #{VALIDATING_BLANK_HDR}
+
+      == Clause
+
+      . A
+      .. B
+      ... C
+
+      a
+
+      . A
+      .. B
+
+      a
+
+      . B
+
+    INPUT
+    expect(File.read("test.err"))
+      .to include "More than 1 ordered list in a numbered clause"
+
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      #{VALIDATING_BLANK_HDR}
+
+      == Clause
+
+      . A
+      .. B
+      ... C
+
+      === Clause
+      a
+
+      . A
+      .. B
+
+      a
+
+    INPUT
+    expect(File.read("test.err"))
+      .not_to include "More than 1 ordered list in a numbered clause"
+  end
+
   context "Warns of missing overview" do
     it "Overview clause missing" do
       Asciidoctor.convert(<<~"INPUT", *OPTIONS)
@@ -447,6 +492,58 @@ RSpec.describe Metanorma::IEEE do
       expect(File.read("test.err"))
         .not_to include "Normative References must be followed by "\
                         "Definitions"
+    end
+  end
+
+  context "Number validation" do
+    it "Style warning if decimal point" do
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        == Clause
+        8,1
+      INPUT
+      expect(File.read("test.err")).to include "possible decimal comma"
+    end
+
+    it "Style warning if leading decimal point without zero" do
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        == Clause
+        Number: .1
+      INPUT
+      expect(File.read("test.err")).to include "decimal without initial zero"
+    end
+
+    it "Style warning if percent sign without space" do
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        == Clause
+        9%
+      INPUT
+      expect(File.read("test.err")).to include "no space before percent sign"
+    end
+
+    it "Style warning if no space between number and unit" do
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        == Clause
+        7km
+      INPUT
+      expect(File.read("test.err")).to include "no space between number and SI unit"
+    end
+
+    it "Style warning if no unit on both unit and tolerance" do
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        == Clause
+        7 ± 2 km
+      INPUT
+      expect(File.read("test.err")).to include "unit is needed on both value and tolerance"
     end
   end
 end
