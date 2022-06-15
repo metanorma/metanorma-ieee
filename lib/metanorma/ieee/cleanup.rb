@@ -4,7 +4,7 @@ module Metanorma
       BIBLIO =
         "//bibliography/references[@normative = 'false'][not(@hidden)] | "\
         "//bibliography/clause[.//references[@normative = 'false']] | "\
-        "//annex/references[@normative = 'false'][not(@hidden)]".freeze
+        "//annex//references[@normative = 'false'][not(@hidden)]".freeze
 
       def boilerplate_cleanup(xmldoc)
         f = xmldoc.at(BIBLIO) and biblio_preface(f)

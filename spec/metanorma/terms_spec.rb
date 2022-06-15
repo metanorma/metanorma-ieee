@@ -17,7 +17,7 @@ RSpec.describe Metanorma::IEEE do
       <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
          <sections>
            <terms id='_' obligation='normative'>
-             <title>Terms and definitions</title>
+             <title>Definitions</title>
              <p id='_'>For the purposes of this document, the following terms and definitions apply.</p>
              <p id='_'>
                For the purposes of this document, the following terms and definitions
@@ -123,7 +123,7 @@ RSpec.describe Metanorma::IEEE do
       <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
          <sections>
            <terms id='_' obligation='normative'>
-             <title>Terms and definitions</title>
+             <title>Definitions</title>
              <p id='_'>For the purposes of this document, the following terms and definitions apply.</p>
              <p id='_'>
                For the purposes of this document, the following terms and definitions

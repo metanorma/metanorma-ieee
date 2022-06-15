@@ -367,15 +367,16 @@ RSpec.describe Metanorma::IEEE do
 
       == Terms and Definitions
 
-      [appendix]
+      [appendix,normative=true]
       == Annex
 
       === Annex A.1
 
-      [bibliography]
+      [appendix,normative=false]
       == Bibliography
 
-      === Bibliography Subsection
+      [bibliography]
+      === Bibliography
 
       [index]
       == Index
@@ -387,7 +388,7 @@ RSpec.describe Metanorma::IEEE do
     INPUT
     output = <<~OUTPUT
       #{@blank_hdr.sub(%r{</script>}, '</script><abstract><p>Text</p></abstract>')}
-               <preface>
+         <preface>
            <abstract id='_'>
              <title>Abstract</title>
              <p id='_'>Text</p>
@@ -424,17 +425,17 @@ RSpec.describe Metanorma::IEEE do
              </clause>
            </clause>
            <terms id='_' obligation='normative'>
-             <title>Terms and definitions</title>
+             <title>Definitions</title>
              <p id='_'>For the purposes of this document, the following terms and definitions apply.</p>
              <p id='_'>
                For the purposes of this document, the following terms and definitions
-               apply. The
+               apply. The 
                <em>IEEE Standards Dictionary Online</em>
                 should be consulted for terms not defined in this clause.
                <fn>
                  <p id='_'>
                    <em>IEEE Standards Dictionary Online</em>
-                    is available at:
+                    is available at: 
                    <link target='http://dictionary.ieee.org'/>
                    . An IEEE Account is required for access to the dictionary, and one
                    can be created at no charge on the dictionary sign-in page.
@@ -450,7 +451,7 @@ RSpec.describe Metanorma::IEEE do
              </term>
            </terms>
            <clause id='_' obligation='normative'>
-             <title>Terms, definitions, symbols and abbreviated terms</title>
+             <title>Definitions, acronyms and abbreviations</title>
              <p id='_'>Boilerplate text</p>
              <clause id='_' inline-header='false' obligation='normative'>
                <title>Introduction</title>
@@ -488,17 +489,17 @@ RSpec.describe Metanorma::IEEE do
                </term>
              </terms>
              <definitions id='_' obligation='normative'>
-               <title>Symbols and abbreviated terms</title>
+               <title>Acronyms and abbreviations</title>
                <clause id='_' inline-header='false' obligation='normative'>
                  <title>General</title>
                </clause>
                <definitions id='_' type='symbols' obligation='normative'>
-                 <title>Symbols</title>
+                 <title>Acronyms and abbreviations</title>
                </definitions>
              </definitions>
            </clause>
            <definitions id='_' type='abbreviated_terms' obligation='normative'>
-             <title>Abbreviated terms</title>
+             <title>Acronyms and abbreviations</title>
            </definitions>
            <clause id='_' inline-header='false' obligation='normative'>
              <title>Clause 4</title>
@@ -519,23 +520,25 @@ RSpec.describe Metanorma::IEEE do
              <title>Annex A.1</title>
            </clause>
          </annex>
+         <annex id='_' obligation='' language='' script=''>
+           <clause id='_' obligation='informative'>
+             <title>Bibliography</title>
+             <references id='_' normative='false' obligation='informative'>
+               <title>Bibliography</title>
+               <p id='_'>
+                 Bibliographical references are resources that provide additional or
+                 helpful material but do not need to be understood or used to implement
+                 this standard. Reference to these resources is made for informational
+                 use only.
+               </p>
+             </references>
+           </clause>
+         </annex>
          <bibliography>
            <references id='_' normative='true' obligation='informative'>
              <title>Normative references</title>
              <p id='_'>There are no normative references in this document.</p>
            </references>
-           <clause id='_' obligation='informative'>
-             <title>Bibliography</title>
-             <p id='_'>
-               Bibliographical references are resources that provide additional or
-               helpful material but do not need to be understood or used to implement
-               this standard. Reference to these resources is made for informational
-               use only.
-             </p>
-             <references id='_' normative='false' obligation='informative'>
-               <title>Bibliography Subsection</title>
-             </references>
-           </clause>
          </bibliography>
          <indexsect id='_'>
            <title>Index</title>

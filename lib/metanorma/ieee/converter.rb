@@ -16,7 +16,9 @@ module Metanorma
 
       def sectiontype_streamline(ret)
         case ret
-        when "definitions" then "terms and definitions"
+        when "definitions", "definitions, acronyms and abbreviations"
+          "terms and definitions"
+        when "acronyms and abbreviations" then "symbols and abbreviated terms"
         else super
         end
       end
