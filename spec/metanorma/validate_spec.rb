@@ -111,6 +111,56 @@ RSpec.describe Metanorma::IEEE do
                       "specific elements"
   end
 
+  it "Warn if more than 5 levels of subclause" do
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      #{VALIDATING_BLANK_HDR}
+
+      == Clause
+
+      === Clause
+
+      ==== Clause
+
+      ===== Clause
+
+      ====== Clause
+
+      [level=6]
+      ====== Clause
+
+    INPUT
+    expect(File.read("test.err"))
+      .to include "Exceeds the maximum clause depth of 5"
+
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      #{VALIDATING_BLANK_HDR}
+
+      == Clause
+
+      === Clause
+
+      ==== Clause
+
+      ===== Clause
+
+      ====== Clause
+
+    INPUT
+    expect(File.read("test.err"))
+      .not_to include "exceeds the maximum clause depth of 5"
+  end
+
+  it "Warning if subclause is only child of its parent, or none" do
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      #{VALIDATING_BLANK_HDR}
+      == Clause
+
+      === Subclause
+
+    INPUT
+    expect(File.read("test.err")).to include "subclause is only child"
+  end
+
   context "Warns of missing overview" do
     it "Overview clause missing" do
       Asciidoctor.convert(<<~"INPUT", *OPTIONS)

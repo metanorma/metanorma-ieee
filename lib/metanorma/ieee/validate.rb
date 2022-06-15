@@ -86,6 +86,8 @@ module Metanorma
           sections_presence_validate(doc.root)
           sections_sequence_validate(doc.root)
         end
+        subclause_validate(doc.root)
+        onlychild_clause_validate(doc.root)
         super
       end
 
@@ -193,6 +195,26 @@ module Metanorma
           b.at(".//date") or
             @log.add("Style", b,
                      "Normative reference #{b&.at('./@id')&.text} is not dated.")
+        end
+      end
+
+      # Style manual 13.1
+      def subclause_validate(root)
+        root.xpath("//clause/clause/clause/clause/clause/clause")
+          .each do |c|
+          style_warning(c, "Exceeds the maximum clause depth of 5", nil)
+        end
+      end
+
+      # Style manual 13.1
+      def onlychild_clause_validate(root)
+        root.xpath(Standoc::Utils::SUBCLAUSE_XPATH).each do |c|
+          next unless c.xpath("../clause").size == 1
+
+          title = c.at("./title")
+          location = c["id"] || "#{c.text[0..60]}..."
+          location += ":#{title.text}" if c["id"] && !title.nil?
+          @log.add("Style", nil, "#{location}: subclause is only child")
         end
       end
     end
