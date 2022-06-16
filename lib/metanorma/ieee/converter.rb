@@ -45,6 +45,16 @@ module Metanorma
                                        nil, false, "#{@filename}.pdf")
       end
 
+      def html_extract_attributes(node)
+        super.merge(hierarchical_assets:
+                    node.attr("hierarchical-object-numbering"))
+      end
+
+      def doc_extract_attributes(node)
+        super.merge(hierarchical_assets:
+                    node.attr("hierarchical-object-numbering"))
+      end
+
       def presentation_xml_converter(node)
         IsoDoc::IEEE::PresentationXMLConvert.new(html_extract_attributes(node))
       end

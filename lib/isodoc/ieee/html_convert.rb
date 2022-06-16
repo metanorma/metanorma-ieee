@@ -3,9 +3,6 @@ require_relative "init"
 
 module IsoDoc
   module IEEE
-    # A {Converter} implementation that generates HTML output, and a document
-    # schema encapsulation of the document for validation
-    #
     class HtmlConvert < IsoDoc::HtmlConvert
       def initialize(options)
         @libdir = File.dirname(__FILE__)

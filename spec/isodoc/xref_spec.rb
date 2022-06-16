@@ -114,4 +114,93 @@ RSpec.describe Metanorma::IEEE do
       .at("//xmlns:foreword").to_xml))
       .to be_equivalent_to xmlpp(output)
   end
+
+  it "processes figures as hierarchical assets" do
+    input = <<~INPUT
+        <iso-standard xmlns="http://riboseinc.com/isoxml">
+            <preface>
+        <foreword id="fwd">
+        <p>
+        <xref target="N"/>
+        <xref target="note1"/>
+        <xref target="note2"/>
+        <xref target="AN"/>
+        <xref target="Anote1"/>
+        <xref target="Anote2"/>
+        </p>
+        </foreword>
+        </preface>
+        <sections>
+        <clause id="scope" type="scope"><title>Scope</title>
+        </clause>
+        <terms id="terms"/>
+        <clause id="widgets"><title>Widgets</title>
+        <clause id="widgets1">
+        <figure id="N">
+            <figure id="note1">
+      <name>Split-it-right sample divider</name>
+      <image src="rice_images/rice_image1.png" id="_8357ede4-6d44-4672-bac4-9a85e82ab7f0" mimetype="image/png"/>
+      </figure>
+        <figure id="note2">
+      <name>Split-it-right sample divider</name>
+      <image src="rice_images/rice_image1.png" id="_8357ede4-6d44-4672-bac4-9a85e82ab7f0" mimetype="image/png"/>
+      </figure>
+      </figure>
+      <p>    <xref target="note1"/> <xref target="note2"/> </p>
+        </clause>
+        </clause>
+        </sections>
+        <annex id="annex1">
+        <clause id="annex1a">
+        </clause>
+        <clause id="annex1b">
+        <figure id="AN">
+            <figure id="Anote1">
+      <name>Split-it-right sample divider</name>
+      <image src="rice_images/rice_image1.png" id="_8357ede4-6d44-4672-bac4-9a85e82ab7f0" mimetype="image/png"/>
+      </figure>
+        <figure id="Anote2">
+      <name>Split-it-right sample divider</name>
+      <image src="rice_images/rice_image1.png" id="_8357ede4-6d44-4672-bac4-9a85e82ab7f0" mimetype="image/png"/>
+      </figure>
+      </figure>
+        </clause>
+        </annex>
+        </iso-standard>
+    INPUT
+    output = <<~OUTPUT
+      <foreword id='fwd' displayorder='1'>
+        <p>
+          <xref target='N'>Figure 1</xref>
+          <xref target='note1'>Figure 1-1</xref>
+          <xref target='note2'>Figure 1-2</xref>
+          <xref target='AN'>Figure A.1</xref>
+          <xref target='Anote1'>Figure A.1-1</xref>
+          <xref target='Anote2'>Figure A.1-2</xref>
+        </p>
+      </foreword>
+    OUTPUT
+    expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
+      .new({})
+      .convert("test", input, true))
+      .at("//xmlns:foreword").to_xml))
+      .to be_equivalent_to xmlpp(output)
+    output = <<~OUTPUT
+      <foreword id='fwd' displayorder='1'>
+         <p>
+           <xref target='N'>Figure 3.1</xref>
+           <xref target='note1'>Figure 3.1-1</xref>
+           <xref target='note2'>Figure 3.1-2</xref>
+           <xref target='AN'>Figure A.1</xref>
+           <xref target='Anote1'>Figure A.1-1</xref>
+           <xref target='Anote2'>Figure A.1-2</xref>
+         </p>
+       </foreword>
+    OUTPUT
+    expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
+      .new({ hierarchical_assets: true })
+      .convert("test", input, true))
+      .at("//xmlns:foreword").to_xml))
+      .to be_equivalent_to xmlpp(output)
+  end
 end

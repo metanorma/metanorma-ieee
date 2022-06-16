@@ -93,7 +93,7 @@ RSpec.describe IsoDoc do
                   <locality type='clause'>
                     <referenceFrom>3.1</referenceFrom>
                   </locality>
-                  ISO 7301:2011, Clause 3.1
+                  ISO 7301:2011, 3.1
                 </origin>
                 , modified &#x2013; The term "cargo rice" is shown as deprecated, and
                 Note 1 to entry is not included here )
@@ -179,7 +179,7 @@ RSpec.describe IsoDoc do
              <p>
                <b>paddy</b>
                 , &#x3c;rice&#x3e;, &#x3c;in agriculture, dated&#x3e;: rice retaining
-               its husk after threshing ( ISO 7301:2011, Clause 3.1 , modified &#x2013;
+               its husk after threshing ( ISO 7301:2011, 3.1 , modified &#x2013;
                The term "cargo rice" is shown as deprecated, and Note 1 to entry is not
                included here )
              </p>
@@ -269,7 +269,7 @@ RSpec.describe IsoDoc do
              <p>
                <b>paddy</b>
                 , &#x3c;rice&#x3e;, &#x3c;in agriculture, dated&#x3e;: rice retaining
-               its husk after threshing ( ISO 7301:2011, Clause 3.1 , modified &#x2013;
+               its husk after threshing ( ISO 7301:2011, 3.1 , modified &#x2013;
                The term "cargo rice" is shown as deprecated, and Note 1 to entry is not
                included here )
              </p>
@@ -384,7 +384,7 @@ RSpec.describe IsoDoc do
                    <locality type='clause'>
                      <referenceFrom>3.1</referenceFrom>
                    </locality>
-                   ISO 7301:2011, Clause 3.1
+                   ISO 7301:2011, 3.1
                  </origin>
                  , modified &#x2013; The term "cargo rice" is shown as deprecated, and
                  Note 1 to entry is not included here (

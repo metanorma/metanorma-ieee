@@ -12,6 +12,7 @@ module IsoDoc
 
       def xref_init(lang, script, _klass, i18n, options)
         html = HtmlConvert.new(language: lang, script: script)
+        options = options.merge(hierarchical_assets: @hierarchical_assets)
         @xrefs = Xref.new(lang, script, html, i18n, options)
       end
 

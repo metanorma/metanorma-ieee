@@ -5,6 +5,11 @@ require "isodoc"
 module IsoDoc
   module IEEE
     class PresentationXMLConvert < IsoDoc::PresentationXMLConvert
+      def initialize(options)
+        @hierarchical_assets = options[:hierarchical_assets]
+        super
+      end
+
       def eref_localities_conflated(refs, target, node)
         droploc = node["droploc"]
         node["droploc"] = true
@@ -58,6 +63,10 @@ module IsoDoc
         prefix_container?(container, node) and
           linkend = prefix_container(container, linkend, node["target"])
         capitalise_xref(node, linkend, anchor_value(node["target"]))
+      end
+
+      def block_delim
+        "&#x2014;"
       end
 
       include Init
