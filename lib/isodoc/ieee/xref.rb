@@ -17,7 +17,6 @@ module IsoDoc
             c.element? and preface_names(c)
           end
         end
-        # potentially overridden in middle_section_asset_names()
         if @parse_settings.empty?
           if @hierarchical_assets
             hierarchical_asset_names(doc.xpath("//xmlns:preface/child::*"),
@@ -43,8 +42,7 @@ module IsoDoc
       end
 
       def middle_sections
-        "//foreword | //introduction | //acknowledgements | "\
-          " #{@klass.norm_ref_xpath} | "\
+        " #{@klass.norm_ref_xpath} | "\
           "//sections/terms | //preface/clause | "\
           "//sections/definitions | //clause[parent::sections]"
       end

@@ -243,7 +243,7 @@ RSpec.describe IsoDoc do
                   <tr>
                     <td align='left' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>Arborio</td>
                     <td align='center' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>
-                       Drago#{' '}
+                       Drago
                       <a href='#tableD-1a' class='TableFootnoteRef'>a</a>
                       <aside>
                         <div id='ftntableD-1a'>
@@ -256,7 +256,7 @@ RSpec.describe IsoDoc do
                       </aside>
                     </td>
                     <td align='center' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>
-                       Balilla#{' '}
+                       Balilla
                       <a href='#tableD-1a' class='TableFootnoteRef'>a</a>
                     </td>
                     <td align='center' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>Thaibonnet</td>
@@ -281,11 +281,11 @@ RSpec.describe IsoDoc do
                 <tfoot>
                   <tr>
                     <td align='left' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>
-                       Reproducibility limit,#{' '}
+                       Reproducibility limit,
                       <span class='stem'>(#(R)#)</span>
-                       (= 2,83#{' '}
+                       (= 2,83
                       <span class='stem'>(#(s_R)#)</span>
-                       )#{' '}
+                       )
                     </td>
                     <td align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>2,89</td>
                     <td align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>0,57</td>
@@ -327,6 +327,11 @@ RSpec.describe IsoDoc do
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::WordConvert.new({})
       .convert("test", presxml, true))
                 .at("//body").to_xml)).to be_equivalent_to xmlpp(word)
+    expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
+      .new({ hierarchical_assets: true })
+      .convert("test", input, true))
+      .at("//xmlns:table/xmlns:name").to_xml))
+      .to be_equivalent_to "<name>Table Preface.1&#x2014;Hello</name>"
   end
 
   it "processes figures" do
@@ -425,82 +430,82 @@ RSpec.describe IsoDoc do
                            </body>
     OUTPUT
     word = <<~OUTPUT
-          <body lang='EN-US' link='blue' vlink='#954F72'>
-         <div class='WordSection1'>
-           <p>&#xa0;</p>
-         </div>
-         <p>
-           <br clear='all' class='section'/>
-         </p>
-         <div class='WordSection2'>
-           <p>
-             <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
-           </p>
-           <div>
-             <h1 class='ForewordTitle'>Foreword</h1>
-             <div id='figureA-1' class='figure' style='page-break-after: avoid;page-break-inside: avoid;'>
-               <img src='rice_images/rice_image1.png' height='20' alt='alttext' title='titletxt' width='30'/>
-               <img src='rice_images/rice_image1.png' height='20' width='auto'/>
-               <img src='_.gif' height='20' width='auto'/>
-               <img src='_.xml' height='20' width='auto'/>
-               <a href='#_' class='TableFootnoteRef'>a</a>
-               <aside>
-                 <div id='ftn_'>
-                   <span>
-                     <span id='_' class='TableFootnoteRef'>a</span>
-                     <span style='mso-tab-count:1'>&#xa0; </span>
-                   </span>
-                   <p id='_'>
-                     The time 
-                     <span class='stem'>(#(t_90)#)</span>
-                      was estimated to be 18,2 min for this example.
-                   </p>
-                 </div>
-               </aside>
-               <p style='page-break-after:avoid;'>
-                 <b>Key</b>
-               </p>
-               <table class='dl'>
-                 <tr>
-                   <td valign='top' align='left'>
-                     <p align='left' style='margin-left:0pt;text-align:left;'>A</p>
-                   </td>
-                   <td valign='top'>
-                     <p>B</p>
-                   </td>
-                 </tr>
-               </table>
-               <p class='FigureTitle' style='text-align:center;'>
-                 Figure 1&#x2014;Split-it-right 
-                 <i>sample</i>
-                  divider
-                 <span style='mso-bookmark:_Ref'>
-                   <a class='FootnoteRef' href='#ftn1' type='footnote'>
-                     <sup>1</sup>
-                   </a>
-                 </span>
-               </p>
-             </div>
-             <div id='figure-B' class='figure'>
-               <pre>A &#x3c; B</pre>
-               <p class='FigureTitle' style='text-align:center;'>Figure 2</p>
-             </div>
-             <div id='figure-C' class='figure'>
-               <pre>A &#x3c; B</pre>
-             </div>
-           </div>
-           <p>&#xa0;</p>
-         </div>
-         <p>
-           <br clear='all' class='section'/>
-         </p>
-         <div class='WordSection3'>
-           <p class='zzSTDTitle1'/>
-           <aside id='ftn1'>
-             <p>X</p>
-           </aside>
-         </div>
-       </body>
+         <body lang='EN-US' link='blue' vlink='#954F72'>
+        <div class='WordSection1'>
+          <p>&#xa0;</p>
+        </div>
+        <p>
+          <br clear='all' class='section'/>
+        </p>
+        <div class='WordSection2'>
+          <p>
+            <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
+          </p>
+          <div>
+            <h1 class='ForewordTitle'>Foreword</h1>
+            <div id='figureA-1' class='figure' style='page-break-after: avoid;page-break-inside: avoid;'>
+              <img src='rice_images/rice_image1.png' height='20' alt='alttext' title='titletxt' width='30'/>
+              <img src='rice_images/rice_image1.png' height='20' width='auto'/>
+              <img src='_.gif' height='20' width='auto'/>
+              <img src='_.xml' height='20' width='auto'/>
+              <a href='#_' class='TableFootnoteRef'>a</a>
+              <aside>
+                <div id='ftn_'>
+                  <span>
+                    <span id='_' class='TableFootnoteRef'>a</span>
+                    <span style='mso-tab-count:1'>&#xa0; </span>
+                  </span>
+                  <p id='_'>
+                    The time#{' '}
+                    <span class='stem'>(#(t_90)#)</span>
+                     was estimated to be 18,2 min for this example.
+                  </p>
+                </div>
+              </aside>
+              <p style='page-break-after:avoid;'>
+                <b>Key</b>
+              </p>
+              <table class='dl'>
+                <tr>
+                  <td valign='top' align='left'>
+                    <p align='left' style='margin-left:0pt;text-align:left;'>A</p>
+                  </td>
+                  <td valign='top'>
+                    <p>B</p>
+                  </td>
+                </tr>
+              </table>
+              <p class='FigureTitle' style='text-align:center;'>
+                Figure 1&#x2014;Split-it-right#{' '}
+                <i>sample</i>
+                 divider
+                <span style='mso-bookmark:_Ref'>
+                  <a class='FootnoteRef' href='#ftn1' type='footnote'>
+                    <sup>1</sup>
+                  </a>
+                </span>
+              </p>
+            </div>
+            <div id='figure-B' class='figure'>
+              <pre>A &#x3c; B</pre>
+              <p class='FigureTitle' style='text-align:center;'>Figure 2</p>
+            </div>
+            <div id='figure-C' class='figure'>
+              <pre>A &#x3c; B</pre>
+            </div>
+          </div>
+          <p>&#xa0;</p>
+        </div>
+        <p>
+          <br clear='all' class='section'/>
+        </p>
+        <div class='WordSection3'>
+          <p class='zzSTDTitle1'/>
+          <aside id='ftn1'>
+            <p>X</p>
+          </aside>
+        </div>
+      </body>
     OUTPUT
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
       .convert("test", input, true).gsub(/&lt;/, "&#x3c;")))
@@ -516,5 +521,19 @@ RSpec.describe IsoDoc do
       .gsub(/mso-bookmark:_Ref\d+/, "mso-bookmark:_Ref"))
                            .at("//body").to_xml)))
       .to be_equivalent_to xmlpp(word)
+    expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
+     .new({ hierarchical_assets: true })
+     .convert("test", input, true))
+     .at("//xmlns:figure/xmlns:name").to_xml))
+      .to be_equivalent_to <<~OUTPUT
+        <name>
+          Figure Preface.1&#x2014;Split-it-right
+          <em>sample</em>
+           divider
+          <fn reference='1'>
+            <p>X</p>
+          </fn>
+        </name>
+      OUTPUT
   end
 end

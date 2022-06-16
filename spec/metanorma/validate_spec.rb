@@ -545,5 +545,79 @@ RSpec.describe Metanorma::IEEE do
       INPUT
       expect(File.read("test.err")).to include "unit is needed on both value and tolerance"
     end
+
+    it "Style warning if 5-digit numeral in table" do
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        == Clause
+        98765 0.98765
+
+        |===
+        | 9876 | 0.9876
+        | 9876.9876 | 9
+        |===
+
+      INPUT
+      expect(File.read("test.err")).not_to include "number in table not broken up in threes"
+
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        == Clause
+        |===
+        | 98765 | 0
+        |===
+      INPUT
+      expect(File.read("test.err")).to include "number in table not broken up in threes"
+
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        == Clause
+        |===
+        | 10.98765 | 0
+        |===
+      INPUT
+      expect(File.read("test.err")).to include "number in table not broken up in threes"
+    end
+
+    it "Style warning if 4-digit numeral in table column with 5-digit numerals" do
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        == Clause
+        |===
+        | 9876 | 0.9876
+        | 987  | 0.987
+        |===
+
+      INPUT
+      expect(File.read("test.err")).not_to include " is a 4-digit number in a table column with numbers broken up in threes"
+
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        == Clause
+        |===
+        | 9876
+        | 987 6
+        |===
+
+      INPUT
+      expect(File.read("test.err")).to include " is a 4-digit number in a table column with numbers broken up in threes"
+
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        == Clause
+        |===
+        | 0.9876
+        | 0.987 6
+        |===
+
+      INPUT
+      expect(File.read("test.err")).to include " is a 4-digit number in a table column with numbers broken up in threes"
+    end
   end
 end

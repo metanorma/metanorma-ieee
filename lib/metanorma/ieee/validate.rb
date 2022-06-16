@@ -16,6 +16,7 @@ module Metanorma
         locality_erefs_validate(doc.root)
         bibitem_validate(doc.root)
         listcount_validate(doc)
+        table_style(doc)
       end
 
       def bibdata_validate(doc)
@@ -185,6 +186,42 @@ module Metanorma
                     "no space between number and SI unit", node, text)
         style_regex(/(\b|^)(?<num>[0-9.]+\s*\u00b1\s*[0-9.]+\s*#{SI_UNIT})\b/o,
                     "unit is needed on both value and tolerance", node, text)
+      end
+
+      # Style manual 16.3.2
+      def table_style(docxml)
+        docxml.xpath("//td").each do |td|
+          style_regex(/^(?<num>[\u2212-]?[0-9]{5,}[.0-9]*|-?[0-9]+\.[0-9]{5,})$/,
+                      "number in table not broken up in threes", td, td.text)
+        end
+        docxml.xpath("//table").each { |t| table_style_columns(t) }
+      end
+
+      # deliberately doing naive, ignoring rowspan
+      def table_style_columns(table)
+        table_extract_columns(table).each do |col|
+          next unless col.any? do |x|
+            /^[0-9. ]+$/.match?(x) &&
+              (/\d{3} \d/.match?(x) || /\d \d{3}/.match?(x))
+          end
+
+          col.each do |x|
+            /^[0-9. ]+$/.match?(x) && /\d{4}/.match?(x) and
+              @log.add("Style", table,
+                       "#{x} is a 4-digit number in a table column with "\
+                       "numbers broken up in threes")
+          end
+        end
+      end
+
+      def table_extract_columns(table)
+        ret = table.xpath(".//tr").each_with_object([]) do |tr, m|
+          tr.xpath("./td | ./th").each_with_index do |d, i|
+            m[i] ||= []
+            m[i] << d.text
+          end
+        end
+        ret.map { |x| x.is_a?(Array) ? x : [] }
       end
     end
   end
