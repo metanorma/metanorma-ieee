@@ -27,7 +27,7 @@ RSpec.describe Metanorma::IEEE do
         <docidentifier type="ISBN" scope="print">JKL</docidentifier>
         <docnumber>1000</docnumber>
         <date type='published'>2018-09-01</date>
-                 <date type='published' format='ddMMMyyyy'>1.IX.2018</date>
+        <date type='issued'>2018-07-01</date>
                             <contributor>
              <role type='editor'>Working Group Chair</role>
              <person>
@@ -44,6 +44,14 @@ RSpec.describe Metanorma::IEEE do
                </name>
              </person>
            </contributor>
+           <contributor>
+              <role type='editor'>Working Group Secretary</role>
+              <person>
+                <name>
+                  <completename>CD1</completename>
+                </name>
+              </person>
+            </contributor>
            <contributor>
              <role type='editor'>Working Group Member</role>
              <person>
@@ -202,8 +210,8 @@ RSpec.describe Metanorma::IEEE do
       .gsub(/, :/, ",\n:"))).to be_equivalent_to <<~"OUTPUT"
         {:accesseddate=>"XXX",
         :agency=>"IEEE",
-        :authors=>["AB", "CD", "E, F, Jr.", "GH", "IJ", "KL", "MN", "OP", "QR", "ST", "UV", "KL", "MN"],
-        :authors_affiliations=>{""=>["AB", "CD", "E, F, Jr.", "GH", "IJ", "KL", "MN", "OP", "QR", "ST", "UV", "KL", "MN"]},
+        :authors=>["AB", "CD", "CD1", "E, F, Jr.", "GH", "IJ", "KL", "MN", "OP", "QR", "ST", "UV", "KL", "MN"],
+        :authors_affiliations=>{""=>["AB", "CD", "CD1", "E, F, Jr.", "GH", "IJ", "KL", "MN", "OP", "QR", "ST", "UV", "KL", "MN"]},
         :balloting_group=>"BG",
         :balloting_group_members=>{"members"=>["KL", "MN"]},
         :circulateddate=>"XXX",
@@ -218,37 +226,39 @@ RSpec.describe Metanorma::IEEE do
         :doctype_abbrev=>"Rec. Prac.",
         :docyear=>"2001",
         :draft=>"3.4",
-        :draft_month=>"January",
-        :draft_year=>"2000",
+        :draft_month=>"July",
+        :draft_year=>"2018",
         :draftinfo=>" (draft 3.4, 2000-01-01)",
         :edition=>"2",
         :implementeddate=>"XXX",
         :isbn_pdf=>"GHI",
         :isbn_print=>"JKL",
-        :issueddate=>"XXX",
+        :issueddate=>"2018-07-01",
         :iteration=>"3",
         :keywords=>["word2", "word1"],
         :lang=>"en",
         :obsoleteddate=>"XXX",
-        :publisheddate=>"XXX",
+        :publisheddate=>"2018-09-01",
         :publisher=>"Institute of Electrical and Electronic Engineers",
         :receiveddate=>"XXX",
         :revdate=>"2000-01-01",
         :revdate_monthyear=>"January 2000",
         :script=>"Latn",
+        :society=>"Society",
         :stage=>"Final Draft",
         :stage_display=>"Final Draft",
         :stageabbr=>"FD",
         :std_board=>{"chair"=>"OP", "vice-chair"=>"QR", "past-chair"=>"ST", "secretary"=>"UV", "members"=>["KL", "MN"]},
         :stdid_pdf=>"ABC",
         :stdid_print=>"DEF",
+        :technical_committee=>"Tech Committee",
         :transmitteddate=>"XXX",
         :unchangeddate=>"XXX",
         :unpublished=>true,
         :updateddate=>"XXX",
         :vote_endeddate=>"XXX",
         :vote_starteddate=>"XXX",
-        :wg_members=>{"chair"=>"AB", "vice-chair"=>"CD", "members"=>["E, F, Jr.", "GH", "IJ"]},
+        :wg_members=>{"chair"=>"AB", "vice-chair"=>"CD", "secretary"=>"CD1", "members"=>["E, F, Jr.", "GH", "IJ"]},
         :working_group=>"WG"}
       OUTPUT
   end
@@ -269,7 +279,6 @@ RSpec.describe Metanorma::IEEE do
       <title language='fr' format='text/plain' type='corrigendum'>Titre de Corrigendum</title>
         <docnumber>1000</docnumber>
         <date type='published'>2018-09-01</date>
-                 <date type='published' format='ddMMMyyyy'>1.IX.2018</date>
         <edition>2</edition>
       <version>
         <revision-date>2000-01-01</revision-date>
@@ -352,22 +361,24 @@ RSpec.describe Metanorma::IEEE do
         :implementeddate=>"XXX",
         :isbn_pdf=>"978-0-XXXX-XXXX-X",
         :isbn_print=>"978-0-XXXX-XXXX-X",
-        :issueddate=>"XXX",
+        :issueddate=>"&lt;Date Approved&gt;",
         :iteration=>"3",
         :keywords=>["word2", "word1"],
         :lang=>"en",
         :obsoleteddate=>"XXX",
-        :publisheddate=>"XXX",
+        :publisheddate=>"2018-09-01",
         :receiveddate=>"XXX",
         :revdate=>"2000-01-01",
         :revdate_monthyear=>"January 2000",
         :script=>"Latn",
+        :society=>"Society",
         :stage=>"Final Draft",
         :stage_display=>"Final Draft",
         :stageabbr=>"FD",
         :std_board=>{"chair"=>"&lt;Name&gt;", "vice-chair"=>"&lt;Name&gt;", "past-chair"=>"&lt;Name&gt;", "secretary"=>"&lt;Name&gt;", "members"=>["SBMember1", "SBMember2", "SBMember3", "SBMember4", "SBMember5", "SBMember6", "SBMember7", "SBMember8", "SBMember9"]},
         :stdid_pdf=>"STDXXXXX",
         :stdid_print=>"STDPDXXXXX",
+        :technical_committee=>"Tech Committee",
         :transmitteddate=>"XXX",
         :unchangeddate=>"XXX",
         :unpublished=>true,

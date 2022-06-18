@@ -247,6 +247,7 @@
         <p>At the time this draft {{ doctype }} was completed, the {{ working_group }} Working Group had the following membership:</p>
         <p align="center"><strong>{{ wg_members["chair"] }}</strong>, <em>Chair</em></p>
         <p align="center"><strong>{{ wg_members["vice-chair"] }}</strong>, <em>Vice Chair</em></p>
+        {% if wg_members["secretary"] %}<p align="center"><strong>{{ wg_members["secretary"] }}</strong>, <em>Secretary</em></p>{% endif %}
         {% for m in wg_members["members"] %}
         <p>{{ m }}</p>
         {% endfor %}

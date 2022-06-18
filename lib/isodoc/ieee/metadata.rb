@@ -4,7 +4,13 @@ require "twitter_cldr"
 module IsoDoc
   module IEEE
     class Metadata < IsoDoc::Metadata
+      def initialize(lang, script, i18n, fonts_options = {})
+        super
+        @metadata[:issueddate] = "&lt;Date Approved&gt;"
+      end
+
       def bibdate(isoxml, _out)
+        super
         draft = isoxml.at(ns("//bibdata/date[@type = 'issued']")) ||
           isoxml.at(ns("//bibdata/date[@type = 'circulated']")) ||
           isoxml.at(ns("//bibdata/date[@type = 'created']")) ||
@@ -25,16 +31,23 @@ module IsoDoc
 
       def author(xml, _out)
         super
+        society(xml)
         tc(xml)
         wg(xml)
         bg(xml)
         std_group(xml)
       end
 
+      def society(xml)
+        society = xml.at(ns("//bibdata/ext/editorialgroup/"\
+                            "society")) or return nil
+        set(:society, society.text)
+      end
+
       def tc(xml)
         tc = xml.at(ns("//bibdata/ext/editorialgroup/"\
-                       "committee")) or return nil
-        set(:committee, tc.text)
+                       "technical-committee")) or return nil
+        set(:technical_committee, tc.text)
       end
 
       def editor_names(xml, role)
@@ -52,7 +65,7 @@ module IsoDoc
                        "working-group")) or return nil
         set(:working_group, wg.text)
         m = {}
-        ["Chair", "Vice-Chair"].each do |r|
+        ["Chair", "Vice-Chair", "Secretary"].each do |r|
           a = editor_name(xml, "Working Group #{r}") and
             m[r.downcase.gsub(/ /, "-")] = a
         end

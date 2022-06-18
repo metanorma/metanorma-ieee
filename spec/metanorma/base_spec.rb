@@ -91,6 +91,7 @@ RSpec.describe Metanorma::IEEE do
       :issued-date: 1001-12-01
       :wg_chair: AB
       :wg_vicechair: CD
+      :wg_secretary: CD1
       :wg_members: E, F, Jr.; GH; IJ
       :balloting_group_members: KL; MN
       :std_board_chair: OP
@@ -139,6 +140,14 @@ RSpec.describe Metanorma::IEEE do
               <person>
                 <name>
                   <completename>CD</completename>
+                </name>
+              </person>
+            </contributor>
+            <contributor>
+              <role type='editor'>Working Group Secretary</role>
+              <person>
+                <name>
+                  <completename>CD1</completename>
                 </name>
               </person>
             </contributor>

@@ -58,6 +58,8 @@ module Metanorma
           metadata_editor(a, "Working Group Chair", xml)
         a = node.attr("wg_vicechair") and
           metadata_editor(a, "Working Group Vice-Chair", xml)
+        a = node.attr("wg_secretary") and
+          metadata_editor(a, "Working Group Secretary", xml)
         a = node.attr("wg_members") and
           metadata_multi_editors(a, "Working Group Member", xml)
       end
