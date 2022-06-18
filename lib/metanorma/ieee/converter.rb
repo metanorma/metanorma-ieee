@@ -14,6 +14,11 @@ module Metanorma
 
       register_for "ieee"
 
+      def init(node)
+        super
+        @hierarchical_assets = node.attr("hierarchical-object-numbering")
+      end
+
       def sectiontype_streamline(ret)
         case ret
         when "definitions", "definitions, acronyms and abbreviations"

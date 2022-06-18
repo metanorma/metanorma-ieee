@@ -140,9 +140,9 @@ module IsoDoc
       end
 
       def collapse_unwrap_definition(defn)
-        return nil if defn.remove.nil?
+        return nil if defn.nil?
 
-        s = defn.xpath(ns("./termsource"))
+        s = defn.remove.xpath(ns("./termsource"))
         p = defn.at(ns("./p"))
         !s.empty? && p and p << s.map(&:remove).map(&:children).map(&:to_xml).join
         if defn.elements.size == 1 && defn.elements.first.name == "p"

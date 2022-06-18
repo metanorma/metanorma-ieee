@@ -1,4 +1,5 @@
 require_relative "validate_section"
+require_relative "validate_style"
 
 module Metanorma
   module IEEE
@@ -17,6 +18,7 @@ module Metanorma
         bibitem_validate(doc.root)
         listcount_validate(doc)
         table_style(doc)
+        figure_validate(doc)
       end
 
       def bibdata_validate(doc)
@@ -121,107 +123,75 @@ module Metanorma
         end
       end
 
-      ASSETS_TO_STYLE =
-        "//termsource | //formula | //termnote | "\
-        "//p[not(ancestor::boilerplate)] | //li[not(p)] | //dt | "\
-        "//dd[not(p)] | //td[not(p)][not(ancestor::boilerplate)] | "\
-        "//th[not(p)][not(ancestor::boilerplate)] | //example".freeze
-
-      def extract_text(node)
-        return "" if node.nil?
-
-        node1 = Nokogiri::XML.fragment(node.to_s)
-        node1.xpath("//link | //locality | //localityStack").each(&:remove)
-        ret = ""
-        node1.traverse { |x| ret += x.text if x.text? }
-        HTMLEntities.new.decode(ret)
+      # Style manual 17.1
+      def figure_validate(xmldoc)
+        xrefs = xrefs(xmldoc)
+        figure_name_validate(xmldoc, xrefs)
+        table_figure_name_validate(xmldoc, xrefs)
+        table_figure_quantity_validate(xmldoc)
       end
 
-      def asset_style(root)
-        root.xpath(ASSETS_TO_STYLE).each { |e| style(e, extract_text(e)) }
+      def xrefs(xmldoc)
+        klass = IsoDoc::IEEE::HtmlConvert.new(language: @lang, script: @script)
+        xrefs = IsoDoc::IEEE::Xref
+          .new(@lang, @script, klass, IsoDoc::IEEE::I18n.new(@lang, @script),
+               { hierarchical_assets: @hierarchical_assets })
+        xrefs.parse(Nokogiri::XML(xmldoc.to_xml))
+        xrefs
       end
 
-      def style_regex(regex, warning, node, text)
-        (m = regex.match(text)) && style_warning(node, warning, m[:num])
+      def image_name_prefix(xmldoc)
+        num = xmldoc.at("//bibdata/docnumber") or return
+        yr = xmldoc.at("//bibdata/date[@type = 'published']") ||
+          xmldoc.at("//bibdata/date[@type = 'issued']") ||
+          xmldoc.at("//bibdata/copyright/from")
+        yr = yr&.text || Date.now.year
+        "#{num.text}-#{yr.sub(/-*$/, '')}"
       end
 
-      def style_warning(node, msg, text = nil)
-        return if @novalid
+      def figure_name_validate(xmldoc, xrefs)
+        pref = image_name_prefix(xmldoc)
+        (xmldoc.xpath("//figure") - xmldoc.xpath("//table//figure"))
+          .each do |f|
+            i = f.at("./image") or next
+            next if i["src"].start_with?("data:")
 
-        w = msg
-        w += ": #{text}" if text
-        @log.add("Style", node, w)
-      end
-
-      def style(node, text)
-        return if @novalid
-
-        style_number(node, text)
-        style_percent(node, text)
-        style_units(node, text)
-      end
-
-      # Style manual 14.2
-      def style_number(node, text)
-        style_regex(/\b(?<num>[0-9]+,[0-9]+)/i,
-                    "possible decimal comma", node, text)
-        style_regex(/(?:^|\s)(?<num>[\u2212-]?\.[0-9]+)/i,
-                    "decimal without initial zero", node, text)
-      end
-
-      # Style manual 14.2
-      def style_percent(node, text)
-        style_regex(/\b(?<num>[0-9.]+%)/,
-                    "no space before percent sign", node, text)
-      end
-
-      # leaving out as problematic: N J K C S T H h d B o E
-      SI_UNIT = "(m|cm|mm|km|μm|nm|g|kg|mgmol|cd|rad|sr|Hz|Hz|MHz|Pa|hPa|kJ|"\
-                "V|kV|W|MW|kW|F|μF|Ω|Wb|°C|lm|lx|Bq|Gy|Sv|kat|l|t|eV|u|Np|Bd|"\
-                "bit|kB|MB|Hart|nat|Sh|var)".freeze
-
-      # Style manual 14.2
-      def style_units(node, text)
-        style_regex(/(\b|^)(?<num>[0-9][0-9.]*#{SI_UNIT})\b/o,
-                    "no space between number and SI unit", node, text)
-        style_regex(/(\b|^)(?<num>[0-9.]+\s*\u00b1\s*[0-9.]+\s*#{SI_UNIT})\b/o,
-                    "unit is needed on both value and tolerance", node, text)
-      end
-
-      # Style manual 16.3.2
-      def table_style(docxml)
-        docxml.xpath("//td").each do |td|
-          style_regex(/^(?<num>[\u2212-]?[0-9]{5,}[.0-9]*|-?[0-9]+\.[0-9]{5,})$/,
-                      "number in table not broken up in threes", td, td.text)
-        end
-        docxml.xpath("//table").each { |t| table_style_columns(t) }
-      end
-
-      # deliberately doing naive, ignoring rowspan
-      def table_style_columns(table)
-        table_extract_columns(table).each do |col|
-          next unless col.any? do |x|
-            /^[0-9. ]+$/.match?(x) &&
-              (/\d{3} \d/.match?(x) || /\d \d{3}/.match?(x))
+            num = xrefs.anchor(f["id"], :label)
+            File.basename(i["src"], ".*") == "#{pref}_fig#{num}" or
+              @log.add("Style", i,
+                       "image name #{i['src']} is expected to be #{pref}_fig#{num}")
           end
+      end
 
-          col.each do |x|
-            /^[0-9. ]+$/.match?(x) && /\d{4}/.match?(x) and
-              @log.add("Style", table,
-                       "#{x} is a 4-digit number in a table column with "\
-                       "numbers broken up in threes")
+      def table_figure_name_validate(xmldoc, xrefs)
+        xmldoc.xpath("//table[.//figure]").each do |t|
+          xmldoc.xpath(".//figure").each do |f|
+            i = f.at("./image") or next
+            next if i["src"].start_with?("data:")
+
+            num = tablefigurenumber(t, f, xrefs)
+            File.basename(i["src"]) == num or
+              @log.add("Style", i,
+                       "image name #{i['src']} is expected to be #{num}")
           end
         end
       end
 
-      def table_extract_columns(table)
-        ret = table.xpath(".//tr").each_with_object([]) do |tr, m|
-          tr.xpath("./td | ./th").each_with_index do |d, i|
-            m[i] ||= []
-            m[i] << d.text
-          end
+      def tablefigurenumber(table, figure, xrefs)
+        tab = xrefs.anchor(table["id"], :label)
+        td = figure.at("./ancestor::td | ./ancestor::th")
+        cols = td.xpath("./preceding-sibling::td | ./preceding-sibling::td")
+        rows = td.parent.xpath("./preceding::tr") &
+          td.at("./ancestor::table").xpath(".//tr")
+        "Tab#{tab}Row#{rows.size + 1}Col#{cols.size + 1}"
+      end
+
+      def table_figure_quantity_validate(xmldoc)
+        xmldoc.xpath("//td[.//image] | //th[.//image]").each do |d|
+          d.xpath(".//image").size > 1 and
+            @log.add("Style", d,
+                     "More than one image in the table cell")
         end
-        ret.map { |x| x.is_a?(Array) ? x : [] }
       end
     end
   end

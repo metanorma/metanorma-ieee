@@ -2,7 +2,7 @@ module IsoDoc
   module IEEE
     class I18n < IsoDoc::I18n
       def load_yaml2x(str)
-        YAML.load_file(File.join(File.dirname(__FILE__),
+        ::YAML.load_file(File.join(File.dirname(__FILE__),
                                  "i18n-#{str}.yaml"))
       end
 

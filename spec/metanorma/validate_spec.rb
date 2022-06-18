@@ -620,4 +620,97 @@ RSpec.describe Metanorma::IEEE do
       expect(File.read("test.err")).to include " is a 4-digit number in a table column with numbers broken up in threes"
     end
   end
+
+  context "Image name validation" do
+    it "warn on wrong image names" do
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib:
+        :docnumber: 1000
+        :copyright-year: 2000
+
+        == Clause
+        image::document-2000_fig1.png[]
+
+        image::1000-2000_fig2.png[]
+
+        image::1000-2000_fig4.png[]
+      INPUT
+      expect(File.read("test.err"))
+        .to include "image name document-2000_fig1.png is expected to be 1000-2000_fig1"
+      expect(File.read("test.err"))
+        .not_to include "image name 1000-2000_fig2.png is expected to be 1000-2000_fig2"
+      expect(File.read("test.err"))
+        .to include "image name 1000-2000_fig4.png is expected to be 1000-2000_fig3"
+    end
+
+    it "warn on wrong image names within tables" do
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib:
+        :docnumber: 1000
+
+        == Clause
+
+        |===
+        |A |B
+        |===
+
+        |===
+        a| image::Tab2Row1Col2.png[] | A
+
+        | C a| image::1000-fig2.png[]
+
+        a| image::1000-fig4.png[] | D
+        |===
+      INPUT
+      expect(File.read("test.err"))
+        .not_to include "image name Tab2Row1Col2.png is expected to be Tab2Row1Col2"
+      expect(File.read("test.err"))
+        .to include "image name 1000-fig2.png is expected to be Tab2Row2Col2"
+      expect(File.read("test.err"))
+        .to include "image name 1000-fig4.png is expected to be Tab2Row3Col1"
+    end
+
+    it "warn on two images in a table cell" do
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib:
+        :docnumber: 1000
+
+        == Clause
+
+        |===
+        a| image::document-fig1.png[]
+        image::1000-fig2.png[] | B
+        |===
+      INPUT
+      expect(File.read("test.err")).to include "More than one image in the table cell"
+
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib:
+        :docnumber: 1000
+
+        == Clause
+
+        |===
+        a| image::document-fig1.png[] | B
+        |===
+      INPUT
+      expect(File.read("test.err")).not_to include "More than one image in the table cell"
+    end
+  end
 end

@@ -69,6 +69,20 @@ module IsoDoc
         "&#x2014;"
       end
 
+      def display_order(docxml)
+        i = 0
+        i = display_order_xpath(docxml, "//preface/*", i)
+        i = display_order_at(docxml, "//clause[@type = 'overview']", i)
+        i = display_order_at(docxml, @xrefs.klass.norm_ref_xpath, i)
+        i = display_order_at(docxml, "//sections/terms | "\
+                                     "//sections/clause[descendant::terms]", i)
+        i = display_order_at(docxml, "//sections/definitions", i)
+        i = display_order_xpath(docxml, @xrefs.klass.middle_clause(docxml), i)
+        i = display_order_xpath(docxml, "//annex", i)
+        i = display_order_xpath(docxml, @xrefs.klass.bibliography_xpath, i)
+        display_order_xpath(docxml, "//indexsect", i)
+      end
+
       include Init
     end
   end
