@@ -4,6 +4,10 @@ require "fileutils"
 module IsoDoc
   module IEEE
     module BaseConvert
+      def clause_attrs(node)
+        { id: node["id"], type: node["type"] }
+      end
+
       def scope(isoxml, out, num)
         f = isoxml.at(ns("//clause[@type = 'overview']")) or return num
         out.div **attr_code(id: f["id"]) do |div|

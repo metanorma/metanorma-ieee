@@ -6,7 +6,7 @@ module IsoDoc
     class Metadata < IsoDoc::Metadata
       def initialize(lang, script, i18n, fonts_options = {})
         super
-        @metadata[:issueddate] = "&lt;Date Approved&gt;"
+        @metadata[:confirmeddate] = "&lt;Date Approved&gt;"
       end
 
       def bibdate(isoxml, _out)
@@ -40,14 +40,14 @@ module IsoDoc
 
       def society(xml)
         society = xml.at(ns("//bibdata/ext/editorialgroup/"\
-                            "society")) or return nil
-        set(:society, society.text)
+                            "society"))&.text || "&lt;Society&gt;"
+        set(:society, society)
       end
 
       def tc(xml)
         tc = xml.at(ns("//bibdata/ext/editorialgroup/"\
-                       "technical-committee")) or return nil
-        set(:technical_committee, tc.text)
+                       "technical-committee"))&.text || "&lt;Committee Name&gt;"
+        set(:technical_committee, tc)
       end
 
       def editor_names(xml, role)
@@ -82,7 +82,7 @@ module IsoDoc
         m["members"].empty? and (1..9).each do |i|
           m["members"] << "Balloter#{i}"
         end
-        set(:balloting_group_members, m)
+        set(:balloting_group_members, m["members"])
       end
 
       def std_group(xml)

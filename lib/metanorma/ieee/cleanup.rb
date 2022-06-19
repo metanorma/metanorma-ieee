@@ -61,12 +61,13 @@ module Metanorma
 
       def note_cleanup(xmldoc)
         super
-        n = xmldoc.at("//preface//note[not(@type = 'boilerplate')] | "\
+        n = xmldoc.at("//preface//note[not(@type = 'boilerplate')]"\
+                      "[not(./ancestor::abstract)] | "\
                       "//sections//note[not(@type = 'boilerplate')] | "\
                       "//annex//note[not(@type = 'boilerplate')]") or
           return
         ins = n.at("./p[last()]")
-        ins << "<fn><p>@i18n.note_inform_fn</p></fn>"
+        ins << "<fn><p>#{@i18n.note_inform_fn}</p></fn>"
       end
 
       def sort_biblio(bib)

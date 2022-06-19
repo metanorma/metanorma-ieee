@@ -27,7 +27,7 @@ module IsoDoc
         end
         if @parse_settings.empty? || @parse_settings[:clauses]
           n = Counter.new
-          n = section_names(doc.at(ns("//clause[@type = 'scope']")), n, 1)
+          n = section_names(doc.at(ns("//clause[@type = 'overview']")), n, 1)
           n = section_names(doc.at(ns(@klass.norm_ref_xpath)), n, 1)
           n = section_names(doc.at(ns("//sections/terms | "\
                                       "//sections/clause[descendant::terms]")), n, 1)
