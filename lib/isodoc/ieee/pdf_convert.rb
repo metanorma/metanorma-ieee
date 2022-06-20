@@ -12,8 +12,12 @@ module IsoDoc
       end
 
       def pdf_stylesheet(docxml)
-        # doctype = docxml&.at(ns("//bibdata/ext/doctype"))&.text
-        "itu.xsl"
+        doctype = docxml&.at(ns("//bibdata/ext/doctype"))&.text
+        if doctype == "amendment"
+          "ieee.amendment.xsl"
+        else
+          "ieee.standard.xsl"
+        end
       end
     end
   end
