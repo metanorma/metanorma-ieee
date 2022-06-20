@@ -72,9 +72,17 @@ module IsoDoc
       def headings_cleanup(docxml)
         (1..4).each do |i|
           docxml.xpath("//h#{i}").each do |h|
+            headings_cleanup1(h)
             h.name = "p"
             h["class"] = "IEEEStdsLevel#{i}Header"
           end
+        end
+      end
+
+      def headings_cleanup1(hdr)
+        if hdr.children.size > 1 && hdr.children[1].name == "span" &&
+            hdr.children[1]["style"] == "mso-tab-count:1"
+          2.times { hdr.children.first.remove }
         end
       end
 
