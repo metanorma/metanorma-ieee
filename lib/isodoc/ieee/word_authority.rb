@@ -7,7 +7,6 @@ module IsoDoc
           authority_cleanup1(docxml, t)
         end
         coverpage_note_cleanup(docxml)
-        abstract_cleanup(docxml)
         authority_style(docxml)
       end
 
@@ -94,7 +93,7 @@ module IsoDoc
       def three_column_officemembers_render(div, ret)
         div.children = ret[0]
         out = ret[1..-1].map.with_index do |d, i|
-          para = i % 2 == 1 && i != ret.size - 1 ? "<p>&#xa0;</p>" : ""
+          para = i % 2 == 1 && i != ret.size - 2 ? "<p>&#xa0;</p>" : ""
           "<div class='WordSection'>#{para}#{d}</div>"
         end.join(SECTIONBREAK)
         div.document.at("//div[@class = 'WordSection11']")

@@ -1,7 +1,7 @@
 <div id='toggle'> <span>•</span> </div>
 
 <div class="doctitle-en"><span>P{{ docnumeric }}™{% if draft %}/D{{ draft }}{% endif %}</span><br/>
-   <span lang="EN-US">{% if draft %}Draft{% endif %} {{ doctype_abbrev }} for {{ doctitle }}</span></div>
+   <span lang="EN-US">{{ full_doctitle }}</span></div>
 {% if doctitleamdlabel %}
 <div class="doctitle-part">{{ doctitleamdlabel }}{% if doctitleamd %}: {{ doctitleamd }}{% endif %}</div>
 {% endif %}

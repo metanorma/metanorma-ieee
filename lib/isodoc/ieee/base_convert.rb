@@ -20,6 +20,11 @@ module IsoDoc
         num
       end
 
+      def middle_clause(_docxml = nil)
+        "//clause[parent::sections][not(@type = 'overview')]"\
+          "[not(descendant::terms)]"
+      end
+
       def para_attrs(node)
         super.merge(type: node["type"])
       end

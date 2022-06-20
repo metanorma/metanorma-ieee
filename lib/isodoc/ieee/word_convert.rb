@@ -48,6 +48,26 @@ module IsoDoc
         end
       end
 
+      def make_body3(body, docxml)
+        body.div **{ class: "WordSection13" } do |_div3|
+          middle_title_ieee(docxml, body)
+        end
+        section_break(body, continuous: true)
+        body.div **{ class: "WordSection14" } do |div3|
+          middle docxml, div3
+          footnotes div3
+          comments div3
+        end
+      end
+
+      def middle_title(isoxml, out); end
+
+      def middle_title_ieee(_docxml, out)
+        out.p(**{ class: "IEEEStdsTitle", style: "margin-top:70.0pt" }) do |p|
+          p << @meta.get[:full_doctitle]
+        end
+      end
+
       include BaseConvert
       include Init
     end

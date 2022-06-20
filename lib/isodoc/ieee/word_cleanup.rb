@@ -20,6 +20,7 @@ module IsoDoc
       def abstract_cleanup(docxml)
         dest = docxml.at("div[@id = 'abstract-destination']")
         if f = docxml.at("//div[@class = 'abstract']")
+          f.previous_element.remove
           abstract_cleanup1(f, dest)
           f.remove
         elsif f = docxml.at("//div[@type = 'scope']")
@@ -39,12 +40,42 @@ module IsoDoc
           "Abstract:</span></span> "
       end
 
+      def introduction_cleanup(docxml)
+        dest = docxml.at("div[@id = 'introduction-destination']")
+        unless i = docxml.at("//h1[@class = 'IntroTitle']")&.parent
+          dest.parent.remove
+          return
+        end
+        introduction_cleanup1(i, dest)
+      end
+
+      def introduction_cleanup1(intro, dest)
+        docxml = intro.document
+        intro.previous_element.remove
+        dest.replace(intro.remove)
+        i = docxml.at("//h1[@class = 'IntroTitle']")
+        i.next_element == "div" && i.next_element["class"] == "Admonition" and
+          i.next_element["class"] = "IEEEStdsIntroduction"
+      end
+
       def word_cleanup(docxml)
         super
+        abstract_cleanup(docxml)
+        introduction_cleanup(docxml)
         div_cleanup(docxml)
+        headings_cleanup(docxml)
         style_cleanup(docxml)
         para_type_cleanup(docxml)
         docxml
+      end
+
+      def headings_cleanup(docxml)
+        (1..4).each do |i|
+          docxml.xpath("//h#{i}").each do |h|
+            h.name = "p"
+            h["class"] = "IEEEStdsLevel#{i}Header"
+          end
+        end
       end
 
       def div_cleanup(docxml)
@@ -73,8 +104,9 @@ module IsoDoc
       end
 
       STYLESMAP = {
-        MsoFootnoteText: "IEEEStdsFootnote",
         MsoNormal: "IEEEStdsParagraph",
+        NormRef: "IEEEStdsBibliographicEntry",
+        Biblio: "IEEEStdsBibliographicEntry",
       }.freeze
 
       def style_cleanup(docxml)

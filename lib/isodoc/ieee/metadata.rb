@@ -121,6 +121,15 @@ module IsoDoc
         dn = isoxml.at(ns("//#{id}[@scope = 'print']"))
         set(:stdid_print, dn&.text || "STDPDXXXXX")
       end
+
+      def title(isoxml, _out)
+        super
+        draft = isoxml&.at(ns("//bibdata/version/draft"))
+        doctype(isoxml, _out)
+        title = "#{@metadata[:doctype_abbrev]} for #{@metadata[:doctitle]}"
+        draft and title = "Draft #{title}"
+        set(:full_doctitle, title)
+      end
     end
   end
 end

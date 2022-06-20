@@ -41,9 +41,49 @@ class Html2Doc
       note.xpath(".//aside | .//p").each do |p|
         p.name = "p"
         %w(IEEEStdsCRTextReg IEEEStdsCRTextItal).include?(p["class"]) or
-          p["class"] = "MsoFootnoteText"
+          p["class"] = "IEEEStdsFootnote"
       end
       note.remove
+    end
+
+    def list2para(list)
+      return if list.xpath("./li").empty?
+
+      if list.name == "ol"
+        list2para_ol(list)
+      else
+        list2para_ul(list)
+      end
+    end
+
+    def list2para_ul(list)
+      list.xpath("./li").first["class"] ||= "IEEEStdsUnorderedListCxSpFirst"
+      list.xpath("./li").last["class"] ||= "IEEEStdsUnorderedListCxSpLast"
+      list.xpath("./li/p").each do |p|
+        p["class"] ||= "IEEEStdsUnorderedListCxSpMiddle"
+      end
+      list.xpath("./li").each do |l|
+        l.name = "p"
+        l["class"] ||= "IEEEStdsUnorderedListCxSpMiddle"
+        l&.first_element_child&.name == "p" and
+          l.first_element_child.replace(l.first_element_child.children)
+      end
+      list.replace(list.children)
+    end
+
+    def list2para_ol(list)
+      list.xpath("./li").first["class"] ||= "IEEEStdsNumberedListLevel1CxSpFirst"
+      list.xpath("./li").last["class"] ||= "IEEEStdsUnorderedCxSpListLast"
+      list.xpath("./li/p").each do |p|
+        p["class"] ||= "IEEEStdsNumberedListLevel1CxSpMiddle"
+      end
+      list.xpath("./li").each do |l|
+        l.name = "p"
+        l["class"] ||= "IEEEStdsNumberedListLevel1CxSpMiddle"
+        l&.first_element_child&.name == "p" and
+          l.first_element_child.replace(l.first_element_child.children)
+      end
+      list.replace(list.children)
     end
   end
 end
