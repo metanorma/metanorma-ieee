@@ -73,7 +73,7 @@ class Html2Doc
 
     def list2para_ol(list)
       list.xpath("./li").first["class"] ||= "IEEEStdsNumberedListLevel1CxSpFirst"
-      list.xpath("./li").last["class"] ||= "IEEEStdsUnorderedCxSpListLast"
+      list.xpath("./li").last["class"] ||= "IEEEStdsNumberedListLevel1CxSpLast"
       list.xpath("./li/p").each do |p|
         p["class"] ||= "IEEEStdsNumberedListLevel1CxSpMiddle"
       end

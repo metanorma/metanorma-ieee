@@ -57,7 +57,8 @@ module Metanorma
 
       def doc_extract_attributes(node)
         super.merge(hierarchical_assets:
-                    node.attr("hierarchical-object-numbering"))
+                    node.attr("hierarchical-object-numbering"),
+                    ulstyle: "l11", olstyle: "l16")
       end
 
       def presentation_xml_converter(node)
