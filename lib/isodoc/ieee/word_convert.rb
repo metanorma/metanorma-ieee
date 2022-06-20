@@ -1,6 +1,7 @@
 require "isodoc"
 require_relative "init"
 require_relative "word_cleanup"
+require_relative "word_authority"
 
 module IsoDoc
   module IEEE

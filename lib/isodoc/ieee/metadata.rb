@@ -69,8 +69,15 @@ module IsoDoc
           a = editor_name(xml, "Working Group #{r}") and
             m[r.downcase.gsub(/ /, "-")] = a
         end
-        a = editor_names(xml, "Working Group Member") and m["members"] = a
-        set(:wg_members, m)
+        wg_members(xml, m)
+      end
+
+      def wg_members(xml, members)
+        a = editor_names(xml, "Working Group Member") and members["members"] = a
+        members["members"].empty? and (1..9).each do |i|
+          members["members"] << "Participant#{i}"
+        end
+        set(:wg_members, members)
       end
 
       def bg(xml)
