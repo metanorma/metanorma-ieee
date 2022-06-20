@@ -245,27 +245,27 @@
       <title>Participants</title>
       <clause>
         <p>At the time this draft {{ doctype }} was completed, the {{ working_group }} Working Group had the following membership:</p>
-        <p align="center"><strong>{{ wg_members["chair"] }}</strong>, <em>Chair</em></p>
-        <p align="center"><strong>{{ wg_members["vice-chair"] }}</strong>, <em>Vice Chair</em></p>
-        {% if wg_members["secretary"] %}<p align="center"><strong>{{ wg_members["secretary"] }}</strong>, <em>Secretary</em></p>{% endif %}
+        <p align="center" type="officeholder"><strong>{{ wg_members["chair"] }}</strong>, <em>Chair</em></p>
+        <p align="center" type="officeholder"><strong>{{ wg_members["vice-chair"] }}</strong>, <em>Vice Chair</em></p>
+        {% if wg_members["secretary"] %}<p align="center" type="officeholder"><strong>{{ wg_members["secretary"] }}</strong>, <em>Secretary</em></p>{% endif %}
         {% for m in wg_members["members"] %}
-        <p>{{ m }}</p>
+        <p type="officemember">{{ m }}</p>
         {% endfor %}
       </clause>
       <clause>
         <p>The following members of the {{ balloting_group }} Standards Association balloting group voted on this {{ doctype }}. Balloters may have voted for approval, disapproval, or abstention.</p>
         {% for m in balloting_group_members %}
-        <p>{{ m }}</p>
+        <p type="officemember">{{ m }}</p>
         {% endfor %}
       </clause>
       <clause>
         <p>When the IEEE SA Standards Board approved this {{ doctype }} on {{ confirmed_date }}, it had the following membership:</p>
-        <p align="center"><strong>{{ std_board["chair"] }}</strong>, <em>Chair</em></p>
-        <p align="center"><strong>{{ std_board["vice-chair"] }}</strong>, <em>Vice Chair</em></p>
-        <p align="center"><strong>{{ std_board["past-chair"] }}</strong>, <em>Past Chair</em></p>
-        <p align="center"><strong>{{ std_board["secretary"] }}</strong>, <em>Secretary</em></p>
+        <p align="center" type="officeholder"><strong>{{ std_board["chair"] }}</strong>, <em>Chair</em></p>
+        <p align="center" type="officeholder"><strong>{{ std_board["vice-chair"] }}</strong>, <em>Vice Chair</em></p>
+        <p align="center" type="officeholder"><strong>{{ std_board["past-chair"] }}</strong>, <em>Past Chair</em></p>
+        <p align="center" type="officeholder"><strong>{{ std_board["secretary"] }}</strong>, <em>Secretary</em></p>
         {% for m in std_board["members"] %}
-        <p>{{ m }}</p>
+        <p type="officemember">{{ m }}</p>
         {% endfor %}
         <p>*Member Emeritus</p>
       </clause>

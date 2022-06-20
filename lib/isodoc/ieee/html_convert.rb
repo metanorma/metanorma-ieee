@@ -36,6 +36,15 @@ module IsoDoc
         }
       end
 
+      def html_cleanup(html)
+        para_type_strip(super)
+      end
+
+      def para_type_strip(html)
+        html.xpath("//p[@type]").each { |p| p.delete("type") }
+        html
+      end
+
       include BaseConvert
       include Init
     end

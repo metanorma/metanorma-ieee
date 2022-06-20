@@ -203,7 +203,8 @@ RSpec.describe Metanorma::IEEE do
                <p id='_'>
                  First note
                  <fn reference='1'>
-                   <p id='_'>@i18n.note_inform_fn</p>
+                   <p id='_'>Notes to text, tables, and figures are for information only and do
+                    not contain requirements needed to implement the standard.</p>
                  </fn>
                </p>
              </note>

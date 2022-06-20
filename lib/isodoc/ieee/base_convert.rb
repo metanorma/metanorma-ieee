@@ -19,6 +19,10 @@ module IsoDoc
         end
         num
       end
+
+      def para_attrs(node)
+        super.merge(type: node["type"])
+      end
     end
   end
 end
