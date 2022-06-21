@@ -590,8 +590,8 @@
 							
 							<fo:block>
 								<xsl:for-each select="xalan:nodeset($paged_xml_preface)/*[local-name()='page']">
-									<fo:block break-after="page"/>
 									<xsl:apply-templates select="*" mode="page"/>
+									<fo:block break-after="page"/>
 								</xsl:for-each>
 							</fo:block>
 								
@@ -1027,6 +1027,7 @@
 		
 		<xsl:variable name="skip">
 			<xsl:choose>
+				<xsl:when test="ancestor-or-self::ieee:preface">true</xsl:when> <!-- no need render preface sections in ToC -->
 				<xsl:when test="ancestor-or-self::ieee:bibitem">true</xsl:when>
 				<xsl:when test="ancestor-or-self::ieee:term">true</xsl:when>				
 				<xsl:when test="@type = 'corrigenda'">true</xsl:when>
@@ -10076,8 +10077,10 @@
 					
 						<xsl:if test="@type = 'editorial'">
 							<xsl:attribute name="border">none</xsl:attribute>
-							<xsl:attribute name="font-weight">bold</xsl:attribute>
-							<xsl:attribute name="font-style">italic</xsl:attribute>
+							<!-- 	<xsl:attribute name="font-weight">bold</xsl:attribute>
+							<xsl:attribute name="font-style">italic</xsl:attribute> -->
+							<xsl:attribute name="color">green</xsl:attribute>
+							<xsl:attribute name="font-weight">normal</xsl:attribute>
 							<xsl:attribute name="margin-top">12pt</xsl:attribute>
 							<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
 						</xsl:if>
@@ -10576,7 +10579,21 @@
 						<xsl:variable name="title">
 							<xsl:for-each select="(//*[contains(local-name(), '-standard')])[1]/*[local-name() = 'bibdata']">
 								
-										<xsl:value-of select="*[local-name() = 'title'][@language = $lang and @type = 'main']"/>
+										<xsl:variable name="full_title">
+											<item>
+												<xsl:value-of select="*[local-name() = 'title'][@language = 'intro-en']"/>
+											</item>
+											<item>
+												<xsl:value-of select="*[local-name() = 'title'][@language = 'main-en']"/>
+											</item>
+											<item>
+												<xsl:value-of select="*[local-name() = 'title'][@language = 'part-en']"/>
+											</item>
+										</xsl:variable>
+										<xsl:for-each select="xalan:nodeset($full_title)/item[normalize-space() != '']">
+											<xsl:value-of select="."/>
+											<xsl:if test="position() != last()"> - </xsl:if>
+										</xsl:for-each>
 									
 							</xsl:for-each>
 						</xsl:variable>
@@ -10592,17 +10609,14 @@
 					<dc:creator>
 						<xsl:for-each select="(//*[contains(local-name(), '-standard')])[1]/*[local-name() = 'bibdata']">
 							
-									<xsl:for-each select="*[local-name() = 'contributor'][*[local-name() = 'role']/@type='author']">
-										<xsl:value-of select="*[local-name() = 'organization']/*[local-name() = 'name']"/>
-										<xsl:if test="position() != last()">; </xsl:if>
-									</xsl:for-each>
+									<xsl:value-of select="ieee:ext/ieee:editorialgroup/ieee:committee"/>
 								
 						</xsl:for-each>
 					</dc:creator>
 					<dc:description>
 						<xsl:variable name="abstract">
 							
-									<xsl:copy-of select="//*[contains(local-name(), '-standard')]/*[local-name() = 'preface']/*[local-name() = 'abstract']//text()"/>									
+									<xsl:copy-of select="//*[contains(local-name(), '-standard')]/*[local-name() = 'preface']/*[local-name() = 'abstract']//text()[not(ancestor::*[local-name() = 'title'])]"/>									
 								
 						</xsl:variable>
 						<xsl:value-of select="normalize-space($abstract)"/>
