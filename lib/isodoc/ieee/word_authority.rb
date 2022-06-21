@@ -13,7 +13,7 @@ module IsoDoc
       def feedback_footnote(docxml)
         feedback_style(docxml)
         feedback_table(docxml)
-        f = docxml.at("//div[@class = 'boilerplate-feedback']")
+        f = docxml.at("//div[@class = 'boilerplate-feedback']") or return
         docxml.at("//aside").previous = <<~FN
           <aside id="ftn0">#{f.remove.to_xml}</aside>
         FN
@@ -26,16 +26,16 @@ module IsoDoc
       end
 
       def copyright_style(docxml)
-        docxml.at("//div[@class = 'boilerplate-copyright']").xpath(".//p")
-          .reverse.each_with_index do |p, i|
+        docxml.at("//div[@class = 'boilerplate-copyright']")&.xpath(".//p")
+          &.reverse&.each_with_index do |p, i|
           p["class"] =
             i.zero? ? "IEEEStdsTitleDraftCRBody" : "IEEEStdsTitleDraftCRaddr"
         end
       end
 
       def license_style(docxml)
-        docxml.at("//div[@class = 'boilerplate-license']").xpath(".//p")
-          .reverse.each_with_index do |p, i|
+        docxml.at("//div[@class = 'boilerplate-license']")&.xpath(".//p")
+          &.reverse&.each_with_index do |p, i|
           p["class"] =
             i.zero? ? "IEEEStdsTitleDraftCRBody" : "IEEEStdsTitleDraftCRaddr"
         end
@@ -77,6 +77,8 @@ module IsoDoc
       end
 
       def three_column_officemembers(div)
+        return unless div
+
         ret = three_column_officemembers_split(div)
         three_column_officemembers_render(div, ret)
       end
@@ -101,8 +103,8 @@ module IsoDoc
       end
 
       def feedback_table(docxml)
-        docxml.at("//div[@class = 'boilerplate-feedback']").xpath(".//table")
-          .each do |t|
+        docxml.at("//div[@class = 'boilerplate-feedback']")&.xpath(".//table")
+          &.each do |t|
           t.xpath(".//tr").each do |tr|
             feedback_table1(tr)
           end
@@ -120,8 +122,8 @@ module IsoDoc
       end
 
       def feedback_style(docxml)
-        docxml.at("//div[@class = 'boilerplate-feedback']").xpath("./div")
-          .each_with_index do |div, i|
+        docxml.at("//div[@class = 'boilerplate-feedback']")&.xpath("./div")
+          &.each_with_index do |div, i|
           i.zero? or div.elements.first.previous = "<p>&#xa0;</p>"
           feedback_style1(div, i)
         end

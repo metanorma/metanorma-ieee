@@ -126,7 +126,8 @@ module IsoDoc
         super
         draft = isoxml&.at(ns("//bibdata/version/draft"))
         doctype(isoxml, _out)
-        title = "#{@metadata[:doctype_abbrev]} for #{@metadata[:doctitle]}"
+        title = "#{@metadata[:doctype_abbrev] || '???'} for "\
+                "#{@metadata[:doctitle] || '???'}"
         draft and title = "Draft #{title}"
         set(:full_doctitle, title)
       end

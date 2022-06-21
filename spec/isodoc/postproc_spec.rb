@@ -10,7 +10,9 @@ RSpec.describe IsoDoc::IEEE do
       <div class="WordSection1"><p/></div>
       <div class="WordSection2"><p/></div>
       <div class="main-section">
-      <div id="x"> <h1 class="AbstractTitle">Abstract</h1>
+      <br/>
+      <div id="x" class="abstract">
+      <h1 class="AbstractTitle">Abstract</h1>
       <p>Abstract text</p>
       </div>
       <hr/>
@@ -24,10 +26,10 @@ RSpec.describe IsoDoc::IEEE do
         <head/>
         <body>
           <div class='WordSection1'>
-            <p/>
+            <p class='IEEEStdsParagraph'/>
           </div>
           <div class='WordSection2'>
-            <p/>
+            <p class='IEEEStdsParagraph'/>
           </div>
           <div class='main-section'>
             <hr/>
@@ -72,35 +74,35 @@ RSpec.describe IsoDoc::IEEE do
       </html>
     INPUT
     doc = <<~OUTPUT
-      <html>
-        <head/>
-        <body>
-          <div class='WordSection1'>
-            <p/>
-          </div>
-          <div class='WordSection2'>
-            <p/>
-          </div>
-          <div class='main-section'>
-            <div id='x' type='overview'>
-              <h1>Overview</h1>
-              <div id='x1' type='scope'>
-                <h2>Overview</h2>
-                <p>Abstract text</p>
-              </div>
-              <hr/>
-              <div id='abstract-destination'>
-                <p class='IEEEStdsAbstractBody'>
-                  <span class='IEEEStdsAbstractHeader'>
-                    <span lang='EN-US'>Abstract:</span>
-                  </span>
-                   Abstract text
-                </p>
-              </div>
-            </div>
-          </div>
-        </body>
-      </html>
+           <html>
+         <head/>
+         <body>
+           <div class='WordSection1'>
+             <p class='IEEEStdsParagraph'/>
+           </div>
+           <div class='WordSection2'>
+             <p class='IEEEStdsParagraph'/>
+           </div>
+           <div class='main-section'>
+             <div id='x' type='overview'>
+               <p class='IEEEStdsLevel1Header'>Overview</p>
+               <div id='x1' type='scope'>
+                 <p class='IEEEStdsLevel2Header'>Overview</p>
+                 <p class='IEEEStdsParagraph'>Abstract text</p>
+               </div>
+               <hr/>
+               <div id='abstract-destination'>
+                 <p class='IEEEStdsAbstractBody'>
+                   <span class='IEEEStdsAbstractHeader'>
+                     <span lang='EN-US'>Abstract:</span>
+                   </span>
+                    Abstract text
+                 </p>
+               </div>
+             </div>
+           </div>
+         </body>
+       </html>
     OUTPUT
     expect(xmlpp(IsoDoc::IEEE::WordConvert
       .new(wordcoverpage: nil,

@@ -48,10 +48,9 @@ module IsoDoc
       end
 
       def middle_section_asset_names(doc)
-        middle_sections = "//clause[@type = 'scope'] | "\
-                          "#{@klass.norm_ref_xpath} | "\
-                          "//sections/terms | //preface/* | "\
-                          "//sections/definitions | //clause[parent::sections]"
+        middle_sections =
+          "#{@klass.norm_ref_xpath} | //sections/terms | "\
+          "//sections/definitions | //clause[parent::sections]"
         if @hierarchical_assets
           doc.xpath(ns(middle_sections)).each do |c|
             hierarchical_asset_names(c, @anchors[c["id"]][:label])

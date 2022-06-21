@@ -41,7 +41,7 @@ module IsoDoc
       end
 
       def introduction_cleanup(docxml)
-        dest = docxml.at("div[@id = 'introduction-destination']")
+        dest = docxml.at("div[@id = 'introduction-destination']") or return
         unless i = docxml.at("//h1[@class = 'IntroTitle']")&.parent
           dest.parent.remove
           return

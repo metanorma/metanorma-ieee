@@ -29,8 +29,6 @@ RSpec.describe Metanorma::IEEE do
       Author
       :docfile: test.adoc
       :novalid:
-      :no-pdf:
-      :legacy-do-not-insert-missing-sections:
     INPUT
     output = <<~OUTPUT
         #{@blank_hdr}

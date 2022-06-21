@@ -226,10 +226,11 @@ RSpec.describe Metanorma::IEEE do
         :doctype_abbrev=>"Rec. Prac.",
         :docyear=>"2001",
         :draft=>"3.4",
-        :draft_month=>"July",
-        :draft_year=>"2018",
+        :draft_month=>"January",
+        :draft_year=>"2000",
         :draftinfo=>" (draft 3.4, 2000-01-01)",
         :edition=>"2",
+        :full_doctitle=>"Draft Rec. Prac. for Main Titlein multiple lines",
         :implementeddate=>"XXX",
         :isbn_pdf=>"GHI",
         :isbn_print=>"JKL",
@@ -358,6 +359,7 @@ RSpec.describe Metanorma::IEEE do
         :draft_year=>"2000",
         :draftinfo=>" (draft 3.4, 2000-01-01)",
         :edition=>"2",
+        :full_doctitle=>"Draft Rec. Prac. for Main Titlein multiple lines",
         :implementeddate=>"XXX",
         :isbn_pdf=>"978-0-XXXX-XXXX-X",
         :isbn_print=>"978-0-XXXX-XXXX-X",
@@ -385,7 +387,7 @@ RSpec.describe Metanorma::IEEE do
         :updateddate=>"XXX",
         :vote_endeddate=>"XXX",
         :vote_starteddate=>"XXX",
-        :wg_members=>{"members"=>[]},
+        :wg_members=>{"members"=>["Participant1", "Participant2", "Participant3", "Participant4", "Participant5", "Participant6", "Participant7", "Participant8", "Participant9"]},
         :working_group=>"WG"}
       OUTPUT
   end

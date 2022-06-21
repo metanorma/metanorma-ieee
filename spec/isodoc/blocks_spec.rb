@@ -314,9 +314,13 @@ RSpec.describe IsoDoc do
         <p>
           <br clear='all' class='section'/>
         </p>
-        <div class='WordSection3'>
-          <p class='zzSTDTitle1'/>
+                <div class='WordSection13'>
+          <p class='IEEEStdsTitle' style='margin-top:70.0pt'>??? for ???</p>
         </div>
+        <p>
+          <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
+        </p>
+        <div class='WordSection14'/>
       </body>
     WORD
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
@@ -499,8 +503,13 @@ RSpec.describe IsoDoc do
         <p>
           <br clear='all' class='section'/>
         </p>
-        <div class='WordSection3'>
-          <p class='zzSTDTitle1'/>
+        <div class='WordSection13'>
+          <p class='IEEEStdsTitle' style='margin-top:70.0pt'>??? for ???</p>
+        </div>
+        <p>
+          <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
+        </p>
+        <div class='WordSection14'>
           <aside id='ftn1'>
             <p>X</p>
           </aside>

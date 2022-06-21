@@ -69,13 +69,16 @@ def htmlencode(xml)
 end
 
 def strip_guid(xml)
-  xml.gsub(%r{ id="_[^"]+"}, ' id="_"')
-    .gsub(%r{ target="_[^"]+"}, ' target="_"')
-    .gsub(%r( href="#[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{13}"), ' href="#_"')
-    .gsub(%r( id="[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{13}"), ' id="_"')
-    .gsub(%r( id="ftn[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{13}"), ' id="ftn_"')
-    .gsub(%r( id="fn:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{13}"), ' id="fn:_"')
+  xml.gsub(%r{ id=['"]_[^"']+['"]}, ' id="_"')
+    .gsub(%r{ target=['"]_[^"']+['"]}, ' target="_"')
+    .gsub(%r{ name=['"]_[^"']+['"]}, ' name="_"')
+    .gsub(%r( href=['"]#[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{13}['"]), ' href="#_"')
+    .gsub(%r( id=['"][0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{13}['"]), ' id="_"')
+    .gsub(%r( id=['"]ftn[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{13}['"]), ' id="ftn_"')
+    .gsub(%r( id=['"]fn:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{13}['"]), ' id="fn:_"')
     .gsub(%r[ src="([^/]+)/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\.], ' src="\\1/_.')
+    .gsub(%r[ src='([^/]+)/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\.], " src='\\1/_.")
+    .gsub(%r[mso-bookmark:_Ref\d+], "mso-bookmark:_Ref")
 end
 
 def xmlpp(xml)
@@ -256,6 +259,14 @@ HTML_HDR = <<~"HDR".freeze
   <br/>
   <div class="main-section">
 HDR
+
+def word2xml(filename)
+  File.read(filename, encoding: "UTF-8")
+    .sub(/^.*<html/m, "<html")
+    .sub(/<\/html>.*$/m, "</html>")
+    .gsub(/<\/o:/, "</").gsub(/<o:/, "<")
+    .gsub(/epub:type/, "type")
+end
 
 def mock_pdf
   allow(::Mn2pdf).to receive(:convert) do |url, output, _c, _d|
