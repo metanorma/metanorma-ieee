@@ -18,7 +18,7 @@ module IsoDoc
       end
 
       def abstract_cleanup(docxml)
-        dest = docxml.at("div[@id = 'abstract-destination']")
+        dest = docxml.at("div[@id = 'abstract-destination']") or return
         if f = docxml.at("//div[@class = 'abstract']")
           f.previous_element.remove
           abstract_cleanup1(f, dest)
@@ -64,6 +64,7 @@ module IsoDoc
         introduction_cleanup(docxml)
         div_cleanup(docxml)
         headings_cleanup(docxml)
+        span_style_cleanup(docxml)
         style_cleanup(docxml)
         para_type_cleanup(docxml)
         docxml
@@ -101,6 +102,9 @@ module IsoDoc
 
       def para_type_cleanup(html)
         html.xpath("//p[@type]").each { |p| p.delete("type") }
+      end
+
+      def span_style_cleanup(html)
         html.xpath("//strong").each do |s|
           s.name = "span"
           s["class"] = "IEEEStdsParaBold"
