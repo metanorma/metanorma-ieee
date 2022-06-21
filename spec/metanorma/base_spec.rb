@@ -327,7 +327,7 @@ RSpec.describe Metanorma::IEEE do
       [bibliography]
       == Normative References
 
-      == Terms and Definitions
+      == Definitions
 
       === Term1
 
@@ -358,7 +358,7 @@ RSpec.describe Metanorma::IEEE do
 
       ==== Term2
 
-      === Symbols and Abbreviated Terms
+      === Acronyms and abbreviations
 
       [.nonterm]
       ==== General
@@ -395,7 +395,7 @@ RSpec.describe Metanorma::IEEE do
     INPUT
     output = <<~OUTPUT
       #{@blank_hdr.sub(%r{</script>}, '</script><abstract><p>Text</p></abstract>')}
-         <preface>
+               <preface>
            <abstract id='_'>
              <title>Abstract</title>
              <p id='_'>Text</p>
@@ -436,13 +436,13 @@ RSpec.describe Metanorma::IEEE do
              <p id='_'>For the purposes of this document, the following terms and definitions apply.</p>
              <p id='_'>
                For the purposes of this document, the following terms and definitions
-               apply. The 
+               apply. The
                <em>IEEE Standards Dictionary Online</em>
                 should be consulted for terms not defined in this clause.
                <fn>
                  <p id='_'>
                    <em>IEEE Standards Dictionary Online</em>
-                    is available at: 
+                    is available at:
                    <link target='http://dictionary.ieee.org'/>
                    . An IEEE Account is required for access to the dictionary, and one
                    can be created at no charge on the dictionary sign-in page.
@@ -517,9 +517,25 @@ RSpec.describe Metanorma::IEEE do
                <title>Clause 4.2</title>
              </clause>
            </clause>
-           <clause id='_' inline-header='false' obligation='normative'>
+           <terms id='_' obligation='normative'>
              <title>Terms and Definitions</title>
-           </clause>
+             <p id='_'>No terms and definitions are listed in this document.</p>
+             <p id='_'>
+               For the purposes of this document, the following terms and definitions
+               apply. The
+               <em>IEEE Standards Dictionary Online</em>
+                should be consulted for terms not defined in this clause.
+               <fn>
+                 <p id='_'>
+                   <em>IEEE Standards Dictionary Online</em>
+                    is available at:
+                   <link target='http://dictionary.ieee.org'/>
+                   . An IEEE Account is required for access to the dictionary, and one
+                   can be created at no charge on the dictionary sign-in page.
+                 </p>
+               </fn>
+             </p>
+           </terms>
          </sections>
          <annex id='_' inline-header='false' obligation='normative'>
            <title>Annex</title>
