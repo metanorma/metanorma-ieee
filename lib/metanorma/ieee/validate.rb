@@ -16,7 +16,7 @@ module Metanorma
         title_validate(doc.root)
         locality_validate(doc.root)
         bibitem_validate(doc.root)
-        listcount_validate(doc)
+        list_validate(doc)
         table_style(doc)
         figure_validate(doc)
       end
@@ -121,6 +121,27 @@ module Metanorma
           b.at(".//date") or
             @log.add("Style", b,
                      "Normative reference #{b&.at('./@id')&.text} is not dated.")
+        end
+      end
+
+      def list_validate(doc)
+        listcount_validate(doc)
+        listdepth_validate(doc)
+      end
+
+      # Template provision of styles
+      def listdepth_validate(doc)
+        doc.xpath("//ul[.//ul//ul]").each do |u|
+          next unless u.ancestors("ul").empty?
+
+          @log.add("Style", u,
+                   "Use ordered lists for lists more than two levels deep.")
+        end
+        doc.xpath("//ol[.//ol//ol//ol//ol//ol]").each do |u|
+          next unless u.ancestors("ol").empty?
+
+          @log.add("Style", u,
+                   "Ordered lists should not be more than five levels deep.")
         end
       end
 

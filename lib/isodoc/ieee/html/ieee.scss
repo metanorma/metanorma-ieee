@@ -96,19 +96,6 @@ p.IEEEStdsTitleDraftCRBody, li.IEEEStdsTitleDraftCRBody, div.IEEEStdsTitleDraftC
 	mso-ansi-language:EN-US;
 	mso-fareast-language:JA;
 	mso-no-proof:yes;}
-p.IEEEStdsSans-Serif, li.IEEEStdsSans-Serif, div.IEEEStdsSans-Serif
-	{mso-style-name:"IEEEStds Sans-Serif";
-	mso-style-unhide:no;
-	mso-style-parent:"";
-	margin:0cm;
-	text-align:justify;
-	mso-pagination:widow-orphan;
-	font-size:$smallerfontsize;
-	font-family:$headerfont;
-	mso-fareast-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
-	mso-ansi-language:EN-US;
-	mso-fareast-language:JA;}
 p.IEEEStdsKeywords, li.IEEEStdsKeywords, div.IEEEStdsKeywords
 	{mso-style-name:"IEEEStds Keywords";
 	mso-style-unhide:no;
@@ -1152,12 +1139,6 @@ span.IEEEStdsAbstractHeader
 	mso-style-parent:"";
 	font-weight:bold;
 	mso-bidi-font-weight:normal;}
-span.IEEEStdsDefTermsNumbers
-	{mso-style-name:"IEEEStds DefTerms+Numbers";
-	mso-style-unhide:no;
-	mso-style-parent:"";
-	font-weight:bold;
-	mso-bidi-font-weight:normal;}
 p.IEEEStdsTableColumnHead, li.IEEEStdsTableColumnHead, div.IEEEStdsTableColumnHead
 	{mso-style-name:"IEEEStds Table Column Head";
 	mso-style-unhide:no;
@@ -1493,25 +1474,6 @@ p.IEEEStdsNamesCtrCxSpLast, li.IEEEStdsNamesCtrCxSpLast, div.IEEEStdsNamesCtrCxS
 	mso-fareast-font-family:"Times New Roman";
 	mso-ansi-language:EN-US;
 	mso-fareast-language:JA;}
-p.IEEEStdsInstrCallout, li.IEEEStdsInstrCallout, div.IEEEStdsInstrCallout
-	{mso-style-name:"IEEEStds InstrCallout";
-	mso-style-unhide:no;
-	mso-style-parent:"IEEEStds Paragraph";
-	margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:12.0pt;
-	margin-left:0cm;
-	text-align:justify;
-	mso-pagination:widow-orphan;
-	font-size:$smallerfontsize;
-	font-family:$bodyfont;
-	mso-fareast-font-family:"Times New Roman";
-	mso-ansi-language:EN-US;
-	mso-fareast-language:JA;
-	font-weight:bold;
-	mso-bidi-font-weight:normal;
-	font-style:italic;
-	mso-bidi-font-style:normal;}
 p.IEEEStdsParaMemEmeritus, li.IEEEStdsParaMemEmeritus, div.IEEEStdsParaMemEmeritus
 	{mso-style-name:"IEEEStds ParaMemEmeritus";
 	mso-style-unhide:no;
@@ -1638,101 +1600,6 @@ p.IEEEStdsCopyrightaddrs, li.IEEEStdsCopyrightaddrs, div.IEEEStdsCopyrightaddrs
 	mso-ansi-language:EN-US;
 	mso-fareast-language:JA;
 	mso-no-proof:yes;}
-span.IEEEStdsAddItal
-	{mso-style-name:"IEEEStds AddItal";
-	mso-style-unhide:no;
-	mso-style-parent:"";
-	font-style:italic;
-	mso-bidi-font-style:normal;}
-p.IEEEStdsPara85, li.IEEEStdsPara85, div.IEEEStdsPara85
-	{mso-style-name:"IEEEStds Para8\.5";
-	mso-style-unhide:no;
-	mso-style-parent:"IEEEStds Paragraph";
-	margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:12.0pt;
-	margin-left:0cm;
-	text-align:justify;
-	mso-pagination:widow-orphan;
-	font-size:8.5pt;
-	mso-bidi-font-size:10.0pt;
-	font-family:$bodyfont;
-	mso-fareast-font-family:"Times New Roman";
-	mso-ansi-language:EN-US;
-	mso-fareast-language:JA;}
-p.IEEEStdsPara85Indent, li.IEEEStdsPara85Indent, div.IEEEStdsPara85Indent
-	{mso-style-name:"IEEEStds Para8\.5 Indent";
-	mso-style-unhide:no;
-	mso-style-parent:"IEEEStds Para8\.5";
-	margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:12.0pt;
-	margin-left:108.0pt;
-	mso-add-space:auto;
-	text-align:justify;
-	mso-pagination:widow-orphan;
-	font-size:8.5pt;
-	mso-bidi-font-size:10.0pt;
-	font-family:$bodyfont;
-	mso-fareast-font-family:"Times New Roman";
-	mso-ansi-language:EN-US;
-	mso-fareast-language:JA;}
-p.IEEEStdsPara85IndentCxSpFirst, li.IEEEStdsPara85IndentCxSpFirst, div.IEEEStdsPara85IndentCxSpFirst
-	{mso-style-name:"IEEEStds Para8\.5 IndentCxSpFirst";
-	mso-style-unhide:no;
-	mso-style-parent:"IEEEStds Para8\.5";
-	mso-style-type:export-only;
-	margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:0cm;
-	margin-left:108.0pt;
-	margin-bottom:.0001pt;
-	mso-add-space:auto;
-	text-align:justify;
-	mso-pagination:widow-orphan;
-	font-size:8.5pt;
-	mso-bidi-font-size:10.0pt;
-	font-family:$bodyfont;
-	mso-fareast-font-family:"Times New Roman";
-	mso-ansi-language:EN-US;
-	mso-fareast-language:JA;}
-p.IEEEStdsPara85IndentCxSpMiddle, li.IEEEStdsPara85IndentCxSpMiddle, div.IEEEStdsPara85IndentCxSpMiddle
-	{mso-style-name:"IEEEStds Para8\.5 IndentCxSpMiddle";
-	mso-style-unhide:no;
-	mso-style-parent:"IEEEStds Para8\.5";
-	mso-style-type:export-only;
-	margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:0cm;
-	margin-left:108.0pt;
-	margin-bottom:.0001pt;
-	mso-add-space:auto;
-	text-align:justify;
-	mso-pagination:widow-orphan;
-	font-size:8.5pt;
-	mso-bidi-font-size:10.0pt;
-	font-family:$bodyfont;
-	mso-fareast-font-family:"Times New Roman";
-	mso-ansi-language:EN-US;
-	mso-fareast-language:JA;}
-p.IEEEStdsPara85IndentCxSpLast, li.IEEEStdsPara85IndentCxSpLast, div.IEEEStdsPara85IndentCxSpLast
-	{mso-style-name:"IEEEStds Para8\.5 IndentCxSpLast";
-	mso-style-unhide:no;
-	mso-style-parent:"IEEEStds Para8\.5";
-	mso-style-type:export-only;
-	margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:12.0pt;
-	margin-left:108.0pt;
-	mso-add-space:auto;
-	text-align:justify;
-	mso-pagination:widow-orphan;
-	font-size:8.5pt;
-	mso-bidi-font-size:10.0pt;
-	font-family:$bodyfont;
-	mso-fareast-font-family:"Times New Roman";
-	mso-ansi-language:EN-US;
-	mso-fareast-language:JA;}
 p.IEEEStdsLevel2frontmatter, li.IEEEStdsLevel2frontmatter, div.IEEEStdsLevel2frontmatter
 	{mso-style-name:"IEEEStds Level 2 \(front matter\)";
 	mso-style-unhide:no;

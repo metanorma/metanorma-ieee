@@ -228,6 +228,62 @@ RSpec.describe Metanorma::IEEE do
                       "specific elements"
   end
 
+  it "Warn if unordered list more than 2 levels deep" do
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      #{VALIDATING_BLANK_HDR}
+
+      == Clause
+
+      * List
+      ** List
+      *** List
+    INPUT
+    expect(File.read("test.err"))
+      .to include "Use ordered lists for lists more than two levels deep"
+
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      #{VALIDATING_BLANK_HDR}
+
+      == Clause
+
+      * List
+      ** List
+    INPUT
+    expect(File.read("test.err"))
+      .not_to include "Use ordered lists for lists more than two levels deep"
+  end
+
+  it "Warn if ordered list more than 5 levels deep" do
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      #{VALIDATING_BLANK_HDR}
+
+      == Clause
+
+      . List
+      .. List
+      ... List
+      .... List
+      ..... List
+      ...... List
+    INPUT
+    expect(File.read("test.err"))
+      .to include "Ordered lists should not be more than five levels deep"
+
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      #{VALIDATING_BLANK_HDR}
+
+      == Clause
+
+      . List
+      .. List
+      ... List
+      .... List
+      ..... List
+    INPUT
+    expect(File.read("test.err"))
+      .not_to include "Ordered lists should not be more than five levels deep"
+  end
+
   it "Warn if more than 5 levels of subclause" do
     Asciidoctor.convert(<<~"INPUT", *OPTIONS)
       #{VALIDATING_BLANK_HDR}

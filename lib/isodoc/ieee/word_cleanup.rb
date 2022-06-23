@@ -109,10 +109,6 @@ module IsoDoc
           s.name = "span"
           s["class"] = "IEEEStdsParaBold"
         end
-        html.xpath("//em").each do |s|
-          s.name = "span"
-          s["class"] = "IEEEStdsAddItal"
-        end
       end
 
       STYLESMAP = {

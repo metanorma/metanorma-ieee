@@ -295,7 +295,7 @@ RSpec.describe IsoDoc::IEEE do
            <div class='WordSection3'>
              <div id='D'>
                <p class='IEEEStdsParagraph'>
-                 <span class='IEEEStdsAddItal'>Emphasis</span>
+                 <em>Emphasis</em>
                  <span class='IEEEStdsParaBold'>Strong</span>
                  <tt>Monospace</tt>
                </p>
