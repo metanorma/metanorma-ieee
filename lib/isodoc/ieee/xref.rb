@@ -72,6 +72,28 @@ module IsoDoc
           )
         end
       end
+
+      def termnote_anchor_names(docxml)
+        docxml.xpath(ns("//*[termnote]")).each do |t|
+          c = Counter.new
+          notes = t.xpath(ns("./termnote"))
+          notes.reject { |n| blank?(n["id"]) }.each do |n|
+=begin
+            c.increment(n)
+            l = "#{@labels['termnote']} #{increment_label(notes, n, c, increment: false)}"
+            @anchors[n["id"]] =
+              { label: l, type: "termnote",
+                value: c.print, elem: @labels["termnote"],
+                xref: l10n("#{anchor(t['id'], :xref)}, "\
+                           "#{@labels['note_xref']} #{c.print}") }
+=end
+@anchors[n["id"]] =
+            anchor_struct("#{@labels['termnote']} #{increment_label(notes, n, c)}",
+                          n,
+                          @labels["note_xref"], "termnote", false)
+          end
+        end
+      end
     end
   end
 end

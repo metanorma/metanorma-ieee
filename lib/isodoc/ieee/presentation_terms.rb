@@ -175,6 +175,11 @@ module IsoDoc
         end
       end
 
+      def termnote1(elem)
+        lbl = l10n(@xrefs.anchor(elem["id"], :label) || "???")
+        prefix_name(elem, block_delim, lower2cap(lbl), "name")
+      end
+
       def term(docxml); end
     end
   end

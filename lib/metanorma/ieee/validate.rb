@@ -14,7 +14,7 @@ module Metanorma
         super
         bibdata_validate(doc.root)
         title_validate(doc.root)
-        locality_erefs_validate(doc.root)
+        locality_validate(doc.root)
         bibitem_validate(doc.root)
         listcount_validate(doc)
         table_style(doc)
@@ -86,12 +86,26 @@ module Metanorma
            up upon versus via with within without a an the).include?(word)
       end
 
+      def locality_validate(root)
+        locality_range_validate(root)
+        locality_erefs_validate(root)
+      end
+
+      # Style manual 17.2 &c
+      def locality_range_validate(root)
+        root.xpath("//eref | xref").each do |e|
+          e.at(".//localityStack[@connective = 'from'] | .//referenceTo") and
+            @log.add("Style", e, "Cross-reference contains range, "\
+                                 "should be separate cross-references")
+        end
+      end
+
       # Style manual 12.3.2
       def locality_erefs_validate(root)
         root.xpath("//eref[descendant::locality]").each do |t|
           if !/[:-](\d+{4})$/.match?(t["citeas"])
             @log.add("Style", t,
-                     "undated reference #{t['citeas']} should not contain "\
+                     "Undated reference #{t['citeas']} should not contain "\
                      "specific elements")
           end
         end
@@ -112,7 +126,7 @@ module Metanorma
 
       # Style manual 13.3
       def listcount_validate(doc)
-        doc.xpath("//clause | //annex").each do |c|
+        doc.xpath("//sections//clause | //annex").each do |c|
           next if c.xpath(".//ol").empty?
 
           ols = c.xpath(".//ol") -
@@ -127,6 +141,7 @@ module Metanorma
       def figure_validate(xmldoc)
         xrefs = xrefs(xmldoc)
         figure_name_validate(xmldoc, xrefs)
+        figure_name_style_validate(xmldoc)
         table_figure_name_validate(xmldoc, xrefs)
         table_figure_quantity_validate(xmldoc)
       end
@@ -159,8 +174,16 @@ module Metanorma
             num = xrefs.anchor(f["id"], :label)
             File.basename(i["src"], ".*") == "#{pref}_fig#{num}" or
               @log.add("Style", i,
-                       "image name #{i['src']} is expected to be #{pref}_fig#{num}")
+                       "Image name #{i['src']} is expected to be #{pref}_fig#{num}")
           end
+      end
+
+      # Style manual 17.2
+      def figure_name_style_validate(docxml)
+        docxml.xpath("//figure/name").each do |td|
+          style_regex(/^(?<num>\p{Lower}\s*)/, "figure heading should be capitalised",
+                      td, td.text)
+        end
       end
 
       def table_figure_name_validate(xmldoc, xrefs)
@@ -172,7 +195,7 @@ module Metanorma
             num = tablefigurenumber(t, f, xrefs)
             File.basename(i["src"]) == num or
               @log.add("Style", i,
-                       "image name #{i['src']} is expected to be #{num}")
+                       "Image name #{i['src']} is expected to be #{num}")
           end
         end
       end

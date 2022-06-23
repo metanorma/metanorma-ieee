@@ -68,13 +68,17 @@ module Metanorma
                     "unit is needed on both value and tolerance", node, text)
       end
 
-      # Style manual 16.3.2
+      # Style manual 16.2, 16.3.2
       def table_style(docxml)
         docxml.xpath("//td").each do |td|
           style_regex(/^(?<num>[\u2212-]?[0-9]{5,}[.0-9]*|-?[0-9]+\.[0-9]{5,})$/,
                       "number in table not broken up in threes", td, td.text)
         end
         docxml.xpath("//table").each { |t| table_style_columns(t) }
+        docxml.xpath("//table/name | //th").each do |td|
+          style_regex(/^(?<num>\p{Lower}\S*)/, "table heading should be capitalised",
+                      td, td.text)
+        end
       end
 
       # deliberately doing naive, ignoring rowspan

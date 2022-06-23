@@ -28,6 +28,37 @@ module IsoDoc
       def para_attrs(node)
         super.merge(type: node["type"])
       end
+
+      def note_delim
+        "&#x2014;"
+      end
+
+      def note_p_parse(node, div)
+        name = node&.at(ns("./name"))&.remove
+        div.p do |p|
+          name and p.span **{ class: "note_label" } do |s|
+            name.children.each { |n| parse(n, s) }
+            s << note_delim
+          end
+          node.first_element_child.children.each { |n| parse(n, p) }
+        end
+        node.element_children[1..-1].each { |n| parse(n, div) }
+      end
+
+      def note_parse1(node, div)
+        name = node&.at(ns("./name"))&.remove
+        name and div.p do |p|
+          p.span **{ class: "note_label" } do |s|
+            name.children.each { |n| parse(n, s) }
+            s << note_delim
+          end
+        end
+        node.children.each { |n| parse(n, div) }
+      end
+
+      def termnote_delim
+        "&#x2014;"
+      end
     end
   end
 end

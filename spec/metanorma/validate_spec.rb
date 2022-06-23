@@ -48,6 +48,123 @@ RSpec.describe Metanorma::IEEE do
       .not_to include "Title contains uncapitalised word other than preposition"
   end
 
+  it "Warns of uncapitalised title of figure" do
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :doctype: pizza
+
+      .uncapitalised caption
+      image::a.gif[]
+    INPUT
+    expect(File.read("test.err"))
+      .to include "figure heading should be capitalised"
+
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      = Document save for the Title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :doctype: pizza
+
+      .Capitalised caption
+      image::a.gif[]
+    INPUT
+    expect(File.read("test.err"))
+      .not_to include "figure heading should be capitalised"
+  end
+
+  it "Warns of uncapitalised title of table" do
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :doctype: pizza
+
+      .uncapitalised caption
+      |===
+      |A |B
+      |===
+    INPUT
+    expect(File.read("test.err"))
+      .to include "table heading should be capitalised"
+
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      = Document save for the Title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :doctype: pizza
+
+      .Capitalised caption
+      |===
+      |A |B
+      |===
+    INPUT
+    expect(File.read("test.err"))
+      .not_to include "table heading should be capitalised"
+  end
+
+  it "Warns of uncapitalised heading of table" do
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :doctype: pizza
+
+      |===
+      |a |B
+
+      |C |D
+      |===
+    INPUT
+    expect(File.read("test.err"))
+      .to include "table heading should be capitalised"
+
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :doctype: pizza
+
+      |===
+      |A |B
+
+      h|c |D
+      |===
+    INPUT
+    expect(File.read("test.err"))
+      .to include "table heading should be capitalised"
+
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      = Document save for the Title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :doctype: pizza
+
+      |===
+      |A |B
+
+      |c |D
+      |===
+    INPUT
+    expect(File.read("test.err"))
+      .not_to include "table heading should be capitalised"
+  end
+
   it "warns of undated reference in normative references" do
     Asciidoctor.convert(<<~"INPUT", *OPTIONS)
       #{VALIDATING_BLANK_HDR}
@@ -93,7 +210,7 @@ RSpec.describe Metanorma::IEEE do
       * [[[iso123,ISO 123]]] _Standard_
     INPUT
     expect(File.read("test.err"))
-      .to include "undated reference ISO 123 should not contain "\
+      .to include "Undated reference ISO 123 should not contain "\
                   "specific elements"
 
     Asciidoctor.convert(<<~"INPUT", *OPTIONS)
@@ -107,7 +224,7 @@ RSpec.describe Metanorma::IEEE do
       * [[[iso123,ISO 123-2000]]] _Standard_
     INPUT
     expect(File.read("test.err"))
-      .not_to include "undated reference ISO 123-2000 should not contain "\
+      .not_to include "Undated reference ISO 123-2000 should not contain "\
                       "specific elements"
   end
 
@@ -204,6 +321,62 @@ RSpec.describe Metanorma::IEEE do
     INPUT
     expect(File.read("test.err"))
       .not_to include "More than 1 ordered list in a numbered clause"
+  end
+
+  it "Warns of ranges in crossreferences" do
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :doctype: pizza
+
+      <<ref1,clause=3-5>>
+
+      [bibliography]
+      == Bibliography
+
+      * [[[ref1,XYZ]]] _Standard_
+    INPUT
+
+    expect(File.read("test.err")).to include "Cross-reference contains range, should be separate cross-references"
+
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :doctype: pizza
+
+      <<ref1,clause=3;to!clause=5>>
+
+      [bibliography]
+      == Bibliography
+
+      * [[[ref1,XYZ]]] _Standard_
+    INPUT
+
+    expect(File.read("test.err")).to include "Cross-reference contains range, should be separate cross-references"
+
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :doctype: pizza
+
+      <<ref1,clause=3>>
+
+      [bibliography]
+      == Bibliography
+
+      * [[[ref1,XYZ]]] _Standard_
+    INPUT
+
+    expect(File.read("test.err")).not_to include "Cross-reference contains range, should be separate cross-references"
   end
 
   context "Warns of missing overview" do
@@ -640,11 +813,11 @@ RSpec.describe Metanorma::IEEE do
         image::1000-2000_fig4.png[]
       INPUT
       expect(File.read("test.err"))
-        .to include "image name document-2000_fig1.png is expected to be 1000-2000_fig1"
+        .to include "Image name document-2000_fig1.png is expected to be 1000-2000_fig1"
       expect(File.read("test.err"))
-        .not_to include "image name 1000-2000_fig2.png is expected to be 1000-2000_fig2"
+        .not_to include "Image name 1000-2000_fig2.png is expected to be 1000-2000_fig2"
       expect(File.read("test.err"))
-        .to include "image name 1000-2000_fig4.png is expected to be 1000-2000_fig3"
+        .to include "Image name 1000-2000_fig4.png is expected to be 1000-2000_fig3"
     end
 
     it "warn on wrong image names within tables" do
@@ -671,11 +844,11 @@ RSpec.describe Metanorma::IEEE do
         |===
       INPUT
       expect(File.read("test.err"))
-        .not_to include "image name Tab2Row1Col2.png is expected to be Tab2Row1Col2"
+        .not_to include "Image name Tab2Row1Col2.png is expected to be Tab2Row1Col2"
       expect(File.read("test.err"))
-        .to include "image name 1000-fig2.png is expected to be Tab2Row2Col2"
+        .to include "Image name 1000-fig2.png is expected to be Tab2Row2Col2"
       expect(File.read("test.err"))
-        .to include "image name 1000-fig4.png is expected to be Tab2Row3Col1"
+        .to include "Image name 1000-fig4.png is expected to be Tab2Row3Col1"
     end
 
     it "warn on two images in a table cell" do

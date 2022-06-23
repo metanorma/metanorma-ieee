@@ -7,6 +7,7 @@ termsdefsymbols: Definitions, acronyms and abbreviations
 termsdefabbrev: Definitions, acronyms and abbreviations
 formula: Equation
 inequality: Inequality
+termnote: NOTE
 doctype_abbrev:
   standard: Std.
   recommended-practice: Rec. Prac.

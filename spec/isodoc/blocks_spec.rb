@@ -207,8 +207,7 @@ RSpec.describe IsoDoc do
                </dl>
                <div class='Note'>
                  <p>
-                   <span class='note_label'>NOTE</span>
-                   &#xa0; This is a table about rice
+                 <span class='note_label'>NOTE&#x2014;</span>This is a table about rice
                  </p>
                </div>
              </table>
@@ -300,10 +299,7 @@ RSpec.describe IsoDoc do
                   <dd>A type of rice</dd>
                 </dl>
                 <div class='Note'>
-                  <p class='Note'>
-                    <span class='note_label'>NOTE</span>
-                    <span style='mso-tab-count:1'>&#xa0; </span>
-                    This is a table about rice
+                  <p><span class='note_label'>NOTE&#x2014;</span>This is a table about rice
                   </p>
                 </div>
               </table>
@@ -460,7 +456,7 @@ RSpec.describe IsoDoc do
                     <span style='mso-tab-count:1'>&#xa0; </span>
                   </span>
                   <p id='_'>
-                    The time#{' '}
+                    The time
                     <span class='stem'>(#(t_90)#)</span>
                      was estimated to be 18,2 min for this example.
                   </p>
@@ -480,7 +476,7 @@ RSpec.describe IsoDoc do
                 </tr>
               </table>
               <p class='FigureTitle' style='text-align:center;'>
-                Figure 1&#x2014;Split-it-right#{' '}
+                Figure 1&#x2014;Split-it-right
                 <i>sample</i>
                  divider
                 <span style='mso-bookmark:_Ref'>
@@ -544,5 +540,95 @@ RSpec.describe IsoDoc do
           </fn>
         </name>
       OUTPUT
+  end
+
+  it "processes sequences of notes" do
+    input = <<~INPUT
+          <iso-standard xmlns="http://riboseinc.com/isoxml">
+          <sections>
+          <clause id="a"><title>First</title>
+          <note id="note1">
+        <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">First note.</p>
+      </note>
+          <note id="note2">
+        <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83a">Second note.</p>
+      </note>
+          </clause>
+          <clause id="b"><title>First</title>
+          <note id="note3">
+        <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83b">Third note.</p>
+      </note>
+      </clause>
+        </sections>
+          </iso-standard>
+    INPUT
+    presxml = <<~OUTPUT
+          <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+        <sections>
+          <clause id='a' displayorder='1'>
+            <title depth='1'>
+              1.
+              <tab/>
+              First
+            </title>
+            <note id='note1'>
+              <name>NOTE 1</name>
+              <p id='_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f'>First note.</p>
+            </note>
+            <note id='note2'>
+              <name>NOTE 2</name>
+              <p id='_f06fd0d1-a203-4f3d-a515-0bdba0f8d83a'>Second note.</p>
+            </note>
+          </clause>
+          <clause id='b' displayorder='2'>
+            <title depth='1'>
+              2.
+              <tab/>
+              First
+            </title>
+            <note id='note3'>
+              <name>NOTE</name>
+              <p id='_f06fd0d1-a203-4f3d-a515-0bdba0f8d83b'>Third note.</p>
+            </note>
+          </clause>
+        </sections>
+      </iso-standard>
+    OUTPUT
+    html = <<~"OUTPUT"
+            #{HTML_HDR}
+           <p class='zzSTDTitle1'/>
+           <div id='a'>
+             <h1> 1. &#xa0; First </h1>
+             <div id='note1' class='Note'>
+               <p>
+                 <span class='note_label'>NOTE 1&#x2014;</span>
+                 First note.
+               </p>
+             </div>
+             <div id='note2' class='Note'>
+               <p>
+                 <span class='note_label'>NOTE 2&#x2014;</span>
+                 Second note.
+               </p>
+             </div>
+           </div>
+           <div id='b'>
+             <h1> 2. &#xa0; First </h1>
+             <div id='note3' class='Note'>
+               <p>
+                 <span class='note_label'>NOTE&#x2014;</span>
+                 Third note.
+               </p>
+             </div>
+           </div>
+         </div>
+       </body>
+    OUTPUT
+    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
+       .convert("test", input, true).gsub(/&lt;/, "&#x3c;")))
+      .to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
+      .convert("test", presxml, true))
+      .at("//body").to_xml)).to be_equivalent_to xmlpp(html)
   end
 end

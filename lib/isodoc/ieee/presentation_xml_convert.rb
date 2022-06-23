@@ -69,6 +69,18 @@ module IsoDoc
         "&#x2014;"
       end
 
+          def note1(elem)
+      return if elem.parent.name == "bibitem" || elem["notag"] == "true"
+
+      n = @xrefs.get[elem["id"]]
+      lbl = if n.nil? || n[:label].nil? || n[:label].empty?
+              @i18n.note
+            else
+              l10n("#{@i18n.note} #{n[:label]}")
+            end
+      prefix_name(elem, block_delim, lbl, "name")
+    end
+
       def display_order(docxml)
         i = 0
         i = display_order_xpath(docxml, "//preface/*", i)

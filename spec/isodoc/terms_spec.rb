@@ -147,14 +147,13 @@ RSpec.describe IsoDoc do
                 </ul>
               </termexample>
               <termnote id='_671a1994-4783-40d0-bc81-987d06ffb74e' keep-with-next='true' keep-lines-together='true'>
-                <name>Note 1 to entry</name>
-                <p id='_19830f33-e46c-42cc-94ca-a5ef101132d5'>
-                  The starch of waxy rice consists almost entirely of amylopectin. The
+                <name>NOTE 1</name>
+                <p id='_19830f33-e46c-42cc-94ca-a5ef101132d5'>The starch of waxy rice consists almost entirely of amylopectin. The
                   kernels have a tendency to stick together after cooking.
                 </p>
               </termnote>
               <termnote id='_671a1994-4783-40d0-bc81-987d06ffb74f'>
-                <name>Note 2 to entry</name>
+                <name>NOTE 2</name>
                 <ul>
                   <li>A</li>
                 </ul>
@@ -218,15 +217,13 @@ RSpec.describe IsoDoc do
                </ul>
              </div>
              <div id='_671a1994-4783-40d0-bc81-987d06ffb74e' class='Note' style='page-break-after: avoid;page-break-inside: avoid;'>
-               <p>
-                 Note 1 to entry: The starch of waxy rice consists almost entirely of
+               <p>NOTE 1&#x2014;The starch of waxy rice consists almost entirely of
                  amylopectin. The kernels have a tendency to stick together after
                  cooking.
                </p>
              </div>
              <div id='_671a1994-4783-40d0-bc81-987d06ffb74f' class='Note'>
-               <p>
-                 Note 2 to entry:
+               <p>NOTE 2&#x2014;
                  <ul>
                    <li>A</li>
                  </ul>
@@ -314,14 +311,14 @@ RSpec.describe IsoDoc do
              </div>
              <div id='_671a1994-4783-40d0-bc81-987d06ffb74e' class='Note' style='page-break-after: avoid;page-break-inside: avoid;'>
                <p class='Note'>
-                 Note 1 to entry: The starch of waxy rice consists almost entirely of
+                 NOTE 1&#x2014;The starch of waxy rice consists almost entirely of
                  amylopectin. The kernels have a tendency to stick together after
                  cooking.
                </p>
              </div>
              <div id='_671a1994-4783-40d0-bc81-987d06ffb74f' class='Note'>
                <p class='Note'>
-                 Note 2 to entry:
+                 NOTE 2&#x2014;
                  <ul>
                    <li>A</li>
                  </ul>
