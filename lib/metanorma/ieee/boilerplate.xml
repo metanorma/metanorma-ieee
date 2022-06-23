@@ -280,7 +280,7 @@
     </clause>
 
     <clause>
-      <table unnumbered="true">
+      <table unnumbered="true" id="_isbn_pdf_print">
         <tbody>
           <tr><td>PDF:</td>	<td>ISBN {{ isbn_pdf }}</td>	<td>{{ stdid_pdf}}</td></tr>
           <tr><td>Print:</td>	<td>ISBN {{ isbn_print}}</td>	<td>{{ stdid_print}}</td></tr>
