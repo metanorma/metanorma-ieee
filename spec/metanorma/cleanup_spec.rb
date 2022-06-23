@@ -237,4 +237,40 @@ RSpec.describe Metanorma::IEEE do
       .to be_equivalent_to xmlpp(output)
   end
 
+  it "processes footnotes" do
+    input = <<~INPUT
+      #{ASCIIDOC_BLANK_HDR}
+
+      Hello!footnote:[Footnote text]
+
+      Hello.footnote:abc[This is a repeated footnote]
+
+      Repetition.footnote:abc[]
+    INPUT
+    output = <<~OUTPUT
+      <sections>
+        <p id='_'>
+          Hello!
+          <fn reference='1'>
+            <p id='_'>Footnote text</p>
+          </fn>
+        </p>
+        <p id='_'>
+          Hello.
+          <fn reference='2'>
+            <p id='_'>This is a repeated footnote</p>
+          </fn>
+        </p>
+        <p id='_'>
+          Repetition.
+          <fn reference='3'>
+            <p id='_'>See Footnote 2.</p>
+          </fn>
+        </p>
+      </sections>
+    OUTPUT
+    ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
+    expect(xmlpp(strip_guid(ret.at("//xmlns:sections").to_xml)))
+      .to be_equivalent_to(output)
+  end
 end

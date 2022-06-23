@@ -595,34 +595,34 @@ RSpec.describe IsoDoc do
       </iso-standard>
     OUTPUT
     html = <<~"OUTPUT"
-            #{HTML_HDR}
-           <p class='zzSTDTitle1'/>
-           <div id='a'>
-             <h1> 1. &#xa0; First </h1>
-             <div id='note1' class='Note'>
-               <p>
-                 <span class='note_label'>NOTE 1&#x2014;</span>
-                 First note.
-               </p>
-             </div>
-             <div id='note2' class='Note'>
-               <p>
-                 <span class='note_label'>NOTE 2&#x2014;</span>
-                 Second note.
-               </p>
-             </div>
-           </div>
-           <div id='b'>
-             <h1> 2. &#xa0; First </h1>
-             <div id='note3' class='Note'>
-               <p>
-                 <span class='note_label'>NOTE&#x2014;</span>
-                 Third note.
-               </p>
-             </div>
-           </div>
-         </div>
-       </body>
+      #{HTML_HDR}
+          <p class='zzSTDTitle1'/>
+          <div id='a'>
+            <h1> 1. &#xa0; First </h1>
+            <div id='note1' class='Note'>
+              <p>
+                <span class='note_label'>NOTE 1&#x2014;</span>
+                First note.
+              </p>
+            </div>
+            <div id='note2' class='Note'>
+              <p>
+                <span class='note_label'>NOTE 2&#x2014;</span>
+                Second note.
+              </p>
+            </div>
+          </div>
+          <div id='b'>
+            <h1> 2. &#xa0; First </h1>
+            <div id='note3' class='Note'>
+              <p>
+                <span class='note_label'>NOTE&#x2014;</span>
+                Third note.
+              </p>
+            </div>
+          </div>
+        </div>
+      </body>
     OUTPUT
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
        .convert("test", input, true).gsub(/&lt;/, "&#x3c;")))
@@ -630,5 +630,65 @@ RSpec.describe IsoDoc do
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
       .convert("test", presxml, true))
       .at("//body").to_xml)).to be_equivalent_to xmlpp(html)
+  end
+
+  it "processes admonitions" do
+    presxml = <<~INPUT
+          <iso-standard xmlns="http://riboseinc.com/isoxml" type='presentation'>
+          <preface><foreword displayorder="1">
+          <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6a" type="caution" keep-with-next="true" keep-lines-together="true">
+          <name>CAUTION</name>
+        <p id="_e94663cc-2473-4ccc-9a72-983a74d989f2">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
+      </admonition>
+          <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6b" type="caution" keep-with-next="true" keep-lines-together="true" notag="true">
+        <p id="_e94663cc-2473-4ccc-9a72-983a74d989f2">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
+      </admonition>
+          </foreword></preface>
+          </iso-standard>
+    INPUT
+    html = <<~OUTPUT
+      #{HTML_HDR}
+      <br/>
+        <div>
+                    <h1 class='ForewordTitle'>Foreword</h1>
+             <div id="_" class='Admonition' style='page-break-after: avoid;page-break-inside: avoid;'>
+               <p class='AdmonitionTitle' style='text-align:center;'>CAUTION</p>
+               <p id="_">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
+             </div>
+             <div id="_" class='Admonition' style='page-break-after: avoid;page-break-inside: avoid;'>
+               <p id="_">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
+             </div>
+        </div>
+        <p class="zzSTDTitle1"/>
+        </div>
+        </body>
+    OUTPUT
+    word = <<~OUTPUT
+          <div class='WordSection2'>
+        <p>
+          <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
+        </p>
+        <div>
+          <h1 class='ForewordTitle'>Foreword</h1>
+          <div id="_" class='IEEEStdsWarning' style='page-break-after: avoid;page-break-inside: avoid;'>
+            <p class='IEEEStdsWarning' style='text-align:center;'>
+              <b>CAUTION</b>
+            </p>
+            <p id="_">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
+          </div>
+          <div id="_" class='IEEEStdsWarning' style='page-break-after: avoid;page-break-inside: avoid;'>
+            <p id="_">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
+          </div>
+        </div>
+        <p>&#xa0;</p>
+      </div>
+    OUTPUT
+    expect(strip_guid(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
+      .convert("test", presxml, true))
+      .at("//body").to_xml))).to be_equivalent_to xmlpp(html)
+    expect(strip_guid(xmlpp(Nokogiri::XML(IsoDoc::IEEE::WordConvert.new({})
+      .convert("test", presxml, true))
+                .at("//div[@class = 'WordSection2']").to_xml)))
+      .to be_equivalent_to xmlpp(word)
   end
 end

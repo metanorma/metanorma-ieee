@@ -155,6 +155,31 @@ module Metanorma
                     "./preferred/graphical-symbol/figure/@id")
         d.text.downcase
       end
+
+      def table_footnote_renumber1(fnote, idx, seen)
+        content = footnote_content(fnote)
+        idx += 1
+        if seen[content]
+          fnote.children = "<p>See Footnote #{seen[content]}.</p>"
+        else seen[content] = idx
+        end
+        fnote["reference"] = (idx - 1 + "a".ord).chr
+        fnote["table"] = true
+        [idx, seen]
+      end
+
+      def other_footnote_renumber1(fnote, idx, seen)
+        return [idx, seen] if fnote["table"]
+
+        content = footnote_content(fnote)
+        idx += 1
+        if seen[content]
+          fnote.children = "<p>See Footnote #{seen[content]}.</p>"
+        else seen[content] = idx
+        end
+        fnote["reference"] = idx.to_s
+        [idx, seen]
+      end
     end
   end
 end

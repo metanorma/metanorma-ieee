@@ -68,6 +68,21 @@ module IsoDoc
         end
       end
 
+      def admonition_name_parse(_node, div, name)
+        div.p **{ class: "IEEEStdsWarning", style: "text-align:center;" } do |p|
+          p.b do |b|
+            name.children.each { |n| parse(n, b) }
+          end
+        end
+      end
+
+      def admonition_class(node)
+        if node.ancestors("introduction").empty?
+          "IEEEStdsWarning"
+        else "IEEEStdsIntroduction"
+        end
+      end
+
       include BaseConvert
       include Init
     end
