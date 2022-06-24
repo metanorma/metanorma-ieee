@@ -173,9 +173,8 @@ RSpec.describe IsoDoc::IEEE do
                 Normative References
               </title>
               <bibitem id='ISO712' type='standard'>
-                <formattedref>
-                  <em>Cereals and cereal products</em>
-                  .
+                <formattedref>ISO 712,
+                  <em>Cereals and cereal products</em>.
                 </formattedref>
                 <docidentifier>ISO 712</docidentifier>
               </bibitem>

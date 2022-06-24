@@ -69,17 +69,17 @@ module IsoDoc
         "&#x2014;"
       end
 
-          def note1(elem)
-      return if elem.parent.name == "bibitem" || elem["notag"] == "true"
+      def note1(elem)
+        return if elem.parent.name == "bibitem" || elem["notag"] == "true"
 
-      n = @xrefs.get[elem["id"]]
-      lbl = if n.nil? || n[:label].nil? || n[:label].empty?
-              @i18n.note
-            else
-              l10n("#{@i18n.note} #{n[:label]}")
-            end
-      prefix_name(elem, block_delim, lbl, "name")
-    end
+        n = @xrefs.get[elem["id"]]
+        lbl = if n.nil? || n[:label].nil? || n[:label].empty?
+                @i18n.note
+              else
+                l10n("#{@i18n.note} #{n[:label]}")
+              end
+        prefix_name(elem, block_delim, lbl, "name")
+      end
 
       def display_order(docxml)
         i = 0
@@ -93,6 +93,19 @@ module IsoDoc
         i = display_order_xpath(docxml, "//annex", i)
         i = display_order_xpath(docxml, @xrefs.klass.bibliography_xpath, i)
         display_order_xpath(docxml, "//indexsect", i)
+      end
+
+      def bibrenderer
+        ::Relaton::Render::IEEE::General.new(language: @lang,
+                                             i18nhash: @i18n.get)
+      end
+
+      def creatornames(bibitem)
+        ::Relaton::Render::IEEE::General
+          .new(language: @lang, i18nhash: @i18n.get,
+               template: { (bibitem["type"] || "misc").to_sym =>
+                           "{{ creatornames }}" })
+          .parse1(RelatonBib::XMLParser.from_xml(bibitem.to_xml))
       end
 
       include Init

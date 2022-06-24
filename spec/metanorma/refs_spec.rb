@@ -10,29 +10,38 @@ RSpec.describe Metanorma::IEEE do
         :nodoc:
         :no-isobib-cache:
 
-        <<ref3>>
-        <<ref7>>
-        <<ref6>>
-        <<ref1>>
-        <<ref4>>
-        <<ref5>>
-        <<ref2>>
-
         [bibliography]
         == Normative References
 
-        * [[[ref5,ISO 639:1967]]] REF5
-        * [[[ref7,IETF RFC 7749]]] REF7
-        * [[[ref6,REF6]]] REF6
-        * [[[ref4,REF4]]] REF4
-        * [[[ref2,ISO 15124]]] REF2
-        * [[[ref3,REF3]]] REF3
-        * [[[ref1,REF1]]] REF1
+        * [[[ref1,ISO 639:1967]]] REF5
+        * [[[ref2,RFC 7749]]] REF7
+        * [[[ref3,REF4]]] REF4
+
+        [[ref4]]
+        [%bibitem]
+        === Indiana Jones and the Last Crusade
+        type:: book
+        title::
+          type::: main
+          content::: Indiana Jones and the Last Crusade
+
+        ==== Contributor
+        organization::
+          name::: International Organization for Standardization
+          abbreviation::: ISO
+        role::
+          type::: publisher
+
+        ==== Contributor
+        person::
+          name:::
+            surname:::: Jones
+            forename:::: Indiana
+
       INPUT
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       expect(out.xpath("//xmlns:references/xmlns:bibitem/@id")
-        .map(&:value)).to be_equivalent_to ["ref2", "ref5", "ref1", "ref3",
-                                            "ref4", "ref6", "ref7"]
+        .map(&:value)).to be_equivalent_to ["ref3", "ref1", "ref4", "ref2"]
     end
   end
 

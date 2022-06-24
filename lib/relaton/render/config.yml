@@ -1,0 +1,44 @@
+nametemplate:
+  one: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{surname[0] }} ,_{{initials[0] | join: '. '}}.{% endif %}"
+  two: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{surname[0] }} ,_{{initials[0] | join: '. '}}.{% endif %} , {{ labels['and'] }} {% if nonpersonal[1] %}{{ nonpersonal[1] }}{% else %}{{initials[1] | join: '. '}}. {{surname[1] }}{% endif %}"
+  more: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{surname[0] }} ,_{{initials[0] | join: '. '}}.{% endif %} , {% if nonpersonal[1] %}{{ nonpersonal[1] }}{% else %}{{initials[1] | join: '. '}}. {{surname[1] }}{% endif %} , {{ labels['and'] }} {% if nonpersonal[2] %}{{ nonpersonal[2] }}{% else %}{{initials[2] | join: '. '}}. {{surname[2] }}{% endif %}"
+extenttemplate:
+  misc: "{{ volume }}, {{issue}}, {{ page }}, {{ duration }}"
+template:
+  # skip standardidentifier, it is inserted in front of formattedref within metanorma
+  standard: "{{ standardidentifier | first }}, {{ title }}."
+  techreport: standard
+  article: "{{creatornames}}, “{{title}},” <em>{{ series }}</em>, {{ extent }}, {{ date }}, {{ labels['viewed'] }}_{{date_accessed}}, {{ uri }} ."
+  book: "{{creatornames}}, <em>{{title}}</em>, {{ edition }}, {{place}}: {{publisher}}, {{date}}, {{ labels['viewed'] }}_{{date_accessed}}, {{ uri }} ."
+  booklet: book
+  manual: book
+  proceedings: book
+  inproceedings: "{{ creatornames }}, “{{ title }},” <em>{{host_title}}</em>, {{place}}, {{extent}}, {{date}}, {{ labels['viewed'] }}_{{date_accessed}}, {{ uri }} ."
+  inbook: "{{ creatornames }}, “{{ title }},” {{ labels['in'] }} {{ host_creatornames}} ({{ host_role}}) : <em>{{host_title}}</em>, {{place}}: {{publisher}}, {{date}}, {{extent}}, {{ labels['viewed'] }}_{{date_accessed}}, {{ uri }} ."
+  incollection: inbook
+  thesis: "{{ creatornames }} , “{{ title }}.” {{ medium | capitalize }}, {{ publisher }}, {{ date }}, {{ labels['viewed'] }}_{{date_accessed}}, {{ uri }} ."
+  unpublished: thesis
+  misc: thesis
+  website: thesis
+  webresource: thesis
+  software: thesis
+  dataset: thesis
+  map: thesis
+  audiovisual: thesis
+  film: thesis
+  video: thesis
+  broadcast: thesis
+  graphic_work: thesis
+  music: thesis
+  performance: thesis
+  patent: thesis
+  archival: thesis
+  social_media: thesis
+  alert: thesis
+  message: thesis
+  conversation: thesis
+  internal: thesis
+
+
+
+

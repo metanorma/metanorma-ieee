@@ -9,6 +9,7 @@ formula: Equation
 inequality: Inequality
 termnote: NOTE
 table_of_contents: Contents
+viewed: accessed
 doctype_abbrev:
   standard: Std.
   recommended-practice: Rec. Prac.

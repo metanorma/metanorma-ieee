@@ -1,3 +1,5 @@
+require_relative "../../relaton/render/general"
+
 module IsoDoc
   module IEEE
     class PresentationXMLConvert < IsoDoc::PresentationXMLConvert

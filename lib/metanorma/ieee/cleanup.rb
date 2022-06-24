@@ -79,11 +79,28 @@ module Metanorma
       OTHERIDS = "@type = 'DOI' or @type = 'metanorma' or @type = 'ISSN' or "\
                  "@type = 'ISBN'".freeze
 
+      # Alphabetic by rendering: author surname or designation, followed by title
       def sort_biblio_key(bib)
-        id = bib.at("./docidentifier[not(#{OTHERIDS})]")
-        title = bib.at("./title[@type = 'main']") ||
-          bib.at("./title") || bib.at("./formattedref")
-        "#{id&.text || 'ZZZZZ'} :: #{title&.text}"
+        name = designator_or_name(bib)
+        title = bib.at("./title[@type = 'main']")&.text ||
+          bib.at("./title")&.text || bib.at("./formattedref")&.text
+        "#{name}. #{title}"
+      end
+
+      def designator_or_name(bib)
+        case bib["type"]
+        when "standard", "techreport"
+          n = bib.at("./docidentifier[@primary]") ||
+            bib.at("./docidentifier[not(#{OTHERIDS})]")
+          n&.text || "ZZZZ"
+        else
+          bib1 = bib.dup
+          bib1.add_namespace(nil, self.class::XML_NAMESPACE)
+          i = IsoDoc::IEEE::PresentationXMLConvert.new({ lang: @lang,
+                                                         script: @script })
+          i.i18n_init(@lang, @script)
+          i.creatornames(bib1)
+        end
       end
 
       def normref_cleanup(xmldoc)
