@@ -722,6 +722,76 @@ RSpec.describe Metanorma::IEEE do
         .not_to include "Normative References must be followed by "\
                         "Definitions"
     end
+
+    it "Warning if bibliography out of place" do
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        == Overview
+
+        [bibliography]
+        == Bibiliography
+
+      INPUT
+      expect(File.read("test.err"))
+        .to include "Bibliography must be either the first or the last "\
+                    "document annex"
+
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        == Overview
+
+        [appendix]
+        == Appendix
+
+        [appendix]
+        == Bibliography
+        [bibliography]
+        === Bibiliography
+
+        [appendix]
+        == Appendix
+      INPUT
+      expect(File.read("test.err"))
+        .to include "Bibliography must be either the first or the last "\
+                    "document annex"
+
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        == Overview
+
+        [appendix]
+        == Appendix
+
+        [appendix]
+        == Bibliography
+        [bibliography]
+        === Bibiliography
+
+      INPUT
+      expect(File.read("test.err"))
+        .not_to include "Bibliography must be either the first or the last "\
+                        "document annex"
+
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        == Overview
+
+        [appendix]
+        == Bibliography
+        [bibliography]
+        === Bibiliography
+
+        [appendix]
+        == Appendix
+      INPUT
+      expect(File.read("test.err"))
+        .not_to include "Bibliography must be either the first or the last "\
+                        "document annex"
+    end
   end
 
   context "Number validation" do

@@ -58,6 +58,7 @@ module Metanorma
         names, n = sections_sequence_validate_start(root)
         names, n = sections_sequence_validate_body(names, n)
         sections_sequence_validate_end(names, n)
+        bibliography_validate(root)
       end
 
       def sections_sequence_validate_start(root)
@@ -86,13 +87,6 @@ module Metanorma
         elem&.at("./self::references[@normative = 'true']") ||
           @log.add("Style", nil, "Document must include (references) "\
                                  "Normative References")
-        elem = names&.shift
-        elem&.at("./self::references[@normative = 'false']") ||
-          @log.add("Style", elem,
-                   "Final section must be (references) Bibliography")
-        names.empty? ||
-          @log.add("Style", elem,
-                   "There are sections after the final Bibliography")
       end
 
       # Style manual 13.1
@@ -113,6 +107,19 @@ module Metanorma
           location += ":#{title.text}" if c["id"] && !title.nil?
           @log.add("Style", nil, "#{location}: subclause is only child")
         end
+      end
+
+      # Style manual 19.1
+      def bibliography_validate(root)
+        bib = root.at("//references[@normative = 'false']") or return
+        if annex = bib.at(".//ancestor::annex")
+          prec = annex.xpath("./preceding-sibling::annex")
+          foll = annex.xpath("./following-sibling::annex")
+          valid = prec.empty? || foll.empty?
+        else valid = false
+        end
+        valid or @log.add("Style", bib, "Bibliography must be either the first "\
+                                        "or the last document annex")
       end
     end
   end
