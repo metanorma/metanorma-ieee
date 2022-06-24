@@ -293,7 +293,7 @@ RSpec.describe Relaton::Render::IEEE do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref>RFC 3979, Intellectual Property Rights in IETF technology.</formattedref>
+      <formattedref>Intellectual Property Rights in IETF technology.</formattedref>
     OUTPUT
     i = IsoDoc::IEEE::PresentationXMLConvert.new({})
     i.i18n_init("en", "Latn")

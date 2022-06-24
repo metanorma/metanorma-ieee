@@ -115,6 +115,7 @@ module IsoDoc
         MsoNormal: "IEEEStdsParagraph",
         NormRef: "IEEEStdsParagraph",
         Biblio: "IEEEStdsBibliographicEntry",
+        figure: "IEEEStdsImage",
       }.freeze
 
       def style_cleanup(docxml)
