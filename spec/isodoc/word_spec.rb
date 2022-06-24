@@ -267,6 +267,66 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       .to be_equivalent_to xmlpp(word)
   end
 
+  it "processes notes" do
+    FileUtils.rm_f "test.doc"
+    input = <<~INPUT
+        <iso-standard xmlns="http://riboseinc.com/isoxml">
+                <sections>
+      <clause id="A">
+      <clause id="B">
+      <note id="n1"><p>First</p></note>
+      <p>Blah blah>
+      <note id="n2"><p>Second</p><p>Multi-para note</p></note>
+      </clause>
+      <clause id="C">
+      <note id="n3"><p>Third</p><quote>Quotation</quote></note>
+      </clause>
+      </clause>
+      </sections>
+            </iso-standard>
+    INPUT
+    word = <<~OUTPUT
+          <div>
+        <a name='A' id='A'/>
+        <p class='IEEEStdsLevel1Header'>1.</p>
+        <div>
+          <a name='B' id='B'/>
+          <p class='IEEEStdsLevel2Header'>1.1.</p>
+          <div class='Note'>
+            <a name='n1' id='n1'/>
+            <p class='IEEEStdsMultipleNotes'>First</p>
+          </div>
+          <p class='IEEEStdsParagraph'>Blah blah </p>
+          <div class='Note'>
+            <a name='n2' id='n2'/>
+            <p class='IEEEStdsMultipleNotes'>Second</p>
+            <p class='IEEEStdsSingleNote'>Multi-para note</p>
+          </div>
+          <div>
+            <a name='C' id='C'/>
+            <p class='IEEEStdsLevel3Header'>1.1.1.</p>
+            <div class='Note'>
+              <a name='n3' id='n3'/>
+              <p class='IEEEStdsSingleNote'>
+                <span class='note_label'>NOTE&#x2014;</span>
+                Third
+              </p>
+              <div class='Quote'>Quotation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    OUTPUT
+    presxml = IsoDoc::IEEE::PresentationXMLConvert.new({}).convert("test",
+                                                                   input, true)
+    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
+    expect(File.exist?("test.doc")).to be true
+    doc = Nokogiri::XML(word2xml("test.doc"))
+      .at("//xmlns:div[xmlns:a[@id = 'A']]")
+    expect(strip_guid(xmlpp(doc.to_xml)))
+      .to be_equivalent_to xmlpp(word)
+  end
+
   it "processes boilerplate" do
     FileUtils.rm_f "test.doc"
     input = <<~INPUT
@@ -1412,29 +1472,71 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-           <div>
-         <a name='a' id='a'/>
-         <p class='IEEEStdsLevel1Header'/>
-         <div class='IEEEStdsWarning' style='page-break-after: avoid;page-break-inside: avoid;'>
-           <a name="_" id="_"/>
-           <p class='IEEEStdsWarning' style='text-align:center;'>
-             <b>CAUTION</b>
-           </p>
-           <p class='IEEEStdsParagraph'>
-             <a name="_" id="_"/>
-             Only use paddy or parboiled rice for the determination of husked rice
-             yield.
-           </p>
-         </div>
-         <div class='IEEEStdsWarning' style='page-break-after: avoid;page-break-inside: avoid;'>
-           <a name="_" id="_"/>
-           <p class='IEEEStdsParagraph'>
-             <a name="_" id="_"/>
-             Only use paddy or parboiled rice for the determination of husked rice
-             yield.
-           </p>
-         </div>
-       </div>
+          <div>
+        <a name='a' id='a'/>
+        <p class='IEEEStdsLevel1Header'/>
+        <div class='IEEEStdsWarning' style='page-break-after: avoid;page-break-inside: avoid;'>
+          <a name="_" id="_"/>
+          <p class='IEEEStdsWarning' style='text-align:center;'>
+            <b>CAUTION</b>
+          </p>
+          <p class='IEEEStdsParagraph'>
+            <a name="_" id="_"/>
+            Only use paddy or parboiled rice for the determination of husked rice
+            yield.
+          </p>
+        </div>
+        <div class='IEEEStdsWarning' style='page-break-after: avoid;page-break-inside: avoid;'>
+          <a name="_" id="_"/>
+          <p class='IEEEStdsParagraph'>
+            <a name="_" id="_"/>
+            Only use paddy or parboiled rice for the determination of husked rice
+            yield.
+          </p>
+        </div>
+      </div>
+    OUTPUT
+    IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
+    expect(File.exist?("test.doc")).to be true
+    doc = Nokogiri::XML(word2xml("test.doc"))
+      .at("//xmlns:div[xmlns:a[@id = 'a']]")
+    expect(strip_guid(xmlpp(doc.to_xml)))
+      .to be_equivalent_to xmlpp(output)
+  end
+
+  it "process sourcecode" do
+    input = <<~INPUT
+          <iso-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
+        <sections>
+          <clause id="a" displayorder="1">
+            <sourcecode lang='ruby' id='samplecode'>
+              <name>
+                Figure 1&#xA0;&#x2014; Ruby
+                <em>code</em>
+              </name>
+               puts x
+            </sourcecode>
+            <sourcecode unnumbered='true'> Que? </sourcecode>
+          </clause>
+        </sections>
+      </iso-standard>
+    INPUT
+    output = <<~OUTPUT
+      <div>
+        <a name='a' id='a'/>
+        <p class='IEEEStdsLevel1Header'/>
+        <p class='IEEEStdsComputerCode' style='page-break-after:avoid;'>
+          <a name='samplecode' id='samplecode'/>
+        </p>
+        <p class='IEEEStdsComputerCode'>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </p>
+        <p class='IEEEStdsComputerCode'>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; puts x</p>
+        <p class='IEEEStdsComputerCode'>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </p>
+        <p class='SourceTitle' style='text-align:center;'>
+           Figure 1&#xa0;&#x2014; Ruby
+          <i>code</i>
+        </p>
+        <p class='IEEEStdsComputerCode'> Que? </p>
+      </div>
     OUTPUT
     IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
     expect(File.exist?("test.doc")).to be true

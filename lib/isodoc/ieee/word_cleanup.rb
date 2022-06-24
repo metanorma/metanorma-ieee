@@ -62,6 +62,7 @@ module IsoDoc
         super
         abstract_cleanup(docxml)
         introduction_cleanup(docxml)
+        sourcecode_cleanup(docxml)
         div_cleanup(docxml)
         headings_cleanup(docxml)
         span_style_cleanup(docxml)
@@ -100,6 +101,12 @@ module IsoDoc
         end
       end
 
+      def sourcecode_cleanup(docxml)
+        docxml.xpath("//p[@class = 'Sourcecode']").each do |s|
+          s.replace(s.to_xml.gsub(%r{<br/>}, "</p><p class='Sourcecode'>"))
+        end
+      end
+
       def para_type_cleanup(html)
         html.xpath("//p[@type]").each { |p| p.delete("type") }
       end
@@ -111,17 +118,32 @@ module IsoDoc
         end
       end
 
+      def note_style_cleanup(docxml)
+        docxml.xpath("//span[@class = 'note_label']").each do |s|
+          multi = /^#{@i18n.note}\s+\d+/.match?(s.text)
+          div = s.at("./ancestor::div[@class = 'Note']")
+          s.remove if multi
+          div.xpath(".//p[@class = 'Note']").each_with_index do |p, i|
+            p["class"] =
+              i.zero? && multi ? "IEEEStdsMultipleNotes" : "IEEEStdsSingleNote"
+          end
+        end
+      end
+
       STYLESMAP = {
         MsoNormal: "IEEEStdsParagraph",
         NormRef: "IEEEStdsParagraph",
         Biblio: "IEEEStdsBibliographicEntry",
         figure: "IEEEStdsImage",
+        formula: "IEEEStdsEquation",
+        Sourcecode: "IEEEStdsComputerCode",
       }.freeze
 
       def style_cleanup(docxml)
         STYLESMAP.each do |k, v|
           docxml.xpath("//*[@class = '#{k}']").each { |s| s["class"] = v }
         end
+        note_style_cleanup(docxml)
         docxml.xpath("//p[not(@class)]").each do |p|
           p["class"] = "IEEEStdsParagraph"
         end
