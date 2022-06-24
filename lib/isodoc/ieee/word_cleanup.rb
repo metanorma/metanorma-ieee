@@ -113,7 +113,7 @@ module IsoDoc
 
       STYLESMAP = {
         MsoNormal: "IEEEStdsParagraph",
-        NormRef: "IEEEStdsBibliographicEntry",
+        NormRef: "IEEEStdsParagraph",
         Biblio: "IEEEStdsBibliographicEntry",
       }.freeze
 

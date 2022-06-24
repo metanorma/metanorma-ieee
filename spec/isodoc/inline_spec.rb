@@ -174,7 +174,7 @@ RSpec.describe IsoDoc::IEEE do
               </title>
               <bibitem id='ISO712' type='standard'>
                 <formattedref>ISO 712,
-                  <em>Cereals and cereal products</em>.
+                  Cereals and cereal products.
                 </formattedref>
                 <docidentifier>ISO 712</docidentifier>
               </bibitem>
