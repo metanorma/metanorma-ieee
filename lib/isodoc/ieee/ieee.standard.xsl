@@ -67,6 +67,10 @@
 				<xsl:with-param name="root-style" select="$root-style"/>
 			</xsl:call-template>
 			
+			<xsl:if test="//ieee:ieee-standard/ieee:bibdata[ieee:ext/ieee:doctype = 'international-standard' and ieee:version/ieee:draft]">
+				<xsl:processing-instruction name="add_line_numbers">true</xsl:processing-instruction>
+			</xsl:if>
+			
 			<fo:layout-master-set>
 			
 				<!-- ======================== -->
@@ -823,7 +827,10 @@
 			<fo:footnote>
 				<fo:inline/>
 				<fo:footnote-body font-family="Arial" font-size="7pt">
-					<xsl:apply-templates/>
+					<fo:block>
+						<fo:inline font-size="1pt" id="footnote_footer_{generate-id()}"><xsl:value-of select="$hair_space"/></fo:inline>
+						<xsl:apply-templates/>
+					</fo:block>
 				</fo:footnote-body>
 			</fo:footnote>
 		</fo:block>
@@ -3310,6 +3317,7 @@
 		
 			<xsl:attribute name="margin-left">2mm</xsl:attribute>
 			<xsl:attribute name="margin-top">0pt</xsl:attribute>
+			<xsl:attribute name="line-height">1.4</xsl:attribute>
 		
 		
 		
@@ -3746,7 +3754,7 @@
 		
 			<xsl:attribute name="font-size">50%</xsl:attribute>
 			<xsl:attribute name="vertical-align">super</xsl:attribute>
-			<!-- <xsl:attribute name="padding-right">1mm</xsl:attribute> -->
+			<xsl:attribute name="padding-right">1mm</xsl:attribute>
 		
 		
 		
