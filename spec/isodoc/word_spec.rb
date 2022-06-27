@@ -292,12 +292,12 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         <div>
           <a name='B' id='B'/>
           <p class='IEEEStdsLevel2Header'>1.1.</p>
-          <div class='Note'>
+          <div>
             <a name='n1' id='n1'/>
             <p class='IEEEStdsMultipleNotes'>First</p>
           </div>
           <p class='IEEEStdsParagraph'>Blah blah </p>
-          <div class='Note'>
+          <div>
             <a name='n2' id='n2'/>
             <p class='IEEEStdsMultipleNotes'>Second</p>
             <p class='IEEEStdsSingleNote'>Multi-para note</p>
@@ -305,7 +305,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
           <div>
             <a name='C' id='C'/>
             <p class='IEEEStdsLevel3Header'>1.1.1.</p>
-            <div class='Note'>
+            <div>
               <a name='n3' id='n3'/>
               <p class='IEEEStdsSingleNote'>
                 <span class='note_label'>NOTE&#x2014;</span>

@@ -67,9 +67,53 @@ module IsoDoc
         headings_cleanup(docxml)
         span_style_cleanup(docxml)
         caption_cleanup(docxml)
+        table_cleanup(docxml)
         style_cleanup(docxml)
         para_type_cleanup(docxml)
         docxml
+      end
+
+      def table_cleanup(docxml)
+        thead_cleanup(docxml)
+        tbody_cleanup(docxml)
+      end
+
+      def thead_cleanup(docxml)
+        docxml.xpath("//thead").each do |h|
+          h.xpath(".//td | .//th").each do |t|
+            if t.at("./p")
+              t.xpath("./p").each { |p| p["class"] = "IEEEStdsTableColumnHead" }
+            else
+              t.children =
+                "<p class='IEEEStdsTableColumnHead'>#{t.children.to_xml}</p>"
+            end
+          end
+        end
+      end
+
+      def tbody_cleanup(docxml)
+        docxml.xpath("//tbody | //tfoot").each do |h|
+          next if h.at("./ancestor::div[@class = 'boilerplate-feedback']")
+
+          h.xpath(".//td | .//th").each do |t|
+            style = td_style(t)
+            if t.at("./p")
+              t.xpath("./p").each { |p| p["class"] = style }
+            else
+              t.children = "<p class='#{style}'>#{t.children.to_xml}</p>"
+            end
+          end
+        end
+      end
+
+      def td_style(cell)
+        if cell.name == "th"
+          "IEEEStdsTableLineHead"
+        elsif cell["align"] == "center" || /text-align:center/.match?(cell["style"])
+          "IEEEStdsTableData-Center"
+        else
+          "IEEEStdsTableData-Left"
+        end
       end
 
       def headings_cleanup(docxml)
@@ -92,11 +136,11 @@ module IsoDoc
       def caption_cleanup(docxml)
         docxml.xpath("//p[@class = 'TableTitle']").each do |s|
           s.children = s.children.to_xml
-            .sub(/^#{@i18n.table}(\s+\d+)?/, "")
+            .sub(/^#{@i18n.table}(\s+[A-Z0-9.]+)?/, "")
         end
         docxml.xpath("//p[@class = 'FigureTitle']").each do |s|
           s.children = s.children.to_xml
-            .sub(/^#{@i18n.figure}(\s+\d+)?/, "")
+            .sub(/^#{@i18n.figure}(\s+[A-Z0-9.]+)?/, "")
         end
       end
 
@@ -132,10 +176,11 @@ module IsoDoc
 
       def note_style_cleanup(docxml)
         docxml.xpath("//span[@class = 'note_label']").each do |s|
-          multi = /^#{@i18n.note}\s+\d+/.match?(s.text)
+          multi = /^#{@i18n.note}\s+[A-Z0-9.]+/.match?(s.text)
           div = s.at("./ancestor::div[@class = 'Note']")
           s.remove if multi
-          div.xpath(".//p[@class = 'Note']").each_with_index do |p, i|
+          div.xpath(".//p[@class = 'Note' or not(@class)]")
+            .each_with_index do |p, i|
             p["class"] =
               i.zero? && multi ? "IEEEStdsMultipleNotes" : "IEEEStdsSingleNote"
           end
@@ -154,13 +199,13 @@ module IsoDoc
       }.freeze
 
       def style_cleanup(docxml)
+        note_style_cleanup(docxml)
         docxml.xpath("//div[@class = 'formula']/p").each do |p|
           p["class"] = "IEEEStdsEquation"
         end
         STYLESMAP.each do |k, v|
           docxml.xpath("//*[@class = '#{k}']").each { |s| s["class"] = v }
         end
-        note_style_cleanup(docxml)
         docxml.xpath("//p[not(@class)]").each do |p|
           p["class"] = "IEEEStdsParagraph"
         end

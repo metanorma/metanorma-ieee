@@ -45,5 +45,13 @@ class Html2Doc
       end
       note.remove
     end
+
+    def cleanup(docxml)
+      super
+      docxml.xpath("//div[@class = 'Note']").each do |d|
+        d.delete("class")
+      end
+      docxml
+    end
   end
 end
