@@ -135,13 +135,20 @@ module IsoDoc
       def headings_cleanup1(docxml, idx)
         docxml.xpath("//h#{idx}").each do |h|
           headings_strip(h)
-          if h.at("./ancestor::div[@class = 'Annex']")
-            h.delete("class")
-            h["style"] = "mso-list:l13 level#{idx} lfo33;"
-          else
-            h.name = "p"
-            h["class"] = "IEEEStdsLevel#{idx}Header"
-          end
+          headings_style(h, idx)
+        end
+      end
+
+      def headings_style(hdr, idx)
+        if hdr.at("./ancestor::div[@class = 'Annex']")
+          hdr.delete("class")
+          hdr["style"] = "mso-list:l13 level#{idx} lfo33;"
+        elsif hdr.at("./ancestor::div[@class = 'Section3']") && idx == 1
+          hdr.name = "p"
+          hdr["class"] = "IEEEStdsLevel1frontmatter"
+        else
+          hdr.name = "p"
+          hdr["class"] = "IEEEStdsLevel#{idx}Header"
         end
       end
 

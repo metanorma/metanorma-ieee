@@ -422,9 +422,8 @@ RSpec.describe IsoDoc::IEEE do
           </p>
           <div id='P' class='Annex'>
             <h1 class='Annex'>
-              <b>Annex A</b>
               <br/>
-              (normative)
+              <span style='font-weight:normal;'>(normative)</span>
               <br/>
               <b>Annex</b>
             </h1>
@@ -578,9 +577,9 @@ RSpec.describe IsoDoc::IEEE do
     word = <<~OUTPUT
       <div>
          <a name='a' id='a'/>
-         <h1>Appendix C</h1>
+         <h1 style='mso-list:l13 level1 lfo33;'>Appendix C</h1>
          <div>
-           <h2>Bibliography</h2>
+           <h2 style='mso-list:l13 level2 lfo33;'>Bibliography</h2>
            <p class='IEEEStdsParagraph'>
              <a name='_' id='_'/>
               Bibliographical references are resources that provide additional or
