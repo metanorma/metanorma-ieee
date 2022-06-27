@@ -46,7 +46,7 @@ module IsoDoc
 
       def tc(xml)
         tc = xml.at(ns("//bibdata/ext/editorialgroup/"\
-                       "technical-committee"))&.text || "&lt;Committee Name&gt;"
+                       "committee"))&.text || "&lt;Committee Name&gt;"
         set(:technical_committee, tc)
       end
 

@@ -185,7 +185,7 @@ RSpec.describe Metanorma::IEEE do
             <society>Society</society>
             <balloting-group>BG</balloting-group>
             <working-group>WG</working-group>
-            <technical-committee>Tech Committee</technical-committee>
+            <committee>Tech Committee</committee>
           </editorialgroup>
        <recommendationstatus>
         <from>D3</from>
@@ -318,7 +318,7 @@ RSpec.describe Metanorma::IEEE do
             <society>Society</society>
             <balloting-group>BG</balloting-group>
             <working-group>WG</working-group>
-            <technical-committee>Tech Committee</technical-committee>
+            <committee>Tech Committee</committee>
           </editorialgroup>
        <recommendationstatus>
         <from>D3</from>
