@@ -59,6 +59,13 @@ module IsoDoc
       def termnote_delim
         "&#x2014;"
       end
+
+      def formula_where(dlist, out)
+        return unless dlist
+
+        parse(dlist, out)
+        out.parent.at("./dl")["class"] = "formula_dl"
+      end
     end
   end
 end

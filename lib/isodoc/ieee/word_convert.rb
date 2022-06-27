@@ -83,6 +83,31 @@ module IsoDoc
         end
       end
 
+      def dt_dd?(node)
+        %w{dt dd}.include? node.name
+      end
+
+      def formula_where(dlist, out)
+        return unless dlist
+
+        dlist.elements.select { |n| dt_dd? n }.each_slice(2) do |dt, dd|
+          formula_where1(out, dt, dd)
+        end
+      end
+
+      def formula_where1(out, dterm, ddefn)
+        out.p **{ class: "IEEEStdsEquationVariableList" } do |p|
+          dterm.children.each { |n| parse(n, p) }
+          insert_tab(p, 1)
+          if ddefn.at(ns("./p"))
+            ddefn.elements.each do |e|
+              e.children.each { |n| parse(n, p) }
+            end
+          else ddefn.children.each { |n| parse(n, p) }
+          end
+        end
+      end
+
       include BaseConvert
       include Init
     end

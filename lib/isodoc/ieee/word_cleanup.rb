@@ -66,13 +66,14 @@ module IsoDoc
         div_cleanup(docxml)
         headings_cleanup(docxml)
         span_style_cleanup(docxml)
+        caption_cleanup(docxml)
         style_cleanup(docxml)
         para_type_cleanup(docxml)
         docxml
       end
 
       def headings_cleanup(docxml)
-        (1..4).each do |i|
+        (1..9).each do |i|
           docxml.xpath("//h#{i}").each do |h|
             headings_cleanup1(h)
             h.name = "p"
@@ -85,6 +86,17 @@ module IsoDoc
         if hdr.children.size > 1 && hdr.children[1].name == "span" &&
             hdr.children[1]["style"] == "mso-tab-count:1"
           2.times { hdr.children.first.remove }
+        end
+      end
+
+      def caption_cleanup(docxml)
+        docxml.xpath("//p[@class = 'TableTitle']").each do |s|
+          s.children = s.children.to_xml
+            .sub(/^#{@i18n.table}(\s+\d+)?/, "")
+        end
+        docxml.xpath("//p[@class = 'FigureTitle']").each do |s|
+          s.children = s.children.to_xml
+            .sub(/^#{@i18n.figure}(\s+\d+)?/, "")
         end
       end
 
@@ -137,9 +149,14 @@ module IsoDoc
         figure: "IEEEStdsImage",
         formula: "IEEEStdsEquation",
         Sourcecode: "IEEEStdsComputerCode",
+        TableTitle: "IEEEStdsRegularTableCaption",
+        FigureTitle: "IEEEStdsRegularFigureCaption",
       }.freeze
 
       def style_cleanup(docxml)
+        docxml.xpath("//div[@class = 'formula']/p").each do |p|
+          p["class"] = "IEEEStdsEquation"
+        end
         STYLESMAP.each do |k, v|
           docxml.xpath("//*[@class = '#{k}']").each { |s| s["class"] = v }
         end

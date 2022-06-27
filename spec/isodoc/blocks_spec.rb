@@ -4,7 +4,7 @@ RSpec.describe IsoDoc do
   it "processes tables" do
     input = <<~"INPUT"
       <iso-standard xmlns="http://riboseinc.com/isoxml">
-          <preface><foreword>
+          <preface><foreword id="A">
           <table id="tableD-1" alt="tool tip" summary="long desc">
           <name>Hello</name>
         <thead>
@@ -61,7 +61,7 @@ RSpec.describe IsoDoc do
     presxml = <<~"PRESXML"
       <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
          <preface>
-           <foreword displayorder='1'>
+           <foreword displayorder='1' id="A">
              <table id='tableD-1' alt='tool tip' summary='long desc'>
                <name>Table 1&#x2014;Hello</name>
                <thead>
@@ -134,7 +134,7 @@ RSpec.describe IsoDoc do
     html = <<~"OUTPUT"
       #{HTML_HDR}
            <br/>
-           <div>
+           <div id="A">
              <h1 class='ForewordTitle'>Foreword</h1>
              <p class='TableTitle' style='text-align:center;'>Table 1&#x2014;Hello</p>
              <table id='tableD-1' class='MsoISOTable' style='border-width:1px;border-spacing:0;' title='tool tip'>
@@ -218,115 +218,131 @@ RSpec.describe IsoDoc do
     OUTPUT
 
     word = <<~"WORD"
-          <body lang='EN-US' link='blue' vlink='#954F72'>
-        <div class='WordSection1'>
-          <p>&#xa0;</p>
-        </div>
-        <p>
-          <br clear='all' class='section'/>
-        </p>
-        <div class='WordSection2'>
-          <p>
-            <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
-          </p>
           <div>
-            <h1 class='ForewordTitle'>Foreword</h1>
-            <p class='TableTitle' style='text-align:center;'>Table 1&#x2014;Hello</p>
-            <div align='center' class='table_container'>
-              <table id='tableD-1' class='MsoISOTable' style='mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;' title='tool tip' summary='long desc'>
-                <thead>
-                  <tr>
-                    <td rowspan='2' align='left' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>Description</td>
-                    <td colspan='4' align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;'>Rice sample</td>
-                  </tr>
-                  <tr>
-                    <td align='left' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>Arborio</td>
-                    <td align='center' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>
-                       Drago
-                      <a href='#tableD-1a' class='TableFootnoteRef'>a</a>
-                      <aside>
-                        <div id='ftntableD-1a'>
-                          <span>
-                            <span id='tableD-1a' class='TableFootnoteRef'>a</span>
-                            <span style='mso-tab-count:1'>&#xa0; </span>
+        <a name='A' id='A'/>
+        <p class='IEEEStdsLevel1Header'>Foreword</p>
+        <p class='IEEEStdsRegularTableCaption' style='text-align:center;'>&#x2014;Hello</p>
+        <div align='center' class='table_container'>
+          <table class='MsoISOTable' style='mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;' title='tool tip' summary='long desc'>
+            <a name='tableD-1' id='tableD-1'/>
+            <thead>
+              <tr>
+                <td rowspan='2' align='left' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>Description</td>
+                <td colspan='4' align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;'>Rice sample</td>
+              </tr>
+              <tr>
+                <td align='left' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>Arborio</td>
+                <td align='center' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>
+                   Drago
+                  <a href='#tableD-1a' class='TableFootnoteRef'>a</a>
+                </td>
+                <td align='center' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>
+                   Balilla
+                  <a href='#tableD-1a' class='TableFootnoteRef'>a</a>
+                </td>
+                <td align='center' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>Thaibonnet</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th align='left' style='font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;'>Number of laboratories retained after eliminating outliers</th>
+                <td align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;'>13</td>
+                <td align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;'>11</td>
+                <td align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;'>13</td>
+                <td align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;'>13</td>
+              </tr>
+              <tr>
+                <td align='left' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>Mean value, g/100 g</td>
+                <td align='center' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>81,2</td>
+                <td align='center' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>82,0</td>
+                <td align='center' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>81,8</td>
+                <td align='center' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>77,7</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td align='left' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:0pt;mso-border-bottom-alt:0pt;'>
+                   Reproducibility limit,
+                  <span class='stem'>
+                    <oMath>
+                      <r>
+                        <t>R</t>
+                      </r>
+                    </oMath>
+                  </span>
+                   (= 2,83
+                  <span class='stem'>
+                    <oMath>
+                      <sSub>
+                        <e>
+                          <r>
+                            <t>s</t>
+                          </r>
+                        </e>
+                        <sub>
+                          <r>
+                            <t>R</t>
+                          </r>
+                        </sub>
+                      </sSub>
+                    </oMath>
+                  </span>
+                   )
+                </td>
+                <td align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:0pt;mso-border-bottom-alt:0pt;'>2,89</td>
+                <td align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:0pt;mso-border-bottom-alt:0pt;'>0,57</td>
+                <td align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:0pt;mso-border-bottom-alt:0pt;'>2,26</td>
+                <td align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:0pt;mso-border-bottom-alt:0pt;'>6,06</td>
+              </tr>
+              <tr>
+                <td colspan='5' style='border-top:0pt;mso-border-top-alt:0pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>
+                  <div class='Note'>
+                    <p class='IEEEStdsSingleNote'>
+                      <span class='note_label'>NOTE&#x2014;</span>
+                      This is a table about rice
+                    </p>
+                  </div>
+                  <div class='TableFootnote'>
+                    <div>
+                      <a name='ftntableD-1a' id='ftntableD-1a'/>
+                      <p class='TableFootnote'>
+                        <a name="_" id="_"/>
+                        <span>
+                          <span class='TableFootnoteRef'>
+                            <a name='tableD-1a' id='tableD-1a'/>
+                            a
                           </span>
-                          <p id='_0fe65e9a-5531-408e-8295-eeff35f41a55'>Parboiled rice.</p>
-                        </div>
-                      </aside>
-                    </td>
-                    <td align='center' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>
-                       Balilla
-                      <a href='#tableD-1a' class='TableFootnoteRef'>a</a>
-                    </td>
-                    <td align='center' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>Thaibonnet</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th align='left' style='font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;'>Number of laboratories retained after eliminating outliers</th>
-                    <td align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;'>13</td>
-                    <td align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;'>11</td>
-                    <td align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;'>13</td>
-                    <td align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;'>13</td>
-                  </tr>
-                  <tr>
-                    <td align='left' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>Mean value, g/100 g</td>
-                    <td align='center' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>81,2</td>
-                    <td align='center' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>82,0</td>
-                    <td align='center' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>81,8</td>
-                    <td align='center' style='border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>77,7</td>
-                  </tr>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <td align='left' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>
-                       Reproducibility limit,
-                      <span class='stem'>(#(R)#)</span>
-                       (= 2,83
-                      <span class='stem'>(#(s_R)#)</span>
-                       )
-                    </td>
-                    <td align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>2,89</td>
-                    <td align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>0,57</td>
-                    <td align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>2,26</td>
-                    <td align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;'>6,06</td>
-                  </tr>
-                </tfoot>
-                <dl>
-                  <dt>
-                    <p align='left' style='margin-left:0pt;text-align:left;'>Drago</p>
-                  </dt>
-                  <dd>A type of rice</dd>
-                </dl>
-                <div class='Note'>
-                  <p><span class='note_label'>NOTE&#x2014;</span>This is a table about rice
-                  </p>
-                </div>
-              </table>
-            </div>
-          </div>
-          <p>&#xa0;</p>
+                          <span style='mso-tab-count:1'>&#xa0; </span>
+                        </span>
+                        Parboiled rice.
+                      </p>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tfoot>
+            <dl>
+              <dt>
+                <p align='left' style='margin-left:0pt;text-align:left;' class='IEEEStdsParagraph'>Drago</p>
+              </dt>
+              <dd>A type of rice</dd>
+            </dl>
+          </table>
         </div>
-        <p>
-          <br clear='all' class='section'/>
-        </p>
-                <div class='WordSection13'>
-          <p class='IEEEStdsTitle' style='margin-top:70.0pt'>??? for ???</p>
-        </div>
-        <p>
-          <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
-        </p>
-        <div class='WordSection14'/>
-      </body>
+      </div>
     WORD
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
       .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
       .convert("test", presxml, true))
       .at("//body").to_xml)).to be_equivalent_to xmlpp(html)
-    expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::WordConvert.new({})
-      .convert("test", presxml, true))
-                .at("//body").to_xml)).to be_equivalent_to xmlpp(word)
+    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
+    expect(File.exist?("test.doc")).to be true
+    doc = Nokogiri::XML(word2xml("test.doc"))
+      .at("//xmlns:div[xmlns:a[@id = 'A']]")
+    expect(strip_guid(xmlpp(doc.to_xml
+      .gsub(/<m:/, "<").gsub(/<\/m:/, "</"))))
+      .to be_equivalent_to xmlpp(word)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
       .new({ hierarchical_assets: true })
       .convert("test", input, true))
@@ -337,11 +353,9 @@ RSpec.describe IsoDoc do
   it "processes figures" do
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
-          <preface><foreword>
+          <preface><foreword id="A">
           <figure id="figureA-1" keep-with-next="true" keep-lines-together="true">
         <name>Split-it-right <em>sample</em> divider<fn reference="1"><p>X</p></fn></name>
-        <image src="rice_images/rice_image1.png" height="20" width="30" id="_8357ede4-6d44-4672-bac4-9a85e82ab7f0" mimetype="image/png" alt="alttext" title="titletxt"/>
-        <image src="rice_images/rice_image1.png" height="20" width="auto" id="_8357ede4-6d44-4672-bac4-9a85e82ab7f1" mimetype="image/png"/>
         <image src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7" height="20" width="auto" id="_8357ede4-6d44-4672-bac4-9a85e82ab7f2" mimetype="image/png"/>
         <image src="data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjw/eG1sLXN0eWxlc2hlZXQgdHlwZT0idGV4dC94c2wiIGhyZWY9Ii4uLy4uLy4uL3hzbC9yZXNfZG9jL2ltZ2ZpbGUueHNsIj8+CjwhRE9DVFlQRSBpbWdmaWxlLmNvbnRlbnQgU1lTVEVNICIuLi8uLi8uLi9kdGQvdGV4dC5lbnQiPgo8aW1nZmlsZS5jb250ZW50IG1vZHVsZT0iZnVuZGFtZW50YWxzX29mX3Byb2R1Y3RfZGVzY3JpcHRpb25fYW5kX3N1cHBvcnQiIGZpbGU9ImFjdGlvbl9zY2hlbWFleHBnMS54bWwiPgo8aW1nIHNyYz0iYWN0aW9uX3NjaGVtYWV4cGcxLmdpZiI+CjxpbWcuYXJlYSBzaGFwZT0icmVjdCIgY29vcmRzPSIyMTAsMTg2LDM0MywyMjciIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9iYXNpY19hdHRyaWJ1dGVfc2NoZW1hL2Jhc2ljX2F0dHJpYnV0ZV9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMTAsMTAsOTYsNTEiIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9hY3Rpb25fc2NoZW1hL2FjdGlvbl9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMjEwLDI2NCwzNTgsMzA1IiBocmVmPSIuLi8uLi9yZXNvdXJjZXMvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEueG1sIiAvPgo8L2ltZz4KPC9pbWdmaWxlLmNvbnRlbnQ+Cg==" height="20" width="auto" id="_8357ede4-6d44-4672-bac4-9a85e82ab7f2" mimetype="application/xml"/>
         <fn reference="a">
@@ -366,11 +380,9 @@ RSpec.describe IsoDoc do
     presxml = <<~OUTPUT
           <?xml version='1.0'?>
            <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-          <preface><foreword displayorder="1">
+          <preface><foreword displayorder="1" id="A">
           <figure id="figureA-1" keep-with-next="true" keep-lines-together="true">
         <name>Figure 1&#x2014;Split-it-right <em>sample</em> divider<fn reference="1"><p>X</p></fn></name>
-        <image src="rice_images/rice_image1.png" height="20" width="30" id="_8357ede4-6d44-4672-bac4-9a85e82ab7f0" mimetype="image/png" alt="alttext" title="titletxt"/>
-        <image src="rice_images/rice_image1.png" height="20" width="auto" id="_8357ede4-6d44-4672-bac4-9a85e82ab7f1" mimetype="image/png"/>
         <image src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7" height="20" width="auto" id="_8357ede4-6d44-4672-bac4-9a85e82ab7f2" mimetype="image/png"/>
         <image src='data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjw/eG1sLXN0eWxlc2hlZXQgdHlwZT0idGV4dC94c2wiIGhyZWY9Ii4uLy4uLy4uL3hzbC9yZXNfZG9jL2ltZ2ZpbGUueHNsIj8+CjwhRE9DVFlQRSBpbWdmaWxlLmNvbnRlbnQgU1lTVEVNICIuLi8uLi8uLi9kdGQvdGV4dC5lbnQiPgo8aW1nZmlsZS5jb250ZW50IG1vZHVsZT0iZnVuZGFtZW50YWxzX29mX3Byb2R1Y3RfZGVzY3JpcHRpb25fYW5kX3N1cHBvcnQiIGZpbGU9ImFjdGlvbl9zY2hlbWFleHBnMS54bWwiPgo8aW1nIHNyYz0iYWN0aW9uX3NjaGVtYWV4cGcxLmdpZiI+CjxpbWcuYXJlYSBzaGFwZT0icmVjdCIgY29vcmRzPSIyMTAsMTg2LDM0MywyMjciIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9iYXNpY19hdHRyaWJ1dGVfc2NoZW1hL2Jhc2ljX2F0dHJpYnV0ZV9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMTAsMTAsOTYsNTEiIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9hY3Rpb25fc2NoZW1hL2FjdGlvbl9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMjEwLDI2NCwzNTgsMzA1IiBocmVmPSIuLi8uLi9yZXNvdXJjZXMvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEueG1sIiAvPgo8L2ltZz4KPC9pbWdmaWxlLmNvbnRlbnQ+Cg==' height='20' width='auto' id='_8357ede4-6d44-4672-bac4-9a85e82ab7f2' mimetype='application/xml'/>
         <fn reference="a">
@@ -396,11 +408,9 @@ RSpec.describe IsoDoc do
     html = <<~OUTPUT
       #{HTML_HDR}
                                <br/>
-                               <div>
+                               <div id="A">
                                  <h1 class="ForewordTitle">Foreword</h1>
                                  <div id="figureA-1" class="figure" style='page-break-after: avoid;page-break-inside: avoid;'>
-                         <img src="rice_images/rice_image1.png" height="20" width="30" alt="alttext" title="titletxt"/>
-                         <img src="rice_images/rice_image1.png" height="20" width="auto"/>
                          <img src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7" height="20" width="auto"/>
                          <img src='data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjw/eG1sLXN0eWxlc2hlZXQgdHlwZT0idGV4dC94c2wiIGhyZWY9Ii4uLy4uLy4uL3hzbC9yZXNfZG9jL2ltZ2ZpbGUueHNsIj8+CjwhRE9DVFlQRSBpbWdmaWxlLmNvbnRlbnQgU1lTVEVNICIuLi8uLi8uLi9kdGQvdGV4dC5lbnQiPgo8aW1nZmlsZS5jb250ZW50IG1vZHVsZT0iZnVuZGFtZW50YWxzX29mX3Byb2R1Y3RfZGVzY3JpcHRpb25fYW5kX3N1cHBvcnQiIGZpbGU9ImFjdGlvbl9zY2hlbWFleHBnMS54bWwiPgo8aW1nIHNyYz0iYWN0aW9uX3NjaGVtYWV4cGcxLmdpZiI+CjxpbWcuYXJlYSBzaGFwZT0icmVjdCIgY29vcmRzPSIyMTAsMTg2LDM0MywyMjciIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9iYXNpY19hdHRyaWJ1dGVfc2NoZW1hL2Jhc2ljX2F0dHJpYnV0ZV9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMTAsMTAsOTYsNTEiIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9hY3Rpb25fc2NoZW1hL2FjdGlvbl9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMjEwLDI2NCwzNTgsMzA1IiBocmVmPSIuLi8uLi9yZXNvdXJjZXMvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEueG1sIiAvPgo8L2ltZz4KPC9pbWdmaWxlLmNvbnRlbnQ+Cg==' height='20' width='auto'/>
                          <a href="#_" class="TableFootnoteRef">a</a><aside class="footnote"><div id="fn:_"><span><span id="_" class="TableFootnoteRef">a</span>&#160; </span>
@@ -430,87 +440,88 @@ RSpec.describe IsoDoc do
                            </body>
     OUTPUT
     word = <<~OUTPUT
-         <body lang='EN-US' link='blue' vlink='#954F72'>
-        <div class='WordSection1'>
-          <p>&#xa0;</p>
-        </div>
-        <p>
-          <br clear='all' class='section'/>
-        </p>
-        <div class='WordSection2'>
-          <p>
-            <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
-          </p>
           <div>
-            <h1 class='ForewordTitle'>Foreword</h1>
-            <div id='figureA-1' class='figure' style='page-break-after: avoid;page-break-inside: avoid;'>
-              <img src='rice_images/rice_image1.png' height='20' alt='alttext' title='titletxt' width='30'/>
-              <img src='rice_images/rice_image1.png' height='20' width='auto'/>
-              <img src='_.gif' height='20' width='auto'/>
-              <img src='_.xml' height='20' width='auto'/>
-              <a href='#_' class='TableFootnoteRef'>a</a>
-              <aside>
-                <div id='ftn_'>
-                  <span>
-                    <span id='_' class='TableFootnoteRef'>a</span>
-                    <span style='mso-tab-count:1'>&#xa0; </span>
-                  </span>
-                  <p id='_'>
-                    The time
-                    <span class='stem'>(#(t_90)#)</span>
-                     was estimated to be 18,2 min for this example.
-                  </p>
-                </div>
-              </aside>
-              <p style='page-break-after:avoid;'>
-                <b>Key</b>
-              </p>
-              <table class='dl'>
-                <tr>
-                  <td valign='top' align='left'>
-                    <p align='left' style='margin-left:0pt;text-align:left;'>A</p>
-                  </td>
-                  <td valign='top'>
-                    <p>B</p>
-                  </td>
-                </tr>
-              </table>
-              <p class='FigureTitle' style='text-align:center;'>
-                Figure 1&#x2014;Split-it-right
-                <i>sample</i>
-                 divider
-                <span style='mso-bookmark:_Ref'>
-                  <a class='FootnoteRef' href='#ftn1' type='footnote'>
-                    <sup>1</sup>
-                  </a>
-                </span>
-              </p>
+        <a name='A' id='A'/>
+        <p class='IEEEStdsLevel1Header'>Foreword</p>
+        <div class='IEEEStdsImage' style='page-break-after: avoid;page-break-inside: avoid;'>
+          <a name='figureA-1' id='figureA-1'/>
+          <img src='_.gif' height='20' width='20'/>
+          <img src='_.xml' height='' width=''/>
+          <aside>
+            <div>
+              <a name='ftn_' id="ftn_"/>
             </div>
-            <div id='figure-B' class='figure'>
-              <pre>A &#x3c; B</pre>
-              <p class='FigureTitle' style='text-align:center;'>Figure 2</p>
-            </div>
-            <div id='figure-C' class='figure'>
-              <pre>A &#x3c; B</pre>
-            </div>
-          </div>
-          <p>&#xa0;</p>
-        </div>
-        <p>
-          <br clear='all' class='section'/>
-        </p>
-        <div class='WordSection13'>
-          <p class='IEEEStdsTitle' style='margin-top:70.0pt'>??? for ???</p>
-        </div>
-        <p>
-          <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
-        </p>
-        <div class='WordSection14'>
-          <aside id='ftn1'>
-            <p>X</p>
           </aside>
+          <p style='page-break-after:avoid;' class='IEEEStdsParagraph'>
+            <b>Key</b>
+          </p>
+          <table class='dl' style='page-break-after:avoid;'>
+            <tr>
+              <td valign='top' align='left'>
+                <p align='left' style='margin-left:0pt;text-align:left;' class='IEEEStdsParagraph'>A</p>
+              </td>
+              <td valign='top'>
+                <p class='IEEEStdsParagraph'>B</p>
+              </td>
+            </tr>
+            <tr>
+              <td valign='top' align='left'>
+                <span>
+                  <span class='TableFootnoteRef'>
+                    <a name='_' id="_"/>
+                    a
+                  </span>
+                  <span style='mso-tab-count:1'>&#xa0; </span>
+                </span>
+              </td>
+              <td valign='top'>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  The time
+                  <span class='stem'>
+                    <oMath>
+                      <sSub>
+                        <e>
+                          <r>
+                            <t>t</t>
+                          </r>
+                        </e>
+                        <sub>
+                          <r>
+                            <t>90</t>
+                          </r>
+                        </sub>
+                      </sSub>
+                    </oMath>
+                  </span>
+                   was estimated to be 18,2 min for this example.
+                </p>
+              </td>
+            </tr>
+          </table>
+          <p class='IEEEStdsRegularFigureCaption' style='text-align:center;'>
+            &#x2014;Split-it-right
+            <i>sample</i>
+             divider
+            <span style='mso-bookmark:_Ref'>
+              <a class='FootnoteRef' href='#_ftn1' type='footnote' style='mso-footnote-id:ftn1' name="_" title='' id="_">
+                <span class='MsoFootnoteReference'>
+                  <span style='mso-special-character:footnote'/>
+                </span>
+              </a>
+            </span>
+          </p>
         </div>
-      </body>
+        <div class='IEEEStdsImage'>
+          <a name='figure-B' id='figure-B'/>
+          <pre style='page-break-after:avoid;'>A B</pre>
+          <p class='IEEEStdsRegularFigureCaption' style='text-align:center;'/>
+        </div>
+        <div class='IEEEStdsImage'>
+          <a name='figure-C' id='figure-C'/>
+          <pre>A B</pre>
+        </div>
+      </div>
     OUTPUT
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
       .convert("test", input, true).gsub(/&lt;/, "&#x3c;")))
@@ -519,12 +530,15 @@ RSpec.describe IsoDoc do
       .convert("test", presxml, true))
       .at("//body").to_xml))).to be_equivalent_to xmlpp(html)
     FileUtils.rm_rf "spec/assets/odf1.emf"
-    expect(xmlpp(strip_guid(Nokogiri::XML(IsoDoc::IEEE::WordConvert.new({})
-      .convert("test", presxml, true)
+    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
+    expect(File.exist?("test.doc")).to be true
+    doc = Nokogiri::XML(word2xml("test.doc"))
+      .at("//xmlns:div[xmlns:a[@id = 'A']]")
+    expect(strip_guid(xmlpp(doc.to_xml
+      .gsub(/<m:/, "<").gsub(/<\/m:/, "</")
       .gsub(/['"][^'".]+\.(gif|xml)['"]/, "'_.\\1'")
       .gsub(/epub:/, "")
-      .gsub(/mso-bookmark:_Ref\d+/, "mso-bookmark:_Ref"))
-                           .at("//body").to_xml)))
+      .gsub(/mso-bookmark:_Ref\d+/, "mso-bookmark:_Ref"))))
       .to be_equivalent_to xmlpp(word)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
      .new({ hierarchical_assets: true })
@@ -689,6 +703,140 @@ RSpec.describe IsoDoc do
     expect(strip_guid(xmlpp(Nokogiri::XML(IsoDoc::IEEE::WordConvert.new({})
       .convert("test", presxml, true))
                 .at("//div[@class = 'WordSection2']").to_xml)))
+      .to be_equivalent_to xmlpp(word)
+  end
+
+  it "process formulae" do
+    presxml = <<~INPUT
+             <iso-standard xmlns="http://riboseinc.com/isoxml"  type='presentation'>
+          <preface><foreword id="A" displayorder="1">
+          <formula id="_be9158af-7e93-4ee2-90c5-26d31c181934" unnumbered="true"  keep-with-next="true" keep-lines-together="true">
+        <stem type="AsciiMath">r = 1 %</stem>
+      <dl id="_e4fe94fe-1cde-49d9-b1ad-743293b7e21d">
+        <dt>
+          <stem type="AsciiMath">r</stem>
+        </dt>
+        <dd>
+          <p id="_1b99995d-ff03-40f5-8f2e-ab9665a69b77">is the repeatability limit.</p>
+        </dd>
+      </dl>
+          <note id="_83083c7a-6c85-43db-a9fa-4d8edd0c9fc0">
+          <name>NOTE</name>
+        <p id="_511aaa98-4116-42af-8e5b-c87cdf5bfdc8">[durationUnits] is essentially a duration statement without the "P" prefix. "P" is unnecessary because between "G" and "U" duration is always expressed.</p>
+      </note>
+          </formula>
+          <formula id="_be9158af-7e93-4ee2-90c5-26d31c181935"><name>1</name>
+        <stem type="AsciiMath">r = 1 %</stem>
+        </formula>
+          </foreword></preface>
+          </iso-standard>
+    INPUT
+    html = <<~OUTPUT
+          #{HTML_HDR}
+          <br/>
+          <div id="A">
+            <h1 class='ForewordTitle'>Foreword</h1>
+            <div id="_" style='page-break-after: avoid;page-break-inside: avoid;'>
+              <div class='formula'>
+                <p>
+                  <span class='stem'>(#(r = 1 %)#)</span>
+                </p>
+              </div>
+              <dl id="_" class='formula_dl'>
+                <dt>
+                  <span class='stem'>(#(r)#)</span>
+                </dt>
+                <dd>
+                  <p id="_">is the repeatability limit.</p>
+                </dd>
+              </dl>
+              <div id="_" class='Note'>
+                <p>
+                  <span class='note_label'>NOTE&#x2014;</span>
+                  [durationUnits] is essentially a duration statement without the "P"
+                  prefix. "P" is unnecessary because between "G" and "U" duration is
+                  always expressed.
+                </p>
+              </div>
+            </div>
+            <div id="_">
+              <div class='formula'>
+                <p>
+                  <span class='stem'>(#(r = 1 %)#)</span>
+                  &#xa0; (1)
+                </p>
+              </div>
+            </div>
+          </div>
+          <p class='zzSTDTitle1'/>
+        </div>
+      </body>
+    OUTPUT
+    word = <<~OUTPUT
+          <div>
+        <a name='A' id='A'/>
+        <p class='IEEEStdsLevel1Header'>Foreword</p>
+        <div style='page-break-after: avoid;page-break-inside: avoid;'>
+          <a name="_" id="_"/>
+          <div class='IEEEStdsEquation'>
+            <p class='IEEEStdsEquation'>
+              <span class='stem'>
+                <oMath>
+                  <r>
+                    <t>r=1%</t>
+                  </r>
+                </oMath>
+              </span>
+              <span style='mso-tab-count:1'>&#xa0; </span>
+            </p>
+          </div>
+          <p class='IEEEStdsEquationVariableList'>
+            <span class='stem'>
+              <oMath>
+                <r>
+                  <t>r</t>
+                </r>
+              </oMath>
+            </span>
+            <span style='mso-tab-count:1'>&#xa0; </span>
+            is the repeatability limit.
+          </p>
+          <div class='Note'>
+            <a name="_" id="_"/>
+            <p class='IEEEStdsSingleNote'>
+              <span class='note_label'>NOTE&#x2014;</span>
+              [durationUnits] is essentially a duration statement without the "P"
+              prefix. "P" is unnecessary because between "G" and "U" duration is
+              always expressed.
+            </p>
+          </div>
+        </div>
+        <div>
+          <a name="_" id="_"/>
+          <div class='IEEEStdsEquation'>
+            <p class='IEEEStdsEquation'>
+              <span class='stem'>
+                <oMath>
+                  <r>
+                    <t>r=1%</t>
+                  </r>
+                </oMath>
+              </span>
+              <span style='mso-tab-count:1'>&#xa0; </span>
+              (1)
+            </p>
+          </div>
+        </div>
+      </div>
+    OUTPUT
+    expect(strip_guid(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
+  .convert("test", presxml, true))
+  .at("//body").to_xml))).to be_equivalent_to xmlpp(html)
+    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
+    expect(File.exist?("test.doc")).to be true
+    doc = Nokogiri::XML(word2xml("test.doc"))
+      .at("//xmlns:div[xmlns:a[@id = 'A']]")
+    expect(strip_guid(xmlpp(doc.to_xml.gsub(/<m:/, "<").gsub(/<\/m:/, "</"))))
       .to be_equivalent_to xmlpp(word)
   end
 end
