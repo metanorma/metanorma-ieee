@@ -66,6 +66,15 @@ module IsoDoc
         parse(dlist, out)
         out.parent.at("./dl")["class"] = "formula_dl"
       end
+
+      def bracket_if_num(num)
+        return nil if num.nil?
+
+        num = num.text.sub(/^\[/, "").sub(/\]$/, "")
+        return "[#{num}]" if /^B?\d+$/.match?(num)
+
+        num
+      end
     end
   end
 end

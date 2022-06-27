@@ -544,7 +544,6 @@ RSpec.describe Metanorma::IEEE do
            </clause>
          </annex>
          <annex id='_' obligation='' language='' script=''>
-           <clause id='_' obligation='informative'>
              <title>Bibliography</title>
              <references id='_' normative='false' obligation='informative'>
                <title>Bibliography</title>
@@ -555,7 +554,6 @@ RSpec.describe Metanorma::IEEE do
                  use only.
                </p>
              </references>
-           </clause>
          </annex>
          <bibliography>
            <references id='_' normative='true' obligation='informative'>

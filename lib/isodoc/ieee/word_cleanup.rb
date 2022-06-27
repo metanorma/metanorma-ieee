@@ -64,6 +64,7 @@ module IsoDoc
         introduction_cleanup(docxml)
         sourcecode_cleanup(docxml)
         div_cleanup(docxml)
+        biblio_cleanup(docxml)
         headings_cleanup(docxml)
         span_style_cleanup(docxml)
         caption_cleanup(docxml)
@@ -71,6 +72,12 @@ module IsoDoc
         style_cleanup(docxml)
         para_type_cleanup(docxml)
         docxml
+      end
+
+      def biblio_cleanup(docxml)
+        docxml.xpath("//p[@class = 'Biblio']").each do |p|
+          headings_cleanup1(p)
+        end
       end
 
       def table_cleanup(docxml)
@@ -120,8 +127,12 @@ module IsoDoc
         (1..9).each do |i|
           docxml.xpath("//h#{i}").each do |h|
             headings_cleanup1(h)
-            h.name = "p"
-            h["class"] = "IEEEStdsLevel#{i}Header"
+            if h.at("./ancestor::div[@class = 'Annex']")
+              h.delete("class")
+            else
+              h.name = "p"
+              h["class"] = "IEEEStdsLevel#{i}Header"
+            end
           end
         end
       end

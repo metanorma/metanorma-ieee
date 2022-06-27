@@ -108,6 +108,10 @@ module IsoDoc
         end
       end
 
+      def annex_attrs(node)
+        { id: node["id"], class: "Annex" }
+      end
+
       include BaseConvert
       include Init
     end

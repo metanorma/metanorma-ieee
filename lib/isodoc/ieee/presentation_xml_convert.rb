@@ -108,6 +108,20 @@ module IsoDoc
           .parse1(RelatonBib::XMLParser.from_xml(bibitem.to_xml))
       end
 
+      def bibliography_bibitem_number1(bibitem, idx)
+      if mn = bibitem.at(ns(".//docidentifier[@type = 'metanorma']"))
+        /^\[?\d\]?$/.match?(mn&.text) and
+          idx = mn.text.sub(/^\[B?/, "").sub(/\]$/, "").to_i
+      end
+      unless bibliography_bibitem_number_skip(bibitem)
+
+        idx += 1
+        bibitem.at(ns(".//docidentifier")).previous =
+          "<docidentifier type='metanorma-ordinal'>[B#{idx}]</docidentifier>"
+      end
+      idx
+    end
+
       include Init
     end
   end

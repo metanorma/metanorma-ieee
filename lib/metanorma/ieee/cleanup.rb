@@ -197,6 +197,20 @@ module Metanorma
         fnote["reference"] = idx.to_s
         [idx, seen]
       end
+
+      def biblio_renumber(xmldoc)
+        i = 0
+        xmldoc.xpath("//references[not(@normative = 'true')]"\
+                     "[not(@hidden = 'true')]").each do |r|
+          r.xpath("./bibitem[not(@hidden = 'true')]").each do |b|
+            i += 1
+            next unless docid = b.at("./docidentifier[@type = 'metanorma']")
+            next unless /^\[\d+\]$/.match?(docid.text)
+
+            docid.children = "[B#{i}]"
+          end
+        end
+      end
     end
   end
 end

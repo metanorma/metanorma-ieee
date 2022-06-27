@@ -142,4 +142,58 @@ RSpec.describe Metanorma::IEEE do
         .to be_equivalent_to xmlpp(output)
     end
   end
+
+  it "cites references" do
+    VCR.use_cassette "multistandard2" do
+      input = <<~INPUT
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib-cache:
+
+        [[A]]
+        == Clause
+
+        <<ref1>>
+        <<ref2>>
+        <<ref3>>
+        <<ref4>>
+        <<ref5>>
+        <<ref6>>
+
+        [bibliography]
+        == Normative References
+
+        * [[[ref1,ISO 639:1967]]] REF5
+        * [[[ref2,RFC 7749]]] REF7
+        * [[[ref3,REF4]]] REF4
+
+        [bibliography]
+        == Bibliography
+
+        * [[[ref4,ISO 639:1967]]] REF5
+        * [[[ref5,RFC 7749]]] REF7
+        * [[[ref6,3]]] REF4
+
+      INPUT
+      output = <<~OUTPUT
+         <clause id='A' inline-header='false' obligation='normative'>
+          <title>Clause</title>
+          <p id='_'>
+            <eref type='inline' bibitemid='ref1' citeas='ISO 639:1967'/>
+            <eref type='inline' bibitemid='ref2' citeas='IETF RFC 7749'/>
+            <eref type='inline' bibitemid='ref3' citeas='REF4'/>
+            <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967'/>
+            <eref type='inline' bibitemid='ref5' citeas='IETF RFC 7749'/>
+            <eref type='inline' bibitemid='ref6' citeas='[B1]'/>
+          </p>
+        </clause>
+      OUTPUT
+      out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
+        .at("//xmlns:clause[@id = 'A']")
+      expect(xmlpp(strip_guid(out.to_xml)))
+        .to be_equivalent_to xmlpp(output)
+    end
+  end
 end
