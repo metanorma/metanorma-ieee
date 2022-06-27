@@ -90,93 +90,93 @@ RSpec.describe IsoDoc::IEEE do
     INPUT
 
     presxml = <<~OUTPUT
-          <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-        <preface>
-          <abstract obligation="informative" displayorder="1">
-            <title>Foreword</title>
-            <p id="A">This is a preamble</p>
-          </abstract>
-          <introduction id="B" obligation="informative" displayorder="2">
-            <title>Introduction</title>
-            <clause id="C" inline-header="false" obligation="informative">
-              <title depth="2">Introduction Subsection</title>
-            </clause>
-            <p>This is patent boilerplate</p>
-          </introduction>
-          <acknowledgements obligation="informative" displayorder="3">
-            <title>Acknolwedgements</title>
-            <p id="A">This is a preamble</p>
-          </acknowledgements>
-        </preface>
-        <sections>
-          <clause id="D" obligation="normative" type="overview" displayorder="4">
-            <title depth="1">1.<tab/>Overview</title>
-            <p id="E">Text</p>
-            <clause id="D1" obligation="normative" type="scope">
-            <title depth="2">1.1.<tab/>Scope</title>
-            </clause>
-            <clause id="D2" obligation="normative" type="purpose">
-            <title depth="2">1.2.<tab/>Purpose</title>
-            </clause>
-          </clause>
-          <clause id="H" obligation="normative" displayorder="6">
-            <title depth="1">3.<tab/>Terms, Definitions, Symbols and Abbreviated Terms</title>
-            <terms id="I" obligation="normative">
-              <title depth="2">3.1.<tab/>Normal Terms</title>
-              <term id="J">
+           <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+         <preface>
+           <abstract obligation="informative" displayorder="1">
+             <title>Foreword</title>
+             <p id="A">This is a preamble</p>
+           </abstract>
+           <introduction id="B" obligation="informative" displayorder="2">
+             <title>Introduction</title>
+             <clause id="C" inline-header="false" obligation="informative">
+               <title depth="2">Introduction Subsection</title>
+             </clause>
+             <p>This is patent boilerplate</p>
+           </introduction>
+           <acknowledgements obligation="informative" displayorder="3">
+             <title>Acknolwedgements</title>
+             <p id="A">This is a preamble</p>
+           </acknowledgements>
+         </preface>
+         <sections>
+           <clause id="D" obligation="normative" type="overview" displayorder="4">
+             <title depth="1">1.<tab/>Overview</title>
+             <p id="E">Text</p>
+             <clause id="D1" obligation="normative" type="scope">
+             <title depth="2">1.1.<tab/>Scope</title>
+             </clause>
+             <clause id="D2" obligation="normative" type="purpose">
+             <title depth="2">1.2.<tab/>Purpose</title>
+             </clause>
+           </clause>
+           <clause id="H" obligation="normative" displayorder="6">
+             <title depth="1">3.<tab/>Terms, Definitions, Symbols and Abbreviated Terms</title>
+             <terms id="I" obligation="normative">
+               <title depth="2">3.1.<tab/>Normal Terms</title>
+               <term id="J">
 
-              <p><strong>Term2</strong>:
+               <p><strong>Term2</strong>:
 
-      </p>
-      </term>
-            </terms>
-            <definitions id="K"><title>3.2.</title>
-              <dl>
-                <dt>Symbol</dt>
-                <dd>Definition</dd>
-              </dl>
-            </definitions>
-          </clause>
-          <definitions id="L" displayorder="7"><title>4.</title>
-            <dl>
-              <dt>Symbol</dt>
-              <dd>Definition</dd>
-            </dl>
-          </definitions>
-          <clause id="M" inline-header="false" obligation="normative" displayorder="8">
-            <title depth="1">5.<tab/>Clause 4</title>
-            <clause id="N" inline-header="false" obligation="normative">
-              <title depth="2">5.1.<tab/>Introduction</title>
-            </clause>
-            <clause id="O" inline-header="false" obligation="normative">
-              <title depth="2">5.2.<tab/>Clause 4.2</title>
-            </clause>
-          </clause>
-        </sections>
-        <annex id="P" inline-header="false" obligation="normative" displayorder="9">
-          <title><strong>Annex A</strong><br/>(normative)<br/><br/><strong>Annex</strong></title>
-          <clause id="Q" inline-header="false" obligation="normative">
-            <title depth="2">A.1.<tab/>Annex A.1</title>
-            <clause id="Q1" inline-header="false" obligation="normative">
-              <title depth="3">A.1.1.<tab/>Annex A.1a</title>
-            </clause>
-          </clause>
-          <references id="Q3" normative="false">
-            <title depth="2">A.2.<tab/>Annex Bibliography</title>
-          </references>
-        </annex>
-        <bibliography>
-          <references id="R" normative="true" obligation="informative" displayorder="5">
-            <title depth="1">2.<tab/>Normative References</title>
-          </references>
-          <clause id="S" obligation="informative" displayorder="10">
-            <title depth="1">Bibliography</title>
-            <references id="T" normative="false" obligation="informative">
-              <title depth="2">Bibliography Subsection</title>
-            </references>
-          </clause>
-        </bibliography>
-      </iso-standard>
+       </p>
+       </term>
+             </terms>
+             <definitions id="K"><title>3.2.</title>
+               <dl>
+                 <dt>Symbol</dt>
+                 <dd>Definition</dd>
+               </dl>
+             </definitions>
+           </clause>
+           <definitions id="L" displayorder="7"><title>4.</title>
+             <dl>
+               <dt>Symbol</dt>
+               <dd>Definition</dd>
+             </dl>
+           </definitions>
+           <clause id="M" inline-header="false" obligation="normative" displayorder="8">
+             <title depth="1">5.<tab/>Clause 4</title>
+             <clause id="N" inline-header="false" obligation="normative">
+               <title depth="2">5.1.<tab/>Introduction</title>
+             </clause>
+             <clause id="O" inline-header="false" obligation="normative">
+               <title depth="2">5.2.<tab/>Clause 4.2</title>
+             </clause>
+           </clause>
+         </sections>
+         <annex id="P" inline-header="false" obligation="normative" displayorder="9">
+           <title><strong>Annex A</strong><br/><span class="obligation">(normative)</span><br/><strong>Annex</strong></title>
+           <clause id="Q" inline-header="false" obligation="normative">
+             <title depth="2">A.1.<tab/>Annex A.1</title>
+             <clause id="Q1" inline-header="false" obligation="normative">
+               <title depth="3">A.1.1.<tab/>Annex A.1a</title>
+             </clause>
+           </clause>
+           <references id="Q3" normative="false">
+             <title depth="2">A.2.<tab/>Annex Bibliography</title>
+           </references>
+         </annex>
+         <bibliography>
+           <references id="R" normative="true" obligation="informative" displayorder="5">
+             <title depth="1">2.<tab/>Normative References</title>
+           </references>
+           <clause id="S" obligation="informative" displayorder="10">
+             <title depth="1">Bibliography</title>
+             <references id="T" normative="false" obligation="informative">
+               <title depth="2">Bibliography Subsection</title>
+             </references>
+           </clause>
+         </bibliography>
+       </iso-standard>
     OUTPUT
 
     html = <<~OUTPUT
@@ -257,7 +257,6 @@ RSpec.describe IsoDoc::IEEE do
                <b>Annex A</b>
                <br/>
                (normative)
-               <br/>
                <br/>
                <b>Annex</b>
              </h1>
@@ -427,7 +426,6 @@ RSpec.describe IsoDoc::IEEE do
               <br/>
               (normative)
               <br/>
-              <br/>
               <b>Annex</b>
             </h1>
             <div id='Q'>
@@ -538,7 +536,7 @@ RSpec.describe IsoDoc::IEEE do
     presxml = <<~OUTPUT
          <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
         <annex id="a" inline-header="false" obligation="normative" displayorder="1">
-        <title><strong>Annex A</strong><br/>(normative)<br/><br/><strong>Appendix C</strong></title>
+        <title><strong>Annex A</strong><br/><span class='obligation'>(normative)</span><br/><strong>Appendix C</strong></title>
         <references id="_" normative="false" obligation="informative">
           <p id="_">
             Bibliographical references are resources that provide additional or
@@ -562,7 +560,6 @@ RSpec.describe IsoDoc::IEEE do
              <h1 class='Annex'>
                <b>Annex A</b><br/>(normative)
                <br/>
-               <br/>
                <b>Appendix C</b>
              </h1>
              <div>
@@ -579,7 +576,7 @@ RSpec.describe IsoDoc::IEEE do
        </body>
     OUTPUT
     word = <<~OUTPUT
-      <div class='Annex'>
+      <div>
          <a name='a' id='a'/>
          <h1>Appendix C</h1>
          <div>

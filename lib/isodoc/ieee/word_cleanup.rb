@@ -76,7 +76,7 @@ module IsoDoc
 
       def biblio_cleanup(docxml)
         docxml.xpath("//p[@class = 'Biblio']").each do |p|
-          headings_cleanup1(p)
+          headings_strip(p)
         end
       end
 
@@ -125,19 +125,27 @@ module IsoDoc
 
       def headings_cleanup(docxml)
         (1..9).each do |i|
-          docxml.xpath("//h#{i}").each do |h|
-            headings_cleanup1(h)
-            if h.at("./ancestor::div[@class = 'Annex']")
-              h.delete("class")
-            else
-              h.name = "p"
-              h["class"] = "IEEEStdsLevel#{i}Header"
-            end
+          headings_cleanup1(docxml, i)
+        end
+        docxml.xpath("//div[@class = 'Annex']").each do |a|
+          a.delete("class")
+        end
+      end
+
+      def headings_cleanup1(docxml, idx)
+        docxml.xpath("//h#{idx}").each do |h|
+          headings_strip(h)
+          if h.at("./ancestor::div[@class = 'Annex']")
+            h.delete("class")
+            h["style"] = "mso-list:l13 level#{idx} lfo33;"
+          else
+            h.name = "p"
+            h["class"] = "IEEEStdsLevel#{idx}Header"
           end
         end
       end
 
-      def headings_cleanup1(hdr)
+      def headings_strip(hdr)
         if hdr.children.size > 1 && hdr.children[1].name == "span" &&
             hdr.children[1]["style"] == "mso-tab-count:1"
           2.times { hdr.children.first.remove }
