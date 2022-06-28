@@ -498,7 +498,7 @@ RSpec.describe IsoDoc::IEEE do
     OUTPUT
     word = <<~OUTPUT
       <div class='WordSection13'>
-         <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Draft ??? for Title</p>
+         <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Draft Recommended Practice for Title</p>
        </div>
     OUTPUT
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})

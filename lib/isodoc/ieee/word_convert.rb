@@ -34,7 +34,8 @@ module IsoDoc
           standardstylesheet: html_doc_path("ieee.scss"),
           header: html_doc_path("header.html"),
           wordcoverpage: html_doc_path("word_ieee_titlepage.html"),
-          wordintropage: html_doc_path("word_ieee_intro.html") }
+          wordintropage: html_doc_path("word_ieee_intro.html"),
+          ulstyle: "l11", olstyle: "l16" }
       end
 
       def abstract(isoxml, out)

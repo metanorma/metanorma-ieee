@@ -215,47 +215,47 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
          <a name='A' id='A'/>
          <p class='IEEEStdsLevel1Header'/>
          <p class='IEEEStdsParagraph'>
-           <p style='mso-list:l2 level1 lfo2;' class='IEEEStdsNumberedListLevel1CxSpFirst'>A</p>
-           <p style='mso-list:l2 level1 lfo2;' class='IEEEStdsNumberedListLevel1CxSpMiddle'>B</p>
-           <p style='mso-list:l2 level1 lfo2;' class='IEEEStdsNumberedListLevel1CxSpMiddle'>
-             <p style='mso-list:l2 level2 lfo2;' class='IEEEStdsNumberedListLevel2CxSpFirst'>C</p>
-             <p style='mso-list:l2 level2 lfo2;' class='IEEEStdsNumberedListLevel2CxSpMiddle'>D</p>
-             <p style='mso-list:l2 level2 lfo2;' class='IEEEStdsNumberedListLevel2CxSpMiddle'>
-               <p style='mso-list:l2 level3 lfo2;' class='IEEEStdsNumberedListLevel3CxSpFirst'>E</p>
-               <p style='mso-list:l2 level3 lfo2;' class='IEEEStdsNumberedListLevel3CxSpMiddle'>F</p>
-               <p style='mso-list:l2 level3 lfo2;' class='IEEEStdsNumberedListLevel3CxSpMiddle'>
-                 <p style='mso-list:l2 level4 lfo2;' class='IEEEStdsNumberedListLevel4CxSpFirst'>G</p>
-                 <p style='mso-list:l2 level4 lfo2;' class='IEEEStdsNumberedListLevel4CxSpMiddle'>H</p>
-                 <p style='mso-list:l2 level4 lfo2;' class='IEEEStdsNumberedListLevel4CxSpMiddle'>
-                   <p style='mso-list:l2 level5 lfo2;' class='IEEEStdsNumberedListLevel5CxSpFirst'>I</p>
-                   <p style='mso-list:l2 level5 lfo2;' class='IEEEStdsNumberedListLevel5CxSpMiddle'>J</p>
-                   <p style='mso-list:l2 level5 lfo2;' class='IEEEStdsNumberedListLevel5CxSpMiddle'>
-                     <p style='mso-list:l2 level6 lfo2;' class='IEEEStdsNumberedListLevel6CxSpFirst'>K</p>
-                     <p style='mso-list:l2 level6 lfo2;' class='IEEEStdsNumberedListLevel6CxSpMiddle'>L</p>
-                     <p style='mso-list:l2 level6 lfo2;' class='IEEEStdsNumberedListLevel6CxSpLast'>M</p>
+           <p style='mso-list:l16 level1 lfo2;' class='IEEEStdsNumberedListLevel1CxSpFirst'>A</p>
+           <p style='mso-list:l16 level1 lfo2;' class='IEEEStdsNumberedListLevel1CxSpMiddle'>B</p>
+           <p style='mso-list:l16 level1 lfo2;' class='IEEEStdsNumberedListLevel1CxSpMiddle'>
+             <p style='mso-list:l16 level2 lfo2;' class='IEEEStdsNumberedListLevel2CxSpFirst'>C</p>
+             <p style='mso-list:l16 level2 lfo2;' class='IEEEStdsNumberedListLevel2CxSpMiddle'>D</p>
+             <p style='mso-list:l16 level2 lfo2;' class='IEEEStdsNumberedListLevel2CxSpMiddle'>
+               <p style='mso-list:l16 level3 lfo2;' class='IEEEStdsNumberedListLevel3CxSpFirst'>E</p>
+               <p style='mso-list:l16 level3 lfo2;' class='IEEEStdsNumberedListLevel3CxSpMiddle'>F</p>
+               <p style='mso-list:l16 level3 lfo2;' class='IEEEStdsNumberedListLevel3CxSpMiddle'>
+                 <p style='mso-list:l16 level4 lfo2;' class='IEEEStdsNumberedListLevel4CxSpFirst'>G</p>
+                 <p style='mso-list:l16 level4 lfo2;' class='IEEEStdsNumberedListLevel4CxSpMiddle'>H</p>
+                 <p style='mso-list:l16 level4 lfo2;' class='IEEEStdsNumberedListLevel4CxSpMiddle'>
+                   <p style='mso-list:l16 level5 lfo2;' class='IEEEStdsNumberedListLevel5CxSpFirst'>I</p>
+                   <p style='mso-list:l16 level5 lfo2;' class='IEEEStdsNumberedListLevel5CxSpMiddle'>J</p>
+                   <p style='mso-list:l16 level5 lfo2;' class='IEEEStdsNumberedListLevel5CxSpMiddle'>
+                     <p style='mso-list:l16 level6 lfo2;' class='IEEEStdsNumberedListLevel6CxSpFirst'>K</p>
+                     <p style='mso-list:l16 level6 lfo2;' class='IEEEStdsNumberedListLevel6CxSpMiddle'>L</p>
+                     <p style='mso-list:l16 level6 lfo2;' class='IEEEStdsNumberedListLevel6CxSpLast'>M</p>
                    </p>
-                   <p style='mso-list:l2 level5 lfo2;' class='IEEEStdsNumberedListLevel5CxSpLast'>N</p>
+                   <p style='mso-list:l16 level5 lfo2;' class='IEEEStdsNumberedListLevel5CxSpLast'>N</p>
                  </p>
-                 <p style='mso-list:l2 level4 lfo2;' class='IEEEStdsNumberedListLevel4CxSpLast'>O</p>
+                 <p style='mso-list:l16 level4 lfo2;' class='IEEEStdsNumberedListLevel4CxSpLast'>O</p>
                </p>
-               <p style='mso-list:l2 level3 lfo2;' class='IEEEStdsNumberedListLevel3CxSpLast'>P</p>
+               <p style='mso-list:l16 level3 lfo2;' class='IEEEStdsNumberedListLevel3CxSpLast'>P</p>
              </p>
-             <p style='mso-list:l2 level2 lfo2;' class='IEEEStdsNumberedListLevel2CxSpLast'>Q</p>
+             <p style='mso-list:l16 level2 lfo2;' class='IEEEStdsNumberedListLevel2CxSpLast'>Q</p>
            </p>
-           <p style='mso-list:l2 level1 lfo2;' class='IEEEStdsNumberedListLevel1CxSpLast'>R</p>
-           <p style='mso-list:l3 level1 lfo1;' class='IEEEStdsUnorderedListCxSpFirst'>A</p>
-           <p style='mso-list:l3 level1 lfo1;' class='IEEEStdsUnorderedListCxSpMiddle'>B</p>
-           <p style='mso-list:l3 level1 lfo1;' class='IEEEStdsUnorderedListCxSpMiddle'>
+           <p style='mso-list:l16 level1 lfo2;' class='IEEEStdsNumberedListLevel1CxSpLast'>R</p>
+           <p style='mso-list:l11 level1 lfo1;' class='IEEEStdsUnorderedListCxSpFirst'>A</p>
+           <p style='mso-list:l11 level1 lfo1;' class='IEEEStdsUnorderedListCxSpMiddle'>B</p>
+           <p style='mso-list:l11 level1 lfo1;' class='IEEEStdsUnorderedListCxSpMiddle'>
              B1
-             <p style='mso-list:l3 level2 lfo1;' class='IEEEStdsUnorderedListLevel2'>C</p>
-             <p style='mso-list:l3 level2 lfo1;' class='IEEEStdsUnorderedListLevel2'>D</p>
-             <p style='mso-list:l3 level2 lfo1;' class='IEEEStdsUnorderedListLevel2'>
-               <p style='mso-list:l3 level3 lfo1;' class='IEEEStdsUnorderedListLevel2'>E</p>
-               <p style='mso-list:l3 level3 lfo1;' class='IEEEStdsUnorderedListLevel2'>F</p>
+             <p style='mso-list:l11 level2 lfo1;' class='IEEEStdsUnorderedListLevel2'>C</p>
+             <p style='mso-list:l11 level2 lfo1;' class='IEEEStdsUnorderedListLevel2'>D</p>
+             <p style='mso-list:l11 level2 lfo1;' class='IEEEStdsUnorderedListLevel2'>
+               <p style='mso-list:l11 level3 lfo1;' class='IEEEStdsUnorderedListLevel2'>E</p>
+               <p style='mso-list:l11 level3 lfo1;' class='IEEEStdsUnorderedListLevel2'>F</p>
              </p>
-             <p style='mso-list:l3 level2 lfo1;' class='IEEEStdsUnorderedListLevel2'>Q</p>
+             <p style='mso-list:l11 level2 lfo1;' class='IEEEStdsUnorderedListLevel2'>Q</p>
            </p>
-           <p style='mso-list:l3 level1 lfo1;' class='IEEEStdsUnorderedListCxSpLast'>R</p>
+           <p style='mso-list:l11 level1 lfo1;' class='IEEEStdsUnorderedListCxSpLast'>R</p>
          </p>
        </div>
     OUTPUT
@@ -684,7 +684,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
            <p class='IEEEStdsTitle' style='margin-top:50.0pt;margin-right:0cm;margin-bottom:36.0pt;margin-left:0cm'>
              <span lang='EN-US' xml:lang='EN-US'>P1000&#x2122;/D0.3.4</span>
              <br/>
-             <span lang='EN-US' xml:lang='EN-US'>Draft Std. for Empty</span>
+             <span lang='EN-US' xml:lang='EN-US'>Draft Standard for Empty</span>
            </p>
            <p class='IEEEStdsTitleParaSans'>
              <span lang='EN-US' xml:lang='EN-US'>Developed by the</span>
@@ -1304,7 +1304,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
            <br clear='all' class='section'/>
          </p>
          <div class='WordSection11'>
-           <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Draft Std. for Empty</p>
+           <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Draft Standard for Empty</p>
          </div>
          <p class='IEEEStdsParagraph'>
            <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>

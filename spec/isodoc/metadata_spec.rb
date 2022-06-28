@@ -208,7 +208,8 @@ RSpec.describe Metanorma::IEEE do
     INPUT
     expect(htmlencode(metadata(csdc.info(docxml, nil)).to_s
       .gsub(/, :/, ",\n:"))).to be_equivalent_to <<~"OUTPUT"
-        {:accesseddate=>"XXX",
+        {:abbrev_doctitle=>"Draft Rec. Prac. for Main Titlein multiple lines",
+        :accesseddate=>"XXX",
         :agency=>"IEEE",
         :authors=>["AB", "CD", "CD1", "E, F, Jr.", "GH", "IJ", "KL", "MN", "OP", "QR", "ST", "UV", "KL", "MN"],
         :authors_affiliations=>{""=>["AB", "CD", "CD1", "E, F, Jr.", "GH", "IJ", "KL", "MN", "OP", "QR", "ST", "UV", "KL", "MN"]},
@@ -230,7 +231,7 @@ RSpec.describe Metanorma::IEEE do
         :draft_year=>"2000",
         :draftinfo=>" (draft 3.4, 2000-01-01)",
         :edition=>"2",
-        :full_doctitle=>"Draft Rec. Prac. for Main Titlein multiple lines",
+        :full_doctitle=>"Draft Recommended Practice for Main Titlein multiple lines",
         :implementeddate=>"XXX",
         :isbn_pdf=>"GHI",
         :isbn_print=>"JKL",
@@ -341,7 +342,8 @@ RSpec.describe Metanorma::IEEE do
     INPUT
     expect(htmlencode(metadata(csdc.info(docxml, nil)).to_s
       .gsub(/, :/, ",\n:"))).to be_equivalent_to <<~"OUTPUT"
-        {:accesseddate=>"XXX",
+        {:abbrev_doctitle=>"Draft Rec. Prac. for Main Titlein multiple lines",
+        :accesseddate=>"XXX",
         :balloting_group=>"BG",
         :balloting_group_members=>["Balloter1", "Balloter2", "Balloter3", "Balloter4", "Balloter5", "Balloter6", "Balloter7", "Balloter8", "Balloter9"],
         :circulateddate=>"XXX",
@@ -359,7 +361,7 @@ RSpec.describe Metanorma::IEEE do
         :draft_year=>"2000",
         :draftinfo=>" (draft 3.4, 2000-01-01)",
         :edition=>"2",
-        :full_doctitle=>"Draft Rec. Prac. for Main Titlein multiple lines",
+        :full_doctitle=>"Draft Recommended Practice for Main Titlein multiple lines",
         :implementeddate=>"XXX",
         :isbn_pdf=>"978-0-XXXX-XXXX-X",
         :isbn_print=>"978-0-XXXX-XXXX-X",
