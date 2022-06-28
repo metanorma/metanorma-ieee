@@ -125,6 +125,10 @@ module IsoDoc
         docxml.at("//div[@class = 'boilerplate-feedback']")&.xpath("./div")
           &.each_with_index do |div, i|
           i.zero? or div.elements.first.previous = "<p>&#xa0;</p>"
+          i == 4 and
+            div.xpath(".//p[br]").each do |p|
+              p.replace(p.to_xml.gsub(%r{<br/>}, "</p><p>"))
+            end
           feedback_style1(div, i)
         end
       end
