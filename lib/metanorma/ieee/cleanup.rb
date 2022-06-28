@@ -212,6 +212,13 @@ module Metanorma
         end
       end
 
+      TERM_CLAUSE = "//sections//terms".freeze
+
+      def termdef_boilerplate_insert(xmldoc, isodoc, once = false)
+        once = true
+        super
+      end
+
       def term_defs_boilerplate_cont(src, term, isodoc); end
     end
   end
