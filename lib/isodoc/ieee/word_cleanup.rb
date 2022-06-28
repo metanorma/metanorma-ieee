@@ -145,9 +145,9 @@ module IsoDoc
         if hdr.at("./ancestor::div[@class = 'Annex']")
           hdr.delete("class")
           hdr["style"] = "mso-list:l13 level#{idx} lfo33;"
-        elsif hdr.at("./ancestor::div[@class = 'Section3']") && idx == 1
+        elsif hdr.at("./ancestor::div[@class = 'Section3']")
           hdr.name = "p"
-          hdr["class"] = "IEEEStdsLevel1frontmatter"
+          hdr["class"] = "IEEEStdsLevel#{idx}frontmatter"
         else
           hdr.name = "p"
           hdr["class"] = "IEEEStdsLevel#{idx}Header"

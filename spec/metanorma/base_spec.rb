@@ -101,6 +101,8 @@ RSpec.describe Metanorma::IEEE do
       :isbn-print: DEF
       :stdid-pdf: GHI
       :stdid-print: JKL
+      :updates: ABC
+      :merges: BCD; EFG
     INPUT
     expect(xmlpp(output.sub(%r{<boilerplate>.*</boilerplate>}m, "")))
       .to be_equivalent_to xmlpp(<<~"OUTPUT")

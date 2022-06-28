@@ -115,6 +115,10 @@ module Metanorma
       def org_abbrev
         { "Institute of Electrical and Electronic Engineers" => "IEEE" }
       end
+
+      def relaton_relations
+        super + %w(merges updates)
+      end
     end
   end
 end

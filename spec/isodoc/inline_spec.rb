@@ -298,4 +298,186 @@ RSpec.describe IsoDoc::IEEE do
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
       .convert("test", input, true))).to be_equivalent_to xmlpp(output)
   end
+
+   it "processes concept markup" do
+    input = <<~INPUT
+          <iso-standard xmlns="http://riboseinc.com/isoxml">
+          <preface><foreword>
+          <p>
+          <ul>
+          <li>
+          <concept><refterm>term</refterm>
+              <xref target='clause1'/>
+            </concept></li>
+            <li><concept><refterm>term</refterm>
+              <renderterm>term</renderterm>
+              <xref target='clause1'/>
+            </concept></li>
+          <li><concept><refterm>term</refterm>
+              <renderterm>w[o]rd</renderterm>
+              <xref target='clause1'>Clause #1</xref>
+            </concept></li>
+            <li><concept><refterm>term</refterm>
+              <renderterm>term</renderterm>
+              <eref bibitemid="ISO712" type="inline" citeas="ISO 712"/>
+            </concept></li>
+            <li><concept><refterm>term</refterm>
+              <renderterm>word</renderterm>
+              <eref bibitemid="ISO712" type="inline" citeas="ISO 712">The Aforementioned Citation</eref>
+            </concept></li>
+            <li><concept><refterm>term</refterm>
+              <renderterm>word</renderterm>
+              <eref bibitemid="ISO712" type="inline" citeas="ISO 712">
+                <locality type='clause'>
+                  <referenceFrom>3.1</referenceFrom>
+                </locality>
+                <locality type='figure'>
+                  <referenceFrom>a</referenceFrom>
+                </locality>
+              </eref>
+            </concept></li>
+            <li><concept><refterm>term</refterm>
+              <renderterm>word</renderterm>
+              <eref bibitemid="ISO712" type="inline" citeas="ISO 712">
+              <localityStack connective="and">
+                <locality type='clause'>
+                  <referenceFrom>3.1</referenceFrom>
+                </locality>
+              </localityStack>
+              <localityStack connective="and">
+                <locality type='figure'>
+                  <referenceFrom>b</referenceFrom>
+                </locality>
+              </localityStack>
+              </eref>
+            </concept></li>
+            <li><concept><refterm>term</refterm>
+              <renderterm>word</renderterm>
+              <eref bibitemid="ISO712" type="inline" citeas="ISO 712">
+              <localityStack connective="and">
+                <locality type='clause'>
+                  <referenceFrom>3.1</referenceFrom>
+                </locality>
+              </localityStack>
+              <localityStack connective="and">
+                <locality type='figure'>
+                  <referenceFrom>b</referenceFrom>
+                </locality>
+              </localityStack>
+              The Aforementioned Citation
+              </eref>
+            </concept></li>
+            <li><concept><refterm>term</refterm>
+            <li><concept><refterm>term</refterm>
+              <renderterm>word</renderterm>
+              <termref base='IEV' target='135-13-13'/>
+            </concept></li>
+            <li><concept><refterm>term</refterm>
+              <renderterm>word</renderterm>
+              <termref base='IEV' target='135-13-13'>The IEV database</termref>
+            </concept></li>
+            <li><concept>
+              <strong>error!</strong>
+              </concept>
+              </li>
+            </ul>
+          </p>
+          </foreword></preface>
+          <sections>
+          <clause id="clause1"><title>Clause 1</title></clause>
+          </sections>
+          <bibliography><references id="_normative_references" obligation="informative" normative="true"><title>Normative References</title>
+          <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
+      <bibitem id="ISO712" type="standard">
+        <title format="text/plain">Cereals or cereal products</title>
+        <title type="main" format="text/plain">Cereals and cereal products</title>
+        <docidentifier type="ISO">ISO 712</docidentifier>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+      </bibitem>
+      </references></bibliography>
+          </iso-standard>
+    INPUT
+    presxml = <<~OUTPUT
+         <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+          <preface><foreword displayorder="1">
+          <p>
+          <ul>
+          <li>
+              [term defined in <xref target="clause1">Clause 2</xref>]
+            </li>
+            <li>
+              <em>term</em> [term defined in <xref target="clause1">Clause 2</xref>]
+            </li>
+          <li>
+              <em>w[o]rd</em> [<xref target="clause1">Clause #1</xref>]
+            </li>
+            <li>
+              <em>term</em> [term defined in <eref bibitemid="ISO712" type="inline" citeas="ISO 712">ISO 712</eref>]
+            </li>
+            <li>
+              <em>word</em> [<eref bibitemid="ISO712" type="inline" citeas="ISO 712">The Aforementioned Citation</eref>]
+            </li>
+            <li>
+              <em>word</em> [term defined in <eref bibitemid="ISO712" type="inline" citeas="ISO 712"><locality type="clause">
+                  <referenceFrom>3.1</referenceFrom>
+                </locality><locality type="figure">
+                  <referenceFrom>a</referenceFrom>
+                </locality>ISO 712, Clause 3.1, Figure a</eref>]
+            </li>
+            <li>
+              <em>word</em> [term defined in <eref bibitemid="ISO712" type="inline" citeas="ISO 712"><localityStack connective="and">
+                <locality type="clause">
+                  <referenceFrom>3.1</referenceFrom>
+                </locality>
+              </localityStack><localityStack connective="and">
+                <locality type="figure">
+                  <referenceFrom>b</referenceFrom>
+                </locality>
+              </localityStack>ISO 712, Clause 3.1 and Figure b</eref>]
+            </li>
+            <li>
+              <em>word</em> [<eref bibitemid="ISO712" type="inline" citeas="ISO 712">
+              <localityStack connective="and">
+                <locality type="clause">
+                  <referenceFrom>3.1</referenceFrom>
+                </locality>
+              </localityStack>
+              <localityStack connective="and">
+                <locality type="figure">
+                  <referenceFrom>b</referenceFrom>
+                </locality>
+              </localityStack>
+              The Aforementioned Citation
+              </eref>]
+            </li>
+            <li>
+              <em>word</em> [term defined in <termref base="IEV" target="135-13-13"/>]
+            </li>
+            <li>
+              <em>word</em> [<termref base="IEV" target="135-13-13">The IEV database</termref>]
+            </li>
+             <li> <strong>error!</strong> </li>
+            </ul>
+          </p>
+          </foreword></preface>
+          <sections>
+          <clause id="clause1" displayorder="3"><title depth="1">2.<tab/>Clause 1</title></clause>
+          </sections>
+          <bibliography><references id="_normative_references" obligation="informative" normative="true" displayorder="2"><title depth="1">1.<tab/>Normative References</title>
+          <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
+      <bibitem id="ISO712" type="standard">
+        <formattedref>International Organization for Standardization. <em>Cereals and cereal products</em>.</formattedref>
+        <docidentifier type="ISO">ISO 712</docidentifier>
+      </bibitem>
+      </references></bibliography>
+          </iso-standard>
+    OUTPUT
+    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
+      .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
+  end
 end

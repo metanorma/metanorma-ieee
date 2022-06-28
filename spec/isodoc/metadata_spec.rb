@@ -178,6 +178,24 @@ RSpec.describe Metanorma::IEEE do
       </series>
            <keyword>word2</keyword>
        <keyword>word1</keyword>
+           <relation type='merges'>
+      <bibitem>
+        <title>--</title>
+        <docidentifier>BCD</docidentifier>
+      </bibitem>
+    </relation>
+    <relation type='merges'>
+      <bibitem>
+        <title>--</title>
+        <docidentifier>EFG</docidentifier>
+      </bibitem>
+    </relation>
+    <relation type='updates'>
+      <bibitem>
+        <title>--</title>
+        <docidentifier>ABC</docidentifier>
+      </bibitem>
+    </relation>
         <ext>
         <doctype>recommended-practice</doctype>
         <docsubtype>trial-use</docsubtype>
@@ -239,6 +257,7 @@ RSpec.describe Metanorma::IEEE do
         :iteration=>"3",
         :keywords=>["word2", "word1"],
         :lang=>"en",
+        :merges=>["BCD", "EFG"],
         :obsoleteddate=>"XXX",
         :publisheddate=>"2018-09-01",
         :publisher=>"Institute of Electrical and Electronic Engineers",
@@ -258,6 +277,7 @@ RSpec.describe Metanorma::IEEE do
         :unchangeddate=>"XXX",
         :unpublished=>true,
         :updateddate=>"XXX",
+        :updates=>["ABC"],
         :vote_endeddate=>"XXX",
         :vote_starteddate=>"XXX",
         :wg_members=>{"chair"=>"AB", "vice-chair"=>"CD", "secretary"=>"CD1", "members"=>["E, F, Jr.", "GH", "IJ"]},

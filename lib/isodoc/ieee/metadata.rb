@@ -135,6 +135,23 @@ module IsoDoc
         draft and title = "Draft #{title}"
         title
       end
+
+      def relations(isoxml, _out)
+        super
+        relations_get(isoxml, "updates")
+        relations_get(isoxml, "merges")
+      end
+
+      def relations_get(isoxml, type)
+        std = isoxml.xpath(ns("//bibdata/relation[@type = '#{type}']"))
+        return if std.empty?
+
+        ret = std.map do |x|
+          x.at(ns(".//docidentifier[@primary = 'true']"))&.text ||
+            x.at(ns(".//docidentifier"))&.text
+        end
+        set(type.to_sym, ret)
+      end
     end
   end
 end

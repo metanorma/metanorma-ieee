@@ -8,6 +8,17 @@
 {% if doctitlecorrlabel %}
 <div class="doctitle-part">{{ doctitlecorrlabel }}</div>
 {% endif %}
+{%if updates or merges %}
+<div class="doctitle-part">(Revision of {{ updates | join: ", " }}<br/>Incorporating {{ merges | join: ", " }})</div>
+{%else%}
+{%if updates %}
+<div class="doctitle-part">(Revision of {{ updates | join: ", " }})</div>
+{%else%}
+{%if merges %}
+<div class="doctitle-part">(Incorporating {{ merges | join: ", " }})</div>
+{%endif%}
+{%endif%}
+{%endif%}
 </div>
 
 <div><p>Developed by the</p>
