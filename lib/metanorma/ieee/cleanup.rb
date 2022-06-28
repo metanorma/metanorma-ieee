@@ -211,6 +211,8 @@ module Metanorma
           end
         end
       end
+
+      def term_defs_boilerplate_cont(src, term, isodoc); end
     end
   end
 end

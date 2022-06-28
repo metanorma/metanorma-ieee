@@ -8,7 +8,7 @@ RSpec.describe Metanorma::IEEE do
 
   it "inserts boilerplate in front of sections" do
     input = <<~INPUT
-      = Draft Recommended Practice for Widgets
+      = Widgets
       Author
       :docfile: test.adoc
       :nodoc:

@@ -18,7 +18,6 @@ RSpec.describe Metanorma::IEEE do
          <sections>
            <terms id='_' obligation='normative'>
              <title>Definitions</title>
-             <p id='_'>For the purposes of this document, the following terms and definitions apply.</p>
              <p id='_'>
                For the purposes of this document, the following terms and definitions
                apply. The
@@ -124,7 +123,6 @@ RSpec.describe Metanorma::IEEE do
          <sections>
            <terms id='_' obligation='normative'>
              <title>Definitions</title>
-             <p id='_'>For the purposes of this document, the following terms and definitions apply.</p>
              <p id='_'>
                For the purposes of this document, the following terms and definitions
                apply. The

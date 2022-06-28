@@ -406,7 +406,7 @@ RSpec.describe Metanorma::IEEE do
            </foreword>
            <introduction id='_' obligation='informative'>
              <title>Introduction</title>
-             <admonition>This introduction is not part of P, Document title </admonition>
+             <admonition>This introduction is not part of P, Standard for Document title </admonition>
              <clause id='_' inline-header='false' obligation='informative'>
                <title>Introduction Subsection</title>
              </clause>
@@ -433,7 +433,6 @@ RSpec.describe Metanorma::IEEE do
            </clause>
            <terms id='_' obligation='normative'>
              <title>Definitions</title>
-             <p id='_'>For the purposes of this document, the following terms and definitions apply.</p>
              <p id='_'>
                For the purposes of this document, the following terms and definitions
                apply. The
