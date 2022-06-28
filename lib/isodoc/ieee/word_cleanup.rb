@@ -54,8 +54,10 @@ module IsoDoc
         intro.previous_element.remove
         dest.replace(intro.remove)
         i = docxml.at("//h1[@class = 'IntroTitle']")
-        i.next_element == "div" && i.next_element["class"] == "Admonition" and
-          i.next_element["class"] = "IEEEStdsIntroduction"
+        if i.next_element.name == "div" &&
+            i.next_element["class"] == "IEEEStdsIntroduction"
+          i.next_element.name = "p"
+        end
       end
 
       def word_cleanup(docxml)
