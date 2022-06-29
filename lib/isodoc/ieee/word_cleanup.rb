@@ -196,6 +196,7 @@ module IsoDoc
       end
 
       STYLESMAP = {
+        example: "IEEEStdsParagraph",
         MsoNormal: "IEEEStdsParagraph",
         NormRef: "IEEEStdsParagraph",
         Biblio: "IEEEStdsBibliographicEntry",

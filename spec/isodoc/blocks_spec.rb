@@ -748,7 +748,7 @@ RSpec.describe IsoDoc do
     presxml = <<~INPUT
       <iso-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
         <preface>
-          <foreword displayorder="1">
+          <foreword displayorder="1" id="A">
             <example id='samplecode' keep-with-next='true' keep-lines-together='true'>
               <name>Example 1</name>
               <p>Hello</p>
@@ -763,7 +763,7 @@ RSpec.describe IsoDoc do
     html = <<~OUTPUT
       #{HTML_HDR}
       <br/>
-        <div>
+        <div id="A">
                     <h1 class='ForewordTitle'>Foreword</h1>
                                  <div id='samplecode' class='example' style='page-break-after: avoid;page-break-inside: avoid;'>
                <p class='example-title'>Example 1:</p>
@@ -782,33 +782,33 @@ RSpec.describe IsoDoc do
         </body>
     OUTPUT
     word = <<~OUTPUT
-      <div class='WordSection2'>
-         <p>
-           <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
-         </p>
-         <div>
-           <h1 class='ForewordTitle'>Foreword</h1>
-           <div id='samplecode' class='example' style='page-break-after: avoid;page-break-inside: avoid;'>
-             <p class='example-title'>Example 1:</p>
-             <p>Hello</p>
-             <p id='X' class='Sourcecode'>
-               <br/>
-               &#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;
-               <br/>
-               &#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;
-             </p>
-             <p class='SourceTitle' style='text-align:center;'>Sample</p>
-           </div>
+      <div>
+         <a name='A' id='A'/>
+         <p class='IEEEStdsLevel1Header'>Foreword</p>
+         <div class='IEEEStdsParagraph' style='page-break-after: avoid;page-break-inside: avoid;'>
+           <a name='samplecode' id='samplecode'/>
+           <p class='IEEEStdsParagraph'>
+             <em>Example 1:</em>
+           </p>
+           <p class='IEEEStdsParagraph'>Hello</p>
+           <p class='IEEEStdsComputerCode' style='page-break-after:avoid;'>
+             <a name='X' id='X'/>
+           </p>
+           <p class='IEEEStdsComputerCode'>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </p>
+           <p class='IEEEStdsComputerCode'>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </p>
+           <p class='SourceTitle' style='text-align:center;'>Sample</p>
          </div>
-         <p>&#xa0;</p>
        </div>
     OUTPUT
     expect(strip_guid(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
       .convert("test", presxml, true))
       .at("//body").to_xml))).to be_equivalent_to xmlpp(html)
-    expect(strip_guid(xmlpp(Nokogiri::XML(IsoDoc::IEEE::WordConvert.new({})
-      .convert("test", presxml, true))
-                .at("//div[@class = 'WordSection2']").to_xml)))
+    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
+    expect(File.exist?("test.doc")).to be true
+    doc = Nokogiri::XML(word2xml("test.doc"))
+      .at("//xmlns:div[xmlns:a[@id = 'A']]")
+    expect(strip_guid(xmlpp(doc.to_xml
+      .gsub(/<m:/, "<").gsub(/<\/m:/, "</"))))
       .to be_equivalent_to xmlpp(word)
   end
 
