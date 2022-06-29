@@ -297,15 +297,15 @@ RSpec.describe IsoDoc do
                </ul>
              </div>
              <div id='_671a1994-4783-40d0-bc81-987d06ffb74e' class='Note' style='page-break-after: avoid;page-break-inside: avoid;'>
-               <p class='Note'>
-                 NOTE 1&#x2014;The starch of waxy rice consists almost entirely of
-                 amylopectin. The kernels have a tendency to stick together after
-                 cooking.
+               <p>
+                 <span class='note_label'>NOTE 1&#x2014;</span>
+                 The starch of waxy rice consists almost entirely of amylopectin. The
+                 kernels have a tendency to stick together after cooking.
                </p>
              </div>
              <div id='_671a1994-4783-40d0-bc81-987d06ffb74f' class='Note'>
-               <p class='Note'>
-                 NOTE 2&#x2014;
+               <p>
+                 <span class='note_label'>NOTE 2&#x2014;</span>
                  <ul>
                    <li>A</li>
                  </ul>

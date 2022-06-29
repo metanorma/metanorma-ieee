@@ -160,7 +160,7 @@ module IsoDoc
         end
       end
 
-            def abstract_cleanup(docxml)
+      def abstract_cleanup(docxml)
         dest = docxml.at("div[@id = 'abstract-destination']") or return
         if f = docxml.at("//div[@class = 'abstract']")
           f.previous_element.remove

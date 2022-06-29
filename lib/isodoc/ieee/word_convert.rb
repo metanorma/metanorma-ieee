@@ -134,6 +134,23 @@ module IsoDoc
         end
       end
 
+      def termnote_parse(node, out)
+        name = node&.at(ns("./name"))&.remove
+        out.div **note_attrs(node) do |div|
+          div.p do |p|
+            name and termnote_label(p, name)
+            para_then_remainder(node.first_element_child, node, p, div)
+          end
+        end
+      end
+
+      def termnote_label(para, name)
+        para.span **{ class: "note_label" } do |s|
+          name.children.each { |n| parse(n, s) }
+          s << termnote_delim
+        end
+      end
+
       include BaseConvert
       include Init
     end
