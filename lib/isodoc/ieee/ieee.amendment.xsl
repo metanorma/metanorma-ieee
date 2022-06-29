@@ -2113,7 +2113,7 @@
 					<xsl:if test="@id">
 						<xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
 					</xsl:if>
-					<xsl:attribute name="line-height">1.4</xsl:attribute>
+					<xsl:attribute name="line-height">1.2</xsl:attribute>
 					<!-- bookmarks only in paragraph -->
 					<xsl:if test="count(ieee:bookmark) != 0 and count(*) = count(ieee:bookmark) and normalize-space() = ''">
 						<xsl:attribute name="font-size">0</xsl:attribute>
@@ -2316,6 +2316,10 @@
 	<!-- remove space after 'NOTE' without number -->
 	<xsl:template match="*[local-name() = 'note' or local-name() = 'termnote']/*[local-name() = 'name']/text()" priority="2">
 		<xsl:value-of select="normalize-space()"/>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'bibitem'][preceding-sibling::*[local-name() = 'references'][1][not(@normative='true')]]" priority="3">
+		<xsl:call-template name="bibitem_non_normative"/>
 	</xsl:template>
 
 	<!-- =================== -->
@@ -3869,7 +3873,7 @@
 		
 			<xsl:attribute name="margin-left">2mm</xsl:attribute>
 			<xsl:attribute name="margin-top">0pt</xsl:attribute>
-			<xsl:attribute name="line-height">1.4</xsl:attribute>
+			<xsl:attribute name="line-height">1.2</xsl:attribute>
 		
 		
 		
@@ -4404,7 +4408,8 @@
 		
 		
 		
-			<xsl:attribute name="margin-bottom">6pt</xsl:attribute>
+			<xsl:attribute name="margin-top">12pt</xsl:attribute>
+			<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
 		
 		
 		
@@ -4424,10 +4429,10 @@
 		
 		
 		
-		
+		<!-- <xsl:if test="$namespace = 'ieee'">
 			<xsl:attribute name="margin-bottom">6pt</xsl:attribute>
 			<xsl:attribute name="provisional-distance-between-starts">9.5mm</xsl:attribute>
-		
+		</xsl:if> -->
 		
 		
 		
@@ -10360,52 +10365,12 @@
 		<xsl:call-template name="bibitem"/>
 	</xsl:template><xsl:template match="*[local-name() = 'references'][@normative='true']/*[local-name() = 'bibitem']" name="bibitem" priority="2">
 		
-				<fo:list-block id="{@id}" xsl:use-attribute-sets="bibitem-normative-list-style">
-					
-						<xsl:if test="count(preceding-sibling::*[local-name()='bibitem'][not(@hidden = 'true')]) &gt; 99">
-							<xsl:attribute name="provisional-distance-between-starts">11mm</xsl:attribute>
-						</xsl:if>
-						<xsl:if test="($doctype = 'whitepaper' or $doctype = 'icap-whitepaper' or $doctype = 'industry-connection-report')">
-							<xsl:attribute name="provisional-distance-between-starts">12.5mm</xsl:attribute>
-						</xsl:if>
-					
-					<fo:list-item>
-						<fo:list-item-label end-indent="label-end()">
-							<fo:block>
-								<fo:inline>
-									
-											<xsl:value-of select="*[local-name() = 'docidentifier'][@type = 'metanorma-ordinal']"/>
-											
-											<xsl:if test="not(*[local-name() = 'docidentifier'][@type = 'metanorma-ordinal'])">
-												<xsl:choose>
-													<xsl:when test="($doctype = 'whitepaper' or $doctype = 'icap-whitepaper' or $doctype = 'industry-connection-report')">
-														<fo:inline color="{$color_blue}">
-															<xsl:text>[ </xsl:text>
-															<xsl:number format="1" count="*[local-name()='bibitem'][not(@hidden = 'true')]"/>
-															<xsl:text> ]</xsl:text>
-														</fo:inline>
-													</xsl:when>
-													<xsl:otherwise>
-													<xsl:text>[B</xsl:text>
-													<xsl:number format="1" count="*[local-name()='bibitem'][not(@hidden = 'true')]"/>
-													<xsl:text>]</xsl:text>
-													</xsl:otherwise>
-												</xsl:choose>
-											</xsl:if>
-										
-								</fo:inline>
-							</fo:block>
-						</fo:list-item-label>
-						<fo:list-item-body start-indent="body-start()">
-							<fo:block xsl:use-attribute-sets="bibitem-normative-list-body-style">
-								<xsl:call-template name="processBibitem"/>						
-							</fo:block>
-						</fo:list-item-body>
-					</fo:list-item>
-				</fo:list-block>
+				<fo:block id="{@id}" xsl:use-attribute-sets="bibitem-normative-style">
+					<xsl:call-template name="processBibitem"/>
+				</fo:block>
 			
 
-	</xsl:template><xsl:template match="*[local-name() = 'references'][not(@normative='true')]/*[local-name() = 'bibitem']" priority="2">
+	</xsl:template><xsl:template match="*[local-name() = 'references'][not(@normative='true')]/*[local-name() = 'bibitem']" name="bibitem_non_normative" priority="2">
 		
 		 <!-- $namespace = 'csd' or $namespace = 'gb' or $namespace = 'iec' or $namespace = 'ieee' or $namespace = 'iso' or $namespace = 'jcgm' or $namespace = 'm3d' or 
 			$namespace = 'mpfd' or $namespace = 'ogc' or $namespace = 'ogc-white-paper' -->
@@ -10416,12 +10381,24 @@
 							<fo:block>
 								<fo:inline>
 									
-											<xsl:value-of select="*[local-name()='docidentifier'][@type = 'metanorma-ordinal']"/>
-											<xsl:if test="not(*[local-name()='docidentifier'][@type = 'metanorma-ordinal'])">
-												
-														<xsl:number format="[B1]" count="*[local-name()='bibitem'][not(@hidden = 'true')]"/>
-													
+											<xsl:value-of select="*[local-name() = 'docidentifier'][@type = 'metanorma-ordinal']"/>
+											<xsl:if test="not(*[local-name() = 'docidentifier'][@type = 'metanorma-ordinal'])">
+												<xsl:choose>
+													<xsl:when test="($doctype = 'whitepaper' or $doctype = 'icap-whitepaper' or $doctype = 'industry-connection-report')">
+														<fo:inline color="{$color_blue}">
+															<xsl:text>[ </xsl:text>
+															<xsl:number format="1" count="*[local-name()='bibitem'][not(@hidden = 'true')]"/>
+															<xsl:text> ]</xsl:text>
+														</fo:inline>
+													</xsl:when>
+													<xsl:otherwise>
+														<xsl:text>[B</xsl:text>
+														<xsl:number format="1" count="*[local-name()='bibitem'][not(@hidden = 'true')]"/>
+														<xsl:text>]</xsl:text>
+													</xsl:otherwise>
+												</xsl:choose>
 											</xsl:if>
+										 <!-- ieee -->
 										
 								</fo:inline>
 							</fo:block>
@@ -10776,6 +10753,10 @@
 							<xsl:attribute name="margin-top">12pt</xsl:attribute>
 							<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
 						</xsl:if>
+						<xsl:if test="not(@type)">
+							<xsl:attribute name="font-size">9pt</xsl:attribute>
+							<xsl:attribute name="text-align">left</xsl:attribute>
+						</xsl:if>
 					
 					
 					
@@ -10785,7 +10766,7 @@
 							<fo:block-container xsl:use-attribute-sets="admonition-container-style">
 							
 								
-									<xsl:if test="@type = 'editorial'">
+									<xsl:if test="@type = 'editorial' or not(@type)">
 										<xsl:attribute name="padding">0mm</xsl:attribute>
 									</xsl:if>
 								
