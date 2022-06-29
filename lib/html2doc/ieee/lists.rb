@@ -24,7 +24,7 @@ class Html2Doc
         l["class"] ||= list_style(type, level, "Middle")
         next unless l&.first_element_child&.name == "p"
 
-        l["style"] += (l.first_element_child["style"] || "")
+        l["style"] += (l.first_element_child["style"]&.sub(/mso-list[^;]+;/, "") || "")
         l.first_element_child.replace(l.first_element_child.children)
       end
       list.replace(list.children)

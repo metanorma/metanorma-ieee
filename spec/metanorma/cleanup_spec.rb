@@ -58,6 +58,7 @@ RSpec.describe Metanorma::IEEE do
              <bibitem id='ABC'>
                <formattedref format='application/x-isodoc+xml'/>
                <docidentifier>DEF</docidentifier>
+               <docidentifier type='metanorma-ordinal'>[B1]</docidentifier>
              </bibitem>
            </references>
          </annex>
@@ -112,7 +113,7 @@ RSpec.describe Metanorma::IEEE do
              <p id='_'>This is boilerplate</p>
              <bibitem id='ABC'>
                <formattedref format='application/x-isodoc+xml'/>
-               <docidentifier>DEF</docidentifier>
+               <docidentifier>DEF</docidentifier><docidentifier type='metanorma-ordinal'>[B1]</docidentifier>
              </bibitem>
            </references>
          </annex>

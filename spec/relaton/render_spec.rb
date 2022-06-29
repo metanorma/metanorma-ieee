@@ -225,7 +225,7 @@ RSpec.describe Relaton::Render::IEEE do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne, “Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday,” <em><em>London Mathematical Society Lecture Note Series</em> (N.S.)</em>, vol. 1, pp. 89–112, 2022.</formattedref>
+      <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne, “Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday,” <em><em>London Mathematical Society Lecture Note Series</em> (N.S.)</em>, vol. 1, no. 7, pp. 89–112, 2022.</formattedref>
     OUTPUT
     i = IsoDoc::IEEE::PresentationXMLConvert.new({})
     i.i18n_init("en", "Latn")

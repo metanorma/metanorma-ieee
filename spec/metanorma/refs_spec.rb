@@ -140,7 +140,7 @@ RSpec.describe Metanorma::IEEE do
                 </contributor>
               </bibitem>
               <bibitem id='ref2' type='standard'>
-                <fetched>2022-06-28</fetched>
+                <fetched>#{Date.today}</fetched>
                 <title type='main' format='text/plain'>The “xml2rfc” Version 2 Vocabulary</title>
                 <uri type='src'>https://www.rfc-editor.org/info/rfc7749</uri>
                 <docidentifier type='IETF' primary='true'>RFC 7749</docidentifier>
