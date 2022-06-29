@@ -133,11 +133,12 @@ module IsoDoc
 
       def collapse_term_template(opt)
         defn = collapse_unwrap_definition(opt[:def])
-        source = opt[:source] ? "(#{opt[:source].remove.children.to_xml})" : nil
+        src = nil
+        opt[:source] and src = "(#{opt[:source].remove.children.to_xml.strip})"
         <<~TERM
           <p>#{opt[:pref].children.to_xml}: #{defn}
           #{collapse_term_related(opt[:rels])}
-          #{source}</p>
+          #{src}</p>
         TERM
       end
 

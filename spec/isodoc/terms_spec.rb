@@ -88,15 +88,10 @@ RSpec.describe IsoDoc do
               <p>
                 <strong>paddy</strong>
                 , &#x3c;rice&#x3e;, &#x3c;in agriculture, dated&#x3e;: rice retaining
-                its husk after threshing (
-                <origin bibitemid='ISO7301' type='inline' citeas='ISO 7301:2011'>
-                  <locality type='clause'>
+                its husk after threshing (<origin bibitemid='ISO7301' type='inline' citeas='ISO 7301:2011'><locality type='clause'>
                     <referenceFrom>3.1</referenceFrom>
-                  </locality>
-                  ISO 7301:2011, 3.1
-                </origin>
-                , modified &#x2013; The term "cargo rice" is shown as deprecated, and
-                Note 1 to entry is not included here )
+                  </locality>ISO 7301:2011, 3.1</origin>, modified &#x2013; The term "cargo rice" is shown as deprecated, and
+                Note 1 to entry is not included here)
               </p>
               <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f892' keep-with-next='true' keep-lines-together='true'>
                 <name>Example 1</name>
@@ -129,15 +124,9 @@ RSpec.describe IsoDoc do
                 <em>Syn:</em>
                 <strong>paddy rice</strong>
                 , &#x3c;in agriculture&#x3e;;
-                <strong>rough rice</strong>
-                . (
-                <origin bibitemid='ISO7301' type='inline' droploc='true' citeas='ISO 7301:2011'>
-                  <locality type='clause'>
+                <strong>rough rice</strong>. (<origin bibitemid='ISO7301' type='inline' droploc='true' citeas='ISO 7301:2011'><locality type='clause'>
                     <referenceFrom>3.1</referenceFrom>
-                  </locality>
-                  ISO 7301:2011, 3.1
-                </origin>
-                 )
+                  </locality>ISO 7301:2011, 3.1</origin>)
               </p>
               <deprecates>cargo rice</deprecates>
               <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f893'>
@@ -178,9 +167,9 @@ RSpec.describe IsoDoc do
              <p>
                <b>paddy</b>
                 , &#x3c;rice&#x3e;, &#x3c;in agriculture, dated&#x3e;: rice retaining
-               its husk after threshing ( ISO 7301:2011, 3.1 , modified &#x2013;
+               its husk after threshing (ISO 7301:2011, 3.1,  modified &#x2013;
                The term "cargo rice" is shown as deprecated, and Note 1 to entry is not
-               included here )
+               included here)
              </p>
              <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f892' class='example' style='page-break-after: avoid;page-break-inside: avoid;'>
                <p class='example-title'>Example 1:</p>
@@ -206,8 +195,7 @@ RSpec.describe IsoDoc do
                <i>Syn:</i>
                <b>paddy rice</b>
                 , &#x3c;in agriculture&#x3e;;
-               <b>rough rice</b>
-                . ( ISO 7301:2011, 3.1 )
+               <b>rough rice</b>. (ISO 7301:2011, 3.1)
              </p>
              <p class='DeprecatedTerms' style='text-align:left;'>DEPRECATED: cargo rice</p>
              <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f893' class='example'>
@@ -271,9 +259,9 @@ RSpec.describe IsoDoc do
              <p>
                <b>paddy</b>
                 , &#x3c;rice&#x3e;, &#x3c;in agriculture, dated&#x3e;: rice retaining
-               its husk after threshing ( ISO 7301:2011, 3.1 , modified &#x2013;
+               its husk after threshing (ISO 7301:2011, 3.1, modified &#x2013;
                The term "cargo rice" is shown as deprecated, and Note 1 to entry is not
-               included here )
+               included here)
              </p>
              <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f892' class='example' style='page-break-after: avoid;page-break-inside: avoid;'>
                <p class='example-title'>Example 1:</p>
@@ -299,8 +287,7 @@ RSpec.describe IsoDoc do
                <i>Syn:</i>
                <b>paddy rice</b>
                 , &#x3c;in agriculture&#x3e;;
-               <b>rough rice</b>
-                . ( ISO 7301:2011, 3.1 )
+               <b>rough rice</b>. (ISO 7301:2011, 3.1)
              </p>
              <p class='DeprecatedTerms' style='text-align:left;'>DEPRECATED: cargo rice</p>
              <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f893' class='example'>
@@ -389,11 +376,9 @@ RSpec.describe IsoDoc do
                    ISO 7301:2011, 3.1
                  </origin>
                  , modified &#x2013; The term "cargo rice" is shown as deprecated, and
-                 Note 1 to entry is not included here (
-                 <origin citeas=''>
+                 Note 1 to entry is not included here (<origin citeas=''>
                    <termref base='IEV' target='xyz'>t1</termref>
-                 </origin>
-                  )
+                 </origin>)
                </p>
              </term>
            </terms>
@@ -477,7 +462,7 @@ RSpec.describe IsoDoc do
                  <origin citeas=''>
                    <termref base='IEV' target='xyz'/>
                  </origin>
-                 , modified &#x2013; with adjustments )
+                 , modified &#x2013; with adjustments)
                </p>
                <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f892' keep-with-next='true' keep-lines-together='true'>
                  <name>Example 1</name>
@@ -805,16 +790,14 @@ RSpec.describe IsoDoc do
                     </tr>
                   </tbody>
                 </table>
-                 (
-                <origin bibitemid='ISO2191' type='inline' citeas=''>
+                 (<origin bibitemid='ISO2191' type='inline' citeas=''>
                   <localityStack>
                     <locality type='section'>
                       <referenceFrom>2</referenceFrom>
                     </locality>
                   </localityStack>
                   , Section 2
-                </origin>
-                 )
+                </origin>)
               </p>
             </term>
             <term id='term-term-2'>
