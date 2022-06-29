@@ -202,13 +202,22 @@ module Metanorma
         i = 0
         xmldoc.xpath("//references[not(@normative = 'true')]"\
                      "[not(@hidden = 'true')]").each do |r|
-          r.xpath("./bibitem[not(@hidden = 'true')]").each do |b|
-            i += 1
-            next unless docid = b.at("./docidentifier[@type = 'metanorma']")
-            next unless /^\[\d+\]$/.match?(docid.text)
+                       r.xpath("./bibitem[not(@hidden = 'true')]").each do |b|
+                         i += 1
+                         biblio_renumber1(b, i)
+                       end
+                     end
+      end
 
-            docid.children = "[B#{i}]"
-          end
+      def biblio_renumber1(bib, idx)
+        docid = bib.at("./docidentifier[@type = 'metanorma' or "\
+                       "@type = 'metanorma-ordinal']")
+        if /^\[?\d+\]?$/.match?(docid&.text)
+          docid.children = "[B#{idx}]"
+        elsif docid = bib.at("./docidentifier") || bib.at("./title[last()]") ||
+            bib.at("./formattedref")
+          docid.next =
+            "<docidentifier type='metanorma-ordinal'>[B#{idx}]</docidentifier>"
         end
       end
 

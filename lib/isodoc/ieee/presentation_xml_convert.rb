@@ -109,26 +109,26 @@ module IsoDoc
       end
 
       def bibliography_bibitem_number1(bibitem, idx)
-      if mn = bibitem.at(ns(".//docidentifier[@type = 'metanorma']"))
-        /^\[?\d\]?$/.match?(mn&.text) and
-          idx = mn.text.sub(/^\[B?/, "").sub(/\]$/, "").to_i
-      end
-      unless bibliography_bibitem_number_skip(bibitem)
+        if mn = bibitem.at(ns(".//docidentifier[@type = 'metanorma']"))
+          /^\[?\d\]?$/.match?(mn&.text) and
+            idx = mn.text.sub(/^\[B?/, "").sub(/\]$/, "").to_i
+        end
+        unless bibliography_bibitem_number_skip(bibitem)
 
-        idx += 1
-        bibitem.at(ns(".//docidentifier")).previous =
-          "<docidentifier type='metanorma-ordinal'>[B#{idx}]</docidentifier>"
+          idx += 1
+          bibitem.at(ns(".//docidentifier")).previous =
+            "<docidentifier type='metanorma-ordinal'>[B#{idx}]</docidentifier>"
+        end
+        idx
       end
-      idx
-    end
 
       def annex1(elem)
-      lbl = @xrefs.anchor(elem["id"], :label)
-      if t = elem.at(ns("./title"))
-        t.children = "<strong>#{t.children.to_xml}</strong>"
+        lbl = @xrefs.anchor(elem["id"], :label)
+        if t = elem.at(ns("./title"))
+          t.children = "<strong>#{t.children.to_xml}</strong>"
+        end
+        prefix_name(elem, "<br/>", lbl, "title")
       end
-      prefix_name(elem, "<br/>", lbl, "title")
-    end
 
       include Init
     end

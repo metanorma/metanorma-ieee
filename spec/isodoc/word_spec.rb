@@ -1534,6 +1534,50 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       .to be_equivalent_to xmlpp(output)
   end
 
+  it "process editorial notes" do
+    input = <<~INPUT
+              <iso-standard xmlns="http://riboseinc.com/isoxml" type='presentation'>
+         <sections><clause id="a">
+          <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6a" type="editorial" keep-with-next="true" keep-lines-together="true">
+          <name>EDITORIAL</name>
+        <p id="_e94663cc-2473-4ccc-9a72-983a74d989f2">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
+      </admonition>
+          </clause></sections>
+          </iso-standard>
+    INPUT
+    output = <<~OUTPUT
+          <div>
+        <a name='a' id='a'/>
+        <p class='IEEEStdsLevel1Header'/>
+        <div class='IEEEStdsWarning' style='page-break-after: avoid;page-break-inside: avoid;'>
+          <a name="_" id="_"/>
+          <p class='IEEEStdsWarning' style='text-align:center;'>
+            <b>CAUTION</b>
+          </p>
+          <p class='IEEEStdsParagraph'>
+            <a name="_" id="_"/>
+            Only use paddy or parboiled rice for the determination of husked rice
+            yield.
+          </p>
+        </div>
+        <div class='IEEEStdsWarning' style='page-break-after: avoid;page-break-inside: avoid;'>
+          <a name="_" id="_"/>
+          <p class='IEEEStdsParagraph'>
+            <a name="_" id="_"/>
+            Only use paddy or parboiled rice for the determination of husked rice
+            yield.
+          </p>
+        </div>
+      </div>
+    OUTPUT
+    IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
+    expect(File.exist?("test.doc")).to be true
+    doc = Nokogiri::XML(word2xml("test.doc"))
+      .at("//xmlns:div[xmlns:a[@id = 'a']]")
+    expect(strip_guid(xmlpp(doc.to_xml)))
+      .to be_equivalent_to xmlpp(output)
+  end
+
   it "process sourcecode" do
     input = <<~INPUT
           <iso-standard xmlns='http://riboseinc.com/isoxml' type="presentation">

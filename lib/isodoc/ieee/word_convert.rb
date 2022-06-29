@@ -76,7 +76,8 @@ module IsoDoc
       end
 
       def admonition_class(node)
-        if node.ancestors("introduction").empty?
+        if node["type"] == "editorial" then "zzHelp"
+        elsif node.ancestors("introduction").empty?
           "IEEEStdsWarning"
         else "IEEEStdsIntroduction"
         end

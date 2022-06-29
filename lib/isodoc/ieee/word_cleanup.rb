@@ -82,6 +82,19 @@ module IsoDoc
         end
       end
 
+      def admonition_cleanup(docxml)
+        super
+        docxml.xpath("//div[@class = 'zzHelp']").each do |d|
+          d.xpath(".//p").each do |p|
+            %w(IEEEStdsWarning IEEEStdsParagraph).include?(p["class"]) ||
+              !p["class"] or next
+
+            p["class"] = "zzHelp"
+          end
+        end
+        docxml
+      end
+
       def table_cleanup(docxml)
         thead_cleanup(docxml)
         tbody_cleanup(docxml)
