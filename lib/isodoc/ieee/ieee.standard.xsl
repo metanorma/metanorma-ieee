@@ -612,9 +612,9 @@
 														<fo:basic-link internal-destination="{@id}" fox:alt-text="{title}">
 														
 															<xsl:value-of select="@section"/>
-															<!-- <xsl:if test="normalize-space(@section) != '' and @level = 1">.</xsl:if>
-															<xsl:if test="normalize-space(@section) != ''"><xsl:text>&#xa0;</xsl:text></xsl:if> -->
-															<xsl:text> </xsl:text>
+															<!-- <xsl:if test="normalize-space(@section) != '' and @level = 1">.</xsl:if> -->
+															<xsl:if test="normalize-space(@section) != ''"><xsl:text> </xsl:text></xsl:if>
+															
 															<xsl:apply-templates select="title"/>
 														
 															<fo:inline keep-together.within-line="always">
@@ -10752,6 +10752,7 @@
 							<xsl:attribute name="font-weight">normal</xsl:attribute>
 							<xsl:attribute name="margin-top">12pt</xsl:attribute>
 							<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
+							<xsl:attribute name="text-align">left</xsl:attribute>
 						</xsl:if>
 						<xsl:if test="not(@type)">
 							<xsl:attribute name="font-size">9pt</xsl:attribute>
@@ -10769,11 +10770,20 @@
 									<xsl:if test="@type = 'editorial' or not(@type)">
 										<xsl:attribute name="padding">0mm</xsl:attribute>
 									</xsl:if>
+									<xsl:if test="not(@type)">
+										<xsl:attribute name="padding">1mm</xsl:attribute>
+										<xsl:attribute name="padding-bottom">0.5mm</xsl:attribute>
+									</xsl:if>
 								
 							
 								
 										<fo:block-container margin-left="0mm" margin-right="0mm">
-											<fo:block>
+											<fo:block xsl:use-attribute-sets="admonition-p-style">
+												<fo:inline>
+													<xsl:call-template name="displayAdmonitionName">
+														<xsl:with-param name="sep">: </xsl:with-param>
+													</xsl:call-template>
+												</fo:inline>
 												<xsl:apply-templates select="node()[not(local-name() = 'name')]"/>
 											</fo:block>
 										</fo:block-container>
@@ -10811,12 +10821,16 @@
 		<xsl:apply-templates/>
 	</xsl:template><xsl:template match="*[local-name() = 'admonition']/*[local-name() = 'p']">
 		
-				<fo:block xsl:use-attribute-sets="admonition-p-style">
-				
-					
-					
-					<xsl:apply-templates/>
-				</fo:block>
+				<xsl:choose>
+					<xsl:when test="ancestor::*[local-name() = 'admonition'][@type = 'editorial']">
+						<xsl:apply-templates/>
+					</xsl:when>
+					<xsl:otherwise>
+						<fo:block xsl:use-attribute-sets="admonition-p-style">
+							<xsl:apply-templates/>
+						</fo:block>
+					</xsl:otherwise>
+				</xsl:choose>
 			
 	</xsl:template><xsl:template match="@*|node()" mode="update_xml_step1">
 		<xsl:copy>
