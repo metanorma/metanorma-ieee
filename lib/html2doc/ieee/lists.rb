@@ -22,8 +22,10 @@ class Html2Doc
       list.xpath("./li").each do |l|
         l.name = "p"
         l["class"] ||= list_style(type, level, "Middle")
-        l&.first_element_child&.name == "p" and
-          l.first_element_child.replace(l.first_element_child.children)
+        next unless l&.first_element_child&.name == "p"
+
+        l["style"] += (l.first_element_child["style"] || "")
+        l.first_element_child.replace(l.first_element_child.children)
       end
       list.replace(list.children)
     end

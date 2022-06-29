@@ -14,11 +14,44 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-       <div class='Section3'>
-         <a name="_" id="_"/>
-         <p class='IEEEStdsLevel1frontmatter'>Introduction</p>
-         <p class='IEEEStdsIntroduction'>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty </p>
-         <p class='IEEEStdsParagraph'>
+      <div class='Section3'>
+        <a name="_" id="_"/>
+        <p class='IEEEStdsLevel1frontmatter'>Introduction</p>
+        <p class='IEEEStdsIntroduction'>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty </p>
+        <p class='IEEEStdsParagraph'>
+          <a name="_" id="_"/>
+          This is an introduction
+        </p>
+      </div>
+    OUTPUT
+    IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
+    expect(File.exist?("test.doc")).to be true
+    doc = Nokogiri::XML(word2xml("test.doc"))
+      .at("//*[@class = 'IEEEStdsIntroduction']/..")
+    expect(strip_guid(xmlpp(doc.to_xml)))
+      .to be_equivalent_to xmlpp(output)
+  end
+
+  it "processes abstract" do
+    FileUtils.rm_f "test.doc"
+    input = <<~INPUT
+      <iso-standard xmlns="http://riboseinc.com/isoxml">
+        <preface><abstract id="_introduction" obligation="informative" displayorder="1" id="A">
+      <title>Introduction</title><admonition>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty
+      </admonition>
+      <p>Text</p>
+      <ul><li><p>List</p></li></ul>
+      <p id="_7d8a8a7f-3ded-050d-1da9-978f17519335">This is an introduction</p>
+      </abstract></preface>
+      </iso-standard>
+    INPUT
+    output = <<~OUTPUT
+       <div>
+         <a name='abstract-destination' id='abstract-destination'/>
+         <div class='IEEEStdsAbstractBody'>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty </div>
+         <p class='IEEEStdsAbstractBody'>Text</p>
+         <p style='mso-list:l11 level1 lfo1;font-family: &#x22;Arial&#x22;, sans-serif;' class='IEEEStdsUnorderedListCxSpFirst'> List </p>
+         <p class='IEEEStdsAbstractBody'>
            <a name="_" id="_"/>
            This is an introduction
          </p>
@@ -27,7 +60,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
-      .at("//*[@class = 'IEEEStdsIntroduction']/..")
+      .at("//*[@name = 'abstract-destination']/..")
     expect(strip_guid(xmlpp(doc.to_xml)))
       .to be_equivalent_to xmlpp(output)
   end
@@ -1546,21 +1579,21 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-           <div>
-         <a name='a' id='a'/>
-         <p class='IEEEStdsLevel1Header'/>
-         <div class='zzHelp' style='page-break-after: avoid;page-break-inside: avoid;'>
-           <a name="_" id="_"/>
-           <p class='zzHelp' style='text-align:center;'>
-             <b>EDITORIAL</b>
-           </p>
-           <p class='zzHelp'>
-             <a name="_" id="_"/>
-             Only use paddy or parboiled rice for the determination of husked rice
-             yield.
-           </p>
-         </div>
-       </div>
+          <div>
+        <a name='a' id='a'/>
+        <p class='IEEEStdsLevel1Header'/>
+        <div class='zzHelp' style='page-break-after: avoid;page-break-inside: avoid;'>
+          <a name="_" id="_"/>
+          <p class='zzHelp' style='text-align:center;'>
+            <b>EDITORIAL</b>
+          </p>
+          <p class='zzHelp'>
+            <a name="_" id="_"/>
+            Only use paddy or parboiled rice for the determination of husked rice
+            yield.
+          </p>
+        </div>
+      </div>
     OUTPUT
     IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
     expect(File.exist?("test.doc")).to be true

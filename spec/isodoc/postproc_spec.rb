@@ -77,7 +77,7 @@ RSpec.describe IsoDoc::IEEE do
             <hr/>
             <div id='abstract-destination'>
                <p class='IEEEStdsAbstractBody'>Abstract text</p>
-               <ul class='IEEEStdsAbstractBody'>
+               <ul>
                  <li>
                    <p style='font-family: &#x22;Arial&#x22;, sans-serif;' class='IEEEStdsParagraph'>X</p>
                  </li>

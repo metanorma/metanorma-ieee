@@ -174,12 +174,13 @@ module IsoDoc
 
       def abstract_cleanup1(source, dest)
         source.elements.reject { |e| %w(h1 h2).include?(e.name) }.each do |e|
-          e.xpath(".//p").each do |p|
+          e1 = e.dup
+          e1.xpath(".//p").each do |p|
             p["style"] ||= ""
-            p["style"] = 'font-family: "Arial", sans-serif;' +  p["style"]
+            p["style"] = 'font-family: "Arial", sans-serif;' + p["style"]
           end
-          dest << e.dup
-          dest.elements.last["class"] = "IEEEStdsAbstractBody"
+          %w(ul ol).include?(e1.name) or e1["class"] = "IEEEStdsAbstractBody"
+          dest << e1
         end
       end
 
