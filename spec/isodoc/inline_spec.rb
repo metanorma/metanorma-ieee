@@ -299,7 +299,7 @@ RSpec.describe IsoDoc::IEEE do
       .convert("test", input, true))).to be_equivalent_to xmlpp(output)
   end
 
-   it "processes concept markup" do
+  xit "processes concept markup" do
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
           <preface><foreword>

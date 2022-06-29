@@ -159,6 +159,49 @@ module IsoDoc
           end
         end
       end
+
+            def abstract_cleanup(docxml)
+        dest = docxml.at("div[@id = 'abstract-destination']") or return
+        if f = docxml.at("//div[@class = 'abstract']")
+          f.previous_element.remove
+          abstract_cleanup1(f, dest)
+          f.remove
+        elsif f = docxml.at("//div[@type = 'scope']")
+          abstract_cleanup1(f, dest)
+        end
+      end
+
+      def abstract_cleanup1(source, dest)
+        source.elements.each do |e|
+          next if %w(h1 h2).include?(e.name)
+
+          dest << e.dup
+          dest.elements.last["class"] = "IEEEStdsAbstractBody"
+        end
+        dest.elements.first.children.first.previous =
+          "<span class='IEEEStdsAbstractHeader'><span lang='EN-US'>"\
+          "Abstract:</span></span> "
+      end
+
+      def introduction_cleanup(docxml)
+        dest = docxml.at("div[@id = 'introduction-destination']") or return
+        unless i = docxml.at("//h1[@class = 'IntroTitle']")&.parent
+          dest.parent.remove
+          return
+        end
+        introduction_cleanup1(i, dest)
+      end
+
+      def introduction_cleanup1(intro, dest)
+        docxml = intro.document
+        intro.previous_element.remove
+        dest.replace(intro.remove)
+        i = docxml.at("//h1[@class = 'IntroTitle']")
+        if i.next_element.name == "div" &&
+            i.next_element["class"] == "IEEEStdsIntroduction"
+          i.next_element.name = "p"
+        end
+      end
     end
   end
 end

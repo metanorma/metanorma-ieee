@@ -17,49 +17,6 @@ module IsoDoc
         @wordstylesheet.unlink if @wordstylesheet.is_a?(Tempfile)
       end
 
-      def abstract_cleanup(docxml)
-        dest = docxml.at("div[@id = 'abstract-destination']") or return
-        if f = docxml.at("//div[@class = 'abstract']")
-          f.previous_element.remove
-          abstract_cleanup1(f, dest)
-          f.remove
-        elsif f = docxml.at("//div[@type = 'scope']")
-          abstract_cleanup1(f, dest)
-        end
-      end
-
-      def abstract_cleanup1(source, dest)
-        source.elements.each do |e|
-          next if %w(h1 h2).include?(e.name)
-
-          dest << e.dup
-          dest.elements.last["class"] = "IEEEStdsAbstractBody"
-        end
-        dest.elements.first.children.first.previous =
-          "<span class='IEEEStdsAbstractHeader'><span lang='EN-US'>"\
-          "Abstract:</span></span> "
-      end
-
-      def introduction_cleanup(docxml)
-        dest = docxml.at("div[@id = 'introduction-destination']") or return
-        unless i = docxml.at("//h1[@class = 'IntroTitle']")&.parent
-          dest.parent.remove
-          return
-        end
-        introduction_cleanup1(i, dest)
-      end
-
-      def introduction_cleanup1(intro, dest)
-        docxml = intro.document
-        intro.previous_element.remove
-        dest.replace(intro.remove)
-        i = docxml.at("//h1[@class = 'IntroTitle']")
-        if i.next_element.name == "div" &&
-            i.next_element["class"] == "IEEEStdsIntroduction"
-          i.next_element.name = "p"
-        end
-      end
-
       def word_cleanup(docxml)
         super
         abstract_cleanup(docxml)
@@ -129,22 +86,16 @@ module IsoDoc
       end
 
       def td_style(cell)
-        if cell.name == "th"
-          "IEEEStdsTableLineHead"
+        if cell.name == "th" then "IEEEStdsTableLineHead"
         elsif cell["align"] == "center" || /text-align:center/.match?(cell["style"])
           "IEEEStdsTableData-Center"
-        else
-          "IEEEStdsTableData-Left"
+        else "IEEEStdsTableData-Left"
         end
       end
 
       def headings_cleanup(docxml)
-        (1..9).each do |i|
-          headings_cleanup1(docxml, i)
-        end
-        docxml.xpath("//div[@class = 'Annex']").each do |a|
-          a.delete("class")
-        end
+        (1..9).each { |i| headings_cleanup1(docxml, i) }
+        docxml.xpath("//div[@class = 'Annex']").each { |a| a.delete("class") }
       end
 
       def headings_cleanup1(docxml, idx)
@@ -175,13 +126,29 @@ module IsoDoc
       end
 
       def caption_cleanup(docxml)
+        table_caption(docxml)
+        figure_caption(docxml)
+        example_caption(docxml)
+      end
+
+      def table_caption(docxml)
         docxml.xpath("//p[@class = 'TableTitle']").each do |s|
           s.children = s.children.to_xml
             .sub(/^#{@i18n.table}(\s+[A-Z0-9.]+)?/, "")
         end
+      end
+
+      def figure_caption(docxml)
         docxml.xpath("//p[@class = 'FigureTitle']").each do |s|
           s.children = s.children.to_xml
             .sub(/^#{@i18n.figure}(\s+[A-Z0-9.]+)?/, "")
+        end
+      end
+
+      def example_caption(docxml)
+        docxml.xpath("//p[@class = 'example-title']").each do |s|
+          s.children = "<em>#{s.children.to_xml}</em>"
+          s["class"] = "IEEEStdsParagraph"
         end
       end
 

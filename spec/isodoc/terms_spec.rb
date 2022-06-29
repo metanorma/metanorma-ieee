@@ -99,14 +99,14 @@ RSpec.describe IsoDoc do
                 Note 1 to entry is not included here )
               </p>
               <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f892' keep-with-next='true' keep-lines-together='true'>
-                <name>EXAMPLE 1</name>
+                <name>Example 1</name>
                 <p id='_65c9a509-9a89-4b54-a890-274126aeb55c'>Foreign seeds, husks, bran, sand, dust.</p>
                 <ul>
                   <li>A</li>
                 </ul>
               </termexample>
               <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f894'>
-                <name>EXAMPLE 2</name>
+                <name>Example 2</name>
                 <ul>
                   <li>A</li>
                 </ul>
@@ -141,7 +141,7 @@ RSpec.describe IsoDoc do
               </p>
               <deprecates>cargo rice</deprecates>
               <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f893'>
-                <name>EXAMPLE</name>
+                <name>Example</name>
                 <ul>
                   <li>A</li>
                 </ul>
@@ -183,14 +183,14 @@ RSpec.describe IsoDoc do
                included here )
              </p>
              <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f892' class='example' style='page-break-after: avoid;page-break-inside: avoid;'>
-               <p class='example-title'>EXAMPLE 1</p>
+               <p class='example-title'>Example 1:</p>
                <p id='_65c9a509-9a89-4b54-a890-274126aeb55c'>Foreign seeds, husks, bran, sand, dust.</p>
                <ul>
                  <li>A</li>
                </ul>
              </div>
              <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f894' class='example'>
-               <p class='example-title'>EXAMPLE 2</p>
+               <p class='example-title'>Example 2:</p>
                <ul>
                  <li>A</li>
                </ul>
@@ -211,7 +211,7 @@ RSpec.describe IsoDoc do
              </p>
              <p class='DeprecatedTerms' style='text-align:left;'>DEPRECATED: cargo rice</p>
              <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f893' class='example'>
-               <p class='example-title'>EXAMPLE</p>
+               <p class='example-title'>Example:</p>
                <ul>
                  <li>A</li>
                </ul>
@@ -276,14 +276,14 @@ RSpec.describe IsoDoc do
                included here )
              </p>
              <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f892' class='example' style='page-break-after: avoid;page-break-inside: avoid;'>
-               <p class='example-title'>EXAMPLE 1</p>
+               <p class='example-title'>Example 1:</p>
                <p id='_65c9a509-9a89-4b54-a890-274126aeb55c'>Foreign seeds, husks, bran, sand, dust.</p>
                <ul>
                  <li>A</li>
                </ul>
              </div>
              <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f894' class='example'>
-               <p class='example-title'>EXAMPLE 2</p>
+               <p class='example-title'>Example 2:</p>
                <ul>
                  <li>A</li>
                </ul>
@@ -304,7 +304,7 @@ RSpec.describe IsoDoc do
              </p>
              <p class='DeprecatedTerms' style='text-align:left;'>DEPRECATED: cargo rice</p>
              <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f893' class='example'>
-               <p class='example-title'>EXAMPLE</p>
+               <p class='example-title'>Example:</p>
                <ul>
                  <li>A</li>
                </ul>
@@ -480,14 +480,14 @@ RSpec.describe IsoDoc do
                  , modified &#x2013; with adjustments )
                </p>
                <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f892' keep-with-next='true' keep-lines-together='true'>
-                 <name>EXAMPLE 1</name>
+                 <name>Example 1</name>
                  <p id='_65c9a509-9a89-4b54-a890-274126aeb55c'>Foreign seeds, husks, bran, sand, dust.</p>
                  <ul>
                    <li>A</li>
                  </ul>
                </termexample>
                <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f894'>
-                 <name>EXAMPLE 2</name>
+                 <name>Example 2</name>
                  <ul>
                    <li>A</li>
                  </ul>

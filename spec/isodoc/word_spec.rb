@@ -1546,29 +1546,21 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-          <div>
-        <a name='a' id='a'/>
-        <p class='IEEEStdsLevel1Header'/>
-        <div class='IEEEStdsWarning' style='page-break-after: avoid;page-break-inside: avoid;'>
-          <a name="_" id="_"/>
-          <p class='IEEEStdsWarning' style='text-align:center;'>
-            <b>CAUTION</b>
-          </p>
-          <p class='IEEEStdsParagraph'>
-            <a name="_" id="_"/>
-            Only use paddy or parboiled rice for the determination of husked rice
-            yield.
-          </p>
-        </div>
-        <div class='IEEEStdsWarning' style='page-break-after: avoid;page-break-inside: avoid;'>
-          <a name="_" id="_"/>
-          <p class='IEEEStdsParagraph'>
-            <a name="_" id="_"/>
-            Only use paddy or parboiled rice for the determination of husked rice
-            yield.
-          </p>
-        </div>
-      </div>
+           <div>
+         <a name='a' id='a'/>
+         <p class='IEEEStdsLevel1Header'/>
+         <div class='zzHelp' style='page-break-after: avoid;page-break-inside: avoid;'>
+           <a name="_" id="_"/>
+           <p class='zzHelp' style='text-align:center;'>
+             <b>EDITORIAL</b>
+           </p>
+           <p class='zzHelp'>
+             <a name="_" id="_"/>
+             Only use paddy or parboiled rice for the determination of husked rice
+             yield.
+           </p>
+         </div>
+       </div>
     OUTPUT
     IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
     expect(File.exist?("test.doc")).to be true
