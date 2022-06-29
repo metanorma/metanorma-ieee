@@ -168,16 +168,22 @@ module IsoDoc
           f.remove
         elsif f = docxml.at("//div[@type = 'scope']")
           abstract_cleanup1(f, dest)
+          abstract_header(dest)
         end
       end
 
       def abstract_cleanup1(source, dest)
-        source.elements.each do |e|
-          next if %w(h1 h2).include?(e.name)
-
+        source.elements.reject { |e| %w(h1 h2).include?(e.name) }.each do |e|
+          e.xpath(".//p").each do |p|
+            p["style"] ||= ""
+            p["style"] = 'font-family: "Arial", sans-serif;' +  p["style"]
+          end
           dest << e.dup
           dest.elements.last["class"] = "IEEEStdsAbstractBody"
         end
+      end
+
+      def abstract_header(dest)
         dest.elements.first.children.first.previous =
           "<span class='IEEEStdsAbstractHeader'><span lang='EN-US'>"\
           "Abstract:</span></span> "

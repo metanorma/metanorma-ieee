@@ -42,7 +42,7 @@ RSpec.describe IsoDoc::IEEE do
       .to be_equivalent_to xmlpp(doc)
   end
 
-  it "moves abstract in Word" do
+  it "moves abstract in Word, and style abstracts" do
     mock_populate_template
     input = <<~INPUT
       <html>
@@ -54,7 +54,8 @@ RSpec.describe IsoDoc::IEEE do
       <br/>
       <div id="x" class="abstract">
       <h1 class="AbstractTitle">Abstract</h1>
-      <p>Abstract text</p>
+      <p>Abstract text</p>A
+      <ul><li><p>X</p></li></ul>
       </div>
       <hr/>
       <div id="abstract-destination"/>
@@ -75,12 +76,12 @@ RSpec.describe IsoDoc::IEEE do
           <div class='main-section'>
             <hr/>
             <div id='abstract-destination'>
-              <p class='IEEEStdsAbstractBody'>
-                <span class='IEEEStdsAbstractHeader'>
-                  <span lang='EN-US'>Abstract:</span>
-                </span>
-                 Abstract text
-              </p>
+               <p class='IEEEStdsAbstractBody'>Abstract text</p>
+               <ul class='IEEEStdsAbstractBody'>
+                 <li>
+                   <p style='font-family: &#x22;Arial&#x22;, sans-serif;' class='IEEEStdsParagraph'>X</p>
+                 </li>
+               </ul>
             </div>
           </div>
         </body>
