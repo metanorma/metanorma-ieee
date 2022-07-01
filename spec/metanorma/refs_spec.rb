@@ -117,7 +117,6 @@ RSpec.describe Metanorma::IEEE do
                 </contributor>
               </bibitem>
               <bibitem type='book' id='ref4'>
-                <fetched>#{Date.today}</fetched>
                 <title type='main' format='text/plain'>Indiana Jones and the Last Crusade</title>
                 <title type='title-main' format='text/plain'>Indiana Jones and the Last Crusade</title>
                 <title type='main' format='text/plain'>Indiana Jones and the Last Crusade</title>
@@ -140,7 +139,6 @@ RSpec.describe Metanorma::IEEE do
                 </contributor>
               </bibitem>
               <bibitem id='ref2' type='standard'>
-                <fetched>#{Date.today}</fetched>
                 <title type='main' format='text/plain'>The “xml2rfc” Version 2 Vocabulary</title>
                 <uri type='src'>https://www.rfc-editor.org/info/rfc7749</uri>
                 <docidentifier type='IETF' primary='true'>RFC 7749</docidentifier>
@@ -193,7 +191,7 @@ RSpec.describe Metanorma::IEEE do
         </ieee-standard>
       OUTPUT
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
-      out.xpath("//xmlns:bibdata | //xmlns:boilerplate").remove
+      out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:fetched").remove
       expect(xmlpp(strip_guid(out.to_xml)))
         .to be_equivalent_to xmlpp(output)
     end
