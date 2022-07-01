@@ -32,6 +32,18 @@ module IsoDoc
         docxml
       end
 
+      def make_WordToC(docxml, level)
+        toc = ""
+        xpath = (1..level).each.map do |i|
+          "//h#{i}[not(ancestor::*[@class = 'WordSection2'])]"
+        end.join (" | ")
+        docxml.xpath(xpath).each do |h|
+          toc += word_toc_entry(h.name[1].to_i, header_strip(h))
+        end
+        toc.sub(/(<p class="MsoToc1">)/,
+                %{\\1#{word_toc_preface(level)}}) + WORD_TOC_SUFFIX1
+      end
+
       def biblio_cleanup(docxml)
         docxml.xpath("//p[@class = 'Biblio']").each do |p|
           headings_strip(p)
