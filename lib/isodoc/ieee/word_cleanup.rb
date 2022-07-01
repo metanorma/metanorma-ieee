@@ -25,7 +25,6 @@ module IsoDoc
         div_cleanup(docxml)
         biblio_cleanup(docxml)
         headings_cleanup(docxml)
-        span_style_cleanup(docxml)
         caption_cleanup(docxml)
         table_cleanup(docxml)
         style_cleanup(docxml)
@@ -173,13 +172,6 @@ module IsoDoc
 
       def para_type_cleanup(html)
         html.xpath("//p[@type]").each { |p| p.delete("type") }
-      end
-
-      def span_style_cleanup(html)
-        html.xpath("//strong").each do |s|
-          s.name = "span"
-          s["class"] = "IEEEStdsParaBold"
-        end
       end
 
       def note_style_cleanup(docxml)

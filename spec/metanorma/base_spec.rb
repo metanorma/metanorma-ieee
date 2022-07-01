@@ -87,16 +87,16 @@ RSpec.describe Metanorma::IEEE do
       :horizontal: true
       :confirmed-date: 1000-12-01
       :issued-date: 1001-12-01
-      :wg_chair: AB
-      :wg_vicechair: CD
-      :wg_secretary: CD1
-      :wg_members: E, F, Jr.; GH; IJ
-      :balloting_group_members: KL; MN
-      :std_board_chair: OP
-      :std_board_vicechair: QR
-      :std_board_pastchair: ST
-      :std_board_secretary: UV
-      :std_board_members: WX; YZ
+      :wg-chair: AB
+      :wg-vicechair: CD
+      :wg-secretary: CD1
+      :wg-members: E, F, Jr.; GH; IJ
+      :balloting-group-members: KL; MN
+      :std-board-chair: OP
+      :std-board-vicechair: QR
+      :std-board-pastchair: ST
+      :std-board-secretary: UV
+      :std-board-members: WX; YZ
       :isbn-pdf: ABC
       :isbn-print: DEF
       :stdid-pdf: GHI

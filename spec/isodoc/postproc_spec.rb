@@ -269,51 +269,6 @@ RSpec.describe IsoDoc::IEEE do
       .to be_equivalent_to xmlpp(doc)
   end
 
-  it "renders character styles in Word" do
-    mock_populate_template
-    input = <<~INPUT
-      <html>
-      <head/>
-      <body>
-          <div class="WordSection1"><p/></div>
-          <div class="WordSection2"><p/></div>
-         <div class='WordSection14'>
-           <div id='D'>
-           <p><em>Emphasis</em> <strong>Strong</strong> <tt>Monospace</tt></p>
-           </div>
-           </body></html>
-    INPUT
-    doc = <<~OUTPUT
-      <html>
-         <head/>
-         <body>
-           <div class='WordSection1'>
-             <p class='IEEEStdsParagraph'/>
-           </div>
-           <div class='WordSection2'>
-             <p class='IEEEStdsParagraph'/>
-           </div>
-           <div class='WordSection3'>
-             <div id='D'>
-               <p class='IEEEStdsParagraph'>
-                 <em>Emphasis</em>
-                 <span class='IEEEStdsParaBold'>Strong</span>
-                 <tt>Monospace</tt>
-               </p>
-             </div>
-           </div>
-         </body>
-       </html>
-    OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::WordConvert
-       .new(wordcoverpage: nil,
-            wordintropage: nil,
-            filename: "test")
-        .word_cleanup(Nokogiri::XML(input)).to_xml)
-        .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
-      .to be_equivalent_to xmlpp(doc)
-  end
-
   private
 
   def mock_populate_template

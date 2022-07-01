@@ -117,7 +117,7 @@ RSpec.describe Metanorma::IEEE do
                 </contributor>
               </bibitem>
               <bibitem type='book' id='ref4'>
-                <fetched>2022-06-29</fetched>
+                <fetched>#{Date.today}</fetched>
                 <title type='main' format='text/plain'>Indiana Jones and the Last Crusade</title>
                 <title type='title-main' format='text/plain'>Indiana Jones and the Last Crusade</title>
                 <title type='main' format='text/plain'>Indiana Jones and the Last Crusade</title>

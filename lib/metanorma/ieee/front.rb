@@ -54,31 +54,31 @@ module Metanorma
       end
 
       def wg_members(node, xml)
-        a = node.attr("wg_chair") and
+        a = node.attr("wg-chair") and
           metadata_editor(a, "Working Group Chair", xml)
-        a = node.attr("wg_vicechair") and
+        a = node.attr("wg-vicechair") and
           metadata_editor(a, "Working Group Vice-Chair", xml)
-        a = node.attr("wg_secretary") and
+        a = node.attr("wg-secretary") and
           metadata_editor(a, "Working Group Secretary", xml)
-        a = node.attr("wg_members") and
+        a = node.attr("wg-members") and
           metadata_multi_editors(a, "Working Group Member", xml)
       end
 
       def bg_members(node, xml)
-        a = node.attr("balloting_group_members") and
+        a = node.attr("balloting-group-members") and
           metadata_multi_editors(a, "Balloting Group Member", xml)
       end
 
       def std_board_members(node, xml)
-        a = node.attr("std_board_chair") and
+        a = node.attr("std-board-chair") and
           metadata_editor(a, "Standards Board Chair", xml)
-        a = node.attr("std_board_vicechair") and
+        a = node.attr("std-board-vicechair") and
           metadata_editor(a, "Standards Board Vice-Chair", xml)
-        a = node.attr("std_board_pastchair") and
+        a = node.attr("std-board-pastchair") and
           metadata_editor(a, "Standards Board Past Chair", xml)
-        a = node.attr("std_board_secretary") and
+        a = node.attr("std-board-secretary") and
           metadata_editor(a, "Standards Board Secretary", xml)
-        a = node.attr("balloting_group_members") and
+        a = node.attr("balloting-group-members") and
           metadata_multi_editors(a, "Standards Board Member", xml)
       end
 
