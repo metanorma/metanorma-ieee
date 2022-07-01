@@ -178,11 +178,34 @@ module IsoDoc
         docxml.xpath("//span[@class = 'note_label']").each do |s|
           multi = /^#{@i18n.note}\s+[A-Z0-9.]+/.match?(s.text)
           div = s.at("./ancestor::div[@class = 'Note']")
-          s.remove if multi
-          div.xpath(".//p[@class = 'Note' or not(@class)]")
-            .each_with_index do |p, i|
-            p["class"] =
-              i.zero? && multi ? "IEEEStdsMultipleNotes" : "IEEEStdsSingleNote"
+          if multi
+            s.remove
+            seq = notesequence(div)
+          else seq = nil
+          end
+          note_style_cleanup1(multi, div, seq)
+        end
+      end
+
+      def notesequence(div)
+        @notesequences ||= { max: 0, lookup: {} }
+        unless id = @notesequences[:lookup][@xrefs.anchor(div["id"], :sequence)]
+          @notesequences[:max] += 1
+          id = @notesequences[:max]
+          @notesequences[:lookup][@xrefs.anchor(div["id"], :sequence)] = id
+        end
+        id
+      end
+
+      # hardcoded list style for notes
+      def note_style_cleanup1(multi, div, seq)
+        div.xpath(".//p[@class = 'Note' or not(@class)]")
+          .each_with_index do |p, i|
+          p["class"] =
+            i.zero? && multi ? "IEEEStdsMultipleNotes" : "IEEEStdsSingleNote"
+          if multi
+            p["style"] ||= ""
+            p["style"] += "mso-list:l17 level1 lfo#{seq};"
           end
         end
       end

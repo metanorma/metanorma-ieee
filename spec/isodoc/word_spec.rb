@@ -344,41 +344,57 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       <clause id="C">
       <note id="n3"><p>Third</p><quote>Quotation</quote></note>
       </clause>
+      <clause id="D">
+      <note id="n4"><p>Fourth</p></note>
+      <note id="n5"><p>Fifth</p></note>
+      </clause>
       </clause>
       </sections>
             </iso-standard>
     INPUT
     word = <<~OUTPUT
-          <div>
-        <a name='A' id='A'/>
-        <p class='IEEEStdsLevel1Header'>1.</p>
-        <div>
-          <a name='B' id='B'/>
-          <p class='IEEEStdsLevel2Header'>1.1.</p>
-          <div>
-            <a name='n1' id='n1'/>
-            <p class='IEEEStdsMultipleNotes'>First</p>
-          </div>
-          <p class='IEEEStdsParagraph'>Blah blah </p>
-          <div>
-            <a name='n2' id='n2'/>
-            <p class='IEEEStdsMultipleNotes'>Second</p>
-            <p class='IEEEStdsSingleNote'>Multi-para note</p>
-          </div>
-          <div>
-            <a name='C' id='C'/>
-            <p class='IEEEStdsLevel3Header'>1.1.1.</p>
-            <div>
-              <a name='n3' id='n3'/>
-              <p class='IEEEStdsSingleNote'>
-                <span class='note_label'>NOTE&#x2014;</span>
-                Third
-              </p>
-              <div class='Quote'>Quotation</div>
-            </div>
-          </div>
-        </div>
-      </div>
+           <div>
+         <a name='A' id='A'/>
+         <p class='IEEEStdsLevel1Header'>1.</p>
+         <div>
+           <a name='B' id='B'/>
+           <p class='IEEEStdsLevel2Header'>1.1.</p>
+           <div>
+             <a name='n1' id='n1'/>
+             <p class='IEEEStdsMultipleNotes' style='mso-list:l17 level1 lfo1;'>First</p>
+           </div>
+           <p class='IEEEStdsParagraph'>Blah blah </p>
+           <div>
+             <a name='n2' id='n2'/>
+             <p class='IEEEStdsMultipleNotes' style='mso-list:l17 level1 lfo1;'>Second</p>
+             <p class='IEEEStdsSingleNote' style='mso-list:l17 level1 lfo1;'>Multi-para note</p>
+           </div>
+           <div>
+             <a name='C' id='C'/>
+             <p class='IEEEStdsLevel3Header'>1.1.1.</p>
+             <div>
+               <a name='n3' id='n3'/>
+               <p class='IEEEStdsSingleNote'>
+                 <span class='note_label'>NOTE&#x2014;</span>
+                 Third
+               </p>
+               <div class='Quote'>Quotation</div>
+             </div>
+           </div>
+           <div>
+             <a name='D' id='D'/>
+             <p class='IEEEStdsLevel3Header'>1.1.2.</p>
+             <div>
+               <a name='n4' id='n4'/>
+               <p class='IEEEStdsMultipleNotes' style='mso-list:l17 level1 lfo2;'>Fourth</p>
+             </div>
+             <div>
+               <a name='n5' id='n5'/>
+               <p class='IEEEStdsMultipleNotes' style='mso-list:l17 level1 lfo2;'>Fifth</p>
+             </div>
+           </div>
+         </div>
+       </div>
     OUTPUT
     presxml = IsoDoc::IEEE::PresentationXMLConvert.new({}).convert("test",
                                                                    input, true)
