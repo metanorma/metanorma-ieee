@@ -189,26 +189,24 @@ RSpec.describe IsoDoc do
     INPUT
 
     presxml = <<~"PRESXML"
-          <clause id='A' inline-header='false' obligation='normative' displayorder='2'>
-         <title depth='1'>
-           2.
-           <tab/>
-           Clause
-         </title>
-         <p id='_'>
-           <eref type='inline' bibitemid='ref1' citeas='ISO 639:1967'>ISO 639:1967</eref>
-           <eref type='inline' bibitemid='ref2' citeas='Aluffi'>Aluffi</eref>
-           <eref type='inline' bibitemid='ref3' citeas='REF4'>REF4</eref>
-           <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967'>ISO 639:1967 [B3]</eref>
-           <eref type='inline' bibitemid='ref5' citeas='[B2]'>
-             Aluffi, P., D. Anderson, M. Hering, M. Musta&#x163;&#x103;, and S. Payne,
-             Facets of Algebraic Geometry: A Collection in Honor of William Fulton's
-             80th Birthday, first edition, Cambridge, UK: Cambridge University Press,
-             2022. [B2]
-           </eref>
-           <eref type='inline' bibitemid='ref6' citeas='[B1]'>REF4 [REF4] [B1]</eref>
-         </p>
-       </clause>
+      <clause id='A' inline-header='false' obligation='normative' displayorder='2'>
+        <title depth='1'>
+          2.
+          <tab/>
+          Clause
+        </title>
+        <p id='_'>
+          <eref type='inline' bibitemid='ref1' citeas='ISO 639:1967'>ISO 639:1967</eref>
+          <eref type='inline' bibitemid='ref2' citeas='Aluffi'>Aluffi</eref>
+          <eref type='inline' bibitemid='ref3' citeas='REF4'>REF4</eref>
+          <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967'>ISO 639:1967 [B3]</eref>
+          <eref type='inline' bibitemid='ref5' citeas='[B2]'>
+            Facets of Algebraic Geometry: A Collection in Honor of William Fulton's
+            80th Birthday [B2]
+          </eref>
+          <eref type='inline' bibitemid='ref6' citeas='[B1]'>REF4 [REF4] [B1]</eref>
+        </p>
+      </clause>
     PRESXML
     expect(xmlpp(Nokogiri::XML(
       IsoDoc::IEEE::PresentationXMLConvert.new({})

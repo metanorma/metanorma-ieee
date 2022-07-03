@@ -174,6 +174,7 @@ RSpec.describe IsoDoc::IEEE do
               </title>
               <bibitem id='ISO712' type='standard'>
                 <formattedref>Cereals and cereal products.</formattedref>
+                <title format='text/plain'>Cereals and cereal products</title>
                 <docidentifier>ISO 712</docidentifier>
               </bibitem>
             </references>
@@ -299,7 +300,7 @@ RSpec.describe IsoDoc::IEEE do
       .convert("test", input, true))).to be_equivalent_to xmlpp(output)
   end
 
-  xit "processes concept markup" do
+  it "processes concept markup" do
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
           <preface><foreword>
@@ -403,79 +404,62 @@ RSpec.describe IsoDoc::IEEE do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-         <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-          <preface><foreword displayorder="1">
-          <p>
-          <ul>
-          <li>
-              [term defined in <xref target="clause1">Clause 2</xref>]
-            </li>
-            <li>
-              <em>term</em> [term defined in <xref target="clause1">Clause 2</xref>]
-            </li>
-          <li>
-              <em>w[o]rd</em> [<xref target="clause1">Clause #1</xref>]
-            </li>
-            <li>
-              <em>term</em> [term defined in <eref bibitemid="ISO712" type="inline" citeas="ISO 712">ISO 712</eref>]
-            </li>
-            <li>
-              <em>word</em> [<eref bibitemid="ISO712" type="inline" citeas="ISO 712">The Aforementioned Citation</eref>]
-            </li>
-            <li>
-              <em>word</em> [term defined in <eref bibitemid="ISO712" type="inline" citeas="ISO 712"><locality type="clause">
-                  <referenceFrom>3.1</referenceFrom>
-                </locality><locality type="figure">
-                  <referenceFrom>a</referenceFrom>
-                </locality>ISO 712, Clause 3.1, Figure a</eref>]
-            </li>
-            <li>
-              <em>word</em> [term defined in <eref bibitemid="ISO712" type="inline" citeas="ISO 712"><localityStack connective="and">
-                <locality type="clause">
-                  <referenceFrom>3.1</referenceFrom>
-                </locality>
-              </localityStack><localityStack connective="and">
-                <locality type="figure">
-                  <referenceFrom>b</referenceFrom>
-                </locality>
-              </localityStack>ISO 712, Clause 3.1 and Figure b</eref>]
-            </li>
-            <li>
-              <em>word</em> [<eref bibitemid="ISO712" type="inline" citeas="ISO 712">
-              <localityStack connective="and">
-                <locality type="clause">
-                  <referenceFrom>3.1</referenceFrom>
-                </locality>
-              </localityStack>
-              <localityStack connective="and">
-                <locality type="figure">
-                  <referenceFrom>b</referenceFrom>
-                </locality>
-              </localityStack>
-              The Aforementioned Citation
-              </eref>]
-            </li>
-            <li>
-              <em>word</em> [term defined in <termref base="IEV" target="135-13-13"/>]
-            </li>
-            <li>
-              <em>word</em> [<termref base="IEV" target="135-13-13">The IEV database</termref>]
-            </li>
-             <li> <strong>error!</strong> </li>
-            </ul>
-          </p>
-          </foreword></preface>
-          <sections>
-          <clause id="clause1" displayorder="3"><title depth="1">2.<tab/>Clause 1</title></clause>
-          </sections>
-          <bibliography><references id="_normative_references" obligation="informative" normative="true" displayorder="2"><title depth="1">1.<tab/>Normative References</title>
-          <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
-      <bibitem id="ISO712" type="standard">
-        <formattedref>International Organization for Standardization. <em>Cereals and cereal products</em>.</formattedref>
-        <docidentifier type="ISO">ISO 712</docidentifier>
-      </bibitem>
-      </references></bibliography>
-          </iso-standard>
+      <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+        <preface>
+          <foreword displayorder='1'>
+            <p>
+              <ul>
+                <li> </li>
+                <li> term </li>
+                <li> w[o]rd </li>
+                <li> term </li>
+                <li> word </li>
+                <li> word </li>
+                <li> word </li>
+                <li> word </li>
+                <li>
+                  <li> word </li>
+                  <li> word </li>
+                  <li>
+                    <strong>error!</strong>
+                  </li>
+                </li>
+              </ul>
+            </p>
+            <sections>
+              <clause id='clause1' displayorder='3'>
+                <title depth='1'>
+                  2.
+                  <tab/>
+                  Clause 1
+                </title>
+              </clause>
+            </sections>
+            <bibliography>
+              <references id='_normative_references' obligation='informative' normative='true' displayorder='2'>
+                <title depth='1'>
+                  1.
+                  <tab/>
+                  Normative References
+                </title>
+                <p>
+                  The following documents are referred to in the text in such a way
+                  that some or all of their content constitutes requirements of this
+                  document. For dated references, only the edition cited applies. For
+                  undated references, the latest edition of the referenced document
+                  (including any amendments) applies.
+                </p>
+                <bibitem id='ISO712' type='standard'>
+                  <formattedref>Cereals and cereal products.</formattedref>
+                  <title format='text/plain'>Cereals or cereal products</title>
+                  <title type='main' format='text/plain'>Cereals and cereal products</title>
+                  <docidentifier type='ISO'>ISO 712</docidentifier>
+                </bibitem>
+              </references>
+            </bibliography>
+          </foreword>
+        </preface>
+      </iso-standard>
     OUTPUT
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
       .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
