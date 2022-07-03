@@ -50,60 +50,6 @@ module IsoDoc
         end
       end
 
-      def admonition_cleanup(docxml)
-        super
-        docxml.xpath("//div[@class = 'zzHelp']").each do |d|
-          d.xpath(".//p").each do |p|
-            %w(IEEEStdsWarning IEEEStdsParagraph).include?(p["class"]) ||
-              !p["class"] or next
-
-            p["class"] = "zzHelp"
-          end
-        end
-        docxml
-      end
-
-      def table_cleanup(docxml)
-        thead_cleanup(docxml)
-        tbody_cleanup(docxml)
-      end
-
-      def thead_cleanup(docxml)
-        docxml.xpath("//thead").each do |h|
-          h.xpath(".//td | .//th").each do |t|
-            if t.at("./p")
-              t.xpath("./p").each { |p| p["class"] = "IEEEStdsTableColumnHead" }
-            else
-              t.children =
-                "<p class='IEEEStdsTableColumnHead'>#{t.children.to_xml}</p>"
-            end
-          end
-        end
-      end
-
-      def tbody_cleanup(docxml)
-        docxml.xpath("//tbody | //tfoot").each do |h|
-          next if h.at("./ancestor::div[@class = 'boilerplate-feedback']")
-
-          h.xpath(".//td | .//th").each do |t|
-            style = td_style(t)
-            if t.at("./p")
-              t.xpath("./p").each { |p| p["class"] = style }
-            else
-              t.children = "<p class='#{style}'>#{t.children.to_xml}</p>"
-            end
-          end
-        end
-      end
-
-      def td_style(cell)
-        if cell.name == "th" then "IEEEStdsTableLineHead"
-        elsif cell["align"] == "center" || /text-align:center/.match?(cell["style"])
-          "IEEEStdsTableData-Center"
-        else "IEEEStdsTableData-Left"
-        end
-      end
-
       def headings_cleanup(docxml)
         (1..9).each { |i| headings_cleanup1(docxml, i) }
         docxml.xpath("//div[@class = 'Annex']").each { |a| a.delete("class") }
@@ -136,33 +82,6 @@ module IsoDoc
         end
       end
 
-      def caption_cleanup(docxml)
-        table_caption(docxml)
-        figure_caption(docxml)
-        example_caption(docxml)
-      end
-
-      def table_caption(docxml)
-        docxml.xpath("//p[@class = 'TableTitle']").each do |s|
-          s.children = s.children.to_xml
-            .sub(/^#{@i18n.table}(\s+[A-Z0-9.]+)?/, "")
-        end
-      end
-
-      def figure_caption(docxml)
-        docxml.xpath("//p[@class = 'FigureTitle']").each do |s|
-          s.children = s.children.to_xml
-            .sub(/^#{@i18n.figure}(\s+[A-Z0-9.]+)?/, "")
-        end
-      end
-
-      def example_caption(docxml)
-        docxml.xpath("//p[@class = 'example-title']").each do |s|
-          s.children = "<em>#{s.children.to_xml}</em>"
-          s["class"] = "IEEEStdsParagraph"
-        end
-      end
-
       def div_cleanup(docxml)
         d = docxml.at("//div[@class = 'WordSection2']"\
                       "[div[@class = 'WordSection2']]") and
@@ -173,52 +92,6 @@ module IsoDoc
 
           i += 1
           div["class"] = "WordSection#{i}"
-        end
-      end
-
-      def sourcecode_cleanup(docxml)
-        docxml.xpath("//p[@class = 'Sourcecode']").each do |s|
-          s.replace(s.to_xml.gsub(%r{<br/>}, "</p><p class='Sourcecode'>"))
-        end
-      end
-
-      def para_type_cleanup(html)
-        html.xpath("//p[@type]").each { |p| p.delete("type") }
-      end
-
-      def note_style_cleanup(docxml)
-        docxml.xpath("//span[@class = 'note_label']").each do |s|
-          multi = /^#{@i18n.note}\s+[A-Z0-9.]+/.match?(s.text)
-          div = s.at("./ancestor::div[@class = 'Note']")
-          if multi
-            s.remove
-            seq = notesequence(div)
-          else seq = nil
-          end
-          note_style_cleanup1(multi, div, seq)
-        end
-      end
-
-      def notesequence(div)
-        @notesequences ||= { max: 0, lookup: {} }
-        unless id = @notesequences[:lookup][@xrefs.anchor(div["id"], :sequence)]
-          @notesequences[:max] += 1
-          id = @notesequences[:max]
-          @notesequences[:lookup][@xrefs.anchor(div["id"], :sequence)] = id
-        end
-        id
-      end
-
-      # hardcoded list style for notes
-      def note_style_cleanup1(multi, div, seq)
-        div.xpath(".//p[@class = 'Note' or not(@class)]")
-          .each_with_index do |p, i|
-          p["class"] =
-            i.zero? && multi ? "IEEEStdsMultipleNotes" : "IEEEStdsSingleNote"
-          if multi
-            p["style"] ||= ""
-            p["style"] += "mso-list:l17 level1 lfo#{seq};"
-          end
         end
       end
 

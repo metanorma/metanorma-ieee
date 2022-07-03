@@ -25,7 +25,8 @@ RSpec.describe IsoDoc do
           </thead>
           <tbody>
           <tr>
-            <th align="left">Number of laboratories retained after eliminating outliers</td>
+            <th align="left"><p>Number of laboratories retained after eliminating outliers<br/>
+            Laboratory count</p></th>
             <td align="center">13</td>
             <td align="center">11</td>
             <td align="center">13</td>
@@ -88,7 +89,10 @@ RSpec.describe IsoDoc do
                </thead>
                <tbody>
                  <tr>
-                   <th align='left'>Number of laboratories retained after eliminating outliers</th>
+                   <th align='left'>
+                      <p>Number of laboratories retained after eliminating outliers<br/>
+                      Laboratory count</p>
+                    </th>
                    <td align='center'>13</td>
                    <td align='center'>11</td>
                    <td align='center'>13</td>
@@ -170,7 +174,10 @@ RSpec.describe IsoDoc do
                </thead>
                <tbody>
                  <tr>
-                   <th style='font-weight:bold;text-align:left;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;' scope='row'>Number of laboratories retained after eliminating outliers</th>
+                   <th style='font-weight:bold;text-align:left;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;' scope='row'>
+                     <p>Number of laboratories retained after eliminating outliers<br/>
+                     Laboratory count</p>
+                   </th>
                    <td style='text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;'>13</td>
                    <td style='text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;'>11</td>
                    <td style='text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;'>13</td>
@@ -275,6 +282,7 @@ RSpec.describe IsoDoc do
               <tr>
                 <th align='left' style='font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;'>
                   <p class='IEEEStdsTableLineHead' style='text-align: left'>Number of laboratories retained after eliminating outliers</p>
+                  <p class='IEEEStdsTableLineSubhead' style='text-align: left'>Laboratory count</p>
                 </th>
                 <td align='center' style='border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;'>
                   <p class='IEEEStdsTableData-Center' style='text-align: center'>13</p>
