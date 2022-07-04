@@ -84,7 +84,7 @@ RSpec.describe Metanorma::IEEE do
 
       INPUT
       output = <<~OUTPUT
-              <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='0.0.1'>
+         <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
           <sections> </sections>
           <bibliography>
             <references id='_' normative='false' obligation='informative'>
@@ -102,19 +102,41 @@ RSpec.describe Metanorma::IEEE do
                 <docnumber>4</docnumber>
               </bibitem>
               <bibitem id='ref1' type='standard'>
-                <title format='text/plain'>REF5</title>
-                <docidentifier type='ISO'>ISO 639:1967</docidentifier>
+                <title type='title-main' format='text/plain' language='en' script='Latn'>Symbols for languages, countries and authorities</title>
+                <title type='main' format='text/plain' language='en' script='Latn'>Symbols for languages, countries and authorities</title>
+                <uri type='src'>https://www.iso.org/standard/4765.html</uri>
+                <uri type='rss'>https://www.iso.org/contents/data/standard/00/47/4765.detail.rss</uri>
+                <docidentifier type='ISO' primary='true'>ISO/R 639:1967</docidentifier>
                 <docidentifier type='metanorma-ordinal'>[B2]</docidentifier>
+                <docidentifier type='URN'>urn:iso:std:iso:r:639:stage-60.60</docidentifier>
                 <docnumber>639</docnumber>
                 <date type='published'>
-                  <on>1967</on>
+                  <on>1967-11</on>
                 </date>
                 <contributor>
                   <role type='publisher'/>
                   <organization>
-                    <name>ISO</name>
+                    <name>International Organization for Standardization</name>
+                    <abbreviation>ISO</abbreviation>
+                    <uri>www.iso.org</uri>
                   </organization>
                 </contributor>
+                <edition>1</edition>
+                <language>en</language>
+                <script>Latn</script>
+                <status>
+                  <stage>95</stage>
+                  <substage>99</substage>
+                </status>
+                <copyright>
+                  <from>1967</from>
+                  <owner>
+                    <organization>
+                      <name>ISO/R</name>
+                    </organization>
+                  </owner>
+                </copyright>
+                <place>Geneva</place>
               </bibitem>
               <bibitem type='book' id='ref4'>
                 <title type='main' format='text/plain'>Indiana Jones and the Last Crusade</title>
@@ -248,7 +270,7 @@ RSpec.describe Metanorma::IEEE do
                 <eref type='inline' bibitemid='ref1' citeas='IEEE 1619-2007™'/>
               </p>
               <p id='_'>
-                <eref type='inline' bibitemid='ref2' citeas='ISO 639:1967'/>
+                <eref type='inline' bibitemid='ref2' citeas='ISO/R 639:1967'/>
               </p>
               <p id='_'>
                 <eref type='inline' bibitemid='ref1' citeas='IEEE 1619-2007'/>
@@ -264,7 +286,7 @@ RSpec.describe Metanorma::IEEE do
                   <eref type='inline' bibitemid='ref1' citeas='IEEE 1619-2007™'/>
                 </p>
                 <p id='_'>
-                  <eref type='inline' bibitemid='ref2' citeas='ISO 639:1967'/>
+                  <eref type='inline' bibitemid='ref2' citeas='ISO/R 639:1967'/>
                 </p>
                 <p id='_'>
                   <eref type='inline' bibitemid='ref1' citeas='IEEE 1619-2007'/>
@@ -333,10 +355,10 @@ RSpec.describe Metanorma::IEEE do
          <clause id='A' inline-header='false' obligation='normative'>
           <title>Clause</title>
           <p id='_'>
-            <eref type='inline' bibitemid='ref1' citeas='ISO 639:1967'/>
+            <eref type='inline' bibitemid='ref1' citeas='ISO/R 639:1967'/>
             <eref type='inline' bibitemid='ref2' citeas='IETF RFC 7749'/>
             <eref type='inline' bibitemid='ref3' citeas='REF4'/>
-            <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967'/>
+            <eref type='inline' bibitemid='ref4' citeas='ISO/R 639:1967'/>
             <eref type='inline' bibitemid='ref5' citeas='IETF RFC 7749'/>
             <eref type='inline' bibitemid='ref6' citeas='[B1]'/>
           </p>
