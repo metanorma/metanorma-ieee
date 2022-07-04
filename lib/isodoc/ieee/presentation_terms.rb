@@ -158,6 +158,14 @@ module IsoDoc
         while elem&.next_element&.name == "termsource"
           elem << "; #{elem.next_element.remove.children.to_xml}"
         end
+        adapt = termsource_adapt(elem["status"]) and
+          elem.children = l10n("#{adapt}#{elem.children.to_xml.strip}")
+      end
+
+      def termsource_adapt(status)
+        case status
+        when "adapted" then @i18n.adapted_from
+        end
       end
 
       def designation_field(desgn, name)

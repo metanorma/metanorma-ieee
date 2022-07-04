@@ -38,6 +38,12 @@ module Metanorma
         super
       end
 
+      def termsource_attrs(node, matched)
+        ret = super
+        node.option? "adapted" and ret[:status] = "adapted"
+        ret
+      end
+
       def outputs(node, ret)
         File.open("#{@filename}.xml", "w:UTF-8") { |f| f.write(ret) }
         presentation_xml_converter(node).convert("#{@filename}.xml")

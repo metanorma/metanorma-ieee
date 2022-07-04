@@ -11,6 +11,7 @@ termnote: NOTE
 example: Example
 table_of_contents: Contents
 viewed: accessed
+adapted_from: "adapted from "
 doctype_abbrev:
   standard: Std.
   recommended-practice: Rec. Prac.

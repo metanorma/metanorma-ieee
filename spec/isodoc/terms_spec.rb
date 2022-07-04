@@ -30,7 +30,7 @@ RSpec.describe IsoDoc do
         <li>A</li>
         </ul>
       </termexample>
-      <termsource status='identical'>
+      <termsource status='adapted'>
           <origin citeas=''>
             <termref base='IEV' target='xyz'>t1</termref>
           </origin>
@@ -38,7 +38,7 @@ RSpec.describe IsoDoc do
             <p id='_'/>
           </modification>
         </termsource>
-        <termsource status='modified'>
+        <termsource status='adapted'>
           <origin citeas=''>
             <termref base='IEV' target='xyz'/>
           </origin>
@@ -75,86 +75,82 @@ RSpec.describe IsoDoc do
     INPUT
 
     presxml = <<~"PRESXML"
-          <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-        <sections>
-          <terms id='_terms_and_definitions' obligation='normative' displayorder='1'>
-            <title depth='1'>
-              1.
-              <tab/>
-              Terms and Definitions
-            </title>
-            <p>For the purposes of this document, the following terms and definitions apply.</p>
-            <term id='paddy1'>
-              <p>
-                <strong>paddy</strong>
-                , &#x3c;rice&#x3e;, &#x3c;in agriculture, dated&#x3e;: rice retaining
-                its husk after threshing (<origin bibitemid='ISO7301' type='inline' citeas='ISO 7301:2011'><locality type='clause'>
-                    <referenceFrom>3.1</referenceFrom>
-                  </locality>ISO 7301:2011, 3.1</origin>, modified &#x2013; The term "cargo rice" is shown as deprecated, and
-                Note 1 to entry is not included here)
-              </p>
-              <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f892' keep-with-next='true' keep-lines-together='true'>
-                <name>Example 1</name>
-                <p id='_65c9a509-9a89-4b54-a890-274126aeb55c'>Foreign seeds, husks, bran, sand, dust.</p>
-                <ul>
-                  <li>A</li>
-                </ul>
-              </termexample>
-              <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f894'>
-                <name>Example 2</name>
-                <ul>
-                  <li>A</li>
-                </ul>
-              </termexample>
-              <termsource status='identical'>
-                <origin citeas=''>
-                  <termref base='IEV' target='xyz'>t1</termref>
-                </origin>
-                , modified ;
-                <origin citeas=''>
-                  <termref base='IEV' target='xyz'/>
-                </origin>
-                , modified &#x2013; with adjustments
-              </termsource>
-            </term>
-            <term id='paddy'>
-              <p>
-                <strong>paddy</strong>
-                : rice retaining its husk after threshing
-                <em>Syn:</em>
-                <strong>paddy rice</strong>
-                , &#x3c;in agriculture&#x3e;;
-                <strong>rough rice</strong>. (<origin bibitemid='ISO7301' type='inline' droploc='true' citeas='ISO 7301:2011'><locality type='clause'>
-                    <referenceFrom>3.1</referenceFrom>
-                  </locality>ISO 7301:2011, 3.1</origin>)
-              </p>
-              <deprecates>cargo rice</deprecates>
-              <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f893'>
-                <name>Example</name>
-                <ul>
-                  <li>A</li>
-                </ul>
-              </termexample>
-              <termnote id='_671a1994-4783-40d0-bc81-987d06ffb74e' keep-with-next='true' keep-lines-together='true'>
-                <name>NOTE 1</name>
-                <p id='_19830f33-e46c-42cc-94ca-a5ef101132d5'>The starch of waxy rice consists almost entirely of amylopectin. The
-                  kernels have a tendency to stick together after cooking.
-                </p>
-              </termnote>
-              <termnote id='_671a1994-4783-40d0-bc81-987d06ffb74f'>
-                <name>NOTE 2</name>
-                <ul>
-                  <li>A</li>
-                </ul>
-                <p id='_19830f33-e46c-42cc-94ca-a5ef101132d5'>
-                  The starch of waxy rice consists almost entirely of amylopectin. The
-                  kernels have a tendency to stick together after cooking.
-                </p>
-              </termnote>
-            </term>
-          </terms>
-        </sections>
-      </iso-standard>
+           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+         <sections>
+           <terms id='_terms_and_definitions' obligation='normative' displayorder='1'>
+             <title depth='1'>
+               1.
+               <tab/>
+               Terms and Definitions
+             </title>
+             <p>For the purposes of this document, the following terms and definitions apply.</p>
+             <term id='paddy1'>
+               <p>
+                 <strong>paddy</strong>
+                 , &#x3c;rice&#x3e;, &#x3c;in agriculture, dated&#x3e;: rice retaining
+                 its husk after threshing (<origin bibitemid='ISO7301' type='inline' citeas='ISO 7301:2011'><locality type='clause'><referenceFrom>3.1</referenceFrom></locality>ISO 7301:2011, 3.1</origin>, modified &#x2013; The term "cargo rice" is shown as deprecated, and
+                 Note 1 to entry is not included here)
+               </p>
+               <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f892' keep-with-next='true' keep-lines-together='true'>
+                 <name>Example 1</name>
+                 <p id='_65c9a509-9a89-4b54-a890-274126aeb55c'>Foreign seeds, husks, bran, sand, dust.</p>
+                 <ul>
+                   <li>A</li>
+                 </ul>
+               </termexample>
+               <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f894'>
+                 <name>Example 2</name>
+                 <ul>
+                   <li>A</li>
+                 </ul>
+               </termexample>
+               <termsource status='adapted'>
+                 adapted from
+                 <origin citeas=''>
+                   <termref base='IEV' target='xyz'>t1</termref>
+                 </origin>
+                 , modified ;
+                 <origin citeas=''>
+                   <termref base='IEV' target='xyz'/>
+                 </origin>
+                 , modified &#x2013; with adjustments
+               </termsource>
+             </term>
+             <term id='paddy'>
+               <p>
+                 <strong>paddy</strong>
+                 : rice retaining its husk after threshing
+                 <em>Syn:</em>
+                 <strong>paddy rice</strong>
+                 , &#x3c;in agriculture&#x3e;;
+                 <strong>rough rice</strong>. (<origin bibitemid='ISO7301' type='inline' droploc='true' citeas='ISO 7301:2011'><locality type='clause'><referenceFrom>3.1</referenceFrom></locality>ISO 7301:2011, 3.1</origin>)</p>
+               <deprecates>cargo rice</deprecates>
+               <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f893'>
+                 <name>Example</name>
+                 <ul>
+                   <li>A</li>
+                 </ul>
+               </termexample>
+               <termnote id='_671a1994-4783-40d0-bc81-987d06ffb74e' keep-with-next='true' keep-lines-together='true'>
+                 <name>NOTE 1</name>
+                 <p id='_19830f33-e46c-42cc-94ca-a5ef101132d5'>The starch of waxy rice consists almost entirely of amylopectin. The
+                   kernels have a tendency to stick together after cooking.
+                 </p>
+               </termnote>
+               <termnote id='_671a1994-4783-40d0-bc81-987d06ffb74f'>
+                 <name>NOTE 2</name>
+                 <ul>
+                   <li>A</li>
+                 </ul>
+                 <p id='_19830f33-e46c-42cc-94ca-a5ef101132d5'>
+                   The starch of waxy rice consists almost entirely of amylopectin. The
+                   kernels have a tendency to stick together after cooking.
+                 </p>
+               </termnote>
+             </term>
+           </terms>
+         </sections>
+       </iso-standard>
     PRESXML
 
     html = <<~"OUTPUT"
@@ -185,7 +181,7 @@ RSpec.describe IsoDoc do
                </ul>
              </div>
              <p>
-                t1 , modified ; Termbase IEV, term ID xyz , modified &#x2013; with
+                adapted from t1 , modified ; Termbase IEV, term ID xyz , modified &#x2013; with
                adjustments
              </p>
              <p class='TermNum' id='paddy'/>
@@ -277,7 +273,7 @@ RSpec.describe IsoDoc do
                </ul>
              </div>
              <p>
-                t1 , modified ; Termbase IEV, term ID xyz , modified &#x2013; with
+                adapted from t1 , modified ; Termbase IEV, term ID xyz , modified &#x2013; with
                adjustments
              </p>
              <p class='TermNum' id='paddy'/>

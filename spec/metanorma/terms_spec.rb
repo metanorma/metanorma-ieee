@@ -1,6 +1,102 @@
 require "spec_helper"
 
 RSpec.describe Metanorma::IEEE do
+  it "processes adapted termsources" do
+    input = <<~INPUT
+      #{ASCIIDOC_BLANK_HDR}
+
+      == Terms and Definitions
+
+      === Term1
+
+      X
+
+      [.source%adapted]
+      <<ISO2191,section=1>>
+
+      === Term2
+
+      X
+
+      [.source]
+      <<ISO2191,section=1>>,
+    INPUT
+    output = <<~OUTPUT
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+               <sections>
+           <terms id='_' obligation='normative'>
+             <title>Definitions</title>
+             <p id='_'>
+               For the purposes of this document, the following terms and definitions
+               apply. The
+               <em>IEEE Standards Dictionary Online</em>
+                should be consulted for terms not defined in this clause.
+               <fn>
+                 <p id='_'>
+                   <em>IEEE Standards Dictionary Online</em>
+                    is available at:
+                   <link target='http://dictionary.ieee.org'/>
+                   . An IEEE Account is required for access to the dictionary, and one
+                   can be created at no charge on the dictionary sign-in page.
+                 </p>
+               </fn>
+             </p>
+             <term id='term-Term1'>
+               <preferred>
+                 <expression>
+                   <name>Term1</name>
+                 </expression>
+               </preferred>
+               <definition>
+                 <verbal-definition>
+                   <p id='_'>X</p>
+                 </verbal-definition>
+               </definition>
+               <termsource status='adapted' type='authoritative'>
+                 <origin bibitemid='ISO2191' type='inline' citeas=''>
+                   <localityStack>
+                     <locality type='section'>
+                       <referenceFrom>1</referenceFrom>
+                     </locality>
+                   </localityStack>
+                 </origin>
+               </termsource>
+             </term>
+             <term id='term-Term2'>
+               <preferred>
+                 <expression>
+                   <name>Term2</name>
+                 </expression>
+               </preferred>
+               <definition>
+                 <verbal-definition>
+                   <p id='_'>X</p>
+                 </verbal-definition>
+               </definition>
+               <termsource status='modified' type='authoritative'>
+                 <origin bibitemid='ISO2191' type='inline' citeas=''>
+                   <localityStack>
+                     <locality type='section'>
+                       <referenceFrom>1</referenceFrom>
+                     </locality>
+                   </localityStack>
+                 </origin>
+                 <modification>
+                   <p id='_'/>
+                 </modification>
+               </termsource>
+             </term>
+           </terms>
+         </sections>
+       </ieee-standard>
+    OUTPUT
+    out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
+    out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:references")
+      .remove
+    expect(xmlpp(strip_guid(out.to_xml)))
+      .to be_equivalent_to xmlpp(output)
+  end
+
   it "sorts terms" do
     input = <<~INPUT
       #{ASCIIDOC_BLANK_HDR}
