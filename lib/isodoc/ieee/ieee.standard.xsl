@@ -295,7 +295,7 @@
 								<xsl:copy-of select="$title_main"/>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:apply-templates select="/ieee:ieee-standard/ieee:bibdata/ieee:title/node()"/>
+								<xsl:apply-templates select="/ieee:ieee-standard/ieee:bibdata/ieee:title[1]/node()"/>
 							</xsl:otherwise>
 						</xsl:choose>
 					</xsl:variable>
@@ -4853,7 +4853,13 @@
 	</xsl:attribute-set><xsl:attribute-set name="bibitem-normative-list-body-style">
 		
 		
+			<xsl:attribute name="line-height-shift-adjustment">disregard-shifts</xsl:attribute>
+		
+		
 	</xsl:attribute-set><xsl:attribute-set name="bibitem-non-normative-list-body-style">
+		
+		
+			<xsl:attribute name="line-height-shift-adjustment">disregard-shifts</xsl:attribute>
 		
 		
 		
