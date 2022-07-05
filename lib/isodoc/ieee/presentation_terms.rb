@@ -12,7 +12,8 @@ module IsoDoc
         c = IsoDoc::XrefGen::Counter.new("@")
         elem.xpath(ns("./definition")).each do |d|
           c.increment(d)
-          d.elements.first.previous = "<strong>(#{c.print})</strong>&#xa0;"
+          d.elements.first.children.first.previous =
+            "<strong>(#{c.print})</strong>&#xa0;"
         end
       end
 
@@ -20,9 +21,20 @@ module IsoDoc
         ins = elem.at(ns("./definition")).previous_element
         coll = elem.xpath(ns("./definition"))
         coll.each(&:remove)
-        ins.next = "<definition>#{coll.map do |c|
-                                    c.children.to_xml
-                                  end }</definition>"
+        ins.next = "<definition>#{unwrap_multidef(coll)}</definition>"
+      end
+
+      def unwrap_multidef(coll)
+        if coll.all? do |c|
+          c.elements.size == 1 && c.elements.first.name == "p"
+        end
+          ret = coll.map do |c|
+            c.elements.first.children.to_xml
+          end
+          "<p>#{ret.join}</p>"
+        else
+          coll.map { |c| c.children.to_xml }.join
+        end
       end
 
       def unwrap_definition(docxml)
