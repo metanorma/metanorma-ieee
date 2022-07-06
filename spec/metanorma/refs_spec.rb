@@ -108,7 +108,7 @@ RSpec.describe Metanorma::IEEE do
                 <uri type='rss'>https://www.iso.org/contents/data/standard/00/47/4765.detail.rss</uri>
                 <docidentifier type='ISO' primary='true'>ISO/R 639:1967</docidentifier>
                 <docidentifier type='metanorma-ordinal'>[B2]</docidentifier>
-                <docidentifier type='URN'>urn:iso:std:iso:r:639:stage-60.60</docidentifier>
+                <docidentifier type='URN'>urn:iso:std:iso:r:639:stage-95.99:ed-1</docidentifier>
                 <docnumber>639</docnumber>
                 <date type='published'>
                   <on>1967-11</on>
@@ -270,7 +270,7 @@ RSpec.describe Metanorma::IEEE do
                 <eref type='inline' bibitemid='ref1' citeas='IEEE 1619-2007™'/>
               </p>
               <p id='_'>
-                <eref type='inline' bibitemid='ref2' citeas='ISO/R 639:1967'/>
+                <eref type='inline' bibitemid='ref2' citeas='ISO 639:1967'/>
               </p>
               <p id='_'>
                 <eref type='inline' bibitemid='ref1' citeas='IEEE 1619-2007'/>
@@ -286,7 +286,7 @@ RSpec.describe Metanorma::IEEE do
                   <eref type='inline' bibitemid='ref1' citeas='IEEE 1619-2007™'/>
                 </p>
                 <p id='_'>
-                  <eref type='inline' bibitemid='ref2' citeas='ISO/R 639:1967'/>
+                  <eref type='inline' bibitemid='ref2' citeas='ISO 639:1967'/>
                 </p>
                 <p id='_'>
                   <eref type='inline' bibitemid='ref1' citeas='IEEE 1619-2007'/>
