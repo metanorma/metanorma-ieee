@@ -72,10 +72,10 @@ module IsoDoc
 
       def sort_terms_key(term)
         d = term.at(ns("./preferred/expression/name | "\
-                       "./preferred/letter-designation/name | "\
+                       "./preferred/letter-symbol/name | "\
                        "./preferred/graphical-symbol/figure/name | "\
                        "./preferred/graphical-symbol/figure/@id"))
-        d&.text&.downcase
+        d&.text&.strip&.downcase || "ZZZ"
       end
 
       def term_related_reorder(coll)
@@ -111,16 +111,42 @@ module IsoDoc
 
       def admitted_to_related(docxml)
         docxml.xpath(ns("//term/admitted")).each do |a|
-          a["type"] = "equivalent"
-          a.name = "related"
-          a.children = "<preferred>#{a.children.to_xml}</preferred>"
+          admitted_to_related1(a, a.parent.at(ns("./preferred")))
+        end
+        term_reorder(docxml)
+      end
+
+      def admitted_to_related1(adm, pref)
+        new = adm.dup
+        adm["type"] = "equivalent"
+        adm.name = "related"
+        adm.children = "<preferred>#{adm.children.to_xml}</preferred>"
+        adm.parent.next = <<~TERM
+          <term><preferred>#{new.children.to_xml}</preferred>
+          <related type='see'><preferred>#{pref.children.to_xml}</preferred></related></term>
+        TERM
+      end
+
+      def term_reorder(xmldoc)
+        xmldoc.xpath(ns("//terms")).each { |t| term_reorder1(t) }
+      end
+
+      def term_reorder1(terms)
+        ins = terms.at(ns("./term"))&.previous_element or return
+        coll = terms.xpath(ns("./term"))
+        ret = sort_terms(coll)
+        coll.each(&:remove)
+        ret.reverse.each { |t| ins.next = t }
+      end
+
+      def sort_terms(terms)
+        terms.sort do |a, b|
+          sort_terms_key(a) <=> sort_terms_key(b)
         end
       end
 
       def collapse_term(docxml)
-        docxml.xpath(ns("//term")).each do |t|
-          collapse_term1(t)
-        end
+        docxml.xpath(ns("//term")).each { |t| collapse_term1(t) }
       end
 
       def collapse_term1(term)
