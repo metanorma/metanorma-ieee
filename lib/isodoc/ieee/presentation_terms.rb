@@ -217,12 +217,12 @@ module IsoDoc
       end
 
       def merge_second_preferred(term)
-        super
-        term.xpath(ns("./preferred[expression/name]")).each_with_index do |p, i|
-          unless i.zero?
-            p.remove # whatever was eligible to display has already been merged
-          end
+        prefs = term.xpath(ns("./preferred[expression/name]"))
+        prefs.size > 1 or return
+        alts = prefs[1..-1].map do |p|
+          p.remove.at(ns("./expression/name")).children.to_xml.strip
         end
+        prefs.first.at(ns("./expression/name")) << " (#{alts.join(', ')})"
       end
 
       def termnote1(elem)

@@ -793,25 +793,25 @@ RSpec.describe IsoDoc do
             </title>
             <term id='paddy1'>
               <p>
-                <strong>paddy; muddy rice</strong>
+                <strong>paddy (muddy rice)</strong>
                 , &#x3c;rice&#x3e;: rice retaining its husk after threshing
               </p>
             </term>
             <term id='paddy2'>
               <p>
-                <strong>paddy; muddy rice</strong>
+                <strong>paddy (muddy rice)</strong>
                 , &#x3c;rice&#x3e;: rice retaining its husk after threshing
               </p>
             </term>
             <term id='paddy3'>
               <p>
-                <strong>paddy</strong>
+                <strong>paddy (muddy rice)</strong>
                 , &#x3c;rice&#x3e;, US: rice retaining its husk after threshing
               </p>
             </term>
             <term id='paddy4'>
               <p>
-                <strong>paddy</strong>
+                <strong>paddy (muddy rice)</strong>
                 , &#x3c;rice&#x3e;, eng: rice retaining its husk after threshing
               </p>
             </term>
@@ -865,7 +865,7 @@ RSpec.describe IsoDoc do
             </title>
             <term id='paddy1'>
               <p>
-                <strong>paddy</strong>
+                <strong>paddy (muddy rice)</strong>
                 , &#x3c;rice&#x3e;, m, f, sg, noun, en Latn US, /p&#xe6;di&#x2d0;/:
                 rice retaining its husk after threshing
               </p>
