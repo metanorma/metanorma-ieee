@@ -389,9 +389,10 @@ RSpec.describe Metanorma::IEEE do
                 </expression>
               </preferred>
               <related type='contrast'>
-                <termxref>thing</termxref>
-                <xrefrender>thing</xrefrender>
-              </related>
+                 <preferred>
+                   <name>thing</name>
+                 </preferred>
+               </related>
                       <definition>
           <verbal-definition>
             <p id='_'>
