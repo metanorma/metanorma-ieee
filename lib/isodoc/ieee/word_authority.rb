@@ -68,7 +68,8 @@ module IsoDoc
       BREAK
 
       def officemember_style(docxml)
-        docxml.xpath("//p[@type = 'officemember']").each do |p|
+        docxml.xpath("//p[@type = 'officemember' or @type = 'officememberorg']")
+          .each do |p|
           p["class"] = "IEEEStdsNamesList"
         end
         docxml.xpath("//p[@type = 'emeritus_sign']").each do |p|

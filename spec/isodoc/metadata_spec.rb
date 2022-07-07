@@ -77,6 +77,18 @@ RSpec.describe Metanorma::IEEE do
              </person>
            </contributor>
            <contributor>
+              <role type='editor'>Working Group Member</role>
+              <organization>
+                <name>Alibaba, Inc.</name>
+              </organization>
+            </contributor>
+            <contributor>
+              <role type='editor'>Working Group Member</role>
+              <organization>
+                <name>Alphabet, Ltd.</name>
+              </organization>
+            </contributor>
+           <contributor>
              <role type='editor'>Balloting Group Member</role>
              <person>
                <name>
@@ -280,7 +292,8 @@ RSpec.describe Metanorma::IEEE do
         :updates=>["ABC"],
         :vote_endeddate=>"XXX",
         :vote_starteddate=>"XXX",
-        :wg_members=>{"chair"=>"AB", "vice-chair"=>"CD", "secretary"=>"CD1", "members"=>["E, F, Jr.", "GH", "IJ"]},
+        :wg_members=>{"chair"=>"AB", "vice-chair"=>"CD", "secretary"=>"CD1", "members"=>["E, F, Jr.", "GH", "IJ"], "org_members"=>["Alibaba, Inc.", "Alphabet, Ltd."]},
+        :wg_org_members=>["Alibaba, Inc.", "Alphabet, Ltd."],
         :working_group=>"WG"}
       OUTPUT
   end

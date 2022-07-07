@@ -56,6 +56,12 @@ module IsoDoc
           &.each&.map(&:text)
       end
 
+      def editor_org_names(xml, role)
+        xml.xpath(ns("//bibdata/contributor[role/@type = 'editor']"\
+                     "[role = '#{role}']/organization/name"))
+          &.each&.map(&:text)
+      end
+
       def editor_name(xml, role)
         editor_names(xml, role)&.first
       end
@@ -70,6 +76,7 @@ module IsoDoc
             m[r.downcase.gsub(/ /, "-")] = a
         end
         wg_members(xml, m)
+        wg_org_members(xml, m)
       end
 
       def wg_members(xml, members)
@@ -78,6 +85,13 @@ module IsoDoc
           members["members"] << "Participant#{i}"
         end
         set(:wg_members, members)
+      end
+
+      def wg_org_members(xml, members)
+        a = editor_org_names(xml, "Working Group Member")
+        a.empty? and return
+        members["org_members"] = a
+        set(:wg_org_members, a)
       end
 
       def bg(xml)

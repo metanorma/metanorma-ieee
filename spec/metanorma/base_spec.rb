@@ -91,6 +91,7 @@ RSpec.describe Metanorma::IEEE do
       :wg-vicechair: CD
       :wg-secretary: CD1
       :wg-members: E, F, Jr.; GH; IJ
+      :wg-org-members: Alibaba, Inc.; Alphabet, Ltd.
       :balloting-group-members: KL; MN
       :std-board-chair: OP
       :std-board-vicechair: QR
@@ -174,6 +175,18 @@ RSpec.describe Metanorma::IEEE do
                   <completename>IJ</completename>
                 </name>
               </person>
+            </contributor>
+            <contributor>
+              <role type='editor'>Working Group Member</role>
+              <organization>
+                <name>Alibaba, Inc.</name>
+              </organization>
+            </contributor>
+            <contributor>
+              <role type='editor'>Working Group Member</role>
+              <organization>
+                <name>Alphabet, Ltd.</name>
+              </organization>
             </contributor>
             <contributor>
               <role type='editor'>Balloting Group Member</role>

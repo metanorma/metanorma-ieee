@@ -47,9 +47,24 @@ module Metanorma
         end
       end
 
+      def metadata_org_editor(name, role, xml)
+        xml.contributor do |c|
+          c.role role, **{ type: "editor" }
+          c.organization do |p|
+            p.name name
+          end
+        end
+      end
+
       def metadata_multi_editors(names, role, xml)
         csv_split(names).each do |n|
           metadata_editor(n, role, xml)
+        end
+      end
+
+      def metadata_multi_org_editors(names, role, xml)
+        csv_split(names).each do |n|
+          metadata_org_editor(n, role, xml)
         end
       end
 
@@ -62,6 +77,8 @@ module Metanorma
           metadata_editor(a, "Working Group Secretary", xml)
         a = node.attr("wg-members") and
           metadata_multi_editors(a, "Working Group Member", xml)
+        a = node.attr("wg-org-members") and
+          metadata_multi_org_editors(a, "Working Group Member", xml)
       end
 
       def bg_members(node, xml)
