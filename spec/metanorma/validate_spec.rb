@@ -993,7 +993,8 @@ RSpec.describe Metanorma::IEEE do
         image::1000-fig2.png[] | B
         |===
       INPUT
-      expect(File.read("test.err")).to include "More than one image in the table cell"
+      expect(File.read("test.err"))
+        .to include "More than one image in the table cell"
 
       Asciidoctor.convert(<<~"INPUT", *OPTIONS)
         = Document title
@@ -1009,7 +1010,52 @@ RSpec.describe Metanorma::IEEE do
         a| image::document-fig1.png[] | B
         |===
       INPUT
-      expect(File.read("test.err")).not_to include "More than one image in the table cell"
+      expect(File.read("test.err"))
+        .not_to include "More than one image in the table cell"
+    end
+
+    it "warn on missing related terms" do
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        == Terms and definitions
+
+        === Term
+        related:contrast[que]
+      INPUT
+      expect(File.read("test.err"))
+        .not_to include "Error: Term reference to `que` missing:`"
+
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        == Terms and definitions
+
+        === Term
+        symbol:[que]
+      INPUT
+      expect(File.read("test.err"))
+        .to include "Symbol reference in `symbol[que]` missing:"
+
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        #{VALIDATING_BLANK_HDR}
+
+        == Terms and definitions
+
+        === Term
+        related:contrast[que]
+        symbol:[que1]
+
+        === que
+
+        == Symbols
+
+        que1:: X
+      INPUT
+      expect(File.read("test.err"))
+        .not_to include "Error: Term reference to `que` missing:`"
+      expect(File.read("test.err"))
+        .not_to include "Symbol reference in `symbol[que1]` missing:"
     end
   end
 end

@@ -75,7 +75,7 @@ module IsoDoc
                        "./preferred/letter-symbol/name | "\
                        "./preferred/graphical-symbol/figure/name | "\
                        "./preferred/graphical-symbol/figure/@id"))
-        d&.text&.strip&.downcase || "ZZZ"
+        HTMLEntities.new.decode(d&.text&.strip&.downcase) || "ZZZ"
       end
 
       def term_related_reorder(coll)
@@ -151,7 +151,7 @@ module IsoDoc
 
       def collapse_term1(term)
         ret = collapse_term_template(
-          pref: term.at(ns("./preferred")).remove,
+          pref: term.at(ns("./preferred"))&.remove,
           def: term.at(ns("./definition")),
           rels: term.xpath(ns("./related")).map(&:remove),
           source: term.at(ns("./termsource")),
@@ -162,8 +162,9 @@ module IsoDoc
 
       def collapse_term_related(rels)
         ret = rels.map do |r|
+          p = r.at(ns("./preferred"))
           "<em>#{@i18n.relatedterms[r['type']]}:</em> "\
-            "#{r.at(ns('./preferred')).children.to_xml}"
+            "#{p&.children&.to_xml || '**RELATED TERM NOT FOUND**'}"
         end.join(". ")
         ret += "." unless ret.empty?
         ret
@@ -174,7 +175,7 @@ module IsoDoc
         src = nil
         opt[:source] and src = "(#{opt[:source].remove.children.to_xml.strip})"
         <<~TERM
-          <p>#{opt[:pref].children.to_xml}: #{defn}
+          <p>#{opt[:pref]&.children&.to_xml || '**TERM NOT FOUND**'}: #{defn}
           #{collapse_term_related(opt[:rels])}
           #{src}</p>
         TERM

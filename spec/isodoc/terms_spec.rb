@@ -172,88 +172,88 @@ RSpec.describe IsoDoc do
     PRESXML
 
     html = <<~"OUTPUT"
-      #{HTML_HDR}
-           <p class='zzSTDTitle1'/>
-           <div id='_terms_and_definitions'>
-             <h1> 1. &#xa0; Terms and Definitions </h1>
-             <p>For the purposes of this document, the following terms and definitions apply.</p>
-             <p class='TermNum' id='paddy1'/>
-             <p>
-               <b>paddy</b>
-                , &#x3c;rice&#x3e;, &#x3c;in agriculture, dated&#x3e;: rice retaining
-               its husk after threshing (ISO 7301:2011, 3.1,  modified &#x2013;
-               The term "cargo rice" is shown as deprecated, and Note 1 to entry is not
-               included here)
-             </p>
-             <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f892' class='example' style='page-break-after: avoid;page-break-inside: avoid;'>
-               <p class='example-title'>Example 1:</p>
-               <p id='_65c9a509-9a89-4b54-a890-274126aeb55c'>Foreign seeds, husks, bran, sand, dust.</p>
-               <ul>
-                 <li>A</li>
-               </ul>
-             </div>
-             <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f894' class='example'>
-               <p class='example-title'>Example 2:</p>
-               <ul>
-                 <li>A</li>
-               </ul>
-             </div>
-             <p>
-                adapted from t1 , modified ; Termbase IEV, term ID xyz , modified &#x2013; with
-               adjustments
-             </p>
-             <p class='TermNum' id='paddy'/>
-             <p>
-               <b>paddy</b>
-                : rice retaining its husk after threshing
-               <i>Syn:</i>
-               <b>paddy rice</b>
-                , &#x3c;in agriculture&#x3e;;
-               <b>rough rice</b>. (ISO 7301:2011, 3.1)
-             </p>
-             <p class='DeprecatedTerms' style='text-align:left;'>DEPRECATED: cargo rice</p>
-             <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f893' class='example'>
-               <p class='example-title'>Example:</p>
-               <ul>
-                 <li>A</li>
-               </ul>
-             </div>
-             <div id='_671a1994-4783-40d0-bc81-987d06ffb74e' class='Note' style='page-break-after: avoid;page-break-inside: avoid;'>
-               <p>NOTE 1&#x2014;The starch of waxy rice consists almost entirely of
-                 amylopectin. The kernels have a tendency to stick together after
-                 cooking.
-               </p>
-             </div>
-             <div id='_671a1994-4783-40d0-bc81-987d06ffb74f' class='Note'>
-               <p>NOTE 2&#x2014;
-                 <ul>
-                   <li>A</li>
-                 </ul>
-                 <p id='_19830f33-e46c-42cc-94ca-a5ef101132d5'>
-                    The starch of waxy rice consists almost entirely of amylopectin.
-                   The kernels have a tendency to stick together after cooking.
-                 </p>
-               </p>
-             </div>
-                  <p class='TermNum' id=''/>
-     <p>
-       <b>paddy rice</b>
-        , &#x3c;in agriculture&#x3e;:
-       <i>See:</i>
-       <b>paddy</b>
-        .
-     </p>
-     <p class='TermNum' id=''/>
-     <p>
-       <b>rough rice</b>
-        :
-       <i>See:</i>
-       <b>paddy</b>
-        .
-     </p>
-           </div>
-         </div>
-       </body>
+       #{HTML_HDR}
+            <p class='zzSTDTitle1'/>
+            <div id='_terms_and_definitions'>
+              <h1> 1. &#xa0; Terms and Definitions </h1>
+              <p>For the purposes of this document, the following terms and definitions apply.</p>
+              <p class='TermNum' id='paddy1'/>
+              <p>
+                <b>paddy</b>
+                 , &#x3c;rice&#x3e;, &#x3c;in agriculture, dated&#x3e;: rice retaining
+                its husk after threshing (ISO 7301:2011, 3.1,  modified &#x2013;
+                The term "cargo rice" is shown as deprecated, and Note 1 to entry is not
+                included here)
+              </p>
+              <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f892' class='example' style='page-break-after: avoid;page-break-inside: avoid;'>
+                <p class='example-title'>Example 1:</p>
+                <p id='_65c9a509-9a89-4b54-a890-274126aeb55c'>Foreign seeds, husks, bran, sand, dust.</p>
+                <ul>
+                  <li>A</li>
+                </ul>
+              </div>
+              <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f894' class='example'>
+                <p class='example-title'>Example 2:</p>
+                <ul>
+                  <li>A</li>
+                </ul>
+              </div>
+              <p>
+                 adapted from t1 , modified ; Termbase IEV, term ID xyz , modified &#x2013; with
+                adjustments
+              </p>
+              <p class='TermNum' id='paddy'/>
+              <p>
+                <b>paddy</b>
+                 : rice retaining its husk after threshing
+                <i>Syn:</i>
+                <b>paddy rice</b>
+                 , &#x3c;in agriculture&#x3e;;
+                <b>rough rice</b>. (ISO 7301:2011, 3.1)
+              </p>
+              <p class='DeprecatedTerms' style='text-align:left;'>DEPRECATED: cargo rice</p>
+              <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f893' class='example'>
+                <p class='example-title'>Example:</p>
+                <ul>
+                  <li>A</li>
+                </ul>
+              </div>
+              <div id='_671a1994-4783-40d0-bc81-987d06ffb74e' class='Note' style='page-break-after: avoid;page-break-inside: avoid;'>
+                <p>NOTE 1&#x2014;The starch of waxy rice consists almost entirely of
+                  amylopectin. The kernels have a tendency to stick together after
+                  cooking.
+                </p>
+              </div>
+              <div id='_671a1994-4783-40d0-bc81-987d06ffb74f' class='Note'>
+                <p>NOTE 2&#x2014;
+                  <ul>
+                    <li>A</li>
+                  </ul>
+                  <p id='_19830f33-e46c-42cc-94ca-a5ef101132d5'>
+                     The starch of waxy rice consists almost entirely of amylopectin.
+                    The kernels have a tendency to stick together after cooking.
+                  </p>
+                </p>
+              </div>
+                   <p class='TermNum' id=''/>
+      <p>
+        <b>paddy rice</b>
+         , &#x3c;in agriculture&#x3e;:
+        <i>See:</i>
+        <b>paddy</b>
+         .
+      </p>
+      <p class='TermNum' id=''/>
+      <p>
+        <b>rough rice</b>
+         :
+        <i>See:</i>
+        <b>paddy</b>
+         .
+      </p>
+            </div>
+          </div>
+        </body>
     OUTPUT
 
     word = <<~"WORD"
@@ -435,64 +435,64 @@ RSpec.describe IsoDoc do
        </ieee-standard>
     INPUT
     output = <<~OUTPUT
-           <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='presentation' version='0.0.2'>
-         <sections>
-           <terms id='_' obligation='normative' displayorder='1'>
-             <title depth='1'>
-               1.
-               <tab/>
-               Definitions
-             </title>
-             <p id='_'>
-                For the purposes of this document, the following terms and definitions
-               apply. The
-               <em>IEEE Standards Dictionary Online</em>
-                should be consulted for terms not defined in this clause.
-               <fn>
-                 <p id='_'>
-                   <em>IEEE Standards Dictionary Online</em>
-                    is available at:
-                   <link target='http://dictionary.ieee.org'/>
-                    . An IEEE Account is required for access to the dictionary, and one
-                   can be created at no charge on the dictionary sign-in page.
-                 </p>
-               </fn>
-             </p>
-             <term id='term-prozac'>
-               <p>
-                 <strong>prozac</strong>
-                 :
-               </p>
-             </term>
-             <term id='term-x1'>
-               <p>
-                 <strong>
-                   <stem type='MathML'>
-                     <math xmlns='http://www.w3.org/1998/Math/MathML'>
-                       <msub>
-                         <mrow>
-                           <mi>x</mi>
-                         </mrow>
-                         <mrow>
-                           <mn>1</mn>
-                         </mrow>
-                       </msub>
-                     </math>
-                     <!-- (x)_((1)) -->
-                   </stem>
-                 </strong>
-                 :
-               </p>
-             </term>
-             <term id='term-Xanax'>
-               <p>
-                 <strong>Xanax</strong>
-                 :
-               </p>
-             </term>
-           </terms>
-         </sections>
-       </ieee-standard>
+          <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='presentation' version='0.0.2'>
+        <sections>
+          <terms id='_' obligation='normative' displayorder='1'>
+            <title depth='1'>
+              1.
+              <tab/>
+              Definitions
+            </title>
+            <p id='_'>
+               For the purposes of this document, the following terms and definitions
+              apply. The
+              <em>IEEE Standards Dictionary Online</em>
+               should be consulted for terms not defined in this clause.
+              <fn>
+                <p id='_'>
+                  <em>IEEE Standards Dictionary Online</em>
+                   is available at:
+                  <link target='http://dictionary.ieee.org'/>
+                   . An IEEE Account is required for access to the dictionary, and one
+                  can be created at no charge on the dictionary sign-in page.
+                </p>
+              </fn>
+            </p>
+            <term id='term-prozac'>
+              <p>
+                <strong>prozac</strong>
+                :
+              </p>
+            </term>
+            <term id='term-x1'>
+              <p>
+                <strong>
+                  <stem type='MathML'>
+                    <math xmlns='http://www.w3.org/1998/Math/MathML'>
+                      <msub>
+                        <mrow>
+                          <mi>x</mi>
+                        </mrow>
+                        <mrow>
+                          <mn>1</mn>
+                        </mrow>
+                      </msub>
+                    </math>
+                    <!-- (x)_((1)) -->
+                  </stem>
+                </strong>
+                :
+              </p>
+            </term>
+            <term id='term-Xanax'>
+              <p>
+                <strong>Xanax</strong>
+                :
+              </p>
+            </term>
+          </terms>
+        </sections>
+      </ieee-standard>
     OUTPUT
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
         .convert("test", input, true))).to be_equivalent_to xmlpp(output)
@@ -1212,5 +1212,74 @@ RSpec.describe IsoDoc do
     OUTPUT
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
        .convert("test", input, true))).to be_equivalent_to xmlpp(output)
+  end
+
+  it "processes missing related terms" do
+    input = <<~INPUT
+      <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+         <sections>
+           <terms id='A' obligation='normative' displayorder='1'>
+             <title depth='1'>
+               1.
+               <tab/>
+               Terms and definitions
+             </title>
+             <term id='C'>
+               <p>
+                 <strong>First Designation</strong>
+                 : Definition 2
+                 <em>Contrast:</em>
+                  **RELATED TERM NOT FOUND**.
+                 <em>See also:</em>
+                 <strong>Third Designation</strong>
+                 , n.
+               </p>
+             </term>
+             <term id='second'>
+               <p>
+                 <strong>Second Term</strong>
+                 , &#x3c;Field, Usage Info 1&#x3e;: Definition 1
+               </p>
+             </term>
+           </terms>
+         </sections>
+       </iso-standard>
+    INPUT
+    output = <<~OUTPUT
+      <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+         <sections>
+           <terms id='A' obligation='normative' displayorder='1'>
+             <title depth='1'>
+               1.
+               <tab/>
+                1.
+               <tab/>
+                Terms and definitions
+             </title>
+             <term id='C'>
+               <p>**TERM NOT FOUND**: </p>
+               <p>
+                 <strong>First Designation</strong>
+                  : Definition 2
+                 <em>Contrast:</em>
+                  **RELATED TERM NOT FOUND**.
+                 <em>See also:</em>
+                 <strong>Third Designation</strong>
+                  , n.
+               </p>
+             </term>
+             <term id='second'>
+               <p>**TERM NOT FOUND**: </p>
+               <p>
+                 <strong>Second Term</strong>
+                  , &#x3c;Field, Usage Info 1&#x3e;: Definition 1
+               </p>
+             </term>
+           </terms>
+         </sections>
+       </iso-standard>
+    OUTPUT
+    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
+        .convert("test", input, true))).to be_equivalent_to xmlpp(output)
   end
 end

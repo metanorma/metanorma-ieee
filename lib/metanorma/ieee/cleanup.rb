@@ -1,4 +1,5 @@
 require_relative "cleanup_ref"
+require_relative "term_lookup_cleanup"
 
 module Metanorma
   module IEEE
@@ -86,6 +87,10 @@ module Metanorma
       end
 
       def term_defs_boilerplate_cont(src, term, isodoc); end
+
+      def termlookup_cleanup(xmldoc)
+        Metanorma::IEEE::TermLookupCleanup.new(xmldoc, @log).call
+      end
     end
   end
 end

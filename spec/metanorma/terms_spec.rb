@@ -350,4 +350,71 @@ RSpec.describe Metanorma::IEEE do
     expect(xmlpp(strip_guid(out.to_xml)))
       .to be_equivalent_to xmlpp(output)
   end
+
+  it "deals with missing terms" do
+    input = <<~INPUT
+      #{ASCIIDOC_BLANK_HDR}
+
+      == Definitions
+      === widget
+
+      related:contrast[thing]
+
+      symbol:[thing1]
+    INPUT
+    output = <<~OUTPUT
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+        <sections>
+          <terms id='_' obligation='normative'>
+            <title>Definitions</title>
+            <p id='_'>
+              For the purposes of this document, the following terms and definitions
+              apply. The
+              <em>IEEE Standards Dictionary Online</em>
+               should be consulted for terms not defined in this clause.
+              <fn>
+                <p id='_'>
+                  <em>IEEE Standards Dictionary Online</em>
+                   is available at:
+                  <link target='http://dictionary.ieee.org'/>
+                  . An IEEE Account is required for access to the dictionary, and one
+                  can be created at no charge on the dictionary sign-in page.
+                </p>
+              </fn>
+            </p>
+            <term id='term-widget'>
+              <preferred>
+                <expression>
+                  <name>widget</name>
+                </expression>
+              </preferred>
+              <related type='contrast'>
+                <termxref>thing</termxref>
+                <xrefrender>thing</xrefrender>
+              </related>
+                      <definition>
+          <verbal-definition>
+            <p id='_'>
+              <concept>
+                <strong>
+                  symbol
+                  <tt>thing1</tt>
+                   not resolved via ID
+                  <tt>thing1</tt>
+                </strong>
+              </concept>
+            </p>
+          </verbal-definition>
+        </definition>
+            </term>
+          </terms>
+        </sections>
+      </ieee-standard>
+    OUTPUT
+    out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
+    out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:references")
+      .remove
+    expect(xmlpp(strip_guid(out.to_xml)))
+      .to be_equivalent_to xmlpp(output)
+  end
 end
