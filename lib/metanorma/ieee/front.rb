@@ -142,7 +142,7 @@ module Metanorma
       end
 
       def metadata_subdoctype(node, xml)
-        super
+        xml.subdoctype (node.attr("docsubtype") || "document")
         s = node.attr("trial-use") and xml.trial_use s
       end
 

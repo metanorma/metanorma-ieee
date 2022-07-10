@@ -367,6 +367,7 @@ RSpec.describe Metanorma::IEEE do
           </copyright>
           <ext>
             <doctype>standard</doctype>
+            <subdoctype>document</subdoctype>
           </ext>
         </bibdata>
         <sections> </sections>
@@ -413,6 +414,7 @@ RSpec.describe Metanorma::IEEE do
           </copyright>
           <ext>
             <doctype>standard</doctype>
+            <subdoctype>document</subdoctype>
           </ext>
         </bibdata>
         <sections> </sections>

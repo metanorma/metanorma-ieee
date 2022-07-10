@@ -32,7 +32,7 @@ module Metanorma
           @log.add("Document Attributes", nil,
                    "#{doctype} is not a recognised document type")
         docsubtype = xmldoc&.at("//bibdata/ext/subdoctype")&.text or return
-        %w(amendment corrigendum erratum).include? docsubtype or
+        %w(amendment corrigendum erratum document).include? docsubtype or
           @log.add("Document Attributes", nil,
                    "#{docsubtype} is not a recognised document subtype")
       end
@@ -55,6 +55,7 @@ module Metanorma
         draft = xml.at("//bibdata//draft")
         type = xml.at("//bibdata/ext/doctype")
         subtype = xml.at("//bibdata/ext/subdoctype")
+        subtype = "" if subtype == "document"
         trial = xml.at("//bibdata/ext/trial-use[text() = 'true']")
         target = draft ? "Draft " : ""
         target += trial ? "Trial-Use " : ""
