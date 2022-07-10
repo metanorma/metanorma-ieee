@@ -129,6 +129,23 @@ module Metanorma
         end
       end
 
+      def metadata_status(node, xml)
+        status = node.attr("status") || node.attr("docstage") ||
+          (node.attr("draft") ? "developing" : "active")
+        xml.status do |s|
+          s.stage status
+        end
+      end
+
+      def datetypes
+        super + %w{feedback-ended}
+      end
+
+      def metadata_subdoctype(node, xml)
+        super
+        s = node.attr("trial-use") and xml.trial_use s
+      end
+
       def org_abbrev
         { "Institute of Electrical and Electronic Engineers" => "IEEE" }
       end

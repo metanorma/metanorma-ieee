@@ -72,8 +72,7 @@ RSpec.describe Metanorma::IEEE do
       :workgroup-number_2: 31
       :workgroup-type_2: C1
       :society: SECRETARIAT
-      :docstage: 20
-      :docsubstage: 20
+      :docstage: inactive
       :iteration: 3
       :language: en
       :title-intro-en: Introduction
@@ -87,6 +86,8 @@ RSpec.describe Metanorma::IEEE do
       :horizontal: true
       :confirmed-date: 1000-12-01
       :issued-date: 1001-12-01
+      :obsoleted-date: 1002-12-01
+      :feedback-ended-date: 1003-12-01
       :wg-chair: AB
       :wg-vicechair: CD
       :wg-secretary: CD1
@@ -104,6 +105,9 @@ RSpec.describe Metanorma::IEEE do
       :stdid-print: JKL
       :updates: ABC
       :merges: BCD; EFG
+      :doctype: recommended-practice
+      :docsubtype: amendment
+      :trial-use: true
     INPUT
     expect(xmlpp(output.sub(%r{<boilerplate>.*</boilerplate>}m, "")))
       .to be_equivalent_to xmlpp(<<~"OUTPUT")
@@ -122,12 +126,10 @@ RSpec.describe Metanorma::IEEE do
            <docidentifier type='ISBN' scope='PDF'>ABC</docidentifier>
            <docidentifier type='ISBN' scope='print'>DEF</docidentifier>
             <docnumber>1000</docnumber>
-            <date type='confirmed'>
-              <on>1000-12-01</on>
-            </date>
-            <date type='issued'>
-              <on>1001-12-01</on>
-            </date>
+            <date type='obsoleted'><on>1002-12-01</on></date>
+            <date type='confirmed'><on>1000-12-01</on></date>
+            <date type='issued'><on>1001-12-01</on></date>
+            <date type='feedback-ended'><on>1003-12-01</on></date>
             <contributor>
               <role type='editor'>Working Group Chair</role>
               <person>
@@ -267,9 +269,7 @@ RSpec.describe Metanorma::IEEE do
             <language>en</language>
             <script>Latn</script>
             <status>
-              <stage>20</stage>
-              <substage>20</substage>
-              <iteration>3</iteration>
+              <stage>inactive</stage>
             </status>
             <copyright>
               <from>2000</from>
@@ -299,7 +299,9 @@ RSpec.describe Metanorma::IEEE do
               </bibitem>
             </relation>
             <ext>
-              <doctype>standard</doctype>
+              <doctype>recommended-practice</doctype>
+              <subdoctype>amendment</subdoctype>
+              <trial-use>true</trial-use>
               <editorialgroup>
                 <society>SECRETARIAT</society>
                 <balloting-group>SC</balloting-group>
@@ -322,6 +324,102 @@ RSpec.describe Metanorma::IEEE do
           <sections> </sections>
         </ieee-standard>
       OUTPUT
+  end
+
+  it "processes metadata with draft, no docstage" do
+    out = Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :novalid:
+      :no-isobib:
+      :draft: 3
+
+    INPUT
+    output = <<~OUTPUT
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+        <bibdata type='standard'>
+          <title language='en' format='text/plain'>Document title</title>
+          <contributor>
+            <role type='publisher'/>
+            <organization>
+              <name>Institute of Electrical and Electronic Engineers</name>
+              <abbreviation>IEEE</abbreviation>
+            </organization>
+          </contributor>
+          <version>
+            <draft>3</draft>
+          </version>
+          <language>en</language>
+          <script>Latn</script>
+          <status>
+            <stage>developing</stage>
+          </status>
+          <copyright>
+            <from>2022</from>
+            <owner>
+              <organization>
+                <name>Institute of Electrical and Electronic Engineers</name>
+                <abbreviation>IEEE</abbreviation>
+              </organization>
+            </owner>
+          </copyright>
+          <ext>
+            <doctype>standard</doctype>
+          </ext>
+        </bibdata>
+        <sections> </sections>
+      </ieee-standard>
+    OUTPUT
+    expect(xmlpp(out.sub(%r{<boilerplate>.*</boilerplate>}m, "")))
+      .to be_equivalent_to xmlpp(output)
+  end
+
+  it "processes metadata with no draft, no docstage" do
+    out = Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :novalid:
+      :no-isobib:
+
+    INPUT
+    output = <<~OUTPUT
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+        <bibdata type='standard'>
+          <title language='en' format='text/plain'>Document title</title>
+          <contributor>
+            <role type='publisher'/>
+            <organization>
+              <name>Institute of Electrical and Electronic Engineers</name>
+              <abbreviation>IEEE</abbreviation>
+            </organization>
+          </contributor>
+          <language>en</language>
+          <script>Latn</script>
+          <status>
+            <stage>active</stage>
+          </status>
+          <copyright>
+            <from>2022</from>
+            <owner>
+              <organization>
+                <name>Institute of Electrical and Electronic Engineers</name>
+                <abbreviation>IEEE</abbreviation>
+              </organization>
+            </owner>
+          </copyright>
+          <ext>
+            <doctype>standard</doctype>
+          </ext>
+        </bibdata>
+        <sections> </sections>
+      </ieee-standard>
+    OUTPUT
+    expect(xmlpp(out.sub(%r{<boilerplate>.*</boilerplate>}m, "")))
+      .to be_equivalent_to xmlpp(output)
   end
 
   it "processes sections" do
@@ -488,13 +586,13 @@ RSpec.describe Metanorma::IEEE do
         <p id='_'>No terms and definitions are listed in this document.</p>
         <p id='_'>
           For the purposes of this document, the following terms and definitions
-          apply. The 
+          apply. The#{' '}
           <em>IEEE Standards Dictionary Online</em>
            should be consulted for terms not defined in this clause.
           <fn>
             <p id='_'>
               <em>IEEE Standards Dictionary Online</em>
-               is available at: 
+               is available at:#{' '}
               <link target='http://dictionary.ieee.org'/>
               . An IEEE Account is required for access to the dictionary, and
               one can be created at no charge on the dictionary sign-in page.

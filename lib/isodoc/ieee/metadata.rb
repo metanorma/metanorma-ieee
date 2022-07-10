@@ -10,7 +10,9 @@ module IsoDoc
       end
 
       def bibdate(isoxml, _out)
-        super
+        isoxml.xpath(ns("//bibdata/date[@format = 'ddMMMyyyy']")).each do |d|
+          set("#{d['type'].gsub(/-/, '_')}date".to_sym, Common::date_range(d))
+        end
         draft = isoxml.at(ns("//bibdata/date[@type = 'issued']")) ||
           isoxml.at(ns("//bibdata/date[@type = 'circulated']")) ||
           isoxml.at(ns("//bibdata/date[@type = 'created']")) ||
@@ -165,6 +167,19 @@ module IsoDoc
             x.at(ns(".//docidentifier"))&.text
         end
         set(type.to_sym, ret)
+      end
+
+      def ddMMMyyyy(isodate)
+        return nil if isodate.nil?
+
+        arr = isodate.split("-")
+        if arr.size == 1 && (/^\d+$/.match isodate)
+          Date.new(*arr.map(&:to_i)).strftime("%Y")
+        elsif arr.size == 2
+          Date.new(*arr.map(&:to_i)).strftime("%b %Y")
+        else
+          Date.parse(isodate).strftime("%d %b %Y")
+        end
       end
     end
   end

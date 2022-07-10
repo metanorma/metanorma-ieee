@@ -424,7 +424,12 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       <title language="main-fr" format="text/plain">Titre Principal</title>
 
       <title language="part-fr" format="text/plain">Part du Titre</title>
-      <docidentifier type="IEEE">1000</docidentifier><docnumber>1000</docnumber><date type="confirmed"><on>1000-12-01</on></date><date type="issued"><on>1001-12-01</on></date><contributor><role type="editor">Working Group Chair</role><person>
+      <docidentifier type="IEEE">1000</docidentifier><docnumber>1000</docnumber>
+      <date type="confirmed"><on>1000-12-01</on></date>
+      <date type="confirmed" format="ddMMMyyyy"><on>01 Dec 1000</on></date>
+      <date type="issued"><on>1001-12-01</on></date>
+      <date type="issued" format="ddMMMyyyy"><on>01 Dec 1001</on></date>
+      <contributor><role type="editor">Working Group Chair</role><person>
       <name><completename>AB</completename></name>
       </person></contributor><contributor><role type="editor">Working Group Vice-Chair</role><person>
       <name><completename>CD</completename></name>
@@ -793,7 +798,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
             </span>
           </p>
           <p class='IEEEStdsTitleParaSans'>
-            <span lang='EN-US' xml:lang='EN-US'>Approved 1000-12-01</span>
+            <span lang='EN-US' xml:lang='EN-US'>Approved 01 Dec 1000</span>
           </p>
           <p class='IEEEStdsTitleParaSans'>
             <span lang='EN-US' xml:lang='EN-US'>

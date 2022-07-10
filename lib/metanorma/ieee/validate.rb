@@ -23,16 +23,25 @@ module Metanorma
 
       def bibdata_validate(doc)
         doctype_validate(doc)
-        # stage_validate(doc)
-        # substage_validate(doc)
+        stage_validate(doc)
       end
 
       def doctype_validate(xmldoc)
         doctype = xmldoc&.at("//bibdata/ext/doctype")&.text
-        %w(standard recommended-practice guide
-           amendment technical-corrigendum).include? doctype or
+        %w(standard recommended-practice guide).include? doctype or
           @log.add("Document Attributes", nil,
                    "#{doctype} is not a recognised document type")
+        docsubtype = xmldoc&.at("//bibdata/ext/subdoctype")&.text or return
+        %w(amendment corrigendum erratum).include? docsubtype or
+          @log.add("Document Attributes", nil,
+                   "#{docsubtype} is not a recognised document subtype")
+      end
+
+      def stage_validate(xmldoc)
+        stage = xmldoc&.at("//bibdata/status/stage")&.text
+        %w(active inactive developing).include? stage or
+          @log.add("Document Attributes", nil,
+                   "#{stage} is not a recognised stage")
       end
 
       def title_validate(xml)
@@ -46,8 +55,9 @@ module Metanorma
         draft = xml.at("//bibdata//draft")
         type = xml.at("//bibdata/ext/doctype")
         subtype = xml.at("//bibdata/ext/subdoctype")
+        trial = xml.at("//bibdata/ext/trial-use[text() = 'true']")
         target = draft ? "Draft " : ""
-        target += subtype ? "#{strict_capitalize_phrase(subtype.text)} " : ""
+        target += trial ? "Trial-Use " : ""
         target += type ? "#{strict_capitalize_phrase(type.text)} " : ""
         /^#{target}/.match?(title.text) or
           @log.add("Style", title,

@@ -20,6 +20,36 @@ RSpec.describe Metanorma::IEEE do
       .to include "pizza is not a recognised document type"
   end
 
+  it "Warns of illegal docsubtype" do
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :docsubtype: pizza
+
+      text
+    INPUT
+    expect(File.read("test.err"))
+      .to include "pizza is not a recognised document subtype"
+  end
+
+  it "Warns of illegal docstage" do
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :docstage: pizza
+
+      text
+    INPUT
+    expect(File.read("test.err"))
+      .to include "pizza is not a recognised stage"
+  end
+
   it "Warns of uncapitalised word in title other than preposition (or article)" do
     Asciidoctor.convert(<<~"INPUT", *OPTIONS)
       = Document title
@@ -513,7 +543,8 @@ RSpec.describe Metanorma::IEEE do
       :docfile: test.adoc
       :doctype: recommended-practice
       :draft: 1.1
-      :docsubtype: trial-use
+      :docsubtype: amendment
+      :trial-use: true
       :no-pdf:
 
     INPUT

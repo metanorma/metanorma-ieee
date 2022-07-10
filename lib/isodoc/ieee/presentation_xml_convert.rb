@@ -168,6 +168,34 @@ module IsoDoc
         prefix_name(elem, "<br/>", lbl, "title")
       end
 
+      def bibdata_i18n(bib)
+        super
+        bibdata_dates(bib)
+      end
+
+      def bibdata_dates(bib)
+        bib.xpath(ns("./date")).each do |d|
+          d.next = d.dup
+          d.next["format"] = "ddMMMyyyy"
+          d.next.xpath(ns("./from | ./to | ./on")).each do |x|
+            x.children = ddMMMyyyy(x.text)
+          end
+        end
+      end
+
+      def ddMMMyyyy(isodate)
+        return nil if isodate.nil?
+
+        arr = isodate.split("-")
+        if arr.size == 1 && (/^\d+$/.match isodate)
+          Date.new(*arr.map(&:to_i)).strftime("%Y")
+        elsif arr.size == 2
+          Date.new(*arr.map(&:to_i)).strftime("%b %Y")
+        else
+          Date.parse(isodate).strftime("%d %b %Y")
+        end
+      end
+
       include Init
     end
   end
