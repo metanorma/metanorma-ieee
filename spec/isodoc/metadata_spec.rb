@@ -209,7 +209,7 @@ RSpec.describe Metanorma::IEEE do
       </relation>
           <ext>
           <doctype>recommended-practice</doctype>
-          <docsubtype>amendment</docsubtype>
+          <subdoctype>amendment</subdoctype>
           <trial-use>true</trial-use>
             <editorialgroup>
               <society>Society</society>
@@ -349,7 +349,7 @@ RSpec.describe Metanorma::IEEE do
        <keyword>word1</keyword>
         <ext>
         <doctype>recommended-practice</doctype>
-        <docsubtype>document</docsubtype>
+        <subdoctype>document</subdoctype>
           <trial-use>false</trial-use>
           <editorialgroup>
             <society>Society</society>

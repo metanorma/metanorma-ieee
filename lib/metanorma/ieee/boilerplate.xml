@@ -297,5 +297,11 @@
         <em>No part of this publication may be reproduced in any form, in an electronic retrieval system or otherwise, without the prior written permission of the publisher.</em></p>
     </clause>
   </feedback-statement>
+  {% if docsubtype == "Amendment" or docsubtype == "Corrigendum" %}
+  <note id="boilerplate_front">
+    <p>The editing instructions contained in this {{ docsubtype | downcase }} define how to merge the material contained therein into the existing base standard and its amendments to form the comprehensive standard.</p>
+    <p>The editing instructions are shown in <strong><em>bold italic</em></strong>. Four editing instructions are used: change, delete, insert, and replace. <strong><em>Change</em></strong> is used to make corrections in existing text or tables. The editing instruction specifies the location of the change and describes what is being changed by using <strike>strikethrough</strike> (to remove old material) and <underline>underscore</underline> (to add new material). <strong><em>Delete</em></strong> removes existing material. <strong><em>Insert</em></strong> adds new material without disturbing the existing material. Insertions may require renumbering. If so, renumbering instructions are given in the editing instruction. <strong><em>Replace</em></strong> is used to make changes in figures or equations by removing the existing figure or equation and replacing it with a new one. Editing instructions, change markings, and this NOTE will not be carried over into future editions because the changes will be incorporated into the base standard.</p>
+</note>
+  {% endif %}
 </boilerplate>
 

@@ -14,7 +14,7 @@ module IsoDoc
 
       def convert1(docxml, filename, dir)
         doctype = docxml.at(ns("//bibdata/ext/doctype"))
-        if %w(amendment corrigendum).include?(doctype.text)
+        if %w(amendment corrigendum).include?(doctype&.text)
           @header = html_doc_path("header_amd.html")
         end
         super

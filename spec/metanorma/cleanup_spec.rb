@@ -88,6 +88,79 @@ RSpec.describe Metanorma::IEEE do
       .to be_equivalent_to xmlpp(output)
   end
 
+  it "inserts boilerplate in front of sections for amendment" do
+    input = <<~INPUT
+      = Widgets
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :draft: 1.2
+      :docnumber: 10000
+      :doctype: recommended-practice
+      :docsubtype: amendment
+
+      == Clause
+
+    INPUT
+    output = <<~OUTPUT
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+         <sections>
+           <note id='boilerplate_front'>
+             <p id='_'>
+               The editing instructions contained in this amendment define how to merge
+               the material contained therein into the existing base standard and its
+               amendments to form the comprehensive standard.
+             </p>
+             <p id='_'>
+               The editing instructions are shown in
+               <strong>
+                 <em>bold italic</em>
+               </strong>
+               . Four editing instructions are used: change, delete, insert, and
+               replace.
+               <strong>
+                 <em>Change</em>
+               </strong>
+                is used to make corrections in existing text or tables. The editing
+               instruction specifies the location of the change and describes what is
+               being changed by using
+               <strike>strikethrough</strike>
+                (to remove old material) and
+               <underline>underscore</underline>
+                (to add new material).
+               <strong>
+                 <em>Delete</em>
+               </strong>
+                removes existing material.
+               <strong>
+                 <em>Insert</em>
+               </strong>
+                adds new material without disturbing the existing material. Insertions
+               may require renumbering. If so, renumbering instructions are given in
+               the editing instruction.
+               <strong>
+                 <em>Replace</em>
+               </strong>
+                is used to make changes in figures or equations by removing the
+               existing figure or equation and replacing it with a new one. Editing
+               instructions, change markings, and this NOTE will not be carried over
+               into future editions because the changes will be incorporated into the
+               base standard.
+             </p>
+           </note>
+           <clause id='_' inline-header='false' obligation='normative'>
+             <title>Clause</title>
+           </clause>
+         </sections>
+       </ieee-standard>
+    OUTPUT
+    ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
+    ret.at("//xmlns:bibdata").remove
+    ret.at("//xmlns:boilerplate").remove
+    expect(xmlpp(strip_guid(ret.to_xml)))
+      .to be_equivalent_to xmlpp(output)
+  end
+
   it "does not insert boilerplate in front of bibliography if already provided" do
     input = <<~INPUT
       #{ASCIIDOC_BLANK_HDR}

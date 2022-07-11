@@ -27,7 +27,7 @@ module IsoDoc
         b = isoxml.at(ns("//bibdata/ext/doctype"))&.text or return
         set(:doctype, b.split(/[- ]/).map(&:capitalize).join(" "))
         set(:doctype_abbrev, @labels["doctype_abbrev"][b])
-        s = isoxml.at(ns("//bibdata/ext/docsubtype"))&.text and
+        s = isoxml.at(ns("//bibdata/ext/subdoctype"))&.text and
           set(:docsubtype, s.split(/[- ]/).map(&:capitalize).join(" "))
         s = isoxml.at(ns("//bibdata/ext/trial-use"))&.text and s == "true" and
           set(:trial_use, true)

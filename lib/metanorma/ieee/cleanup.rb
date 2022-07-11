@@ -7,6 +7,7 @@ module Metanorma
       def initial_boilerplate(xml, isodoc)
         intro_boilerplate(xml, isodoc)
         super
+        initial_note(xml)
       end
 
       def intro_boilerplate(xml, isodoc)
@@ -17,6 +18,14 @@ module Metanorma
         ADM
         adm = isodoc.populate_template(template)
         intro.next = "<admonition>#{adm}</admonition>"
+      end
+
+      def initial_note(xml)
+        n = xml.at("//boilerplate//note[@id = 'boilerplate_front']")
+        s = xml.at("//sections")
+        (n && s) or return
+        s.children.empty? and s << " "
+        s.children.first.previous = n.remove
       end
 
       def obligations_cleanup_norm(xml)
