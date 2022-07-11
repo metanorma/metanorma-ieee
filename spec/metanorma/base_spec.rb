@@ -108,6 +108,8 @@ RSpec.describe Metanorma::IEEE do
       :doctype: recommended-practice
       :docsubtype: amendment
       :trial-use: true
+      :amendment-number: A1
+      :corrigendum-number: C1
     INPUT
     expect(xmlpp(output.sub(%r{<boilerplate>.*</boilerplate>}m, "")))
       .to be_equivalent_to xmlpp(<<~"OUTPUT")
@@ -319,6 +321,16 @@ RSpec.describe Metanorma::IEEE do
               <ics>
                 <code>3</code>
               </ics>
+              <structuredidentifier>
+        <docnumber>1000</docnumber>
+        <agency>IEEE</agency>
+        <class>recommended-practice</class>
+        <edition>2</edition>
+        <version>0.3.4</version>
+        <amendment>A1</amendment>
+        <corrigendum>C1</corrigendum>
+        <year>2000</year>
+      </structuredidentifier>
             </ext>
           </bibdata>
           <sections> </sections>

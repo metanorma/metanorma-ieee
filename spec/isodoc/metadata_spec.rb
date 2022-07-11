@@ -209,26 +209,24 @@ RSpec.describe Metanorma::IEEE do
       </relation>
           <ext>
           <doctype>recommended-practice</doctype>
-          <docsubtype>trial-use</docsubtype>
+          <docsubtype>amendment</docsubtype>
+          <trial-use>true</trial-use>
             <editorialgroup>
               <society>Society</society>
               <balloting-group>BG</balloting-group>
               <working-group>WG</working-group>
               <committee>Tech Committee</committee>
             </editorialgroup>
-         <recommendationstatus>
-          <from>D3</from>
-          <to>E3</to>
-          <approvalstage process="F3">G3</approvalstage>
-        </recommendationstatus>
-        <ip-notice-received>false</ip-notice-received>
-        <structuredidentifier>
-        <bureau>R</bureau>
-        <docnumber>1000</docnumber>
-        <annexid>F1</annexid>
-        <amendment>2</amendment>
-        <corrigendum>3</corrigendum>
-        </structuredidentifier>
+                 <structuredidentifier>
+       <docnumber>1000</docnumber>
+       <agency>IEEE</agency>
+       <class>recommended-practice</class>
+       <edition>2</edition>
+       <version>0.3.4</version>
+       <amendment>A1</amendment>
+       <corrigendum>C1</corrigendum>
+       <year>2000</year>
+     </structuredidentifier>
           </ext>
         </bibdata>
         <preface/><sections/>
@@ -240,6 +238,7 @@ RSpec.describe Metanorma::IEEE do
         {:abbrev_doctitle=>"Draft Rec. Prac. for Main Titlein multiple lines",
         :accesseddate=>"XXX",
         :agency=>"IEEE",
+        :amd=>"A1",
         :authors=>["AB", "CD", "CD1", "E, F, Jr.", "GH", "IJ", "KL", "MN", "OP", "QR", "ST", "UV", "KL", "MN"],
         :authors_affiliations=>{""=>["AB", "CD", "CD1", "E, F, Jr.", "GH", "IJ", "KL", "MN", "OP", "QR", "ST", "UV", "KL", "MN"]},
         :balloting_group=>"BG",
@@ -247,10 +246,11 @@ RSpec.describe Metanorma::IEEE do
         :circulateddate=>"XXX",
         :confirmeddate=>"01 Jul 2018",
         :copieddate=>"XXX",
+        :corr=>"C1",
         :createddate=>"XXX",
         :docnumber=>"ABC",
         :docnumeric=>"1000",
-        :docsubtype=>"Trial Use",
+        :docsubtype=>"Amendment",
         :doctitle=>"Main Titlein multiple lines",
         :doctype=>"Recommended Practice",
         :doctype_abbrev=>"Rec. Prac.",
@@ -286,6 +286,7 @@ RSpec.describe Metanorma::IEEE do
         :stdid_print=>"DEF",
         :technical_committee=>"Tech Committee",
         :transmitteddate=>"XXX",
+        :trial_use=>true,
         :unchangeddate=>"XXX",
         :unpublished=>true,
         :updateddate=>"XXX",
@@ -348,26 +349,14 @@ RSpec.describe Metanorma::IEEE do
        <keyword>word1</keyword>
         <ext>
         <doctype>recommended-practice</doctype>
-        <docsubtype>trial-use</docsubtype>
+        <docsubtype>document</docsubtype>
+          <trial-use>false</trial-use>
           <editorialgroup>
             <society>Society</society>
             <balloting-group>BG</balloting-group>
             <working-group>WG</working-group>
             <committee>Tech Committee</committee>
           </editorialgroup>
-       <recommendationstatus>
-        <from>D3</from>
-        <to>E3</to>
-        <approvalstage process="F3">G3</approvalstage>
-      </recommendationstatus>
-      <ip-notice-received>false</ip-notice-received>
-      <structuredidentifier>
-      <bureau>R</bureau>
-      <docnumber>1000</docnumber>
-      <annexid>F1</annexid>
-      <amendment>2</amendment>
-      <corrigendum>3</corrigendum>
-      </structuredidentifier>
         </ext>
       </bibdata>
       <preface/><sections/>
@@ -385,7 +374,7 @@ RSpec.describe Metanorma::IEEE do
         :copieddate=>"XXX",
         :createddate=>"XXX",
         :docnumeric=>"1000",
-        :docsubtype=>"Trial Use",
+        :docsubtype=>"Document",
         :doctitle=>"Main Titlein multiple lines",
         :doctype=>"Recommended Practice",
         :doctype_abbrev=>"Rec. Prac.",

@@ -153,6 +153,26 @@ module Metanorma
       def relaton_relations
         super + %w(merges updates)
       end
+
+      def metadata_ext(node, xml)
+        super
+        structured_id(node, xml)
+      end
+
+      def structured_id(node, xml)
+        return unless node.attr("docnumber")
+
+        xml.structuredidentifier do |i|
+          i.docnumber node.attr("docnumber")
+          i.agency "IEEE"
+          i.class_ doctype(node)
+          a = node.attr("edition") and i.edition a
+          a = node.attr("draft") and i.version a
+          a = node.attr("amendment-number") and i.amendment a
+          a = node.attr("corrigendum-number") and i.corrigendum a
+          a = node.attr("copyright-year") and i.year a
+        end
+      end
     end
   end
 end

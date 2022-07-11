@@ -29,6 +29,8 @@ module IsoDoc
         set(:doctype_abbrev, @labels["doctype_abbrev"][b])
         s = isoxml.at(ns("//bibdata/ext/docsubtype"))&.text and
           set(:docsubtype, s.split(/[- ]/).map(&:capitalize).join(" "))
+        s = isoxml.at(ns("//bibdata/ext/trial-use"))&.text and s == "true" and
+          set(:trial_use, true)
       end
 
       def author(xml, _out)
@@ -136,6 +138,10 @@ module IsoDoc
         set(:stdid_pdf, dn&.text || "STDXXXXX")
         dn = isoxml.at(ns("//#{id}[@scope = 'print']"))
         set(:stdid_print, dn&.text || "STDPDXXXXX")
+        dn = isoxml.at(ns("//bibdata/ext/structuredidentifier/amendment")) and
+          set(:amd, dn.text)
+        dn = isoxml.at(ns("//bibdata/ext/structuredidentifier/corrigendum")) and
+          set(:corr, dn.text)
       end
 
       def title(isoxml, _out)

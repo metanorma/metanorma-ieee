@@ -2,11 +2,11 @@
 
 <div class="doctitle-en"><span>P{{ docnumeric }}™{% if draft %}/D{{ draft }}{% endif %}</span><br/>
    <span lang="EN-US">{{ full_doctitle }}</span></div>
-{% if doctitleamdlabel %}
-<div class="doctitle-part">{{ doctitleamdlabel }}{% if doctitleamd %}: {{ doctitleamd }}{% endif %}</div>
+{% if amd %}
+<div class="doctitle-part">Amendment {{ amd }}</div>
 {% endif %}
-{% if doctitlecorrlabel %}
-<div class="doctitle-part">{{ doctitlecorrlabel }}</div>
+{% if corr %}
+<div class="doctitle-part">Corrigenda {{ corr }}</div>
 {% endif %}
 {%if updates or merges %}
 <div class="doctitle-part">(Revision of {{ updates | join: ", " }}<br/>Incorporating {{ merges | join: ", " }})</div>
@@ -29,14 +29,13 @@
 <p>IEEE SA Standards Board</p>
 </div>
 
-
-
-
-<div class="coverpage_docstage">
-  {% if unpublished %}
-  <p>{{ stageabbr }} stage</p>
-  {% endif %}
+{% if trial_use %}
+<div>
+  {% if feedback_endeddate %}<p>Comments due: {{ feedback_endeddate }}</p>{% endif %}
+  {% if obsoleteddate %}<p>Expires: {{ obsoleteddate }}</p>{% endif %}
 </div>
+{% endif %}
+
 
 {% if unpublished %}
 <div class="coverpage_warning">
