@@ -102,6 +102,7 @@ module IsoDoc
         bg = xml.at(ns("//bibdata/ext/editorialgroup/"\
                        "balloting-group")) or return nil
         set(:balloting_group, bg.text)
+        set(:balloting_group_type, bg["type"])
         m = {}
         m["members"] = editor_names(xml, "Balloting Group Member")
         m["members"].empty? and (1..9).each do |i|

@@ -57,6 +57,7 @@ RSpec.describe Metanorma::IEEE do
       :technical-committee-number: 1
       :technical-committee-type: A
       :balloting-group: SC
+      :balloting-group-type: entity
       :subcommittee-number: 2
       :subcommittee-type: B
       :working-group: WG
@@ -308,7 +309,7 @@ RSpec.describe Metanorma::IEEE do
                 <trial-use>true</trial-use>
                 <editorialgroup>
                   <society>SECRETARIAT</society>
-                  <balloting-group>SC</balloting-group>
+                  <balloting-group type='entity'>SC</balloting-group>
                   <working-group>WG</working-group>
                   <working-group>WG1</working-group>
                   <committee>TC</committee>
@@ -340,7 +341,7 @@ RSpec.describe Metanorma::IEEE do
       OUTPUT
   end
 
-  it "processes metadata with draft, no docstage" do
+  it "processes metadata with draft, no docstage, no balloting-group-type" do
     out = Asciidoctor.convert(<<~"INPUT", *OPTIONS)
       = Document title
       Author
@@ -349,6 +350,8 @@ RSpec.describe Metanorma::IEEE do
       :novalid:
       :no-isobib:
       :draft: 3
+      :balloting-group: BG
+      :society: SECRETARIAT
 
     INPUT
     output = <<~OUTPUT
@@ -382,6 +385,12 @@ RSpec.describe Metanorma::IEEE do
           <ext>
             <doctype>standard</doctype>
             <subdoctype>document</subdoctype>
+                 <editorialgroup>
+       <society>SECRETARIAT</society>
+       <balloting-group type='individual'>BG</balloting-group>
+       <working-group/>
+       <committee/>
+     </editorialgroup>
           </ext>
         </bibdata>
         <sections> </sections>

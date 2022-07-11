@@ -253,7 +253,7 @@
         {% for m in wg_members["members"] %}
         <p type="officemember">{{ m }}</p>
         {% endfor %}
-        <p>The following members of the {{ balloting_group }} Standards Association balloting group voted on this {{ doctype }}. Balloters may have voted for approval, disapproval, or abstention.</p>
+        <p>The following members of the {{ balloting_group_type }} {{ balloting_group }} Standards Association balloting group voted on this {{ doctype }}. Balloters may have voted for approval, disapproval, or abstention.</p>
         {% for m in balloting_group_members %}
         <p type="officemember">{{ m }}</p>
         {% endfor %}

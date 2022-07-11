@@ -4,6 +4,9 @@ module Metanorma
       def metadata_committee(node, xml)
         return unless node.attr("committee") || node.attr("society")
 
+        node.attr("balloting-group") && !node.attr("balloting-group-type") and
+          node.set_attr("balloting-group-type", "individual")
+
         xml.editorialgroup do |a|
           committee_component("society", node, a)
           committee_component("balloting-group", node, a)

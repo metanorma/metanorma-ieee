@@ -213,7 +213,7 @@ RSpec.describe Metanorma::IEEE do
           <trial-use>true</trial-use>
             <editorialgroup>
               <society>Society</society>
-              <balloting-group>BG</balloting-group>
+              <balloting-group type="entity">BG</balloting-group>
               <working-group>WG</working-group>
               <committee>Tech Committee</committee>
             </editorialgroup>
@@ -243,6 +243,7 @@ RSpec.describe Metanorma::IEEE do
         :authors_affiliations=>{""=>["AB", "CD", "CD1", "E, F, Jr.", "GH", "IJ", "KL", "MN", "OP", "QR", "ST", "UV", "KL", "MN"]},
         :balloting_group=>"BG",
         :balloting_group_members=>["KL", "MN"],
+        :balloting_group_type=>"entity",
         :circulateddate=>"XXX",
         :confirmeddate=>"01 Jul 2018",
         :copieddate=>"XXX",
@@ -353,7 +354,7 @@ RSpec.describe Metanorma::IEEE do
           <trial-use>false</trial-use>
           <editorialgroup>
             <society>Society</society>
-            <balloting-group>BG</balloting-group>
+            <balloting-group type="individual">BG</balloting-group>
             <working-group>WG</working-group>
             <committee>Tech Committee</committee>
           </editorialgroup>
@@ -369,6 +370,7 @@ RSpec.describe Metanorma::IEEE do
         :accesseddate=>"XXX",
         :balloting_group=>"BG",
         :balloting_group_members=>["Balloter1", "Balloter2", "Balloter3", "Balloter4", "Balloter5", "Balloter6", "Balloter7", "Balloter8", "Balloter9"],
+        :balloting_group_type=>"individual",
         :circulateddate=>"XXX",
         :confirmeddate=>"&lt;Date Approved&gt;",
         :copieddate=>"XXX",
