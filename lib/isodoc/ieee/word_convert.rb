@@ -12,6 +12,14 @@ module IsoDoc
         super
       end
 
+      def convert1(docxml, filename, dir)
+        doctype = docxml.at(ns("//bibdata/ext/doctype"))
+        if %w(amendment corrigendum).include?(doctype.text)
+          @header = html_doc_path("header_amd.html")
+        end
+        super
+      end
+
       def default_fonts(options)
         { bodyfont: (if options[:script] == "Hans"
                        '"Source Han Sans",serif'
@@ -65,6 +73,10 @@ module IsoDoc
       def middle_title_ieee(_docxml, out)
         out.p(**{ class: "IEEEStdsTitle", style: "margin-top:70.0pt" }) do |p|
           p << @meta.get[:full_doctitle]
+          @meta.get[:amd] || @meta.get[:corr] and p << "<br/>"
+          @meta.get[:amd] and p << "Amendment #{@meta.get[:amd]}"
+          @meta.get[:amd] && @meta.get[:corr] and p << " "
+          @meta.get[:corr] and p << "Corrigenda #{@meta.get[:corr]}"
         end
       end
 

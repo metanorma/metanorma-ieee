@@ -2,6 +2,76 @@ require "spec_helper"
 require "fileutils"
 
 RSpec.describe IsoDoc::IEEE::WordConvert do
+  it "processes middle title" do
+    FileUtils.rm_f "test.doc"
+    input = <<~INPUT
+      <iso-standard xmlns="http://riboseinc.com/isoxml">
+      <bibdata>
+      <title language="en" type="main">Title</title>
+      <ext>
+      <doctype>Guide</doctype>
+      </ext>
+      </bibdata>
+      <preface><introduction id="_introduction" obligation="informative" displayorder="1" id="A">
+      <title>Introduction</title><admonition>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty
+      </admonition>
+      <p id="_7d8a8a7f-3ded-050d-1da9-978f17519335">This is an introduction</p>
+      </introduction></preface>
+      </iso-standard>
+    INPUT
+    output = <<~OUTPUT
+      <div class='WordSection6'>
+      <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Guide for Title</p>
+      </div>
+    OUTPUT
+    IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
+    expect(File.exist?("test.doc")).to be true
+    doc = Nokogiri::XML(word2xml("test.doc"))
+      .at("//xmlns:div[@class = 'WordSection6']")
+    expect(strip_guid(xmlpp(doc.to_xml)))
+      .to be_equivalent_to xmlpp(output)
+  end
+
+  it "processes middle title for amendment/corrigendum" do
+    FileUtils.rm_f "test.doc"
+    input = <<~INPUT
+       <iso-standard xmlns="http://riboseinc.com/isoxml">
+       <bibdata>
+       <title language="en" type="main">Title</title>
+       <ext>
+       <doctype>Guide</doctype>
+       <structuredidentifier>
+        <docnumber>1000</docnumber>
+        <agency>IEEE</agency>
+        <class>recommended-practice</class>
+        <edition>2</edition>
+        <version>0.3.4</version>
+        <amendment>A1</amendment>
+        <corrigendum>C1</corrigendum>
+        <year>2000</year>
+      </structuredidentifier>
+       </ext>
+       </bibdata>
+       <preface><introduction id="_introduction" obligation="informative" displayorder="1" id="A">
+       <title>Introduction</title><admonition>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty
+       </admonition>
+       <p id="_7d8a8a7f-3ded-050d-1da9-978f17519335">This is an introduction</p>
+       </introduction></preface>
+       </iso-standard>
+    INPUT
+    output = <<~OUTPUT
+      <div class='WordSection6'>
+      <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Guide for Title<br/>Amendment A1 Corrigenda C1</p>
+      </div>
+    OUTPUT
+    IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
+    expect(File.exist?("test.doc")).to be true
+    doc = Nokogiri::XML(word2xml("test.doc"))
+      .at("//xmlns:div[@class = 'WordSection6']")
+    expect(strip_guid(xmlpp(doc.to_xml)))
+      .to be_equivalent_to xmlpp(output)
+  end
+
   it "processes introduction" do
     FileUtils.rm_f "test.doc"
     input = <<~INPUT
@@ -46,16 +116,16 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-       <div>
-         <a name='abstract-destination' id='abstract-destination'/>
-         <div class='IEEEStdsAbstractBody'>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty </div>
-         <p class='IEEEStdsAbstractBody'>Text</p>
-         <p style='mso-list:l11 level1 lfo1;font-family: &#x22;Arial&#x22;, sans-serif;' class='IEEEStdsUnorderedListCxSpFirst'> List </p>
-         <p class='IEEEStdsAbstractBody'>
-           <a name="_" id="_"/>
-           This is an introduction
-         </p>
-       </div>
+      <div>
+        <a name='abstract-destination' id='abstract-destination'/>
+        <div class='IEEEStdsAbstractBody'>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty </div>
+        <p class='IEEEStdsAbstractBody'>Text</p>
+        <p style='mso-list:l11 level1 lfo1;font-family: &#x22;Arial&#x22;, sans-serif;' class='IEEEStdsUnorderedListCxSpFirst'> List </p>
+        <p class='IEEEStdsAbstractBody'>
+          <a name="_" id="_"/>
+          This is an introduction
+        </p>
+      </div>
     OUTPUT
     IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
     expect(File.exist?("test.doc")).to be true
@@ -353,48 +423,48 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
             </iso-standard>
     INPUT
     word = <<~OUTPUT
-           <div>
-         <a name='A' id='A'/>
-         <p class='IEEEStdsLevel1Header'>1.</p>
-         <div>
-           <a name='B' id='B'/>
-           <p class='IEEEStdsLevel2Header'>1.1.</p>
-           <div>
-             <a name='n1' id='n1'/>
-             <p class='IEEEStdsMultipleNotes' style='mso-list:l17 level1 lfo1;'>First</p>
-           </div>
-           <p class='IEEEStdsParagraph'>Blah blah </p>
-           <div>
-             <a name='n2' id='n2'/>
-             <p class='IEEEStdsMultipleNotes' style='mso-list:l17 level1 lfo1;'>Second</p>
-             <p class='IEEEStdsSingleNote' style='mso-list:l17 level1 lfo1;'>Multi-para note</p>
-           </div>
-           <div>
-             <a name='C' id='C'/>
-             <p class='IEEEStdsLevel3Header'>1.1.1.</p>
-             <div>
-               <a name='n3' id='n3'/>
-               <p class='IEEEStdsSingleNote'>
-                 <span class='note_label'>NOTE&#x2014;</span>
-                 Third
-               </p>
-               <div class='Quote'>Quotation</div>
-             </div>
-           </div>
-           <div>
-             <a name='D' id='D'/>
-             <p class='IEEEStdsLevel3Header'>1.1.2.</p>
-             <div>
-               <a name='n4' id='n4'/>
-               <p class='IEEEStdsMultipleNotes' style='mso-list:l17 level1 lfo2;'>Fourth</p>
-             </div>
-             <div>
-               <a name='n5' id='n5'/>
-               <p class='IEEEStdsMultipleNotes' style='mso-list:l17 level1 lfo2;'>Fifth</p>
-             </div>
-           </div>
-         </div>
-       </div>
+          <div>
+        <a name='A' id='A'/>
+        <p class='IEEEStdsLevel1Header'>1.</p>
+        <div>
+          <a name='B' id='B'/>
+          <p class='IEEEStdsLevel2Header'>1.1.</p>
+          <div>
+            <a name='n1' id='n1'/>
+            <p class='IEEEStdsMultipleNotes' style='mso-list:l17 level1 lfo1;'>First</p>
+          </div>
+          <p class='IEEEStdsParagraph'>Blah blah </p>
+          <div>
+            <a name='n2' id='n2'/>
+            <p class='IEEEStdsMultipleNotes' style='mso-list:l17 level1 lfo1;'>Second</p>
+            <p class='IEEEStdsSingleNote' style='mso-list:l17 level1 lfo1;'>Multi-para note</p>
+          </div>
+          <div>
+            <a name='C' id='C'/>
+            <p class='IEEEStdsLevel3Header'>1.1.1.</p>
+            <div>
+              <a name='n3' id='n3'/>
+              <p class='IEEEStdsSingleNote'>
+                <span class='note_label'>NOTE&#x2014;</span>
+                Third
+              </p>
+              <div class='Quote'>Quotation</div>
+            </div>
+          </div>
+          <div>
+            <a name='D' id='D'/>
+            <p class='IEEEStdsLevel3Header'>1.1.2.</p>
+            <div>
+              <a name='n4' id='n4'/>
+              <p class='IEEEStdsMultipleNotes' style='mso-list:l17 level1 lfo2;'>Fourth</p>
+            </div>
+            <div>
+              <a name='n5' id='n5'/>
+              <p class='IEEEStdsMultipleNotes' style='mso-list:l17 level1 lfo2;'>Fifth</p>
+            </div>
+          </div>
+        </div>
+      </div>
     OUTPUT
     presxml = IsoDoc::IEEE::PresentationXMLConvert.new({}).convert("test",
                                                                    input, true)
