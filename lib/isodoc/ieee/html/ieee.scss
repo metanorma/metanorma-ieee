@@ -2662,7 +2662,6 @@ div.WordSection5
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
-        {% if balloting_group_type == "entity" %}
 	mso-columns:{% if balloting_group_type == "entity" %}2{% else %}3{% endif %} even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
 	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
