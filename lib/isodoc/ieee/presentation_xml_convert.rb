@@ -196,6 +196,23 @@ module IsoDoc
         end
       end
 
+      def amend1(elem)
+        elem.xpath(ns("./description/p")).each do |p|
+          p.children = p.children.to_xml.strip
+          amend_format(p)
+        end
+        super
+      end
+
+      def amend_format(para)
+        2.times do
+          para.children.size == 1 &&
+            %(em strong).include?(para.children.first.name) and
+            para.children = para.elements.first.children
+        end
+        para.children = "<strong><em>#{para.children.to_xml}</em></strong>"
+      end
+
       include Init
     end
   end

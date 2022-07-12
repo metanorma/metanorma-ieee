@@ -953,4 +953,158 @@ RSpec.describe IsoDoc do
     expect(strip_guid(xmlpp(doc.to_xml.gsub(/<m:/, "<").gsub(/<\/m:/, "</"))))
       .to be_equivalent_to xmlpp(word)
   end
+
+  it "processes amend blocks" do
+    input = <<~INPUT
+      <standard-document xmlns='https://www.metanorma.org/ns/standoc'>
+           <bibdata type='standard'>
+             <title language='en' format='text/plain'>Document title</title>
+             <language>en</language>
+             <script>Latn</script>
+             <status>
+               <stage>published</stage>
+             </status>
+             <copyright>
+               <from>2020</from>
+             </copyright>
+             <ext>
+               <doctype>article</doctype>
+             </ext>
+           </bibdata>
+           <sections>
+             <clause id='A' inline-header='false' obligation='normative'>
+               <title>Change Clause</title>
+               <amend id='B' change='modify' path='//table[2]' path_end='//table[2]/following-sibling:example[1]' title='Change'>
+                 <autonumber type='table'>2</autonumber>
+                 <autonumber type='example'>A.7</autonumber>
+                 <description>
+                   <p id='C'>
+                     <em>
+                       This table contains information on polygon cells which are not
+                       included in ISO 10303-52. Remove table 2 completely and replace
+                       with:
+                     </em>
+                   </p>
+                 </description>
+                                  <newcontent id='D'>
+                   <table id='E'>
+                     <name>Edges of triangle and quadrilateral cells</name>
+                     <tbody>
+                       <tr>
+                         <th colspan='2' valign='middle' align='center'>triangle</th>
+                         <th colspan='2' valign='middle' align='center'>quadrilateral</th>
+                       </tr>
+                       <tr>
+                         <td valign='middle' align='center'>edge</td>
+                         <td valign='middle' align='center'>vertices</td>
+                         <td valign='middle' align='center'>edge</td>
+                         <td valign='middle' align='center'>vertices</td>
+                       </tr>
+                       <tr>
+                         <td valign='middle' align='center'>1</td>
+                         <td valign='middle' align='center'>1, 2</td>
+                         <td valign='middle' align='center'>1</td>
+                         <td valign='middle' align='center'>1, 2</td>
+                       </tr>
+                       <tr>
+                         <td valign='middle' align='center'>2</td>
+                         <td valign='middle' align='center'>2, 3</td>
+                         <td valign='middle' align='center'>2</td>
+                         <td valign='middle' align='center'>2, 3</td>
+                       </tr>
+                       <tr>
+                         <td valign='middle' align='center'>3</td>
+                         <td valign='middle' align='center'>3, 1</td>
+                         <td valign='middle' align='center'>3</td>
+                         <td valign='middle' align='center'>3, 4</td>
+                       </tr>
+                       <tr>
+                         <td valign='top' align='left'/>
+                         <td valign='top' align='left'/>
+                         <td valign='middle' align='center'>4</td>
+                         <td valign='middle' align='center'>4, 1</td>
+                       </tr>
+                     </tbody>
+                   </table>
+                   <figure id="H"><name>Figure</name></figure>
+                   <example id='F'>
+                     <p id='G'>This is not generalised further.</p>
+                   </example>
+                 </newcontent>
+               </amend>
+             </clause>
+           </sections>
+         </standard-document>
+    INPUT
+    presxml = <<~OUTPUT
+           <clause id='A' inline-header='false' obligation='normative' displayorder='1'>
+         <title depth='1'>
+           1.
+           <tab/>
+           Change Clause
+         </title>
+         <p id='C'>
+           <strong>
+             <em>
+                This table contains information on polygon cells which are not included
+               in ISO 10303-52. Remove table 2 completely and replace with:
+             </em>
+           </strong>
+         </p>
+         <quote id='D'>
+           <table id='E' number='2'>
+             <name>Table 2&#x2014;Edges of triangle and quadrilateral cells</name>
+             <tbody>
+               <tr>
+                 <th colspan='2' valign='middle' align='center'>triangle</th>
+                 <th colspan='2' valign='middle' align='center'>quadrilateral</th>
+               </tr>
+               <tr>
+                 <td valign='middle' align='center'>edge</td>
+                 <td valign='middle' align='center'>vertices</td>
+                 <td valign='middle' align='center'>edge</td>
+                 <td valign='middle' align='center'>vertices</td>
+               </tr>
+               <tr>
+                 <td valign='middle' align='center'>1</td>
+                 <td valign='middle' align='center'>1, 2</td>
+                 <td valign='middle' align='center'>1</td>
+                 <td valign='middle' align='center'>1, 2</td>
+               </tr>
+               <tr>
+                 <td valign='middle' align='center'>2</td>
+                 <td valign='middle' align='center'>2, 3</td>
+                 <td valign='middle' align='center'>2</td>
+                 <td valign='middle' align='center'>2, 3</td>
+               </tr>
+               <tr>
+                 <td valign='middle' align='center'>3</td>
+                 <td valign='middle' align='center'>3, 1</td>
+                 <td valign='middle' align='center'>3</td>
+                 <td valign='middle' align='center'>3, 4</td>
+               </tr>
+               <tr>
+                 <td valign='top' align='left'/>
+                 <td valign='top' align='left'/>
+                 <td valign='middle' align='center'>4</td>
+                 <td valign='middle' align='center'>4, 1</td>
+               </tr>
+             </tbody>
+           </table>
+           <figure id='H' unnumbered='true'>
+             <name>Figure</name>
+           </figure>
+           <example id='F' number='A.7'>
+             <name>Example A.7</name>
+             <p id='G'>This is not generalised further.</p>
+           </example>
+         </quote>
+       </clause>
+    OUTPUT
+    expect(xmlpp(Nokogiri::XML(
+      IsoDoc::IEEE::PresentationXMLConvert.new({})
+      .convert("test", input, true),
+    ).at("//xmlns:clause[@id = 'A']").to_xml))
+      .to be_equivalent_to xmlpp(presxml)
+  end
 end

@@ -19,6 +19,7 @@ module Metanorma
         list_validate(doc)
         table_style(doc)
         figure_validate(doc)
+        amend_validate(doc)
       end
 
       def bibdata_validate(doc)
@@ -42,59 +43,6 @@ module Metanorma
         %w(active inactive developing).include? stage or
           @log.add("Document Attributes", nil,
                    "#{stage} is not a recognised stage")
-      end
-
-      def title_validate(xml)
-        title_validate_type(xml)
-        title_validate_capitalisation(xml)
-      end
-
-      # Style Manual 11.3
-      def title_validate_type(xml)
-        title = xml.at("//bibdata/title") or return
-        draft = xml.at("//bibdata//draft")
-        type = xml.at("//bibdata/ext/doctype")
-        subtype = xml.at("//bibdata/ext/subdoctype")
-        subtype = "" if subtype == "document"
-        trial = xml.at("//bibdata/ext/trial-use[text() = 'true']")
-        target = draft ? "Draft " : ""
-        target += trial ? "Trial-Use " : ""
-        target += type ? "#{strict_capitalize_phrase(type.text)} " : ""
-        /^#{target}/.match?(title.text) or
-          @log.add("Style", title,
-                   "Expected title to start as: #{target}")
-      end
-
-      def strict_capitalize_phrase(str)
-        ret = str.split(/[ -]/).map do |w|
-          letters = w.chars
-          letters.first.upcase! unless /^[ -]/.match?(w)
-          letters.join
-        end.join(" ")
-        ret = "Trial-Use" if ret == "Trial Use"
-        ret
-      end
-
-      # Style Manual 11.3
-      def title_validate_capitalisation(xml)
-        title = xml.at("//bibdata/title") or return
-        found = false
-        title.text.split(/[ -]/).each do |w|
-          /^[[:upper:]]/.match?(w) or preposition?(w) or
-            found = true
-        end
-        found and @log.add("Style", title,
-                           "Title contains uncapitalised word other than preposition")
-      end
-
-      def preposition?(word)
-        %w(aboard about above across after against along amid among anti around
-           as at before behind below beneath beside besides between beyond but
-           by concerning considering despite down during except excepting
-           excluding following for from in inside into like minus near of off
-           on onto opposite outside over past per plus regarding round save
-           since than through to toward towards under underneath unlike until
-           up upon versus via with within without a an the).include?(word)
       end
 
       def locality_validate(root)
@@ -246,6 +194,51 @@ module Metanorma
           d.xpath(".//image").size > 1 and
             @log.add("Style", d,
                      "More than one image in the table cell")
+        end
+      end
+
+      # Style manual 20.2.2
+      def amend_validate(xmldoc)
+        xmldoc.xpath("//amend").each do |a|
+          desc = a.at("./description")
+          if desc && !desc.text.strip.empty?
+            amend_validate1(a, desc.text.strip,
+                            a.at("./newcontent//figure | "\
+                                 "./newcontent//formula"))
+          else @log.add("Style", a,
+                        "Editorial instruction is missing from change")
+          end
+        end
+      end
+
+      def amend_validate1(amend, description, figure_or_formula)
+        case amend["change"]
+        when "add" then /^Insert /.match?(description) or
+          @log.add("Style", amend,
+                   "'Add' change description should start with _Insert_")
+        when "delete" then /^Insert /.match?(description) or
+          @log.add("Style", amend,
+                   "'Delete' change description should start with _Delete_")
+        when "modify"
+          amend_validate_modify(amend, description, figure_or_formula)
+        end
+      end
+
+      AMD_VALID_MOD = [
+        "'Modify' change description should start with _Change_ or _Replace_",
+        "'Modify' change description for change involving figure or equation "\
+        "should start with _Replace_",
+        "'Modify' change description for change not involving figure or "\
+        "equation should start with _Change_",
+      ].freeze
+
+      def amend_validate_modify(amend, description, figure_or_formula)
+        if !/^Change |^Replace/.match?(description)
+          @log.add("Style", amend, AMD_VALID_MOD[0])
+        elsif /^Change /.match?(description)
+          !figure_or_formula or @log.add("Style", amend, AMD_VALID_MOD[1])
+        else
+          figure_or_formula or @log.add("Style", amend, AMD_VALID_MOD[2])
         end
       end
     end

@@ -107,6 +107,59 @@ module Metanorma
         end
         ret.map { |x| x.is_a?(Array) ? x : [] }
       end
+
+            def title_validate(xml)
+        title_validate_type(xml)
+        title_validate_capitalisation(xml)
+      end
+
+      # Style Manual 11.3
+      def title_validate_type(xml)
+        title = xml.at("//bibdata/title") or return
+        draft = xml.at("//bibdata//draft")
+        type = xml.at("//bibdata/ext/doctype")
+        subtype = xml.at("//bibdata/ext/subdoctype")
+        subtype = "" if subtype == "document"
+        trial = xml.at("//bibdata/ext/trial-use[text() = 'true']")
+        target = draft ? "Draft " : ""
+        target += trial ? "Trial-Use " : ""
+        target += type ? "#{strict_capitalize_phrase(type.text)} " : ""
+        /^#{target}/.match?(title.text) or
+          @log.add("Style", title,
+                   "Expected title to start as: #{target}")
+      end
+
+      def strict_capitalize_phrase(str)
+        ret = str.split(/[ -]/).map do |w|
+          letters = w.chars
+          letters.first.upcase! unless /^[ -]/.match?(w)
+          letters.join
+        end.join(" ")
+        ret = "Trial-Use" if ret == "Trial Use"
+        ret
+      end
+
+      # Style Manual 11.3
+      def title_validate_capitalisation(xml)
+        title = xml.at("//bibdata/title") or return
+        found = false
+        title.text.split(/[ -]/).each do |w|
+          /^[[:upper:]]/.match?(w) or preposition?(w) or
+            found = true
+        end
+        found and @log.add("Style", title,
+                           "Title contains uncapitalised word other than preposition")
+      end
+
+      def preposition?(word)
+        %w(aboard about above across after against along amid among anti around
+           as at before behind below beneath beside besides between beyond but
+           by concerning considering despite down during except excepting
+           excluding following for from in inside into like minus near of off
+           on onto opposite outside over past per plus regarding round save
+           since than through to toward towards under underneath unlike until
+           up upon versus via with within without a an the).include?(word)
+      end
     end
   end
 end

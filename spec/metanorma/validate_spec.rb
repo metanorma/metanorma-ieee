@@ -549,8 +549,173 @@ RSpec.describe Metanorma::IEEE do
 
     INPUT
     expect(File.exist?("test.err")).to be true
-    expect(File.read("test.err")).to include "Expected title to start as: "\
-                                             "Draft Trial-Use Recommended Practice"
+    expect(File.read("test.err"))
+      .to include "Expected title to start as: "\
+                  "Draft Trial-Use Recommended Practice"
+  end
+
+  context "Amends" do
+    it "warns that editorial instruction is missing" do
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        = Fred
+        :docfile: test.adoc
+        :doctype: recommended-practice
+        :docsubtype: amendment
+        :no-pdf:
+
+        [change="add",locality="page=27",path="//table[2]",path_end="//table[2]/following-sibling:example[1]",title="Change"]
+        == Change Clause
+
+      INPUT
+      expect(File.exist?("test.err")).to be true
+      expect(File.read("test.err"))
+        .to include "Editorial instruction is missing from change"
+
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        = Fred
+        :docfile: test.adoc
+        :doctype: recommended-practice
+        :docsubtype: amendment
+        :no-pdf:
+
+        [change="add",locality="page=27",path="//table[2]",path_end="//table[2]/following-sibling:example[1]",title="Change"]
+        == Change Clause
+
+        _This table contains information on polygon cells which are not included in ISO 10303-52. Remove table 2 completely and replace with:_
+      INPUT
+      expect(File.exist?("test.err")).to be true
+      expect(File.read("test.err"))
+        .not_to include "Editorial instruction is missing from change"
+    end
+
+    it "warns that editorial instruction should match amend type" do
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        = Fred
+        :docfile: test.adoc
+        :doctype: recommended-practice
+        :docsubtype: amendment
+        :no-pdf:
+
+        [change="add",locality="page=27",path="//table[2]",path_end="//table[2]/following-sibling:example[1]",title="Change"]
+        == Change Clause
+        _This table contains information on polygon cells which are not included in ISO 10303-52. Remove table 2 completely and replace with:_
+
+      INPUT
+      expect(File.exist?("test.err")).to be true
+      expect(File.read("test.err"))
+        .to include "'Add' change description should start with _Insert_"
+
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        = Fred
+        :docfile: test.adoc
+        :doctype: recommended-practice
+        :docsubtype: amendment
+        :no-pdf:
+
+        [change="delete",locality="page=27",path="//table[2]",path_end="//table[2]/following-sibling:example[1]",title="Change"]
+        == Change Clause
+        _This table contains information on polygon cells which are not included in ISO 10303-52. Remove table 2 completely and replace with:_
+
+      INPUT
+      expect(File.exist?("test.err")).to be true
+      expect(File.read("test.err"))
+        .to include "'Delete' change description should start with _Delete_"
+
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        = Fred
+        :docfile: test.adoc
+        :doctype: recommended-practice
+        :docsubtype: amendment
+        :no-pdf:
+
+        [change="modify",locality="page=27",path="//table[2]",path_end="//table[2]/following-sibling:example[1]",title="Change"]
+        == Change Clause
+        _This table contains information on polygon cells which are not included in ISO 10303-52. Remove table 2 completely and replace with:_
+
+      INPUT
+      expect(File.exist?("test.err")).to be true
+      expect(File.read("test.err"))
+        .to include "'Modify' change description should start with _Change_ "\
+                    "or _Replace_"
+
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        = Fred
+        :docfile: test.adoc
+        :doctype: recommended-practice
+        :docsubtype: amendment
+        :no-pdf:
+
+        [change="modify",locality="page=27",path="//table[2]",path_end="//table[2]/following-sibling:example[1]",title="Change"]
+        == Change Clause
+
+        _Replace this text_
+
+        ____
+        Hello
+        ____
+
+      INPUT
+      expect(File.exist?("test.err")).to be true
+      expect(File.read("test.err"))
+        .to include "'Modify' change description for change not involving "\
+                    "figure or equation should start with _Change_"
+
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        = Fred
+        :docfile: test.adoc
+        :doctype: recommended-practice
+        :docsubtype: amendment
+        :no-pdf:
+
+        [change="modify",locality="page=27",path="//table[2]",path_end="//table[2]/following-sibling:example[1]",title="Change"]
+        == Change Clause
+
+        _Change this text_
+
+        ____
+        [stem]
+        ++++
+        ABC
+        ++++
+        ____
+
+      INPUT
+      expect(File.exist?("test.err")).to be true
+      expect(File.read("test.err"))
+        .to include "'Modify' change description for change involving figure "\
+                    "or equation should start with _Replace_"
+
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        = Fred
+        :docfile: test.adoc
+        :doctype: recommended-practice
+        :docsubtype: amendment
+        :no-pdf:
+
+        [change="modify",locality="page=27",path="//table[2]",path_end="//table[2]/following-sibling:example[1]",title="Change"]
+        == Change Clause
+
+        _Replace this text_
+
+        ____
+        [stem]
+        ++++
+        ABC
+        ++++
+        ____
+
+      INPUT
+      expect(File.exist?("test.err")).to be true
+      expect(File.read("test.err"))
+        .not_to include "'Modify' change description for change involving "\
+                        "figure or equation should start with _Replace_"
+      expect(File.read("test.err"))
+        .not_to include "'Modify' change description for change not involving "\
+                        "figure or equation should start with _Change_"
+      expect(File.read("test.err"))
+        .not_to include "'Modify' change description should start with "\
+                        "_Change_ or _Replace_"
+    end
   end
 
   context "Warns of missing normative references" do
