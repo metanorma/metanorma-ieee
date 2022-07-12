@@ -587,6 +587,7 @@ RSpec.describe Metanorma::IEEE do
                <p id='_'>Text</p>
              </clause>
       <clause id='boilerplate_word_usage'>
+      <title>Word usage</title>
         <p id='_'>
           The word 
           <em>shall</em>
