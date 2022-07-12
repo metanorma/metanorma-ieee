@@ -301,7 +301,14 @@
   <note id="boilerplate_front">
     <p>The editing instructions contained in this {{ docsubtype | downcase }} define how to merge the material contained therein into the existing base standard and its amendments to form the comprehensive standard.</p>
     <p>The editing instructions are shown in <strong><em>bold italic</em></strong>. Four editing instructions are used: change, delete, insert, and replace. <strong><em>Change</em></strong> is used to make corrections in existing text or tables. The editing instruction specifies the location of the change and describes what is being changed by using <strike>strikethrough</strike> (to remove old material) and <underline>underscore</underline> (to add new material). <strong><em>Delete</em></strong> removes existing material. <strong><em>Insert</em></strong> adds new material without disturbing the existing material. Insertions may require renumbering. If so, renumbering instructions are given in the editing instruction. <strong><em>Replace</em></strong> is used to make changes in figures or equations by removing the existing figure or equation and replacing it with a new one. Editing instructions, change markings, and this NOTE will not be carried over into future editions because the changes will be incorporated into the base standard.</p>
-</note>
+  </note>
+  {% else %}
+  <clause id="boilerplate_word_usage">
+    <p>The word <em>shall</em> indicates mandatory requirements strictly to be followed in order to conform to the standard and from which no deviation is permitted (<em>shall</em> equals <em>is required to</em>).<fn><p>The use of the word <em>must</em> is deprecated and cannot be used when stating mandatory requirements; <em>must</em> is used only to describe unavoidable situations.</p></fn><fn><p>The use of <em>will</em> is deprecated and cannot be used when stating mandatory requirements; <em>will</em> is only used in statements of fact.</p></fn></p>
+    <p>The word <em>should</em> indicates that among several possibilities one is recommended as particularly suitable, without mentioning or excluding others; or that a certain course of action is preferred but not necessarily required (<em>should</em> equals <em>is recommended that</em>).</p>
+    <p>The word <em>may</em> is used to indicate a course of action permissible within the limits of the standard (<em>may</em> equals <em>is permitted to</em>).</p>
+    <p>The word <em>can</em> is used for statements of possibility and capability, whether material, physical, or causal (<em>can</em> equals <em>is able to</em>).</p>
+  </clause>
   {% endif %}
 </boilerplate>
 

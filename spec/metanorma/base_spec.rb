@@ -586,6 +586,69 @@ RSpec.describe Metanorma::IEEE do
                <title>Purpose</title>
                <p id='_'>Text</p>
              </clause>
+      <clause id='boilerplate_word_usage'>
+        <p id='_'>
+          The word 
+          <em>shall</em>
+           indicates mandatory requirements strictly to be followed in order to
+          conform to the standard and from which no deviation is permitted (
+          <em>shall</em>
+           equals 
+          <em>is required to</em>
+          ).
+          <fn>
+            <p id='_'>
+              The use of the word 
+              <em>must</em>
+               is deprecated and cannot be used when stating mandatory
+              requirements; 
+              <em>must</em>
+               is used only to describe unavoidable situations.
+            </p>
+          </fn>
+          <fn>
+            <p id='_'>
+              The use of 
+              <em>will</em>
+               is deprecated and cannot be used when stating mandatory
+              requirements; 
+              <em>will</em>
+               is only used in statements of fact.
+            </p>
+          </fn>
+        </p>
+        <p id='_'>
+          The word 
+          <em>should</em>
+           indicates that among several possibilities one is recommended as
+          particularly suitable, without mentioning or excluding others; or that
+          a certain course of action is preferred but not necessarily required (
+          <em>should</em>
+           equals 
+          <em>is recommended that</em>
+          ).
+        </p>
+        <p id='_'>
+          The word 
+          <em>may</em>
+           is used to indicate a course of action permissible within the limits
+          of the standard (
+          <em>may</em>
+           equals 
+          <em>is permitted to</em>
+          ).
+        </p>
+        <p id='_'>
+          The word 
+          <em>can</em>
+           is used for statements of possibility and capability, whether
+          material, physical, or causal (
+          <em>can</em>
+           equals 
+          <em>is able to</em>
+          ).
+        </p>
+      </clause>
            </clause>
            <terms id='_' obligation='normative'>
              <title>Definitions</title>

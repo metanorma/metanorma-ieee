@@ -130,6 +130,7 @@ def boilerplate(xmldoc)
     .gsub(/<p (?!id=)/, "<p id='_' ")
     .gsub(/<ol>/, "<ol id='_'>"),
   )
+  ret.at("//clause[@id='boilerplate_word_usage']").remove
   conv.smartquotes_cleanup(ret)
   strip_guid(ret.to_xml)
 end

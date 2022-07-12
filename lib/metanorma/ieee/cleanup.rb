@@ -8,6 +8,7 @@ module Metanorma
         intro_boilerplate(xml, isodoc)
         super
         initial_note(xml)
+        word_usage(xml)
       end
 
       def intro_boilerplate(xml, isodoc)
@@ -26,6 +27,14 @@ module Metanorma
         (n && s) or return
         s.children.empty? and s << " "
         s.children.first.previous = n.remove
+      end
+
+      def word_usage(xml)
+        n = xml.at("//boilerplate//clause[@id = 'boilerplate_word_usage']")
+          &.remove
+        s = xml.at("//clause[@type = 'overview']")
+        (n && s) or return
+        s << n
       end
 
       def obligations_cleanup_norm(xml)

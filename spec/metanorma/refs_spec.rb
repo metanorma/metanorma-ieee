@@ -310,7 +310,8 @@ RSpec.describe Metanorma::IEEE do
         </ieee-standard>
       OUTPUT
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
-      out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:references")
+      out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:references | "\
+                "//xmlns:clause[@id = 'boilerplate_word_usage']")
         .remove
       expect(xmlpp(strip_guid(out.to_xml)))
         .to be_equivalent_to xmlpp(output)
