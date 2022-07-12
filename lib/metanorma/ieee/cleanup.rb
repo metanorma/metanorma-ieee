@@ -100,6 +100,23 @@ module Metanorma
       def termlookup_cleanup(xmldoc)
         Metanorma::IEEE::TermLookupCleanup.new(xmldoc, @log).call
       end
+
+      def boilerplate_isodoc(xmldoc)
+        x = xmldoc.dup
+        x.root.add_namespace(nil, self.class::XML_NAMESPACE)
+        xml = Nokogiri::XML(x.to_xml)
+        i = isodoc_pr(@lang, @script)
+        i.bibdata_i18n(xml.at("//xmlns:bibdata"))
+        i.info(xml, nil)
+        i
+      end
+
+      def isodoc_pr(lang, script, i18nyaml = nil)
+        conv = presentation_xml_converter(EmptyAttr.new)
+        conv.i18n_init(lang, script, i18nyaml)
+        conv.metadata_init(lang, script, @i18n)
+        conv
+      end
     end
   end
 end

@@ -23,8 +23,8 @@ RSpec.describe Metanorma::IEEE do
           <docnumber>1000</docnumber>
           <date type='published'>2018-09-01</date>
           <date type='published' format="ddMMMyyyy">01 Sep 2018</date>
-          <date type='confirmed'>2018-07-01</date>
-          <date type='confirmed' format="ddMMMyyyy">01 Jul 2018</date>
+          <date type='issued'>2018-07-01</date>
+          <date type='issued' format="ddMMMyyyy">01 Jul 2018</date>
           <date type='feedback-ended'>2018-08-01</date>
           <date type='feedback-ended' format="ddMMMyyyy">01 Aug 2018</date>
                               <contributor>
@@ -245,7 +245,7 @@ RSpec.describe Metanorma::IEEE do
         :balloting_group_members=>["KL", "MN"],
         :balloting_group_type=>"entity",
         :circulateddate=>"XXX",
-        :confirmeddate=>"01 Jul 2018",
+        :confirmeddate=>"XXX",
         :copieddate=>"XXX",
         :corr=>"C1",
         :createddate=>"XXX",
@@ -257,8 +257,8 @@ RSpec.describe Metanorma::IEEE do
         :doctype_abbrev=>"Rec. Prac.",
         :docyear=>"2001",
         :draft=>"3.4",
-        :draft_month=>"January",
-        :draft_year=>"2000",
+        :draft_month=>"July",
+        :draft_year=>"2018",
         :draftinfo=>" (draft 3.4, 2000-01-01)",
         :edition=>"2",
         :feedback_endeddate=>"01 Aug 2018",
@@ -266,7 +266,7 @@ RSpec.describe Metanorma::IEEE do
         :implementeddate=>"XXX",
         :isbn_pdf=>"GHI",
         :isbn_print=>"JKL",
-        :issueddate=>"XXX",
+        :issueddate=>"01 Jul 2018",
         :iteration=>"3",
         :keywords=>["word2", "word1"],
         :lang=>"en",
@@ -372,7 +372,7 @@ RSpec.describe Metanorma::IEEE do
         :balloting_group_members=>["Balloter1", "Balloter2", "Balloter3", "Balloter4", "Balloter5", "Balloter6", "Balloter7", "Balloter8", "Balloter9"],
         :balloting_group_type=>"individual",
         :circulateddate=>"XXX",
-        :confirmeddate=>"&lt;Date Approved&gt;",
+        :confirmeddate=>"XXX",
         :copieddate=>"XXX",
         :createddate=>"XXX",
         :docnumeric=>"1000",
@@ -390,7 +390,7 @@ RSpec.describe Metanorma::IEEE do
         :implementeddate=>"XXX",
         :isbn_pdf=>"978-0-XXXX-XXXX-X",
         :isbn_print=>"978-0-XXXX-XXXX-X",
-        :issueddate=>"XXX",
+        :issueddate=>"&lt;Date Approved&gt;",
         :iteration=>"3",
         :keywords=>["word2", "word1"],
         :lang=>"en",

@@ -868,7 +868,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
             </span>
           </p>
           <p class='IEEEStdsTitleParaSans'>
-            <span lang='EN-US' xml:lang='EN-US'>Approved 01 Dec 1000</span>
+            <span lang='EN-US' xml:lang='EN-US'>Approved 01 Dec 1001</span>
           </p>
           <p class='IEEEStdsTitleParaSans'>
             <span lang='EN-US' xml:lang='EN-US'>

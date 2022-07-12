@@ -6,7 +6,7 @@ module IsoDoc
     class Metadata < IsoDoc::Metadata
       def initialize(lang, script, i18n, fonts_options = {})
         super
-        @metadata[:confirmeddate] = "&lt;Date Approved&gt;"
+        @metadata[:issueddate] = "&lt;Date Approved&gt;"
       end
 
       def bibdate(isoxml, _out)
