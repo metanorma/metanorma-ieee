@@ -1,5 +1,6 @@
 require_relative "init"
 require_relative "presentation_terms"
+require_relative "presentation_ref"
 require "isodoc"
 
 module IsoDoc
@@ -53,35 +54,6 @@ module IsoDoc
         l10n(ret)
       end
 
-      # Style manual 19
-      def anchor_linkend(node, linkend)
-        @bibanchors ||= biblio_ids_titles(node.document)
-        if node["citeas"] && i = @bibanchors[node["bibitemid"]]
-          biblio_anchor_linkend(node, i)
-        else super
-        end
-      end
-
-      def biblio_anchor_linkend(node, bib)
-        if %w(techreport standard).include?(bib[:type])
-          node["citeas"] + " #{bib[:ord]}"
-        else
-          "#{bib[:title]} " + node["citeas"]
-        end
-      end
-
-      def biblio_ids_titles(xmldoc)
-        xmldoc.xpath(ns("//references[@normative = 'false']/bibitem"))
-          .each_with_object({}) do |b, m|
-          m[b["id"]] =
-            { docid: pref_ref_code(b), type: b["type"],
-              title: b.at(ns("./title"))&.text ||
-                     b.at(ns("./formattedref"))&.text,
-              ord: b.at(ns("./docidentifier[@type = 'metanorma' or "\
-                           "@type = 'metanorma-ordinal']")).text }
-        end
-      end
-
       def anchor_linkend1(node)
         linkend = @xrefs.anchor(node["target"], :xref)
         @xrefs.anchor(node["target"], :type) == "clause" &&
@@ -102,10 +74,8 @@ module IsoDoc
         return if elem.parent.name == "bibitem" || elem["notag"] == "true"
 
         n = @xrefs.get[elem["id"]]
-        lbl = if n.nil? || n[:label].nil? || n[:label].empty?
-                @i18n.note
-              else
-                l10n("#{@i18n.note} #{n[:label]}")
+        lbl = if n.nil? || n[:label].nil? || n[:label].empty? then @i18n.note
+              else l10n("#{@i18n.note} #{n[:label]}")
               end
         prefix_name(elem, block_delim, lbl, "name")
       end
@@ -122,42 +92,6 @@ module IsoDoc
         i = display_order_xpath(docxml, "//annex", i)
         i = display_order_xpath(docxml, @xrefs.klass.bibliography_xpath, i)
         display_order_xpath(docxml, "//indexsect", i)
-      end
-
-      def bibrenderer
-        ::Relaton::Render::IEEE::General.new(language: @lang,
-                                             i18nhash: @i18n.get)
-      end
-
-      def bibrender_relaton(xml)
-        bib = xml.dup
-        bib["suppress_identifier"] == true and
-          bib.xpath(ns("./docidentifier")).each(&:remove)
-        xml.children =
-          "#{bibrenderer.render(bib.to_xml)}"\
-          "#{xml.xpath(ns('./docidentifier | ./uri | ./note | ./title')).to_xml}"
-      end
-
-      def creatornames(bibitem)
-        ::Relaton::Render::IEEE::General
-          .new(language: @lang, i18nhash: @i18n.get,
-               template: { (bibitem["type"] || "misc").to_sym =>
-                           "{{ creatornames }}" })
-          .parse1(RelatonBib::XMLParser.from_xml(bibitem.to_xml))
-      end
-
-      def bibliography_bibitem_number1(bibitem, idx)
-        if mn = bibitem.at(ns(".//docidentifier[@type = 'metanorma']"))
-          /^\[?\d\]?$/.match?(mn&.text) and
-            idx = mn.text.sub(/^\[B?/, "").sub(/\]$/, "").to_i
-        end
-        unless bibliography_bibitem_number_skip(bibitem)
-
-          idx += 1
-          bibitem.at(ns(".//docidentifier")).previous =
-            "<docidentifier type='metanorma-ordinal'>[B#{idx}]</docidentifier>"
-        end
-        idx
       end
 
       def annex1(elem)
@@ -211,6 +145,45 @@ module IsoDoc
             para.children = para.elements.first.children
         end
         para.children = "<strong><em>#{para.children.to_xml}</em></strong>"
+      end
+
+      def section(docxml)
+        boilerplate(docxml)
+        super
+      end
+
+      def boilerplate(docxml)
+        docxml.xpath(ns("//clause[@id = 'boilerplate-participants']//ul"))
+          .each do |ulist|
+          ulist.xpath(ns("./li")).each do |list|
+            participants1(list)
+          end
+          ulist.replace(ulist.children)
+        end
+      end
+
+      def participants1(list)
+        key = ""
+        map = list.xpath(ns(".//dt | .//dd")).each_with_object({}) do |dtd, m|
+          (dtd.name == "dt" and key = dtd.text) or
+            m[key] = dtd.text.strip
+        end
+        list.replace(participant_para(map))
+      end
+
+      def participant_para(map)
+        name = participant_name(map)
+        if map["role"]&.casecmp("member")&.zero?
+          (map["company"] and "<p type='officeorgmember'>#{name}</p>") or
+            "<p type='officemember'>#{name}</p>"
+        else
+          "<p type='officeholder' align='center'><strong>#{name}</strong>, "\
+            "<em>#{map['role']}</em></p>"
+        end
+      end
+
+      def participant_name(map)
+        map["company"] || map["name"] || "#{map['given']} #{map['surname']}"
       end
 
       include Init

@@ -9,6 +9,7 @@ module Metanorma
         super
         initial_note(xml)
         word_usage(xml)
+        participants(xml)
       end
 
       def intro_boilerplate(xml, isodoc)
@@ -114,17 +115,71 @@ module Metanorma
         x = xmldoc.dup
         x.root.add_namespace(nil, self.class::XML_NAMESPACE)
         xml = Nokogiri::XML(x.to_xml)
-        i = isodoc_pr(@lang, @script)
+        i = isodoc(@lang, @script)
         i.bibdata_i18n(xml.at("//xmlns:bibdata"))
         i.info(xml, nil)
         i
       end
 
-      def isodoc_pr(lang, script, i18nyaml = nil)
-        conv = presentation_xml_converter(EmptyAttr.new)
-        conv.i18n_init(lang, script, i18nyaml)
-        conv.metadata_init(lang, script, @i18n)
-        conv
+      def participants(xml)
+        populate_participants(xml, "boilerplate-participants-wg",
+                              "working group")
+        populate_participants(xml, "boilerplate-participants-bg",
+                              "balloting group")
+        populate_participants(xml, "boilerplate-participants-sb",
+                              "standards board")
+        p = xml.at(".//p[@type = 'emeritus_sign']")
+        ul = xml.at("//clause[@id = 'boilerplate-participants-sb']//ul")
+        p && ul and ul.next = p
+        xml.at("//clause[@type = 'participants']")&.remove
+      end
+
+      def populate_participants(xml, target, subtitle)
+        t = xml.at("//clause[@id = '#{target}']/membership")
+        s = xml.xpath("//clause[@type = 'participants']/clause").detect do |x|
+          n = x.at("./title") and n.text.strip.downcase == subtitle
+        end
+        t.replace(populate_participants1(s || t))
+      end
+
+      #       name
+      #       given
+      #       surname
+      #       role
+      #       company
+
+      def populate_participants1(clause)
+        clause.xpath(".//ul | .//ol").each do |ul|
+          ul.name = "ul"
+          ul.xpath("./li").each do |li|
+            populate_participants2(li)
+          end
+          ul.xpath(".//p[normalize-space() = '']").each(&:remove)
+        end
+        clause.children.to_xml
+      end
+
+      def populate_participants2(list)
+        c = HTMLEntities.new
+        if dl = list.at("./dl")
+          ret = extract_participants(dl)
+          dl.children = ret.keys.map do |k|
+            "<dt>#{k}</dt><dd>#{c.encode(ret[k], :hexadecimal)}</dd>"
+          end.join
+        else
+          list.children = "<dl><dt>name</dt><dd>#{list.children.to_xml}</dd>"\
+                          "<dt>role</dt><dd>member</dd></dl>"
+        end
+      end
+
+      def extract_participants(dlist)
+        key = ""
+        map = dlist.xpath("./dt | ./dd").each_with_object({}) do |dtd, m|
+          (dtd.name == "dt" and key = dtd.text.sub(/:+$/, "")) or
+            m[key.strip.downcase] = dtd.text.strip
+        end
+        map["role"] ||= "member"
+        map
       end
     end
   end

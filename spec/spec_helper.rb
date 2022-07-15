@@ -128,7 +128,9 @@ def boilerplate(xmldoc)
     conv.boilerplate_isodoc(xmldoc).populate_template(file, nil)
     .gsub(/<p>/, "<p id='_'>")
     .gsub(/<p (?!id=)/, "<p id='_' ")
-    .gsub(/<ol>/, "<ol id='_'>"),
+    .gsub(/<ol>/, "<ol id='_'>")
+    .gsub(/<ul>/, "<ul id='_'>")
+    .gsub(/<\/?membership>/, ""),
   )
   ret.at("//clause[@id='boilerplate_word_usage']").remove
   conv.smartquotes_cleanup(ret)

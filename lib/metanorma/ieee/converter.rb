@@ -34,6 +34,7 @@ module Metanorma
         when "Overview" then attrs[:type] = "overview"
         when "Scope" then attrs[:type] = "scope"
         when "Word Usage" then attrs[:type] = "word-usage"
+        when "Participants" then attrs[:type] = "participants"
         end
         super
       end

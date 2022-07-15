@@ -384,61 +384,298 @@ RSpec.describe Metanorma::IEEE do
                </p>
              </clause>
            </clause>
-           <clause id='boilerplate-participants'>
+                      <clause id='boilerplate-participants'>
              <title>Participants</title>
-             <p id='_'>
-               At the time this draft Recommended Practice was completed, the Working
-               Group had the following membership:
-             </p>
-             <p align='center' type='officeholder' id='_'>
-               <strong/>
-               ,
-               <em>Chair</em>
-             </p>
-             <p align='center' type='officeholder' id='_'>
-               <strong/>
-               ,
-               <em>Vice Chair</em>
-             </p>
-             <p id='_'>
-               The following members of the Standards Association balloting group voted
-               on this Recommended Practice. Balloters may have voted for approval,
-               disapproval, or abstention.
-             </p>
-             <p id='_'>
-               When the IEEE SA Standards Board approved this Recommended Practice on
-               01 Jan 1000, it had the following membership:
-             </p>
-             <p align='center' type='officeholder' id='_'>
-               <strong>&#x3c;Name&#x3e;</strong>
-               ,
-               <em>Chair</em>
-             </p>
-             <p align='center' type='officeholder' id='_'>
-               <strong>&#x3c;Name&#x3e;</strong>
-               ,
-               <em>Vice Chair</em>
-             </p>
-             <p align='center' type='officeholder' id='_'>
-               <strong>&#x3c;Name&#x3e;</strong>
-               ,
-               <em>Past Chair</em>
-             </p>
-             <p align='center' type='officeholder' id='_'>
-               <strong>&#x3c;Name&#x3e;</strong>
-               ,
-               <em>Secretary</em>
-             </p>
-             <p type='officemember' id='_'>SBMember1</p>
-             <p type='officemember' id='_'>SBMember2</p>
-             <p type='officemember' id='_'>SBMember3</p>
-             <p type='officemember' id='_'>SBMember4</p>
-             <p type='officemember' id='_'>SBMember5</p>
-             <p type='officemember' id='_'>SBMember6</p>
-             <p type='officemember' id='_'>SBMember7</p>
-             <p type='officemember' id='_'>SBMember8</p>
-             <p type='officemember' id='_'>SBMember9</p>
-             <p type='emeritus_sign' id='_'>*Member Emeritus</p>
+             <clause id='boilerplate-participants-wg'>
+               <p id='_'>
+                 At the time this draft Recommended Practice was completed, the Working
+                 Group had the following membership:
+               </p>
+               <ul id='_'>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>&#x3c;Chair Name&#x3e;</dd>
+                     <dt>role</dt>
+                     <dd>Chair</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>&#x3c;Vice-chair Name&#x3e;</dd>
+                     <dt>role</dt>
+                     <dd>Vice Chair</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>Participant1</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>Participant2</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>Participant3</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>Participant4</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>Participant5</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>Participant6</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>Participant7</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>Participant8</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>Participant9</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+               </ul>
+             </clause>
+             <clause id='boilerplate-participants-bg'>
+               <p id='_'>
+                 The following members of the Standards Association balloting group
+                 voted on this Recommended Practice. Balloters may have voted for
+                 approval, disapproval, or abstention.
+               </p>
+               <ul id='_'>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>Balloter1</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>Balloter2</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>Balloter3</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>Balloter4</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>Balloter5</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>Balloter6</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>Balloter7</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>Balloter8</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>Balloter9</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+               </ul>
+             </clause>
+             <clause id='boilerplate-participants-sb'>
+               <p id='_'>
+                 When the IEEE SA Standards Board approved this Recommended Practice on
+                 01 Jan 1000, it had the following membership:
+               </p>
+               <ul id='_'>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>&#x3c;Name&#x3e;</dd>
+                     <dt>role</dt>
+                     <dd>Chair</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>&#x3c;Name&#x3e;</dd>
+                     <dt>role</dt>
+                     <dd>Vice Chair</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>&#x3c;Name&#x3e;</dd>
+                     <dt>role</dt>
+                     <dd>Past Chair</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>&#x3c;Name&#x3e;</dd>
+                     <dt>role</dt>
+                     <dd>Secretary</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>SBMember1</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>SBMember2</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>SBMember3</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>SBMember4</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>SBMember5</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>SBMember6</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>SBMember7</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>SBMember8</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+                 <li>
+                   <dl>
+                     <dt>name</dt>
+                     <dd>SBMember9</dd>
+                     <dt>role</dt>
+                     <dd>Member</dd>
+                   </dl>
+                 </li>
+               </ul>
+               <p type='emeritus_sign' id='_'>*Member Emeritus</p>
+             </clause>
            </clause>
          </legal-statement>
          <feedback-statement>
@@ -847,6 +1084,228 @@ RSpec.describe Metanorma::IEEE do
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     expect(xmlpp(strip_guid(ret.at("//xmlns:sections").to_xml)))
+      .to be_equivalent_to(output)
+  end
+
+  it "processes participants" do
+    input = <<~INPUT
+      #{ASCIIDOC_BLANK_HDR}
+
+      == Participants
+
+      === Working Group
+
+      * {blank}
+      name::: Socrates
+      role::: Chair
+      * {blank}
+      name::: Plato
+      role::: Technical editor
+      * {blank}
+      name::: Aristotle
+      role::: Member
+      * Anaximander
+
+      This is an additional clause.
+
+      === Balloting Group
+
+      * Athanasius of Alexandria
+      * Basil of Caesarea
+
+      And this is another list
+
+      * {blank}
+      company::: Microsoft
+      * {blank}
+      company::: Alphabet
+      role::: Member
+
+      === Standards Board
+
+      * {blank}
+      name::: Aeschylus
+      role::: Chair
+      * {blank}
+      name::: Sophocles
+      role::: Technical editor
+      * {blank}
+      name::: Euripides
+      * Aristophanes
+
+      This is an additional clause.
+
+      * {blank}
+      company::: Waldorf-Astoria
+      * {blank}
+      company::: Ritz
+      role::: Member
+
+    INPUT
+    output = <<~OUTPUT
+      <clause id='boilerplate-participants'>
+         <title>Participants</title>
+         <clause id='boilerplate-participants-wg'>
+           <p id='_'>
+             At the time this draft Standard was completed, the Working Group had the
+             following membership:
+           </p>
+           <title>Working Group</title>
+           <ul id='_'>
+             <li>
+               <dl id='_'>
+                 <dt>name</dt>
+                 <dd>Socrates</dd>
+                 <dt>role</dt>
+                 <dd>Chair</dd>
+               </dl>
+             </li>
+             <li>
+               <dl id='_'>
+                 <dt>name</dt>
+                 <dd>Plato</dd>
+                 <dt>role</dt>
+                 <dd>Technical editor</dd>
+               </dl>
+             </li>
+             <li>
+               <dl id='_'>
+                 <dt>name</dt>
+                 <dd>Aristotle</dd>
+                 <dt>role</dt>
+                 <dd>Member</dd>
+               </dl>
+             </li>
+             <li>
+               <dl>
+                 <dt>name</dt>
+                 <dd>
+                   <p id='_'>Anaximander</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>member</dd>
+               </dl>
+             </li>
+           </ul>
+           <p id='_'>This is an additional clause.</p>
+         </clause>
+         <clause id='boilerplate-participants-bg'>
+           <p id='_'>
+             The following members of the Standards Association balloting group voted
+             on this Standard. Balloters may have voted for approval, disapproval, or
+             abstention.
+           </p>
+           <title>Balloting Group</title>
+           <ul id='_'>
+             <li>
+               <dl>
+                 <dt>name</dt>
+                 <dd>
+                   <p id='_'>Athanasius of Alexandria</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>member</dd>
+               </dl>
+             </li>
+             <li>
+               <dl>
+                 <dt>name</dt>
+                 <dd>
+                   <p id='_'>Basil of Caesarea</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>member</dd>
+               </dl>
+             </li>
+           </ul>
+           <p id='_'>And this is another list</p>
+           <ul id='_'>
+             <li>
+               <dl id='_'>
+                 <dt>company</dt>
+                 <dd>Microsoft</dd>
+                 <dt>role</dt>
+                 <dd>member</dd>
+               </dl>
+             </li>
+             <li>
+               <dl id='_'>
+                 <dt>company</dt>
+                 <dd>Alphabet</dd>
+                 <dt>role</dt>
+                 <dd>Member</dd>
+               </dl>
+             </li>
+           </ul>
+         </clause>
+         <clause id='boilerplate-participants-sb'>
+           <p id='_'>
+             When the IEEE SA Standards Board approved this Standard on &#x3c;Date
+             Approved&#x3e;, it had the following membership:
+           </p>
+           <title>Standards Board</title>
+           <ul id='_'>
+             <li>
+               <dl id='_'>
+                 <dt>name</dt>
+                 <dd>Aeschylus</dd>
+                 <dt>role</dt>
+                 <dd>Chair</dd>
+               </dl>
+             </li>
+             <li>
+               <dl id='_'>
+                 <dt>name</dt>
+                 <dd>Sophocles</dd>
+                 <dt>role</dt>
+                 <dd>Technical editor</dd>
+               </dl>
+             </li>
+             <li>
+               <dl id='_'>
+                 <dt>name</dt>
+                 <dd>Euripides</dd>
+                 <dt>role</dt>
+                 <dd>member</dd>
+               </dl>
+             </li>
+             <li>
+               <dl>
+                 <dt>name</dt>
+                 <dd>
+                   <p id='_'>Aristophanes</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>member</dd>
+               </dl>
+             </li>
+           </ul>
+           <p type='emeritus_sign' id='_'>*Member Emeritus</p>
+           <p id='_'>This is an additional clause.</p>
+           <ul id='_'>
+             <li>
+               <dl id='_'>
+                 <dt>company</dt>
+                 <dd>Waldorf-Astoria</dd>
+                 <dt>role</dt>
+                 <dd>member</dd>
+               </dl>
+             </li>
+             <li>
+               <dl id='_'>
+                 <dt>company</dt>
+                 <dd>Ritz</dd>
+                 <dt>role</dt>
+                 <dd>Member</dd>
+               </dl>
+             </li>
+           </ul>
+         </clause>
+       </clause>
+    OUTPUT
+    ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
+      .at("//xmlns:clause[@id = 'boilerplate-participants']")
+    expect(xmlpp(strip_guid(ret.to_xml)))
       .to be_equivalent_to(output)
   end
 end

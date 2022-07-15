@@ -53,9 +53,9 @@ module IsoDoc
       def officeholder_style(para)
         n = para.next_element
         p = para.previous_element
-        n && n.name == "p" && n["type"] == "officeholder" and
+        n && n.name == "p" && n["type"] != "officeholder" and
           klass = "IEEEStdsNamesCtrCxSpLast"
-        p && p.name == "p" && p["type"] == "officeholder" and
+        p && p.name == "p" && p["type"] != "officeholder" and
           klass = "IEEEStdsNamesCtrCxSpFirst"
         para["class"] = klass || "IEEEStdsNamesCtrCxSpMiddle"
       end
@@ -68,7 +68,7 @@ module IsoDoc
       BREAK
 
       def officemember_style(docxml)
-        docxml.xpath("//p[@type = 'officemember' or @type = 'officememberorg']")
+        docxml.xpath("//p[@type = 'officemember' or @type = 'officeorgmember']")
           .each do |p|
           p["class"] = "IEEEStdsNamesList"
         end

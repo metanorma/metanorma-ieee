@@ -1325,126 +1325,126 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         <span lang='EN-US' xml:lang='EN-US' style='font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
           <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
         </span>
-        <div>
-          <a name='boilerplate-participants' id='boilerplate-participants'/>
-          <p class='IEEEStdsLevel1frontmatter'>Participants</p>
-          <p class='IEEEStdsParagraph'>
-            <a name="_" id="_"/>
-            At the time this draft Standard was completed, the WG Working Group had
-            the following membership:
-          </p>
-          <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpLast'>
-            <a name="_" id="_"/>
-            <b>AB</b>
-            ,
-            <i>Chair</i>
-          </p>
-          <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpFirst'>
-            <a name="_" id="_"/>
-            <b>CD</b>
-            ,
-            <i>Vice Chair</i>
-          </p>
-        </div>
-        <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
-          <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
-          <div class='WordSection4'>
-            <p class='IEEEStdsNamesList'>
-              <a name="_" id="_"/>
-              E, F, Jr.
-            </p>
-            <p class='IEEEStdsNamesList'>
-              <a name="_" id="_"/>
-              GH
-            </p>
-            <p class='IEEEStdsNamesList'>
-              <a name="_" id="_"/>
-              IJ
-            </p>
-          </div>
-          <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
-            <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
-            <div class='WordSection5'>
-              <p class='IEEEStdsParagraph'>&#xa0;</p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                The following members of the SC Standards Association balloting group
-                voted on this Standard. Balloters may have voted for approval,
-                disapproval, or abstention.
-              </p>
-            </div>
-            <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
-              <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
-              <div class='WordSection6'>
-                <p class='IEEEStdsNamesList'>
-                  <a name="_" id="_"/>
-                  KL
-                </p>
-                <p class='IEEEStdsNamesList'>
-                  <a name="_" id="_"/>
-                  MN
-                </p>
-              </div>
-              <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
-                <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
-                <div class='WordSection7'>
-                  <p class='IEEEStdsParagraph'>&#xa0;</p>
-                  <p class='IEEEStdsParagraph'>
-                    <a name="_" id="_"/>
-                    When the IEEE SA Standards Board approved this Standard on , it
-                    had the following membership:
-                  </p>
-                  <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpLast'>
-                    <a name="_" id="_"/>
-                    <b>OP</b>
-                    ,
-                    <i>Chair</i>
-                  </p>
-                  <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpFirst'>
-                    <a name="_" id="_"/>
-                    <b>QR</b>
-                    ,
-                    <i>Vice Chair</i>
-                  </p>
-                  <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpFirst'>
-                    <a name="_" id="_"/>
-                    <b>ST</b>
-                    ,
-                    <i>Past Chair</i>
-                  </p>
-                  <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpFirst'>
-                    <a name="_" id="_"/>
-                    <b>UV</b>
-                    ,
-                    <i>Secretary</i>
-                  </p>
-                </div>
-                <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
-                  <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
-                  <div class='WordSection8'>
-                    <p class='IEEEStdsNamesList'>
-                      <a name="_" id="_"/>
-                      KL
-                    </p>
-                    <p class='IEEEStdsNamesList'>
-                      <a name="_" id="_"/>
-                      MN
-                    </p>
-                  </div>
-                  <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
-                    <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
-                    <div class='WordSection9'>
-                      <p class='IEEEStdsParaMemEmeritus'>
-                        <a name="_" id="_"/>
-                        *Member Emeritus
-                      </p>
-                    </div>
-                  </span>
-                </span>
-              </span>
-            </span>
-          </span>
-        </span>
+                 <div>
+           <a name='boilerplate-participants' id='boilerplate-participants'/>
+           <p class='IEEEStdsLevel1frontmatter'>Participants</p>
+           <p class='IEEEStdsParagraph'>
+             <a name="_" id="_"/>
+             At the time this draft Standard was completed, the WG Working Group had
+             the following membership:
+           </p>
+           <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpFirst'>
+             <a name="_" id="_"/>
+             <b>AB</b>
+             ,
+             <i>Chair</i>
+           </p>
+           <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpLast'>
+             <a name="_" id="_"/>
+             <b>CD</b>
+             ,
+             <i>Vice Chair</i>
+           </p>
+         </div>
+         <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
+           <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
+           <div class='WordSection4'>
+             <p class='IEEEStdsNamesList'>
+               <a name="_" id="_"/>
+               E, F, Jr.
+             </p>
+             <p class='IEEEStdsNamesList'>
+               <a name="_" id="_"/>
+               GH
+             </p>
+             <p class='IEEEStdsNamesList'>
+               <a name="_" id="_"/>
+               IJ
+             </p>
+           </div>
+           <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
+             <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
+             <div class='WordSection5'>
+               <p class='IEEEStdsParagraph'>&#xa0;</p>
+               <p class='IEEEStdsParagraph'>
+                 <a name="_" id="_"/>
+                 The following members of the SC Standards Association balloting group
+                 voted on this Standard. Balloters may have voted for approval,
+                 disapproval, or abstention.
+               </p>
+             </div>
+             <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
+               <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
+               <div class='WordSection6'>
+                 <p class='IEEEStdsNamesList'>
+                   <a name="_" id="_"/>
+                   KL
+                 </p>
+                 <p class='IEEEStdsNamesList'>
+                   <a name="_" id="_"/>
+                   MN
+                 </p>
+               </div>
+               <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
+                 <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
+                 <div class='WordSection7'>
+                   <p class='IEEEStdsParagraph'>&#xa0;</p>
+                   <p class='IEEEStdsParagraph'>
+                     <a name="_" id="_"/>
+                     When the IEEE SA Standards Board approved this Standard on , it
+                     had the following membership:
+                   </p>
+                   <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpFirst'>
+                     <a name="_" id="_"/>
+                     <b>OP</b>
+                     ,
+                     <i>Chair</i>
+                   </p>
+                   <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpMiddle'>
+                     <a name="_" id="_"/>
+                     <b>QR</b>
+                     ,
+                     <i>Vice Chair</i>
+                   </p>
+                   <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpMiddle'>
+                     <a name="_" id="_"/>
+                     <b>ST</b>
+                     ,
+                     <i>Past Chair</i>
+                   </p>
+                   <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpLast'>
+                     <a name="_" id="_"/>
+                     <b>UV</b>
+                     ,
+                     <i>Secretary</i>
+                   </p>
+                 </div>
+                 <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
+                   <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
+                   <div class='WordSection8'>
+                     <p class='IEEEStdsNamesList'>
+                       <a name="_" id="_"/>
+                       KL
+                     </p>
+                     <p class='IEEEStdsNamesList'>
+                       <a name="_" id="_"/>
+                       MN
+                     </p>
+                   </div>
+                   <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
+                     <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
+                     <div class='WordSection9'>
+                       <p class='IEEEStdsParaMemEmeritus'>
+                         <a name="_" id="_"/>
+                         *Member Emeritus
+                       </p>
+                     </div>
+                   </span>
+                 </span>
+               </span>
+             </span>
+           </span>
+         </span>
         <b style='mso-bidi-font-weight:normal'>
           <span lang='EN-US' xml:lang='EN-US' style='font-size:12.0pt; mso-bidi-font-size:10.0pt;font-family:&#x22;Arial&#x22;,sans-serif;mso-fareast-font-family: &#x22;Times New Roman&#x22;;mso-bidi-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
             <br clear='all' style='page-break-before:always;mso-break-type:section-break'/>

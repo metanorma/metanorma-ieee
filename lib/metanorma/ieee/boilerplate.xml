@@ -243,29 +243,61 @@
     </clause>
     <clause id="boilerplate-participants">
       <title>Participants</title>
+      <clause id="boilerplate-participants-wg">
         <p>At the time this draft {{ doctype }} was completed, the {{ working_group }} Working Group had the following membership:</p>
-        <p align="center" type="officeholder"><strong>{{ wg_members["chair"] }}</strong>, <em>Chair</em></p>
-        <p align="center" type="officeholder"><strong>{{ wg_members["vice-chair"] }}</strong>, <em>Vice Chair</em></p>
-        {% if wg_members["secretary"] %}<p align="center" type="officeholder"><strong>{{ wg_members["secretary"] }}</strong>, <em>Secretary</em></p>{% endif %}
-        {% for m in wg_members["org_members"] %}
-        <p type="officeorgmember">{{ m }}</p>
-        {% endfor %}
-        {% for m in wg_members["members"] %}
-        <p type="officemember">{{ m }}</p>
-        {% endfor %}
+        <membership>
+          <ul>
+            <li><dl><dt>name</dt><dd>&#x3c;Chair Name&#x3e;</dd><dt>role</dt><dd>Chair</dd></dl></li>
+            <li><dl><dt>name</dt><dd>&#x3c;Vice-chair Name&#x3e;</dd><dt>role</dt><dd>Vice Chair</dd></dl></li>
+            <li><dl><dt>name</dt><dd>Participant1</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>Participant2</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>Participant3</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>Participant4</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>Participant5</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>Participant6</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>Participant7</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>Participant8</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>Participant9</dd><dt>role</dt><dd>Member</dd></dl></li>
+          </ul>
+        </membership>
+      </clause>
+      <clause id="boilerplate-participants-bg">
         <p>The following members of the {{ balloting_group_type }} {{ balloting_group }} Standards Association balloting group voted on this {{ doctype }}. Balloters may have voted for approval, disapproval, or abstention.</p>
-        {% for m in balloting_group_members %}
-        <p type="officemember">{{ m }}</p>
-        {% endfor %}
+        <membership>
+        <ul>
+            <li><dl><dt>name</dt><dd>Balloter1</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>Balloter2</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>Balloter3</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>Balloter4</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>Balloter5</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>Balloter6</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>Balloter7</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>Balloter8</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>Balloter9</dd><dt>role</dt><dd>Member</dd></dl></li>
+        </ul>
+      </membership>
+      </clause>
+      <clause id="boilerplate-participants-sb">
         <p>When the IEEE SA Standards Board approved this {{ doctype }} on {{ issueddate }}, it had the following membership:</p>
-        <p align="center" type="officeholder"><strong>{{ std_board["chair"] }}</strong>, <em>Chair</em></p>
-        <p align="center" type="officeholder"><strong>{{ std_board["vice-chair"] }}</strong>, <em>Vice Chair</em></p>
-        <p align="center" type="officeholder"><strong>{{ std_board["past-chair"] }}</strong>, <em>Past Chair</em></p>
-        <p align="center" type="officeholder"><strong>{{ std_board["secretary"] }}</strong>, <em>Secretary</em></p>
-        {% for m in std_board["members"] %}
-        <p type="officemember">{{ m }}</p>
-        {% endfor %}
+        <membership>
+          <ul>
+            <li><dl><dt>name</dt><dd>&#x3c;Name&#x3e;</dd><dt>role</dt><dd>Chair</dd></dl></li>
+            <li><dl><dt>name</dt><dd>&#x3c;Name&#x3e;</dd><dt>role</dt><dd>Vice Chair</dd></dl></li>
+            <li><dl><dt>name</dt><dd>&#x3c;Name&#x3e;</dd><dt>role</dt><dd>Past Chair</dd></dl></li>
+            <li><dl><dt>name</dt><dd>&#x3c;Name&#x3e;</dd><dt>role</dt><dd>Secretary</dd></dl></li>
+            <li><dl><dt>name</dt><dd>SBMember1</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>SBMember2</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>SBMember3</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>SBMember4</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>SBMember5</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>SBMember6</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>SBMember7</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>SBMember8</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd>SBMember9</dd><dt>role</dt><dd>Member</dd></dl></li>
+        </ul>
+        </membership>
         <p type="emeritus_sign">*Member Emeritus</p>
+      </clause>
     </clause>
   </legal-statement>
   <feedback-statement>

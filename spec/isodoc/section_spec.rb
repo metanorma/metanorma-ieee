@@ -90,93 +90,93 @@ RSpec.describe IsoDoc::IEEE do
     INPUT
 
     presxml = <<~OUTPUT
-           <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-         <preface>
-           <abstract obligation="informative" displayorder="1">
-             <title>Foreword</title>
-             <p id="A">This is a preamble</p>
-           </abstract>
-           <introduction id="B" obligation="informative" displayorder="2">
-             <title>Introduction</title>
-             <clause id="C" inline-header="false" obligation="informative">
-               <title depth="2">Introduction Subsection</title>
-             </clause>
-             <p>This is patent boilerplate</p>
-           </introduction>
-           <acknowledgements obligation="informative" displayorder="3">
-             <title>Acknolwedgements</title>
-             <p id="A">This is a preamble</p>
-           </acknowledgements>
-         </preface>
-         <sections>
-           <clause id="D" obligation="normative" type="overview" displayorder="4">
-             <title depth="1">1.<tab/>Overview</title>
-             <p id="E">Text</p>
-             <clause id="D1" obligation="normative" type="scope">
-             <title depth="2">1.1.<tab/>Scope</title>
-             </clause>
-             <clause id="D2" obligation="normative" type="purpose">
-             <title depth="2">1.2.<tab/>Purpose</title>
-             </clause>
-           </clause>
-           <clause id="H" obligation="normative" displayorder="6">
-             <title depth="1">3.<tab/>Terms, Definitions, Symbols and Abbreviated Terms</title>
-             <terms id="I" obligation="normative">
-               <title depth="2">3.1.<tab/>Normal Terms</title>
-               <term id="J">
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+        <preface>
+          <abstract obligation="informative" displayorder="1">
+            <title>Foreword</title>
+            <p id="A">This is a preamble</p>
+          </abstract>
+          <introduction id="B" obligation="informative" displayorder="2">
+            <title>Introduction</title>
+            <clause id="C" inline-header="false" obligation="informative">
+              <title depth="2">Introduction Subsection</title>
+            </clause>
+            <p>This is patent boilerplate</p>
+          </introduction>
+          <acknowledgements obligation="informative" displayorder="3">
+            <title>Acknolwedgements</title>
+            <p id="A">This is a preamble</p>
+          </acknowledgements>
+        </preface>
+        <sections>
+          <clause id="D" obligation="normative" type="overview" displayorder="4">
+            <title depth="1">1.<tab/>Overview</title>
+            <p id="E">Text</p>
+            <clause id="D1" obligation="normative" type="scope">
+            <title depth="2">1.1.<tab/>Scope</title>
+            </clause>
+            <clause id="D2" obligation="normative" type="purpose">
+            <title depth="2">1.2.<tab/>Purpose</title>
+            </clause>
+          </clause>
+          <clause id="H" obligation="normative" displayorder="6">
+            <title depth="1">3.<tab/>Terms, Definitions, Symbols and Abbreviated Terms</title>
+            <terms id="I" obligation="normative">
+              <title depth="2">3.1.<tab/>Normal Terms</title>
+              <term id="J">
 
-               <p><strong>Term2</strong>:
+              <p><strong>Term2</strong>:
 
-       </p>
-       </term>
-             </terms>
-             <definitions id="K"><title>3.2.</title>
-               <dl>
-                 <dt>Symbol</dt>
-                 <dd>Definition</dd>
-               </dl>
-             </definitions>
-           </clause>
-           <definitions id="L" displayorder="7"><title>4.</title>
-             <dl>
-               <dt>Symbol</dt>
-               <dd>Definition</dd>
-             </dl>
-           </definitions>
-           <clause id="M" inline-header="false" obligation="normative" displayorder="8">
-             <title depth="1">5.<tab/>Clause 4</title>
-             <clause id="N" inline-header="false" obligation="normative">
-               <title depth="2">5.1.<tab/>Introduction</title>
-             </clause>
-             <clause id="O" inline-header="false" obligation="normative">
-               <title depth="2">5.2.<tab/>Clause 4.2</title>
-             </clause>
-           </clause>
-         </sections>
-         <annex id="P" inline-header="false" obligation="normative" displayorder="9">
-           <title><strong>Annex A</strong><br/><span class="obligation">(normative)</span><br/><strong>Annex</strong></title>
-           <clause id="Q" inline-header="false" obligation="normative">
-             <title depth="2">A.1.<tab/>Annex A.1</title>
-             <clause id="Q1" inline-header="false" obligation="normative">
-               <title depth="3">A.1.1.<tab/>Annex A.1a</title>
-             </clause>
-           </clause>
-           <references id="Q3" normative="false">
-             <title depth="2">A.2.<tab/>Annex Bibliography</title>
-           </references>
-         </annex>
-         <bibliography>
-           <references id="R" normative="true" obligation="informative" displayorder="5">
-             <title depth="1">2.<tab/>Normative References</title>
-           </references>
-           <clause id="S" obligation="informative" displayorder="10">
-             <title depth="1">Bibliography</title>
-             <references id="T" normative="false" obligation="informative">
-               <title depth="2">Bibliography Subsection</title>
-             </references>
-           </clause>
-         </bibliography>
-       </iso-standard>
+      </p>
+      </term>
+            </terms>
+            <definitions id="K"><title>3.2.</title>
+              <dl>
+                <dt>Symbol</dt>
+                <dd>Definition</dd>
+              </dl>
+            </definitions>
+          </clause>
+          <definitions id="L" displayorder="7"><title>4.</title>
+            <dl>
+              <dt>Symbol</dt>
+              <dd>Definition</dd>
+            </dl>
+          </definitions>
+          <clause id="M" inline-header="false" obligation="normative" displayorder="8">
+            <title depth="1">5.<tab/>Clause 4</title>
+            <clause id="N" inline-header="false" obligation="normative">
+              <title depth="2">5.1.<tab/>Introduction</title>
+            </clause>
+            <clause id="O" inline-header="false" obligation="normative">
+              <title depth="2">5.2.<tab/>Clause 4.2</title>
+            </clause>
+          </clause>
+        </sections>
+        <annex id="P" inline-header="false" obligation="normative" displayorder="9">
+          <title><strong>Annex A</strong><br/><span class="obligation">(normative)</span><br/><strong>Annex</strong></title>
+          <clause id="Q" inline-header="false" obligation="normative">
+            <title depth="2">A.1.<tab/>Annex A.1</title>
+            <clause id="Q1" inline-header="false" obligation="normative">
+              <title depth="3">A.1.1.<tab/>Annex A.1a</title>
+            </clause>
+          </clause>
+          <references id="Q3" normative="false">
+            <title depth="2">A.2.<tab/>Annex Bibliography</title>
+          </references>
+        </annex>
+        <bibliography>
+          <references id="R" normative="true" obligation="informative" displayorder="5">
+            <title depth="1">2.<tab/>Normative References</title>
+          </references>
+          <clause id="S" obligation="informative" displayorder="10">
+            <title depth="1">Bibliography</title>
+            <references id="T" normative="false" obligation="informative">
+              <title depth="2">Bibliography Subsection</title>
+            </references>
+          </clause>
+        </bibliography>
+      </iso-standard>
     OUTPUT
 
     html = <<~OUTPUT
@@ -575,11 +575,15 @@ RSpec.describe IsoDoc::IEEE do
        </body>
     OUTPUT
     word = <<~OUTPUT
-      <div>
+           <div>
          <a name='a' id='a'/>
-         <h1 style='mso-list:l13 level1 lfo33;'>Appendix C</h1>
+         <h1 style='mso-list:l13 level1 lfo33;'>
+           <br/>
+           <span style='font-weight:normal;'>(normative)</span>
+           <br/>
+           <b>Appendix C</b>
+         </h1>
          <div>
-           <h2 style='mso-list:l13 level2 lfo33;'>Bibliography</h2>
            <p class='IEEEStdsParagraph'>
              <a name='_' id='_'/>
               Bibliographical references are resources that provide additional or
@@ -589,7 +593,7 @@ RSpec.describe IsoDoc::IEEE do
            </p>
            <p class='IEEEStdsBibliographicEntry'>
              <a name='ABC' id='ABC'/>
-             DEF,
+             DEF, [DEF]
            </p>
          </div>
        </div>
@@ -601,10 +605,409 @@ RSpec.describe IsoDoc::IEEE do
       .convert("test", presxml, true))
       .at("//body").to_xml))
       .to be_equivalent_to xmlpp(html)
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
+    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
+    expect(strip_guid(xmlpp(doc.to_xml)))
+      .to be_equivalent_to xmlpp(word)
+  end
+
+  it "processes participants" do
+    input = <<~INPUT
+      <iso-standard xmlns="http://riboseinc.com/isoxml">
+      <boilerplate>
+              <legal-statement>
+             <clause id='boilerplate-participants'>
+         <title>Participants</title>
+         <clause id='boilerplate-participants-wg'>
+           <p id='_'>
+             At the time this draft Standard was completed, the Working Group had the
+             following membership:
+           </p>
+           <title>Working Group</title>
+           <ul id='_'>
+             <li>
+               <dl id='_'>
+                 <dt>name</dt>
+                 <dd>Socrates</dd>
+                 <dt>role</dt>
+                 <dd>Chair</dd>
+               </dl>
+             </li>
+             <li>
+               <dl id='_'>
+                 <dt>name</dt>
+                 <dd>Plato</dd>
+                 <dt>role</dt>
+                 <dd>Technical editor</dd>
+               </dl>
+             </li>
+             <li>
+               <dl id='_'>
+                 <dt>name</dt>
+                 <dd>Aristotle</dd>
+                 <dt>role</dt>
+                 <dd>Member</dd>
+               </dl>
+             </li>
+             <li>
+               <dl>
+                 <dt>name</dt>
+                 <dd>
+                   <p id='_'>Anaximander</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>member</dd>
+               </dl>
+             </li>
+           </ul>
+           <p id='_'>This is an additional clause.</p>
+         </clause>
+         <clause id='boilerplate-participants-bg'>
+           <p id='_'>
+             The following members of the Standards Association balloting group voted
+             on this Standard. Balloters may have voted for approval, disapproval, or
+             abstention.
+           </p>
+           <title>Balloting Group</title>
+           <ul id='_'>
+             <li>
+               <dl>
+                 <dt>name</dt>
+                 <dd>
+                   <p id='_'>Athanasius of Alexandria</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>member</dd>
+               </dl>
+             </li>
+             <li>
+               <dl>
+                 <dt>name</dt>
+                 <dd>
+                   <p id='_'>Basil of Caesarea</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>member</dd>
+               </dl>
+             </li>
+           </ul>
+           <p id='_'>And this is another list</p>
+           <ul id='_'>
+             <li>
+               <dl id='_'>
+                 <dt>company</dt>
+                 <dd>Microsoft</dd>
+                 <dt>role</dt>
+                 <dd>member</dd>
+               </dl>
+             </li>
+             <li>
+               <dl id='_'>
+                 <dt>company</dt>
+                 <dd>Alphabet</dd>
+                 <dt>role</dt>
+                 <dd>Member</dd>
+               </dl>
+             </li>
+           </ul>
+         </clause>
+         <clause id='boilerplate-participants-sb'>
+           <p id='_'>
+             When the IEEE SA Standards Board approved this Standard on &#x3c;Date
+             Approved&#x3e;, it had the following membership:
+           </p>
+           <title>Standards Board</title>
+           <ul id='_'>
+             <li>
+               <dl id='_'>
+                 <dt>name</dt>
+                 <dd>Aeschylus</dd>
+                 <dt>role</dt>
+                 <dd>Chair</dd>
+               </dl>
+             </li>
+             <li>
+               <dl id='_'>
+                 <dt>name</dt>
+                 <dd>Sophocles</dd>
+                 <dt>role</dt>
+                 <dd>Technical editor</dd>
+               </dl>
+             </li>
+             <li>
+               <dl id='_'>
+                 <dt>name</dt>
+                 <dd>Euripides</dd>
+                 <dt>role</dt>
+                 <dd>member</dd>
+               </dl>
+             </li>
+             <li>
+               <dl>
+                 <dt>name</dt>
+                 <dd>
+                   <p id='_'>Aristophanes</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>member</dd>
+               </dl>
+             </li>
+           </ul>
+           <p type='emeritus_sign' id='_'>*Member Emeritus</p>
+           <p id='_'>This is an additional clause.</p>
+           <ul id='_'>
+             <li>
+               <dl id='_'>
+                 <dt>company</dt>
+                 <dd>Waldorf-Astoria</dd>
+                 <dt>role</dt>
+                 <dd>member</dd>
+               </dl>
+             </li>
+             <li>
+               <dl id='_'>
+                 <dt>company</dt>
+                 <dd>Ritz</dd>
+                 <dt>role</dt>
+                 <dd>Member</dd>
+               </dl>
+             </li>
+           </ul>
+         </clause>
+       </clause>
+      </legal-statement>
+      </boilerplate>
+         </iso-standard>
+    INPUT
+    presxml = <<~OUTPUT
+      <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+         <boilerplate>
+           <legal-statement>
+             <clause id='boilerplate-participants'>
+               <title depth='1'>Participants</title>
+               <clause id='boilerplate-participants-wg'>
+                 <p id='_'>
+                    At the time this draft Standard was completed, the Working Group
+                   had the following membership:
+                 </p>
+                 <title depth='2'>Working Group</title>
+                 <p type='officeholder' align='center'>
+                   <strong>Socrates</strong>
+                   ,
+                   <em>Chair</em>
+                 </p>
+                 <p type='officeholder' align='center'>
+                   <strong>Plato</strong>
+                   ,
+                   <em>Technical editor</em>
+                 </p>
+                 <p type='officemember'>Aristotle</p>
+                 <p type='officemember'>Anaximander</p>
+                 <p id='_'>This is an additional clause.</p>
+               </clause>
+               <clause id='boilerplate-participants-bg'>
+                 <p id='_'>
+                    The following members of the Standards Association balloting group
+                   voted on this Standard. Balloters may have voted for approval,
+                   disapproval, or abstention.
+                 </p>
+                 <title depth='2'>Balloting Group</title>
+                 <p type='officemember'>Athanasius of Alexandria</p>
+                 <p type='officemember'>Basil of Caesarea</p>
+                 <p id='_'>And this is another list</p>
+                 <p type='officeorgmember'>Microsoft</p>
+                 <p type='officeorgmember'>Alphabet</p>
+               </clause>
+               <clause id='boilerplate-participants-sb'>
+                 <p id='_'>
+                    When the IEEE SA Standards Board approved this Standard on
+                   &#x3c;Date Approved&#x3e;, it had the following membership:
+                 </p>
+                 <title depth='2'>Standards Board</title>
+                 <p type='officeholder' align='center'>
+                   <strong>Aeschylus</strong>
+                   ,
+                   <em>Chair</em>
+                 </p>
+                 <p type='officeholder' align='center'>
+                   <strong>Sophocles</strong>
+                   ,
+                   <em>Technical editor</em>
+                 </p>
+                 <p type='officemember'>Euripides</p>
+                 <p type='officemember'>Aristophanes</p>
+                 <p type='emeritus_sign' id='_'>*Member Emeritus</p>
+                 <p id='_'>This is an additional clause.</p>
+                 <p type='officeorgmember'>Waldorf-Astoria</p>
+                 <p type='officeorgmember'>Ritz</p>
+               </clause>
+             </clause>
+           </legal-statement>
+         </boilerplate>
+       </iso-standard>
+    OUTPUT
+    html = <<~OUTPUT
+      #{HTML_HDR}
+           <div class='authority'>
+             <div class='boilerplate-legal'>
+               <div id='boilerplate-participants'>
+                 <h1>Participants</h1>
+                 <div id='boilerplate-participants-wg'>
+                   <h2>Working Group</h2>
+                   <p id='_'>
+                      At the time this draft Standard was completed, the Working Group
+                     had the following membership:
+                   </p>
+                   <p style='text-align:center;' type='officeholder'>
+                     <b>Socrates</b>
+                      ,
+                     <i>Chair</i>
+                   </p>
+                   <p style='text-align:center;' type='officeholder'>
+                     <b>Plato</b>
+                      ,
+                     <i>Technical editor</i>
+                   </p>
+                   <p type='officemember'>Aristotle</p>
+                   <p type='officemember'>Anaximander</p>
+                   <p id='_'>This is an additional clause.</p>
+                 </div>
+                 <div id='boilerplate-participants-bg'>
+                   <h2>Balloting Group</h2>
+                   <p id='_'>
+                      The following members of the Standards Association balloting
+                     group voted on this Standard. Balloters may have voted for
+                     approval, disapproval, or abstention.
+                   </p>
+                   <p type='officemember'>Athanasius of Alexandria</p>
+                   <p type='officemember'>Basil of Caesarea</p>
+                   <p id='_'>And this is another list</p>
+                   <p type='officeorgmember'>Microsoft</p>
+                   <p type='officeorgmember'>Alphabet</p>
+                 </div>
+                 <div id='boilerplate-participants-sb'>
+                   <h2>Standards Board</h2>
+                   <p id='_'>
+                      When the IEEE SA Standards Board approved this Standard on
+                     &#x3c;Date Approved&#x3e;, it had the following membership:
+                   </p>
+                   <p style='text-align:center;' type='officeholder'>
+                     <b>Aeschylus</b>
+                      ,
+                     <i>Chair</i>
+                   </p>
+                   <p style='text-align:center;' type='officeholder'>
+                     <b>Sophocles</b>
+                      ,
+                     <i>Technical editor</i>
+                   </p>
+                   <p type='officemember'>Euripides</p>
+                   <p type='officemember'>Aristophanes</p>
+                   <p id='_' type='emeritus_sign'>*Member Emeritus</p>
+                   <p id='_'>This is an additional clause.</p>
+                   <p type='officeorgmember'>Waldorf-Astoria</p>
+                   <p type='officeorgmember'>Ritz</p>
+                 </div>
+               </div>
+             </div>
+           </div>
+           <p class='zzSTDTitle1'/>
+         </div>
+       </body>
+    OUTPUT
+    word = <<~OUTPUT
+           <div>
+         <a name='boilerplate-participants' id='boilerplate-participants'/>
+         <p class='IEEEStdsLevel1frontmatter'>Participants</p>
+         <div>
+           <a name='boilerplate-participants-wg' id='boilerplate-participants-wg'/>
+           <p class='IEEEStdsLevel2frontmatter'>Working Group</p>
+           <p class='IEEEStdsParagraph'>
+             <a name='_' id='_'/>
+              At the time this draft Standard was completed, the Working Group had the
+             following membership:
+           </p>
+           <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpFirst'>
+             <b>Socrates</b>
+              ,
+             <i>Chair</i>
+           </p>
+           <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpLast'>
+             <b>Plato</b>
+              ,
+             <i>Technical editor</i>
+           </p>
+           <p class='IEEEStdsNamesList'>Aristotle</p>
+           <p class='IEEEStdsNamesList'>Anaximander</p>
+           <p class='IEEEStdsParagraph'>
+             <a name='_' id='_'/>
+             This is an additional clause.
+           </p>
+         </div>
+         <div>
+           <a name='boilerplate-participants-bg' id='boilerplate-participants-bg'/>
+           <p class='IEEEStdsLevel2frontmatter'>Balloting Group</p>
+           <p class='IEEEStdsParagraph'>
+             <a name='_' id='_'/>
+              The following members of the Standards Association balloting group voted
+             on this Standard. Balloters may have voted for approval, disapproval, or
+             abstention.
+           </p>
+           <p class='IEEEStdsNamesList'>Athanasius of Alexandria</p>
+           <p class='IEEEStdsNamesList'>Basil of Caesarea</p>
+           <p class='IEEEStdsParagraph'>
+             <a name='_' id='_'/>
+             And this is another list
+           </p>
+           <p class='IEEEStdsNamesList'>Microsoft</p>
+           <p class='IEEEStdsNamesList'>Alphabet</p>
+         </div>
+         <div>
+           <a name='boilerplate-participants-sb' id='boilerplate-participants-sb'/>
+           <p class='IEEEStdsLevel2frontmatter'>Standards Board</p>
+           <p class='IEEEStdsParagraph'>
+             <a name='_' id='_'/>
+              When the IEEE SA Standards Board approved this Standard on Date Approved,
+             it had the following membership:
+           </p>
+           <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpFirst'>
+             <b>Aeschylus</b>
+              ,
+             <i>Chair</i>
+           </p>
+           <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpLast'>
+             <b>Sophocles</b>
+              ,
+             <i>Technical editor</i>
+           </p>
+           <p class='IEEEStdsNamesList'>Euripides</p>
+           <p class='IEEEStdsNamesList'>Aristophanes</p>
+           <p class='IEEEStdsParaMemEmeritus'>
+             <a name='_' id='_'/>
+             *Member Emeritus
+           </p>
+           <p class='IEEEStdsParagraph'>
+             <a name='_' id='_'/>
+             This is an additional clause.
+           </p>
+           <p class='IEEEStdsNamesList'>Waldorf-Astoria</p>
+           <p class='IEEEStdsNamesList'>Ritz</p>
+         </div>
+       </div>
+    OUTPUT
+    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
+  .convert("test", input, true)))
+      .to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
+      .convert("test", presxml, true))
+      .at("//body").to_xml))
+      .to be_equivalent_to xmlpp(html)
+    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
+    expect(File.exist?("test.doc")).to be true
+    doc = Nokogiri::XML(word2xml("test.doc"))
+      .at("//xmlns:div[xmlns:a[@id = 'boilerplate-participants']]")
     expect(strip_guid(xmlpp(doc.to_xml)))
       .to be_equivalent_to xmlpp(word)
   end
