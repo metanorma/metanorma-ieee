@@ -49,6 +49,8 @@
 
 	<xsl:variable name="doctype" select="(//ieee:ieee-standard)[1]/ieee:bibdata/ieee:ext/ieee:doctype[normalize-space(@language) = '']"/> <!-- values standard, guide, recommended-practice -->
 	
+	<xsl:variable name="doctype_localized" select="(//ieee:ieee-standard)[1]/ieee:bibdata/ieee:ext/ieee:doctype[@language = $lang]"/>
+	
 	<xsl:variable name="subdoctype" select="(//ieee:ieee-standard)[1]/ieee:bibdata/ieee:ext/ieee:subdoctype[normalize-space(@language) = '']"/> <!-- has values amendment, corrigendum, erratum -->
 	
 	<xsl:variable name="stage_" select="normalize-space((//ieee:ieee-standard)[1]/ieee:bibdata/ieee:status/ieee:stage)"/>
@@ -81,6 +83,28 @@
 			<xsl:when test="($doctype = 'standard' or $doctype = 'guide' or $doctype = 'recommended-practice') and $stage = 'published'">standard</xsl:when>
 			<xsl:otherwise><xsl:value-of select="$doctype"/></xsl:otherwise>
 		</xsl:choose>
+	</xsl:variable>
+	
+	<xsl:variable name="title_prefix">
+		<xsl:choose>
+			<xsl:when test="$current_template = 'draft'">
+				<xsl:text>Draft </xsl:text>
+			</xsl:when>
+			<xsl:when test="$current_template = 'standard'">
+				<xsl:text>IEEE </xsl:text>
+			</xsl:when>
+		</xsl:choose>
+		<xsl:if test="$trial_use = 'true'">Trial-Use </xsl:if>
+		<xsl:value-of select="$doctype_localized"/>
+		<xsl:if test="normalize-space($doctype_localized) = ''">
+			<xsl:choose>
+				<xsl:when test="$doctype = 'standard'">Standard</xsl:when>
+				<xsl:when test="$doctype = 'guide'">Guide</xsl:when>
+				<xsl:when test="$doctype = 'recommended-practice'">Recommended Practice</xsl:when>
+			</xsl:choose>
+		</xsl:if>
+		<xsl:text> for </xsl:text>
+		<!-- <xsl:copy-of select="$title"/> -->
 	</xsl:variable>
 	
 	<xsl:variable name="color_blue">
@@ -310,8 +334,6 @@
 					</xsl:variable>
 					<xsl:variable name="draft_year" select="substring($revision_month, 1, 4)"/>
 					
-					<xsl:variable name="doctype_localized" select="/ieee:ieee-standard/ieee:bibdata/ieee:ext/ieee:doctype[@language = $lang]"/>
-					
 					<xsl:variable name="title_intro">
 						<!-- Example Local and Metropolitan Area Networks— -->
 						<xsl:apply-templates select="/ieee:ieee-standard/ieee:bibdata/ieee:title[@language = 'en']/node()"/>
@@ -379,30 +401,6 @@
 							</xsl:when>
 						</xsl:choose>
 					</xsl:variable>
-					
-					<xsl:variable name="title_prefix">
-						<xsl:choose>
-							<xsl:when test="$current_template = 'draft'">
-								<xsl:text>Draft </xsl:text>
-							</xsl:when>
-							<xsl:when test="$current_template = 'standard'">
-								<xsl:text>IEEE </xsl:text>
-							</xsl:when>
-						</xsl:choose>
-						<xsl:if test="$trial_use = 'true'">Trial-Use </xsl:if>
-						<xsl:value-of select="$doctype_localized"/>
-						<xsl:if test="normalize-space($doctype_localized) = ''">
-							<xsl:choose>
-								<xsl:when test="$doctype = 'standard'">Standard</xsl:when>
-								<xsl:when test="$doctype = 'guide'">Guide</xsl:when>
-								<xsl:when test="$doctype = 'recommended-practice'">Recommended Practice</xsl:when>
-							</xsl:choose>
-						</xsl:if>
-						<xsl:text> for </xsl:text>
-						<!-- <xsl:copy-of select="$title"/> -->
-					</xsl:variable>
-					
-					
 					
 					
 					
@@ -11809,6 +11807,7 @@
 		</xsl:call-template>
 	</xsl:template><xsl:template name="insertKeywords">
 		<xsl:param name="sorting" select="'true'"/>
+		<xsl:param name="meta" select="'false'"/>
 		<xsl:param name="charAtEnd" select="'.'"/>
 		<xsl:param name="charDelim" select="', '"/>
 		<xsl:choose>
@@ -11816,6 +11815,7 @@
 				<xsl:for-each select="//*[contains(local-name(), '-standard')]/*[local-name() = 'bibdata']//*[local-name() = 'keyword']">
 					<xsl:sort data-type="text" order="ascending"/>
 					<xsl:call-template name="insertKeyword">
+						<xsl:with-param name="meta" select="$meta"/>
 						<xsl:with-param name="charAtEnd" select="$charAtEnd"/>
 						<xsl:with-param name="charDelim" select="$charDelim"/>
 					</xsl:call-template>
@@ -11824,6 +11824,7 @@
 			<xsl:otherwise>
 				<xsl:for-each select="//*[contains(local-name(), '-standard')]/*[local-name() = 'bibdata']//*[local-name() = 'keyword']">
 					<xsl:call-template name="insertKeyword">
+						<xsl:with-param name="meta" select="$meta"/>
 						<xsl:with-param name="charAtEnd" select="$charAtEnd"/>
 						<xsl:with-param name="charDelim" select="$charDelim"/>
 					</xsl:call-template>
@@ -11833,7 +11834,15 @@
 	</xsl:template><xsl:template name="insertKeyword">
 		<xsl:param name="charAtEnd"/>
 		<xsl:param name="charDelim"/>
-		<xsl:apply-templates/>
+		<xsl:param name="meta"/>
+		<xsl:choose>
+			<xsl:when test="$meta = 'true'">
+				<xsl:value-of select="."/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:apply-templates/>
+			</xsl:otherwise>
+		</xsl:choose>
 		<xsl:choose>
 			<xsl:when test="position() != last()"><xsl:value-of select="$charDelim"/></xsl:when>
 			<xsl:otherwise><xsl:value-of select="$charAtEnd"/></xsl:otherwise>
@@ -11852,21 +11861,7 @@
 						<xsl:variable name="title">
 							<xsl:for-each select="(//*[contains(local-name(), '-standard')])[1]/*[local-name() = 'bibdata']">
 								
-										<!-- <xsl:variable name="full_title">
-											<item>
-												<xsl:value-of select="*[local-name() = 'title'][@language = 'intro-en']"/>
-											</item>
-											<item>
-												<xsl:value-of select="*[local-name() = 'title'][@language = 'main-en']"/>
-											</item>
-											<item>
-												<xsl:value-of select="*[local-name() = 'title'][@language = 'part-en']"/>
-											</item>
-										</xsl:variable>
-										<xsl:for-each select="xalan:nodeset($full_title)/item[normalize-space() != '']">
-											<xsl:value-of select="."/>
-											<xsl:if test="position() != last()"> - </xsl:if>
-										</xsl:for-each> -->
+										<xsl:value-of select="$title_prefix"/>
 										<xsl:value-of select="*[local-name() = 'title']"/>
 									
 							</xsl:for-each>
@@ -11896,7 +11891,9 @@
 						<xsl:value-of select="normalize-space($abstract)"/>
 					</dc:description>
 					<pdf:Keywords>
-						<xsl:call-template name="insertKeywords"/>
+						<xsl:call-template name="insertKeywords">
+							<xsl:with-param name="meta">true</xsl:with-param>
+						</xsl:call-template>
 					</pdf:Keywords>
 				</rdf:Description>
 				<rdf:Description xmlns:xmp="http://ns.adobe.com/xap/1.0/" rdf:about="">
