@@ -38,10 +38,32 @@ RSpec.describe Metanorma::IEEE do
             surname:::: Jones
             forename:::: Indiana
 
+        [[ref5]]
+        [%bibitem]
+        === “Indiana Jones and your Last Crusade”
+        type:: book
+        title::
+          type::: main
+          content::: Indiana Jones and the Last Crusade
+
+        ==== Contributor
+        organization::
+          name::: International Organization for Standardization
+          abbreviation::: ISO
+        role::
+          type::: publisher
+
+        ==== Contributor
+        person::
+          name:::
+            surname:::: Jones
+            forename:::: Indiana
+
+
       INPUT
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       expect(out.xpath("//xmlns:references/xmlns:bibitem/@id")
-        .map(&:value)).to be_equivalent_to ["ref3", "ref1", "ref4", "ref2"]
+        .map(&:value)).to be_equivalent_to ["ref3", "ref1", "ref4", "ref5", "ref2"]
     end
   end
 

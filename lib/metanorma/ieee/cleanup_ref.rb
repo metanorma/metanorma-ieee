@@ -34,6 +34,7 @@ module Metanorma
         name = designator_or_name(bib)
         title = bib.at("./title[@type = 'main']")&.text ||
           bib.at("./title")&.text || bib.at("./formattedref")&.text
+        title.gsub!(/[[:punct:]]/, "")
         "#{name}. #{title}"
       end
 
