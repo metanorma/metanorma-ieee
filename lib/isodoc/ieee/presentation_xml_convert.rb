@@ -153,33 +153,49 @@ module IsoDoc
       end
 
       def boilerplate(docxml)
-        docxml.xpath(ns("//clause[@id = 'boilerplate-participants']//ul"))
-          .each do |ulist|
-          ulist.xpath(ns("./li")).each do |list|
-            participants1(list)
-          end
+        docxml.xpath(ns("//clause[@id = 'boilerplate-participants']/"\
+                        "clause/title")).each(&:remove)
+        docxml.xpath(ns("//clause[@id = 'boilerplate-participants']/clause"))
+          .each do |clause|
+          participants(clause)
+        end
+      end
+
+      def participants(clause)
+        clause.xpath(ns(".//ul")).each_with_index do |ulist, idx|
+          ulist.xpath(ns("./li")).each { |list| participants1(list, idx) }
           ulist.replace(ulist.children)
         end
       end
 
-      def participants1(list)
+      def participants1(list, idx)
         key = ""
         map = list.xpath(ns(".//dt | .//dd")).each_with_object({}) do |dtd, m|
           (dtd.name == "dt" and key = dtd.text) or
             m[key] = dtd.text.strip
         end
-        list.replace(participant_para(map))
+        list.replace(participant_para(map, idx))
       end
 
-      def participant_para(map)
+      def participant_para(map, idx)
         name = participant_name(map)
         if map["role"]&.casecmp("member")&.zero?
-          (map["company"] and "<p type='officeorgmember'>#{name}</p>") or
-            "<p type='officemember'>#{name}</p>"
+          participant_member_para(map, name, idx)
         else
-          "<p type='officeholder' align='center'><strong>#{name}</strong>, "\
-            "<em>#{map['role']}</em></p>"
+          participant_officeholder_para(map, name, idx)
         end
+      end
+
+      def participant_member_para(map, name, _idx)
+        (map["company"] and "<p type='officeorgmember'>#{name}</p>") or
+          "<p type='officemember'>#{name}</p>"
+      end
+
+      def participant_officeholder_para(map, name, idx)
+        name = "<strong>#{name}</strong>" if idx.zero?
+        br = map["role"].size > 30 ? "<br/>" : ""
+        "<p type='officeholder' align='center'>#{name}, #{br}"\
+          "<em>#{map['role']}</em></p>"
       end
 
       def participant_name(map)

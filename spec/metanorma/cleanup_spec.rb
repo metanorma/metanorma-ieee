@@ -1096,14 +1096,23 @@ RSpec.describe Metanorma::IEEE do
       === Working Group
 
       * {blank}
+      +
+      --
       name::: Socrates
       role::: Chair
+      --
       * {blank}
+      +
+      --
       name::: Plato
       role::: Technical editor
+      --
       * {blank}
+      +
+      --
       name::: Aristotle
       role::: Member
+      --
       * Anaximander
 
       This is an additional clause.
@@ -1123,15 +1132,15 @@ RSpec.describe Metanorma::IEEE do
 
       === Standards Board
 
-      * {blank}
+      item::
       name::: Aeschylus
       role::: Chair
-      * {blank}
+      item::
       name::: Sophocles
       role::: Technical editor
-      * {blank}
+      item::
       name::: Euripides
-      * Aristophanes
+      item:: Aristophanes
 
       This is an additional clause.
 

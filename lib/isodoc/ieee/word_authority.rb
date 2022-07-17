@@ -86,6 +86,7 @@ module IsoDoc
 
       def three_column_officemembers_split(div)
         prev = false
+        div.xpath(".//div").each { |d| d.replace(d.children) }
         div.elements.each_with_object([[]]) do |e, m|
           member = e.name == "p" && e["type"] == "officemember"
           (prev == member and m[-1] << e.to_xml) or m << [e.to_xml]

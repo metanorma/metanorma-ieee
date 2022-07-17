@@ -575,7 +575,7 @@ RSpec.describe IsoDoc::IEEE do
        </body>
     OUTPUT
     word = <<~OUTPUT
-           <div>
+      <div>
          <a name='a' id='a'/>
          <h1 style='mso-list:l13 level1 lfo33;'>
            <br/>
@@ -700,7 +700,7 @@ RSpec.describe IsoDoc::IEEE do
                  <dt>company</dt>
                  <dd>Microsoft</dd>
                  <dt>role</dt>
-                 <dd>member</dd>
+                 <dd>Liaison</dd>
                </dl>
              </li>
              <li>
@@ -708,7 +708,7 @@ RSpec.describe IsoDoc::IEEE do
                  <dt>company</dt>
                  <dd>Alphabet</dd>
                  <dt>role</dt>
-                 <dd>Member</dd>
+                 <dd>IEEE Standards Program Manager, Document Development</dd>
                </dl>
              </li>
            </ul>
@@ -792,7 +792,6 @@ RSpec.describe IsoDoc::IEEE do
                     At the time this draft Standard was completed, the Working Group
                    had the following membership:
                  </p>
-                 <title depth='2'>Working Group</title>
                  <p type='officeholder' align='center'>
                    <strong>Socrates</strong>
                    ,
@@ -813,19 +812,19 @@ RSpec.describe IsoDoc::IEEE do
                    voted on this Standard. Balloters may have voted for approval,
                    disapproval, or abstention.
                  </p>
-                 <title depth='2'>Balloting Group</title>
                  <p type='officemember'>Athanasius of Alexandria</p>
                  <p type='officemember'>Basil of Caesarea</p>
                  <p id='_'>And this is another list</p>
-                 <p type='officeorgmember'>Microsoft</p>
-                 <p type='officeorgmember'>Alphabet</p>
+                 <p type='officeholder' align='center'>Microsoft, <em>Liaison</em></p>
+          <p type='officeholder' align='center'>Alphabet, <br/>
+            <em>IEEE Standards Program Manager, Document Development</em>
+          </p>
                </clause>
                <clause id='boilerplate-participants-sb'>
                  <p id='_'>
                     When the IEEE SA Standards Board approved this Standard on
                    &#x3c;Date Approved&#x3e;, it had the following membership:
                  </p>
-                 <title depth='2'>Standards Board</title>
                  <p type='officeholder' align='center'>
                    <strong>Aeschylus</strong>
                    ,
@@ -855,7 +854,6 @@ RSpec.describe IsoDoc::IEEE do
                <div id='boilerplate-participants'>
                  <h1>Participants</h1>
                  <div id='boilerplate-participants-wg'>
-                   <h2>Working Group</h2>
                    <p id='_'>
                       At the time this draft Standard was completed, the Working Group
                      had the following membership:
@@ -875,7 +873,6 @@ RSpec.describe IsoDoc::IEEE do
                    <p id='_'>This is an additional clause.</p>
                  </div>
                  <div id='boilerplate-participants-bg'>
-                   <h2>Balloting Group</h2>
                    <p id='_'>
                       The following members of the Standards Association balloting
                      group voted on this Standard. Balloters may have voted for
@@ -884,11 +881,17 @@ RSpec.describe IsoDoc::IEEE do
                    <p type='officemember'>Athanasius of Alexandria</p>
                    <p type='officemember'>Basil of Caesarea</p>
                    <p id='_'>And this is another list</p>
-                   <p type='officeorgmember'>Microsoft</p>
-                   <p type='officeorgmember'>Alphabet</p>
+                               <p style='text-align:center;' type='officeholder'>
+              Microsoft,
+              <i>Liaison</i>
+            </p>
+            <p style='text-align:center;' type='officeholder'>
+              Alphabet,
+              <br/>
+              <i>IEEE Standards Program Manager, Document Development</i>
+            </p>
                  </div>
                  <div id='boilerplate-participants-sb'>
-                   <h2>Standards Board</h2>
                    <p id='_'>
                       When the IEEE SA Standards Board approved this Standard on
                      &#x3c;Date Approved&#x3e;, it had the following membership:
@@ -918,12 +921,25 @@ RSpec.describe IsoDoc::IEEE do
        </body>
     OUTPUT
     word = <<~OUTPUT
+      <body lang='EN-US' xml:lang='EN-US' link='blue' vlink='#954F72'>
+         <p class='IEEEStdsParagraph'>
+           <br clear='all' class='section'/>
+         </p>
+         <span lang='EN-US' xml:lang='EN-US' style='font-size:10.0pt;font-family:&#x22;Times New Roman&#x22;,serif; mso-fareast-font-family:&#x22;Times New Roman&#x22;;color:white;mso-ansi-language:EN-US; mso-fareast-language:JA;mso-bidi-language:AR-SA'>
+           <br clear='all' style='page-break-before:always;mso-break-type:section-break'/>
+         </span>
+         <!-- points to feedback statement as footnote -->
+         <div class='WordSection3'>
            <div>
-         <a name='boilerplate-participants' id='boilerplate-participants'/>
-         <p class='IEEEStdsLevel1frontmatter'>Participants</p>
+             <a name='boilerplate-disclaimers-destination' id='boilerplate-disclaimers-destination'/>
+           </div>
+         </div>
+         <span lang='EN-US' xml:lang='EN-US' style='font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
+           <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
+         </span>
          <div>
-           <a name='boilerplate-participants-wg' id='boilerplate-participants-wg'/>
-           <p class='IEEEStdsLevel2frontmatter'>Working Group</p>
+           <a name='boilerplate-participants' id='boilerplate-participants'/>
+           <p class='IEEEStdsLevel1frontmatter'>Participants</p>
            <p class='IEEEStdsParagraph'>
              <a name='_' id='_'/>
               At the time this draft Standard was completed, the Working Group had the
@@ -939,63 +955,110 @@ RSpec.describe IsoDoc::IEEE do
               ,
              <i>Technical editor</i>
            </p>
-           <p class='IEEEStdsNamesList'>Aristotle</p>
-           <p class='IEEEStdsNamesList'>Anaximander</p>
-           <p class='IEEEStdsParagraph'>
-             <a name='_' id='_'/>
-             This is an additional clause.
-           </p>
          </div>
-         <div>
-           <a name='boilerplate-participants-bg' id='boilerplate-participants-bg'/>
-           <p class='IEEEStdsLevel2frontmatter'>Balloting Group</p>
-           <p class='IEEEStdsParagraph'>
-             <a name='_' id='_'/>
-              The following members of the Standards Association balloting group voted
-             on this Standard. Balloters may have voted for approval, disapproval, or
-             abstention.
-           </p>
-           <p class='IEEEStdsNamesList'>Athanasius of Alexandria</p>
-           <p class='IEEEStdsNamesList'>Basil of Caesarea</p>
-           <p class='IEEEStdsParagraph'>
-             <a name='_' id='_'/>
-             And this is another list
-           </p>
-           <p class='IEEEStdsNamesList'>Microsoft</p>
-           <p class='IEEEStdsNamesList'>Alphabet</p>
+         <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
+           <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
+           <div class='WordSection4'>
+             <p class='IEEEStdsNamesList'>Aristotle</p>
+             <p class='IEEEStdsNamesList'>Anaximander</p>
+           </div>
+           <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
+             <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
+             <div class='WordSection5'>
+               <p class='IEEEStdsParagraph'>&#xa0;</p>
+               <p class='IEEEStdsParagraph'>
+                 <a name='_' id='_'/>
+                 This is an additional clause.
+               </p>
+               <p class='IEEEStdsParagraph'>
+                 <a name='_' id='_'/>
+                  The following members of the Standards Association balloting group
+                 voted on this Standard. Balloters may have voted for approval,
+                 disapproval, or abstention.
+               </p>
+             </div>
+             <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
+               <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
+               <div class='WordSection6'>
+                 <p class='IEEEStdsNamesList'>Athanasius of Alexandria</p>
+                 <p class='IEEEStdsNamesList'>Basil of Caesarea</p>
+               </div>
+               <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
+                 <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
+                 <div class='WordSection7'>
+                   <p class='IEEEStdsParagraph'>&#xa0;</p>
+                   <p class='IEEEStdsParagraph'>
+                     <a name='_' id='_'/>
+                     And this is another list
+                   </p>
+                   <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpFirst'>
+              Microsoft,
+              <i>Liaison</i>
+            </p>
+            <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpMiddle'>
+              Alphabet,
+              <br/>
+              <i>IEEE Standards Program Manager, Document Development</i>
+            </p>
+                   <p class='IEEEStdsParagraph'>
+                     <a name='_' id='_'/>
+                      When the IEEE SA Standards Board approved this Standard on Date
+                     Approved, it had the following membership:
+                   </p>
+                   <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpFirst'>
+                     <b>Aeschylus</b>
+                      ,
+                     <i>Chair</i>
+                   </p>
+                   <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpLast'>
+                     <b>Sophocles</b>
+                      ,
+                     <i>Technical editor</i>
+                   </p>
+                 </div>
+                 <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
+                   <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
+                   <div class='WordSection8'>
+                     <p class='IEEEStdsNamesList'>Euripides</p>
+                     <p class='IEEEStdsNamesList'>Aristophanes</p>
+                   </div>
+                   <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
+                     <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
+                     <div class='WordSection9'>
+                       <p class='IEEEStdsParaMemEmeritus'>
+                         <a name='_' id='_'/>
+                         *Member Emeritus
+                       </p>
+                       <p class='IEEEStdsParagraph'>
+                         <a name='_' id='_'/>
+                         This is an additional clause.
+                       </p>
+                       <p class='IEEEStdsNamesList'>Waldorf-Astoria</p>
+                       <p class='IEEEStdsNamesList'>Ritz</p>
+                     </div>
+                   </span>
+                 </span>
+               </span>
+             </span>
+           </span>
+         </span>
+         <b style='mso-bidi-font-weight:normal'>
+           <span lang='EN-US' xml:lang='EN-US' style='font-size:12.0pt; mso-bidi-font-size:10.0pt;font-family:&#x22;Arial&#x22;,sans-serif;mso-fareast-font-family: &#x22;Times New Roman&#x22;;mso-bidi-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
+             <br clear='all' style='page-break-before:always;mso-break-type:section-break'/>
+           </span>
+         </b>
+         <div class='authority'>
+           <div class='boilerplate-legal'> </div>
          </div>
-         <div>
-           <a name='boilerplate-participants-sb' id='boilerplate-participants-sb'/>
-           <p class='IEEEStdsLevel2frontmatter'>Standards Board</p>
-           <p class='IEEEStdsParagraph'>
-             <a name='_' id='_'/>
-              When the IEEE SA Standards Board approved this Standard on Date Approved,
-             it had the following membership:
-           </p>
-           <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpFirst'>
-             <b>Aeschylus</b>
-              ,
-             <i>Chair</i>
-           </p>
-           <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpLast'>
-             <b>Sophocles</b>
-              ,
-             <i>Technical editor</i>
-           </p>
-           <p class='IEEEStdsNamesList'>Euripides</p>
-           <p class='IEEEStdsNamesList'>Aristophanes</p>
-           <p class='IEEEStdsParaMemEmeritus'>
-             <a name='_' id='_'/>
-             *Member Emeritus
-           </p>
-           <p class='IEEEStdsParagraph'>
-             <a name='_' id='_'/>
-             This is an additional clause.
-           </p>
-           <p class='IEEEStdsNamesList'>Waldorf-Astoria</p>
-           <p class='IEEEStdsNamesList'>Ritz</p>
-         </div>
-       </div>
+         <p class='IEEEStdsParagraph'>&#xa0;</p>
+         <p class='IEEEStdsParagraph'>
+           <br clear='all' class='section'/>
+         </p>
+         <p class='IEEEStdsParagraph'>
+           <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
+         </p>
+         <div style='mso-element:footnote-list'/>
+       </body>
     OUTPUT
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
   .convert("test", input, true)))
@@ -1006,8 +1069,12 @@ RSpec.describe IsoDoc::IEEE do
       .to be_equivalent_to xmlpp(html)
     IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
-    doc = Nokogiri::XML(word2xml("test.doc"))
-      .at("//xmlns:div[xmlns:a[@id = 'boilerplate-participants']]")
+    doc = Nokogiri::XML(word2xml("test.doc")).at("//xmlns:body")
+    doc.at("//xmlns:div[@class = 'WordSection1']")&.remove
+    doc.at("//xmlns:div[@class = 'WordSection2']")&.remove
+    doc.at("//xmlns:div[@class = 'WordSection10']")&.remove
+    doc.at("//xmlns:div[@class = 'WordSection11']")&.remove
+    doc.at("//xmlns:div[@class = 'WordSection12']")&.remove
     expect(strip_guid(xmlpp(doc.to_xml)))
       .to be_equivalent_to xmlpp(word)
   end

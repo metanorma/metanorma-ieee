@@ -242,7 +242,6 @@ RSpec.describe Metanorma::IEEE do
         :authors=>["AB", "CD", "CD1", "E, F, Jr.", "GH", "IJ", "KL", "MN", "OP", "QR", "ST", "UV", "KL", "MN"],
         :authors_affiliations=>{""=>["AB", "CD", "CD1", "E, F, Jr.", "GH", "IJ", "KL", "MN", "OP", "QR", "ST", "UV", "KL", "MN"]},
         :balloting_group=>"BG",
-        :balloting_group_members=>["KL", "MN"],
         :balloting_group_type=>"entity",
         :circulateddate=>"XXX",
         :confirmeddate=>"XXX",
@@ -282,7 +281,6 @@ RSpec.describe Metanorma::IEEE do
         :stage=>"Final Draft",
         :stage_display=>"Final Draft",
         :stageabbr=>"FD",
-        :std_board=>{"chair"=>"OP", "vice-chair"=>"QR", "past-chair"=>"ST", "secretary"=>"UV", "members"=>["KL", "MN"]},
         :stdid_pdf=>"ABC",
         :stdid_print=>"DEF",
         :technical_committee=>"Tech Committee",
@@ -294,8 +292,6 @@ RSpec.describe Metanorma::IEEE do
         :updates=>["ABC"],
         :vote_endeddate=>"XXX",
         :vote_starteddate=>"XXX",
-        :wg_members=>{"chair"=>"AB", "vice-chair"=>"CD", "secretary"=>"CD1", "members"=>["E, F, Jr.", "GH", "IJ"], "org_members"=>["Alibaba, Inc.", "Alphabet, Ltd."]},
-        :wg_org_members=>["Alibaba, Inc.", "Alphabet, Ltd."],
         :working_group=>"WG"}
       OUTPUT
   end
@@ -369,7 +365,6 @@ RSpec.describe Metanorma::IEEE do
         {:abbrev_doctitle=>"Draft Rec. Prac. for Main Titlein multiple lines",
         :accesseddate=>"XXX",
         :balloting_group=>"BG",
-        :balloting_group_members=>["Balloter1", "Balloter2", "Balloter3", "Balloter4", "Balloter5", "Balloter6", "Balloter7", "Balloter8", "Balloter9"],
         :balloting_group_type=>"individual",
         :circulateddate=>"XXX",
         :confirmeddate=>"XXX",
@@ -404,7 +399,6 @@ RSpec.describe Metanorma::IEEE do
         :stage=>"Final Draft",
         :stage_display=>"Final Draft",
         :stageabbr=>"FD",
-        :std_board=>{"chair"=>"&lt;Name&gt;", "vice-chair"=>"&lt;Name&gt;", "past-chair"=>"&lt;Name&gt;", "secretary"=>"&lt;Name&gt;", "members"=>["SBMember1", "SBMember2", "SBMember3", "SBMember4", "SBMember5", "SBMember6", "SBMember7", "SBMember8", "SBMember9"]},
         :stdid_pdf=>"STDXXXXX",
         :stdid_print=>"STDPDXXXXX",
         :technical_committee=>"Tech Committee",
@@ -414,7 +408,6 @@ RSpec.describe Metanorma::IEEE do
         :updateddate=>"XXX",
         :vote_endeddate=>"XXX",
         :vote_starteddate=>"XXX",
-        :wg_members=>{"members"=>["Participant1", "Participant2", "Participant3", "Participant4", "Participant5", "Participant6", "Participant7", "Participant8", "Participant9"]},
         :working_group=>"WG"}
       OUTPUT
   end

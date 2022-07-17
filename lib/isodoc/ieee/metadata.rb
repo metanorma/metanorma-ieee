@@ -39,7 +39,6 @@ module IsoDoc
         tc(xml)
         wg(xml)
         bg(xml)
-        std_group(xml)
       end
 
       def society(xml)
@@ -54,48 +53,10 @@ module IsoDoc
         set(:technical_committee, tc)
       end
 
-      def editor_names(xml, role)
-        xml.xpath(ns("//bibdata/contributor[role/@type = 'editor']"\
-                     "[role = '#{role}']/person/name/completename"))
-          &.each&.map(&:text)
-      end
-
-      def editor_org_names(xml, role)
-        xml.xpath(ns("//bibdata/contributor[role/@type = 'editor']"\
-                     "[role = '#{role}']/organization/name"))
-          &.each&.map(&:text)
-      end
-
-      def editor_name(xml, role)
-        editor_names(xml, role)&.first
-      end
-
       def wg(xml)
         wg = xml.at(ns("//bibdata/ext/editorialgroup/"\
                        "working-group")) or return nil
         set(:working_group, wg.text)
-        m = {}
-        ["Chair", "Vice-Chair", "Secretary"].each do |r|
-          a = editor_name(xml, "Working Group #{r}") and
-            m[r.downcase.gsub(/ /, "-")] = a
-        end
-        wg_members(xml, m)
-        wg_org_members(xml, m)
-      end
-
-      def wg_members(xml, members)
-        a = editor_names(xml, "Working Group Member") and members["members"] = a
-        members["members"].empty? and (1..9).each do |i|
-          members["members"] << "Participant#{i}"
-        end
-        set(:wg_members, members)
-      end
-
-      def wg_org_members(xml, members)
-        a = editor_org_names(xml, "Working Group Member")
-        a.empty? and return
-        members["org_members"] = a
-        set(:wg_org_members, a)
       end
 
       def bg(xml)
@@ -103,25 +64,6 @@ module IsoDoc
                        "balloting-group")) or return nil
         set(:balloting_group, bg.text)
         set(:balloting_group_type, bg["type"])
-        m = {}
-        m["members"] = editor_names(xml, "Balloting Group Member")
-        m["members"].empty? and (1..9).each do |i|
-          m["members"] << "Balloter#{i}"
-        end
-        set(:balloting_group_members, m["members"])
-      end
-
-      def std_group(xml)
-        m = {}
-        ["Chair", "Vice-Chair", "Past Chair", "Secretary"].each do |r|
-          m[r.downcase.gsub(/ /, "-")] =
-            editor_name(xml, "Standards Board #{r}") || "&lt;Name&gt;"
-        end
-        m["members"] = editor_names(xml, "Standards Board Member")
-        m["members"].empty? and (1..9).each do |i|
-          m["members"] << "SBMember#{i}"
-        end
-        set(:std_board, m)
       end
 
       def otherid(isoxml, _out)

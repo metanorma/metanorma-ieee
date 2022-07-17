@@ -142,21 +142,22 @@ module Metanorma
         t.replace(populate_participants1(s || t))
       end
 
-      #       name
-      #       given
-      #       surname
-      #       role
-      #       company
-
       def populate_participants1(clause)
+        participants_dl_to_ul(clause)
         clause.xpath(".//ul | .//ol").each do |ul|
           ul.name = "ul"
-          ul.xpath("./li").each do |li|
-            populate_participants2(li)
-          end
+          ul.xpath("./li").each { |li| populate_participants2(li) }
           ul.xpath(".//p[normalize-space() = '']").each(&:remove)
         end
         clause.children.to_xml
+      end
+
+      def participants_dl_to_ul(clause)
+        clause.xpath(".//dl[.//dl]").each do |dl|
+          dl.name = "ul"
+          dl.xpath("./dt").each(&:remove)
+          dl.xpath("./dd").each { |li| li.name = "li" }
+        end
       end
 
       def populate_participants2(list)
