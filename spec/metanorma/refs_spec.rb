@@ -249,6 +249,7 @@ RSpec.describe Metanorma::IEEE do
         Author
         :docfile: test.adoc
         :nodoc:
+        :no-isobib-cache:
 
         == Introduction
 
