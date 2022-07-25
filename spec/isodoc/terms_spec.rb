@@ -435,7 +435,7 @@ RSpec.describe IsoDoc do
        </ieee-standard>
     INPUT
     output = <<~OUTPUT
-          <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='presentation' version='0.0.2'>
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='presentation' version='#{Metanorma::IEEE::VERSION}'>
         <sections>
           <terms id='_' obligation='normative' displayorder='1'>
             <title depth='1'>

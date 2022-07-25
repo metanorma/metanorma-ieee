@@ -74,8 +74,11 @@ module IsoDoc
         d = term.at(ns("./preferred/expression/name | "\
                        "./preferred/letter-symbol/name | "\
                        "./preferred/graphical-symbol/figure/name | "\
-                       "./preferred/graphical-symbol/figure/@id"))
-        HTMLEntities.new.decode(d&.text&.strip&.downcase) || "ZZZ"
+                       "./preferred/graphical-symbol/figure/@id | "\
+                       "./preferred"))
+        f = term.at(ns("./field-of-application")) || term.at(ns("./domain"))
+        HTMLEntities.new.decode((d&.text&.strip&.downcase || "zzzz") + " :: " +
+                                (f&.text&.strip&.downcase || "zzzz"))
       end
 
       def term_related_reorder(coll)
