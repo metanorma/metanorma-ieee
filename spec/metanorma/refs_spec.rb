@@ -63,7 +63,8 @@ RSpec.describe Metanorma::IEEE do
       INPUT
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       expect(out.xpath("//xmlns:references/xmlns:bibitem/@id")
-        .map(&:value)).to be_equivalent_to ["ref3", "ref1", "ref4", "ref5", "ref2"]
+        .map(&:value)).to be_equivalent_to ["ref3", "ref1", "ref4", "ref5",
+                                            "ref2"]
     end
   end
 
@@ -263,6 +264,8 @@ RSpec.describe Metanorma::IEEE do
 
         <<ref1>>
 
+        <<ref3>>
+
         <<ref2>>
 
         <<ref1>>
@@ -281,18 +284,19 @@ RSpec.describe Metanorma::IEEE do
 
         * [[[ref2,ISO 639:1967]]] REF5
         * [[[ref1,IEEE Std 1619-2007]]] REF1
+        * [[[ref3,IEEE 802.1D-1990]]] REF2
       INPUT
       output = <<~OUTPUT
-         <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
-          <preface>
+          <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+                   <preface>
             <introduction id='_' obligation='informative'>
               <title>Introduction</title>
               <admonition>This introduction is not part of P, Standard for Document title </admonition>
               <p id='_'>
-                <eref type='inline' bibitemid='ref1' citeas='IEEE 1619-2007™'/>
+                <eref type='inline' bibitemid='ref1' citeas='IEEE 1619™-2007'/>
               </p>
               <p id='_'>
-                <eref type='inline' bibitemid='ref2' citeas='ISO 639:1967'/>
+                <eref type='inline' bibitemid='ref2' citeas='ISO/R 639:1967'/>
               </p>
               <p id='_'>
                 <eref type='inline' bibitemid='ref1' citeas='IEEE 1619-2007'/>
@@ -305,10 +309,11 @@ RSpec.describe Metanorma::IEEE do
               <clause id='_' type='scope' inline-header='false' obligation='normative'>
                 <title>Scope</title>
                 <p id='_'>
-                  <eref type='inline' bibitemid='ref1' citeas='IEEE 1619-2007™'/>
+                  <eref type='inline' bibitemid='ref1' citeas='IEEE 1619™-2007'/>
                 </p>
+              <p id='_'><eref type='inline' bibitemid='ref3' citeas='IEEE 802.1D®-1990'/></p>
                 <p id='_'>
-                  <eref type='inline' bibitemid='ref2' citeas='ISO 639:1967'/>
+                  <eref type='inline' bibitemid='ref2' citeas='ISO/R 639:1967'/>
                 </p>
                 <p id='_'>
                   <eref type='inline' bibitemid='ref1' citeas='IEEE 1619-2007'/>

@@ -77,7 +77,7 @@ module Metanorma
           .each_with_object({}) do |b, m|
           n = b.at("./contributor[role/@type = 'publisher']/organization/name")
           n&.text == "Institute of Electrical and Electronics Engineers" and
-            m[b["id"]] = true
+            m[b["id"]] = b.at("./docidentifier[@scope = 'trademark']")&.text
         end
         trademark_ieee_erefs1(xmldoc, "//preface//eref", ieee)
         trademark_ieee_erefs1(xmldoc, "//sections//eref | //annex//eref", ieee)
@@ -86,7 +86,7 @@ module Metanorma
       def trademark_ieee_erefs1(xmldoc, path, ieee)
         xmldoc.xpath(path).each_with_object({}) do |e, m|
           ieee[e["bibitemid"]] or next
-          m[e["bibitemid"]] or e["citeas"] += "\u2122"
+          m[e["bibitemid"]] or e["citeas"] = ieee[e["bibitemid"]]
           m[e["bibitemid"]] = true
         end
       end
