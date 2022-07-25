@@ -93,29 +93,14 @@ module IsoDoc
         doctype(isoxml, _out)
         set(:full_doctitle, fulltitle(@metadata[:doctype], draft))
         set(:abbrev_doctitle, fulltitle(@metadata[:doctype_abbrev], draft))
+        prov = isoxml&.at(ns("//bibdata/title[@type='provenance']")) and
+          set(:provenance_doctitle, prov.children.to_xml)
       end
 
       def fulltitle(type, draft)
         title = "#{type || '???'} for #{@metadata[:doctitle] || '???'}"
         draft and title = "Draft #{title}"
         title
-      end
-
-      def relations(isoxml, _out)
-        super
-        relations_get(isoxml, "updates")
-        relations_get(isoxml, "merges")
-      end
-
-      def relations_get(isoxml, type)
-        std = isoxml.xpath(ns("//bibdata/relation[@type = '#{type}']"))
-        return if std.empty?
-
-        ret = std.map do |x|
-          x.at(ns(".//docidentifier[@primary = 'true']"))&.text ||
-            x.at(ns(".//docidentifier"))&.text
-        end
-        set(type.to_sym, ret)
       end
 
       def ddMMMyyyy(isodate)

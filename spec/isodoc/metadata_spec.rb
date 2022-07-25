@@ -5,233 +5,234 @@ RSpec.describe Metanorma::IEEE do
   it "processes default metadata" do
     csdc = IsoDoc::IEEE::HtmlConvert.new({})
     docxml, = csdc.convert_init(<<~"INPUT", "test", true)
-        <ieee-standard xmlns="https://www.calconnect.org/standards/ieee">
-          <bibdata type="standard">
-          <title language="en" format="text/plain" type="main">Main Title<br/>in multiple lines</title>
-          <title language="en" format="text/plain" type="annex">Annex Title</title>
-          <title language="fr" format="text/plain" type="main">Titre Principal</title>
-          <title language='en' format='text/plain' type='subtitle'>Subtitle</title>
-        <title language='fr' format='text/plain' type='subtitle'>Soustitre</title>
-        <title language='en' format='text/plain' type='amendment'>Amendment Title</title>
-        <title language='fr' format='text/plain' type='amendment'>Titre de Amendment</title>
-        <title language='en' format='text/plain' type='corrigendum'>Corrigendum Title</title>
-        <title language='fr' format='text/plain' type='corrigendum'>Titre de Corrigendum</title>
-          <docidentifier type="IEEE" scope="PDF">ABC</docidentifier>
-          <docidentifier type="IEEE" scope="print">DEF</docidentifier>
-          <docidentifier type="ISBN" scope="PDF">GHI</docidentifier>
-          <docidentifier type="ISBN" scope="print">JKL</docidentifier>
-          <docnumber>1000</docnumber>
-          <date type='published'>2018-09-01</date>
-          <date type='published' format="ddMMMyyyy">01 Sep 2018</date>
-          <date type='issued'>2018-07-01</date>
-          <date type='issued' format="ddMMMyyyy">01 Jul 2018</date>
-          <date type='feedback-ended'>2018-08-01</date>
-          <date type='feedback-ended' format="ddMMMyyyy">01 Aug 2018</date>
-                              <contributor>
-               <role type='editor'>Working Group Chair</role>
-               <person>
-                 <name>
-                   <completename>AB</completename>
-                 </name>
-               </person>
-             </contributor>
-             <contributor>
-               <role type='editor'>Working Group Vice-Chair</role>
-               <person>
-                 <name>
-                   <completename>CD</completename>
-                 </name>
-               </person>
-             </contributor>
-             <contributor>
-                <role type='editor'>Working Group Secretary</role>
+       <ieee-standard xmlns="https://www.calconnect.org/standards/ieee">
+           <bibdata type="standard">
+           <title language="en" format="text/plain" type="main">Main Title<br/>in multiple lines</title>
+           <title type='provenance' language='en' format='application/xml'>Revision of ABC<br/>Incorporates BCD and EFG</title>
+           <title language="en" format="text/plain" type="annex">Annex Title</title>
+           <title language="fr" format="text/plain" type="main">Titre Principal</title>
+           <title language='en' format='text/plain' type='subtitle'>Subtitle</title>
+         <title language='fr' format='text/plain' type='subtitle'>Soustitre</title>
+         <title language='en' format='text/plain' type='amendment'>Amendment Title</title>
+         <title language='fr' format='text/plain' type='amendment'>Titre de Amendment</title>
+         <title language='en' format='text/plain' type='corrigendum'>Corrigendum Title</title>
+         <title language='fr' format='text/plain' type='corrigendum'>Titre de Corrigendum</title>
+           <docidentifier type="IEEE" scope="PDF">ABC</docidentifier>
+           <docidentifier type="IEEE" scope="print">DEF</docidentifier>
+           <docidentifier type="ISBN" scope="PDF">GHI</docidentifier>
+           <docidentifier type="ISBN" scope="print">JKL</docidentifier>
+           <docnumber>1000</docnumber>
+           <date type='published'>2018-09-01</date>
+           <date type='published' format="ddMMMyyyy">01 Sep 2018</date>
+           <date type='issued'>2018-07-01</date>
+           <date type='issued' format="ddMMMyyyy">01 Jul 2018</date>
+           <date type='feedback-ended'>2018-08-01</date>
+           <date type='feedback-ended' format="ddMMMyyyy">01 Aug 2018</date>
+                               <contributor>
+                <role type='editor'>Working Group Chair</role>
                 <person>
                   <name>
-                    <completename>CD1</completename>
+                    <completename>AB</completename>
                   </name>
                 </person>
               </contributor>
-             <contributor>
-               <role type='editor'>Working Group Member</role>
-               <person>
-                 <name>
-                   <completename>E, F, Jr.</completename>
-                 </name>
-               </person>
-             </contributor>
-             <contributor>
-               <role type='editor'>Working Group Member</role>
-               <person>
-                 <name>
-                   <completename>GH</completename>
-                 </name>
-               </person>
-             </contributor>
-             <contributor>
-               <role type='editor'>Working Group Member</role>
-               <person>
-                 <name>
-                   <completename>IJ</completename>
-                 </name>
-               </person>
-             </contributor>
-             <contributor>
+              <contributor>
+                <role type='editor'>Working Group Vice-Chair</role>
+                <person>
+                  <name>
+                    <completename>CD</completename>
+                  </name>
+                </person>
+              </contributor>
+              <contributor>
+                 <role type='editor'>Working Group Secretary</role>
+                 <person>
+                   <name>
+                     <completename>CD1</completename>
+                   </name>
+                 </person>
+               </contributor>
+              <contributor>
                 <role type='editor'>Working Group Member</role>
-                <organization>
-                  <name>Alibaba, Inc.</name>
-                </organization>
+                <person>
+                  <name>
+                    <completename>E, F, Jr.</completename>
+                  </name>
+                </person>
               </contributor>
               <contributor>
                 <role type='editor'>Working Group Member</role>
+                <person>
+                  <name>
+                    <completename>GH</completename>
+                  </name>
+                </person>
+              </contributor>
+              <contributor>
+                <role type='editor'>Working Group Member</role>
+                <person>
+                  <name>
+                    <completename>IJ</completename>
+                  </name>
+                </person>
+              </contributor>
+              <contributor>
+                 <role type='editor'>Working Group Member</role>
+                 <organization>
+                   <name>Alibaba, Inc.</name>
+                 </organization>
+               </contributor>
+               <contributor>
+                 <role type='editor'>Working Group Member</role>
+                 <organization>
+                   <name>Alphabet, Ltd.</name>
+                 </organization>
+               </contributor>
+              <contributor>
+                <role type='editor'>Balloting Group Member</role>
+                <person>
+                  <name>
+                    <completename>KL</completename>
+                  </name>
+                </person>
+              </contributor>
+              <contributor>
+                <role type='editor'>Balloting Group Member</role>
+                <person>
+                  <name>
+                    <completename>MN</completename>
+                  </name>
+                </person>
+              </contributor>
+              <contributor>
+                <role type='editor'>Standards Board Chair</role>
+                <person>
+                  <name>
+                    <completename>OP</completename>
+                  </name>
+                </person>
+              </contributor>
+              <contributor>
+                <role type='editor'>Standards Board Vice-Chair</role>
+                <person>
+                  <name>
+                    <completename>QR</completename>
+                  </name>
+                </person>
+              </contributor>
+              <contributor>
+                <role type='editor'>Standards Board Past Chair</role>
+                <person>
+                  <name>
+                    <completename>ST</completename>
+                  </name>
+                </person>
+              </contributor>
+              <contributor>
+                <role type='editor'>Standards Board Secretary</role>
+                <person>
+                  <name>
+                    <completename>UV</completename>
+                  </name>
+                </person>
+              </contributor>
+              <contributor>
+                <role type='editor'>Standards Board Member</role>
+                <person>
+                  <name>
+                    <completename>KL</completename>
+                  </name>
+                </person>
+              </contributor>
+              <contributor>
+                <role type='editor'>Standards Board Member</role>
+                <person>
+                  <name>
+                    <completename>MN</completename>
+                  </name>
+                </person>
+              </contributor>
+              <contributor>
+                <role type='publisher'/>
                 <organization>
-                  <name>Alphabet, Ltd.</name>
+                  <name>Institute of Electrical and Electronic Engineers</name>
+                  <abbreviation>IEEE</abbreviation>
                 </organization>
               </contributor>
-             <contributor>
-               <role type='editor'>Balloting Group Member</role>
-               <person>
-                 <name>
-                   <completename>KL</completename>
-                 </name>
-               </person>
-             </contributor>
-             <contributor>
-               <role type='editor'>Balloting Group Member</role>
-               <person>
-                 <name>
-                   <completename>MN</completename>
-                 </name>
-               </person>
-             </contributor>
-             <contributor>
-               <role type='editor'>Standards Board Chair</role>
-               <person>
-                 <name>
-                   <completename>OP</completename>
-                 </name>
-               </person>
-             </contributor>
-             <contributor>
-               <role type='editor'>Standards Board Vice-Chair</role>
-               <person>
-                 <name>
-                   <completename>QR</completename>
-                 </name>
-               </person>
-             </contributor>
-             <contributor>
-               <role type='editor'>Standards Board Past Chair</role>
-               <person>
-                 <name>
-                   <completename>ST</completename>
-                 </name>
-               </person>
-             </contributor>
-             <contributor>
-               <role type='editor'>Standards Board Secretary</role>
-               <person>
-                 <name>
-                   <completename>UV</completename>
-                 </name>
-               </person>
-             </contributor>
-             <contributor>
-               <role type='editor'>Standards Board Member</role>
-               <person>
-                 <name>
-                   <completename>KL</completename>
-                 </name>
-               </person>
-             </contributor>
-             <contributor>
-               <role type='editor'>Standards Board Member</role>
-               <person>
-                 <name>
-                   <completename>MN</completename>
-                 </name>
-               </person>
-             </contributor>
-             <contributor>
-               <role type='publisher'/>
+           <edition>2</edition>
+         <version>
+           <revision-date>2000-01-01</revision-date>
+           <draft>3.4</draft>
+         </version>
+           <language>en</language>
+           <script>Latn</script>
+           <status>
+             <stage>final-draft</stage>
+             <iteration>3</iteration>
+           </status>
+           <copyright>
+             <from>2001</from>
+             <owner>
                <organization>
-                 <name>Institute of Electrical and Electronic Engineers</name>
-                 <abbreviation>IEEE</abbreviation>
+               <name>International Telecommunication Union</name>
+               <abbreviation>ITU</abbreviation>
                </organization>
-             </contributor>
-          <edition>2</edition>
-        <version>
-          <revision-date>2000-01-01</revision-date>
-          <draft>3.4</draft>
-        </version>
-          <language>en</language>
-          <script>Latn</script>
-          <status>
-            <stage>final-draft</stage>
-            <iteration>3</iteration>
-          </status>
-          <copyright>
-            <from>2001</from>
-            <owner>
-              <organization>
-              <name>International Telecommunication Union</name>
-              <abbreviation>ITU</abbreviation>
-              </organization>
-            </owner>
-          </copyright>
-          <series type="main">
-          <title>A3</title>
-        </series>
-        <series type="secondary">
-          <title>B3</title>
-        </series>
-        <series type="tertiary">
-          <title>C3</title>
-        </series>
-             <keyword>word2</keyword>
-         <keyword>word1</keyword>
-             <relation type='merges'>
-        <bibitem>
-          <title>--</title>
-          <docidentifier>BCD</docidentifier>
-        </bibitem>
-      </relation>
-      <relation type='merges'>
-        <bibitem>
-          <title>--</title>
-          <docidentifier>EFG</docidentifier>
-        </bibitem>
-      </relation>
-      <relation type='updates'>
-        <bibitem>
-          <title>--</title>
-          <docidentifier>ABC</docidentifier>
-        </bibitem>
-      </relation>
-          <ext>
-          <doctype>recommended-practice</doctype>
-          <subdoctype>amendment</subdoctype>
-          <trial-use>true</trial-use>
-            <editorialgroup>
-              <society>Society</society>
-              <balloting-group type="entity">BG</balloting-group>
-              <working-group>WG</working-group>
-              <committee>Tech Committee</committee>
-            </editorialgroup>
-                 <structuredidentifier>
-       <docnumber>1000</docnumber>
-       <agency>IEEE</agency>
-       <class>recommended-practice</class>
-       <edition>2</edition>
-       <version>0.3.4</version>
-       <amendment>A1</amendment>
-       <corrigendum>C1</corrigendum>
-       <year>2000</year>
-     </structuredidentifier>
-          </ext>
-        </bibdata>
-        <preface/><sections/>
-        <annex obligation="informative"/>
-        </ieee-standard>
+             </owner>
+           </copyright>
+           <series type="main">
+           <title>A3</title>
+         </series>
+         <series type="secondary">
+           <title>B3</title>
+         </series>
+         <series type="tertiary">
+           <title>C3</title>
+         </series>
+              <keyword>word2</keyword>
+          <keyword>word1</keyword>
+              <relation type='merges'>
+         <bibitem>
+           <title>--</title>
+           <docidentifier>BCD</docidentifier>
+         </bibitem>
+       </relation>
+       <relation type='merges'>
+         <bibitem>
+           <title>--</title>
+           <docidentifier>EFG</docidentifier>
+         </bibitem>
+       </relation>
+       <relation type='updates'>
+         <bibitem>
+           <title>--</title>
+           <docidentifier>ABC</docidentifier>
+         </bibitem>
+       </relation>
+           <ext>
+           <doctype>recommended-practice</doctype>
+           <subdoctype>amendment</subdoctype>
+           <trial-use>true</trial-use>
+             <editorialgroup>
+               <society>Society</society>
+               <balloting-group type="entity">BG</balloting-group>
+               <working-group>WG</working-group>
+               <committee>Tech Committee</committee>
+             </editorialgroup>
+                  <structuredidentifier>
+        <docnumber>1000</docnumber>
+        <agency>IEEE</agency>
+        <class>recommended-practice</class>
+        <edition>2</edition>
+        <version>0.3.4</version>
+        <amendment>A1</amendment>
+        <corrigendum>C1</corrigendum>
+        <year>2000</year>
+      </structuredidentifier>
+           </ext>
+         </bibdata>
+         <preface/><sections/>
+         <annex obligation="informative"/>
+         </ieee-standard>
     INPUT
     expect(htmlencode(metadata(csdc.info(docxml, nil)).to_s
       .gsub(/, :/, ",\n:"))).to be_equivalent_to <<~"OUTPUT"
@@ -269,8 +270,8 @@ RSpec.describe Metanorma::IEEE do
         :iteration=>"3",
         :keywords=>["word2", "word1"],
         :lang=>"en",
-        :merges=>["BCD", "EFG"],
         :obsoleteddate=>"XXX",
+        :provenance_doctitle=>"Revision of ABC<br/>Incorporates BCD and EFG",
         :publisheddate=>"01 Sep 2018",
         :publisher=>"Institute of Electrical and Electronic Engineers",
         :receiveddate=>"XXX",
@@ -289,7 +290,6 @@ RSpec.describe Metanorma::IEEE do
         :unchangeddate=>"XXX",
         :unpublished=>true,
         :updateddate=>"XXX",
-        :updates=>["ABC"],
         :vote_endeddate=>"XXX",
         :vote_starteddate=>"XXX",
         :working_group=>"WG"}

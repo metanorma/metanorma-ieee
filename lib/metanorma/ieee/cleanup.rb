@@ -182,6 +182,39 @@ module Metanorma
         map["role"] ||= "member"
         map
       end
+
+      def bibdata_cleanup(xmldoc)
+        super
+        provenance_title(xmldoc)
+      end
+
+      def provenance_title(xmldoc)
+        u = xmldoc.xpath("//bibdata/relation[@type = 'updates']")
+        m = xmldoc.xpath("//bibdata/relation[@type = 'merges']")
+        u.empty? and m.empty? and return
+        ins = xmldoc.at("//bibdata/title")
+        t = provenance_title1(u, m)
+        ins.next = "<title type='provenance' language='en' "\
+                   "format='application/xml'>#{t}</title>"
+      end
+
+      def provenance_title1(updates, merges)
+        ret = ""
+        u = @isodoc.i18n.boolean_conj(tm_id_extract(updates), "and")
+        m = @isodoc.i18n.boolean_conj(tm_id_extract(merges), "and")
+        u.empty? or ret += "Revision of #{u}"
+        !u.empty? && !m.empty? and ret += "<br/>"
+        m.empty? or ret += "Incorporates #{m}"
+        ret
+      end
+
+      def tm_id_extract(relations)
+        relations.map do |u|
+          u.at("./bibitem/docidentifier[@scope = 'trademark']") ||
+            u.at("./bibitem/docidentifier[@primary = 'true']") ||
+            u.at("./bibitem/docidentifier")
+        end.map(&:text)
+      end
     end
   end
 end

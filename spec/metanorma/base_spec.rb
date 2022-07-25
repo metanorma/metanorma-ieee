@@ -119,6 +119,7 @@ RSpec.describe Metanorma::IEEE do
            <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
             <bibdata type='standard'>
               <title language='en' format='text/plain'>Document title</title>
+              <title type='provenance' language='en' format='application/xml'>Revision of ABC<br/>Incorporates BCD and EFG</title>
               <title language='intro-en' format='text/plain'>Introduction</title>
               <title language='main-en' format='text/plain'>Main Title -- Title</title>
               <title language='part-en' format='text/plain'>Title Part</title>

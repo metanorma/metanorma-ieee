@@ -8,16 +8,8 @@
 {% if corr %}
 <div class="doctitle-part">Corrigenda {{ corr }}</div>
 {% endif %}
-{%if updates or merges %}
-<div class="doctitle-part">(Revision of {{ updates | join: ", " }}<br/>Incorporating {{ merges | join: ", " }})</div>
-{%else%}
-{%if updates %}
-<div class="doctitle-part">(Revision of {{ updates | join: ", " }})</div>
-{%else%}
-{%if merges %}
-<div class="doctitle-part">(Incorporating {{ merges | join: ", " }})</div>
-{%endif%}
-{%endif%}
+{%if provenance_doctitle %}
+<div class="doctitle-part">({{ provenance_doctitle }})</div>
 {%endif%}
 </div>
 
