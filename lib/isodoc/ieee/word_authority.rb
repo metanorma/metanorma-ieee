@@ -46,6 +46,7 @@ module IsoDoc
           officeholder_style(p)
         end
         officemember_style(docxml)
+        officeorgrep_style(docxml)
         three_column_officemembers(docxml
           .at("//div[@id = 'boilerplate-participants']"))
       end
@@ -74,6 +75,19 @@ module IsoDoc
         end
         docxml.xpath("//p[@type = 'emeritus_sign']").each do |p|
           p["class"] = "IEEEStdsParaMemEmeritus"
+        end
+      end
+
+      def officeorgrep_style(docxml)
+        docxml.xpath("//p[@type = 'officeorgrepmemberhdr']").each do |p|
+          p["class"] = "IEEEStdsNamesList"
+          p["style"] =
+            "margin-bottom:6.0pt;tab-stops:right 432.0pt;"
+        end
+        docxml.xpath("//p[@type = 'officeorgrepmember']").each do |p|
+          p["class"] = "IEEEStdsNamesList"
+          p["style"] =
+            "margin-top:6.0pt;tab-stops:right dotted 432.0pt;"
         end
       end
 
