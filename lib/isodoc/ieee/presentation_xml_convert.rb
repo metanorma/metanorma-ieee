@@ -166,6 +166,19 @@ module IsoDoc
           ulist.xpath(ns("./li")).each { |list| participants1(list, idx) }
           ulist.replace(ulist.children)
         end
+        affiliation_header(clause)
+      end
+
+      def affiliation_header(clause)
+        clause.xpath(ns(".//p[@type = 'officeorgrepmember']")).each do |p|
+          prev = p.previous_element
+          prev && prev.name == "p" &&
+            prev["type"] == "officeorgrepmember" and next
+          p.previous = <<~HDR
+            <p type='officeorgrepmemberhdr'><em>Organization
+            Represented</em><tab/><em>Name of Representative</em></p>
+          HDR
+        end
       end
 
       def participants1(list, idx)
@@ -187,8 +200,12 @@ module IsoDoc
       end
 
       def participant_member_para(map, name, _idx)
-        (map["company"] and "<p type='officeorgmember'>#{name}</p>") or
-          "<p type='officemember'>#{name}</p>"
+        if map["company"] && (map["name"] || map["surname"])
+          pers = map["name"] || "#{map['given']} #{map['surname']}"
+          "<p type='officeorgrepmember'>#{name}<tab/>#{pers}</p>"
+        elsif map["company"] then "<p type='officeorgmember'>#{name}</p>"
+        else "<p type='officemember'>#{name}</p>"
+        end
       end
 
       def participant_officeholder_para(map, name, idx)
