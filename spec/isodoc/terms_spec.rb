@@ -749,32 +749,44 @@ RSpec.describe IsoDoc do
       .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
   end
 
-  it "processes IsoXML term with multiple preferred terms" do
+  it "processes IsoXML term with multiple preferred or preferred and admitted terms" do
     input = <<~"INPUT"
           <iso-standard xmlns="http://riboseinc.com/isoxml">
           <sections>
           <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
       <term id="paddy1">
-      <preferred><expression><name>paddy</name></expression></preferred>
-      <preferred><expression><name>muddy rice</name></expression></preferred>
+      <preferred><expression><name>A</name></expression></preferred>
+      <preferred><expression><name>B</name></expression></preferred>
       <domain>rice</domain>
       <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></verbal-definition></definition>
       </term>
       <term id="paddy2">
-      <preferred><expression><name language="eng">paddy</name></expression></preferred>
-      <preferred><expression><name language="eng">muddy rice</name></expression></preferred>
+      <preferred><expression><name language="eng">C</name></expression></preferred>
+      <preferred><expression><name language="eng">D</name></expression><abbreviation-type>initialism</abbreviation-type></preferred>
+      <domain>rice</domain>
+      <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747a">rice retaining its husk after threshing</p></verbal-definition></definition>
+      </term>
+      <term id="paddy1a">
+      <preferred><expression><name>E</name></expression></preferred>
+      <admitted><expression><name>F</name></expression></admitted>
+      <domain>rice</domain>
+      <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></verbal-definition></definition>
+      </term>
+      <term id="paddy2a">
+      <preferred><expression><name language="eng">G</name></expression></preferred>
+      <admitted><expression><name language="eng">H</name></expression><abbreviation-type>initialism</abbreviation-type></admitted>
       <domain>rice</domain>
       <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747a">rice retaining its husk after threshing</p></verbal-definition></definition>
       </term>
       <term id="paddy3">
-      <preferred geographic-area="US"><expression><name>paddy</name></expression></preferred>
-      <preferred><expression><name>muddy rice</name></expression></preferred>
+      <preferred geographic-area="US"><expression><name>I</name></expression></preferred>
+      <preferred><expression><name>J</name></expression></preferred>
       <domain>rice</domain>
       <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747b">rice retaining its husk after threshing</p></verbal-definition></definition>
       </term>
             <term id="paddy4">
-      <preferred><expression language="eng"><name>paddy</name></expression></preferred>
-      <preferred><expression language="fra"><name>muddy rice</name></expression></preferred>
+      <preferred><expression language="eng"><name>K</name></expression></preferred>
+      <preferred><expression language="fra"><name>L</name></expression></preferred>
       <domain>rice</domain>
       <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747c">rice retaining its husk after threshing</p></verbal-definition></definition>
       </term>
@@ -783,41 +795,101 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     presxml = <<~PRESXML
-          <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-        <sections>
-          <terms id='_terms_and_definitions' obligation='normative' displayorder='1'>
-            <title depth='1'>
-              1.
-              <tab/>
-              Terms and Definitions
-            </title>
-            <term id='paddy1'>
-              <p>
-                <strong>paddy (muddy rice)</strong>
-                , &#x3c;rice&#x3e;: rice retaining its husk after threshing
-              </p>
-            </term>
-            <term id='paddy2'>
-              <p>
-                <strong>paddy (muddy rice)</strong>
-                , &#x3c;rice&#x3e;: rice retaining its husk after threshing
-              </p>
-            </term>
-            <term id='paddy3'>
-              <p>
-                <strong>paddy (muddy rice)</strong>
-                , &#x3c;rice&#x3e;, US: rice retaining its husk after threshing
-              </p>
-            </term>
-            <term id='paddy4'>
-              <p>
-                <strong>paddy (muddy rice)</strong>
-                , &#x3c;rice&#x3e;, eng: rice retaining its husk after threshing
-              </p>
-            </term>
-          </terms>
-        </sections>
-      </iso-standard>
+           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+         <sections>
+           <terms id='_terms_and_definitions' obligation='normative' displayorder='1'>
+             <title depth='1'>
+               1.
+               <tab/>
+               Terms and Definitions
+             </title>
+             <term id='paddy1'>
+               <p>
+                 <strong>A</strong>
+                 , &#x3c;rice&#x3e;: rice retaining its husk after threshing
+                 <em>Syn:</em>
+                 <strong>B</strong>
+                 .
+               </p>
+             </term>
+             <term>
+               <p>
+                 <strong>B</strong>
+                 :
+                 <em>See:</em>
+                 <strong>A</strong>
+                 .
+               </p>
+             </term>
+             <term id='paddy2'>
+               <p>
+                 <strong>C (D)</strong>
+                 , &#x3c;rice&#x3e;: rice retaining its husk after threshing
+               </p>
+             </term>
+             <term id='paddy1a'>
+               <p>
+                 <strong>E</strong>
+                 , &#x3c;rice&#x3e;: rice retaining its husk after threshing
+                 <em>Syn:</em>
+                 <strong>F</strong>
+                 .
+               </p>
+             </term>
+             <term>
+               <p>
+                 <strong>F</strong>
+                 :
+                 <em>See:</em>
+                 <strong>E</strong>
+                 .
+               </p>
+             </term>
+             <term id='paddy2a'>
+               <p>
+                 <strong>G (H)</strong>
+                 , &#x3c;rice&#x3e;: rice retaining its husk after threshing
+               </p>
+             </term>
+             <term id='paddy3'>
+               <p>
+                 <strong>I</strong>
+                 , &#x3c;rice&#x3e;, US: rice retaining its husk after threshing
+                 <em>Syn:</em>
+                 <strong>J</strong>
+                 .
+               </p>
+             </term>
+             <term>
+               <p>
+                 <strong>J</strong>
+                 :
+                 <em>See:</em>
+                 <strong>I</strong>
+                 .
+               </p>
+             </term>
+             <term id='paddy4'>
+               <p>
+                 <strong>K</strong>
+                 , &#x3c;rice&#x3e;, eng: rice retaining its husk after threshing
+                 <em>Syn:</em>
+                 <strong>L</strong>
+                 , fra.
+               </p>
+             </term>
+             <term>
+               <p>
+                 <strong>L</strong>
+                 , fra:
+                 <em>See:</em>
+                 <strong>K</strong>
+                 , eng.
+               </p>
+             </term>
+           </terms>
+         </sections>
+       </iso-standard>
     PRESXML
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
       .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
@@ -855,24 +927,36 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     presxml = <<~PRESXML
-          <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-        <sections>
-          <terms id='_terms_and_definitions' obligation='normative' displayorder='1'>
-            <title depth='1'>
-              1.
-              <tab/>
-              Terms and Definitions
-            </title>
-            <term id='paddy1'>
-              <p>
-                <strong>paddy (muddy rice)</strong>
-                , &#x3c;rice&#x3e;, m, f, sg, noun, en Latn US, /p&#xe6;di&#x2d0;/:
-                rice retaining its husk after threshing
-              </p>
-            </term>
-          </terms>
-        </sections>
-      </iso-standard>
+      <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+         <sections>
+           <terms id='_terms_and_definitions' obligation='normative' displayorder='1'>
+             <title depth='1'>
+               1.
+               <tab/>
+               Terms and Definitions
+             </title>
+             <term>
+               <p>
+                 <strong>muddy rice</strong>
+                 , n, noun:
+                 <em>See:</em>
+                 <strong>paddy</strong>
+                 , m, f, sg, noun, en Latn, /p&#xe6;di&#x2d0;/.
+               </p>
+             </term>
+             <term id='paddy1'>
+               <p>
+                 <strong>paddy</strong>
+                 , &#x3c;rice&#x3e;, m, f, sg, noun, en Latn US, /p&#xe6;di&#x2d0;/:
+                 rice retaining its husk after threshing
+                 <em>Syn:</em>
+                 <strong>muddy rice</strong>
+                 , n, noun.
+               </p>
+             </term>
+           </terms>
+         </sections>
+       </iso-standard>
     PRESXML
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
       .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)

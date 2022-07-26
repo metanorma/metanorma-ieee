@@ -23,8 +23,8 @@ module IsoDoc
           .each_with_object({}) do |b, m|
           m[b["id"]] =
             { docid: pref_ref_code(b), type: b["type"],
-              title: b.at(ns("./title"))&.text ||
-                     b.at(ns("./formattedref"))&.text,
+              title: (b.at(ns("./title")) ||
+                     b.at(ns("./formattedref")))&.text,
               ord: b.at(ns("./docidentifier[@type = 'metanorma' or "\
                            "@type = 'metanorma-ordinal']")).text }
         end

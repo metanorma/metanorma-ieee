@@ -26,25 +26,24 @@ module IsoDoc
 
       def unwrap_multidef(coll)
         if coll.all? do |c|
-          c.elements.size == 1 && c.elements.first.name == "p"
-        end
+             c.elements.size == 1 && c.elements.first.name == "p"
+           end
           ret = coll.map do |c|
             c.elements.first.children.to_xml
           end
-          "<p>#{ret.join}</p>"
-        else
-          coll.map { |c| c.children.to_xml }.join
+          return "<p>#{ret.join}</p>"
         end
+        coll.map { |c| c.children.to_xml }.join
       end
 
       def unwrap_definition(docxml)
         docxml.xpath(ns("//definition/verbal-definition")).each do |v|
           next unless v.elements.all? { |e| %w(termsource p).include?(e.name) }
 
-          s = v.xpath(ns("./termsource"))
           p = v.xpath(ns("./p"))
           v.children =
-            "<p>#{p.map(&:children).map(&:to_xml).join("\n")}</p>#{s.to_xml}"
+            "<p>#{p.map(&:children).map(&:to_xml).join("\n")}</p>"\
+            "#{v.xpath(ns('./termsource')).to_xml}"
         end
         super
       end
@@ -61,12 +60,13 @@ module IsoDoc
       def term_related_collapse(coll)
         prev = 0
         coll[1..-1].each_with_index do |r, i|
-          if coll[prev]["type"] == r["type"]
-            coll[prev].at(ns("./preferred")) << "; #{r.at(ns('./preferred'))
-              .children.to_xml}"
-            r.remove
-          else prev = i
+          if coll[prev]["type"] != r["type"]
+            prev = i
+            next
           end
+          coll[prev].at(ns("./preferred")) << "; #{r.at(ns('./preferred'))
+              .children.to_xml}"
+          r.remove
         end
       end
 
@@ -77,8 +77,11 @@ module IsoDoc
                        "./preferred/graphical-symbol/figure/@id | "\
                        "./preferred"))
         f = term.at(ns("./field-of-application")) || term.at(ns("./domain"))
-        HTMLEntities.new.decode((d&.text&.strip&.downcase || "zzzz") + " :: " +
-                                (f&.text&.strip&.downcase || "zzzz"))
+        HTMLEntities.new.decode("#{sort_terms_key1(d)} :: #{sort_terms_key1(f)}")
+      end
+
+      def sort_terms_key1(elem)
+        elem&.text&.strip&.downcase || "zzzz"
       end
 
       def term_related_reorder(coll)
@@ -113,8 +116,12 @@ module IsoDoc
       end
 
       def admitted_to_related(docxml)
-        docxml.xpath(ns("//term/admitted")).each do |a|
-          admitted_to_related1(a, a.parent.at(ns("./preferred")))
+        docxml.xpath(ns("//term")).each do |t|
+          t.xpath(ns("./admitted | ./preferred")).each_with_index do |a, i|
+            (i.zero? ||
+             a.at(ns("./abbreviation-type | ./graphical-symbol"))) and next
+            admitted_to_related1(a, t.at(ns("./preferred")))
+          end
         end
         term_reorder(docxml)
       end
@@ -220,12 +227,15 @@ module IsoDoc
       end
 
       def merge_second_preferred(term)
-        prefs = term.xpath(ns("./preferred[expression/name]"))
-        prefs.size > 1 or return
-        alts = prefs[1..-1].map do |p|
+        pref =
+          term.at(ns("./preferred[not(abbreviation-type)]/expression/name"))
+        x = term.xpath(ns("./preferred[expression/name][abbreviation-type] | "\
+                          "./admitted[expression/name][abbreviation-type]"))
+        (pref && !x.empty?) or return
+        tail = x.map do |p|
           p.remove.at(ns("./expression/name")).children.to_xml.strip
-        end
-        prefs.first.at(ns("./expression/name")) << " (#{alts.join(', ')})"
+        end.join(", ")
+        pref << " (#{tail})"
       end
 
       def termnote1(elem)
