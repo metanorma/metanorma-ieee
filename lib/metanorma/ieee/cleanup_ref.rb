@@ -113,6 +113,14 @@ module Metanorma
             "<docidentifier type='metanorma-ordinal'>[B#{idx}]</docidentifier>"
         end
       end
+
+      def select_docid(ref)
+        ret = super
+        if %w(standard techreport).include?(ref["type"]) then ret
+        else
+          ref.at("./docidentifier[@type = 'metanorma-ordinal']") || ret
+        end
+      end
     end
   end
 end

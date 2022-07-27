@@ -243,7 +243,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "inserts trademarks against IEEE citations" do
-    VCR.use_cassette "ieee-multi" do
+    VCR.use_cassette "ieee-multi", match_requests_on: %i[method uri body] do
       input = <<~INPUT
         = Document title
         Author
@@ -364,6 +364,7 @@ RSpec.describe Metanorma::IEEE do
         <<ref4>>
         <<ref5>>
         <<ref6>>
+        <<ref7>>
 
         [bibliography]
         == Normative References
@@ -378,6 +379,7 @@ RSpec.describe Metanorma::IEEE do
         * [[[ref4,ISO 639:1967]]] REF5
         * [[[ref5,RFC 7749]]] REF7
         * [[[ref6,3]]] REF4
+        * [[[ref7,ARBITRARY_ID]]] REF4
 
       INPUT
       output = <<~OUTPUT
@@ -390,6 +392,7 @@ RSpec.describe Metanorma::IEEE do
             <eref type='inline' bibitemid='ref4' citeas='ISO/R 639:1967'/>
             <eref type='inline' bibitemid='ref5' citeas='IETF RFC 7749'/>
             <eref type='inline' bibitemid='ref6' citeas='[B1]'/>
+            <eref type='inline' bibitemid='ref7' citeas='[B2]'/>
           </p>
         </clause>
       OUTPUT
