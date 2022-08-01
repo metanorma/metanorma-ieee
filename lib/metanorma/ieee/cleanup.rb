@@ -156,7 +156,9 @@ module Metanorma
       end
 
       def participants_dl_to_ul(clause)
-        clause.xpath(".//dl[.//dl]").each do |dl|
+        clause.xpath(".//dl").each do |dl|
+          next unless dl.ancestors("dl, ul, ol").empty?
+
           dl.name = "ul"
           dl.xpath("./dt").each(&:remove)
           dl.xpath("./dd").each { |li| li.name = "li" }

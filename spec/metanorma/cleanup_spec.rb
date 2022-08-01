@@ -1179,6 +1179,11 @@ RSpec.describe Metanorma::IEEE do
       company::: Ritz
       role::: Member
 
+      And again:
+
+      item:: name1
+      item:: name2
+
     INPUT
     output = <<~OUTPUT
       <clause id='boilerplate-participants'>
@@ -1338,6 +1343,29 @@ RSpec.describe Metanorma::IEEE do
                </dl>
              </li>
            </ul>
+           <p id='_'>And again:</p>
+            <ul id='_'>
+                        <li>
+                <dl>
+                  <dt>name</dt>
+                  <dd>
+                    <p id='_'>name1</p>
+                  </dd>
+                  <dt>role</dt>
+                  <dd>member</dd>
+                </dl>
+              </li>
+              <li>
+                <dl>
+                  <dt>name</dt>
+                  <dd>
+                    <p id='_'>name2</p>
+                  </dd>
+                  <dt>role</dt>
+                  <dd>member</dd>
+                </dl>
+              </li>
+            </ul>
          </clause>
        </clause>
     OUTPUT
