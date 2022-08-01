@@ -6,7 +6,7 @@ module Metanorma
     class Converter < Standoc::Converter
       def initial_boilerplate(xml, isodoc)
         intro_boilerplate(xml, isodoc)
-        super
+        super if @document_scheme == "ieee-sa-2021"
         initial_note(xml)
         word_usage(xml)
         participants(xml)
@@ -31,6 +31,8 @@ module Metanorma
       end
 
       def word_usage(xml)
+        return unless @document_scheme == "ieee-sa-2021"
+
         n = xml.at("//boilerplate//clause[@id = 'boilerplate_word_usage']")
           &.remove
         s = xml.at("//clause[@type = 'overview']")
@@ -122,12 +124,13 @@ module Metanorma
       end
 
       def participants(xml)
-        populate_participants(xml, "boilerplate-participants-wg",
-                              "working group")
-        populate_participants(xml, "boilerplate-participants-bg",
-                              "balloting group")
-        populate_participants(xml, "boilerplate-participants-sb",
-                              "standards board")
+        return unless @document_scheme == "ieee-sa-2021"
+
+        { "boilerplate-participants-wg": "working group",
+          "boilerplate-participants-bg": "balloting group",
+          "boilerplate-participants-sb": "standards board" }.each do |k, v|
+            populate_participants(xml, k.to_s, v)
+          end
         p = xml.at(".//p[@type = 'emeritus_sign']")
         ul = xml.at("//clause[@id = 'boilerplate-participants-sb']//ul")
         p && ul and ul.next = p

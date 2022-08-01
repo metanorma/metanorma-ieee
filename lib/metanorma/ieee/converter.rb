@@ -16,6 +16,7 @@ module Metanorma
 
       def init(node)
         super
+        @document_scheme ||= "ieee-sa-2021"
         @hierarchical_assets = node.attr("hierarchical-object-numbering")
       end
 

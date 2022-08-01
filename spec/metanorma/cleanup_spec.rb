@@ -743,6 +743,35 @@ RSpec.describe Metanorma::IEEE do
       .to be_equivalent_to xmlpp(output)
   end
 
+  it "does not insert boilerplate in front of sections if legacy document scheme nominated" do
+    input = <<~INPUT
+      = Widgets
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :draft: 1.2
+      :docnumber: 10000
+      :doctype: recommended-practice
+      :issued-date: 1000-01-01
+      :document-scheme: legacy
+
+      == Clause 1
+    INPUT
+    output = <<~OUTPUT
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+        <sections>
+          <clause id='_' inline-header='false' obligation='normative'>
+            <title>Clause 1</title>
+          </clause>
+        </sections>
+      </ieee-standard>
+    OUTPUT
+    ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
+    ret.at("//xmlns:bibdata").remove
+    expect(xmlpp(strip_guid(ret.to_xml)))
+      .to be_equivalent_to xmlpp(output)
+  end
+
   it "inserts introduction boilerplate in front of sections" do
     input = <<~INPUT
       = Widgets
@@ -1316,5 +1345,97 @@ RSpec.describe Metanorma::IEEE do
       .at("//xmlns:clause[@id = 'boilerplate-participants']")
     expect(xmlpp(strip_guid(ret.to_xml)))
       .to be_equivalent_to(output)
+  end
+
+  it "do not insert word usage clause if this is legacy document schema" do
+    input = <<~INPUT
+      = Widgets
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :draft: 1.2
+      :docnumber: 10000
+      :doctype: recommended-practice
+      :issued-date: 1000-01-01
+      :document-scheme: legacy
+
+      .Foreword
+
+      Text
+
+      [abstract]
+      == Abstract
+
+      Text
+
+      == Introduction
+
+      === Introduction Subsection
+
+      == Acknowledgements
+
+      [.preface]
+      == Dedication
+
+      == Overview
+
+      Text
+
+      === Scope
+
+      Text
+
+      === Purpose
+
+      Text
+    INPUT
+    output = <<~OUTPUT
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+         <preface>
+           <abstract id='_'>
+             <title>Abstract</title>
+             <p id='_'>Text</p>
+           </abstract>
+           <foreword id='_' obligation='informative'>
+             <title>Foreword</title>
+             <p id='_'>Text</p>
+           </foreword>
+           <introduction id='_' obligation='informative'>
+             <title>Introduction</title>
+             <admonition>
+               This introduction is not part of P10000/D1.2, Draft Recommended Practice
+               for Widgets
+             </admonition>
+             <clause id='_' inline-header='false' obligation='informative'>
+               <title>Introduction Subsection</title>
+             </clause>
+           </introduction>
+           <clause id='_' inline-header='false' obligation='informative'>
+             <title>Dedication</title>
+           </clause>
+           <acknowledgements id='_' obligation='informative'>
+             <title>Acknowledgements</title>
+           </acknowledgements>
+         </preface>
+         <sections>
+           <clause id='_' type='overview' inline-header='false' obligation='normative'>
+             <title>Overview</title>
+             <p id='_'>Text</p>
+             <clause id='_' type='scope' inline-header='false' obligation='normative'>
+               <title>Scope</title>
+               <p id='_'>Text</p>
+             </clause>
+             <clause id='_' type='purpose' inline-header='false' obligation='normative'>
+               <title>Purpose</title>
+               <p id='_'>Text</p>
+             </clause>
+           </clause>
+         </sections>
+       </ieee-standard>
+    OUTPUT
+    ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
+    ret.at("//xmlns:bibdata").remove
+    expect(xmlpp(strip_guid(ret.to_xml)))
+      .to be_equivalent_to xmlpp(output)
   end
 end
