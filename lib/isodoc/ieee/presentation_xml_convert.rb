@@ -185,7 +185,7 @@ module IsoDoc
         key = ""
         map = list.xpath(ns(".//dt | .//dd")).each_with_object({}) do |dtd, m|
           (dtd.name == "dt" and key = dtd.text) or
-            m[key] = dtd.text.strip
+            m[key] = @c.encode(dtd.text.strip, :hexadecimal)
         end
         list.replace(participant_para(map, idx))
       end

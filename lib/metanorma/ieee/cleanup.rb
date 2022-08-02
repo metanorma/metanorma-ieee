@@ -166,11 +166,10 @@ module Metanorma
       end
 
       def populate_participants2(list)
-        c = HTMLEntities.new
         if dl = list.at("./dl")
           ret = extract_participants(dl)
           dl.children = ret.keys.map do |k|
-            "<dt>#{k}</dt><dd>#{c.encode(ret[k], :hexadecimal)}</dd>"
+            "<dt>#{k}</dt><dd>#{ret[k]}</dd>"
           end.join
         else
           list.children = "<dl><dt>name</dt><dd>#{list.children.to_xml}</dd>"\
@@ -182,7 +181,8 @@ module Metanorma
         key = ""
         map = dlist.xpath("./dt | ./dd").each_with_object({}) do |dtd, m|
           (dtd.name == "dt" and key = dtd.text.sub(/:+$/, "")) or
-            m[key.strip.downcase] = dtd.text.strip
+            m[key.strip.downcase] =
+              @c.encode(@c.decode(dtd.text.strip), :hexadecimal)
         end
         map["role"] ||= "member"
         map
