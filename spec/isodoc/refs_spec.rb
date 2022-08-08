@@ -200,10 +200,7 @@ RSpec.describe IsoDoc do
           <eref type='inline' bibitemid='ref2' citeas='Aluffi'>Aluffi</eref>
           <eref type='inline' bibitemid='ref3' citeas='REF4'>REF4</eref>
           <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967'>ISO 639:1967 [B3]</eref>
-          <eref type='inline' bibitemid='ref5' citeas='[B2]'>
-            Facets of Algebraic Geometry: A Collection in Honor of William Fulton's
-            80th Birthday [B2]
-          </eref>
+          <eref type='inline' bibitemid='ref5' citeas='[B2]'>Aluffi, Anderson, Hering, Musta&#x163;&#x103; and Payne [B2]</eref>
           <eref type='inline' bibitemid='ref6' citeas='[B1]'>REF4 [REF4] [B1]</eref>
         </p>
       </clause>
