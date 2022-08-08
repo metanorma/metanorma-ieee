@@ -188,7 +188,6 @@ RSpec.describe Metanorma::IEEE do
                 <uri type='src'>https://www.rfc-editor.org/info/rfc7749</uri>
                 <docidentifier type='IETF' primary='true'>RFC 7749</docidentifier>
                 <docidentifier type='metanorma-ordinal'>[B4]</docidentifier>
-                <docidentifier type='IETF' scope='anchor'>RFC7749</docidentifier>
                 <docidentifier type='DOI'>10.17487/RFC7749</docidentifier>
                 <docnumber>RFC7749</docnumber>
                 <date type='published'>
