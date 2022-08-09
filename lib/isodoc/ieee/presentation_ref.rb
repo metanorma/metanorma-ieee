@@ -14,7 +14,7 @@ module IsoDoc
         if %w(techreport standard).include?(bib[:type])
           node["citeas"] + " #{bib[:ord]}"
         else
-          "#{bib[:title]} " + node["citeas"]
+          "#{bib[:author]} " + node["citeas"]
         end
       end
 
@@ -24,6 +24,8 @@ module IsoDoc
           m[b["id"]] =
             { docid: pref_ref_code(b), type: b["type"],
               title: (b.at(ns("./title")) ||
+                     b.at(ns("./formattedref")))&.text,
+              author: @author[b["id"]] || (b.at(ns("./title")) ||
                      b.at(ns("./formattedref")))&.text,
               ord: b.at(ns("./docidentifier[@type = 'metanorma' or "\
                            "@type = 'metanorma-ordinal']")).text }
@@ -35,13 +37,22 @@ module IsoDoc
                                              i18nhash: @i18n.get)
       end
 
-      def bibrender_relaton(xml)
-        bib = xml.dup
-        bib["suppress_identifier"] == true and
-          bib.xpath(ns("./docidentifier")).each(&:remove)
+      def citestyle
+        "author-date"
+      end
+
+      def references_render(docxml)
+        @author = {}
+        super
+      end
+
+      def bibrender_relaton(xml, renderings)
+        f = renderings[xml["id"]][:formattedref]
+        f &&= "<formattedref>#{f}</formattedref>"
         xml.children =
-          "#{bibrenderer.render(bib.to_xml)}"\
-          "#{xml.xpath(ns('./docidentifier | ./uri | ./note | ./title')).to_xml}"
+          "#{f}#{xml.xpath(ns('./docidentifier | ./uri | ./note | ./title'))
+          .to_xml}"
+        @author[xml["id"]] = renderings[xml["id"]][:author]
       end
 
       def creatornames(bibitem)
