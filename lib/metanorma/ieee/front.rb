@@ -1,3 +1,5 @@
+require "metanorma/isoics"
+
 module Metanorma
   module IEEE
     class Converter < Standoc::Converter
@@ -85,6 +87,13 @@ module Metanorma
 
       def relaton_relations
         super + %w(merges updates)
+      end
+
+      def metadata_ics(node, xml)
+        ics = node.attr("library-ics")
+        ics&.split(/,\s*/)&.each do |i|
+          xml.ics { |elem| elem.code i }
+        end
       end
 
       def metadata_ext(node, xml)
