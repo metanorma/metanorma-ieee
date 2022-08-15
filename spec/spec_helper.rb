@@ -227,7 +227,7 @@ BLANK_HDR = <<~"HDR".freeze
     <language>en</language>
     <script>Latn</script>
    <status>
-           <stage>active</stage>
+           <stage>approved</stage>
    </status>
 
     <copyright>

@@ -248,7 +248,7 @@ RSpec.describe Metanorma::IEEE do
           <language>en</language>
           <script>Latn</script>
           <status>
-            <stage>developing</stage>
+            <stage>draft</stage>
           </status>
           <copyright>
             <from>2022</from>
@@ -301,7 +301,7 @@ RSpec.describe Metanorma::IEEE do
           <language>en</language>
           <script>Latn</script>
           <status>
-            <stage>active</stage>
+            <stage>approved</stage>
           </status>
           <copyright>
             <from>2022</from>

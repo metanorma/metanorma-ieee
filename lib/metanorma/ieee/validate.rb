@@ -29,7 +29,8 @@ module Metanorma
 
       def doctype_validate(xmldoc)
         doctype = xmldoc&.at("//bibdata/ext/doctype")&.text
-        %w(standard recommended-practice guide).include? doctype or
+        %w(standard recommended-practice guide whitepaper redline other)
+          .include? doctype or
           @log.add("Document Attributes", nil,
                    "#{doctype} is not a recognised document type")
         docsubtype = xmldoc&.at("//bibdata/ext/subdoctype")&.text or return
@@ -40,7 +41,7 @@ module Metanorma
 
       def stage_validate(xmldoc)
         stage = xmldoc&.at("//bibdata/status/stage")&.text
-        %w(active inactive developing).include? stage or
+        %w(draft approved superseded withdrawn).include? stage or
           @log.add("Document Attributes", nil,
                    "#{stage} is not a recognised stage")
       end
