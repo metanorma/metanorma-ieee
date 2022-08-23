@@ -82,7 +82,7 @@ RSpec.describe Metanorma::IEEE do
       :title-intro-fr: Introduction Française
       :title-main-fr: Titre Principal
       :title-part-fr: Part du Titre
-      :library-ics: 1,2,3
+      :library-ics: 01.040.11,11.060.01
       :copyright-year: 2000
       :horizontal: true
       :confirmed-date: 1000-12-01
@@ -193,14 +193,13 @@ RSpec.describe Metanorma::IEEE do
                   <committee>TC1</committee>
                 </editorialgroup>
                 <ics>
-                  <code>1</code>
-                </ics>
-                <ics>
-                  <code>2</code>
-                </ics>
-                <ics>
-                  <code>3</code>
-                </ics>
+               <code>01.040.11</code>
+               <text>Health care technology (Vocabularies)</text>
+             </ics>
+             <ics>
+               <code>11.060.01</code>
+               <text>Dentistry in general</text>
+             </ics>
                 <structuredidentifier>
           <docnumber>1000</docnumber>
           <agency>IEEE</agency>

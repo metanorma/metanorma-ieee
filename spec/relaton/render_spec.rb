@@ -76,7 +76,7 @@ RSpec.describe Relaton::Render::IEEE do
           <person>
             <name>
               <surname>Ramsey</surname>
-              <initial>J. K.</initial>
+              <formatted-initials>J. K.</formatted-initials>
             </name>
           </person>
         </contributor>
@@ -85,7 +85,7 @@ RSpec.describe Relaton::Render::IEEE do
           <person>
             <name>
               <surname>McGrew</surname>
-              <initial>W. C.</initial>
+              <formatted-initials>W. C.</formatted-initials>
             </name>
           </person>
         </contributor>
@@ -284,7 +284,7 @@ RSpec.describe Relaton::Render::IEEE do
         <contributor>
           <role type="editor"/>
           <person>
-            <name><surname>Bradner</surname><initials>S.</initials></name>
+            <name><surname>Bradner</surname><formatted-initials>S.</formatted-initials></name>
           </person>
         </contributor>
         <medium>
@@ -393,7 +393,7 @@ RSpec.describe Relaton::Render::IEEE do
         <contributor>
           <role type="author"/>
           <person>
-            <name><surname>Jenkins</surname><initials>S.</initials></name>
+            <name><surname>Jenkins</surname><formatted-initials>S.</formatted-initials></name>
           </person>
         </contributor>
         <contributor>
@@ -408,7 +408,7 @@ RSpec.describe Relaton::Render::IEEE do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref>Jenkins, and J. Ruostekoski, “Controlled manipulation of light by cooperativeresponse of atoms in an optical lattice.” Preprint, 2012, accessed June 24, 2020, <link target='https://eprints.soton.ac.uk/338797/'>https://eprints.soton.ac.uk/338797/</link>.</formattedref>
+      <formattedref>Jenkins, S., and J. Ruostekoski, “Controlled manipulation of light by cooperativeresponse of atoms in an optical lattice.” Preprint, 2012, accessed June 24, 2020, <link target='https://eprints.soton.ac.uk/338797/'>https://eprints.soton.ac.uk/338797/</link>.</formattedref>
     OUTPUT
     i = IsoDoc::IEEE::PresentationXMLConvert.new({})
     i.i18n_init("en", "Latn")
@@ -427,7 +427,7 @@ RSpec.describe Relaton::Render::IEEE do
         <contributor>
           <role type="author"/>
           <person>
-            <name><surname>Jenkins</surname><initials>S.</initials></name>
+            <name><surname>Jenkins</surname><formatted-initials>S.</formatted-initials></name>
           </person>
         </contributor>
         <contributor>
@@ -442,7 +442,7 @@ RSpec.describe Relaton::Render::IEEE do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref>Jenkins, and J. Ruostekoski, “Controlled manipulation of light by cooperativeresponse of atoms in an optical lattice.” Preprint, 2012, accessed June 24, 2020, <link target='https://eprints.soton.ac.uk/338797/'>https://eprints.soton.ac.uk/338797/</link>.</formattedref>#{'     '}
+      <formattedref>Jenkins, S., and J. Ruostekoski, “Controlled manipulation of light by cooperativeresponse of atoms in an optical lattice.” Preprint, 2012, accessed June 24, 2020, <link target='https://eprints.soton.ac.uk/338797/'>https://eprints.soton.ac.uk/338797/</link>.</formattedref>
     OUTPUT
     i = IsoDoc::IEEE::PresentationXMLConvert.new({})
     i.i18n_init("en", "Latn")
