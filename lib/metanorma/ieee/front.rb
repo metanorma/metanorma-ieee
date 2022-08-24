@@ -89,17 +89,6 @@ module Metanorma
         super + %w(merges updates)
       end
 
-      def metadata_ics(node, xml)
-        ics = node.attr("library-ics")
-        ics&.split(/,\s*/)&.each do |i|
-          xml.ics { 
-            |elem| elem.code i
-            icsdata = Isoics.fetch i
-            elem.text_ icsdata.description
-          }
-        end
-      end
-
       def metadata_ext(node, xml)
         super
         structured_id(node, xml)
