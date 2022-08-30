@@ -6,13 +6,27 @@ RSpec.describe Metanorma::IEEE::Processor do
   registry.register(Metanorma::IEEE::Processor)
   processor = registry.find_processor(:ieee)
 
+  inputxml = <<~INPUT
+      <ieee-standard xmlns="http://riboseinc.com/isoxml">
+      <sections>
+        <terms id="H" obligation="normative"><title>Terms</title>
+          <term id="J">
+            <name>1.1.</name>
+            <preferred>Term2</preferred>
+          </term>
+        </terms>
+        <preface/>
+      </sections>
+    </ieee-standard>
+  INPUT
+
   it "registers against metanorma" do
     expect(processor).not_to be nil
   end
 
   it "registers output formats against metanorma" do
     expect(processor.output_formats.sort.to_s).to be_equivalent_to <<~"OUTPUT"
-      [[:doc, "doc"], [:html, "html"], [:pdf, "pdf"], [:presentation, "presentation.xml"], [:rxl, "rxl"], [:xml, "xml"]]
+      [[:doc, "doc"], [:html, "html"], [:ieee, "ieee.xml"], [:pdf, "pdf"], [:presentation, "presentation.xml"], [:rxl, "rxl"], [:xml, "xml"]]
     OUTPUT
   end
 
@@ -35,19 +49,7 @@ RSpec.describe Metanorma::IEEE::Processor do
 
   it "generates HTML from IsoDoc XML" do
     FileUtils.rm_f "test.xml"
-    processor.output(<<~"INPUT", "test.xml", "test.html", :html)
-      <ieee-standard xmlns="http://riboseinc.com/isoxml">
-        <sections>
-          <terms id="H" obligation="normative"><title>Terms</title>
-            <term id="J">
-              <name>1.1.</name>
-              <preferred>Term2</preferred>
-            </term>
-          </terms>
-          <preface/>
-        </sections>
-      </ieee-standard>
-    INPUT
+    processor.output(inputxml, "test.xml", "test.html", :html)
     expect(xmlpp(File.read("test.html", encoding: "utf-8")
       .gsub(%r{^.*<main}m, "<main")
       .gsub(%r{</main>.*}m, "</main>")))
@@ -62,5 +64,13 @@ RSpec.describe Metanorma::IEEE::Processor do
           </div>
         </main>
       OUTPUT
+  end
+
+  it "generates IEEE XML from Metanorma XML" do
+    FileUtils.rm_f "test.xml"
+    FileUtils.rm_f "test.ieee.xml"
+    File.write("test.xml", inputxml)
+    processor.output(inputxml, "test.xml", "test.ieee.xml", :ieee)
+    expect(File.exist?("test.ieee.xml")).to be true
   end
 end

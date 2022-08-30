@@ -14,6 +14,7 @@ module Metanorma
           html: "html",
           doc: "doc",
           pdf: "pdf",
+          ieee: "ieee.xml",
         )
       end
 
@@ -47,6 +48,9 @@ module Metanorma
           IsoDoc::IEEE::PresentationXMLConvert.new(options).convert(
             inname, isodoc_node, nil, outname
           )
+        when :ieee
+          IsoDoc::IEEE::IEEEXMLConvert.new(options)
+            .convert(inname, isodoc_node, nil, outname)
         else
           super
         end
