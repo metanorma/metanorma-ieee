@@ -88,7 +88,7 @@ RSpec.describe Metanorma::IEEE do
       :doctype: pizza
 
       .uncapitalised caption
-      image::a.gif[]
+      image::spec/assets/rice_image1.png[]
     INPUT
     expect(File.read("test.err"))
       .to include "figure heading should be capitalised"
@@ -102,7 +102,7 @@ RSpec.describe Metanorma::IEEE do
       :doctype: pizza
 
       .Capitalised caption
-      image::a.gif[]
+      image::spec/assets/rice_image1.png[]
     INPUT
     expect(File.read("test.err"))
       .not_to include "figure heading should be capitalised"
@@ -1126,20 +1126,21 @@ RSpec.describe Metanorma::IEEE do
         :no-isobib:
         :docnumber: 1000
         :copyright-year: 2000
+        :data-uri-image: false
 
         == Clause
-        image::document-2000_fig1.png[]
+        image::spec/assets/document-2000_fig1.png[]
 
-        image::1000-2000_fig2.png[]
+        image::spec/assets/1000-2000_fig2.png[]
 
-        image::1000-2000_fig4.png[]
+        image::spec/assets/1000-2000_fig4.png[]
       INPUT
       expect(File.read("test.err"))
-        .to include "Image name document-2000_fig1.png is expected to be 1000-2000_fig1"
+        .to include "Image name document-2000_fig1 is expected to be 1000-2000_fig1"
       expect(File.read("test.err"))
-        .not_to include "Image name 1000-2000_fig2.png is expected to be 1000-2000_fig2"
+        .not_to include "Image name 1000-2000_fig2 is expected to be 1000-2000_fig2"
       expect(File.read("test.err"))
-        .to include "Image name 1000-2000_fig4.png is expected to be 1000-2000_fig3"
+        .to include "Image name 1000-2000_fig4 is expected to be 1000-2000_fig3"
     end
 
     it "warn on wrong image names within tables" do
@@ -1150,6 +1151,7 @@ RSpec.describe Metanorma::IEEE do
         :nodoc:
         :no-isobib:
         :docnumber: 1000
+        :data-uri-image: false
 
         == Clause
 
@@ -1158,11 +1160,11 @@ RSpec.describe Metanorma::IEEE do
         |===
 
         |===
-        a| image::Tab2Row1Col2.png[] | A
+        a| image::spec/assets/Tab2Row1Col2.png[] | A
 
-        | C a| image::1000-fig2.png[]
+        | C a| image::spec/assets/1000-fig2.png[]
 
-        a| image::1000-fig4.png[] | D
+        a| image::spec/assets/1000-fig4.png[] | D
         |===
       INPUT
       expect(File.read("test.err"))
@@ -1185,8 +1187,8 @@ RSpec.describe Metanorma::IEEE do
         == Clause
 
         |===
-        a| image::document-fig1.png[]
-        image::1000-fig2.png[] | B
+        a| image::spec/assets/rice_image1.png[]
+        image::spec/assets/rice_image2.png[] | B
         |===
       INPUT
       expect(File.read("test.err"))
@@ -1203,7 +1205,7 @@ RSpec.describe Metanorma::IEEE do
         == Clause
 
         |===
-        a| image::document-fig1.png[] | B
+        a| image::spec/assets/rice_image1.png[] | B
         |===
       INPUT
       expect(File.read("test.err"))
