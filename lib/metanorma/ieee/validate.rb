@@ -149,13 +149,13 @@ module Metanorma
         pref = image_name_prefix(xmldoc)
         (xmldoc.xpath("//figure") - xmldoc.xpath("//table//figure"))
           .each do |f|
-            i = f.at("./image") or next
-            next if i["src"].start_with?("data:")
+            (i = f.at("./image") and !i["src"]&.start_with?("data:")) or next
 
             num = xrefs.anchor(f["id"], :label)
-            File.basename(i["src"], ".*") == "#{pref}_fig#{num}" or
+            base = File.basename(i["src"], ".*")
+            base == "#{pref}_fig#{num}" or
               @log.add("Style", i,
-                       "Image name #{i['src']} is expected to be #{pref}_fig#{num}")
+                       "Image name #{base} is expected to be #{pref}_fig#{num}")
           end
       end
 
@@ -170,13 +170,13 @@ module Metanorma
       def table_figure_name_validate(xmldoc, xrefs)
         xmldoc.xpath("//table[.//figure]").each do |t|
           xmldoc.xpath(".//figure").each do |f|
-            i = f.at("./image") or next
-            next if i["src"].start_with?("data:")
+            (i = f.at("./image") and !i["src"]&.start_with?("data:")) or next
 
             num = tablefigurenumber(t, f, xrefs)
-            File.basename(i["src"]) == num or
+            base = File.basename(i["src"])
+            base == num or
               @log.add("Style", i,
-                       "Image name #{i['src']} is expected to be #{num}")
+                       "Image name #{base} is expected to be #{num}")
           end
         end
       end
