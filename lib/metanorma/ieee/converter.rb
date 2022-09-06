@@ -60,7 +60,8 @@ module Metanorma
 
       def html_extract_attributes(node)
         super.merge(hierarchical_assets:
-                    node.attr("hierarchical-object-numbering"))
+                    node.attr("hierarchical-object-numbering"),
+                    ieeedtd: node.attr("ieee-dtd"))
       end
 
       def doc_extract_attributes(node)
@@ -78,11 +79,19 @@ module Metanorma
       end
 
       def pdf_converter(node)
+        return nil if node.attr("no-pdf")
+
         IsoDoc::IEEE::PdfConvert.new(pdf_extract_attributes(node))
       end
 
       def doc_converter(node)
         IsoDoc::IEEE::WordConvert.new(doc_extract_attributes(node))
+      end
+
+      def ieee_xml_converter(node)
+        return nil if node.attr("no-pdf")
+
+        IsoDoc::Iso::IEEEXMLConvert.new(html_extract_attributes(node))
       end
     end
   end
