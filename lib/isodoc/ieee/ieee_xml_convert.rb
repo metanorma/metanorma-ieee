@@ -4,10 +4,11 @@ require "mnconvert"
 module IsoDoc
   module IEEE
     class IEEEXMLConvert < IsoDoc::XslfoPdfConvert
-      def initialize(_options) # rubocop:disable Lint/MissingSuper
+      def initialize(options) # rubocop:disable Lint/MissingSuper
         @libdir = File.dirname(__FILE__)
         @format = :ieee
         @suffix = "ieee.xml"
+        @ieeedtd = options[:ieeedtd]
       end
 
       def inputfile(in_fname, filename)
@@ -24,11 +25,11 @@ module IsoDoc
         _docxml, filename, dir = convert_init(file, in_fname, debug)
         in_fname = inputfile(in_fname, filename)
         FileUtils.rm_rf dir
-        require "debug"; binding.b
-        MnConvert.convert(in_fname,
-                          { input_format: MnConvert::InputFormat::MN,
-                            output_file: out_fname || "#{filename}.#{@suffix}",
-                            output_format: :ieee })
+        opt = { input_format: MnConvert::InputFormat::MN,
+                output_file: out_fname || "#{filename}.#{@suffix}",
+                output_format: :ieee }
+        @ieeedtd and opt.merge!(validation_against: @ieeedtd)
+        MnConvert.convert(in_fname, opt)
       end
     end
   end
