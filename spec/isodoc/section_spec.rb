@@ -319,13 +319,13 @@ RSpec.describe IsoDoc::IEEE do
         <p>
           <br clear='all' class='section'/>
         </p>
-        <div class='WordSection13'>
+        <div class='WordSectionMiddleTitle'>
           <p class='IEEEStdsTitle' style='margin-top:70.0pt'>??? for ???</p>
         </div>
         <p>
           <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
         </p>
-        <div class='WordSection14'>
+        <div class='WordSectionMain'>
           <div id='D'>
             <h1>
               1.
@@ -497,7 +497,7 @@ RSpec.describe IsoDoc::IEEE do
         </body>
     OUTPUT
     word = <<~OUTPUT
-      <div class='WordSection13'>
+      <div class='WordSectionMiddleTitle'>
          <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Draft Recommended Practice for Title</p>
        </div>
     OUTPUT
@@ -507,7 +507,7 @@ RSpec.describe IsoDoc::IEEE do
       .to be_equivalent_to xmlpp(html)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::WordConvert.new({})
       .convert("test", input, true))
-      .at("//div[@class = 'WordSection13']").to_xml))
+      .at("//div[@class = 'WordSectionMiddleTitle']").to_xml))
       .to be_equivalent_to xmlpp(word)
   end
 
@@ -1115,9 +1115,9 @@ RSpec.describe IsoDoc::IEEE do
     doc = Nokogiri::XML(word2xml("test.doc")).at("//xmlns:body")
     doc.at("//xmlns:div[@class = 'WordSection1']")&.remove
     doc.at("//xmlns:div[@class = 'WordSection2']")&.remove
-    doc.at("//xmlns:div[@class = 'WordSection10']")&.remove
-    doc.at("//xmlns:div[@class = 'WordSection11']")&.remove
-    doc.at("//xmlns:div[@class = 'WordSection12']")&.remove
+    doc.at("//xmlns:div[@class = 'WordSectionContents']")&.remove
+    doc.at("//xmlns:div[@class = 'WordSectionMiddleTitle']")&.remove
+    doc.at("//xmlns:div[@class = 'WordSectionMain']")&.remove
     expect(strip_guid(xmlpp(doc.to_xml)))
       .to be_equivalent_to xmlpp(word)
   end

@@ -88,7 +88,7 @@ module IsoDoc
           d.replace(d.children)
         i = 0
         docxml.xpath("//div[@class]").each do |div|
-          next unless /^WordSection/.match?(div["class"])
+          next unless /^WordSection\d*$/.match?(div["class"])
 
           i += 1
           div["class"] = "WordSection#{i}"

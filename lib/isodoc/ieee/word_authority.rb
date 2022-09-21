@@ -114,7 +114,7 @@ module IsoDoc
           para = i % 2 == 1 && i != ret.size - 2 ? "<p>&#xa0;</p>" : ""
           "<div class='WordSection'>#{para}#{d}</div>"
         end.join(SECTIONBREAK)
-        div.document.at("//div[@class = 'WordSection11']")
+        div.document.at("//div[@class = 'WordSectionIntro']")
           .previous_element.previous = SECTIONBREAK + out
       end
 
