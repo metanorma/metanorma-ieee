@@ -270,13 +270,13 @@ RSpec.describe IsoDoc do
          <p>
            <br clear='all' class='section'/>
          </p>
-         <div class='WordSection13'>
+         <div class='WordSectionMiddleTitle'>
            <p class='IEEEStdsTitle' style='margin-top:70.0pt'>??? for ???</p>
          </div>
          <p>
            <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
          </p>
-         <div class='WordSection14'>
+         <div class='WordSectionMain'>
            <div id='_terms_and_definitions'>
              <h1>
                 1.
