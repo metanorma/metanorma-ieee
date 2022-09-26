@@ -47,9 +47,9 @@ module Metanorma
         else
           bib1 = bib.dup
           bib1.add_namespace(nil, self.class::XML_NAMESPACE)
-          i = IsoDoc::IEEE::PresentationXMLConvert.new({ lang: @lang,
-                                                         script: @script })
-          i.i18n_init(@lang, @script)
+          i = IsoDoc::IEEE::PresentationXMLConvert
+            .new({ lang: @lang, script: @script, locale: @locale })
+          i.i18n_init(@lang, @script, @locale)
           i.creatornames(bib1)
         end
       end
