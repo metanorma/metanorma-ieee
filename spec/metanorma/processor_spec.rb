@@ -72,5 +72,13 @@ RSpec.describe Metanorma::IEEE::Processor do
     File.write("test.xml", inputxml)
     processor.output(inputxml, "test.xml", "test.ieee.xml", :ieee)
     expect(File.exist?("test.ieee.xml")).to be true
+    FileUtils.rm_f "test.ieee.xml"
+    begin
+    expect do
+      processor.output(inputxml, "test.xml", "test.ieee.xml", :ieee,
+                       { ieeedtd: "XXX" })
+    end.to raise_error StandardError
+    rescue StandardError
+    end
   end
 end
