@@ -378,7 +378,7 @@ RSpec.describe Metanorma::IEEE do
         * [[[ref4,ISO 639:1967]]] REF5
         * [[[ref5,RFC 7749]]] REF7
         * [[[ref6,3]]] REF4
-        * [[[ref7,ARBITRARY_ID]]] REF4
+        * [[[ref7,ARBITRARY_ID]]] REF9
 
       INPUT
       output = <<~OUTPUT

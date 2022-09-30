@@ -5,7 +5,7 @@ nametemplate:
 extenttemplate:
   misc: "{{ volume }}, {{issue}}, {{ page }}, {{ duration }}"
 template:
-  # skip standardidentifier, it is inserted in front of formattedref within metanorma
+  # skip authoritative_identifier, it is inserted in front of formattedref within metanorma
   standard: "{{ title }}."
   techreport: standard
   article: "{{creatornames}}, “{{title}},” <em>{{ series }}</em>, {{ extent }}, {{ date }}, {{ labels['viewed'] }}_{{date_accessed}}, {{ uri }} ."

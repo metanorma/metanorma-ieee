@@ -20,14 +20,14 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <div class='WordSection6'>
+      <div class='WordSectionMiddleTitle'>
       <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Guide for Title</p>
       </div>
     OUTPUT
     IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
-      .at("//xmlns:div[@class = 'WordSection6']")
+      .at("//xmlns:div[@class = 'WordSectionMiddleTitle']")
     expect(strip_guid(xmlpp(doc.to_xml)))
       .to be_equivalent_to xmlpp(output)
   end
@@ -60,14 +60,14 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
        </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <div class='WordSection6'>
+      <div class='WordSectionMiddleTitle'>
       <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Guide for Title<br/>Amendment A1 Corrigenda C1</p>
       </div>
     OUTPUT
     IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
-      .at("//xmlns:div[@class = 'WordSection6']")
+      .at("//xmlns:div[@class = 'WordSectionMiddleTitle']")
     expect(strip_guid(xmlpp(doc.to_xml)))
       .to be_equivalent_to xmlpp(output)
   end
@@ -1457,13 +1457,13 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         <p class='IEEEStdsParagraph'>
           <br clear='all' class='section'/>
         </p>
-        <div class='WordSection11'>
+        <div class='WordSectionMiddleTitle'>
           <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Draft Standard for Empty</p>
         </div>
         <p class='IEEEStdsParagraph'>
           <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
         </p>
-        <div class='WordSection12'>
+        <div class='WordSectionMain'>
           <div>
             <a name="_" id="_"/>
             <p class='IEEEStdsLevel1Header'>Clause</p>
@@ -1606,7 +1606,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:body")
-    doc.at("//xmlns:div[@class = 'WordSection10']")&.remove
+    doc.at("//xmlns:div[@class = 'WordSectionContents']")&.remove
     expect(strip_guid(xmlpp(doc.to_xml)))
       .to be_equivalent_to xmlpp(word)
   end

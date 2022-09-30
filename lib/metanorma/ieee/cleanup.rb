@@ -117,7 +117,7 @@ module Metanorma
         x = xmldoc.dup
         x.root.add_namespace(nil, self.class::XML_NAMESPACE)
         xml = Nokogiri::XML(x.to_xml)
-        i = isodoc(@lang, @script)
+        i = isodoc(@lang, @script, @locale)
         i.bibdata_i18n(xml.at("//xmlns:bibdata"))
         i.info(xml, nil)
         i

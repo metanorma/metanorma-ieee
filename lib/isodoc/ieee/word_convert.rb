@@ -57,11 +57,11 @@ module IsoDoc
       end
 
       def make_body3(body, docxml)
-        body.div **{ class: "WordSection13" } do |_div3|
+        body.div **{ class: "WordSectionMiddleTitle" } do |_div3|
           middle_title_ieee(docxml, body)
         end
         section_break(body, continuous: true)
-        body.div **{ class: "WordSection14" } do |div3|
+        body.div **{ class: "WordSectionMain" } do |div3|
           middle docxml, div3
           footnotes div3
           comments div3
