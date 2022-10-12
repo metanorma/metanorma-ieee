@@ -53,22 +53,36 @@ module Metanorma
       end
 
       def overview_cleanup(xml)
+        overview_once_cleanup(xml)
+        overview_children_cleanup(xml)
+      end
+
+      def overview_children_cleanup(xml)
         %w(scope purpose word-usage).each do |x|
           (xml.xpath("//clause[@type = '#{x}']") -
-            xml.xpath("//sections/clause[1][@type = 'overview']"\
+            xml.xpath("//sections/clause[@type = 'overview']" \
                       "//clause[@type = '#{x}']"))
             .each { |c| c.delete("type") }
         end
-        (xml.xpath("//clause[@type = 'overview']") -
-         xml.xpath("//sections/clause[1]"))
-          .each { |c| c.delete("type") }
+      end
+
+      def overview_once_cleanup(xml)
+        found = false
+        xml.xpath("//sections//clause[@type = 'overview']").each do |c|
+          found and c.delete("type")
+          found = true if c.parent.name = "sections"
+        end
+        xml.xpath("//annex//clause[@type = 'overview'] | " \
+                  "//preface//clause[@type = 'overview']").each do |c|
+          c.delete("type")
+        end
       end
 
       def note_cleanup(xmldoc)
         super
-        n = xmldoc.at("//preface//note[not(@type = 'boilerplate')]"\
-                      "[not(./ancestor::abstract)] | "\
-                      "//sections//note[not(@type = 'boilerplate')] | "\
+        n = xmldoc.at("//preface//note[not(@type = 'boilerplate')]" \
+                      "[not(./ancestor::abstract)] | " \
+                      "//sections//note[not(@type = 'boilerplate')] | " \
                       "//annex//note[not(@type = 'boilerplate')]") or
           return
         ins = n.at("./p[last()]")
@@ -172,7 +186,7 @@ module Metanorma
             "<dt>#{k}</dt><dd>#{ret[k]}</dd>"
           end.join
         else
-          list.children = "<dl><dt>name</dt><dd>#{list.children.to_xml}</dd>"\
+          list.children = "<dl><dt>name</dt><dd>#{list.children.to_xml}</dd>" \
                           "<dt>role</dt><dd>member</dd></dl>"
         end
       end
@@ -199,7 +213,7 @@ module Metanorma
         u.empty? and m.empty? and return
         ins = xmldoc.at("//bibdata/title")
         t = provenance_title1(u, m)
-        ins.next = "<title type='provenance' language='en' "\
+        ins.next = "<title type='provenance' language='en' " \
                    "format='application/xml'>#{t}</title>"
       end
 
