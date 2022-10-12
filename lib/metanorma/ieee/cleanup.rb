@@ -70,7 +70,7 @@ module Metanorma
         found = false
         xml.xpath("//sections//clause[@type = 'overview']").each do |c|
           found and c.delete("type")
-          found = true if c.parent.name = "sections"
+          found = true if c.parent.name == "sections"
         end
         xml.xpath("//annex//clause[@type = 'overview'] | " \
                   "//preface//clause[@type = 'overview']").each do |c|
