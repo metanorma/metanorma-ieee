@@ -85,7 +85,7 @@ module IsoDoc
         i = display_order_xpath(docxml, "//preface/*", i)
         i = display_order_at(docxml, "//clause[@type = 'overview']", i)
         i = display_order_at(docxml, @xrefs.klass.norm_ref_xpath, i)
-        i = display_order_at(docxml, "//sections/terms | "\
+        i = display_order_at(docxml, "//sections/terms | " \
                                      "//sections/clause[descendant::terms]", i)
         i = display_order_at(docxml, "//sections/definitions", i)
         i = display_order_xpath(docxml, @xrefs.klass.middle_clause(docxml), i)
@@ -153,7 +153,7 @@ module IsoDoc
       end
 
       def boilerplate(docxml)
-        docxml.xpath(ns("//clause[@id = 'boilerplate-participants']/"\
+        docxml.xpath(ns("//clause[@id = 'boilerplate-participants']/" \
                         "clause/title")).each(&:remove)
         docxml.xpath(ns("//clause[@id = 'boilerplate-participants']/clause"))
           .each do |clause|
@@ -211,12 +211,26 @@ module IsoDoc
       def participant_officeholder_para(map, name, idx)
         name = "<strong>#{name}</strong>" if idx.zero?
         br = map["role"].size > 30 ? "<br/>" : ""
-        "<p type='officeholder' align='center'>#{name}, #{br}"\
+        "<p type='officeholder' align='center'>#{name}, #{br}" \
           "<em>#{map['role']}</em></p>"
       end
 
       def participant_name(map)
         map["company"] || map["name"] || "#{map['given']} #{map['surname']}"
+      end
+
+      def asciimath_dup(node)
+        return if @suppressasciimathdup
+
+        super
+        math = node.to_xml.gsub(/ xmlns=["'][^"']+["']/, "")
+          .gsub(%r{<[^:/]+:}, "<").gsub(%r{</[^:/]+:}, "</")
+        ret = Plurimath::Math.parse(math, "mathml").to_latex
+        ret = HTMLEntities.new.encode(ret, :basic)
+        node.next = "<latexmath>#{ret}</latexmath>"
+      rescue StandardError => e
+        warn math
+        warn e
       end
 
       include Init

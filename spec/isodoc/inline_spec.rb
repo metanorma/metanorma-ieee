@@ -464,4 +464,52 @@ RSpec.describe IsoDoc::IEEE do
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
       .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
   end
+
+  it "duplicates MathML with AsciiMath and LaTeXMath" do
+    input = <<~INPUT
+      <iso-standard xmlns="http://riboseinc.com/isoxml" xmlns:m='http://www.w3.org/1998/Math/MathML'>
+      <preface><foreword>
+      <p>
+      <stem type="MathML"><m:math>
+        <m:msup> <m:mrow> <m:mo>(</m:mo> <m:mrow> <m:mi>x</m:mi> <m:mo>+</m:mo> <m:mi>y</m:mi> </m:mrow> <m:mo>)</m:mo> </m:mrow> <m:mn>2</m:mn> </m:msup>
+      </m:math></stem>
+      </p>
+      </foreword></preface>
+      <sections>
+      </iso-standard>
+    INPUT
+    output = <<~OUTPUT
+      <iso-standard xmlns='http://riboseinc.com/isoxml' xmlns:m='http://www.w3.org/1998/Math/MathML' type='presentation'>
+        <preface>
+          <foreword displayorder='1'>
+            <p>
+              <stem type='MathML'>
+                 <m:math>
+                   <m:msup>
+                     <m:mrow>
+                       <m:mo>(</m:mo>
+                       <m:mrow>
+                         <m:mi>x</m:mi>
+                         <m:mo>+</m:mo>
+                         <m:mi>y</m:mi>
+                       </m:mrow>
+                       <m:mo>)</m:mo>
+                     </m:mrow>
+                     <m:mn>2</m:mn>
+                   </m:msup>
+                 </m:math>
+                 <latexmath>{(x+y)}^{2}</latexmath>
+                 <asciimath>(x+y)^2</asciimath>
+              </stem>
+            </p>
+          </foreword>
+        </preface>
+        <sections> </sections>
+      </iso-standard>
+    OUTPUT
+    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
+      .convert("test", input, true)))
+      .to be_equivalent_to xmlpp(output)
+  end
+
 end
