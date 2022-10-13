@@ -231,46 +231,46 @@ RSpec.describe Metanorma::IEEE do
 
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
-        <bibdata type='standard'>
-          <title language='en' format='text/plain'>Document title</title>
-          <contributor>
-            <role type='publisher'/>
-            <organization>
-              <name>Institute of Electrical and Electronic Engineers</name>
-              <abbreviation>IEEE</abbreviation>
-            </organization>
-          </contributor>
-          <version>
-            <draft>3</draft>
-          </version>
-          <language>en</language>
-          <script>Latn</script>
-          <status>
-            <stage>draft</stage>
-          </status>
-          <copyright>
-            <from>2022</from>
-            <owner>
-              <organization>
-                <name>Institute of Electrical and Electronic Engineers</name>
-                <abbreviation>IEEE</abbreviation>
-              </organization>
-            </owner>
-          </copyright>
-          <ext>
-            <doctype>standard</doctype>
-            <subdoctype>document</subdoctype>
-                 <editorialgroup>
-       <society>SECRETARIAT</society>
-       <balloting-group type='individual'>BG</balloting-group>
-       <working-group/>
-       <committee/>
-     </editorialgroup>
-          </ext>
-        </bibdata>
-        <sections> </sections>
-      </ieee-standard>
+       <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+         <bibdata type='standard'>
+           <title language='en' format='text/plain'>Document title</title>
+           <contributor>
+             <role type='publisher'/>
+             <organization>
+               <name>Institute of Electrical and Electronic Engineers</name>
+               <abbreviation>IEEE</abbreviation>
+             </organization>
+           </contributor>
+           <version>
+             <draft>3</draft>
+           </version>
+           <language>en</language>
+           <script>Latn</script>
+           <status>
+             <stage>draft</stage>
+           </status>
+           <copyright>
+             <from>2022</from>
+             <owner>
+               <organization>
+                 <name>Institute of Electrical and Electronic Engineers</name>
+                 <abbreviation>IEEE</abbreviation>
+               </organization>
+             </owner>
+           </copyright>
+           <ext>
+             <doctype>standard</doctype>
+             <subdoctype>document</subdoctype>
+                  <editorialgroup>
+        <society>SECRETARIAT</society>
+        <balloting-group type='individual'>BG</balloting-group>
+        <working-group/>
+        <committee/>
+      </editorialgroup>
+           </ext>
+         </bibdata>
+         <sections> </sections>
+       </ieee-standard>
     OUTPUT
     expect(xmlpp(out.sub(%r{<boilerplate>.*</boilerplate>}m, "")))
       .to be_equivalent_to xmlpp(output)
@@ -334,6 +334,10 @@ RSpec.describe Metanorma::IEEE do
       == Abstract
 
       Text
+
+      == Participants
+
+      === Working Group
 
       == Introduction
 
@@ -426,7 +430,7 @@ RSpec.describe Metanorma::IEEE do
       == Thematic Index
     INPUT
     output = <<~OUTPUT
-      #{@blank_hdr.sub(%r{</script>}, '</script><abstract><p>Text</p></abstract>')}
+      #{@blank_hdr.sub(%r{</script>}, '</script><abstract><p>Text</p></abstract>').sub(%r{<boilerplate>.*</boilerplate>}m, '')}
                <preface>
            <abstract id='_'>
              <title>Abstract</title>
@@ -465,63 +469,63 @@ RSpec.describe Metanorma::IEEE do
       <clause id='boilerplate_word_usage'>
       <title>Word usage</title>
         <p id='_'>
-          The word 
+          The word
           <em>shall</em>
            indicates mandatory requirements strictly to be followed in order to
           conform to the standard and from which no deviation is permitted (
           <em>shall</em>
-           equals 
+           equals
           <em>is required to</em>
           ).
           <fn>
             <p id='_'>
-              The use of the word 
+              The use of the word#{' '}
               <em>must</em>
                is deprecated and cannot be used when stating mandatory
-              requirements; 
+              requirements;#{' '}
               <em>must</em>
                is used only to describe unavoidable situations.
             </p>
           </fn>
           <fn>
             <p id='_'>
-              The use of 
+              The use of#{' '}
               <em>will</em>
                is deprecated and cannot be used when stating mandatory
-              requirements; 
+              requirements;#{' '}
               <em>will</em>
                is only used in statements of fact.
             </p>
           </fn>
         </p>
         <p id='_'>
-          The word 
+          The word#{' '}
           <em>should</em>
            indicates that among several possibilities one is recommended as
           particularly suitable, without mentioning or excluding others; or that
           a certain course of action is preferred but not necessarily required (
           <em>should</em>
-           equals 
+           equals#{' '}
           <em>is recommended that</em>
           ).
         </p>
         <p id='_'>
-          The word 
+          The word#{' '}
           <em>may</em>
            is used to indicate a course of action permissible within the limits
           of the standard (
           <em>may</em>
-           equals 
+           equals#{' '}
           <em>is permitted to</em>
           ).
         </p>
         <p id='_'>
-          The word 
+          The word#{' '}
           <em>can</em>
            is used for statements of possibility and capability, whether
           material, physical, or causal (
           <em>can</em>
-           equals 
+           equals#{' '}
           <em>is able to</em>
           ).
         </p>
@@ -650,7 +654,8 @@ RSpec.describe Metanorma::IEEE do
          </indexsect>
        </ieee-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS)
+      .sub(%r{<boilerplate>.*</boilerplate>}m, ""))))
       .to be_equivalent_to xmlpp(output)
   end
 end
