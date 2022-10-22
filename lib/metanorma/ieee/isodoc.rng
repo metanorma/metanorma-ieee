@@ -21,17 +21,13 @@
   <include href="reqt.rng"/>
   <!-- include "biblio.rnc" { } -->
   <include href="basicdoc.rng">
-    <start>
-      <ref name="standard-document"/>
-    </start>
-    <define name="doctype">
-      <element name="doctype">
-        <optional>
-          <attribute name="abbreviation"/>
-        </optional>
-        <ref name="DocumentType"/>
-      </element>
-    </define>
+    <!-- start = standard-document -->
+    <!--
+      doctype = element doctype { 
+      attribute abbreviation { text }?,
+      DocumentType 
+      }
+    -->
     <define name="admonition">
       <element name="admonition">
         <attribute name="type">
@@ -115,24 +111,6 @@
             </oneOrMore>
           </element>
         </optional>
-      </element>
-    </define>
-    <define name="bibitem">
-      <element name="bibitem">
-        <attribute name="id">
-          <data type="ID"/>
-        </attribute>
-        <optional>
-          <attribute name="hidden">
-            <data type="boolean"/>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="suppress_identifier">
-            <data type="boolean"/>
-          </attribute>
-        </optional>
-        <ref name="BibliographicItem"/>
       </element>
     </define>
     <define name="section-title">
@@ -248,42 +226,19 @@
         <ref name="PureTextElement"/>
       </oneOrMore>
     </define>
-    <define name="localityStack">
-      <element name="localityStack">
-        <optional>
-          <attribute name="connective">
-            <choice>
-              <value>and</value>
-              <value>or</value>
-              <value>from</value>
-              <value>to</value>
-              <value/>
-            </choice>
-          </attribute>
-        </optional>
-        <zeroOrMore>
-          <ref name="locality"/>
-        </zeroOrMore>
-      </element>
-    </define>
-    <define name="sourceLocalityStack">
-      <element name="sourceLocalityStack">
-        <optional>
-          <attribute name="connective">
-            <choice>
-              <value>and</value>
-              <value>or</value>
-              <value>from</value>
-              <value>to</value>
-              <value/>
-            </choice>
-          </attribute>
-        </optional>
-        <zeroOrMore>
-          <ref name="sourceLocality"/>
-        </zeroOrMore>
-      </element>
-    </define>
+    <!--
+      localityStack =
+      element localityStack { 
+      attribute connective { "and" | "or" | "from" | "to" | "" }?,
+      locality* 
+      }
+      
+      sourceLocalityStack =
+      element sourceLocalityStack { 
+      attribute connective { "and" | "or" | "from" | "to" | "" }?,
+      sourceLocality* 
+      }
+    -->
     <define name="ul">
       <element name="ul">
         <attribute name="id">
@@ -827,24 +782,15 @@
         </zeroOrMore>
       </element>
     </define>
-    <define name="BibDataExtensionType">
-      <optional>
-        <attribute name="schema-version"/>
-      </optional>
-      <ref name="doctype"/>
-      <optional>
-        <ref name="docsubtype"/>
-      </optional>
-      <optional>
-        <ref name="editorialgroup"/>
-      </optional>
-      <zeroOrMore>
-        <ref name="ics"/>
-      </zeroOrMore>
-      <zeroOrMore>
-        <ref name="structuredidentifier"/>
-      </zeroOrMore>
-    </define>
+    <!--
+      BibDataExtensionType = 
+      attribute schema-version { text }?,
+      doctype,
+      docsubtype?,
+      editorialgroup?,
+      ics*,
+      structuredidentifier*
+    -->
     <!-- TitleType = text -->
     <define name="sections">
       <element name="sections">
@@ -884,7 +830,7 @@
           <ref name="BasicBlock"/>
         </zeroOrMore>
         <zeroOrMore>
-          <ref name="bibitem"/>
+          <ref name="doc_bibitem"/>
           <zeroOrMore>
             <ref name="note"/>
           </zeroOrMore>
@@ -1222,6 +1168,24 @@
     </define>
   </include>
   <!-- end overrides -->
+  <define name="doc_bibitem">
+    <element name="bibitem">
+      <attribute name="id">
+        <data type="ID"/>
+      </attribute>
+      <optional>
+        <attribute name="hidden">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="suppress_identifier">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <ref name="BibliographicItem"/>
+    </element>
+  </define>
   <define name="image" combine="choice">
     <element name="svg">
       <oneOrMore>
@@ -1240,14 +1204,8 @@
       <value>tag</value>
     </choice>
   </define>
-  <define name="docsubtype">
-    <element name="subdoctype">
-      <ref name="DocumentSubtype"/>
-    </element>
-  </define>
-  <define name="DocumentSubtype">
-    <text/>
-  </define>
+  <!-- docsubtype = element subdoctype { DocumentSubtype } -->
+  <!-- DocumentSubtype = text -->
   <define name="colgroup">
     <element name="colgroup">
       <oneOrMore>
@@ -1609,45 +1567,26 @@
       </choice>
     </element>
   </define>
-  <define name="editorialgroup">
-    <element name="editorialgroup">
-      <oneOrMore>
-        <ref name="technical-committee"/>
-      </oneOrMore>
-    </element>
-  </define>
-  <define name="technical-committee">
-    <element name="technical-committee">
-      <ref name="IsoWorkgroup"/>
-    </element>
-  </define>
-  <define name="IsoWorkgroup">
-    <optional>
-      <attribute name="number"/>
-    </optional>
-    <optional>
-      <attribute name="type"/>
-    </optional>
-    <optional>
-      <attribute name="identifier"/>
-    </optional>
-    <optional>
-      <attribute name="prefix"/>
-    </optional>
-    <text/>
-  </define>
-  <define name="ics">
-    <element name="ics">
-      <element name="code">
-        <text/>
-      </element>
-      <optional>
-        <element name="text">
-          <text/>
-        </element>
-      </optional>
-    </element>
-  </define>
+  <!--
+    editorialgroup = element editorialgroup {
+    technical-committee+
+    }
+    
+    technical-committee =
+    element technical-committee { IsoWorkgroup }
+    
+    IsoWorkgroup =
+    attribute number { text }?,
+    attribute type { text }?,
+    attribute identifier { text }?,
+    attribute prefix { text }?,
+    text
+    
+    ics = element ics {
+    element code { text },
+    element text { text }?
+    }
+  -->
   <define name="standard-document">
     <element name="standard-document">
       <attribute name="version"/>
@@ -2478,71 +2417,23 @@
       </optional>
     </element>
   </define>
-  <define name="structuredidentifier">
-    <element name="structuredidentifier">
-      <optional>
-        <attribute name="type"/>
-      </optional>
-      <oneOrMore>
-        <element name="agency">
-          <text/>
-        </element>
-      </oneOrMore>
-      <optional>
-        <element name="class">
-          <text/>
-        </element>
-      </optional>
-      <element name="docnumber">
-        <text/>
-      </element>
-      <optional>
-        <element name="partnumber">
-          <text/>
-        </element>
-      </optional>
-      <optional>
-        <element name="edition">
-          <text/>
-        </element>
-      </optional>
-      <optional>
-        <element name="version">
-          <text/>
-        </element>
-      </optional>
-      <optional>
-        <element name="supplementtype">
-          <text/>
-        </element>
-      </optional>
-      <optional>
-        <element name="supplementnumber">
-          <text/>
-        </element>
-      </optional>
-      <optional>
-        <element name="amendment">
-          <text/>
-        </element>
-      </optional>
-      <optional>
-        <element name="corrigendum">
-          <text/>
-        </element>
-      </optional>
-      <optional>
-        <element name="language">
-          <text/>
-        </element>
-      </optional>
-      <optional>
-        <element name="year">
-          <text/>
-        </element>
-      </optional>
-    </element>
-  </define>
+  <!--
+    structuredidentifier = element structuredidentifier {
+    attribute type { text }?,
+    element agency { text }+,
+    element class { text }?,
+    element docnumber { text },
+    element partnumber { text }?,
+    element edition { text }?,
+    element version { text }?,
+    element supplementtype { text }?,
+    element supplementnumber { text }?,
+    element amendment { text }?,
+    element corrigendum { text }?,
+    element language { text }?,
+    element year { text }?
+    }
+  -->
   <define name="term-clause">
     <element name="clause">
       <optional>
@@ -2816,4 +2707,7 @@
       </attribute>
     </element>
   </define>
+  <start>
+    <ref name="standard-document"/>
+  </start>
 </grammar>

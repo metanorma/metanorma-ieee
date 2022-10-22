@@ -10,6 +10,9 @@ module Metanorma
         initial_note(xml)
         word_usage(xml)
         participants(xml)
+        xml.xpath("//dl[not(@id)]").each do |dl|
+          dl["id"] = "_#{UUIDTools::UUID.random_create}"
+        end
       end
 
       def intro_boilerplate(xml, isodoc)
