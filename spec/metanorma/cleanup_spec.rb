@@ -393,7 +393,7 @@ RSpec.describe Metanorma::IEEE do
                </p>
                <ul id='_'>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>&#x3c;Chair Name&#x3e;</dd>
                      <dt>role</dt>
@@ -401,7 +401,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>&#x3c;Vice-chair Name&#x3e;</dd>
                      <dt>role</dt>
@@ -409,7 +409,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>Participant1</dd>
                      <dt>role</dt>
@@ -417,7 +417,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>Participant2</dd>
                      <dt>role</dt>
@@ -425,7 +425,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>Participant3</dd>
                      <dt>role</dt>
@@ -433,7 +433,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>Participant4</dd>
                      <dt>role</dt>
@@ -441,7 +441,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>Participant5</dd>
                      <dt>role</dt>
@@ -449,7 +449,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>Participant6</dd>
                      <dt>role</dt>
@@ -457,7 +457,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>Participant7</dd>
                      <dt>role</dt>
@@ -465,7 +465,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>Participant8</dd>
                      <dt>role</dt>
@@ -473,7 +473,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>Participant9</dd>
                      <dt>role</dt>
@@ -490,7 +490,7 @@ RSpec.describe Metanorma::IEEE do
                </p>
                <ul id='_'>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>Balloter1</dd>
                      <dt>role</dt>
@@ -498,7 +498,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>Balloter2</dd>
                      <dt>role</dt>
@@ -506,7 +506,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>Balloter3</dd>
                      <dt>role</dt>
@@ -514,7 +514,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>Balloter4</dd>
                      <dt>role</dt>
@@ -522,7 +522,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>Balloter5</dd>
                      <dt>role</dt>
@@ -530,7 +530,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>Balloter6</dd>
                      <dt>role</dt>
@@ -538,7 +538,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>Balloter7</dd>
                      <dt>role</dt>
@@ -546,7 +546,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>Balloter8</dd>
                      <dt>role</dt>
@@ -554,7 +554,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>Balloter9</dd>
                      <dt>role</dt>
@@ -570,7 +570,7 @@ RSpec.describe Metanorma::IEEE do
                </p>
                <ul id='_'>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>&#x3c;Name&#x3e;</dd>
                      <dt>role</dt>
@@ -578,7 +578,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>&#x3c;Name&#x3e;</dd>
                      <dt>role</dt>
@@ -586,7 +586,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>&#x3c;Name&#x3e;</dd>
                      <dt>role</dt>
@@ -594,7 +594,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>&#x3c;Name&#x3e;</dd>
                      <dt>role</dt>
@@ -602,7 +602,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>SBMember1</dd>
                      <dt>role</dt>
@@ -610,7 +610,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>SBMember2</dd>
                      <dt>role</dt>
@@ -618,7 +618,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>SBMember3</dd>
                      <dt>role</dt>
@@ -626,7 +626,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>SBMember4</dd>
                      <dt>role</dt>
@@ -634,7 +634,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>SBMember5</dd>
                      <dt>role</dt>
@@ -642,7 +642,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>SBMember6</dd>
                      <dt>role</dt>
@@ -650,7 +650,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>SBMember7</dd>
                      <dt>role</dt>
@@ -658,7 +658,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>SBMember8</dd>
                      <dt>role</dt>
@@ -666,7 +666,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
                      <dd>SBMember9</dd>
                      <dt>role</dt>
@@ -1220,7 +1220,7 @@ RSpec.describe Metanorma::IEEE do
                </dl>
              </li>
              <li>
-               <dl>
+               <dl id='_'>
                  <dt>name</dt>
                  <dd>
                    <p id='_'>Anaximander</p>
@@ -1241,7 +1241,7 @@ RSpec.describe Metanorma::IEEE do
            <title>Balloting Group</title>
            <ul id='_'>
              <li>
-               <dl>
+               <dl id='_'>
                  <dt>name</dt>
                  <dd>
                    <p id='_'>Athanasius of Alexandria</p>
@@ -1251,7 +1251,7 @@ RSpec.describe Metanorma::IEEE do
                </dl>
              </li>
              <li>
-               <dl>
+               <dl id='_'>
                  <dt>name</dt>
                  <dd>
                    <p id='_'>Basil of Caesarea</p>
@@ -1313,7 +1313,7 @@ RSpec.describe Metanorma::IEEE do
                </dl>
              </li>
              <li>
-               <dl>
+               <dl id='_'>
                  <dt>name</dt>
                  <dd>
                    <p id='_'>Aristophanes</p>
@@ -1346,7 +1346,7 @@ RSpec.describe Metanorma::IEEE do
            <p id='_'>And again:</p>
             <ul id='_'>
                         <li>
-                <dl>
+                <dl id='_'>
                   <dt>name</dt>
                   <dd>
                     <p id='_'>name1</p>
@@ -1356,7 +1356,7 @@ RSpec.describe Metanorma::IEEE do
                 </dl>
               </li>
               <li>
-                <dl>
+                <dl id='_'>
                   <dt>name</dt>
                   <dd>
                     <p id='_'>name2</p>

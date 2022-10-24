@@ -19,15 +19,7 @@
 -->
 <grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   <include href="reqt.rng"/>
-  <!-- include "biblio.rnc" { } -->
   <include href="basicdoc.rng">
-    <!-- start = standard-document -->
-    <!--
-      doctype = element doctype { 
-      attribute abbreviation { text }?,
-      DocumentType 
-      }
-    -->
     <define name="admonition">
       <element name="admonition">
         <attribute name="type">
@@ -226,19 +218,6 @@
         <ref name="PureTextElement"/>
       </oneOrMore>
     </define>
-    <!--
-      localityStack =
-      element localityStack { 
-      attribute connective { "and" | "or" | "from" | "to" | "" }?,
-      locality* 
-      }
-      
-      sourceLocalityStack =
-      element sourceLocalityStack { 
-      attribute connective { "and" | "or" | "from" | "to" | "" }?,
-      sourceLocality* 
-      }
-    -->
     <define name="ul">
       <element name="ul">
         <attribute name="id">
@@ -782,15 +761,6 @@
         </zeroOrMore>
       </element>
     </define>
-    <!--
-      BibDataExtensionType = 
-      attribute schema-version { text }?,
-      doctype,
-      docsubtype?,
-      editorialgroup?,
-      ics*,
-      structuredidentifier*
-    -->
     <!-- TitleType = text -->
     <define name="sections">
       <element name="sections">
@@ -1204,8 +1174,6 @@
       <value>tag</value>
     </choice>
   </define>
-  <!-- docsubtype = element subdoctype { DocumentSubtype } -->
-  <!-- DocumentSubtype = text -->
   <define name="colgroup">
     <element name="colgroup">
       <oneOrMore>
@@ -1567,26 +1535,6 @@
       </choice>
     </element>
   </define>
-  <!--
-    editorialgroup = element editorialgroup {
-    technical-committee+
-    }
-    
-    technical-committee =
-    element technical-committee { IsoWorkgroup }
-    
-    IsoWorkgroup =
-    attribute number { text }?,
-    attribute type { text }?,
-    attribute identifier { text }?,
-    attribute prefix { text }?,
-    text
-    
-    ics = element ics {
-    element code { text },
-    element text { text }?
-    }
-  -->
   <define name="standard-document">
     <element name="standard-document">
       <attribute name="version"/>
@@ -2417,23 +2365,6 @@
       </optional>
     </element>
   </define>
-  <!--
-    structuredidentifier = element structuredidentifier {
-    attribute type { text }?,
-    element agency { text }+,
-    element class { text }?,
-    element docnumber { text },
-    element partnumber { text }?,
-    element edition { text }?,
-    element version { text }?,
-    element supplementtype { text }?,
-    element supplementnumber { text }?,
-    element amendment { text }?,
-    element corrigendum { text }?,
-    element language { text }?,
-    element year { text }?
-    }
-  -->
   <define name="term-clause">
     <element name="clause">
       <optional>
