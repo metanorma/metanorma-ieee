@@ -31,7 +31,7 @@ RSpec.describe Metanorma::IEEE do
                apply. The
                <em>IEEE Standards Dictionary Online</em>
                 should be consulted for terms not defined in this clause.
-               <fn>
+               <fn reference='_boilerplate_term1'>
                  <p id='_'>
                    <em>IEEE Standards Dictionary Online</em>
                     is available at:
@@ -119,7 +119,7 @@ RSpec.describe Metanorma::IEEE do
                apply. The
                <em>IEEE Standards Dictionary Online</em>
                 should be consulted for terms not defined in this clause.
-               <fn>
+               <fn reference='_boilerplate_term1'>
                  <p id='_'>
                    <em>IEEE Standards Dictionary Online</em>
                     is available at:
@@ -224,7 +224,7 @@ RSpec.describe Metanorma::IEEE do
                apply. The
                <em>IEEE Standards Dictionary Online</em>
                 should be consulted for terms not defined in this clause.
-               <fn>
+               <fn reference='_boilerplate_term1'>
                  <p id='_'>
                    <em>IEEE Standards Dictionary Online</em>
                     is available at:
@@ -372,7 +372,7 @@ RSpec.describe Metanorma::IEEE do
               apply. The
               <em>IEEE Standards Dictionary Online</em>
                should be consulted for terms not defined in this clause.
-              <fn>
+              <fn reference='_boilerplate_term1'>
                 <p id='_'>
                   <em>IEEE Standards Dictionary Online</em>
                    is available at:

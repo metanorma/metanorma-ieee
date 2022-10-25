@@ -43,8 +43,8 @@ RSpec.describe Metanorma::IEEE::Processor do
         <sections/>
       </ieee-standard>
     OUTPUT
-    expect(strip_guid(processor.input_to_isodoc(input, nil)))
-      .to be_equivalent_to output
+    expect(xmlpp(strip_guid(processor.input_to_isodoc(input, nil))))
+      .to be_equivalent_to xmlpp(output)
   end
 
   it "generates HTML from IsoDoc XML" do
