@@ -11505,7 +11505,7 @@
 				<xsl:apply-templates select="*[local-name() = 'note']"/>
 
 				<xsl:if test="normalize-space($docidentifier) != '' and *[local-name() = 'formattedref']">
-
+					<xsl:text>,</xsl:text>
 					<xsl:text> </xsl:text>
 				</xsl:if>
 
