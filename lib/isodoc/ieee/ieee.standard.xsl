@@ -4268,8 +4268,6 @@
 	<xsl:attribute-set name="table-style">
 		<xsl:attribute name="table-omit-footer-at-break">true</xsl:attribute>
 		<xsl:attribute name="table-layout">fixed</xsl:attribute>
-		<xsl:attribute name="margin-left">0mm</xsl:attribute>
-		<xsl:attribute name="margin-right">0mm</xsl:attribute>
 
 			<xsl:attribute name="border"><xsl:value-of select="$table-border"/></xsl:attribute>
 
@@ -5396,6 +5394,12 @@
 				<xsl:variable name="table_attributes">
 
 					<xsl:element name="table_attributes" use-attribute-sets="table-style">
+
+						<xsl:if test="$margin-side != 0">
+							<xsl:attribute name="margin-left">0mm</xsl:attribute>
+							<xsl:attribute name="margin-right">0mm</xsl:attribute>
+						</xsl:if>
+
 						<xsl:attribute name="width"><xsl:value-of select="normalize-space($table_width)"/></xsl:attribute>
 
 							<xsl:if test="$current_template = 'whitepaper' or $current_template = 'icap-whitepaper' or $current_template = 'industry-connection-report'">
@@ -12704,13 +12708,14 @@
 	</xsl:template>
 
 	<xsl:template name="setId">
+		<xsl:param name="prefix"/>
 		<xsl:attribute name="id">
 			<xsl:choose>
 				<xsl:when test="@id">
-					<xsl:value-of select="@id"/>
+					<xsl:value-of select="concat($prefix, @id)"/>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:value-of select="generate-id()"/>
+					<xsl:value-of select="concat($prefix, generate-id())"/>
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:attribute>
