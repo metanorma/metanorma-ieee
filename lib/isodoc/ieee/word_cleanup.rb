@@ -20,6 +20,7 @@ module IsoDoc
       def word_cleanup(docxml)
         super
         abstract_cleanup(docxml)
+        acknowledgements_cleanup(docxml)
         introduction_cleanup(docxml)
         sourcecode_cleanup(docxml)
         div_cleanup(docxml)
@@ -66,12 +67,12 @@ module IsoDoc
         if hdr.at("./ancestor::div[@class = 'Annex']")
           hdr.delete("class")
           hdr["style"] = "mso-list:l13 level#{idx} lfo33;"
-        elsif hdr.at("./ancestor::div[@class = 'Section3']")
-          hdr.name = "p"
-          hdr["class"] = "IEEEStdsLevel#{idx}frontmatter"
         else
           hdr.name = "p"
           hdr["class"] = "IEEEStdsLevel#{idx}Header"
+          hdr.at("./ancestor::div[@class = 'Section3' or " \
+                 "@class = 'acknowledgements']") and
+            hdr["class"] = "IEEEStdsLevel#{idx}frontmatter"
         end
       end
 
@@ -83,7 +84,7 @@ module IsoDoc
       end
 
       def div_cleanup(docxml)
-        d = docxml.at("//div[@class = 'WordSection2']"\
+        d = docxml.at("//div[@class = 'WordSection2']" \
                       "[div[@class = 'WordSection2']]") and
           d.replace(d.children)
         i = 0

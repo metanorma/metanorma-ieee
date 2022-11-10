@@ -160,7 +160,7 @@ module IsoDoc
 
       def authority_cleanup1(docxml, klass)
         dest = docxml.at("//div[@id = 'boilerplate-#{klass}-destination']")
-        auth = docxml.at("//div[@id = 'boilerplate-#{klass}' "\
+        auth = docxml.at("//div[@id = 'boilerplate-#{klass}' " \
                          "or @class = 'boilerplate-#{klass}']")
         auth&.xpath(".//h1[not(text())] | .//h2[not(text())]")&.each(&:remove)
         authority_cleanup_hdr(auth)
@@ -188,6 +188,13 @@ module IsoDoc
         end
       end
 
+      def acknowledgements_cleanup(docxml)
+        dest = docxml.at("div[@id = 'acknowledgements-destination']") or return
+        if f = docxml.at("//div[@class = 'acknowledgements']")
+          dest << f.remove
+        end
+      end
+
       def abstract_cleanup1(source, dest)
         source.elements.reject { |e| %w(h1 h2).include?(e.name) }.each do |e|
           e1 = e.dup
@@ -202,7 +209,7 @@ module IsoDoc
 
       def abstract_header(dest)
         dest.elements.first.children.first.previous =
-          "<span class='IEEEStdsAbstractHeader'><span lang='EN-US'>"\
+          "<span class='IEEEStdsAbstractHeader'><span lang='EN-US'>" \
           "Abstract:</span></span> "
       end
 

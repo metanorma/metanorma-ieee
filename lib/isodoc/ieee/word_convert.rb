@@ -56,6 +56,17 @@ module IsoDoc
         end
       end
 
+      def acknowledgements(isoxml, out)
+        f = isoxml.at(ns("//acknowledgements")) || return
+        out.div **{ class: "acknowledgements", id: f["id"] } do |div|
+          clause_name(nil, f.at(ns("./title")), div,
+                      { class: "IEEEStdsLevel1frontmatter" })
+          f.elements.each do |e|
+            parse(e, div) unless e.name == "title"
+          end
+        end
+      end
+
       def make_body3(body, docxml)
         body.div **{ class: "WordSectionMiddleTitle" } do |_div3|
           middle_title_ieee(docxml, body)

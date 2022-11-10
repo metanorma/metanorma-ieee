@@ -307,11 +307,8 @@ RSpec.describe IsoDoc::IEEE do
             </div>
             <p>This is patent boilerplate</p>
           </div>
-          <p>
-            <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
-          </p>
-          <div class='Section3' id=''>
-            <h1 class='IntroTitle'>Acknolwedgements</h1>
+          <div class='acknowledgements' id=''>
+            <h1 class='IEEEStdsLevel1frontmatter'>Acknolwedgements</h1>
             <p id='A'>This is a preamble</p>
           </div>
           <p>&#xa0;</p>

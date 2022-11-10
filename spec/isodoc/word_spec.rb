@@ -824,7 +824,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
           </clause>
         </feedback-statement>
       </boilerplate>
-
+      <preface><acknowledgements id="ack"><title>Acknowledgements</title><p>I would like to thank the academy.<p></acknowledgements></preface>
       <sections><clause id="_clause" inline-header="false" obligation="normative">
       <title>Clause</title>
       <p id="_2e901de4-4c14-e534-d135-862a24df22ee">Hello</p>
@@ -833,774 +833,792 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       </ieee-standard>
     INPUT
     word = <<~OUTPUT
-          <body lang='EN-US' xml:lang='EN-US' link='blue' vlink='#954F72'>
-        <div class='WordSection1'>
-          <p class='IEEEStdsTitle' style='margin-top:50.0pt;margin-right:0cm;margin-bottom:36.0pt;margin-left:0cm'>
-            <span lang='EN-US' xml:lang='EN-US'>P1000&#x2122;/D0.3.4</span>
-            <br/>
-            <span lang='EN-US' xml:lang='EN-US'>Draft Standard for Empty</span>
-          </p>
-          <p class='IEEEStdsTitleParaSans'>
-            <span lang='EN-US' xml:lang='EN-US'>Developed by the</span>
-          </p>
-          <p class='IEEEStdsTitleParaSans'>
-            <span lang='EN-US' xml:lang='EN-US'>
-              <p>&#xa0;</p>
-            </span>
-          </p>
-          <p class='IEEEStdsTitleParaSansBold'>
-            <span lang='EN-US' xml:lang='EN-US'>TC</span>
-          </p>
-          <p class='IEEEStdsTitleParaSans'>
-            <span lang='EN-US' xml:lang='EN-US'>of the</span>
-          </p>
-          <p class='IEEEStdsTitleParaSansBold'>
-            <span lang='EN-US' xml:lang='EN-US'>IEEE SECRETARIAT</span>
-          </p>
-          <p class='IEEEStdsTitleParaSans'>
-            <span lang='EN-US' xml:lang='EN-US'>
-              <p>&#xa0;</p>
-            </span>
-          </p>
-          <p class='IEEEStdsTitleParaSans'>
-            <span lang='EN-US' xml:lang='EN-US'>
-              <p>&#xa0;</p>
-            </span>
-          </p>
-          <p class='IEEEStdsTitleParaSans'>
-            <span lang='EN-US' xml:lang='EN-US'>Approved 01 Dec 1001</span>
-          </p>
-          <p class='IEEEStdsTitleParaSans'>
-            <span lang='EN-US' xml:lang='EN-US'>
-              <p>&#xa0;</p>
-            </span>
-          </p>
-          <p class='IEEEStdsTitleParaSansBold'>
-            <span lang='EN-US' xml:lang='EN-US'>IEEE SA Standards Board</span>
-          </p>
-          <p class='IEEEStdsCopyrightaddrs'>
-            <span lang='EN-US' xml:lang='EN-US'>
-              <p>&#xa0;</p>
-            </span>
-          </p>
-          <div class='boilerplate-copyright'>
-            <div>
-              <p style='text-align:left;' align='left' class='IEEEStdsTitleDraftCRaddr'>
-                <a name='copyright' id='copyright'/>
-                Copyright &#xa9; 2000 by The Institute of Electrical and Electronics
-                Engineers, Inc.
-                <br/>
-                Three Park Avenue
-                <br/>
-                New York, New York 10016-5997, USA
-              </p>
-              <p class='IEEEStdsTitleDraftCRBody'>
-                <a name="_" id="_"/>
-                All rights reserved.
-              </p>
-            </div>
-          </div>
-          <div class='boilerplate-license'>
-            <div>
-              <p class='IEEEStdsTitleDraftCRaddr'>
-                <a name="_" id="_"/>
-                This document is an unapproved draft of a proposed IEEE Standard. As
-                such, this document is subject to change. USE AT YOUR OWN RISK! IEEE
-                copyright statements SHALL NOT BE REMOVED from draft or approved IEEE
-                standards, or modified in any way. Because this is an unapproved
-                draft, this document must not be utilized for any
-                conformance/compliance purposes. Permission is hereby granted for
-                officers from each IEEE Standards Working Group or Committee to
-                reproduce the draft document developed by that Working Group for
-                purposes of international standardization consideration. IEEE
-                Standards Department must be informed of the submission for
-                consideration prior to any reproduction for international
-                standardization consideration (
-                <a href='mailto:stds-ipr@ieee.org'>stds-ipr@ieee.org</a>
-                ). Prior to adoption of this document, in whole or in part, by another
-                standards development organization, permission must first be obtained
-                from the IEEE Standards Department (
-                <a href='mailto:stds-ipr@ieee.org'>stds-ipr@ieee.org</a>
-                ). When requesting permission, IEEE Standards Department will require
-                a copy of the standard development organization&#x2019;s document
-                highlighting the use of IEEE content. Other entities seeking
-                permission to reproduce this document, in whole or in part, must also
-                obtain permission from the IEEE Standards Department.
-              </p>
-              <p style='text-align:left;' align='left' class='IEEEStdsTitleDraftCRBody'>
-                <a name="_" id="_"/>
-                IEEE Standards Department
-                <br/>
-                 445 Hoes Lane
-                <br/>
-                 Piscataway, NJ 08854, USA
-              </p>
-            </div>
-          </div>
-          <p class='IEEEStdsParagraph'>&#xa0;</p>
-        </div>
-        <p class='IEEEStdsParagraph'>
-          <br clear='all' class='section'/>
-        </p>
-        <div class='WordSection2'>
-          <div>
-            <a name='abstract-destination' id='abstract-destination'/>
-          </div>
-          <p class='IEEEStdsKeywords'>
-            <a name="_" id="_">
-              <span class='IEEEStdsKeywordsHeader'>
-                <span lang='EN-US' xml:lang='EN-US'>
-                  <p>&#xa0;</p>
-                </span>
-              </span>
-            </a>
-          </p>
-          <p class='IEEEStdsKeywords'>
-            <span style='mso-bookmark:_Ref'>
-              <span class='IEEEStdsKeywordsHeader'>
-                <span lang='EN-US' xml:lang='EN-US'>Keywords:</span>
-              </span>
-              <span lang='EN-US' xml:lang='EN-US'/>
-            </span>
-          </p>
-          <p class='IEEEStdsParagraph'>
-            <span lang='EN-US' xml:lang='EN-US'>
-              <p>&#xa0;</p>
-            </span>
-          </p>
-          <p class='IEEEStdsCRFootnote'>
-            <a class='FootnoteRef' href='#_ftn1' type='footnote' style='mso-footnote-id:ftn1' name="_" title='' id="_">
-              <span class='MsoFootnoteReference'>
-                <span style='mso-special-character:footnote'/>
-              </span>
-            </a>
-          </p>
-        </div>
-        <span lang='EN-US' xml:lang='EN-US' style='font-size:10.0pt;font-family:&#x22;Times New Roman&#x22;,serif; mso-fareast-font-family:&#x22;Times New Roman&#x22;;color:white;mso-ansi-language:EN-US; mso-fareast-language:JA;mso-bidi-language:AR-SA'>
-          <br clear='all' style='page-break-before:always;mso-break-type:section-break'/>
-        </span>
-        <!-- points to feedback statement as footnote -->
-        <div class='WordSection3'>
-          <div>
-            <a name='boilerplate-disclaimers' id='boilerplate-disclaimers'/>
-            <p class='IEEEStdsLevel1frontmatter'>Important Notices and Disclaimers Concerning IEEE Standards Documents</p>
-            <p class='IEEEStdsParagraph'>
-              <a name="_" id="_"/>
-              IEEE Standards documents are made available for use subject to important
-              notices and legal disclaimers. These notices and disclaimers, or a
-              reference to this page (
-              <a href='https://standards.ieee.org/ipr/disclaimers.html'>https://standards.ieee.org/ipr/disclaimers.html</a>
-              ), appear in all standards and may be found under the heading
-              &#x201c;Important Notices and Disclaimers Concerning IEEE Standards
-              Documents.&#x201d;
+        <body lang='EN-US' xml:lang='EN-US' link='blue' vlink='#954F72'>
+          <div class='WordSection1'>
+            <p class='IEEEStdsTitle' style='margin-top:50.0pt;margin-right:0cm;margin-bottom:36.0pt;margin-left:0cm'>
+              <span lang='EN-US' xml:lang='EN-US'>P1000&#x2122;/D0.3.4</span>
+              <br/>
+              <span lang='EN-US' xml:lang='EN-US'>Draft Standard for Empty</span>
             </p>
-            <div>
-              <p class='IEEEStdsLevel2frontmatter'>
-                Notice and Disclaimer of Liability Concerning the Use of IEEE
-                Standards Documents
-              </p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                IEEE Standards documents are developed within the IEEE Societies and
-                the Standards Coordinating Committees of the IEEE Standards
-                Association (IEEE SA) Standards Board. IEEE develops its standards
-                through an accredited consensus development process, which brings
-                together volunteers representing varied viewpoints and interests to
-                achieve the final product. IEEE Standards are documents developed by
-                volunteers with scientific, academic, and industry-based expertise in
-                technical working groups. Volunteers are not necessarily members of
-                IEEE or IEEE SA, and participate without compensation from IEEE. While
-                IEEE administers the process and establishes rules to promote fairness
-                in the consensus development process, IEEE does not independently
-                evaluate, test, or verify the accuracy of any of the information or
-                the soundness of any judgments contained in its standards.
-              </p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                IEEE makes no warranties or representations concerning its standards,
-                and expressly disclaims all warranties, express or implied, concerning
-                this standard, including but not limited to the warranties of
-                merchantability, fitness for a particular purpose and
-                non-infringement. In addition, IEEE does not warrant or represent that
-                the use of the material contained in its standards is free from patent
-                infringement. IEEE standards documents are supplied &#x201c;AS
-                IS&#x201d; and &#x201c;WITH ALL FAULTS.&#x201d;
-              </p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                Use of an IEEE standard is wholly voluntary. The existence of an IEEE
-                Standard does not imply that there are no other ways to produce, test,
-                measure, purchase, market, or provide other goods and services related
-                to the scope of the IEEE standard. Furthermore, the viewpoint
-                expressed at the time a standard is approved and issued is subject to
-                change brought about through developments in the state of the art and
-                comments received from users of the standard.
-              </p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                In publishing and making its standards available, IEEE is not
-                suggesting or rendering professional or other services for, or on
-                behalf of, any person or entity, nor is IEEE undertaking to perform
-                any duty owed by any other person or entity to another. Any person
-                utilizing any IEEE Standards document, should rely upon his or her own
-                independent judgment in the exercise of reasonable care in any given
-                circumstances or, as appropriate, seek the advice of a competent
-                professional in determining the appropriateness of a given IEEE
-                standard.
-              </p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                IN NO EVENT SHALL IEEE BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-                SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-                LIMITED TO: THE NEED TO PROCURE SUBSTITUTE GOODS OR SERVICES; LOSS OF
-                USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-                ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
-                TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
-                PUBLICATION, USE OF, OR RELIANCE UPON ANY STANDARD, EVEN IF ADVISED OF
-                THE POSSIBILITY OF SUCH DAMAGE AND REGARDLESS OF WHETHER SUCH DAMAGE
-                WAS FORESEEABLE.
-              </p>
+            <p class='IEEEStdsTitleParaSans'>
+              <span lang='EN-US' xml:lang='EN-US'>Developed by the</span>
+            </p>
+            <p class='IEEEStdsTitleParaSans'>
+              <span lang='EN-US' xml:lang='EN-US'>
+                <p>&#xa0;</p>
+              </span>
+            </p>
+            <p class='IEEEStdsTitleParaSansBold'>
+              <span lang='EN-US' xml:lang='EN-US'>TC</span>
+            </p>
+            <p class='IEEEStdsTitleParaSans'>
+              <span lang='EN-US' xml:lang='EN-US'>of the</span>
+            </p>
+            <p class='IEEEStdsTitleParaSansBold'>
+              <span lang='EN-US' xml:lang='EN-US'>IEEE SECRETARIAT</span>
+            </p>
+            <p class='IEEEStdsTitleParaSans'>
+              <span lang='EN-US' xml:lang='EN-US'>
+                <p>&#xa0;</p>
+              </span>
+            </p>
+            <p class='IEEEStdsTitleParaSans'>
+              <span lang='EN-US' xml:lang='EN-US'>
+                <p>&#xa0;</p>
+              </span>
+            </p>
+            <p class='IEEEStdsTitleParaSans'>
+              <span lang='EN-US' xml:lang='EN-US'>Approved 01 Dec 1001</span>
+            </p>
+            <p class='IEEEStdsTitleParaSans'>
+              <span lang='EN-US' xml:lang='EN-US'>
+                <p>&#xa0;</p>
+              </span>
+            </p>
+            <p class='IEEEStdsTitleParaSansBold'>
+              <span lang='EN-US' xml:lang='EN-US'>IEEE SA Standards Board</span>
+            </p>
+            <p class='IEEEStdsCopyrightaddrs'>
+              <span lang='EN-US' xml:lang='EN-US'>
+                <p>&#xa0;</p>
+              </span>
+            </p>
+            <div class='boilerplate-copyright'>
+              <div>
+                <p style='text-align:left;' align='left' class='IEEEStdsTitleDraftCRaddr'>
+                  <a name='copyright' id='copyright'/>
+                  Copyright &#xa9; 2000 by The Institute of Electrical and Electronics
+                  Engineers, Inc.
+                  <br/>
+                  Three Park Avenue
+                  <br/>
+                  New York, New York 10016-5997, USA
+                </p>
+                <p class='IEEEStdsTitleDraftCRBody'>
+                  <a name="_" id="_"/>
+                  All rights reserved.
+                </p>
+              </div>
             </div>
-            <div>
-              <p class='IEEEStdsLevel2frontmatter'>Translations</p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                The IEEE consensus development process involves the review of
-                documents in English only. In the event that an IEEE standard is
-                translated, only the English version published by IEEE is the approved
-                IEEE standard.
-              </p>
+            <div class='boilerplate-license'>
+              <div>
+                <p class='IEEEStdsTitleDraftCRaddr'>
+                  <a name="_" id="_"/>
+                  This document is an unapproved draft of a proposed IEEE Standard. As
+                  such, this document is subject to change. USE AT YOUR OWN RISK! IEEE
+                  copyright statements SHALL NOT BE REMOVED from draft or approved IEEE
+                  standards, or modified in any way. Because this is an unapproved
+                  draft, this document must not be utilized for any
+                  conformance/compliance purposes. Permission is hereby granted for
+                  officers from each IEEE Standards Working Group or Committee to
+                  reproduce the draft document developed by that Working Group for
+                  purposes of international standardization consideration. IEEE
+                  Standards Department must be informed of the submission for
+                  consideration prior to any reproduction for international
+                  standardization consideration (
+                  <a href='mailto:stds-ipr@ieee.org'>stds-ipr@ieee.org</a>
+                  ). Prior to adoption of this document, in whole or in part, by another
+                  standards development organization, permission must first be obtained
+                  from the IEEE Standards Department (
+                  <a href='mailto:stds-ipr@ieee.org'>stds-ipr@ieee.org</a>
+                  ). When requesting permission, IEEE Standards Department will require
+                  a copy of the standard development organization&#x2019;s document
+                  highlighting the use of IEEE content. Other entities seeking
+                  permission to reproduce this document, in whole or in part, must also
+                  obtain permission from the IEEE Standards Department.
+                </p>
+                <p style='text-align:left;' align='left' class='IEEEStdsTitleDraftCRBody'>
+                  <a name="_" id="_"/>
+                  IEEE Standards Department
+                  <br/>
+                   445 Hoes Lane
+                  <br/>
+                   Piscataway, NJ 08854, USA
+                </p>
+              </div>
             </div>
+            <p class='IEEEStdsParagraph'>&#xa0;</p>
+          </div>
+          <p class='IEEEStdsParagraph'>
+            <br clear='all' class='section'/>
+          </p>
+          <div class='WordSection2'>
             <div>
-              <p class='IEEEStdsLevel2frontmatter'>Official statements</p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                A statement, written or oral, that is not processed in accordance with
-                the IEEE SA Standards Board Operations Manual shall not be considered
-                or inferred to be the official position of IEEE or any of its
-                committees and shall not be considered to be, nor be relied upon as, a
-                formal position of IEEE. At lectures, symposia, seminars, or
-                educational courses, an individual presenting information on IEEE
-                standards shall make it clear that the presenter&#x2019;s views should
-                be considered the personal views of that individual rather than the
-                formal position of IEEE, IEEE SA, the Standards Committee, or the
-                Working Group.
-              </p>
+              <a name='abstract-destination' id='abstract-destination'/>
             </div>
-            <div>
-              <p class='IEEEStdsLevel2frontmatter'>Comments on standards</p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                Comments for revision of IEEE Standards documents are welcome from any
-                interested party, regardless of membership affiliation with IEEE or
-                IEEE SA. However,
-                <b>
-                  IEEE does not provide interpretations, consulting information, or
-                  advice pertaining to IEEE Standards documents
-                </b>
-                .
-              </p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                Suggestions for changes in documents should be in the form of a
-                proposed change of text, together with appropriate supporting
-                comments. Since IEEE standards represent a consensus of concerned
-                interests, it is important that any responses to comments and
-                questions also receive the concurrence of a balance of interests. For
-                this reason, IEEE and the members of its Societies and Standards
-                Coordinating Committees are not able to provide an instant response to
-                comments, or questions except in those cases where the matter has
-                previously been addressed. For the same reason, IEEE does not respond
-                to interpretation requests. Any person who would like to participate
-                in evaluating comments or in revisions to an IEEE standard is welcome
-                to join the relevant IEEE working group. You can indicate interest in
-                a working group using the Interests tab in the Manage Profile
-                Interests area of the
-                <a href='https://development.standards.ieee.org/myproject-web/public/view.html#landing'>IEEE SA myProject system</a>
-                .
-                <span style='mso-bookmark:_Ref'>
-                  <a class='FootnoteRef' href='#_ftn2' type='footnote' style='mso-footnote-id:ftn2' name="_" title='' id="_">
-                    <span class='MsoFootnoteReference'>
-                      <span style='mso-special-character:footnote'/>
-                    </span>
-                  </a>
+            <p class='IEEEStdsKeywords'>
+              <a name="_" id="_">
+                <span class='IEEEStdsKeywordsHeader'>
+                  <span lang='EN-US' xml:lang='EN-US'>
+                    <p>&#xa0;</p>
+                  </span>
                 </span>
-                 An IEEE Account is needed to access the application.
-              </p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                Comments on standards should be submitted using the
-                <a href='https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html'>Contact Us</a>
-                 form.
-                <span style='mso-bookmark:_Ref'>
-                  <a class='FootnoteRef' href='#_ftn3' type='footnote' style='mso-footnote-id:ftn3' name="_" title='' id="_">
-                    <span class='MsoFootnoteReference'>
-                      <span style='mso-special-character:footnote'/>
-                    </span>
-                  </a>
+              </a>
+            </p>
+            <p class='IEEEStdsKeywords'>
+              <span style='mso-bookmark:_Ref'>
+                <span class='IEEEStdsKeywordsHeader'>
+                  <span lang='EN-US' xml:lang='EN-US'>Keywords:</span>
                 </span>
-              </p>
-            </div>
-            <div>
-              <p class='IEEEStdsLevel2frontmatter'>Laws and regulations</p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                Users of IEEE Standards documents should consult all applicable laws
-                and regulations. Compliance with the provisions of any IEEE Standards
-                document does not constitute compliance to any applicable regulatory
-                requirements. Implementers of the standard are responsible for
-                observing or referring to the applicable regulatory requirements. IEEE
-                does not, by the publication of its standards, intend to urge action
-                that is not in compliance with applicable laws, and these documents
-                may not be construed as doing so.
-              </p>
-            </div>
-            <div>
-              <p class='IEEEStdsLevel2frontmatter'>Data privacy</p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                Users of IEEE Standards documents should evaluate the standards for
-                considerations of data privacy and data ownership in the context of
-                assessing and using the standards in compliance with applicable laws
-                and regulations.
-              </p>
-            </div>
-            <div>
-              <p class='IEEEStdsLevel2frontmatter'>Copyrights</p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                IEEE draft and approved standards are copyrighted by IEEE under US and
-                international copyright laws. They are made available by IEEE and are
-                adopted for a wide variety of both public and private uses. These
-                include both use, by reference, in laws and regulations, and use in
-                private self-regulation, standardization, and the promotion of
-                engineering practices and methods. By making these documents available
-                for use and adoption by public authorities and private users, IEEE
-                does not waive any rights in copyright to the documents.
-              </p>
-            </div>
-            <div>
-              <p class='IEEEStdsLevel2frontmatter'>Photocopies</p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                Subject to payment of the appropriate licensing fees, IEEE will grant
-                users a limited, non-exclusive license to photocopy portions of any
-                individual standard for company or organizational internal use or
-                individual, non-commercial use only. To arrange for payment of
-                licensing fees, please contact Copyright Clearance Center, Customer
-                Service, 222 Rosewood Drive, Danvers, MA 01923 USA; +1 978 750 8400;
-                https://www.copyright.com/. Permission to photocopy portions of any
-                individual standard for educational classroom use can also be obtained
-                through the Copyright Clearance Center.
-              </p>
-            </div>
-            <div>
-              <p class='IEEEStdsLevel2frontmatter'>Updating of IEEE Standards documents</p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                Users of IEEE Standards documents should be aware that these documents
-                may be superseded at any time by the issuance of new editions or may
-                be amended from time to time through the issuance of amendments,
-                corrigenda, or errata. An official IEEE document at any point in time
-                consists of the current edition of the document together with any
-                amendments, corrigenda, or errata then in effect.
-              </p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                Every IEEE standard is subjected to review at least every 10 years.
-                When a document is more than 10 years old and has not undergone a
-                revision process, it is reasonable to conclude that its contents,
-                although still of some value, do not wholly reflect the present state
-                of the art. Users are cautioned to check to determine that they have
-                the latest edition of any IEEE standard.
-              </p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                In order to determine whether a given document is the current edition
-                and whether it has been amended through the issuance of amendments,
-                corrigenda, or errata, visit
-                <a href='https://ieeexplore.ieee.org/browse/standards/collection/ieee/'>IEEE Xplore</a>
-                 or
-                <a href='https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html'>contact IEEE</a>
-                .
-                <span style='mso-bookmark:_Ref'>
-                  <a class='FootnoteRef' href='#_ftn4' type='footnote' style='mso-footnote-id:ftn4' name="_" title='' id="_">
-                    <span class='MsoFootnoteReference'>
-                      <span style='mso-special-character:footnote'/>
-                    </span>
-                  </a>
+                <span lang='EN-US' xml:lang='EN-US'/>
+              </span>
+            </p>
+                <div>
+        <a name='acknowledgements-destination' id='acknowledgements-destination'/>
+        <div class='acknowledgements'>
+          <a name='ack' id='ack'/>
+          <p class='IEEEStdsLevel1frontmatter'>Acknowledgements</p>
+          <p class='IEEEStdsParagraph'>
+            I would like to thank the academy.
+            <p class='IEEEStdsParagraph'/>
+          </p>
+          <para>
+            <b role='strong'>
+              sectionsclause id="_" inline-header="false"
+              obligation="normative" titleClause/title p
+              id="_"Hello/p /clause /sections
+            </b>
+          </para>
+        </div>
+      </div>
+            <p class='IEEEStdsParagraph'>
+              <span lang='EN-US' xml:lang='EN-US'>
+                <p>&#xa0;</p>
+              </span>
+            </p>
+            <p class='IEEEStdsCRFootnote'>
+              <a class='FootnoteRef' href='#_ftn1' type='footnote' style='mso-footnote-id:ftn1' name="_" title='' id="_">
+                <span class='MsoFootnoteReference'>
+                  <span style='mso-special-character:footnote'/>
                 </span>
-                 For more information about the IEEE SA or IEEE&#x2019;s standards
-                development process, visit the IEEE SA Website.
-              </p>
-            </div>
+              </a>
+            </p>
+          </div>
+          <span lang='EN-US' xml:lang='EN-US' style='font-size:10.0pt;font-family:&#x22;Times New Roman&#x22;,serif; mso-fareast-font-family:&#x22;Times New Roman&#x22;;color:white;mso-ansi-language:EN-US; mso-fareast-language:JA;mso-bidi-language:AR-SA'>
+            <br clear='all' style='page-break-before:always;mso-break-type:section-break'/>
+          </span>
+          <!-- points to feedback statement as footnote -->
+          <div class='WordSection3'>
             <div>
-              <p class='IEEEStdsLevel2frontmatter'>Errata</p>
+              <a name='boilerplate-disclaimers' id='boilerplate-disclaimers'/>
+              <p class='IEEEStdsLevel1frontmatter'>Important Notices and Disclaimers Concerning IEEE Standards Documents</p>
               <p class='IEEEStdsParagraph'>
                 <a name="_" id="_"/>
-                Errata, if any, for all IEEE standards can be accessed on the
-                <a href='https://standards.ieee.org/standard/index.html'>IEEE SA Website</a>
-                .
-                <span style='mso-bookmark:_Ref'>
-                  <a class='FootnoteRef' href='#_ftn5' type='footnote' style='mso-footnote-id:ftn5' name="_" title='' id="_">
-                    <span class='MsoFootnoteReference'>
-                      <span style='mso-special-character:footnote'/>
-                    </span>
-                  </a>
-                </span>
-                 Search for standard number and year of approval to access the web
-                page of the published standard. Errata links are located under the
-                Additional Resources Details section. Errata are also available in
-                <a href='https://ieeexplore.ieee.org/browse/standards/collection/ieee/'>IEEE Xplore</a>
-                . Users are encouraged to periodically check for errata.
+                IEEE Standards documents are made available for use subject to important
+                notices and legal disclaimers. These notices and disclaimers, or a
+                reference to this page (
+                <a href='https://standards.ieee.org/ipr/disclaimers.html'>https://standards.ieee.org/ipr/disclaimers.html</a>
+                ), appear in all standards and may be found under the heading
+                &#x201c;Important Notices and Disclaimers Concerning IEEE Standards
+                Documents.&#x201d;
               </p>
-            </div>
-            <div>
-              <p class='IEEEStdsLevel2frontmatter'>Patents</p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                IEEE Standards are developed in compliance with the
-                <a href='https://standards.ieee.org/about/sasb/patcom/materials.html'>IEEE SA Patent Policy</a>
-                .
-                <span style='mso-bookmark:_Ref'>
-                  <a class='FootnoteRef' href='#_ftn6' type='footnote' style='mso-footnote-id:ftn6' name="_" title='' id="_">
-                    <span class='MsoFootnoteReference'>
-                      <span style='mso-special-character:footnote'/>
-                    </span>
-                  </a>
-                </span>
-              </p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                Attention is called to the possibility that implementation of this
-                standard may require use of subject matter covered by patent rights.
-                By publication of this standard, no position is taken by the IEEE with
-                respect to the existence or validity of any patent rights in
-                connection therewith. If a patent holder or patent applicant has filed
-                a statement of assurance via an Accepted Letter of Assurance, then the
-                statement is listed on the IEEE SA Website at
-                <a href='https://standards.ieee.org/about/sasb/patcom/patents.html'>https://standards.ieee.org/about/sasb/patcom/patents.html</a>
-                . Letters of Assurance may indicate whether the Submitter is willing
-                or unwilling to grant licenses under patent rights without
-                compensation or under reasonable rates, with reasonable terms and
-                conditions that are demonstrably free of any unfair discrimination to
-                applicants desiring to obtain such licenses.
-              </p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                Essential Patent Claims may exist for which a Letter of Assurance has
-                not been received. The IEEE is not responsible for identifying
-                Essential Patent Claims for which a license may be required, for
-                conducting inquiries into the legal validity or scope of Patents
-                Claims, or determining whether any licensing terms or conditions
-                provided in connection with submission of a Letter of Assurance, if
-                any, or in any licensing agreements are reasonable or
-                non-discriminatory. Users of this standard are expressly advised that
-                determination of the validity of any patent rights, and the risk of
-                infringement of such rights, is entirely their own responsibility.
-                Further information may be obtained from the IEEE Standards
-                Association.
-              </p>
-            </div>
-            <div>
-              <p class='IEEEStdsLevel2frontmatter'>IMPORTANT NOTICE</p>
-              <p class='IEEEStdsParagraph'>
-                <a name="_" id="_"/>
-                IEEE Standards do not guarantee or ensure safety, security, health, or
-                environmental protection, or ensure against interference with or from
-                other devices or networks. IEEE Standards development activities
-                consider research and information presented to the standards
-                development group in developing any safety recommendations. Other
-                information about safety practices, changes in technology or
-                technology implementation, or impact by peripheral systems also may be
-                pertinent to safety considerations during implementation of the
-                standard. Implementers and users of IEEE Standards documents are
-                responsible for determining and complying with all appropriate safety,
-                security, environmental, health, and interference protection practices
-                and all applicable laws and regulations.
-              </p>
+              <div>
+                <p class='IEEEStdsLevel2frontmatter'>
+                  Notice and Disclaimer of Liability Concerning the Use of IEEE
+                  Standards Documents
+                </p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  IEEE Standards documents are developed within the IEEE Societies and
+                  the Standards Coordinating Committees of the IEEE Standards
+                  Association (IEEE SA) Standards Board. IEEE develops its standards
+                  through an accredited consensus development process, which brings
+                  together volunteers representing varied viewpoints and interests to
+                  achieve the final product. IEEE Standards are documents developed by
+                  volunteers with scientific, academic, and industry-based expertise in
+                  technical working groups. Volunteers are not necessarily members of
+                  IEEE or IEEE SA, and participate without compensation from IEEE. While
+                  IEEE administers the process and establishes rules to promote fairness
+                  in the consensus development process, IEEE does not independently
+                  evaluate, test, or verify the accuracy of any of the information or
+                  the soundness of any judgments contained in its standards.
+                </p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  IEEE makes no warranties or representations concerning its standards,
+                  and expressly disclaims all warranties, express or implied, concerning
+                  this standard, including but not limited to the warranties of
+                  merchantability, fitness for a particular purpose and
+                  non-infringement. In addition, IEEE does not warrant or represent that
+                  the use of the material contained in its standards is free from patent
+                  infringement. IEEE standards documents are supplied &#x201c;AS
+                  IS&#x201d; and &#x201c;WITH ALL FAULTS.&#x201d;
+                </p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  Use of an IEEE standard is wholly voluntary. The existence of an IEEE
+                  Standard does not imply that there are no other ways to produce, test,
+                  measure, purchase, market, or provide other goods and services related
+                  to the scope of the IEEE standard. Furthermore, the viewpoint
+                  expressed at the time a standard is approved and issued is subject to
+                  change brought about through developments in the state of the art and
+                  comments received from users of the standard.
+                </p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  In publishing and making its standards available, IEEE is not
+                  suggesting or rendering professional or other services for, or on
+                  behalf of, any person or entity, nor is IEEE undertaking to perform
+                  any duty owed by any other person or entity to another. Any person
+                  utilizing any IEEE Standards document, should rely upon his or her own
+                  independent judgment in the exercise of reasonable care in any given
+                  circumstances or, as appropriate, seek the advice of a competent
+                  professional in determining the appropriateness of a given IEEE
+                  standard.
+                </p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  IN NO EVENT SHALL IEEE BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+                  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+                  LIMITED TO: THE NEED TO PROCURE SUBSTITUTE GOODS OR SERVICES; LOSS OF
+                  USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+                  ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
+                  TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+                  PUBLICATION, USE OF, OR RELIANCE UPON ANY STANDARD, EVEN IF ADVISED OF
+                  THE POSSIBILITY OF SUCH DAMAGE AND REGARDLESS OF WHETHER SUCH DAMAGE
+                  WAS FORESEEABLE.
+                </p>
+              </div>
+              <div>
+                <p class='IEEEStdsLevel2frontmatter'>Translations</p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  The IEEE consensus development process involves the review of
+                  documents in English only. In the event that an IEEE standard is
+                  translated, only the English version published by IEEE is the approved
+                  IEEE standard.
+                </p>
+              </div>
+              <div>
+                <p class='IEEEStdsLevel2frontmatter'>Official statements</p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  A statement, written or oral, that is not processed in accordance with
+                  the IEEE SA Standards Board Operations Manual shall not be considered
+                  or inferred to be the official position of IEEE or any of its
+                  committees and shall not be considered to be, nor be relied upon as, a
+                  formal position of IEEE. At lectures, symposia, seminars, or
+                  educational courses, an individual presenting information on IEEE
+                  standards shall make it clear that the presenter&#x2019;s views should
+                  be considered the personal views of that individual rather than the
+                  formal position of IEEE, IEEE SA, the Standards Committee, or the
+                  Working Group.
+                </p>
+              </div>
+              <div>
+                <p class='IEEEStdsLevel2frontmatter'>Comments on standards</p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  Comments for revision of IEEE Standards documents are welcome from any
+                  interested party, regardless of membership affiliation with IEEE or
+                  IEEE SA. However,
+                  <b>
+                    IEEE does not provide interpretations, consulting information, or
+                    advice pertaining to IEEE Standards documents
+                  </b>
+                  .
+                </p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  Suggestions for changes in documents should be in the form of a
+                  proposed change of text, together with appropriate supporting
+                  comments. Since IEEE standards represent a consensus of concerned
+                  interests, it is important that any responses to comments and
+                  questions also receive the concurrence of a balance of interests. For
+                  this reason, IEEE and the members of its Societies and Standards
+                  Coordinating Committees are not able to provide an instant response to
+                  comments, or questions except in those cases where the matter has
+                  previously been addressed. For the same reason, IEEE does not respond
+                  to interpretation requests. Any person who would like to participate
+                  in evaluating comments or in revisions to an IEEE standard is welcome
+                  to join the relevant IEEE working group. You can indicate interest in
+                  a working group using the Interests tab in the Manage Profile
+                  Interests area of the
+                  <a href='https://development.standards.ieee.org/myproject-web/public/view.html#landing'>IEEE SA myProject system</a>
+                  .
+                  <span style='mso-bookmark:_Ref'>
+                    <a class='FootnoteRef' href='#_ftn2' type='footnote' style='mso-footnote-id:ftn2' name="_" title='' id="_">
+                      <span class='MsoFootnoteReference'>
+                        <span style='mso-special-character:footnote'/>
+                      </span>
+                    </a>
+                  </span>
+                   An IEEE Account is needed to access the application.
+                </p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  Comments on standards should be submitted using the
+                  <a href='https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html'>Contact Us</a>
+                   form.
+                  <span style='mso-bookmark:_Ref'>
+                    <a class='FootnoteRef' href='#_ftn3' type='footnote' style='mso-footnote-id:ftn3' name="_" title='' id="_">
+                      <span class='MsoFootnoteReference'>
+                        <span style='mso-special-character:footnote'/>
+                      </span>
+                    </a>
+                  </span>
+                </p>
+              </div>
+              <div>
+                <p class='IEEEStdsLevel2frontmatter'>Laws and regulations</p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  Users of IEEE Standards documents should consult all applicable laws
+                  and regulations. Compliance with the provisions of any IEEE Standards
+                  document does not constitute compliance to any applicable regulatory
+                  requirements. Implementers of the standard are responsible for
+                  observing or referring to the applicable regulatory requirements. IEEE
+                  does not, by the publication of its standards, intend to urge action
+                  that is not in compliance with applicable laws, and these documents
+                  may not be construed as doing so.
+                </p>
+              </div>
+              <div>
+                <p class='IEEEStdsLevel2frontmatter'>Data privacy</p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  Users of IEEE Standards documents should evaluate the standards for
+                  considerations of data privacy and data ownership in the context of
+                  assessing and using the standards in compliance with applicable laws
+                  and regulations.
+                </p>
+              </div>
+              <div>
+                <p class='IEEEStdsLevel2frontmatter'>Copyrights</p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  IEEE draft and approved standards are copyrighted by IEEE under US and
+                  international copyright laws. They are made available by IEEE and are
+                  adopted for a wide variety of both public and private uses. These
+                  include both use, by reference, in laws and regulations, and use in
+                  private self-regulation, standardization, and the promotion of
+                  engineering practices and methods. By making these documents available
+                  for use and adoption by public authorities and private users, IEEE
+                  does not waive any rights in copyright to the documents.
+                </p>
+              </div>
+              <div>
+                <p class='IEEEStdsLevel2frontmatter'>Photocopies</p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  Subject to payment of the appropriate licensing fees, IEEE will grant
+                  users a limited, non-exclusive license to photocopy portions of any
+                  individual standard for company or organizational internal use or
+                  individual, non-commercial use only. To arrange for payment of
+                  licensing fees, please contact Copyright Clearance Center, Customer
+                  Service, 222 Rosewood Drive, Danvers, MA 01923 USA; +1 978 750 8400;
+                  https://www.copyright.com/. Permission to photocopy portions of any
+                  individual standard for educational classroom use can also be obtained
+                  through the Copyright Clearance Center.
+                </p>
+              </div>
+              <div>
+                <p class='IEEEStdsLevel2frontmatter'>Updating of IEEE Standards documents</p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  Users of IEEE Standards documents should be aware that these documents
+                  may be superseded at any time by the issuance of new editions or may
+                  be amended from time to time through the issuance of amendments,
+                  corrigenda, or errata. An official IEEE document at any point in time
+                  consists of the current edition of the document together with any
+                  amendments, corrigenda, or errata then in effect.
+                </p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  Every IEEE standard is subjected to review at least every 10 years.
+                  When a document is more than 10 years old and has not undergone a
+                  revision process, it is reasonable to conclude that its contents,
+                  although still of some value, do not wholly reflect the present state
+                  of the art. Users are cautioned to check to determine that they have
+                  the latest edition of any IEEE standard.
+                </p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  In order to determine whether a given document is the current edition
+                  and whether it has been amended through the issuance of amendments,
+                  corrigenda, or errata, visit
+                  <a href='https://ieeexplore.ieee.org/browse/standards/collection/ieee/'>IEEE Xplore</a>
+                   or
+                  <a href='https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html'>contact IEEE</a>
+                  .
+                  <span style='mso-bookmark:_Ref'>
+                    <a class='FootnoteRef' href='#_ftn4' type='footnote' style='mso-footnote-id:ftn4' name="_" title='' id="_">
+                      <span class='MsoFootnoteReference'>
+                        <span style='mso-special-character:footnote'/>
+                      </span>
+                    </a>
+                  </span>
+                   For more information about the IEEE SA or IEEE&#x2019;s standards
+                  development process, visit the IEEE SA Website.
+                </p>
+              </div>
+              <div>
+                <p class='IEEEStdsLevel2frontmatter'>Errata</p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  Errata, if any, for all IEEE standards can be accessed on the
+                  <a href='https://standards.ieee.org/standard/index.html'>IEEE SA Website</a>
+                  .
+                  <span style='mso-bookmark:_Ref'>
+                    <a class='FootnoteRef' href='#_ftn5' type='footnote' style='mso-footnote-id:ftn5' name="_" title='' id="_">
+                      <span class='MsoFootnoteReference'>
+                        <span style='mso-special-character:footnote'/>
+                      </span>
+                    </a>
+                  </span>
+                   Search for standard number and year of approval to access the web
+                  page of the published standard. Errata links are located under the
+                  Additional Resources Details section. Errata are also available in
+                  <a href='https://ieeexplore.ieee.org/browse/standards/collection/ieee/'>IEEE Xplore</a>
+                  . Users are encouraged to periodically check for errata.
+                </p>
+              </div>
+              <div>
+                <p class='IEEEStdsLevel2frontmatter'>Patents</p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  IEEE Standards are developed in compliance with the
+                  <a href='https://standards.ieee.org/about/sasb/patcom/materials.html'>IEEE SA Patent Policy</a>
+                  .
+                  <span style='mso-bookmark:_Ref'>
+                    <a class='FootnoteRef' href='#_ftn6' type='footnote' style='mso-footnote-id:ftn6' name="_" title='' id="_">
+                      <span class='MsoFootnoteReference'>
+                        <span style='mso-special-character:footnote'/>
+                      </span>
+                    </a>
+                  </span>
+                </p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  Attention is called to the possibility that implementation of this
+                  standard may require use of subject matter covered by patent rights.
+                  By publication of this standard, no position is taken by the IEEE with
+                  respect to the existence or validity of any patent rights in
+                  connection therewith. If a patent holder or patent applicant has filed
+                  a statement of assurance via an Accepted Letter of Assurance, then the
+                  statement is listed on the IEEE SA Website at
+                  <a href='https://standards.ieee.org/about/sasb/patcom/patents.html'>https://standards.ieee.org/about/sasb/patcom/patents.html</a>
+                  . Letters of Assurance may indicate whether the Submitter is willing
+                  or unwilling to grant licenses under patent rights without
+                  compensation or under reasonable rates, with reasonable terms and
+                  conditions that are demonstrably free of any unfair discrimination to
+                  applicants desiring to obtain such licenses.
+                </p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  Essential Patent Claims may exist for which a Letter of Assurance has
+                  not been received. The IEEE is not responsible for identifying
+                  Essential Patent Claims for which a license may be required, for
+                  conducting inquiries into the legal validity or scope of Patents
+                  Claims, or determining whether any licensing terms or conditions
+                  provided in connection with submission of a Letter of Assurance, if
+                  any, or in any licensing agreements are reasonable or
+                  non-discriminatory. Users of this standard are expressly advised that
+                  determination of the validity of any patent rights, and the risk of
+                  infringement of such rights, is entirely their own responsibility.
+                  Further information may be obtained from the IEEE Standards
+                  Association.
+                </p>
+              </div>
+              <div>
+                <p class='IEEEStdsLevel2frontmatter'>IMPORTANT NOTICE</p>
+                <p class='IEEEStdsParagraph'>
+                  <a name="_" id="_"/>
+                  IEEE Standards do not guarantee or ensure safety, security, health, or
+                  environmental protection, or ensure against interference with or from
+                  other devices or networks. IEEE Standards development activities
+                  consider research and information presented to the standards
+                  development group in developing any safety recommendations. Other
+                  information about safety practices, changes in technology or
+                  technology implementation, or impact by peripheral systems also may be
+                  pertinent to safety considerations during implementation of the
+                  standard. Implementers and users of IEEE Standards documents are
+                  responsible for determining and complying with all appropriate safety,
+                  security, environmental, health, and interference protection practices
+                  and all applicable laws and regulations.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <span lang='EN-US' xml:lang='EN-US' style='font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
-          <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
-        </span>
-                 <div>
-           <a name='boilerplate-participants' id='boilerplate-participants'/>
-           <p class='IEEEStdsLevel1frontmatter'>Participants</p>
-           <p class='IEEEStdsParagraph'>
-             <a name="_" id="_"/>
-             At the time this draft Standard was completed, the WG Working Group had
-             the following membership:
-           </p>
-           <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpFirst'>
-             <a name="_" id="_"/>
-             <b>AB</b>
-             ,
-             <i>Chair</i>
-           </p>
-           <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpLast'>
-             <a name="_" id="_"/>
-             <b>CD</b>
-             ,
-             <i>Vice Chair</i>
-           </p>
-         </div>
-         <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
-           <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
-           <div class='WordSection4'>
-             <p class='IEEEStdsNamesList'>
+          <span lang='EN-US' xml:lang='EN-US' style='font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
+            <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
+          </span>
+                   <div>
+             <a name='boilerplate-participants' id='boilerplate-participants'/>
+             <p class='IEEEStdsLevel1frontmatter'>Participants</p>
+             <p class='IEEEStdsParagraph'>
                <a name="_" id="_"/>
-               E, F, Jr.
+               At the time this draft Standard was completed, the WG Working Group had
+               the following membership:
              </p>
-             <p class='IEEEStdsNamesList'>
+             <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpFirst'>
                <a name="_" id="_"/>
-               GH
+               <b>AB</b>
+               ,
+               <i>Chair</i>
              </p>
-             <p class='IEEEStdsNamesList'>
+             <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpLast'>
                <a name="_" id="_"/>
-               IJ
+               <b>CD</b>
+               ,
+               <i>Vice Chair</i>
              </p>
            </div>
            <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
              <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
-             <div class='WordSection5'>
-               <p class='IEEEStdsParagraph'>&#xa0;</p>
-               <p class='IEEEStdsParagraph'>
+             <div class='WordSection4'>
+               <p class='IEEEStdsNamesList'>
                  <a name="_" id="_"/>
-                 The following members of the SC Standards Association balloting group
-                 voted on this Standard. Balloters may have voted for approval,
-                 disapproval, or abstention.
+                 E, F, Jr.
+               </p>
+               <p class='IEEEStdsNamesList'>
+                 <a name="_" id="_"/>
+                 GH
+               </p>
+               <p class='IEEEStdsNamesList'>
+                 <a name="_" id="_"/>
+                 IJ
                </p>
              </div>
              <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
                <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
-               <div class='WordSection6'>
-                 <p class='IEEEStdsNamesList'>
+               <div class='WordSection5'>
+                 <p class='IEEEStdsParagraph'>&#xa0;</p>
+                 <p class='IEEEStdsParagraph'>
                    <a name="_" id="_"/>
-                   KL
-                 </p>
-                 <p class='IEEEStdsNamesList'>
-                   <a name="_" id="_"/>
-                   MN
+                   The following members of the SC Standards Association balloting group
+                   voted on this Standard. Balloters may have voted for approval,
+                   disapproval, or abstention.
                  </p>
                </div>
                <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
                  <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
-                 <div class='WordSection7'>
-                   <p class='IEEEStdsParagraph'>&#xa0;</p>
-                   <p class='IEEEStdsParagraph'>
+                 <div class='WordSection6'>
+                   <p class='IEEEStdsNamesList'>
                      <a name="_" id="_"/>
-                     When the IEEE SA Standards Board approved this Standard on , it
-                     had the following membership:
+                     KL
                    </p>
-                   <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpFirst'>
+                   <p class='IEEEStdsNamesList'>
                      <a name="_" id="_"/>
-                     <b>OP</b>
-                     ,
-                     <i>Chair</i>
-                   </p>
-                   <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpMiddle'>
-                     <a name="_" id="_"/>
-                     <b>QR</b>
-                     ,
-                     <i>Vice Chair</i>
-                   </p>
-                   <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpMiddle'>
-                     <a name="_" id="_"/>
-                     <b>ST</b>
-                     ,
-                     <i>Past Chair</i>
-                   </p>
-                   <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpLast'>
-                     <a name="_" id="_"/>
-                     <b>UV</b>
-                     ,
-                     <i>Secretary</i>
+                     MN
                    </p>
                  </div>
                  <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
                    <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
-                   <div class='WordSection8'>
-                     <p class='IEEEStdsNamesList'>
+                   <div class='WordSection7'>
+                     <p class='IEEEStdsParagraph'>&#xa0;</p>
+                     <p class='IEEEStdsParagraph'>
                        <a name="_" id="_"/>
-                       KL
+                       When the IEEE SA Standards Board approved this Standard on , it
+                       had the following membership:
                      </p>
-                     <p class='IEEEStdsNamesList'>
+                     <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpFirst'>
                        <a name="_" id="_"/>
-                       MN
+                       <b>OP</b>
+                       ,
+                       <i>Chair</i>
+                     </p>
+                     <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpMiddle'>
+                       <a name="_" id="_"/>
+                       <b>QR</b>
+                       ,
+                       <i>Vice Chair</i>
+                     </p>
+                     <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpMiddle'>
+                       <a name="_" id="_"/>
+                       <b>ST</b>
+                       ,
+                       <i>Past Chair</i>
+                     </p>
+                     <p style='text-align:center;' align='center' class='IEEEStdsNamesCtrCxSpLast'>
+                       <a name="_" id="_"/>
+                       <b>UV</b>
+                       ,
+                       <i>Secretary</i>
                      </p>
                    </div>
                    <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
                      <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
-                     <div class='WordSection9'>
-                       <p class='IEEEStdsParaMemEmeritus'>
+                     <div class='WordSection8'>
+                       <p class='IEEEStdsNamesList'>
                          <a name="_" id="_"/>
-                         *Member Emeritus
+                         KL
+                       </p>
+                       <p class='IEEEStdsNamesList'>
+                         <a name="_" id="_"/>
+                         MN
                        </p>
                      </div>
+                     <span lang='EN-US' xml:lang='EN-US' style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &#x22;Times New Roman&#x22;,serif;mso-fareast-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
+                       <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
+                       <div class='WordSection9'>
+                         <p class='IEEEStdsParaMemEmeritus'>
+                           <a name="_" id="_"/>
+                           *Member Emeritus
+                         </p>
+                       </div>
+                     </span>
                    </span>
                  </span>
                </span>
              </span>
            </span>
-         </span>
-        <b style='mso-bidi-font-weight:normal'>
-          <span lang='EN-US' xml:lang='EN-US' style='font-size:12.0pt; mso-bidi-font-size:10.0pt;font-family:&#x22;Arial&#x22;,sans-serif;mso-fareast-font-family: &#x22;Times New Roman&#x22;;mso-bidi-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
-            <br clear='all' style='page-break-before:always;mso-break-type:section-break'/>
-          </span>
-        </b>
-        <div class='authority'>
-          <div class='boilerplate-legal'> </div>
-        </div>
-        <p class='IEEEStdsParagraph'>&#xa0;</p>
-        <p class='IEEEStdsParagraph'>
-          <br clear='all' class='section'/>
-        </p>
-        <div class='WordSectionMiddleTitle'>
-          <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Draft Standard for Empty</p>
-        </div>
-        <p class='IEEEStdsParagraph'>
-          <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
-        </p>
-        <div class='WordSectionMain'>
-          <div>
-            <a name="_" id="_"/>
-            <p class='IEEEStdsLevel1Header'>Clause</p>
-            <p class='IEEEStdsParagraph'>
-              <a name="_" id="_"/>
-              Hello
-            </p>
+          <b style='mso-bidi-font-weight:normal'>
+            <span lang='EN-US' xml:lang='EN-US' style='font-size:12.0pt; mso-bidi-font-size:10.0pt;font-family:&#x22;Arial&#x22;,sans-serif;mso-fareast-font-family: &#x22;Times New Roman&#x22;;mso-bidi-font-family:&#x22;Times New Roman&#x22;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'>
+              <br clear='all' style='page-break-before:always;mso-break-type:section-break'/>
+            </span>
+          </b>
+          <div class='authority'>
+            <div class='boilerplate-legal'> </div>
           </div>
-        </div>
-        <div style='mso-element:footnote-list'>
-          <div style='mso-element:footnote' id='ftn1'>
-            <p style='text-align:left;' align='left' class='IEEEStdsCRTextReg'>
-              <a name="_" id="_"/>
-              <a style='mso-footnote-id:ftn1' href='#_ftn1' name="_" title='' id="_"/>
-              <a style='mso-footnote-id:ftn0' href='#_ftnref0' name="_" title='' id="_"/>
-              The Institute of Electrical and Electronics Engineers, Inc.
-              <br/>
-               3 Park Avenue, New York, NY 10016-5997, USA
-            </p>
-            <p class='IEEEStdsCRTextReg'>&#xa0;</p>
-            <p class='IEEEStdsCRTextReg'>
-              <a name="_" id="_"/>
-              Copyright &#xa9; 2000 by The Institute of Electrical and Electronics
-              Engineers, Inc.
-            </p>
-            <p class='IEEEStdsCRTextReg'>
-              <a name="_" id="_"/>
-              All rights reserved. Published . Printed in the United States of
-              America.
-            </p>
-            <p class='IEEEStdsCRTextReg'>&#xa0;</p>
-            <p class='IEEEStdsCRTextReg'>
-              <a name="_" id="_"/>
-              IEEE is a registered trademark in the U.S. Patent Trademark Office,
-              owned by The Institute of Electrical and Electronics Engineers,
-              Incorporated.
-            </p>
-            <p class='IEEEStdsCRTextReg'>&#xa0;</p>
-            <p class='IEEEStdsCRTextReg'>
-              PDF:
-              <span style='mso-tab-count:1'> </span>
-              ISBN 978-0-XXXX-XXXX-X
-              <span style='mso-tab-count:1'> </span>
-              STDXXXXX
-            </p>
-            <p class='IEEEStdsCRTextReg'>
-              Print:
-              <span style='mso-tab-count:1'> </span>
-              ISBN 978-0-XXXX-XXXX-X
-              <span style='mso-tab-count:1'> </span>
-              STDPDXXXXX
-            </p>
-            <p class='IEEEStdsCRTextItal'>&#xa0;</p>
-            <p class='IEEEStdsCRTextItal'>
-              <a name="_" id="_"/>
-              IEEE prohibits discrimination, harassment, and bullying.
-            </p>
-            <p class='IEEEStdsCRTextItal'>
-              <a name="_" id="_"/>
-              For more information, visit
-              <a href='https://www.ieee.org/about/corporate/governance/p9-26.html'>https://www.ieee.org/about/corporate/governance/p9-26.html</a>
-              .
-            </p>
-            <p class='IEEEStdsCRTextItal'>
-              <a name="_" id="_"/>
-              No part of this publication may be reproduced in any form, in an
-              electronic retrieval system or otherwise, without the prior written
-              permission of the publisher.
-            </p>
+          <p class='IEEEStdsParagraph'>&#xa0;</p>
+          <p class='IEEEStdsParagraph'>
+            <br clear='all' class='section'/>
+          </p>
+          <div class='WordSectionMiddleTitle'>
+            <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Draft Standard for Empty</p>
           </div>
-          <div style='mso-element:footnote' id='ftn2'>
-            <p class='IEEEStdsFootnote'>
+          <p class='IEEEStdsParagraph'>
+            <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
+          </p>
+          <div class='WordSectionMain'>
+            <div>
               <a name="_" id="_"/>
-              <a style='mso-footnote-id:ftn2' href='#_ftn2' name="_" title='' id="_">
-                <span class='MsoFootnoteReference'>
-                  <span style='mso-special-character:footnote'/>
-                </span>
-              </a>
-              Available at:
-              <a href='https://development.standards.ieee.org/myproject-web/public/view.html#landing'>https://development.standards.ieee.org/myproject-web/public/view.html#landing</a>
-              .
-            </p>
+              <p class='IEEEStdsLevel1Header'>Clause</p>
+              <p class='IEEEStdsParagraph'>
+                <a name="_" id="_"/>
+                Hello
+              </p>
+            </div>
           </div>
-          <div style='mso-element:footnote' id='ftn3'>
-            <p class='IEEEStdsFootnote'>
-              <a name="_" id="_"/>
-              <a style='mso-footnote-id:ftn3' href='#_ftn3' name="_" title='' id="_">
-                <span class='MsoFootnoteReference'>
-                  <span style='mso-special-character:footnote'/>
-                </span>
-              </a>
-              Available at:
-              <a href='https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html'>https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html</a>
-              .
-            </p>
+          <div style='mso-element:footnote-list'>
+            <div style='mso-element:footnote' id='ftn1'>
+              <p style='text-align:left;' align='left' class='IEEEStdsCRTextReg'>
+                <a name="_" id="_"/>
+                <a style='mso-footnote-id:ftn1' href='#_ftn1' name="_" title='' id="_"/>
+                <a style='mso-footnote-id:ftn0' href='#_ftnref0' name="_" title='' id="_"/>
+                The Institute of Electrical and Electronics Engineers, Inc.
+                <br/>
+                 3 Park Avenue, New York, NY 10016-5997, USA
+              </p>
+              <p class='IEEEStdsCRTextReg'>&#xa0;</p>
+              <p class='IEEEStdsCRTextReg'>
+                <a name="_" id="_"/>
+                Copyright &#xa9; 2000 by The Institute of Electrical and Electronics
+                Engineers, Inc.
+              </p>
+              <p class='IEEEStdsCRTextReg'>
+                <a name="_" id="_"/>
+                All rights reserved. Published . Printed in the United States of
+                America.
+              </p>
+              <p class='IEEEStdsCRTextReg'>&#xa0;</p>
+              <p class='IEEEStdsCRTextReg'>
+                <a name="_" id="_"/>
+                IEEE is a registered trademark in the U.S. Patent Trademark Office,
+                owned by The Institute of Electrical and Electronics Engineers,
+                Incorporated.
+              </p>
+              <p class='IEEEStdsCRTextReg'>&#xa0;</p>
+              <p class='IEEEStdsCRTextReg'>
+                PDF:
+                <span style='mso-tab-count:1'> </span>
+                ISBN 978-0-XXXX-XXXX-X
+                <span style='mso-tab-count:1'> </span>
+                STDXXXXX
+              </p>
+              <p class='IEEEStdsCRTextReg'>
+                Print:
+                <span style='mso-tab-count:1'> </span>
+                ISBN 978-0-XXXX-XXXX-X
+                <span style='mso-tab-count:1'> </span>
+                STDPDXXXXX
+              </p>
+              <p class='IEEEStdsCRTextItal'>&#xa0;</p>
+              <p class='IEEEStdsCRTextItal'>
+                <a name="_" id="_"/>
+                IEEE prohibits discrimination, harassment, and bullying.
+              </p>
+              <p class='IEEEStdsCRTextItal'>
+                <a name="_" id="_"/>
+                For more information, visit
+                <a href='https://www.ieee.org/about/corporate/governance/p9-26.html'>https://www.ieee.org/about/corporate/governance/p9-26.html</a>
+                .
+              </p>
+              <p class='IEEEStdsCRTextItal'>
+                <a name="_" id="_"/>
+                No part of this publication may be reproduced in any form, in an
+                electronic retrieval system or otherwise, without the prior written
+                permission of the publisher.
+              </p>
+            </div>
+            <div style='mso-element:footnote' id='ftn2'>
+              <p class='IEEEStdsFootnote'>
+                <a name="_" id="_"/>
+                <a style='mso-footnote-id:ftn2' href='#_ftn2' name="_" title='' id="_">
+                  <span class='MsoFootnoteReference'>
+                    <span style='mso-special-character:footnote'/>
+                  </span>
+                </a>
+                Available at:
+                <a href='https://development.standards.ieee.org/myproject-web/public/view.html#landing'>https://development.standards.ieee.org/myproject-web/public/view.html#landing</a>
+                .
+              </p>
+            </div>
+            <div style='mso-element:footnote' id='ftn3'>
+              <p class='IEEEStdsFootnote'>
+                <a name="_" id="_"/>
+                <a style='mso-footnote-id:ftn3' href='#_ftn3' name="_" title='' id="_">
+                  <span class='MsoFootnoteReference'>
+                    <span style='mso-special-character:footnote'/>
+                  </span>
+                </a>
+                Available at:
+                <a href='https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html'>https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html</a>
+                .
+              </p>
+            </div>
+            <div style='mso-element:footnote' id='ftn4'>
+              <p class='IEEEStdsFootnote'>
+                <a name="_" id="_"/>
+                <a style='mso-footnote-id:ftn4' href='#_ftn4' name="_" title='' id="_">
+                  <span class='MsoFootnoteReference'>
+                    <span style='mso-special-character:footnote'/>
+                  </span>
+                </a>
+                Available at
+                <a href='https://ieeexplore.ieee.org/browse/standards/collection/ieee'>https://ieeexplore.ieee.org/browse/standards/collection/ieee</a>
+                .
+              </p>
+            </div>
+            <div style='mso-element:footnote' id='ftn5'>
+              <p class='IEEEStdsFootnote'>
+                <a name="_" id="_"/>
+                <a style='mso-footnote-id:ftn5' href='#_ftn5' name="_" title='' id="_">
+                  <span class='MsoFootnoteReference'>
+                    <span style='mso-special-character:footnote'/>
+                  </span>
+                </a>
+                Available at:
+                <a href='https://standards.ieee.org/standard/index.html'>https://standards.ieee.org/standard/index.html</a>
+                .
+              </p>
+            </div>
+            <div style='mso-element:footnote' id='ftn6'>
+              <p class='IEEEStdsFootnote'>
+                <a name="_" id="_"/>
+                <a style='mso-footnote-id:ftn6' href='#_ftn6' name="_" title='' id="_">
+                  <span class='MsoFootnoteReference'>
+                    <span style='mso-special-character:footnote'/>
+                  </span>
+                </a>
+                Available at:
+                <a href='https://standards.ieee.org/about/sasb/patcom/materials.html'>https://standards.ieee.org/about/sasb/patcom/materials.html</a>
+                .
+              </p>
+            </div>
           </div>
-          <div style='mso-element:footnote' id='ftn4'>
-            <p class='IEEEStdsFootnote'>
-              <a name="_" id="_"/>
-              <a style='mso-footnote-id:ftn4' href='#_ftn4' name="_" title='' id="_">
-                <span class='MsoFootnoteReference'>
-                  <span style='mso-special-character:footnote'/>
-                </span>
-              </a>
-              Available at
-              <a href='https://ieeexplore.ieee.org/browse/standards/collection/ieee'>https://ieeexplore.ieee.org/browse/standards/collection/ieee</a>
-              .
-            </p>
-          </div>
-          <div style='mso-element:footnote' id='ftn5'>
-            <p class='IEEEStdsFootnote'>
-              <a name="_" id="_"/>
-              <a style='mso-footnote-id:ftn5' href='#_ftn5' name="_" title='' id="_">
-                <span class='MsoFootnoteReference'>
-                  <span style='mso-special-character:footnote'/>
-                </span>
-              </a>
-              Available at:
-              <a href='https://standards.ieee.org/standard/index.html'>https://standards.ieee.org/standard/index.html</a>
-              .
-            </p>
-          </div>
-          <div style='mso-element:footnote' id='ftn6'>
-            <p class='IEEEStdsFootnote'>
-              <a name="_" id="_"/>
-              <a style='mso-footnote-id:ftn6' href='#_ftn6' name="_" title='' id="_">
-                <span class='MsoFootnoteReference'>
-                  <span style='mso-special-character:footnote'/>
-                </span>
-              </a>
-              Available at:
-              <a href='https://standards.ieee.org/about/sasb/patcom/materials.html'>https://standards.ieee.org/about/sasb/patcom/materials.html</a>
-              .
-            </p>
-          </div>
-        </div>
-      </body>
+        </body>
     OUTPUT
     IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
     expect(File.exist?("test.doc")).to be true
