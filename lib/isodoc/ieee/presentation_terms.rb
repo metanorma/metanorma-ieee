@@ -1,5 +1,3 @@
-require_relative "../../relaton/render/general"
-
 module IsoDoc
   module IEEE
     class PresentationXMLConvert < IsoDoc::PresentationXMLConvert
@@ -28,9 +26,7 @@ module IsoDoc
         if coll.all? do |c|
              c.elements.size == 1 && c.elements.first.name == "p"
            end
-          ret = coll.map do |c|
-            c.elements.first.children.to_xml
-          end
+          ret = coll.map { |c| c.elements.first.children.to_xml }
           return "<p>#{ret.join}</p>"
         end
         coll.map { |c| c.children.to_xml }.join
@@ -61,9 +57,9 @@ module IsoDoc
         prev = 0
         coll[1..-1].each_with_index do |r, i|
           if coll[prev]["type"] != r["type"]
-            prev = i
-            next
+            prev = i and next
           end
+
           coll[prev].at(ns("./preferred")) << "; #{r.at(ns('./preferred'))
               .children.to_xml}"
           r.remove
@@ -81,8 +77,7 @@ module IsoDoc
       end
 
       def sort_terms_key1(elem)
-        return "zzzz" if elem.nil?
-
+        elem.nil? and return "zzzz"
         dup = elem.dup
         dup.xpath(ns(".//asciimath | .//latexmath")).each(&:remove)
         dup.text&.strip&.downcase || "zzzz"
@@ -190,8 +185,7 @@ module IsoDoc
         opt[:source] and src = "(#{opt[:source].remove.children.to_xml.strip})"
         <<~TERM
           <p>#{opt[:pref]&.children&.to_xml || '**TERM NOT FOUND**'}: #{defn}
-          #{collapse_term_related(opt[:rels])}
-          #{src}</p>
+          #{collapse_term_related(opt[:rels])} #{src}</p>
         TERM
       end
 
