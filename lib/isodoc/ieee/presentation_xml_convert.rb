@@ -229,8 +229,8 @@ module IsoDoc
         ret = HTMLEntities.new.encode(ret, :basic)
         node.next = "<latexmath>#{ret}</latexmath>"
       rescue StandardError => e
-        warn math
-        warn e
+        warn "Failure to convert MathML to LaTeX"
+        warn "#{node.parent.to_xml}\n#{e}"
       end
 
       include Init
