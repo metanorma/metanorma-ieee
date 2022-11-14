@@ -231,46 +231,46 @@ RSpec.describe Metanorma::IEEE do
 
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
-        <bibdata type='standard'>
-          <title language='en' format='text/plain'>Document title</title>
-          <contributor>
-            <role type='publisher'/>
-            <organization>
-              <name>Institute of Electrical and Electronic Engineers</name>
-              <abbreviation>IEEE</abbreviation>
-            </organization>
-          </contributor>
-          <version>
-            <draft>3</draft>
-          </version>
-          <language>en</language>
-          <script>Latn</script>
-          <status>
-            <stage>draft</stage>
-          </status>
-          <copyright>
-            <from>2022</from>
-            <owner>
-              <organization>
-                <name>Institute of Electrical and Electronic Engineers</name>
-                <abbreviation>IEEE</abbreviation>
-              </organization>
-            </owner>
-          </copyright>
-          <ext>
-            <doctype>standard</doctype>
-            <subdoctype>document</subdoctype>
-                 <editorialgroup>
-       <society>SECRETARIAT</society>
-       <balloting-group type='individual'>BG</balloting-group>
-       <working-group/>
-       <committee/>
-     </editorialgroup>
-          </ext>
-        </bibdata>
-        <sections> </sections>
-      </ieee-standard>
+       <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+         <bibdata type='standard'>
+           <title language='en' format='text/plain'>Document title</title>
+           <contributor>
+             <role type='publisher'/>
+             <organization>
+               <name>Institute of Electrical and Electronic Engineers</name>
+               <abbreviation>IEEE</abbreviation>
+             </organization>
+           </contributor>
+           <version>
+             <draft>3</draft>
+           </version>
+           <language>en</language>
+           <script>Latn</script>
+           <status>
+             <stage>draft</stage>
+           </status>
+           <copyright>
+             <from>2022</from>
+             <owner>
+               <organization>
+                 <name>Institute of Electrical and Electronic Engineers</name>
+                 <abbreviation>IEEE</abbreviation>
+               </organization>
+             </owner>
+           </copyright>
+           <ext>
+             <doctype>standard</doctype>
+             <subdoctype>document</subdoctype>
+                  <editorialgroup>
+        <society>SECRETARIAT</society>
+        <balloting-group type='individual'>BG</balloting-group>
+        <working-group/>
+        <committee/>
+      </editorialgroup>
+           </ext>
+         </bibdata>
+         <sections> </sections>
+       </ieee-standard>
     OUTPUT
     expect(xmlpp(out.sub(%r{<boilerplate>.*</boilerplate>}m, "")))
       .to be_equivalent_to xmlpp(output)
@@ -334,6 +334,10 @@ RSpec.describe Metanorma::IEEE do
       == Abstract
 
       Text
+
+      == Participants
+
+      === Working Group
 
       == Introduction
 
@@ -426,7 +430,7 @@ RSpec.describe Metanorma::IEEE do
       == Thematic Index
     INPUT
     output = <<~OUTPUT
-      #{@blank_hdr.sub(%r{</script>}, '</script><abstract><p>Text</p></abstract>')}
+      #{@blank_hdr.sub(%r{</script>}, '</script><abstract><p>Text</p></abstract>').sub(%r{<boilerplate>.*</boilerplate>}m, '')}
                <preface>
            <abstract id='_'>
              <title>Abstract</title>
@@ -462,70 +466,70 @@ RSpec.describe Metanorma::IEEE do
                <title>Purpose</title>
                <p id='_'>Text</p>
              </clause>
-      <clause id='boilerplate_word_usage'>
-      <title>Word usage</title>
-        <p id='_'>
-          The word 
-          <em>shall</em>
-           indicates mandatory requirements strictly to be followed in order to
-          conform to the standard and from which no deviation is permitted (
-          <em>shall</em>
-           equals 
-          <em>is required to</em>
-          ).
-          <fn>
-            <p id='_'>
-              The use of the word 
-              <em>must</em>
-               is deprecated and cannot be used when stating mandatory
-              requirements; 
-              <em>must</em>
-               is used only to describe unavoidable situations.
-            </p>
-          </fn>
-          <fn>
-            <p id='_'>
-              The use of 
-              <em>will</em>
-               is deprecated and cannot be used when stating mandatory
-              requirements; 
-              <em>will</em>
-               is only used in statements of fact.
-            </p>
-          </fn>
-        </p>
-        <p id='_'>
-          The word 
-          <em>should</em>
-           indicates that among several possibilities one is recommended as
-          particularly suitable, without mentioning or excluding others; or that
-          a certain course of action is preferred but not necessarily required (
-          <em>should</em>
-           equals 
-          <em>is recommended that</em>
-          ).
-        </p>
-        <p id='_'>
-          The word 
-          <em>may</em>
-           is used to indicate a course of action permissible within the limits
-          of the standard (
-          <em>may</em>
-           equals 
-          <em>is permitted to</em>
-          ).
-        </p>
-        <p id='_'>
-          The word 
-          <em>can</em>
-           is used for statements of possibility and capability, whether
-          material, physical, or causal (
-          <em>can</em>
-           equals 
-          <em>is able to</em>
-          ).
-        </p>
-      </clause>
+             <clause id='boilerplate_word_usage'>
+               <title>Word usage</title>
+               <p id='_'>
+                 The word
+                 <em>shall</em>
+                  indicates mandatory requirements strictly to be followed in order to
+                 conform to the standard and from which no deviation is permitted (
+                 <em>shall</em>
+                  equals
+                 <em>is required to</em>
+                 ).
+                 <fn reference='_boilerplate_6'>
+                   <p id='_'>
+                     The use of the word
+                     <em>must</em>
+                      is deprecated and cannot be used when stating mandatory
+                     requirements;
+                     <em>must</em>
+                      is used only to describe unavoidable situations.
+                   </p>
+                 </fn>
+                 <fn reference='_boilerplate_7'>
+                   <p id='_'>
+                     The use of
+                     <em>will</em>
+                      is deprecated and cannot be used when stating mandatory
+                     requirements;
+                     <em>will</em>
+                      is only used in statements of fact.
+                   </p>
+                 </fn>
+               </p>
+               <p id='_'>
+                 The word
+                 <em>should</em>
+                  indicates that among several possibilities one is recommended as
+                 particularly suitable, without mentioning or excluding others; or that
+                 a certain course of action is preferred but not necessarily required (
+                 <em>should</em>
+                  equals
+                 <em>is recommended that</em>
+                 ).
+               </p>
+               <p id='_'>
+                 The word
+                 <em>may</em>
+                  is used to indicate a course of action permissible within the limits
+                 of the standard (
+                 <em>may</em>
+                  equals
+                 <em>is permitted to</em>
+                 ).
+               </p>
+               <p id='_'>
+                 The word
+                 <em>can</em>
+                  is used for statements of possibility and capability, whether
+                 material, physical, or causal (
+                 <em>can</em>
+                  equals
+                 <em>is able to</em>
+                 ).
+               </p>
+             </clause>
            </clause>
            <terms id='_' obligation='normative'>
              <title>Definitions</title>
@@ -548,22 +552,22 @@ RSpec.describe Metanorma::IEEE do
              </clause>
              <terms id='_' obligation='normative'>
                <title>Intro 2</title>
-        <p id='_'>No terms and definitions are listed in this document.</p>
-        <p id='_'>
-          For the purposes of this document, the following terms and definitions
-          apply. The#{' '}
-          <em>IEEE Standards Dictionary Online</em>
-           should be consulted for terms not defined in this clause.
-          <fn>
-            <p id='_'>
-              <em>IEEE Standards Dictionary Online</em>
-               is available at:#{' '}
-              <link target='http://dictionary.ieee.org'/>
-              . An IEEE Account is required for access to the dictionary, and
-              one can be created at no charge on the dictionary sign-in page.
-            </p>
-          </fn>
-        </p>
+               <p id='_'>No terms and definitions are listed in this document.</p>
+               <p id='_'>
+                 For the purposes of this document, the following terms and definitions
+                 apply. The
+                 <em>IEEE Standards Dictionary Online</em>
+                  should be consulted for terms not defined in this clause.
+                 <fn reference='_boilerplate_term1'>
+                   <p id='_'>
+                     <em>IEEE Standards Dictionary Online</em>
+                      is available at:
+                     <link target='http://dictionary.ieee.org'/>
+                     . An IEEE Account is required for access to the dictionary, and
+                     one can be created at no charge on the dictionary sign-in page.
+                   </p>
+                 </fn>
+               </p>
                <clause id='_' inline-header='false' obligation='normative'>
                  <title>Intro 3</title>
                </clause>
@@ -624,16 +628,16 @@ RSpec.describe Metanorma::IEEE do
            </clause>
          </annex>
          <annex id='_' obligation='' language='' script=''>
+           <title>Bibliography</title>
+           <references id='_' normative='false' obligation='informative'>
              <title>Bibliography</title>
-             <references id='_' normative='false' obligation='informative'>
-               <title>Bibliography</title>
-               <p id='_'>
-                 Bibliographical references are resources that provide additional or
-                 helpful material but do not need to be understood or used to implement
-                 this standard. Reference to these resources is made for informational
-                 use only.
-               </p>
-             </references>
+             <p id='_'>
+               Bibliographical references are resources that provide additional or
+               helpful material but do not need to be understood or used to implement
+               this standard. Reference to these resources is made for informational
+               use only.
+             </p>
+           </references>
          </annex>
          <bibliography>
            <references id='_' normative='true' obligation='informative'>
@@ -650,7 +654,8 @@ RSpec.describe Metanorma::IEEE do
          </indexsect>
        </ieee-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS)
+      .sub(%r{<boilerplate>.*</boilerplate>}m, ""))))
       .to be_equivalent_to xmlpp(output)
   end
 end

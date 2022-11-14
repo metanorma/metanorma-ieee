@@ -368,7 +368,7 @@ RSpec.describe IsoDoc::IEEE do
               The Aforementioned Citation
               </eref>
             </concept></li>
-            <li><concept><refterm>term</refterm>
+            <li><concept><refterm>term</refterm></concept></li>
             <li><concept><refterm>term</refterm>
               <renderterm>word</renderterm>
               <termref base='IEV' target='135-13-13'/>
@@ -404,65 +404,31 @@ RSpec.describe IsoDoc::IEEE do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-      <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-        <preface>
-          <foreword displayorder='1'>
-            <p>
-              <ul>
-                <li> </li>
-                <li> term </li>
-                <li> w[o]rd </li>
-                <li> term </li>
-                <li> word </li>
-                <li> word </li>
-                <li> word </li>
-                <li> word </li>
-                <li>
-                  <li> word </li>
-                  <li> word </li>
-                  <li>
-                    <strong>error!</strong>
-                  </li>
-                </li>
-              </ul>
-            </p>
-            <sections>
-              <clause id='clause1' displayorder='3'>
-                <title depth='1'>
-                  2.
-                  <tab/>
-                  Clause 1
-                </title>
-              </clause>
-            </sections>
-            <bibliography>
-              <references id='_normative_references' obligation='informative' normative='true' displayorder='2'>
-                <title depth='1'>
-                  1.
-                  <tab/>
-                  Normative References
-                </title>
-                <p>
-                  The following documents are referred to in the text in such a way
-                  that some or all of their content constitutes requirements of this
-                  document. For dated references, only the edition cited applies. For
-                  undated references, the latest edition of the referenced document
-                  (including any amendments) applies.
-                </p>
-                <bibitem id='ISO712' type='standard'>
-                  <formattedref>Cereals and cereal products.</formattedref>
-                  <title format='text/plain'>Cereals or cereal products</title>
-                  <title type='main' format='text/plain'>Cereals and cereal products</title>
-                  <docidentifier type='ISO'>ISO 712</docidentifier>
-                </bibitem>
-              </references>
-            </bibliography>
-          </foreword>
-        </preface>
-      </iso-standard>
+      <foreword displayorder='1'>
+        <p>
+          <ul>
+            <li> </li>
+            <li>term</li>
+            <li>w[o]rd</li>
+            <li>term</li>
+            <li>word</li>
+            <li>word</li>
+            <li>word</li>
+            <li>word</li>
+            <li/>
+            <li>word</li>
+            <li>word</li>
+              <li>
+                <strong>error!</strong>
+              </li>
+          </ul>
+        </p>
+        </foreword>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
-      .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
+    xml = Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert.new({})
+      .convert("test", input, true))
+    expect(xmlpp(xml.at("//xmlns:foreword").to_xml))
+      .to be_equivalent_to xmlpp(presxml)
   end
 
   it "duplicates MathML with AsciiMath and LaTeXMath" do

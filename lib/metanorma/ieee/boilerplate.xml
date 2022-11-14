@@ -115,10 +115,10 @@
         an IEEE standard is welcome to join the relevant IEEE working group. You can
         indicate interest in a working group using the Interests tab in the Manage
         Profile &#x26; Interests area of the <link target="https://development.standards.ieee.org/myproject-web/public/view.html#landing">IEEE
-          SA myProject system</link>.<fn><p>Available at: <link target="https://development.standards.ieee.org/myproject-web/public/view.html#landing"/>.</p></fn>
+          SA myProject system</link>.<fn reference="_boilerplate_1"><p>Available at: <link target="https://development.standards.ieee.org/myproject-web/public/view.html#landing"/>.</p></fn>
           An IEEE Account is needed to access the application.</p>
 
-        <p>Comments on standards should be submitted using the <link target="https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html">Contact Us</link> form.<fn><p>Available at: <link target="https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html"/>.</p></fn></p>
+        <p>Comments on standards should be submitted using the <link target="https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html">Contact Us</link> form.<fn reference="_boilerplate_2"><p>Available at: <link target="https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html"/>.</p></fn></p>
       </clause>
 
       <clause><title>Laws and regulations</title>
@@ -187,7 +187,7 @@
         order to determine whether a given document is the current edition and whether
         it has been amended through the issuance of amendments, corrigenda, or errata,
         visit <link target="https://ieeexplore.ieee.org/browse/standards/collection/ieee/">IEEE
-          Xplore</link> or <link target="https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html">contact IEEE</link>.<fn><p>Available at <link target="https://ieeexplore.ieee.org/browse/standards/collection/ieee"/>.</p></fn>
+          Xplore</link> or <link target="https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html">contact IEEE</link>.<fn reference="_boilerplate_3"><p>Available at <link target="https://ieeexplore.ieee.org/browse/standards/collection/ieee"/>.</p></fn>
           For more information about the IEEE SA or IEEE’s standards development process,
           visit the IEEE SA Website.</p>
       </clause>
@@ -195,12 +195,12 @@
       <clause>
         <title>Errata</title>
 
-        <p>Errata, if any, for all IEEE standards can be accessed on the <link target="https://standards.ieee.org/standard/index.html">IEEE SA Website</link>.<fn><p>Available at: <link target="https://standards.ieee.org/standard/index.html"/>.</p></fn> Search for standard number and year of approval to access the web page of the published standard. Errata links are located under the Additional Resources Details section. Errata are also available in <link target="https://ieeexplore.ieee.org/browse/standards/collection/ieee/">IEEE Xplore</link>. Users are encouraged to periodically check for errata.</p>
+        <p>Errata, if any, for all IEEE standards can be accessed on the <link target="https://standards.ieee.org/standard/index.html">IEEE SA Website</link>.<fn reference="_boilerplate_4"><p>Available at: <link target="https://standards.ieee.org/standard/index.html"/>.</p></fn> Search for standard number and year of approval to access the web page of the published standard. Errata links are located under the Additional Resources Details section. Errata are also available in <link target="https://ieeexplore.ieee.org/browse/standards/collection/ieee/">IEEE Xplore</link>. Users are encouraged to periodically check for errata.</p>
       </clause>
 
       <clause><title>Patents</title>
 
-        <p>IEEE Standards are developed in compliance with the <link target="https://standards.ieee.org/about/sasb/patcom/materials.html">IEEE SA Patent Policy</link>.<fn><p>Available at: <link target="https://standards.ieee.org/about/sasb/patcom/materials.html"/>.</p></fn></p>
+        <p>IEEE Standards are developed in compliance with the <link target="https://standards.ieee.org/about/sasb/patcom/materials.html">IEEE SA Patent Policy</link>.<fn reference="_boilerplate_5"><p>Available at: <link target="https://standards.ieee.org/about/sasb/patcom/materials.html"/>.</p></fn></p>
         <p>Attention is called to
         the possibility that implementation of this standard may require use of subject
         matter covered by patent rights. By publication of this standard, no position
@@ -247,17 +247,17 @@
         <p>At the time this draft {{ doctype }} was completed, the {{ working_group }} Working Group had the following membership:</p>
         <membership>
           <ul>
-            <li><dl><dt>name</dt><dd>&#x3c;Chair Name&#x3e;</dd><dt>role</dt><dd>Chair</dd></dl></li>
-            <li><dl><dt>name</dt><dd>&#x3c;Vice-chair Name&#x3e;</dd><dt>role</dt><dd>Vice Chair</dd></dl></li>
-            <li><dl><dt>name</dt><dd>Participant1</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>Participant2</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>Participant3</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>Participant4</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>Participant5</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>Participant6</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>Participant7</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>Participant8</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>Participant9</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>&#x3c;Chair Name&#x3e;</p></dd><dt>role</dt><dd><p>Chair</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>&#x3c;Vice-chair Name&#x3e;</p></dd><dt>role</dt><dd><p>Vice Chair</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>Participant1</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>Participant2</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>Participant3</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>Participant4</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>Participant5</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>Participant6</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>Participant7</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>Participant8</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>Participant9</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
           </ul>
         </membership>
       </clause>
@@ -265,15 +265,15 @@
         <p>The following members of the {{ balloting_group_type }} {{ balloting_group }} Standards Association balloting group voted on this {{ doctype }}. Balloters may have voted for approval, disapproval, or abstention.</p>
         <membership>
         <ul>
-            <li><dl><dt>name</dt><dd>Balloter1</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>Balloter2</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>Balloter3</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>Balloter4</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>Balloter5</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>Balloter6</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>Balloter7</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>Balloter8</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>Balloter9</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>Balloter1</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>Balloter2</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>Balloter3</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>Balloter4</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>Balloter5</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>Balloter6</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>Balloter7</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>Balloter8</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>Balloter9</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
         </ul>
       </membership>
       </clause>
@@ -281,19 +281,19 @@
         <p>When the IEEE SA Standards Board approved this {{ doctype }} on {{ issueddate }}, it had the following membership:</p>
         <membership>
           <ul>
-            <li><dl><dt>name</dt><dd>&#x3c;Name&#x3e;</dd><dt>role</dt><dd>Chair</dd></dl></li>
-            <li><dl><dt>name</dt><dd>&#x3c;Name&#x3e;</dd><dt>role</dt><dd>Vice Chair</dd></dl></li>
-            <li><dl><dt>name</dt><dd>&#x3c;Name&#x3e;</dd><dt>role</dt><dd>Past Chair</dd></dl></li>
-            <li><dl><dt>name</dt><dd>&#x3c;Name&#x3e;</dd><dt>role</dt><dd>Secretary</dd></dl></li>
-            <li><dl><dt>name</dt><dd>SBMember1</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>SBMember2</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>SBMember3</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>SBMember4</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>SBMember5</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>SBMember6</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>SBMember7</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>SBMember8</dd><dt>role</dt><dd>Member</dd></dl></li>
-            <li><dl><dt>name</dt><dd>SBMember9</dd><dt>role</dt><dd>Member</dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>&#x3c;Name&#x3e;</p></dd><dt>role</dt><dd><p>Chair</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>&#x3c;Name&#x3e;</p></dd><dt>role</dt><dd><p>Vice Chair</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>&#x3c;Name&#x3e;</p></dd><dt>role</dt><dd><p>Past Chair</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>&#x3c;Name&#x3e;</p></dd><dt>role</dt><dd><p>Secretary</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>SBMember1</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>SBMember2</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>SBMember3</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>SBMember4</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>SBMember5</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>SBMember6</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>SBMember7</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>SBMember8</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
+            <li><dl><dt>name</dt><dd><p>SBMember9</p></dd><dt>role</dt><dd><p>Member</p></dd></dl></li>
         </ul>
         </membership>
         <p type="emeritus_sign">*Member Emeritus</p>
@@ -337,7 +337,7 @@
   {% else %}
   <clause id="boilerplate_word_usage">
     <title>Word usage</title>
-    <p>The word <em>shall</em> indicates mandatory requirements strictly to be followed in order to conform to the standard and from which no deviation is permitted (<em>shall</em> equals <em>is required to</em>).<fn><p>The use of the word <em>must</em> is deprecated and cannot be used when stating mandatory requirements; <em>must</em> is used only to describe unavoidable situations.</p></fn><fn><p>The use of <em>will</em> is deprecated and cannot be used when stating mandatory requirements; <em>will</em> is only used in statements of fact.</p></fn></p>
+    <p>The word <em>shall</em> indicates mandatory requirements strictly to be followed in order to conform to the standard and from which no deviation is permitted (<em>shall</em> equals <em>is required to</em>).<fn reference="_boilerplate_6"><p>The use of the word <em>must</em> is deprecated and cannot be used when stating mandatory requirements; <em>must</em> is used only to describe unavoidable situations.</p></fn><fn reference="_boilerplate_7"><p>The use of <em>will</em> is deprecated and cannot be used when stating mandatory requirements; <em>will</em> is only used in statements of fact.</p></fn></p>
     <p>The word <em>should</em> indicates that among several possibilities one is recommended as particularly suitable, without mentioning or excluding others; or that a certain course of action is preferred but not necessarily required (<em>should</em> equals <em>is recommended that</em>).</p>
     <p>The word <em>may</em> is used to indicate a course of action permissible within the limits of the standard (<em>may</em> equals <em>is permitted to</em>).</p>
     <p>The word <em>can</em> is used for statements of possibility and capability, whether material, physical, or causal (<em>can</em> equals <em>is able to</em>).</p>

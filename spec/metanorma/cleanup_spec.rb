@@ -170,7 +170,7 @@ RSpec.describe Metanorma::IEEE do
                <p id='_'>
                  Comments for revision of IEEE Standards documents are welcome from any
                  interested party, regardless of membership affiliation with IEEE or
-                 IEEE SA. However,
+                 IEEE SA. However, 
                  <strong>
                    IEEE does not provide interpretations, consulting information, or
                    advice pertaining to IEEE Standards documents
@@ -191,12 +191,12 @@ RSpec.describe Metanorma::IEEE do
                  in evaluating comments or in revisions to an IEEE standard is welcome
                  to join the relevant IEEE working group. You can indicate interest in
                  a working group using the Interests tab in the Manage Profile &#x26;
-                 Interests area of the
+                 Interests area of the 
                  <link target='https://development.standards.ieee.org/myproject-web/public/view.html#landing'>IEEE SA myProject system</link>
                  .
-                 <fn>
+                 <fn reference='_boilerplate_1'>
                    <p id='_'>
-                     Available at:
+                     Available at: 
                      <link target='https://development.standards.ieee.org/myproject-web/public/view.html#landing'/>
                      .
                    </p>
@@ -204,12 +204,12 @@ RSpec.describe Metanorma::IEEE do
                   An IEEE Account is needed to access the application.
                </p>
                <p id='_'>
-                 Comments on standards should be submitted using the
+                 Comments on standards should be submitted using the 
                  <link target='https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html'>Contact Us</link>
                   form.
-                 <fn>
+                 <fn reference='_boilerplate_2'>
                    <p id='_'>
-                     Available at:
+                     Available at: 
                      <link target='https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html'/>
                      .
                    </p>
@@ -286,14 +286,14 @@ RSpec.describe Metanorma::IEEE do
                <p id='_'>
                  In order to determine whether a given document is the current edition
                  and whether it has been amended through the issuance of amendments,
-                 corrigenda, or errata, visit
+                 corrigenda, or errata, visit 
                  <link target='https://ieeexplore.ieee.org/browse/standards/collection/ieee/'>IEEE Xplore</link>
-                  or
+                  or 
                  <link target='https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html'>contact IEEE</link>
                  .
-                 <fn>
+                 <fn reference='_boilerplate_3'>
                    <p id='_'>
-                     Available at
+                     Available at 
                      <link target='https://ieeexplore.ieee.org/browse/standards/collection/ieee'/>
                      .
                    </p>
@@ -305,19 +305,19 @@ RSpec.describe Metanorma::IEEE do
              <clause>
                <title>Errata</title>
                <p id='_'>
-                 Errata, if any, for all IEEE standards can be accessed on the
+                 Errata, if any, for all IEEE standards can be accessed on the 
                  <link target='https://standards.ieee.org/standard/index.html'>IEEE SA Website</link>
                  .
-                 <fn>
+                 <fn reference='_boilerplate_4'>
                    <p id='_'>
-                     Available at:
+                     Available at: 
                      <link target='https://standards.ieee.org/standard/index.html'/>
                      .
                    </p>
                  </fn>
                   Search for standard number and year of approval to access the web
                  page of the published standard. Errata links are located under the
-                 Additional Resources Details section. Errata are also available in
+                 Additional Resources Details section. Errata are also available in 
                  <link target='https://ieeexplore.ieee.org/browse/standards/collection/ieee/'>IEEE Xplore</link>
                  . Users are encouraged to periodically check for errata.
                </p>
@@ -325,12 +325,12 @@ RSpec.describe Metanorma::IEEE do
              <clause>
                <title>Patents</title>
                <p id='_'>
-                 IEEE Standards are developed in compliance with the
+                 IEEE Standards are developed in compliance with the 
                  <link target='https://standards.ieee.org/about/sasb/patcom/materials.html'>IEEE SA Patent Policy</link>
                  .
-                 <fn>
+                 <fn reference='_boilerplate_5'>
                    <p id='_'>
-                     Available at:
+                     Available at: 
                      <link target='https://standards.ieee.org/about/sasb/patcom/materials.html'/>
                      .
                    </p>
@@ -343,7 +343,7 @@ RSpec.describe Metanorma::IEEE do
                  respect to the existence or validity of any patent rights in
                  connection therewith. If a patent holder or patent applicant has filed
                  a statement of assurance via an Accepted Letter of Assurance, then the
-                 statement is listed on the IEEE SA Website at
+                 statement is listed on the IEEE SA Website at 
                  <link target='https://standards.ieee.org/about/sasb/patcom/patents.html'/>
                  . Letters of Assurance may indicate whether the Submitter is willing
                  or unwilling to grant licenses under patent rights without
@@ -384,7 +384,7 @@ RSpec.describe Metanorma::IEEE do
                </p>
              </clause>
            </clause>
-                      <clause id='boilerplate-participants'>
+           <clause id='boilerplate-participants'>
              <title>Participants</title>
              <clause id='boilerplate-participants-wg'>
                <p id='_'>
@@ -393,91 +393,135 @@ RSpec.describe Metanorma::IEEE do
                </p>
                <ul id='_'>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>&#x3c;Chair Name&#x3e;</dd>
+                     <dd>
+                       <p id='_'>&#x3c;Chair Name&#x3e;</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Chair</dd>
+                     <dd>
+                       <p id='_'>Chair</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>&#x3c;Vice-chair Name&#x3e;</dd>
+                     <dd>
+                       <p id='_'>&#x3c;Vice-chair Name&#x3e;</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Vice Chair</dd>
+                     <dd>
+                       <p id='_'>Vice Chair</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>Participant1</dd>
+                     <dd>
+                       <p id='_'>Participant1</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>Participant2</dd>
+                     <dd>
+                       <p id='_'>Participant2</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>Participant3</dd>
+                     <dd>
+                       <p id='_'>Participant3</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>Participant4</dd>
+                     <dd>
+                       <p id='_'>Participant4</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>Participant5</dd>
+                     <dd>
+                       <p id='_'>Participant5</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>Participant6</dd>
+                     <dd>
+                       <p id='_'>Participant6</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>Participant7</dd>
+                     <dd>
+                       <p id='_'>Participant7</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>Participant8</dd>
+                     <dd>
+                       <p id='_'>Participant8</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>Participant9</dd>
+                     <dd>
+                       <p id='_'>Participant9</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                </ul>
@@ -490,75 +534,111 @@ RSpec.describe Metanorma::IEEE do
                </p>
                <ul id='_'>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>Balloter1</dd>
+                     <dd>
+                       <p id='_'>Balloter1</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>Balloter2</dd>
+                     <dd>
+                       <p id='_'>Balloter2</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>Balloter3</dd>
+                     <dd>
+                       <p id='_'>Balloter3</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>Balloter4</dd>
+                     <dd>
+                       <p id='_'>Balloter4</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>Balloter5</dd>
+                     <dd>
+                       <p id='_'>Balloter5</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>Balloter6</dd>
+                     <dd>
+                       <p id='_'>Balloter6</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>Balloter7</dd>
+                     <dd>
+                       <p id='_'>Balloter7</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>Balloter8</dd>
+                     <dd>
+                       <p id='_'>Balloter8</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>Balloter9</dd>
+                     <dd>
+                       <p id='_'>Balloter9</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                </ul>
@@ -570,107 +650,159 @@ RSpec.describe Metanorma::IEEE do
                </p>
                <ul id='_'>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>&#x3c;Name&#x3e;</dd>
+                     <dd>
+                       <p id='_'>&#x3c;Name&#x3e;</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Chair</dd>
+                     <dd>
+                       <p id='_'>Chair</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>&#x3c;Name&#x3e;</dd>
+                     <dd>
+                       <p id='_'>&#x3c;Name&#x3e;</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Vice Chair</dd>
+                     <dd>
+                       <p id='_'>Vice Chair</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>&#x3c;Name&#x3e;</dd>
+                     <dd>
+                       <p id='_'>&#x3c;Name&#x3e;</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Past Chair</dd>
+                     <dd>
+                       <p id='_'>Past Chair</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>&#x3c;Name&#x3e;</dd>
+                     <dd>
+                       <p id='_'>&#x3c;Name&#x3e;</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Secretary</dd>
+                     <dd>
+                       <p id='_'>Secretary</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>SBMember1</dd>
+                     <dd>
+                       <p id='_'>SBMember1</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>SBMember2</dd>
+                     <dd>
+                       <p id='_'>SBMember2</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>SBMember3</dd>
+                     <dd>
+                       <p id='_'>SBMember3</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>SBMember4</dd>
+                     <dd>
+                       <p id='_'>SBMember4</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>SBMember5</dd>
+                     <dd>
+                       <p id='_'>SBMember5</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>SBMember6</dd>
+                     <dd>
+                       <p id='_'>SBMember6</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>SBMember7</dd>
+                     <dd>
+                       <p id='_'>SBMember7</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>SBMember8</dd>
+                     <dd>
+                       <p id='_'>SBMember8</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                  <li>
-                   <dl>
+                   <dl id='_'>
                      <dt>name</dt>
-                     <dd>SBMember9</dd>
+                     <dd>
+                       <p id='_'>SBMember9</p>
+                     </dd>
                      <dt>role</dt>
-                     <dd>Member</dd>
+                     <dd>
+                       <p id='_'>Member</p>
+                     </dd>
                    </dl>
                  </li>
                </ul>
@@ -721,7 +853,7 @@ RSpec.describe Metanorma::IEEE do
                <em>IEEE prohibits discrimination, harassment, and bullying.</em>
                <br/>
                <em>
-                 For more information, visit
+                 For more information, visit 
                  <link target='https://www.ieee.org/about/corporate/governance/p9-26.html'/>
                  .
                </em>
@@ -1193,40 +1325,47 @@ RSpec.describe Metanorma::IEEE do
              At the time this draft Standard was completed, the Working Group had the
              following membership:
            </p>
-           <title>Working Group</title>
            <ul id='_'>
              <li>
                <dl id='_'>
                  <dt>name</dt>
-                 <dd>Socrates</dd>
+                 <dd/>
                  <dt>role</dt>
-                 <dd>Chair</dd>
+                 <dd>
+                   <p id='_'>member</p>
+                 </dd>
                </dl>
              </li>
              <li>
                <dl id='_'>
                  <dt>name</dt>
-                 <dd>Plato</dd>
+                 <dd/>
                  <dt>role</dt>
-                 <dd>Technical editor</dd>
+                 <dd>
+                   <p id='_'>member</p>
+                 </dd>
                </dl>
              </li>
              <li>
                <dl id='_'>
                  <dt>name</dt>
-                 <dd>Aristotle</dd>
+                 <dd/>
                  <dt>role</dt>
-                 <dd>Member</dd>
+                 <dd>
+                   <p id='_'>member</p>
+                 </dd>
                </dl>
              </li>
              <li>
-               <dl>
+               <dl id='_'>
                  <dt>name</dt>
                  <dd>
                    <p id='_'>Anaximander</p>
                  </dd>
                  <dt>role</dt>
-                 <dd>member</dd>
+                 <dd>
+                   <p id='_'>member</p>
+                 </dd>
                </dl>
              </li>
            </ul>
@@ -1238,26 +1377,29 @@ RSpec.describe Metanorma::IEEE do
              on this Standard. Balloters may have voted for approval, disapproval, or
              abstention.
            </p>
-           <title>Balloting Group</title>
            <ul id='_'>
              <li>
-               <dl>
+               <dl id='_'>
                  <dt>name</dt>
                  <dd>
                    <p id='_'>Athanasius of Alexandria</p>
                  </dd>
                  <dt>role</dt>
-                 <dd>member</dd>
+                 <dd>
+                   <p id='_'>member</p>
+                 </dd>
                </dl>
              </li>
              <li>
-               <dl>
+               <dl id='_'>
                  <dt>name</dt>
                  <dd>
                    <p id='_'>Basil of Caesarea</p>
                  </dd>
                  <dt>role</dt>
-                 <dd>member</dd>
+                 <dd>
+                   <p id='_'>member</p>
+                 </dd>
                </dl>
              </li>
            </ul>
@@ -1265,18 +1407,22 @@ RSpec.describe Metanorma::IEEE do
            <ul id='_'>
              <li>
                <dl id='_'>
-                 <dt>company</dt>
-                 <dd>Microsoft</dd>
+                 <dt>name</dt>
+                 <dd/>
                  <dt>role</dt>
-                 <dd>member</dd>
+                 <dd>
+                   <p id='_'>member</p>
+                 </dd>
                </dl>
              </li>
              <li>
                <dl id='_'>
-                 <dt>company</dt>
-                 <dd>Alphabet</dd>
+                 <dt>name</dt>
+                 <dd/>
                  <dt>role</dt>
-                 <dd>Member</dd>
+                 <dd>
+                   <p id='_'>member</p>
+                 </dd>
                </dl>
              </li>
            </ul>
@@ -1286,40 +1432,53 @@ RSpec.describe Metanorma::IEEE do
              When the IEEE SA Standards Board approved this Standard on &#x3c;Date
              Approved&#x3e;, it had the following membership:
            </p>
-           <title>Standards Board</title>
            <ul id='_'>
              <li>
                <dl id='_'>
                  <dt>name</dt>
-                 <dd>Aeschylus</dd>
+                 <dd>
+                   <p id='_'>Aeschylus</p>
+                 </dd>
                  <dt>role</dt>
-                 <dd>Chair</dd>
+                 <dd>
+                   <p id='_'>Chair</p>
+                 </dd>
                </dl>
              </li>
              <li>
                <dl id='_'>
                  <dt>name</dt>
-                 <dd>Sophocles</dd>
+                 <dd>
+                   <p id='_'>Sophocles</p>
+                 </dd>
                  <dt>role</dt>
-                 <dd>Technical editor</dd>
+                 <dd>
+                   <p id='_'>Technical editor</p>
+                 </dd>
                </dl>
              </li>
              <li>
                <dl id='_'>
                  <dt>name</dt>
-                 <dd>Euripides</dd>
+                 <dd>
+                   <p id='_'>Euripides</p>
+                 </dd>
                  <dt>role</dt>
-                 <dd>member</dd>
+                 <dd>
+                   <p id='_'>member</p>
+                 </dd>
                </dl>
              </li>
              <li>
-               <dl>
+               <dl id='_'>
                  <dt>name</dt>
                  <dd>
                    <p id='_'>Aristophanes</p>
                  </dd>
                  <dt>role</dt>
-                 <dd>member</dd>
+                 <dd>
+                   <p id='_'>member</p>
+                 </dd>
                </dl>
              </li>
            </ul>
@@ -1328,44 +1487,52 @@ RSpec.describe Metanorma::IEEE do
            <ul id='_'>
              <li>
                <dl id='_'>
-                 <dt>company</dt>
-                 <dd>Waldorf-Astoria</dd>
+                 <dt>name</dt>
+                 <dd/>
                  <dt>role</dt>
-                 <dd>member</dd>
+                 <dd>
+                   <p id='_'>member</p>
+                 </dd>
                </dl>
              </li>
              <li>
                <dl id='_'>
-                 <dt>company</dt>
-                 <dd>Ritz</dd>
+                 <dt>name</dt>
+                 <dd/>
                  <dt>role</dt>
-                 <dd>Member</dd>
+                 <dd>
+                   <p id='_'>member</p>
+                 </dd>
                </dl>
              </li>
            </ul>
            <p id='_'>And again:</p>
-            <ul id='_'>
-                        <li>
-                <dl>
-                  <dt>name</dt>
-                  <dd>
-                    <p id='_'>name1</p>
-                  </dd>
-                  <dt>role</dt>
-                  <dd>member</dd>
-                </dl>
-              </li>
-              <li>
-                <dl>
-                  <dt>name</dt>
-                  <dd>
-                    <p id='_'>name2</p>
-                  </dd>
-                  <dt>role</dt>
-                  <dd>member</dd>
-                </dl>
-              </li>
-            </ul>
+           <ul id='_'>
+             <li>
+               <dl id='_'>
+                 <dt>name</dt>
+                 <dd>
+                   <p id='_'>name1</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>
+                   <p id='_'>member</p>
+                 </dd>
+               </dl>
+             </li>
+             <li>
+               <dl id='_'>
+                 <dt>name</dt>
+                 <dd>
+                   <p id='_'>name2</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>
+                   <p id='_'>member</p>
+                 </dd>
+               </dl>
+             </li>
+           </ul>
          </clause>
        </clause>
     OUTPUT

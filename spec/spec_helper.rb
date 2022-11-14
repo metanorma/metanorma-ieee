@@ -127,6 +127,7 @@ def boilerplate(xmldoc)
   ret = Nokogiri::XML(
     conv.boilerplate_isodoc(xmldoc).populate_template(file, nil)
     .gsub(/<p>/, "<p id='_'>")
+    .gsub(/<dl>/, "<dl id='_'>")
     .gsub(/<p (?!id=)/, "<p id='_' ")
     .gsub(/<ol>/, "<ol id='_'>")
     .gsub(/<ul>/, "<ul id='_'>")

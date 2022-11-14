@@ -1,5 +1,3 @@
-require_relative "../../relaton/render/general"
-
 module IsoDoc
   module IEEE
     class PresentationXMLConvert < IsoDoc::PresentationXMLConvert
@@ -28,9 +26,7 @@ module IsoDoc
         if coll.all? do |c|
              c.elements.size == 1 && c.elements.first.name == "p"
            end
-          ret = coll.map do |c|
-            c.elements.first.children.to_xml
-          end
+          ret = coll.map { |c| c.elements.first.children.to_xml }
           return "<p>#{ret.join}</p>"
         end
         coll.map { |c| c.children.to_xml }.join
@@ -42,7 +38,7 @@ module IsoDoc
 
           p = v.xpath(ns("./p"))
           v.children =
-            "<p>#{p.map(&:children).map(&:to_xml).join("\n")}</p>"\
+            "<p>#{p.map(&:children).map(&:to_xml).join("\n")}</p>" \
             "#{v.xpath(ns('./termsource')).to_xml}"
         end
         super
@@ -61,9 +57,9 @@ module IsoDoc
         prev = 0
         coll[1..-1].each_with_index do |r, i|
           if coll[prev]["type"] != r["type"]
-            prev = i
-            next
+            prev = i and next
           end
+
           coll[prev].at(ns("./preferred")) << "; #{r.at(ns('./preferred'))
               .children.to_xml}"
           r.remove
@@ -71,17 +67,20 @@ module IsoDoc
       end
 
       def sort_terms_key(term)
-        d = term.at(ns("./preferred/expression/name | "\
-                       "./preferred/letter-symbol/name | "\
-                       "./preferred/graphical-symbol/figure/name | "\
-                       "./preferred/graphical-symbol/figure/@id | "\
+        d = term.at(ns("./preferred/expression/name | " \
+                       "./preferred/letter-symbol/name | " \
+                       "./preferred/graphical-symbol/figure/name | " \
+                       "./preferred/graphical-symbol/figure/@id | " \
                        "./preferred"))
         f = term.at(ns("./field-of-application")) || term.at(ns("./domain"))
         HTMLEntities.new.decode("#{sort_terms_key1(d)} :: #{sort_terms_key1(f)}")
       end
 
       def sort_terms_key1(elem)
-        elem&.text&.strip&.downcase || "zzzz"
+        elem.nil? and return "zzzz"
+        dup = elem.dup
+        dup.xpath(ns(".//asciimath | .//latexmath")).each(&:remove)
+        dup.text&.strip&.downcase || "zzzz"
       end
 
       def term_related_reorder(coll)
@@ -173,7 +172,7 @@ module IsoDoc
       def collapse_term_related(rels)
         ret = rels.map do |r|
           p = r.at(ns("./preferred"))
-          "<em>#{@i18n.relatedterms[r['type']]}:</em> "\
+          "<em>#{@i18n.relatedterms[r['type']]}:</em> " \
             "#{p&.children&.to_xml || '**RELATED TERM NOT FOUND**'}"
         end.join(". ")
         ret += "." unless ret.empty?
@@ -186,8 +185,7 @@ module IsoDoc
         opt[:source] and src = "(#{opt[:source].remove.children.to_xml.strip})"
         <<~TERM
           <p>#{opt[:pref]&.children&.to_xml || '**TERM NOT FOUND**'}: #{defn}
-          #{collapse_term_related(opt[:rels])}
-          #{src}</p>
+          #{collapse_term_related(opt[:rels])} #{src}</p>
         TERM
       end
 
@@ -229,7 +227,7 @@ module IsoDoc
       def merge_second_preferred(term)
         pref =
           term.at(ns("./preferred[not(abbreviation-type)]/expression/name"))
-        x = term.xpath(ns("./preferred[expression/name][abbreviation-type] | "\
+        x = term.xpath(ns("./preferred[expression/name][abbreviation-type] | " \
                           "./admitted[expression/name][abbreviation-type]"))
         (pref && !x.empty?) or return
         tail = x.map do |p|

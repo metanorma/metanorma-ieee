@@ -10,6 +10,9 @@ module Metanorma
         initial_note(xml)
         word_usage(xml)
         participants(xml)
+        xml.xpath("//dl[not(@id)]").each do |dl|
+          dl["id"] = "_#{UUIDTools::UUID.random_create}"
+        end
       end
 
       def intro_boilerplate(xml, isodoc)
@@ -86,7 +89,8 @@ module Metanorma
                       "//annex//note[not(@type = 'boilerplate')]") or
           return
         ins = n.at("./p[last()]")
-        ins << "<fn><p>#{@i18n.note_inform_fn}</p></fn>"
+        ins << "<fn reference='_boilerplate_cleanup1'>" \
+               "<p>#{@i18n.note_inform_fn}</p></fn>"
       end
 
       def table_footnote_renumber1(fnote, idx, seen)
@@ -166,6 +170,7 @@ module Metanorma
           ul.xpath("./li").each { |li| populate_participants2(li) }
           ul.xpath(".//p[normalize-space() = '']").each(&:remove)
         end
+        clause.at("./title")&.remove
         clause.children.to_xml
       end
 
@@ -180,14 +185,16 @@ module Metanorma
       end
 
       def populate_participants2(list)
-        if dl = list.at("./dl")
+        curr = list
+        p = curr.at("./p") and curr = p
+        if dl = curr.at("./dl")
           ret = extract_participants(dl)
           dl.children = ret.keys.map do |k|
-            "<dt>#{k}</dt><dd>#{ret[k]}</dd>"
+            "<dt>#{k}</dt><dd><p>#{ret[k]}</p></dd>"
           end.join
         else
-          list.children = "<dl><dt>name</dt><dd>#{list.children.to_xml}</dd>" \
-                          "<dt>role</dt><dd>member</dd></dl>"
+          list.children = "<dl><dt>name</dt><dd><p>#{curr.children.to_xml}" \
+                          "</p></dd><dt>role</dt><dd><p>member</p></dd></dl>"
         end
       end
 

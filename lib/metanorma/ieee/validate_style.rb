@@ -2,9 +2,9 @@ module Metanorma
   module IEEE
     class Converter < Standoc::Converter
       ASSETS_TO_STYLE =
-        "//termsource | //formula | //termnote | "\
-        "//p[not(ancestor::boilerplate)] | //li[not(p)] | //dt | "\
-        "//dd[not(p)] | //td[not(p)][not(ancestor::boilerplate)] | "\
+        "//termsource | //formula | //termnote | " \
+        "//p[not(ancestor::boilerplate)] | //li[not(p)] | //dt | " \
+        "//dd[not(p)] | //td[not(p)][not(ancestor::boilerplate)] | " \
         "//th[not(p)][not(ancestor::boilerplate)] | //example".freeze
 
       def extract_text(node)
@@ -56,8 +56,8 @@ module Metanorma
       end
 
       # leaving out as problematic: N J K C S T H h d B o E
-      SI_UNIT = "(m|cm|mm|km|μm|nm|g|kg|mgmol|cd|rad|sr|Hz|Hz|MHz|Pa|hPa|kJ|"\
-                "V|kV|W|MW|kW|F|μF|Ω|Wb|°C|lm|lx|Bq|Gy|Sv|kat|l|t|eV|u|Np|Bd|"\
+      SI_UNIT = "(m|cm|mm|km|μm|nm|g|kg|mgmol|cd|rad|sr|Hz|Hz|MHz|Pa|hPa|kJ|" \
+                "V|kV|W|MW|kW|F|μF|Ω|Wb|°C|lm|lx|Bq|Gy|Sv|kat|l|t|eV|u|Np|Bd|" \
                 "bit|kB|MB|Hart|nat|Sh|var)".freeze
 
       # Style manual 14.2
@@ -84,15 +84,15 @@ module Metanorma
       # deliberately doing naive, ignoring rowspan
       def table_style_columns(table)
         table_extract_columns(table).each do |col|
-          next unless col.any? do |x|
+          col.any? do |x|
             /^[0-9. ]+$/.match?(x) &&
               (/\d{3} \d/.match?(x) || /\d \d{3}/.match?(x))
-          end
+          end or next
 
           col.each do |x|
             /^[0-9. ]+$/.match?(x) && /\d{4}/.match?(x) and
               @log.add("Style", table,
-                       "#{x} is a 4-digit number in a table column with "\
+                       "#{x} is a 4-digit number in a table column with " \
                        "numbers broken up in threes")
           end
         end
@@ -108,7 +108,7 @@ module Metanorma
         ret.map { |x| x.is_a?(Array) ? x : [] }
       end
 
-            def title_validate(xml)
+      def title_validate(xml)
         title_validate_type(xml)
         title_validate_capitalisation(xml)
       end
@@ -118,8 +118,6 @@ module Metanorma
         title = xml.at("//bibdata/title") or return
         draft = xml.at("//bibdata//draft")
         type = xml.at("//bibdata/ext/doctype")
-        subtype = xml.at("//bibdata/ext/subdoctype")
-        subtype = "" if subtype == "document"
         trial = xml.at("//bibdata/ext/trial-use[text() = 'true']")
         target = draft ? "Draft " : ""
         target += trial ? "Trial-Use " : ""

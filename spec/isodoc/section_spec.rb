@@ -544,7 +544,7 @@ RSpec.describe IsoDoc::IEEE do
             use only.
           </p>
           <bibitem id="ABC">
-            <formattedref format="application/x-isodoc+xml"> [DEF] </formattedref>
+            <formattedref format="application/x-isodoc+xml"/>
             <docidentifier type="metanorma-ordinal">[B1]</docidentifier><docidentifier>DEF</docidentifier>
           </bibitem>
         </references>
@@ -568,7 +568,7 @@ RSpec.describe IsoDoc::IEEE do
                  this standard. Reference to these resources is made for informational
                  use only.
                </p>
-               <p id='ABC' class='Biblio'>[B1]&#xa0; DEF, [DEF] </p>
+               <p id='ABC' class='Biblio'>[B1]&#xa0; DEF, </p>
              </div>
            </div>
          </div>
@@ -593,7 +593,7 @@ RSpec.describe IsoDoc::IEEE do
            </p>
            <p class='IEEEStdsBibliographicEntry'>
              <a name='ABC' id='ABC'/>
-             DEF, [DEF]
+             DEF, 
            </p>
          </div>
        </div>

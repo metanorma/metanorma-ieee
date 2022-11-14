@@ -454,6 +454,7 @@ p.MsoToc1, li.MsoToc1, div.MsoToc1
 	mso-style-unhide:no;
 	mso-style-parent:"IEEEStds Paragraph";
 	mso-style-next:"IEEEStds Paragraph";
+	mso-style-name:"TOC 1";
 	margin-top:12.0pt;
 	margin-right:0cm;
 	margin-bottom:0cm;
@@ -470,7 +471,8 @@ p.MsoToc2, li.MsoToc2, div.MsoToc2
 	{mso-style-update:auto;
 	mso-style-priority:39;
 	mso-style-unhide:no;
-	mso-style-parent:"ΠΠ 1";
+	mso-style-name:"TOC 2";
+	mso-style-parent:"TOC 1";
 	mso-style-next:"IEEEStds Paragraph";
 	margin-top:0cm;
 	margin-right:0cm;
@@ -489,6 +491,8 @@ p.MsoToc3, li.MsoToc3, div.MsoToc3
 	mso-style-noshow:yes;
 	mso-style-unhide:no;
 	mso-style-next:Normal;
+	mso-style-name:"TOC 3";
+	mso-style-parent:"TOC 2";
 	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:0cm;
@@ -506,6 +510,8 @@ p.MsoToc4, li.MsoToc4, div.MsoToc4
 	mso-style-noshow:yes;
 	mso-style-unhide:no;
 	mso-style-next:Normal;
+	mso-style-name:"TOC 4";
+	mso-style-parent:"TOC 3";
 	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:0cm;
@@ -522,6 +528,8 @@ p.MsoToc5, li.MsoToc5, div.MsoToc5
 	mso-style-noshow:yes;
 	mso-style-unhide:no;
 	mso-style-next:Normal;
+	mso-style-name:"TOC 5";
+	mso-style-parent:"TOC 4";
 	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:0cm;
@@ -538,6 +546,8 @@ p.MsoToc6, li.MsoToc6, div.MsoToc6
 	mso-style-noshow:yes;
 	mso-style-unhide:no;
 	mso-style-next:Normal;
+	mso-style-name:"TOC 6";
+	mso-style-parent:"TOC 5";
 	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:0cm;
@@ -554,6 +564,8 @@ p.MsoToc7, li.MsoToc7, div.MsoToc7
 	mso-style-noshow:yes;
 	mso-style-unhide:no;
 	mso-style-next:Normal;
+	mso-style-name:"TOC 7";
+	mso-style-parent:"TOC 6";
 	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:0cm;
@@ -570,6 +582,8 @@ p.MsoToc8, li.MsoToc8, div.MsoToc8
 	mso-style-noshow:yes;
 	mso-style-unhide:no;
 	mso-style-next:Normal;
+	mso-style-name:"TOC 8";
+	mso-style-parent:"TOC 7";
 	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:0cm;
@@ -586,6 +600,8 @@ p.MsoToc9, li.MsoToc9, div.MsoToc9
 	mso-style-noshow:yes;
 	mso-style-unhide:no;
 	mso-style-next:Normal;
+	mso-style-name:"TOC 9";
+	mso-style-parent:"TOC 8";
 	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:0cm;
