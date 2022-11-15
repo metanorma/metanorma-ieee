@@ -4268,6 +4268,7 @@
 
 		1pt solid black
 
+
 	</xsl:variable>
 	<xsl:variable name="table-border" select="normalize-space($table-border_)"/>
 
@@ -8684,6 +8685,12 @@
 		<fo:block-container id="{@id}" xsl:use-attribute-sets="note-style">
 
 			<fo:block-container margin-left="0mm">
+
+				<!-- <xsl:if test="$namespace = 'iho'">
+					<xsl:if test="ancestor::iho:td">
+						<xsl:attribute name="font-size">12pt</xsl:attribute>
+					</xsl:if>
+				</xsl:if> -->
 
 						<fo:block>
 
