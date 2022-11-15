@@ -1245,7 +1245,7 @@ RSpec.describe Metanorma::IEEE do
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     expect(xmlpp(strip_guid(ret.at("//xmlns:sections").to_xml)))
-      .to be_equivalent_to(output)
+      .to be_equivalent_to(xmlpp(output))
   end
 
   it "processes participants" do
@@ -1539,7 +1539,7 @@ RSpec.describe Metanorma::IEEE do
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       .at("//xmlns:clause[@id = 'boilerplate-participants']")
     expect(xmlpp(strip_guid(ret.to_xml)))
-      .to be_equivalent_to(output)
+      .to be_equivalent_to(xmlpp(output))
   end
 
   it "do not insert word usage clause if this is legacy document schema" do

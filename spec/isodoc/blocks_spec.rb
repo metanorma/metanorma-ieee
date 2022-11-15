@@ -389,10 +389,10 @@ RSpec.describe IsoDoc do
     expect(strip_guid(xmlpp(doc.to_xml
       .gsub(/<m:/, "<").gsub(/<\/m:/, "</"))))
       .to be_equivalent_to xmlpp(word)
-    expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
       .new({ hierarchical_assets: true })
       .convert("test", input, true))
-      .at("//xmlns:table/xmlns:name").to_xml))
+      .at("//xmlns:table/xmlns:name").to_xml)
       .to be_equivalent_to "<name>Table Preface.1&#x2014;Hello</name>"
   end
 
@@ -590,7 +590,7 @@ RSpec.describe IsoDoc do
      .new({ hierarchical_assets: true })
      .convert("test", input, true))
      .at("//xmlns:figure/xmlns:name").to_xml))
-      .to be_equivalent_to <<~OUTPUT
+      .to be_equivalent_to xmlpp(<<~OUTPUT)
         <name>
           Figure Preface.1&#x2014;Split-it-right
           <em>sample</em>
