@@ -3733,6 +3733,8 @@
 		</xsl:choose>
 	</xsl:template>
 
+			<xsl:strip-space elements="ieee:xref"/>
+
 	<!-- external parameters -->
 
 	<xsl:param name="svg_images"/> <!-- svg images array -->
