@@ -108,11 +108,11 @@ module IsoDoc
       }.freeze
 
       def table_toc_class
-        %w(TableTitle tabletitle IEEEStdsRegularTableCaption)
+        %w(IEEEStdsRegularTableCaption TableTitle tabletitle)
       end
 
       def figure_toc_class
-        %w(FigureTitle figuretitle IEEEStdsRegularFigureCaption)
+        %w(IEEEStdsRegularFigureCaption FigureTitle figuretitle)
       end
 
       def style_cleanup(docxml)
