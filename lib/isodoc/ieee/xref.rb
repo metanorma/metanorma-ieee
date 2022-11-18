@@ -8,7 +8,7 @@ module IsoDoc
     class Xref < ::IsoDoc::Xref
       def initialize(lang, script, klass, labels, options)
         super
-        @hierarchical_assets = options[:hierarchical_assets]
+        @hierarchical_assets = options[:hierarchicalassets]
       end
 
       def initial_anchor_names(doc)

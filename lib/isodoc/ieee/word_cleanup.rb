@@ -107,6 +107,14 @@ module IsoDoc
         FigureTitle: "IEEEStdsRegularFigureCaption",
       }.freeze
 
+      def table_toc_class
+        %w(TableTitle tabletitle IEEEStdsRegularTableCaption)
+      end
+
+      def figure_toc_class
+        %w(FigureTitle figuretitle IEEEStdsRegularFigureCaption)
+      end
+
       def style_cleanup(docxml)
         note_style_cleanup(docxml)
         docxml.xpath("//div[@class = 'formula']/p").each do |p|
