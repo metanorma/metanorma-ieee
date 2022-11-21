@@ -390,7 +390,7 @@ RSpec.describe IsoDoc do
       .gsub(/<m:/, "<").gsub(/<\/m:/, "</"))))
       .to be_equivalent_to xmlpp(word)
     expect(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
-      .new({ hierarchical_assets: true })
+      .new({ hierarchicalassets: true })
       .convert("test", input, true))
       .at("//xmlns:table/xmlns:name").to_xml)
       .to be_equivalent_to "<name>Table Preface.1&#x2014;Hello</name>"

@@ -68,7 +68,7 @@ module Metanorma
       end
 
       def doc_extract_attributes(node)
-        super.merge(hierarchical_assets:
+        super.merge(hierarchicalassets:
                     node.attr("hierarchical-object-numbering"),
                     ulstyle: "l11", olstyle: "l16")
       end
