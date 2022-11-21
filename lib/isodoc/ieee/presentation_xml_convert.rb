@@ -17,9 +17,10 @@ module IsoDoc
         ret = resolve_eref_connectives(eref_locality_stacks(refs, target,
                                                             node))
         node["droploc"] = droploc
-        eref_localities1(target,
-                         prefix_clause(target, refs.first.at(ns("./locality"))),
-                         l10n(ret[1..-1].join), nil, node, @lang)
+        eref_localities1({ target: target, number: "pl",
+                           type: prefix_clause(target, refs.first.at(ns("./locality"))),
+                           from: l10n(ret[1..-1].join), node: node,
+                           lang: @lang })
       end
 
       def prefix_clause(target, loc)
@@ -37,20 +38,18 @@ module IsoDoc
           target&.gsub(/<[^>]+>/, "")&.match(/^IEV$|^IEC 60050-/)
       end
 
-      def eref_localities1(target, type, from, upto, node, lang = "en")
-        return nil if type == "anchor"
+      def eref_localities1(opt)
+        return nil if opt[:type] == "anchor"
 
-        type = type.downcase
-        lang == "zh" and
-          return l10n(eref_localities1_zh(target, type, from, upto,
-                                          node))
+        opt[:type] = opt[:type].downcase
+        opt[:lang] == "zh" and return l10n(eref_localities1_zh(opt))
         ret = ""
-        node["droploc"] != "true" && !subclause?(target, type,
-                                                 from) and
-          ret = eref_locality_populate(type, node)
-        ret += " #{from}" if from
-        ret += "&#x2013;#{upto}" if upto
-        ret += ")" if type == "list"
+        opt[:node]["droploc"] != "true" &&
+          !subclause?(opt[:target], opt[:type], opt[:from]) and
+          ret = eref_locality_populate(opt[:type], opt[:node], opt[:number])
+        ret += " #{opt[:from]}" if opt[:from]
+        ret += "&#x2013;#{opt[:upto]}" if opt[:upto]
+        ret += ")" if opt[:type] == "list"
         l10n(ret)
       end
 
@@ -85,7 +84,7 @@ module IsoDoc
         i = display_order_xpath(docxml, "//preface/*", i)
         i = display_order_at(docxml, "//clause[@type = 'overview']", i)
         i = display_order_at(docxml, @xrefs.klass.norm_ref_xpath, i)
-        i = display_order_at(docxml, "//sections/terms | "\
+        i = display_order_at(docxml, "//sections/terms | " \
                                      "//sections/clause[descendant::terms]", i)
         i = display_order_at(docxml, "//sections/definitions", i)
         i = display_order_xpath(docxml, @xrefs.klass.middle_clause(docxml), i)
@@ -153,7 +152,7 @@ module IsoDoc
       end
 
       def boilerplate(docxml)
-        docxml.xpath(ns("//clause[@id = 'boilerplate-participants']/"\
+        docxml.xpath(ns("//clause[@id = 'boilerplate-participants']/" \
                         "clause/title")).each(&:remove)
         docxml.xpath(ns("//clause[@id = 'boilerplate-participants']/clause"))
           .each do |clause|
@@ -211,7 +210,7 @@ module IsoDoc
       def participant_officeholder_para(map, name, idx)
         name = "<strong>#{name}</strong>" if idx.zero?
         br = map["role"].size > 30 ? "<br/>" : ""
-        "<p type='officeholder' align='center'>#{name}, #{br}"\
+        "<p type='officeholder' align='center'>#{name}, #{br}" \
           "<em>#{map['role']}</em></p>"
       end
 
