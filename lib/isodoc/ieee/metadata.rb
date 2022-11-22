@@ -94,7 +94,7 @@ module IsoDoc
         set(:full_doctitle, fulltitle(@metadata[:doctype], draft))
         set(:abbrev_doctitle, fulltitle(@metadata[:doctype_abbrev], draft))
         prov = isoxml&.at(ns("//bibdata/title[@type='provenance']")) and
-          set(:provenance_doctitle, prov.children.to_xml)
+          set(:provenance_doctitle, Common::to_xml(prov.children))
       end
 
       def fulltitle(type, draft)

@@ -28,7 +28,7 @@ module IsoDoc
               end
             else
               t.children =
-                "<p class='IEEEStdsTableColumnHead'>#{t.children.to_xml}</p>"
+                "<p class='IEEEStdsTableColumnHead'>#{to_xml(t.children)}</p>"
             end
           end
         end
@@ -45,9 +45,9 @@ module IsoDoc
 
       def tbody_head_cleanup(cell)
         cell.at("./p") or
-          cell.children = "<p>#{cell.children.to_xml}</p>"
+          cell.children = "<p>#{to_xml(cell.children)}</p>"
         cell.xpath("./p").each do |p|
-          p.replace p.to_xml.gsub(%r{<br/>}, "</p><p>")
+          p.replace to_xml(p).gsub(%r{<br/>}, "</p><p>")
         end
       end
 
@@ -58,7 +58,7 @@ module IsoDoc
           end
         else
           cell.children =
-            "<p class='#{td_style(cell, 0)}'>#{cell.children.to_xml}</p>"
+            "<p class='#{td_style(cell, 0)}'>#{to_xml(cell.children)}</p>"
         end
       end
 
@@ -80,28 +80,28 @@ module IsoDoc
 
       def table_caption(docxml)
         docxml.xpath("//p[@class = 'TableTitle']").each do |s|
-          s.children = s.children.to_xml
+          s.children = to_xml(s.children)
             .sub(/^#{@i18n.table}(\s+[A-Z0-9.]+)?/, "")
         end
       end
 
       def figure_caption(docxml)
         docxml.xpath("//p[@class = 'FigureTitle']").each do |s|
-          s.children = s.children.to_xml
+          s.children = to_xml(s.children)
             .sub(/^#{@i18n.figure}(\s+[A-Z0-9.]+)?/, "")
         end
       end
 
       def example_caption(docxml)
         docxml.xpath("//p[@class = 'example-title']").each do |s|
-          s.children = "<em>#{s.children.to_xml}</em>"
+          s.children = "<em>#{to_xml(s.children)}</em>"
           s["class"] = "IEEEStdsParagraph"
         end
       end
 
       def sourcecode_cleanup(docxml)
         docxml.xpath("//p[@class = 'Sourcecode']").each do |s|
-          s.replace(s.to_xml.gsub(%r{<br/>}, "</p><p class='Sourcecode'>"))
+          s.replace(to_xml(s).gsub(%r{<br/>}, "</p><p class='Sourcecode'>"))
         end
       end
 

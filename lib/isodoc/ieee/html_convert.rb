@@ -67,7 +67,7 @@ module IsoDoc
       def para_to_tr(para)
         ret = para.children.each_with_object([[]]) do |c, m|
           if c.name == "tab" then m << []
-          else m[-1] << c.to_xml
+          else m[-1] << to_xml(c)
           end
         end.map { |c| "<td>#{c.join}</td>" }
         "<tr>#{ret.join}</tr>"

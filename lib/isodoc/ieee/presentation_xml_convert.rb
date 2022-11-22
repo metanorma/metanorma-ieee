@@ -96,7 +96,7 @@ module IsoDoc
       def annex1(elem)
         lbl = @xrefs.anchor(elem["id"], :label)
         if t = elem.at(ns("./title"))
-          t.children = "<strong>#{t.children.to_xml}</strong>"
+          t.children = "<strong>#{to_xml(t.children)}</strong>"
         end
         prefix_name(elem, "<br/>", lbl, "title")
       end
@@ -131,7 +131,7 @@ module IsoDoc
 
       def amend1(elem)
         elem.xpath(ns("./description/p")).each do |p|
-          p.children = p.children.to_xml.strip
+          p.children = to_xml(p.children).strip
           amend_format(p)
         end
         super
@@ -143,7 +143,7 @@ module IsoDoc
             %(em strong).include?(para.children.first.name) and
             para.children = para.elements.first.children
         end
-        para.children = "<strong><em>#{para.children.to_xml}</em></strong>"
+        para.children = "<strong><em>#{to_xml(para.children)}</em></strong>"
       end
 
       def section(docxml)

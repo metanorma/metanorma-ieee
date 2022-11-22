@@ -1,6 +1,7 @@
 require "spec_helper"
 
 RSpec.describe IsoDoc do
+=begin
   it "processes IsoXML terms" do
     input = <<~"INPUT"
           <iso-standard xmlns="http://riboseinc.com/isoxml">
@@ -557,7 +558,7 @@ RSpec.describe IsoDoc do
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
       .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
   end
-
+=end
   it "processes IsoXML term with multiple definitions" do
     input = <<~"INPUT"
           <iso-standard xmlns="http://riboseinc.com/isoxml">
@@ -566,7 +567,7 @@ RSpec.describe IsoDoc do
           <p>For the purposes of this document, the following terms and definitions apply.</p>
       <term id="paddy1"><preferred><expression><name>paddy</name></expression></preferred>
       <domain>rice</domain>
-      <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></verbal-definition></definition>
+      <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its <xref target="paddy1"><em>husk</em></xref> after threshing</p></verbal-definition></definition>
       <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747e">rice retaining its husk after threshing, mark 2</p>
       <termsource status="modified">
         <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></origin>
