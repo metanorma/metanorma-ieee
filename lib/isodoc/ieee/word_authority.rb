@@ -15,7 +15,7 @@ module IsoDoc
         feedback_table(docxml)
         f = docxml.at("//div[@class = 'boilerplate-feedback']") or return
         docxml.at("//aside").previous = <<~FN
-          <aside id="ftn0">#{f.remove.to_xml}</aside>
+          <aside id="ftn0">#{to_xml(f.remove)}</aside>
         FN
       end
 
@@ -103,7 +103,7 @@ module IsoDoc
         div.xpath(".//div").each { |d| d.replace(d.children) }
         div.elements.each_with_object([[]]) do |e, m|
           member = e.name == "p" && e["type"] == "officemember"
-          (prev == member and m[-1] << e.to_xml) or m << [e.to_xml]
+          (prev == member and m[-1] << to_xml(e)) or m << [to_xml(e)]
           prev = member
         end.map(&:join)
       end
@@ -143,7 +143,7 @@ module IsoDoc
           i.zero? or div.elements.first.previous = "<p>&#xa0;</p>"
           i == 4 and
             div.xpath(".//p[br]").each do |p|
-              p.replace(p.to_xml.gsub(%r{<br/>}, "</p><p>"))
+              p.replace(to_xml(p).gsub(%r{<br/>}, "</p><p>"))
             end
           feedback_style1(div, i)
         end
