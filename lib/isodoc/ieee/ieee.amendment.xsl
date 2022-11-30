@@ -77,7 +77,7 @@
 	<xsl:variable name="current_template">
 		<xsl:choose>
 			<xsl:when test="($doctype = 'standard' or $doctype = 'guide' or $doctype = 'recommended-practice') and $stage = 'draft'">draft</xsl:when>
-			<xsl:when test="($doctype = 'standard' or $doctype = 'guide' or $doctype = 'recommended-practice') and $stage = 'published'">standard</xsl:when>
+			<xsl:when test="($doctype = 'standard' or $doctype = 'guide' or $doctype = 'recommended-practice') and ($stage = 'published' or $stage = 'approved')">standard</xsl:when>
 			<xsl:otherwise><xsl:value-of select="$doctype"/></xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
@@ -768,7 +768,7 @@
 									</fo:block>
 								</fo:flow>
 							</fo:page-sequence>
-						</xsl:when> <!-- $stage = 'published' -->
+						</xsl:when> <!-- $current_template = 'standard' -->
 
 						<xsl:when test="$current_template = 'whitepaper' or $current_template = 'icap-whitepaper' or $current_template = 'industry-connection-report'">
 							<fo:page-sequence master-reference="document-nonstandard" force-page-count="no-force" font-family="Calibri Light">
@@ -873,7 +873,7 @@
 									</fo:block>
 
 									<fo:block font-family="Arial" font-size="12pt" role="H1" font-weight="bold" margin-top="12pt" margin-bottom="24pt">
-										<xsl:if test="$stage = 'published'">
+										<xsl:if test="$stage = 'published' or $stage = 'approved'">
 											<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
 										</xsl:if>
 										<!-- Contents -->
@@ -944,7 +944,7 @@
 
 												</xsl:when> <!-- $stage = 'draft' -->
 
-												<xsl:when test="$stage = 'published'">
+												<xsl:when test="$stage = 'published' or $stage = 'approved'">
 
 													<xsl:variable name="provisional-distance-between-starts">10</xsl:variable>
 
@@ -1016,7 +1016,7 @@
 														</xsl:for-each>
 													</xsl:if>
 
-												</xsl:when> <!-- $stage = 'published' -->
+												</xsl:when> <!-- $stage = 'published' or 'approved' -->
 											</xsl:choose>
 
 										</xsl:if>
@@ -1513,15 +1513,15 @@
 					</fo:table>
 				</fo:block>
 
-				<xsl:if test="following-sibling::*[not(@type = 'officemember' or @type = 'emeritus_sign')]">
-					<fo:block font-size="10pt" space-after="12pt"> </fo:block>
+				<xsl:if test="following-sibling::*[1][not(@type = 'officemember' or @type = 'emeritus_sign')]">
+					<fo:block font-size="10pt" space-after="12pt" keep-with-previous="always"> </fo:block>
 				</xsl:if>
 			</xsl:when> <!-- @type = 'officemember' -->
 
 			<xsl:when test="@type = 'officemember' and preceding-sibling::*[1][self::ieee:p][@type = 'officemember']"><!-- skip --></xsl:when>
 
 			<xsl:when test="@type = 'emeritus_sign'">
-				<fo:block font-size="9pt" margin-left="9.4mm">
+				<fo:block font-size="9pt" margin-left="9.4mm" space-before="6pt" space-after="12pt" keep-with-previous="always">
 					<xsl:apply-templates/>
 				</fo:block>
 			</xsl:when>
@@ -6405,6 +6405,10 @@
 		<xsl:variable name="ref_id" select="concat('footnote_', $lang, '_', $reference, '_', $current_fn_number)"/>
 		<xsl:variable name="footnote_inline">
 			<fo:inline xsl:use-attribute-sets="fn-num-style">
+
+				<xsl:if test="following-sibling::*[1][local-name() = 'fn']">
+					<xsl:attribute name="padding-right">0.5mm</xsl:attribute>
+				</xsl:if>
 
 				<fo:basic-link internal-destination="{$ref_id}" fox:alt-text="footnote {$current_fn_number}">
 					<xsl:value-of select="$current_fn_number_text"/>
