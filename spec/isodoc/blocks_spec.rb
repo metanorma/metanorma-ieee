@@ -587,7 +587,7 @@ RSpec.describe IsoDoc do
       .gsub(/mso-bookmark:_Ref\d+/, "mso-bookmark:_Ref"))))
       .to be_equivalent_to xmlpp(word)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
-     .new({ hierarchical_assets: true })
+     .new({ hierarchicalassets: true })
      .convert("test", input, true))
      .at("//xmlns:figure/xmlns:name").to_xml))
       .to be_equivalent_to xmlpp(<<~OUTPUT)

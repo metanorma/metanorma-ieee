@@ -239,62 +239,14 @@ RSpec.describe IsoDoc::IEEE do
             </itu-standard>
     INPUT
     output = <<~OUTPUT
-          <itu-standard xmlns='https://www.calconnect.org/standards/itu' type='presentation'>
-        <p id='_'>
-          <eref type='inline' bibitemid='ref1' citeas='XYZ' droploc=''>
-            <localityStack connective='from'>
-              <locality type='clause'>
-                <referenceFrom>3</referenceFrom>
-              </locality>
-            </localityStack>
-            <localityStack connective='to'>
-              <locality type='clause'>
-                <referenceFrom>5</referenceFrom>
-              </locality>
-            </localityStack>
-            XYZ, Clause 3 to 5
-          </eref>
-          <eref type='inline' bibitemid='ref1' citeas='XYZ' droploc=''>
-            <localityStack connective='from'>
-              <locality type='clause'>
-                <referenceFrom>3.1</referenceFrom>
-              </locality>
-            </localityStack>
-            <localityStack connective='to'>
-              <locality type='clause'>
-                <referenceFrom>5.1</referenceFrom>
-              </locality>
-            </localityStack>
-            XYZ, 3.1 to 5.1
-          </eref>
-          <eref type='inline' bibitemid='ref1' citeas='XYZ' droploc=''>
-            <localityStack connective='from'>
-              <locality type='clause'>
-                <referenceFrom>3.1</referenceFrom>
-              </locality>
-            </localityStack>
-            <localityStack connective='to'>
-              <locality type='clause'>
-                <referenceFrom>5</referenceFrom>
-              </locality>
-            </localityStack>
-            XYZ, 3.1 to 5
-          </eref>
-          <eref type='inline' bibitemid='ref1' citeas='XYZ'>
-            <localityStack connective='from'>
-              <locality type='clause'>
-                <referenceFrom>3.1</referenceFrom>
-              </locality>
-            </localityStack>
-            <localityStack connective='to'>
-              <locality type='table'>
-                <referenceFrom>5</referenceFrom>
-              </locality>
-            </localityStack>
-            XYZ, 3.1 to Table 5
-          </eref>
-        </p>
-      </itu-standard>
+      <itu-standard xmlns="https://www.calconnect.org/standards/itu" type="presentation">
+         <p id="_">
+           <eref type="inline" bibitemid="ref1" citeas="XYZ" droploc=""><localityStack connective="from"><locality type="clause"><referenceFrom>3</referenceFrom></locality></localityStack><localityStack connective="to"><locality type="clause"><referenceFrom>5</referenceFrom></locality></localityStack>XYZ,  Clauses  3 to  5</eref>
+           <eref type="inline" bibitemid="ref1" citeas="XYZ" droploc=""><localityStack connective="from"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></localityStack><localityStack connective="to"><locality type="clause"><referenceFrom>5.1</referenceFrom></locality></localityStack>XYZ,    3.1 to  5.1</eref>
+           <eref type="inline" bibitemid="ref1" citeas="XYZ" droploc=""><localityStack connective="from"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></localityStack><localityStack connective="to"><locality type="clause"><referenceFrom>5</referenceFrom></locality></localityStack>XYZ,    3.1 to  5</eref>
+           <eref type="inline" bibitemid="ref1" citeas="XYZ"><localityStack connective="from"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></localityStack><localityStack connective="to"><locality type="table"><referenceFrom>5</referenceFrom></locality></localityStack>XYZ,  3.1 to  Table 5</eref>
+         </p>
+       </itu-standard>
     OUTPUT
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
       .convert("test", input, true))).to be_equivalent_to xmlpp(output)

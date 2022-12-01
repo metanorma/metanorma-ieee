@@ -201,6 +201,12 @@ RSpec.describe Metanorma::IEEE do
                     </name>
                   </person>
                 </contributor>
+                <contributor>
+          <role type="authorizer"/>
+          <organization>
+            <name>RFC Series</name>
+          </organization>
+        </contributor>
                 <language>en</language>
                 <script>Latn</script>
                 <abstract format='text/html' language='en' script='Latn'>
