@@ -14,7 +14,7 @@ module IsoDoc
 
       def biblio_anchor_linkend(node, bib)
         if %w(techreport standard).include?(bib[:type])
-          node["citeas"] + " #{bib[:ord]}"
+          [node["citeas"], bib[:ord]].compact.join(" ")
         else
           "#{bib[:author]} " + node["citeas"]
         end
@@ -30,7 +30,7 @@ module IsoDoc
               author: @author[b["id"]] || (b.at(ns("./title")) ||
                      b.at(ns("./formattedref")))&.text,
               ord: b.at(ns("./docidentifier[@type = 'metanorma' or "\
-                           "@type = 'metanorma-ordinal']")).text }
+                           "@type = 'metanorma-ordinal']"))&.text }
         end
       end
 
