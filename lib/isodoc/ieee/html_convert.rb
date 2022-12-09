@@ -55,7 +55,7 @@ module IsoDoc
       def affiliation_table1(para)
         ret = "<table><thead>#{para_to_tr(para)}</thead><tbody>"
         n = para.next_element
-        while n.name == "p" && n["type"] == "officeorgrepmember"
+        while n&.name == "p" && n["type"] == "officeorgrepmember"
           n1 = n.next_element
           ret += para_to_tr(n.remove)
           n = n1

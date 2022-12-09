@@ -245,7 +245,7 @@ module IsoDoc
       def term(docxml); end
 
       def concept1(node)
-        concept_render(node, ital: "false", ref: "false",
+        concept_render(node, ital: "false", ref: "false", bold: "false",
                              linkref: "false", linkmention: "false")
       end
     end
