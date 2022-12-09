@@ -7326,7 +7326,7 @@
 
 			<xsl:variable name="_font-size">
 
-				 <!-- 10 -->
+				 <!-- inherit -->
 
 			</xsl:variable>
 			<xsl:variable name="font-size" select="normalize-space($_font-size)"/>
@@ -9919,7 +9919,13 @@
 	</xsl:template>
 
 	<xsl:template match="text()" mode="contents_item">
-		<xsl:call-template name="keep_together_standard_number"/>
+		<xsl:variable name="text">
+			<!-- to split by '_' and other chars -->
+			<text><xsl:call-template name="add-zero-spaces-java"/></text>
+		</xsl:variable>
+		<xsl:for-each select="xalan:nodeset($text)/text/text()">
+			<xsl:call-template name="keep_together_standard_number"/>
+		</xsl:for-each>
 	</xsl:template>
 
 	<!-- Note: to enable the addition of character span markup with semantic styling for DIS Word output -->
@@ -9936,7 +9942,7 @@
 			<xsl:element name="sourcecode_attributes" use-attribute-sets="sourcecode-style">
 				<xsl:variable name="_font-size">
 
-					<!-- 9 -->
+					<!-- inherit -->
 
 					<!-- <xsl:if test="$namespace = 'ieee'">							
 						<xsl:if test="$current_template = 'standard'">8</xsl:if>

@@ -546,6 +546,7 @@ RSpec.describe IsoDoc::IEEE do
           <bibitem id="ABC">
             <formattedref format="application/x-isodoc+xml"/>
             <docidentifier type="metanorma-ordinal">[B1]</docidentifier><docidentifier>DEF</docidentifier>
+            <biblio-tag>[B1]<tab/>DEF, </biblio-tag>
           </bibitem>
         </references>
       </annex>
