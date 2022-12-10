@@ -2,6 +2,8 @@ nametemplate:
   one: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{surname[0] }} ,_{{initials[0] | join: '. '}} {% endif %}"
   two: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{surname[0] }} ,_{{initials[0] | join: '. '}}.{% endif %} , {{ labels['and'] }} {% if nonpersonal[1] %}{{ nonpersonal[1] }}{% else %}{{initials[1] | join: '. '}}. {{surname[1] }}{% endif %}"
   more: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{surname[0] }} ,_{{initials[0] | join: '. '}}.{% endif %} , {% if nonpersonal[1] %}{{ nonpersonal[1] }}{% else %}{{initials[1] | join: '. '}}. {{surname[1] }}{% endif %} , {{ labels['and'] }} {% if nonpersonal[2] %}{{ nonpersonal[2] }}{% else %}{{initials[2] | join: '. '}}. {{surname[2] }}{% endif %}"
+  etal_count: 10
+  etal_render: 7
 extenttemplate:
   misc: "{{ volume }}, {{issue}}, {{ page }}, {{ duration }}"
 template:
