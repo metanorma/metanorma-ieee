@@ -17,6 +17,10 @@ module IsoDoc
         @wordstylesheet.unlink if @wordstylesheet.is_a?(Tempfile)
       end
 
+      def sourcecode_style
+        "IEEEStdsComputerCode"
+      end
+
       def word_cleanup(docxml)
         super
         abstract_cleanup(docxml)

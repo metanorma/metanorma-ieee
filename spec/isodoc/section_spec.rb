@@ -256,7 +256,7 @@ RSpec.describe IsoDoc::IEEE do
              <h1 class='Annex'>
                <b>Annex A</b>
                <br/>
-               (normative)
+               <span class="obligation">(normative)</span>
                <br/>
                <b>Annex</b>
              </h1>
@@ -558,7 +558,7 @@ RSpec.describe IsoDoc::IEEE do
            <br/>
            <div id='a' class='Section3'>
              <h1 class='Annex'>
-               <b>Annex A</b><br/>(normative)
+               <b>Annex A</b><br/><span class='obligation'>(normative)</span>
                <br/>
                <b>Appendix C</b>
              </h1>
