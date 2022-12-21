@@ -62,6 +62,102 @@ RSpec.describe Relaton::Render::IEEE do
       .to be_equivalent_to output
   end
 
+  it "renders book, eleven editors" do
+    input = <<~INPUT
+      <bibitem type="book">
+        <title>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</title>
+        <docidentifier type="DOI">https://doi.org/10.1017/9781108877831</docidentifier>
+        <docidentifier type="ISBN">9781108877831</docidentifier>
+        <date type="published"><on>2022</on></date>
+        <contributor>
+          <role type="editor"/>
+          <person>
+            <name><surname>Aluffi</surname><forename>Paolo</forename></name>
+          </person>
+        </contributor>
+                <contributor>
+          <role type="editor"/>
+          <person>
+            <name><surname>Anderson</surname><forename>David</forename></name>
+          </person>
+        </contributor>
+        <contributor>
+          <role type="editor"/>
+          <person>
+            <name><surname>Hering</surname><forename>Milena</forename></name>
+          </person>
+        </contributor>
+        <contributor>
+          <role type="editor"/>
+          <person>
+            <name><surname>Mustaţă</surname><forename>Mircea</forename></name>
+          </person>
+        </contributor>
+        <contributor>
+          <role type="editor"/>
+          <person>
+            <name><surname>Payne</surname><forename>Sam</forename></name>
+          </person>
+        </contributor>
+        <contributor>
+          <role type="editor"/>
+          <person>
+            <name><surname>Dopey</surname><forename>Paolo</forename></name>
+          </person>
+        </contributor>
+                <contributor>
+          <role type="editor"/>
+          <person>
+            <name><surname>Grumpy</surname><forename>David</forename></name>
+          </person>
+        </contributor>
+        <contributor>
+          <role type="editor"/>
+          <person>
+            <name><surname>Sneezy</surname><forename>Milena</forename></name>
+          </person>
+        </contributor>
+        <contributor>
+          <role type="editor"/>
+          <person>
+            <name><surname>Happy</surname><forename>Mircea</forename></name>
+          </person>
+        </contributor>
+        <contributor>
+          <role type="editor"/>
+          <person>
+            <name><surname>Doc</surname><forename>Sam</forename></name>
+          </person>
+        </contributor>
+        <contributor>
+          <role type="editor"/>
+          <person>
+            <name><surname>Sleepy</surname><forename>Sam</forename></name>
+          </person>
+        </contributor>
+        <edition>1</edition>
+        <series>
+        <title>London Mathematical Society Lecture Note Series</title>
+        <number>472</number>
+        </series>
+            <contributor>
+              <role type="publisher"/>
+              <organization>
+                <name>Cambridge University Press</name>
+              </organization>
+            </contributor>
+            <place>Cambridge, UK</place>
+          <size><value type="volume">1</value></size>
+      </bibitem>
+    INPUT
+    output = <<~OUTPUT
+      <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, S. Payne, P. Dopey, D. Grumpy, M. Sneezy, M. Happy, S. Doc <em>et al.</em>, <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022.</formattedref>
+    OUTPUT
+    expect(renderer.render(input))
+      .to be_equivalent_to output
+  end
+
+
   it "renders incollection, two authors" do
     input = <<~INPUT
       <bibitem type="incollection">
