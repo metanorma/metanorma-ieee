@@ -157,7 +157,6 @@ RSpec.describe Relaton::Render::IEEE do
       .to be_equivalent_to output
   end
 
-
   it "renders incollection, two authors" do
     input = <<~INPUT
       <bibitem type="incollection">
@@ -346,34 +345,139 @@ RSpec.describe Relaton::Render::IEEE do
       .to be_equivalent_to output
   end
 
-  it "renders standard" do
+  it "renders home standard" do
     input = <<~INPUT
-      <bibitem type="standard">
-        <title>Intellectual Property Rights in IETF technology</title>
-        <uri>https://www.ietf.org/rfc/rfc3979.txt</uri>
-        <docidentifier type="RFC">RFC 3979</docidentifier>
-        <date type="published"><on>2005</on></date>
-        <date type="accessed"><on>2012-06-18</on></date>
+         <bibitem type="standard" schema-version="v1.2.1">
+              <fetched>2022-12-22</fetched>
+        <title type="title-intro" format="text/plain" language="en" script="Latn">Latex, rubber</title>
+        <title type="title-main" format="text/plain" language="en" script="Latn">Determination of total solids content</title>
+        <title type="main" format="text/plain" language="en" script="Latn">Latex, rubber - Determination of total solids content</title>
+        <title type="title-intro" format="text/plain" language="fr" script="Latn">Latex de caoutchouc</title>
+        <title type="title-main" format="text/plain" language="fr" script="Latn">Détermination des matières solides totales</title>
+        <title type="main" format="text/plain" language="fr" script="Latn">Latex de caoutchouc - Détermination des matières solides totales</title>
+        <uri type="src">https://www.iso.org/standard/61884.html</uri>
+        <uri type="obp">https://www.iso.org/obp/ui/#!iso:std:61884:en</uri>
+        <uri type="rss">https://www.iso.org/contents/data/standard/06/18/61884.detail.rss</uri>
+        <docidentifier type="ISO" primary="true">ISO 124</docidentifier>
+        <docidentifier type="URN">urn:iso:std:iso:124:ed-7</docidentifier>
+        <docnumber>124</docnumber>
         <contributor>
-          <role type="author"/>
+          <role type="publisher"/>
           <organization>
-            <name>Internet Engineering Task Force</name>
-            <abbreviation>IETF</abbreviation>
+            <name>International Organization for Standardization</name>
+            <abbreviation>ISO</abbreviation>
+            <uri>www.iso.org</uri>
           </organization>
         </contributor>
-        <contributor>
-          <role type="editor"/>
-          <person>
-            <name><surname>Bradner</surname><formatted-initials>S.</formatted-initials></name>
-          </person>
-        </contributor>
-        <medium>
-          <carrier>Online</carrier>
-        </medium>
+        <edition>7</edition>
+        <language>en</language>
+        <language>fr</language>
+        <script>Latn</script>
+        <status>
+          <stage>90</stage>
+          <substage>93</substage>
+        </status>
+        <copyright>
+          <from>2014</from>
+          <owner>
+            <organization>
+              <name>ISO</name>
+            </organization>
+          </owner>
+        </copyright>
+        <relation type="obsoletes">
+          <bibitem type="standard">
+            <formattedref format="text/plain">ISO 124:2011</formattedref>
+            <docidentifier type="ISO" primary="true">ISO 124:2011</docidentifier>
+          </bibitem>
+        </relation>
+        <place>Geneva</place>
+        <ext schema-version="v1.0.0">
+          <doctype>international-standard</doctype>
+          <editorialgroup>
+            <technical-committee number="45" type="TC">Raw materials (including latex) for use in the rubber industry</technical-committee>
+          </editorialgroup>
+          <ics>
+            <code>83.040.10</code>
+            <text>Latex and raw rubber</text>
+          </ics>
+          <structuredidentifier type="ISO">
+            <project-number>ISO 124</project-number>
+          </structuredidentifier>
+        </ext>
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref>Intellectual Property Rights in IETF technology.</formattedref>
+      <formattedref>Latex, rubber - Determination of total solids content.</formattedref>
+    OUTPUT
+    expect(renderer.render(input))
+      .to be_equivalent_to output
+  end
+
+  it "renders external standard" do
+    input = <<~INPUT
+      <bibitem type="standard">
+        <fetched>2022-12-22</fetched>
+        <title type="main" format="text/plain">Intellectual Property Rights in IETF Technology</title>
+        <uri type="src">https://www.rfc-editor.org/info/rfc3979</uri>
+        <docidentifier type="IETF" primary="true">RFC 3979</docidentifier>
+        <docidentifier type="DOI">10.17487/RFC3979</docidentifier>
+        <docnumber>RFC3979</docnumber>
+        <date type="published">
+          <on>2005-03</on>
+        </date>
+        <contributor>
+          <role type="editor"/>
+          <person>
+            <name>
+              <completename language="en" script="Latn">S. Bradner</completename>
+            </name>
+          </person>
+        </contributor>
+        <contributor>
+          <role type="authorizer"/>
+          <organization>
+            <name>RFC Series</name>
+          </organization>
+        </contributor>
+        <language>en</language>
+        <script>Latn</script>
+        <abstract format="text/html" language="en" script="Latn">
+          <p>The IETF policies about Intellectual Property Rights (IPR), such as patent rights, relative to technologies developed in the IETF are designed to ensure that IETF working groups and participants have as much information about any IPR constraints on a technical proposal as possible.  The policies are also intended to benefit the Internet community and the public at large, while respecting the legitimate rights of IPR holders.  This memo details the IETF policies concerning IPR related to technology worked on within the IETF.  It also describes the objectives that the policies are designed to meet.  This memo updates RFC 2026 and, with RFC 3978, replaces Section 10 of RFC 2026.  This memo also updates paragraph 4 of Section 3.2 of RFC 2028, for all purposes, including reference [2] in RFC 2418.  This document specifies an Internet Best Current Practices for the Internet Community, and requests discussion and suggestions for improvements.</p>
+        </abstract>
+        <relation type="obsoletedBy">
+          <bibitem>
+            <formattedref format="text/plain">RFC8179</formattedref>
+            <docidentifier type="IETF" primary="true">RFC8179</docidentifier>
+          </bibitem>
+        </relation>
+        <relation type="updates">
+          <bibitem>
+            <formattedref format="text/plain">RFC2026</formattedref>
+            <docidentifier type="IETF" primary="true">RFC2026</docidentifier>
+          </bibitem>
+        </relation>
+        <relation type="updates">
+          <bibitem>
+            <formattedref format="text/plain">RFC2028</formattedref>
+            <docidentifier type="IETF" primary="true">RFC2028</docidentifier>
+          </bibitem>
+        </relation>
+        <series>
+          <title format="text/plain">RFC</title>
+          <number>3979</number>
+        </series>
+        <keyword>ipr</keyword>
+        <keyword>copyright</keyword>
+        <ext schema-version="v1.0.0">
+          <editorialgroup>
+            <committee>ipr</committee>
+          </editorialgroup>
+        </ext>
+      </bibitem>
+    INPUT
+    output = <<~OUTPUT
+      <formattedref>S. Bradner, “Intellectual Property Rights in IETF Technology,” March 2005, RFC Series, <link target='https://www.rfc-editor.org/info/rfc3979'>https://www.rfc-editor.org/info/rfc3979</link>.</formattedref>
     OUTPUT
     expect(renderer.render(input))
       .to be_equivalent_to output

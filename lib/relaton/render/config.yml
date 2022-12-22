@@ -9,7 +9,7 @@ extenttemplate:
   misc: "{{ volume }}, {{issue}}, {{ page }}, {{ duration }}"
 template:
   # skip authoritative_identifier, it is inserted in front of formattedref within metanorma
-  standard: "{{ title }}."
+  standard: "{% if home_standard %}{{ title }}.{% else %}{{ creatornames }}, “{{ title }},” {{ extent }},  {{ labels['version'] }}_{{ edition_raw }}, {{date}}, {{labels['updated'] | capitalize }}_{{date_updated}}, {{status }}, {{ authorizer }}, {{ uri }} .{% endif %}"
   article: "{{creatornames}}, “{{title}},” <em>{{ series }}</em>, {{ extent }}, {{ date }}, {{ labels['viewed'] }}_{{date_accessed}}, {{ uri }} ."
   book: "{{creatornames}}, <em>{{title}}</em>, {{ edition }}, {{place}}: {{publisher}}, {{date}}, {{ labels['viewed'] }}_{{date_accessed}}, {{ uri }} ."
   techreport: book

@@ -78,7 +78,7 @@ RSpec.describe IsoDoc::IEEE do
                 <contributor>
                   <role type="publisher"/>
                   <organization>
-                    <abbreviation>ISO</abbreviation>
+                    <name>ISO</name>
                   </organization>
                 </contributor>
               </bibitem>
