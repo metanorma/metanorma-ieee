@@ -51,9 +51,9 @@ module IsoDoc
       def bibrender_relaton(xml, renderings)
         f = renderings[xml["id"]][:formattedref]
         f &&= "<formattedref>#{f}</formattedref>"
+        keep = "./docidentifier | ./uri | ./note | ./title | ./biblio-tag"
         xml.children =
-          "#{f}#{xml.xpath(ns('./docidentifier | ./uri | ./note | ./title'))
-          .to_xml}"
+          "#{f}#{xml.xpath(ns(keep)).to_xml}"
         @author[xml["id"]] = renderings[xml["id"]][:author]
       end
 

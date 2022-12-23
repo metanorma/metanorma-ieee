@@ -176,6 +176,7 @@ RSpec.describe IsoDoc::IEEE do
                 <formattedref>Cereals and cereal products.</formattedref>
                 <title format='text/plain'>Cereals and cereal products</title>
                 <docidentifier>ISO 712</docidentifier>
+                <biblio-tag>ISO 712, </biblio-tag>
               </bibitem>
             </references>
           </bibliography>
