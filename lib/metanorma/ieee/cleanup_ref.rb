@@ -2,8 +2,8 @@ module Metanorma
   module IEEE
     class Converter < Standoc::Converter
       BIBLIO =
-        "//bibliography/references[@normative = 'false'][not(@hidden)] | "\
-        "//bibliography/clause[.//references[@normative = 'false']] | "\
+        "//bibliography/references[@normative = 'false'][not(@hidden)] | " \
+        "//bibliography/clause[.//references[@normative = 'false']] | " \
         "//annex//references[@normative = 'false'][not(@hidden)]".freeze
 
       def boilerplate_cleanup(xmldoc)
@@ -26,8 +26,9 @@ module Metanorma
         end
       end
 
-      OTHERIDS = "@type = 'DOI' or @type = 'metanorma' or @type = 'ISSN' or "\
-                 "@type = 'ISBN'".freeze
+      OTHERIDS = "@type = 'DOI' or @type = 'metanorma' or @type = 'ISSN' or " \
+                 "@type = 'ISBN or starts-with(@type, 'ISSN.') or " \
+                 "starts-with(@type, 'ISBN.')".freeze
 
       # Alphabetic by rendering: author surname or designation, followed by title
       def sort_biblio_key(bib)
@@ -93,7 +94,7 @@ module Metanorma
 
       def biblio_renumber(xmldoc)
         i = 0
-        xmldoc.xpath("//references[not(@normative = 'true')]"\
+        xmldoc.xpath("//references[not(@normative = 'true')]" \
                      "[not(@hidden = 'true')]").each do |r|
                        r.xpath("./bibitem[not(@hidden = 'true')]").each do |b|
                          i += 1
@@ -103,7 +104,7 @@ module Metanorma
       end
 
       def biblio_renumber1(bib, idx)
-        docid = bib.at("./docidentifier[@type = 'metanorma' or "\
+        docid = bib.at("./docidentifier[@type = 'metanorma' or " \
                        "@type = 'metanorma-ordinal']")
         if /^\[?\d+\]?$/.match?(docid&.text)
           docid.children = "[B#{idx}]"
