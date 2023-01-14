@@ -27,7 +27,7 @@ module Metanorma
       end
 
       OTHERIDS = "@type = 'DOI' or @type = 'metanorma' or @type = 'ISSN' or " \
-                 "@type = 'ISBN or starts-with(@type, 'ISSN.') or " \
+                 "@type = 'ISBN' or starts-with(@type, 'ISSN.') or " \
                  "starts-with(@type, 'ISBN.')".freeze
 
       # Alphabetic by rendering: author surname or designation, followed by title
