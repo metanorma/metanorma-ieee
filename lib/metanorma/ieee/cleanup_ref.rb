@@ -26,10 +26,6 @@ module Metanorma
         end
       end
 
-      OTHERIDS = "@type = 'DOI' or @type = 'metanorma' or @type = 'ISSN' or " \
-                 "@type = 'ISBN' or starts-with(@type, 'ISSN.') or " \
-                 "starts-with(@type, 'ISBN.')".freeze
-
       # Alphabetic by rendering: author surname or designation, followed by title
       def sort_biblio_key(bib)
         name = designator_or_name(bib)
@@ -43,7 +39,7 @@ module Metanorma
         case bib["type"]
         when "standard", "techreport"
           n = bib.at("./docidentifier[@primary]") ||
-            bib.at("./docidentifier[not(#{OTHERIDS})]")
+            bib.at("./docidentifier[not(#{skip_docid} or @type = 'metanorma')]")
           n&.text || "ZZZZ"
         else
           bib1 = bib.dup

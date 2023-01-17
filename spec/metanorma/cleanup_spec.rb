@@ -24,7 +24,7 @@ RSpec.describe Metanorma::IEEE do
          <copyright-statement>
            <clause>
              <p id='copyright' align='left'>
-               Copyright © 2022 by The Institute of Electrical and Electronics
+               Copyright © #{Date.today.year} by The Institute of Electrical and Electronics
                Engineers, Inc.
                <br/>
                Three Park Avenue
@@ -819,7 +819,7 @@ RSpec.describe Metanorma::IEEE do
              </p>
            </clause>
            <clause>
-             <p id='_'>Copyright © 2022 by The Institute of Electrical and Electronics Engineers, Inc.</p>
+             <p id='_'>Copyright © #{Date.today.year} by The Institute of Electrical and Electronics Engineers, Inc.</p>
              <p id='_'>
                All rights reserved. Published 01 Jan 1000. Printed in the United States
                of America.
