@@ -63,8 +63,7 @@ RSpec.describe Metanorma::IEEE do
       INPUT
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       expect(out.xpath("//xmlns:references/xmlns:bibitem/@id")
-        .map(&:value)).to be_equivalent_to ["ref3", "ref1", "ref4", "ref5",
-                                            "ref2"]
+        .map(&:value)).to be_equivalent_to ["ref2", "ref1", "ref4", "ref5", "ref3"]
     end
   end
 
