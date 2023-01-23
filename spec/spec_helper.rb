@@ -51,6 +51,10 @@ end
 
 OPTIONS = [backend: :ieee, header_footer: true].freeze
 
+def presxml_options
+  { semanticxmlinsert: "false" }
+end
+
 def metadata(xml)
   xml.sort.to_h.delete_if do |_k, v|
     v.nil? || (v.respond_to?(:empty?) && v.empty?)

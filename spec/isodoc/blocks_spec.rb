@@ -235,73 +235,73 @@ RSpec.describe IsoDoc do
              <thead>
                <tr>
                  <td rowspan="2" align="left" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                   <p class="IEEEStdsTableColumnHead" style="text-align: left">Description</p>
+                   <p class="IEEEStdsTableColumnHead" style="text-align: left;page-break-after:avoid">Description</p>
                  </td>
                  <td colspan="4" align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
-                   <p class="IEEEStdsTableColumnHead" style="text-align: center">Rice sample</p>
+                   <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">Rice sample</p>
                  </td>
                </tr>
                <tr>
                  <td align="left" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                   <p class="IEEEStdsTableColumnHead" style="text-align: left">Arborio</p>
+                   <p class="IEEEStdsTableColumnHead" style="text-align: left;page-break-after:avoid">Arborio</p>
                  </td>
                  <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                   <p class="IEEEStdsTableColumnHead" style="text-align: center">
+                   <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">
                       Drago
-                      <a href="#tableD-1a" class="TableFootnoteRef">a</a><aside><div><a name="ftntableD-1a" id="ftntableD-1a"/><span><span class="TableFootnoteRef"><a name="tableD-1a" id="tableD-1a"/>a</span><span style="mso-tab-count:1">  </span></span><p class="IEEEStdsParagraph"><a name="_" id="_"/>Parboiled rice.</p></div></aside></p>
+                      <a href="#tableD-1a" class="TableFootnoteRef">a</a><aside><div style="page-break-after:avoid"><a name="ftntableD-1a" id="ftntableD-1a"/><span><span class="TableFootnoteRef"><a name="tableD-1a" id="tableD-1a"/>a</span><span style="mso-tab-count:1">  </span></span><p style="page-break-after:avoid" class="IEEEStdsParagraph"><a name="_" id="_"/>Parboiled rice.</p></div></aside></p>
                  </td>
                  <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                   <p class="IEEEStdsTableColumnHead" style="text-align: center">
+                   <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">
                       Balilla
                       <a href="#tableD-1a" class="TableFootnoteRef">a</a></p>
                  </td>
                  <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                   <p class="IEEEStdsTableColumnHead" style="text-align: center">Thaibonnet</p>
+                   <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">Thaibonnet</p>
                  </td>
                </tr>
              </thead>
              <tbody>
                <tr>
                  <th align="left" style="font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
-                   <p class="IEEEStdsTableLineHead" style="text-align: left">Number of laboratories retained after eliminating outliers</p>
-                   <p class="IEEEStdsTableLineSubhead" style="text-align: left">
+                   <p class="IEEEStdsTableLineHead" style="text-align: left;page-break-after:avoid">Number of laboratories retained after eliminating outliers</p>
+                   <p class="IEEEStdsTableLineSubhead" style="text-align: left;page-break-after:avoid">
                        Laboratory count</p>
                  </th>
                  <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
-                   <p class="IEEEStdsTableData-Center" style="text-align: center">13</p>
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">13</p>
                  </td>
                  <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
-                   <p class="IEEEStdsTableData-Center" style="text-align: center">11</p>
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">11</p>
                  </td>
                  <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
-                   <p class="IEEEStdsTableData-Center" style="text-align: center">13</p>
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">13</p>
                  </td>
                  <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
-                   <p class="IEEEStdsTableData-Center" style="text-align: center">13</p>
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">13</p>
                  </td>
                </tr>
                <tr>
                  <td align="left" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                   <p class="IEEEStdsTableData-Left" style="text-align: left">Mean value, g/100 g</p>
+                   <p class="IEEEStdsTableData-Left" style="text-align: left;page-break-after:auto">Mean value, g/100 g</p>
                  </td>
                  <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                   <p class="IEEEStdsTableData-Center" style="text-align: center">81,2</p>
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">81,2</p>
                  </td>
                  <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                   <p class="IEEEStdsTableData-Center" style="text-align: center">82,0</p>
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">82,0</p>
                  </td>
                  <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                   <p class="IEEEStdsTableData-Center" style="text-align: center">81,8</p>
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">81,8</p>
                  </td>
                  <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                   <p class="IEEEStdsTableData-Center" style="text-align: center">77,7</p>
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">77,7</p>
                  </td>
                </tr>
              </tbody>
              <tfoot>
                <tr>
                  <td align="left" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                   <p class="IEEEStdsTableData-Left" style="text-align: left">
+                   <p class="IEEEStdsTableData-Left" style="text-align: left;page-break-after:auto">
                       Reproducibility limit,
                       <span class="stem"><oMath><r><t>R</t></r></oMath></span>
                        (= 2,83
@@ -310,16 +310,16 @@ RSpec.describe IsoDoc do
                     </p>
                  </td>
                  <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                   <p class="IEEEStdsTableData-Center" style="text-align: center">2,89</p>
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">2,89</p>
                  </td>
                  <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                   <p class="IEEEStdsTableData-Center" style="text-align: center">0,57</p>
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">0,57</p>
                  </td>
                  <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                   <p class="IEEEStdsTableData-Center" style="text-align: center">2,26</p>
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">2,26</p>
                  </td>
                  <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                   <p class="IEEEStdsTableData-Center" style="text-align: center">6,06</p>
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">6,06</p>
                  </td>
                </tr>
              </tfoot>
@@ -336,7 +336,7 @@ RSpec.describe IsoDoc do
          </div>
        </div>
     WORD
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
       .convert("test", presxml, true))
@@ -528,7 +528,7 @@ RSpec.describe IsoDoc do
         </div>
       </div>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true).gsub(/&lt;/, "&#x3c;")))
       .to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(strip_guid(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
@@ -643,7 +643,7 @@ RSpec.describe IsoDoc do
         </div>
       </body>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
        .convert("test", input, true).gsub(/&lt;/, "&#x3c;")))
       .to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
@@ -1061,7 +1061,7 @@ RSpec.describe IsoDoc do
        </clause>
     OUTPUT
     expect(xmlpp(Nokogiri::XML(
-      IsoDoc::IEEE::PresentationXMLConvert.new({})
+      IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true),
     ).at("//xmlns:clause[@id = 'A']").to_xml))
       .to be_equivalent_to xmlpp(presxml)

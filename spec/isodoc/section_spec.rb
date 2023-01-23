@@ -461,7 +461,7 @@ RSpec.describe IsoDoc::IEEE do
         </div>
       </body>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)))
       .to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
@@ -599,7 +599,7 @@ RSpec.describe IsoDoc::IEEE do
          </div>
        </div>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
   .convert("test", input, true)))
       .to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
@@ -1103,7 +1103,7 @@ RSpec.describe IsoDoc::IEEE do
     OUTPUT
     FileUtils.rm_rf "test.html"
     FileUtils.rm_rf "test.doc"
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
   .convert("test", input, true)))
       .to be_equivalent_to xmlpp(presxml)
     IsoDoc::IEEE::HtmlConvert.new({}).convert("test", presxml, false)

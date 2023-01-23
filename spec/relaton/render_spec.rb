@@ -339,7 +339,7 @@ RSpec.describe Relaton::Render::IEEE do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref>Ribose Inc., “metanorma-standoc.” September 4, 2019, <link target='https://github.com/metanorma/metanorma-standoc'>https://github.com/metanorma/metanorma-standoc</link>.</formattedref>
+      <formattedref>Ribose Inc., “metanorma-standoc.” 2019, <link target='https://github.com/metanorma/metanorma-standoc'>https://github.com/metanorma/metanorma-standoc</link>.</formattedref>
     OUTPUT
     expect(renderer.render(input))
       .to be_equivalent_to output
@@ -477,7 +477,7 @@ RSpec.describe Relaton::Render::IEEE do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref>S. Bradner, “Intellectual Property Rights in IETF Technology,” March 2005, RFC Series, <link target='https://www.rfc-editor.org/info/rfc3979'>https://www.rfc-editor.org/info/rfc3979</link>.</formattedref>
+      <formattedref>S. Bradner, “Intellectual Property Rights in IETF Technology,” 2005, RFC Series, <link target='https://www.rfc-editor.org/info/rfc3979'>https://www.rfc-editor.org/info/rfc3979</link>.</formattedref>
     OUTPUT
     expect(renderer.render(input))
       .to be_equivalent_to output
@@ -518,7 +518,7 @@ RSpec.describe Relaton::Render::IEEE do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <<formattedref>Portes, A., and R. G. Rumbaut, “Children of Immigrants. Longitudinal Sudy (CILS) 1991–2006 ICPSR20520.” Dataset, January 23, 2012, accessed May 6, 2018, <link target='https://doi.org/10.3886/ICPSR20520.v2'>https://doi.org/10.3886/ICPSR20520.v2</link>.</formattedref>
+      <<formattedref>Portes, A., and R. G. Rumbaut, “Children of Immigrants. Longitudinal Sudy (CILS) 1991–2006 ICPSR20520.” Dataset, 2012, accessed May 6, 2018, <link target='https://doi.org/10.3886/ICPSR20520.v2'>https://doi.org/10.3886/ICPSR20520.v2</link>.</formattedref>
     OUTPUT
     expect(renderer.render(input))
       .to be_equivalent_to output
