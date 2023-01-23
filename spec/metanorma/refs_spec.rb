@@ -1,7 +1,7 @@
 require "spec_helper"
 
 RSpec.describe Metanorma::IEEE do
-  it "sorts references" do
+  it "sorts normative references" do
     VCR.use_cassette "multistandard" do
       input = <<~INPUT
         = Document title
@@ -12,6 +12,72 @@ RSpec.describe Metanorma::IEEE do
 
         [bibliography]
         == Normative References
+
+        * [[[ref1,ISO 639:1967]]] REF5
+        * [[[ref2,RFC 7749]]] REF7
+        * [[[ref3,REF4]]] REF4
+
+        [[ref4]]
+        [%bibitem]
+        === Indiana Jones and the Last Crusade
+        type:: book
+        title::
+          type::: main
+          content::: Indiana Jones and the Last Crusade
+
+        ==== Contributor
+        organization::
+          name::: International Organization for Standardization
+          abbreviation::: ISO
+        role::
+          type::: publisher
+
+        ==== Contributor
+        person::
+          name:::
+            surname:::: Jones
+            forename:::: Indiana
+
+        [[ref5]]
+        [%bibitem]
+        === “Indiana Jones and your Last Crusade”
+        type:: book
+        title::
+          type::: main
+          content::: Indiana Jones and the Last Crusade
+
+        ==== Contributor
+        organization::
+          name::: International Organization for Standardization
+          abbreviation::: ISO
+        role::
+          type::: publisher
+
+        ==== Contributor
+        person::
+          name:::
+            surname:::: Jones
+            forename:::: Indiana
+
+
+      INPUT
+      out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
+      expect(out.xpath("//xmlns:references/xmlns:bibitem/@id")
+        .map(&:value)).to be_equivalent_to ["ref2", "ref1", "ref4", "ref5", "ref3"]
+    end
+  end
+
+  it "sorts bibliography" do
+    VCR.use_cassette "multistandard" do
+      input = <<~INPUT
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib-cache:
+
+        [bibliography]
+        == Bibliography
 
         * [[[ref1,ISO 639:1967]]] REF5
         * [[[ref2,RFC 7749]]] REF7

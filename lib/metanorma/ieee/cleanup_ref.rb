@@ -23,8 +23,8 @@ module Metanorma
       def sort_biblio(bib)
         @c = HTMLEntities.new
         @i = IsoDoc::IEEE::PresentationXMLConvert
-            .new({ lang: @lang, script: @script, locale: @locale })
-          @i.i18n_init(@lang, @script, @locale)
+          .new({ lang: @lang, script: @script, locale: @locale })
+        @i.i18n_init(@lang, @script, @locale)
         bib.sort do |a, b|
           sort_biblio_key(a) <=> sort_biblio_key(b)
         end
@@ -40,7 +40,7 @@ module Metanorma
         title = bib.at("./title[@type = 'main']")&.text ||
           bib.at("./title")&.text || bib.at("./formattedref")&.text
         title.gsub!(/[[:punct:]]/, "")
-        @c.decode("#{name}. #{title}")
+        @c.decode("#{name} #{title}").strip.downcase
       end
 
       def designator_or_name(bib)
