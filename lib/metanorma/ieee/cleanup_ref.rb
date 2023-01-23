@@ -2,8 +2,8 @@ module Metanorma
   module IEEE
     class Converter < Standoc::Converter
       BIBLIO =
-        "//bibliography/references[@normative = 'false'][not(@hidden)] | "\
-        "//bibliography/clause[.//references[@normative = 'false']] | "\
+        "//bibliography/references[@normative = 'false'][not(@hidden)] | " \
+        "//bibliography/clause[.//references[@normative = 'false']] | " \
         "//annex//references[@normative = 'false'][not(@hidden)]".freeze
 
       def boilerplate_cleanup(xmldoc)
@@ -21,13 +21,18 @@ module Metanorma
       end
 
       def sort_biblio(bib)
+        @c = HTMLEntities.new
+        @i = IsoDoc::IEEE::PresentationXMLConvert
+          .new({ lang: @lang, script: @script, locale: @locale })
+        @i.i18n_init(@lang, @script, @locale)
         bib.sort do |a, b|
           sort_biblio_key(a) <=> sort_biblio_key(b)
         end
       end
 
-      OTHERIDS = "@type = 'DOI' or @type = 'metanorma' or @type = 'ISSN' or "\
-                 "@type = 'ISBN'".freeze
+      OTHERIDS = "@type = 'DOI' or @type = 'metanorma' or @type = 'ISSN' or " \
+                 "@type = 'ISBN' or starts-with(@type, 'ISSN.') or " \
+                 "starts-with(@type, 'ISBN.')".freeze
 
       # Alphabetic by rendering: author surname or designation, followed by title
       def sort_biblio_key(bib)
@@ -35,23 +40,26 @@ module Metanorma
         title = bib.at("./title[@type = 'main']")&.text ||
           bib.at("./title")&.text || bib.at("./formattedref")&.text
         title.gsub!(/[[:punct:]]/, "")
-        "#{name}. #{title}"
+        @c.decode("#{name} #{title}").strip.downcase
       end
 
       def designator_or_name(bib)
         case bib["type"]
-        when "standard", "techreport"
-          n = bib.at("./docidentifier[@primary]") ||
-            bib.at("./docidentifier[not(#{OTHERIDS})]")
-          n&.text || "ZZZZ"
+        when "standard", "techreport" then designator_docid(bib)
         else
           bib1 = bib.dup
           bib1.add_namespace(nil, self.class::XML_NAMESPACE)
-          i = IsoDoc::IEEE::PresentationXMLConvert
-            .new({ lang: @lang, script: @script, locale: @locale })
-          i.i18n_init(@lang, @script, @locale)
-          i.creatornames(bib1)
+          n = @i.creatornames(bib1)
+          n.nil? && bib["type"].nil? and n = designator_docid(bib)
+          n
         end
+      end
+
+      def designator_docid(bib)
+        n = bib.at("./docidentifier[@primary]") ||
+          bib.at("./docidentifier[not(#{OTHERIDS})]")
+        n or return "ZZZZ"
+        @isodoc.docid_prefix(n["type"], n.children.to_xml)
       end
 
       def normref_cleanup(xmldoc)
@@ -93,7 +101,7 @@ module Metanorma
 
       def biblio_renumber(xmldoc)
         i = 0
-        xmldoc.xpath("//references[not(@normative = 'true')]"\
+        xmldoc.xpath("//references[not(@normative = 'true')]" \
                      "[not(@hidden = 'true')]").each do |r|
                        r.xpath("./bibitem[not(@hidden = 'true')]").each do |b|
                          i += 1
@@ -103,7 +111,7 @@ module Metanorma
       end
 
       def biblio_renumber1(bib, idx)
-        docid = bib.at("./docidentifier[@type = 'metanorma' or "\
+        docid = bib.at("./docidentifier[@type = 'metanorma' or " \
                        "@type = 'metanorma-ordinal']")
         if /^\[?\d+\]?$/.match?(docid&.text)
           docid.children = "[B#{idx}]"

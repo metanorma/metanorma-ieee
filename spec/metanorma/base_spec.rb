@@ -250,7 +250,7 @@ RSpec.describe Metanorma::IEEE do
              <stage>draft</stage>
            </status>
            <copyright>
-             <from>2022</from>
+             <from>#{Date.today.year}</from>
              <owner>
                <organization>
                  <name>Institute of Electrical and Electronic Engineers</name>
@@ -303,7 +303,7 @@ RSpec.describe Metanorma::IEEE do
             <stage>approved</stage>
           </status>
           <copyright>
-            <from>2022</from>
+            <from>#{Date.today.year}</from>
             <owner>
               <organization>
                 <name>Institute of Electrical and Electronic Engineers</name>
