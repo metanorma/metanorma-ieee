@@ -134,7 +134,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "numbers bibliography" do
-    VCR.use_cassette "multistandard1" do
+    VCR.use_cassette "multistandard1", match_requests_on: %i[method uri body] do
       input = <<~INPUT
         = Document title
         Author
@@ -145,7 +145,7 @@ RSpec.describe Metanorma::IEEE do
         [bibliography]
         == Bibliography
 
-        * [[[ref1,ISO 639:1967]]] REF5
+        * [[[ref1,ISO 639]]] REF5
         * [[[ref2,RFC 7749]]] REF7
         * [[[ref3,REF4]]] REF4
 
@@ -232,17 +232,14 @@ RSpec.describe Metanorma::IEEE do
                <keyword>Vocabulary</keyword>
              </bibitem>
              <bibitem id="ref1" type="standard">
-               <title type="title-main" format="text/plain" language="en" script="Latn">Symbols for languages, countries and authorities</title>
-               <title type="main" format="text/plain" language="en" script="Latn">Symbols for languages, countries and authorities</title>
-               <uri type="src">https://www.iso.org/standard/4765.html</uri>
-               <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4765.detail.rss</uri>
-               <docidentifier type="ISO" primary="true">ISO/R 639:1967</docidentifier>
+                            <title type="title-main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
+               <title type="main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
+               <uri type="src">https://www.iso.org/standard/4766.html</uri>
+               <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4766.detail.rss</uri>
+               <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
                <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
-               <docidentifier type="URN">urn:iso:std:iso:r:639:ed-1</docidentifier>
+               <docidentifier type="URN">urn:iso:std:iso:639:stage-95.99:ed-1</docidentifier>
                <docnumber>639</docnumber>
-               <date type="published">
-                 <on>1967-11</on>
-               </date>
                <contributor>
                  <role type="publisher"/>
                  <organization>
@@ -259,13 +256,70 @@ RSpec.describe Metanorma::IEEE do
                  <substage>99</substage>
                </status>
                <copyright>
-                 <from>1967</from>
+                 <from>1988</from>
                  <owner>
                    <organization>
-                     <name>ISO/R</name>
+                     <name>ISO</name>
                    </organization>
                  </owner>
                </copyright>
+               <relation type="updates">
+                 <bibitem type="standard">
+                   <formattedref format="text/plain">ISO 639-1:2002</formattedref>
+                   <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>
+                   <date type="circulated">
+                     <on>2002-07-18</on>
+                   </date>
+                 </bibitem>
+               </relation>
+               <relation type="instance">
+                 <bibitem type="standard">
+                   <title type="title-main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
+                   <title type="main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
+                   <uri type="src">https://www.iso.org/standard/4766.html</uri>
+                   <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4766.detail.rss</uri>
+                   <docidentifier type="ISO" primary="true">ISO 639:1988</docidentifier>
+                   <docidentifier type="URN">urn:iso:std:iso:639:stage-95.99:ed-1</docidentifier>
+                   <docnumber>639</docnumber>
+                   <date type="published">
+                     <on>1988-03</on>
+                   </date>
+                   <contributor>
+                     <role type="publisher"/>
+                     <organization>
+                       <name>International Organization for Standardization</name>
+                       <abbreviation>ISO</abbreviation>
+                       <uri>www.iso.org</uri>
+                     </organization>
+                   </contributor>
+                   <edition>1</edition>
+                   <language>en</language>
+                   <script>Latn</script>
+                   <abstract format="text/plain" language="en" script="Latn">Gives a two-letter lower-case code. The symbols were devised primarily for use in terminology, lexicography and linguistic, but they may be used for any application. It also includes guidance on the use of language symbols in some of these applications. The annex includes a classified list of languages and their symbols arranged by families.</abstract>
+                   <status>
+                     <stage>95</stage>
+                     <substage>99</substage>
+                   </status>
+                   <copyright>
+                     <from>1988</from>
+                     <owner>
+                       <organization>
+                         <name>ISO</name>
+                       </organization>
+                     </owner>
+                   </copyright>
+                   <relation type="updates">
+                     <bibitem type="standard">
+                       <formattedref format="text/plain">ISO 639-1:2002</formattedref>
+                       <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>
+                       <date type="circulated">
+                         <on>2002-07-18</on>
+                       </date>
+                     </bibitem>
+                   </relation>
+                   <place>Geneva</place>
+                 </bibitem>
+               </relation>
                <place>Geneva</place>
              </bibitem>
              <bibitem type="book" id="ref4">
@@ -362,7 +416,7 @@ RSpec.describe Metanorma::IEEE do
                 <eref type='inline' bibitemid='ref1' citeas='IEEE 1619™-2007'/>
               </p>
               <p id='_'>
-                <eref type='inline' bibitemid='ref2' citeas='ISO/R&#xa0;639:1967'/>
+                <eref type='inline' bibitemid='ref2' citeas='ISO&#xa0;639:1967'/>
               </p>
               <p id='_'>
                 <eref type='inline' bibitemid='ref1' citeas='IEEE&#xa0;1619-2007'/>
@@ -379,7 +433,7 @@ RSpec.describe Metanorma::IEEE do
                 </p>
               <p id='_'><eref type='inline' bibitemid='ref3' citeas='IEEE 802.1D®-1990'/></p>
                 <p id='_'>
-                  <eref type='inline' bibitemid='ref2' citeas='ISO/R&#xa0;639:1967'/>
+                  <eref type='inline' bibitemid='ref2' citeas='ISO&#xa0;639:1967'/>
                 </p>
                 <p id='_'>
                   <eref type='inline' bibitemid='ref1' citeas='IEEE&#xa0;1619-2007'/>
@@ -451,10 +505,10 @@ RSpec.describe Metanorma::IEEE do
          <clause id='A' inline-header='false' obligation='normative'>
           <title>Clause</title>
           <p id='_'>
-            <eref type='inline' bibitemid='ref1' citeas='ISO/R&#xa0;639:1967'/>
+            <eref type='inline' bibitemid='ref1' citeas='ISO&#xa0;639:1967'/>
             <eref type='inline' bibitemid='ref2' citeas='IETF&#xa0;RFC&#xa0;7749'/>
             <eref type='inline' bibitemid='ref3' citeas='REF4'/>
-            <eref type='inline' bibitemid='ref4' citeas='ISO/R&#xa0;639:1967'/>
+            <eref type='inline' bibitemid='ref4' citeas='ISO&#xa0;639:1967'/>
             <eref type='inline' bibitemid='ref5' citeas='IETF&#xa0;RFC&#xa0;7749'/>
             <eref type='inline' bibitemid='ref6' citeas='[B1]'/>
             <eref type='inline' bibitemid='ref7' citeas='[B2]'/>
