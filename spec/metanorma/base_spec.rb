@@ -217,7 +217,7 @@ RSpec.describe Metanorma::IEEE do
       OUTPUT
   end
 
-  it "processes metadata with draft, no docstage, no balloting-group-type" do
+  it "processes metadata with draft, no docstage, no balloting-group-type, docidentifier override" do
     out = Asciidoctor.convert(<<~"INPUT", *OPTIONS)
       = Document title
       Author
@@ -228,49 +228,59 @@ RSpec.describe Metanorma::IEEE do
       :draft: 3
       :balloting-group: BG
       :society: SECRETARIAT
+      :docidentifier: OVERRIDE
+      :docnumber: 1000
 
     INPUT
     output = <<~OUTPUT
-       <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
-         <bibdata type='standard'>
-           <title language='en' format='text/plain'>Document title</title>
-           <contributor>
-             <role type='publisher'/>
-             <organization>
-               <name>Institute of Electrical and Electronic Engineers</name>
-               <abbreviation>IEEE</abbreviation>
-             </organization>
-           </contributor>
-           <version>
-             <draft>3</draft>
-           </version>
-           <language>en</language>
-           <script>Latn</script>
-           <status>
-             <stage>draft</stage>
-           </status>
-           <copyright>
-             <from>#{Date.today.year}</from>
-             <owner>
-               <organization>
-                 <name>Institute of Electrical and Electronic Engineers</name>
-                 <abbreviation>IEEE</abbreviation>
-               </organization>
-             </owner>
-           </copyright>
-           <ext>
-             <doctype>standard</doctype>
-             <subdoctype>document</subdoctype>
-                  <editorialgroup>
-        <society>SECRETARIAT</society>
-        <balloting-group type='individual'>BG</balloting-group>
-        <working-group/>
-        <committee/>
-      </editorialgroup>
-           </ext>
-         </bibdata>
-         <sections> </sections>
-       </ieee-standard>
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+               <bibdata type="standard">
+          <title language="en" format="text/plain">Document title</title>
+          <docidentifier type="IEEE">OVERRIDE</docidentifier>
+          <docnumber>1000</docnumber>
+          <contributor>
+            <role type="publisher"/>
+            <organization>
+              <name>Institute of Electrical and Electronic Engineers</name>
+              <abbreviation>IEEE</abbreviation>
+            </organization>
+          </contributor>
+          <version>
+            <draft>3</draft>
+          </version>
+          <language>en</language>
+          <script>Latn</script>
+          <status>
+            <stage>draft</stage>
+          </status>
+          <copyright>
+            <from>#{Date.today.year}</from>
+            <owner>
+              <organization>
+                <name>Institute of Electrical and Electronic Engineers</name>
+                <abbreviation>IEEE</abbreviation>
+              </organization>
+            </owner>
+          </copyright>
+          <ext>
+            <doctype>standard</doctype>
+            <subdoctype>document</subdoctype>
+            <editorialgroup>
+              <society>SECRETARIAT</society>
+              <balloting-group type="individual">BG</balloting-group>
+              <working-group/>
+              <committee/>
+            </editorialgroup>
+            <structuredidentifier>
+              <docnumber>1000</docnumber>
+              <agency>IEEE</agency>
+              <class>standard</class>
+              <version>3</version>
+            </structuredidentifier>
+          </ext>
+        </bibdata>
+        <sections> </sections>
+      </ieee-standard>
     OUTPUT
     expect(xmlpp(out.sub(%r{<boilerplate>.*</boilerplate>}m, "")))
       .to be_equivalent_to xmlpp(output)
