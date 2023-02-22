@@ -5420,6 +5420,7 @@
 
 							<xsl:choose>
 								<xsl:when test="ancestor::*[local-name() = 'feedback-statement']">50%</xsl:when>
+								<xsl:when test="@width = 'full-page-width' or @width = 'text-width'">100%</xsl:when>
 								<xsl:when test="@width"><xsl:value-of select="@width"/></xsl:when>
 								<xsl:otherwise><xsl:value-of select="$table_width_default"/></xsl:otherwise>
 							</xsl:choose>
@@ -5543,7 +5544,7 @@
 		<xsl:variable name="isDeleted" select="@deleted"/>
 
 		<xsl:choose>
-			<xsl:when test="@width">
+			<xsl:when test="@width and @width != 'full-page-width' and @width != 'text-width'">
 
 				<!-- centered table when table name is centered (see table-name-style) -->
 
