@@ -41,7 +41,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "processes default metadata" do
-    output = Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    output = Nokogiri::XML(Asciidoctor.convert(<<~"INPUT", *OPTIONS))
       = Document title
       Author
       :docfile: test.adoc
@@ -112,11 +112,10 @@ RSpec.describe Metanorma::IEEE do
       :amendment-number: A1
       :corrigendum-number: C1
     INPUT
-    expect(xmlpp(output
-      .sub(%r{<boilerplate>.*</boilerplate>}m, "")
-      .sub(%r{<note .*</note>}m, "")))
+    output.at("//xmlns:note").remove
+    output = output.at("//xmlns:bibdata")
+    expect(xmlpp(output.to_xml))
       .to be_equivalent_to xmlpp(<<~"OUTPUT")
-           <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
             <bibdata type='standard'>
               <title language='en' format='text/plain'>Document title</title>
               <title type='provenance' language='en' format='application/xml'>Revision of ABC<br/>Incorporates BCD and EFG</title>
@@ -212,13 +211,11 @@ RSpec.describe Metanorma::IEEE do
         </structuredidentifier>
               </ext>
             </bibdata>
-            <sections> </sections>
-          </ieee-standard>
       OUTPUT
   end
 
   it "processes metadata with draft, no docstage, no balloting-group-type, docidentifier override" do
-    out = Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    out = Nokogiri::XML(Asciidoctor.convert(<<~"INPUT", *OPTIONS))
       = Document title
       Author
       :docfile: test.adoc
@@ -233,61 +230,59 @@ RSpec.describe Metanorma::IEEE do
 
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
-               <bibdata type="standard">
-          <title language="en" format="text/plain">Document title</title>
-          <docidentifier type="IEEE">OVERRIDE</docidentifier>
-          <docnumber>1000</docnumber>
-          <contributor>
-            <role type="publisher"/>
+             <bibdata type="standard">
+        <title language="en" format="text/plain">Document title</title>
+        <docidentifier type="IEEE">OVERRIDE</docidentifier>
+        <docnumber>1000</docnumber>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>Institute of Electrical and Electronic Engineers</name>
+            <abbreviation>IEEE</abbreviation>
+          </organization>
+        </contributor>
+        <version>
+          <draft>3</draft>
+        </version>
+        <language>en</language>
+        <script>Latn</script>
+        <status>
+          <stage>draft</stage>
+        </status>
+        <copyright>
+          <from>#{Date.today.year}</from>
+          <owner>
             <organization>
               <name>Institute of Electrical and Electronic Engineers</name>
               <abbreviation>IEEE</abbreviation>
             </organization>
-          </contributor>
-          <version>
-            <draft>3</draft>
-          </version>
-          <language>en</language>
-          <script>Latn</script>
-          <status>
-            <stage>draft</stage>
-          </status>
-          <copyright>
-            <from>#{Date.today.year}</from>
-            <owner>
-              <organization>
-                <name>Institute of Electrical and Electronic Engineers</name>
-                <abbreviation>IEEE</abbreviation>
-              </organization>
-            </owner>
-          </copyright>
-          <ext>
-            <doctype>standard</doctype>
-            <subdoctype>document</subdoctype>
-            <editorialgroup>
-              <society>SECRETARIAT</society>
-              <balloting-group type="individual">BG</balloting-group>
-              <working-group/>
-              <committee/>
-            </editorialgroup>
-            <structuredidentifier>
-              <docnumber>1000</docnumber>
-              <agency>IEEE</agency>
-              <class>standard</class>
-              <version>3</version>
-            </structuredidentifier>
-          </ext>
-        </bibdata>
-        <sections> </sections>
-      </ieee-standard>
+          </owner>
+        </copyright>
+        <ext>
+          <doctype>standard</doctype>
+          <subdoctype>document</subdoctype>
+          <editorialgroup>
+            <society>SECRETARIAT</society>
+            <balloting-group type="individual">BG</balloting-group>
+            <working-group/>
+            <committee/>
+          </editorialgroup>
+          <structuredidentifier>
+            <docnumber>1000</docnumber>
+            <agency>IEEE</agency>
+            <class>standard</class>
+            <version>3</version>
+          </structuredidentifier>
+        </ext>
+      </bibdata>
     OUTPUT
-    expect(xmlpp(out.sub(%r{<boilerplate>.*</boilerplate>}m, "")))
+    out = out.at("//xmlns:bibdata")
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(output)
   end
 
   it "processes metadata with no draft, no docstage" do
-    out = Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    out = Nokogiri::XML(Asciidoctor.convert(<<~"INPUT", *OPTIONS))
       = Document title
       Author
       :docfile: test.adoc
@@ -297,39 +292,37 @@ RSpec.describe Metanorma::IEEE do
 
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
-        <bibdata type='standard'>
-          <title language='en' format='text/plain'>Document title</title>
-          <contributor>
-            <role type='publisher'/>
+      <bibdata type='standard'>
+        <title language='en' format='text/plain'>Document title</title>
+        <contributor>
+          <role type='publisher'/>
+          <organization>
+            <name>Institute of Electrical and Electronic Engineers</name>
+            <abbreviation>IEEE</abbreviation>
+          </organization>
+        </contributor>
+        <language>en</language>
+        <script>Latn</script>
+        <status>
+          <stage>approved</stage>
+        </status>
+        <copyright>
+          <from>#{Date.today.year}</from>
+          <owner>
             <organization>
               <name>Institute of Electrical and Electronic Engineers</name>
               <abbreviation>IEEE</abbreviation>
             </organization>
-          </contributor>
-          <language>en</language>
-          <script>Latn</script>
-          <status>
-            <stage>approved</stage>
-          </status>
-          <copyright>
-            <from>#{Date.today.year}</from>
-            <owner>
-              <organization>
-                <name>Institute of Electrical and Electronic Engineers</name>
-                <abbreviation>IEEE</abbreviation>
-              </organization>
-            </owner>
-          </copyright>
-          <ext>
-            <doctype>standard</doctype>
-            <subdoctype>document</subdoctype>
-          </ext>
-        </bibdata>
-        <sections> </sections>
-      </ieee-standard>
+          </owner>
+        </copyright>
+        <ext>
+          <doctype>standard</doctype>
+          <subdoctype>document</subdoctype>
+        </ext>
+      </bibdata>
     OUTPUT
-    expect(xmlpp(out.sub(%r{<boilerplate>.*</boilerplate>}m, "")))
+    out = out.at("//xmlns:bibdata")
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(output)
   end
 

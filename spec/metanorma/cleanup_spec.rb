@@ -899,7 +899,7 @@ RSpec.describe Metanorma::IEEE do
       </ieee-standard>
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
-    ret.at("//xmlns:bibdata").remove
+    ret.xpath("//xmlns:bibdata | //xmlns:metanorma-extension").each(&:remove)
     expect(xmlpp(strip_guid(ret.to_xml)))
       .to be_equivalent_to xmlpp(output)
   end
@@ -981,6 +981,7 @@ RSpec.describe Metanorma::IEEE do
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.at("//xmlns:bibdata").remove
+    ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:boilerplate").remove
     expect(xmlpp(strip_guid(ret.to_xml)))
       .to be_equivalent_to xmlpp(output)
@@ -1054,6 +1055,7 @@ RSpec.describe Metanorma::IEEE do
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.at("//xmlns:bibdata").remove
+    ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:boilerplate").remove
     expect(xmlpp(strip_guid(ret.to_xml)))
       .to be_equivalent_to xmlpp(output)
@@ -1092,6 +1094,7 @@ RSpec.describe Metanorma::IEEE do
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.at("//xmlns:bibdata").remove
+    ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:boilerplate").remove
     expect(xmlpp(strip_guid(ret.to_xml)))
       .to be_equivalent_to xmlpp(output)
@@ -1141,6 +1144,7 @@ RSpec.describe Metanorma::IEEE do
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.at("//xmlns:bibdata").remove
     ret.at("//xmlns:boilerplate").remove
+    ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:clause[@id = 'boilerplate_word_usage']").remove
     expect(xmlpp(strip_guid(ret.to_xml)))
       .to be_equivalent_to xmlpp(output)
@@ -1206,6 +1210,7 @@ RSpec.describe Metanorma::IEEE do
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.at("//xmlns:bibdata").remove
     ret.at("//xmlns:boilerplate").remove
+    ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:clause[@id = 'boilerplate_word_usage']").remove
     expect(xmlpp(strip_guid(ret.to_xml)))
       .to be_equivalent_to xmlpp(output)
@@ -1629,7 +1634,7 @@ RSpec.describe Metanorma::IEEE do
        </ieee-standard>
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
-    ret.at("//xmlns:bibdata").remove
+    ret.xpath("//xmlns:bibdata | //xmlns:metanorma-extension").each(&:remove)
     expect(xmlpp(strip_guid(ret.to_xml)))
       .to be_equivalent_to xmlpp(output)
   end
