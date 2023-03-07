@@ -51,17 +51,17 @@ module IsoDoc
         f = isoxml.at(ns("//preface/abstract")) || return
         page_break(out)
         out.div **attr_code(id: f["id"], class: "abstract") do |s|
-          clause_name(nil, f.at(ns("./title")), s, { class: "AbstractTitle" })
+          clause_name(f, f.at(ns("./title")), s, { class: "AbstractTitle" })
           f.elements.each { |e| parse(e, s) unless e.name == "title" }
         end
       end
 
       def make_body3(body, docxml)
-        body.div **{ class: "WordSectionMiddleTitle" } do |_div3|
+        body.div class: "WordSectionMiddleTitle" do |_div3|
           middle_title_ieee(docxml, body)
         end
         section_break(body, continuous: true)
-        body.div **{ class: "WordSectionMain" } do |div3|
+        body.div class: "WordSectionMain" do |div3|
           middle docxml, div3
           footnotes div3
           comments div3
@@ -71,7 +71,7 @@ module IsoDoc
       def middle_title(isoxml, out); end
 
       def middle_title_ieee(_docxml, out)
-        out.p(**{ class: "IEEEStdsTitle", style: "margin-top:70.0pt" }) do |p|
+        out.p(class: "IEEEStdsTitle", style: "margin-top:70.0pt") do |p|
           p << @meta.get[:full_doctitle]
           @meta.get[:amd] || @meta.get[:corr] and p << "<br/>"
           @meta.get[:amd] and p << "Amendment #{@meta.get[:amd]}"
@@ -81,7 +81,7 @@ module IsoDoc
       end
 
       def admonition_name_parse(_node, div, name)
-        div.p **{ class: "IEEEStdsWarning", style: "text-align:center;" } do |p|
+        div.p class: "IEEEStdsWarning", style: "text-align:center;" do |p|
           p.b do |b|
             name.children.each { |n| parse(n, b) }
           end
@@ -109,7 +109,7 @@ module IsoDoc
       end
 
       def formula_where1(out, dterm, ddefn)
-        out.p **{ class: "IEEEStdsEquationVariableList" } do |p|
+        out.p class: "IEEEStdsEquationVariableList" do |p|
           dterm.children.each { |n| parse(n, p) }
           insert_tab(p, 1)
           if ddefn.at(ns("./p"))
@@ -130,7 +130,7 @@ module IsoDoc
         return if name.nil?
 
         name&.at(ns("./strong"))&.remove # supplied by CSS list numbering
-        div.h1 **{ class: "Annex" } do |t|
+        div.h1 class: "Annex" do |t|
           annex_name1(name, t)
           clause_parse_subtitle(name, t)
         end
@@ -139,7 +139,7 @@ module IsoDoc
       def annex_name1(name, out)
         name.children.each do |c2|
           if c2.name == "span" && c2["class"] == "obligation"
-            out.span **{ style: "font-weight:normal;" } do |s|
+            out.span style: "font-weight:normal;" do |s|
               c2.children.each { |c3| parse(c3, s) }
             end
           else parse(c2, out)
@@ -158,7 +158,7 @@ module IsoDoc
       end
 
       def termnote_label(para, name)
-        para.span **{ class: "note_label" } do |s|
+        para.span class: "note_label" do |s|
           name.children.each { |n| parse(n, s) }
           s << termnote_delim
         end
