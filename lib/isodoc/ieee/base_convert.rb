@@ -21,7 +21,7 @@ module IsoDoc
       end
 
       def middle_clause(_docxml = nil)
-        "//clause[parent::sections][not(@type = 'overview')]"\
+        "//clause[parent::sections][not(@type = 'overview')]" \
           "[not(descendant::terms)]"
       end
 
@@ -36,7 +36,7 @@ module IsoDoc
       def note_p_parse(node, div)
         name = node&.at(ns("./name"))&.remove
         div.p do |p|
-          name and p.span **{ class: "note_label" } do |s|
+          name and p.span class: "note_label" do |s|
             name.children.each { |n| parse(n, s) }
             s << note_delim
           end
@@ -48,7 +48,7 @@ module IsoDoc
       def note_parse1(node, div)
         name = node&.at(ns("./name"))&.remove
         name and div.p do |p|
-          p.span **{ class: "note_label" } do |s|
+          p.span class: "note_label" do |s|
             name.children.each { |n| parse(n, s) }
             s << note_delim
           end
@@ -58,13 +58,6 @@ module IsoDoc
 
       def termnote_delim
         "&#x2014;"
-      end
-
-      def formula_where(dlist, out)
-        return unless dlist
-
-        parse(dlist, out)
-        out.parent.at("./dl")["class"] = "formula_dl"
       end
 
       def bracket_if_num(num)
@@ -80,7 +73,7 @@ module IsoDoc
         return if name.nil?
 
         name << ":"
-        div.p **{ class: "example-title" } do |p|
+        div.p class: "example-title" do |p|
           name.children.each { |n| parse(n, p) }
         end
       end
