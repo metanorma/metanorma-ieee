@@ -218,6 +218,11 @@ module IsoDoc
         map["company"] || map["name"] || "#{map['given']} #{map['surname']}"
       end
 
+      def formula_where(dlist)
+      dlist or return
+      dlist["class"] = "formula_dl"
+    end
+
       include Init
     end
   end

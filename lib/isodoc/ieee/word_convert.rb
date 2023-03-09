@@ -96,6 +96,18 @@ module IsoDoc
         end
       end
 
+      def formula_parse(node, out)
+        out.div **formula_attrs(node) do |div|
+          formula_parse1(node, div)
+          formula_where(node.at(ns("./dl")), div)
+          node.children.each do |n|
+            next if %w(stem dl name).include? n.name
+
+            parse(n, div)
+          end
+        end
+      end
+
       def dt_dd?(node)
         %w{dt dd}.include? node.name
       end
