@@ -223,6 +223,9 @@ RSpec.describe Metanorma::IEEE do
                     <docidentifier type="IETF" primary="true">RFC7991</docidentifier>
                   </bibitem>
                 </relation>
+                        <series type="stream">
+          <title format="text/plain">IAB</title>
+        </series>
                 <series>
                   <title format="text/plain">RFC</title>
                   <number>7749</number>

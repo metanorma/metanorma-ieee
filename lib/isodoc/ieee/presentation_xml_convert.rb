@@ -218,10 +218,23 @@ module IsoDoc
         map["company"] || map["name"] || "#{map['given']} #{map['surname']}"
       end
 
+      def asciimath_dup(node)
+        @suppressasciimathdup and return
+        super
+        node.parent.at(ns("./latexmath")) and return
+        math = node.to_xml.gsub(/ xmlns=["'][^"']+["']/, "")
+          .gsub(%r{<[^:/]+:}, "<").gsub(%r{</[^:/]+:}, "</")
+        ret = Plurimath::Math.parse(math, "mathml").to_latex
+        ret = HTMLEntities.new.encode(ret, :basic)
+        node.next = "<latexmath>#{ret}</latexmath>"
+      rescue StandardError => e
+        warn "Failure to convert MathML to LaTeX\n#{node.parent.to_xml}\n#{e}"
+      end
+
       def formula_where(dlist)
-      dlist or return
-      dlist["class"] = "formula_dl"
-    end
+        dlist or return
+        dlist["class"] = "formula_dl"
+      end
 
       include Init
     end
