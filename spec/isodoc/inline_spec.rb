@@ -417,8 +417,8 @@ RSpec.describe IsoDoc::IEEE do
                      <m:mn>2</m:mn>
                    </m:msup>
                  </m:math>
-                 <latexmath>{(x+y)}^{2}</latexmath>
-                 <asciimath>(x+y)^2</asciimath>
+                 <latexmath>( x + y )^{2}</latexmath>
+                <asciimath>( x + y )^(2)</asciimath>
               </stem>
             </p>
           </foreword>
@@ -426,8 +426,10 @@ RSpec.describe IsoDoc::IEEE do
         <sections> </sections>
       </iso-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
-      .convert("test", input, true)))
+    xml = Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert.new({})
+      .convert("test", input, true))
+    xml.at("//xmlns:metanorma-extension").remove
+    expect(xmlpp(xml.to_xml))
       .to be_equivalent_to xmlpp(output)
   end
 
