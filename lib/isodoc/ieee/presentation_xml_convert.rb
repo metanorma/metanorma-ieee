@@ -7,7 +7,7 @@ module IsoDoc
   module IEEE
     class PresentationXMLConvert < IsoDoc::PresentationXMLConvert
       def initialize(options)
-        @hierarchical_assets = options[:hierarchical_assets]
+        @hierarchical_assets = options[:hierarchicalassets]
         super
       end
 
@@ -17,9 +17,10 @@ module IsoDoc
         ret = resolve_eref_connectives(eref_locality_stacks(refs, target,
                                                             node))
         node["droploc"] = droploc
-        eref_localities1(target,
-                         prefix_clause(target, refs.first.at(ns("./locality"))),
-                         l10n(ret[1..-1].join), nil, node, @lang)
+        eref_localities1({ target: target, number: "pl",
+                           type: prefix_clause(target, refs.first.at(ns("./locality"))),
+                           from: l10n(ret[1..-1].join), node: node,
+                           lang: @lang })
       end
 
       def prefix_clause(target, loc)
@@ -37,20 +38,18 @@ module IsoDoc
           target&.gsub(/<[^>]+>/, "")&.match(/^IEV$|^IEC 60050-/)
       end
 
-      def eref_localities1(target, type, from, upto, node, lang = "en")
-        return nil if type == "anchor"
+      def eref_localities1(opt)
+        return nil if opt[:type] == "anchor"
 
-        type = type.downcase
-        lang == "zh" and
-          return l10n(eref_localities1_zh(target, type, from, upto,
-                                          node))
+        opt[:type] = opt[:type].downcase
+        opt[:lang] == "zh" and return l10n(eref_localities1_zh(opt))
         ret = ""
-        node["droploc"] != "true" && !subclause?(target, type,
-                                                 from) and
-          ret = eref_locality_populate(type, node)
-        ret += " #{from}" if from
-        ret += "&#x2013;#{upto}" if upto
-        ret += ")" if type == "list"
+        opt[:node]["droploc"] != "true" &&
+          !subclause?(opt[:target], opt[:type], opt[:from]) and
+          ret = eref_locality_populate(opt[:type], opt[:node], opt[:number])
+        ret += " #{opt[:from]}" if opt[:from]
+        ret += "&#x2013;#{opt[:upto]}" if opt[:upto]
+        ret += ")" if opt[:type] == "list"
         l10n(ret)
       end
 
@@ -97,7 +96,7 @@ module IsoDoc
       def annex1(elem)
         lbl = @xrefs.anchor(elem["id"], :label)
         if t = elem.at(ns("./title"))
-          t.children = "<strong>#{t.children.to_xml}</strong>"
+          t.children = "<strong>#{to_xml(t.children)}</strong>"
         end
         prefix_name(elem, "<br/>", lbl, "title")
       end
@@ -132,7 +131,7 @@ module IsoDoc
 
       def amend1(elem)
         elem.xpath(ns("./description/p")).each do |p|
-          p.children = p.children.to_xml.strip
+          p.children = to_xml(p.children).strip
           amend_format(p)
         end
         super
@@ -144,7 +143,7 @@ module IsoDoc
             %(em strong).include?(para.children.first.name) and
             para.children = para.elements.first.children
         end
-        para.children = "<strong><em>#{para.children.to_xml}</em></strong>"
+        para.children = "<strong><em>#{to_xml(para.children)}</em></strong>"
       end
 
       def section(docxml)
@@ -220,17 +219,21 @@ module IsoDoc
       end
 
       def asciimath_dup(node)
-        return if @suppressasciimathdup
-
+        @suppressasciimathdup and return
         super
+        node.parent.at(ns("./latexmath")) and return
         math = node.to_xml.gsub(/ xmlns=["'][^"']+["']/, "")
           .gsub(%r{<[^:/]+:}, "<").gsub(%r{</[^:/]+:}, "</")
         ret = Plurimath::Math.parse(math, "mathml").to_latex
         ret = HTMLEntities.new.encode(ret, :basic)
         node.next = "<latexmath>#{ret}</latexmath>"
       rescue StandardError => e
-        warn "Failure to convert MathML to LaTeX"
-        warn "#{node.parent.to_xml}\n#{e}"
+        warn "Failure to convert MathML to LaTeX\n#{node.parent.to_xml}\n#{e}"
+      end
+
+      def formula_where(dlist)
+        dlist or return
+        dlist["class"] = "formula_dl"
       end
 
       include Init

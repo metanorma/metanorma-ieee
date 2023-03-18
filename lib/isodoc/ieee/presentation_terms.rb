@@ -26,19 +26,19 @@ module IsoDoc
         if coll.all? do |c|
              c.elements.size == 1 && c.elements.first.name == "p"
            end
-          ret = coll.map { |c| c.elements.first.children.to_xml }
+          ret = coll.map { |c| to_xml(c.elements.first.children) }
           return "<p>#{ret.join}</p>"
         end
-        coll.map { |c| c.children.to_xml }.join
+        coll.map { |c| to_xml(c.children) }.join
       end
 
       def unwrap_definition(docxml)
-        docxml.xpath(ns("//definition/verbal-definition")).each do |v|
+        docxml.xpath(ns(".//definition/verbal-definition")).each do |v|
           next unless v.elements.all? { |e| %w(termsource p).include?(e.name) }
 
           p = v.xpath(ns("./p"))
           v.children =
-            "<p>#{p.map(&:children).map(&:to_xml).join("\n")}</p>" \
+            "<p>#{p.map(&:children).map { |x| to_xml(x) }.join("\n")}</p>" \
             "#{v.xpath(ns('./termsource')).to_xml}"
         end
         super
@@ -60,8 +60,8 @@ module IsoDoc
             prev = i and next
           end
 
-          coll[prev].at(ns("./preferred")) << "; #{r.at(ns('./preferred'))
-              .children.to_xml}"
+          coll[prev].at(ns("./preferred")) << "; #{to_xml(r.at(ns('./preferred'))
+              .children)}"
           r.remove
         end
       end
@@ -129,10 +129,10 @@ module IsoDoc
         new = adm.dup
         adm["type"] = "equivalent"
         adm.name = "related"
-        adm.children = "<preferred>#{adm.children.to_xml}</preferred>"
+        adm.children = "<preferred>#{to_xml(adm.children)}</preferred>"
         adm.parent.next = <<~TERM
-          <term><preferred>#{new.children.to_xml}</preferred>
-          <related type='see'><preferred>#{pref.children.to_xml}</preferred></related></term>
+          <term><preferred>#{to_xml(new.children)}</preferred>
+          <related type='see'><preferred>#{to_xml(pref.children)}</preferred></related></term>
         TERM
       end
 
@@ -172,8 +172,8 @@ module IsoDoc
       def collapse_term_related(rels)
         ret = rels.map do |r|
           p = r.at(ns("./preferred"))
-          "<em>#{@i18n.relatedterms[r['type']]}:</em> " \
-            "#{p&.children&.to_xml || '**RELATED TERM NOT FOUND**'}"
+          rel = p ? to_xml(p.children) : "**RELATED TERM NOT FOUND**"
+          "<em>#{@i18n.relatedterms[r['type']]}:</em> #{rel}"
         end.join(". ")
         ret += "." unless ret.empty?
         ret
@@ -182,10 +182,10 @@ module IsoDoc
       def collapse_term_template(opt)
         defn = collapse_unwrap_definition(opt[:def])
         src = nil
-        opt[:source] and src = "(#{opt[:source].remove.children.to_xml.strip})"
+        opt[:source] and src = "(#{to_xml(opt[:source].remove.children).strip})"
+        t = opt[:pref] ? to_xml(opt[:pref].children) : "**TERM NOT FOUND**"
         <<~TERM
-          <p>#{opt[:pref]&.children&.to_xml || '**TERM NOT FOUND**'}: #{defn}
-          #{collapse_term_related(opt[:rels])} #{src}</p>
+          <p>#{t}: #{defn} #{collapse_term_related(opt[:rels])} #{src}</p>
         TERM
       end
 
@@ -194,7 +194,8 @@ module IsoDoc
 
         s = defn.remove.xpath(ns("./termsource"))
         p = defn.at(ns("./p"))
-        !s.empty? && p and p << s.map(&:remove).map(&:children).map(&:to_xml).join
+        !s.empty? && p and p << s.map(&:remove).map(&:children)
+          .map { |x| to_xml(x) }.join
         if defn.elements.size == 1 && defn.elements.first.name == "p"
           defn.elements.first.children
         else defn.elements
@@ -203,10 +204,10 @@ module IsoDoc
 
       def termsource1(elem)
         while elem&.next_element&.name == "termsource"
-          elem << "; #{elem.next_element.remove.children.to_xml}"
+          elem << "; #{to_xml(elem.next_element.remove.children)}"
         end
         adapt = termsource_adapt(elem["status"]) and
-          elem.children = l10n("#{adapt}#{elem.children.to_xml.strip}")
+          elem.children = l10n("#{adapt}#{to_xml(elem.children).strip}")
       end
 
       def termsource_adapt(status)
@@ -218,7 +219,7 @@ module IsoDoc
       def designation_field(desgn, name)
         if desgn.name == "preferred"
           f = desgn.xpath(ns("./../domain | ./../subject")).map(&:remove)
-            .map { |u| u.children.to_xml }.join(", ")
+            .map { |u| to_xml(u.children) }.join(", ")
           name << ", &#x3c;#{f}&#x3e;" unless f.empty?
         end
         super
@@ -231,7 +232,7 @@ module IsoDoc
                           "./admitted[expression/name][abbreviation-type]"))
         (pref && !x.empty?) or return
         tail = x.map do |p|
-          p.remove.at(ns("./expression/name")).children.to_xml.strip
+          to_xml(p.remove.at(ns("./expression/name")).children).strip
         end.join(", ")
         pref << " (#{tail})"
       end
@@ -244,7 +245,7 @@ module IsoDoc
       def term(docxml); end
 
       def concept1(node)
-        concept_render(node, ital: "false", ref: "false",
+        concept_render(node, ital: "false", ref: "false", bold: "false",
                              linkref: "false", linkmention: "false")
       end
     end

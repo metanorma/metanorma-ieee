@@ -24,7 +24,7 @@ RSpec.describe Metanorma::IEEE do
          <copyright-statement>
            <clause>
              <p id='copyright' align='left'>
-               Copyright © 2022 by The Institute of Electrical and Electronics
+               Copyright © #{Date.today.year} by The Institute of Electrical and Electronics
                Engineers, Inc.
                <br/>
                Three Park Avenue
@@ -819,7 +819,7 @@ RSpec.describe Metanorma::IEEE do
              </p>
            </clause>
            <clause>
-             <p id='_'>Copyright © 2022 by The Institute of Electrical and Electronics Engineers, Inc.</p>
+             <p id='_'>Copyright © #{Date.today.year} by The Institute of Electrical and Electronics Engineers, Inc.</p>
              <p id='_'>
                All rights reserved. Published 01 Jan 1000. Printed in the United States
                of America.
@@ -899,7 +899,7 @@ RSpec.describe Metanorma::IEEE do
       </ieee-standard>
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
-    ret.at("//xmlns:bibdata").remove
+    ret.xpath("//xmlns:bibdata | //xmlns:metanorma-extension").each(&:remove)
     expect(xmlpp(strip_guid(ret.to_xml)))
       .to be_equivalent_to xmlpp(output)
   end
@@ -981,6 +981,7 @@ RSpec.describe Metanorma::IEEE do
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.at("//xmlns:bibdata").remove
+    ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:boilerplate").remove
     expect(xmlpp(strip_guid(ret.to_xml)))
       .to be_equivalent_to xmlpp(output)
@@ -1054,6 +1055,7 @@ RSpec.describe Metanorma::IEEE do
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.at("//xmlns:bibdata").remove
+    ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:boilerplate").remove
     expect(xmlpp(strip_guid(ret.to_xml)))
       .to be_equivalent_to xmlpp(output)
@@ -1092,6 +1094,7 @@ RSpec.describe Metanorma::IEEE do
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.at("//xmlns:bibdata").remove
+    ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:boilerplate").remove
     expect(xmlpp(strip_guid(ret.to_xml)))
       .to be_equivalent_to xmlpp(output)
@@ -1141,6 +1144,7 @@ RSpec.describe Metanorma::IEEE do
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.at("//xmlns:bibdata").remove
     ret.at("//xmlns:boilerplate").remove
+    ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:clause[@id = 'boilerplate_word_usage']").remove
     expect(xmlpp(strip_guid(ret.to_xml)))
       .to be_equivalent_to xmlpp(output)
@@ -1206,6 +1210,7 @@ RSpec.describe Metanorma::IEEE do
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.at("//xmlns:bibdata").remove
     ret.at("//xmlns:boilerplate").remove
+    ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:clause[@id = 'boilerplate_word_usage']").remove
     expect(xmlpp(strip_guid(ret.to_xml)))
       .to be_equivalent_to xmlpp(output)
@@ -1245,7 +1250,7 @@ RSpec.describe Metanorma::IEEE do
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     expect(xmlpp(strip_guid(ret.at("//xmlns:sections").to_xml)))
-      .to be_equivalent_to(output)
+      .to be_equivalent_to(xmlpp(output))
   end
 
   it "processes participants" do
@@ -1539,7 +1544,7 @@ RSpec.describe Metanorma::IEEE do
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       .at("//xmlns:clause[@id = 'boilerplate-participants']")
     expect(xmlpp(strip_guid(ret.to_xml)))
-      .to be_equivalent_to(output)
+      .to be_equivalent_to(xmlpp(output))
   end
 
   it "do not insert word usage clause if this is legacy document schema" do
@@ -1629,7 +1634,7 @@ RSpec.describe Metanorma::IEEE do
        </ieee-standard>
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
-    ret.at("//xmlns:bibdata").remove
+    ret.xpath("//xmlns:bibdata | //xmlns:metanorma-extension").each(&:remove)
     expect(xmlpp(strip_guid(ret.to_xml)))
       .to be_equivalent_to xmlpp(output)
   end

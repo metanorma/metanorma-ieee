@@ -256,7 +256,7 @@ RSpec.describe IsoDoc::IEEE do
              <h1 class='Annex'>
                <b>Annex A</b>
                <br/>
-               (normative)
+               <span class="obligation">(normative)</span>
                <br/>
                <b>Annex</b>
              </h1>
@@ -461,7 +461,7 @@ RSpec.describe IsoDoc::IEEE do
         </div>
       </body>
     OUTPUT
-    expect((IsoDoc::IEEE::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)))
       .to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
@@ -546,6 +546,7 @@ RSpec.describe IsoDoc::IEEE do
           <bibitem id="ABC">
             <formattedref format="application/x-isodoc+xml"/>
             <docidentifier type="metanorma-ordinal">[B1]</docidentifier><docidentifier>DEF</docidentifier>
+            <biblio-tag>[B1]<tab/>DEF, </biblio-tag>
           </bibitem>
         </references>
       </annex>
@@ -557,7 +558,7 @@ RSpec.describe IsoDoc::IEEE do
            <br/>
            <div id='a' class='Section3'>
              <h1 class='Annex'>
-               <b>Annex A</b><br/>(normative)
+               <b>Annex A</b><br/><span class='obligation'>(normative)</span>
                <br/>
                <b>Appendix C</b>
              </h1>
@@ -598,7 +599,7 @@ RSpec.describe IsoDoc::IEEE do
          </div>
        </div>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
   .convert("test", input, true)))
       .to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
@@ -1102,7 +1103,7 @@ RSpec.describe IsoDoc::IEEE do
     OUTPUT
     FileUtils.rm_rf "test.html"
     FileUtils.rm_rf "test.doc"
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
   .convert("test", input, true)))
       .to be_equivalent_to xmlpp(presxml)
     IsoDoc::IEEE::HtmlConvert.new({}).convert("test", presxml, false)

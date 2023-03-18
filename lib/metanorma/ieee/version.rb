@@ -1,5 +1,5 @@
 module Metanorma
   module IEEE
-    VERSION = "0.1.2".freeze
+    VERSION = "1.0.7".freeze
   end
 end

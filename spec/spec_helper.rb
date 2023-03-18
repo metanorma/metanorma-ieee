@@ -25,7 +25,6 @@ require "equivalent-xml"
 require "htmlentities"
 require "metanorma"
 require "metanorma/ieee"
-require "rexml/document"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -51,6 +50,10 @@ RSpec.configure do |config|
 end
 
 OPTIONS = [backend: :ieee, header_footer: true].freeze
+
+def presxml_options
+  { semanticxmlinsert: "false" }
+end
 
 def metadata(xml)
   xml.sort.to_h.delete_if do |_k, v|
@@ -91,11 +94,19 @@ def xmlpp(xml)
     else n
     end
   end.join
-  s = ""
-  f = REXML::Formatters::Pretty.new(2)
-  f.compact = true
-  f.write(REXML::Document.new(xml), s)
-  s
+  xsl = <<~XSL
+    <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
+      <xsl:strip-space elements="*"/>
+      <xsl:template match="/">
+        <xsl:copy-of select="."/>
+      </xsl:template>
+    </xsl:stylesheet>
+  XSL
+  Nokogiri::XSLT(xsl).transform(Nokogiri::XML(xml, &:noblanks))
+    .to_xml(indent: 2, encoding: "UTF-8")
+    .gsub(%r{<fetched>[^<]+</fetched>}, "<fetched/>")
+    .gsub(%r{ schema-version="[^"]+"}, "")
 end
 
 ASCIIDOC_BLANK_HDR = <<~"HDR".freeze
@@ -245,6 +256,20 @@ BLANK_HDR = <<~"HDR".freeze
            <subdoctype>document</subdoctype>
    </ext>
   </bibdata>
+                    <metanorma-extension>
+            <presentation-metadata>
+              <name>TOC Heading Levels</name>
+              <value>2</value>
+            </presentation-metadata>
+            <presentation-metadata>
+              <name>HTML TOC Heading Levels</name>
+              <value>2</value>
+            </presentation-metadata>
+            <presentation-metadata>
+              <name>DOC TOC Heading Levels</name>
+              <value>2</value>
+            </presentation-metadata>
+          </metanorma-extension>
 HDR
 
 def blank_hdr_gen

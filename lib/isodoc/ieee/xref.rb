@@ -8,7 +8,7 @@ module IsoDoc
     class Xref < ::IsoDoc::Xref
       def initialize(lang, script, klass, labels, options)
         super
-        @hierarchical_assets = options[:hierarchical_assets]
+        @hierarchical_assets = options[:hierarchicalassets]
       end
 
       def initial_anchor_names(doc)
@@ -29,7 +29,7 @@ module IsoDoc
           n = Counter.new
           n = section_names(doc.at(ns("//clause[@type = 'overview']")), n, 1)
           n = section_names(doc.at(ns(@klass.norm_ref_xpath)), n, 1)
-          n = section_names(doc.at(ns("//sections/terms | "\
+          n = section_names(doc.at(ns("//sections/terms | " \
                                       "//sections/clause[descendant::terms]")), n, 1)
           n = section_names(doc.at(ns("//sections/definitions")), n, 1)
           clause_names(doc, n)
@@ -37,14 +37,14 @@ module IsoDoc
       end
 
       def middle_sections
-        " #{@klass.norm_ref_xpath} | "\
-          "//sections/terms | //preface/clause | "\
+        " #{@klass.norm_ref_xpath} | " \
+          "//sections/terms | //preface/clause | " \
           "//sections/definitions | //clause[parent::sections]"
       end
 
       def middle_section_asset_names(doc)
         middle_sections =
-          "#{@klass.norm_ref_xpath} | //sections/terms | "\
+          "#{@klass.norm_ref_xpath} | //sections/terms | " \
           "//sections/definitions | //clause[parent::sections]"
         if @hierarchical_assets
           doc.xpath(ns(middle_sections)).each do |c|
@@ -57,9 +57,7 @@ module IsoDoc
 
       def sequential_formula_names(clause)
         c = Counter.new
-        clause.xpath(ns(".//formula")).reject do |n|
-          blank?(n["id"])
-        end.each do |t|
+        clause.xpath(ns(".//formula")).noblank.each do |t|
           @anchors[t["id"]] = anchor_struct(
             c.increment(t).print, nil,
             t["inequality"] ? @labels["inequality"] : @labels["formula"],
@@ -71,14 +69,12 @@ module IsoDoc
       def termnote_anchor_names(docxml)
         docxml.xpath(ns("//*[termnote]")).each do |t|
           c = Counter.new
-          sequence = UUIDTools::UUID.random_create.to_s
           notes = t.xpath(ns("./termnote"))
-          notes.reject { |n| blank?(n["id"]) }.each do |n|
+          notes.noblank.each do |n|
             @anchors[n["id"]] =
               anchor_struct("#{@labels['termnote']} #{increment_label(notes, n, c)}",
-                            n,
-                            @labels["note_xref"], "termnote", false)
-                .merge(sequence: sequence)
+                            n, @labels["note_xref"], "termnote", false)
+                .merge(sequence: UUIDTools::UUID.random_create.to_s)
           end
         end
       end

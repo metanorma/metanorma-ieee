@@ -14,7 +14,7 @@ module IsoDoc
 
       def biblio_anchor_linkend(node, bib)
         if %w(techreport standard).include?(bib[:type])
-          node["citeas"] + " #{bib[:ord]}"
+          [node["citeas"], bib[:ord]].compact.join(" ")
         else
           "#{bib[:author]} " + node["citeas"]
         end
@@ -30,7 +30,7 @@ module IsoDoc
               author: @author[b["id"]] || (b.at(ns("./title")) ||
                      b.at(ns("./formattedref")))&.text,
               ord: b.at(ns("./docidentifier[@type = 'metanorma' or "\
-                           "@type = 'metanorma-ordinal']")).text }
+                           "@type = 'metanorma-ordinal']"))&.text }
         end
       end
 
@@ -51,9 +51,9 @@ module IsoDoc
       def bibrender_relaton(xml, renderings)
         f = renderings[xml["id"]][:formattedref]
         f &&= "<formattedref>#{f}</formattedref>"
+        keep = "./docidentifier | ./uri | ./note | ./title | ./biblio-tag"
         xml.children =
-          "#{f}#{xml.xpath(ns('./docidentifier | ./uri | ./note | ./title'))
-          .to_xml}"
+          "#{f}#{xml.xpath(ns(keep)).to_xml}"
         @author[xml["id"]] = renderings[xml["id"]][:author]
       end
 

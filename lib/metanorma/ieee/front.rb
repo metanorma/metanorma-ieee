@@ -26,7 +26,7 @@ module Metanorma
 
       def metadata_id(node, xml)
         id = node.attr("docnumber") || ""
-        xml.docidentifier id, type: "IEEE"
+        xml.docidentifier (node.attr("docidentifier") || id), type: "IEEE"
         id = node.attr("stdid-pdf") and
           xml.docidentifier id, type: "IEEE", scope: "PDF"
         id = node.attr("stdid-print") and
@@ -38,7 +38,7 @@ module Metanorma
         publishers = node.attr("publisher") || "IEEE"
         csv_split(publishers).each do |p|
           xml.contributor do |c|
-            c.role **{ type: "publisher" }
+            c.role type: "publisher"
             c.organization do |a|
               organization(a, p, true, node, !node.attr("publisher"))
             end

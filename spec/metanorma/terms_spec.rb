@@ -91,8 +91,8 @@ RSpec.describe Metanorma::IEEE do
        </ieee-standard>
     OUTPUT
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
-    out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:references")
-      .remove
+    out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:references | " \
+              "//xmlns:metanorma-extension").remove
     expect(xmlpp(strip_guid(out.to_xml)))
       .to be_equivalent_to xmlpp(output)
   end
@@ -268,8 +268,8 @@ RSpec.describe Metanorma::IEEE do
        </ieee-standard>
     OUTPUT
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
-    out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:references")
-      .remove
+    out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:references | " \
+              "//xmlns:metanorma-extension").remove
     expect(xmlpp(strip_guid(out.to_xml)))
       .to be_equivalent_to xmlpp(output)
   end
@@ -338,8 +338,8 @@ RSpec.describe Metanorma::IEEE do
       </ieee-standard>
     OUTPUT
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
-    out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:references")
-      .remove
+    out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:references | " \
+              "//xmlns:metanorma-extension").remove
     expect(xmlpp(strip_guid(out.to_xml)))
       .to be_equivalent_to xmlpp(output)
   end

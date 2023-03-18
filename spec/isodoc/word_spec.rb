@@ -466,7 +466,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         </div>
       </div>
     OUTPUT
-    presxml = IsoDoc::IEEE::PresentationXMLConvert.new({}).convert("test",
+    presxml = IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options).convert("test",
                                                                    input, true)
     IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true

@@ -131,7 +131,7 @@ module Metanorma
         klass = IsoDoc::IEEE::HtmlConvert.new(language: @lang, script: @script)
         xrefs = IsoDoc::IEEE::Xref
           .new(@lang, @script, klass, IsoDoc::IEEE::I18n.new(@lang, @script),
-               { hierarchical_assets: @hierarchical_assets })
+               { hierarchicalassets: @hierarchical_assets })
         xrefs.parse(Nokogiri::XML(xmldoc.to_xml))
         xrefs
       end

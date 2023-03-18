@@ -17,6 +17,10 @@ module IsoDoc
         @wordstylesheet.unlink if @wordstylesheet.is_a?(Tempfile)
       end
 
+      def sourcecode_style
+        "IEEEStdsComputerCode"
+      end
+
       def word_cleanup(docxml)
         super
         abstract_cleanup(docxml)
@@ -106,6 +110,14 @@ module IsoDoc
         TableTitle: "IEEEStdsRegularTableCaption",
         FigureTitle: "IEEEStdsRegularFigureCaption",
       }.freeze
+
+      def table_toc_class
+        %w(IEEEStdsRegularTableCaption TableTitle tabletitle)
+      end
+
+      def figure_toc_class
+        %w(IEEEStdsRegularFigureCaption FigureTitle figuretitle)
+      end
 
       def style_cleanup(docxml)
         note_style_cleanup(docxml)

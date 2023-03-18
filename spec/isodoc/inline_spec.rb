@@ -2,7 +2,7 @@ require "spec_helper"
 
 RSpec.describe IsoDoc::IEEE do
   it "processes eref content" do
-    output = IsoDoc::IEEE::PresentationXMLConvert.new({})
+    output = IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
       .convert("test", <<~"INPUT", true)
         <iso-standard xmlns="http://riboseinc.com/isoxml">
           <preface>
@@ -78,7 +78,7 @@ RSpec.describe IsoDoc::IEEE do
                 <contributor>
                   <role type="publisher"/>
                   <organization>
-                    <abbreviation>ISO</abbreviation>
+                    <name>ISO</name>
                   </organization>
                 </contributor>
               </bibitem>
@@ -99,20 +99,20 @@ RSpec.describe IsoDoc::IEEE do
                   </locality>
                   IEV, 1-2-3
                 </eref>
-                <eref bibitemid='ISO712' citeas='ISO 712' type='inline'>ISO 712</eref>
-                <eref bibitemid='ISO712' type='inline'>ISO 712</eref>
+                <eref bibitemid='ISO712' citeas='ISO 712' type='inline'>ISO&#xa0;712</eref>
+                <eref bibitemid='ISO712' type='inline'>ISO&#xa0;712</eref>
                 <eref bibitemid='ISO712' type='inline'>
                   <locality type='table'>
                     <referenceFrom>1</referenceFrom>
                   </locality>
-                  ISO 712, Table 1
+                  ISO&#xa0;712, Table 1
                 </eref>
                 <eref bibitemid='ISO712' type='inline'>
                   <locality type='table'>
                     <referenceFrom>1</referenceFrom>
                     <referenceTo>1</referenceTo>
                   </locality>
-                  ISO 712, Table 1&#x2013;1
+                  ISO&#xa0;712, Table 1&#x2013;1
                 </eref>
                 <eref bibitemid='ISO712' type='inline'>
                   <locality type='clause'>
@@ -121,7 +121,7 @@ RSpec.describe IsoDoc::IEEE do
                   <locality type='table'>
                     <referenceFrom>1</referenceFrom>
                   </locality>
-                  ISO 712, Clause 1, Table 1
+                  ISO&#xa0;712, Clause 1, Table 1
                 </eref>
                 <eref bibitemid='ISO712' type='inline'>
                   <locality type='clause'>
@@ -130,19 +130,19 @@ RSpec.describe IsoDoc::IEEE do
                   <locality type='list'>
                     <referenceFrom>a</referenceFrom>
                   </locality>
-                  ISO 712, Clause 1, List a)
+                  ISO&#xa0;712, Clause 1, List a)
                 </eref>
                 <eref bibitemid='ISO712' type='inline'>
                   <locality type='clause'>
                     <referenceFrom>1</referenceFrom>
                   </locality>
-                  ISO 712, Clause 1
+                  ISO&#xa0;712, Clause 1
                 </eref>
                 <eref bibitemid='ISO712' type='inline'>
                   <locality type='clause'>
                     <referenceFrom>1.5</referenceFrom>
                   </locality>
-                  ISO 712, 1.5
+                  ISO&#xa0;712, 1.5
                 </eref>
                 <eref bibitemid='ISO712' type='inline'>
                   <locality type='table'>
@@ -152,16 +152,16 @@ RSpec.describe IsoDoc::IEEE do
                 </eref>
                 <eref bibitemid='ISO712' type='inline'>
                   <locality type='whole'/>
-                  ISO 712, Whole of text
+                  ISO&#xa0;712, Whole of text
                 </eref>
                 <eref bibitemid='ISO712' type='inline'>
                   <locality type='locality:prelude'>
                     <referenceFrom>7</referenceFrom>
                   </locality>
-                  ISO 712, Prelude 7
+                  ISO&#xa0;712, Prelude 7
                 </eref>
                 <eref bibitemid='ISO712' citeas='ISO 712' type='inline'>A</eref>
-                <eref bibitemid='ISO712' citeas='ISO/IEC DIR 1' type='inline'>ISO/IEC DIR 1</eref>
+                <eref bibitemid='ISO712' citeas='ISO/IEC DIR 1' type='inline'>ISO/IEC&#xa0;DIR&#xa0;1</eref>
               </p>
             </foreword>
           </preface>
@@ -175,7 +175,8 @@ RSpec.describe IsoDoc::IEEE do
               <bibitem id='ISO712' type='standard'>
                 <formattedref>Cereals and cereal products.</formattedref>
                 <title format='text/plain'>Cereals and cereal products</title>
-                <docidentifier>ISO 712</docidentifier>
+                <docidentifier>ISO&#xa0;712</docidentifier>
+                <biblio-tag>ISO&#xa0;712, </biblio-tag>
               </bibitem>
             </references>
           </bibliography>
@@ -239,64 +240,16 @@ RSpec.describe IsoDoc::IEEE do
             </itu-standard>
     INPUT
     output = <<~OUTPUT
-          <itu-standard xmlns='https://www.calconnect.org/standards/itu' type='presentation'>
-        <p id='_'>
-          <eref type='inline' bibitemid='ref1' citeas='XYZ' droploc=''>
-            <localityStack connective='from'>
-              <locality type='clause'>
-                <referenceFrom>3</referenceFrom>
-              </locality>
-            </localityStack>
-            <localityStack connective='to'>
-              <locality type='clause'>
-                <referenceFrom>5</referenceFrom>
-              </locality>
-            </localityStack>
-            XYZ, Clause 3 to 5
-          </eref>
-          <eref type='inline' bibitemid='ref1' citeas='XYZ' droploc=''>
-            <localityStack connective='from'>
-              <locality type='clause'>
-                <referenceFrom>3.1</referenceFrom>
-              </locality>
-            </localityStack>
-            <localityStack connective='to'>
-              <locality type='clause'>
-                <referenceFrom>5.1</referenceFrom>
-              </locality>
-            </localityStack>
-            XYZ, 3.1 to 5.1
-          </eref>
-          <eref type='inline' bibitemid='ref1' citeas='XYZ' droploc=''>
-            <localityStack connective='from'>
-              <locality type='clause'>
-                <referenceFrom>3.1</referenceFrom>
-              </locality>
-            </localityStack>
-            <localityStack connective='to'>
-              <locality type='clause'>
-                <referenceFrom>5</referenceFrom>
-              </locality>
-            </localityStack>
-            XYZ, 3.1 to 5
-          </eref>
-          <eref type='inline' bibitemid='ref1' citeas='XYZ'>
-            <localityStack connective='from'>
-              <locality type='clause'>
-                <referenceFrom>3.1</referenceFrom>
-              </locality>
-            </localityStack>
-            <localityStack connective='to'>
-              <locality type='table'>
-                <referenceFrom>5</referenceFrom>
-              </locality>
-            </localityStack>
-            XYZ, 3.1 to Table 5
-          </eref>
-        </p>
-      </itu-standard>
+      <itu-standard xmlns="https://www.calconnect.org/standards/itu" type="presentation">
+         <p id="_">
+           <eref type="inline" bibitemid="ref1" citeas="XYZ" droploc=""><localityStack connective="from"><locality type="clause"><referenceFrom>3</referenceFrom></locality></localityStack><localityStack connective="to"><locality type="clause"><referenceFrom>5</referenceFrom></locality></localityStack>XYZ,  Clauses  3 to  5</eref>
+           <eref type="inline" bibitemid="ref1" citeas="XYZ" droploc=""><localityStack connective="from"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></localityStack><localityStack connective="to"><locality type="clause"><referenceFrom>5.1</referenceFrom></locality></localityStack>XYZ,    3.1 to  5.1</eref>
+           <eref type="inline" bibitemid="ref1" citeas="XYZ" droploc=""><localityStack connective="from"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></localityStack><localityStack connective="to"><locality type="clause"><referenceFrom>5</referenceFrom></locality></localityStack>XYZ,    3.1 to  5</eref>
+           <eref type="inline" bibitemid="ref1" citeas="XYZ"><localityStack connective="from"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></localityStack><localityStack connective="to"><locality type="table"><referenceFrom>5</referenceFrom></locality></localityStack>XYZ,  3.1 to  Table 5</eref>
+         </p>
+       </itu-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))).to be_equivalent_to xmlpp(output)
   end
 
@@ -425,7 +378,7 @@ RSpec.describe IsoDoc::IEEE do
         </p>
         </foreword>
     OUTPUT
-    xml = Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert.new({})
+    xml = Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))
     expect(xmlpp(xml.at("//xmlns:foreword").to_xml))
       .to be_equivalent_to xmlpp(presxml)

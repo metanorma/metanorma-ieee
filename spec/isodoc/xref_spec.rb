@@ -62,7 +62,7 @@ RSpec.describe Metanorma::IEEE do
          </preface>
        </iso-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
   .convert("test", input, true))).to be_equivalent_to xmlpp(output)
   end
 
@@ -109,7 +109,7 @@ RSpec.describe Metanorma::IEEE do
          </p>
        </foreword>
     OUTPUT
-    expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert.new({})
+    expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml))
       .to be_equivalent_to xmlpp(output)
@@ -198,7 +198,7 @@ RSpec.describe Metanorma::IEEE do
        </foreword>
     OUTPUT
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
-      .new({ hierarchical_assets: true })
+      .new({ hierarchicalassets: true })
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml))
       .to be_equivalent_to xmlpp(output)
