@@ -6772,6 +6772,8 @@
 		<!-- <dl><xsl:copy-of select="."/></dl> -->
 		<fo:block-container>
 
+			<xsl:call-template name="setBlockSpanAll"/>
+
 					<xsl:if test="not(ancestor::*[local-name() = 'quote'])">
 						<xsl:attribute name="margin-left">0mm</xsl:attribute>
 					</xsl:if>
@@ -8959,6 +8961,10 @@
 	<!-- ====== -->
 	<!-- ====== -->
 
+	<xsl:template name="setBlockSpanAll">
+		<xsl:if test="@columns = 1 or     (local-name() = 'p' and *[@columns = 1])"><xsl:attribute name="span">all</xsl:attribute></xsl:if>
+	</xsl:template>
+
 	<!-- ====== -->
 	<!-- note      -->
 	<!-- termnote -->
@@ -8967,6 +8973,8 @@
 	<xsl:template match="*[local-name() = 'note']" name="note">
 
 		<fo:block-container id="{@id}" xsl:use-attribute-sets="note-style">
+
+			<xsl:call-template name="setBlockSpanAll"/>
 
 			<fo:block-container margin-left="0mm" margin-right="0mm">
 
@@ -9017,6 +9025,8 @@
 
 	<xsl:template match="*[local-name() = 'termnote']">
 		<fo:block id="{@id}" xsl:use-attribute-sets="termnote-style">
+
+			<xsl:call-template name="setBlockSpanAll"/>
 
 			<fo:inline xsl:use-attribute-sets="termnote-name-style">
 
@@ -10936,6 +10946,9 @@
 	<!-- ====== -->
 	<xsl:template match="*[local-name() = 'termexample']">
 		<fo:block id="{@id}" xsl:use-attribute-sets="termexample-style">
+
+			<xsl:call-template name="setBlockSpanAll"/>
+
 			<xsl:apply-templates select="*[local-name()='name']"/>
 			<xsl:apply-templates select="node()[not(local-name() = 'name')]"/>
 		</fo:block>
@@ -10990,6 +11003,8 @@
 	<xsl:template match="*[local-name() = 'example']">
 
 		<fo:block-container id="{@id}" xsl:use-attribute-sets="example-style">
+
+			<xsl:call-template name="setBlockSpanAll"/>
 
 			<xsl:variable name="fo_element">
 				<xsl:if test=".//*[local-name() = 'table'] or .//*[local-name() = 'dl'] or *[not(local-name() = 'name')][1][local-name() = 'sourcecode']">block</xsl:if>
@@ -11214,6 +11229,9 @@
 	<!-- ====== -->
 	<xsl:template match="*[local-name() = 'quote']">
 		<fo:block-container margin-left="0mm">
+
+			<xsl:call-template name="setBlockSpanAll"/>
+
 			<xsl:if test="parent::*[local-name() = 'note']">
 				<xsl:if test="not(ancestor::*[local-name() = 'table'])">
 					<xsl:attribute name="margin-left">5mm</xsl:attribute>
@@ -11499,6 +11517,8 @@
 		<fo:block>
 			<xsl:call-template name="setId"/>
 
+			<xsl:call-template name="setBlockSpanAll"/>
+
 			<xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
@@ -11512,6 +11532,8 @@
 	<xsl:template match="*[local-name() = 'annex']">
 		<fo:block break-after="page"/>
 		<fo:block id="{@id}">
+
+			<xsl:call-template name="setBlockSpanAll"/>
 
 		</fo:block>
 		<xsl:apply-templates/>
@@ -12488,6 +12510,8 @@
 
 		 <!-- text in the box -->
 				<fo:block-container id="{@id}" xsl:use-attribute-sets="admonition-style">
+
+					<xsl:call-template name="setBlockSpanAll"/>
 
 						<xsl:if test="@type = 'editorial'">
 							<xsl:attribute name="border">none</xsl:attribute>
