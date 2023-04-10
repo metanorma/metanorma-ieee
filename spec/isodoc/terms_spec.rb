@@ -124,7 +124,7 @@ RSpec.describe IsoDoc do
                 <strong>paddy rice</strong>
                 , &#x3c;in agriculture&#x3e;;
                 <strong>rough rice</strong>. (<origin bibitemid='ISO7301' type='inline' droploc='true' citeas='ISO 7301:2011'><locality type='clause'><referenceFrom>3.1</referenceFrom></locality>ISO&#xa0;7301:2011, 3.1</origin>)</p>
-              <deprecates>cargo rice</deprecates>
+              <deprecates>DEPRECATED: cargo rice</deprecates>
               <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f893'>
                 <name>Example</name>
                 <ul>
