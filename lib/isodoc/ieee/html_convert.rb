@@ -74,8 +74,8 @@ module IsoDoc
       end
 
       def clausedelimspace(node, out)
-        if node.at("./ancestor::xmlns:p[@type = 'officeorgrepmemberhdr'"\
-                   " or @type = 'officeorgrepmember']")
+        if node.at("./ancestor::xmlns:p[@type = 'officeorgrepmemberhdr' " \
+                   "or @type = 'officeorgrepmember']")
           out.tab
         else super
         end

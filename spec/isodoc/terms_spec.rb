@@ -2,7 +2,7 @@ require "spec_helper"
 
 RSpec.describe IsoDoc do
   it "processes IsoXML terms" do
-    input = <<~"INPUT"
+    input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
           <sections>
           <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
@@ -74,10 +74,11 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
 
-    presxml = <<~"PRESXML"
+    presxml = <<~PRESXML
           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+            <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
-          <terms id='_terms_and_definitions' obligation='normative' displayorder='1'>
+          <terms id='_terms_and_definitions' obligation='normative' displayorder='2'>
             <title depth='1'>
               1.
               <tab/>
@@ -256,7 +257,7 @@ RSpec.describe IsoDoc do
         </body>
     OUTPUT
 
-    word = <<~"WORD"
+    word = <<~WORD
       <body lang='EN-US' link='blue' vlink='#954F72'>
          <div class='WordSection1'>
            <p>&#xa0;</p>
@@ -265,6 +266,9 @@ RSpec.describe IsoDoc do
            <br clear='all' class='section'/>
          </p>
          <div class='WordSection2'>
+             <div class="WordSectionContents">
+            <h1 class="IEEEStdsLevel1frontmatter">Contents</h1>
+          </div>
            <p>&#xa0;</p>
          </div>
          <p>
@@ -436,8 +440,9 @@ RSpec.describe IsoDoc do
     INPUT
     output = <<~OUTPUT
       <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='presentation' version='#{Metanorma::IEEE::VERSION}'>
+            <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
-          <terms id='_' obligation='normative' displayorder='1'>
+          <terms id='_' obligation='normative' displayorder='2'>
             <title depth='1'>
               1.
               <tab/>
@@ -482,7 +487,7 @@ RSpec.describe IsoDoc do
   end
 
   it "processes IsoXML term with multiple paragraph definitions" do
-    input = <<~"INPUT"
+    input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
           <sections>
           <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
@@ -508,8 +513,9 @@ RSpec.describe IsoDoc do
     INPUT
     presxml = <<~PRESXML
           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+            <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
-          <terms id='_terms_and_definitions' obligation='normative' displayorder='1'>
+          <terms id='_terms_and_definitions' obligation='normative' displayorder='2'>
             <title depth='1'>
               1.
               <tab/>
@@ -542,7 +548,7 @@ RSpec.describe IsoDoc do
   end
 
   it "processes IsoXML term with multiple definitions" do
-    input = <<~"INPUT"
+    input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
           <sections>
           <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
@@ -587,8 +593,9 @@ RSpec.describe IsoDoc do
     INPUT
     presxml = <<~PRESXML
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+            <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
          <sections>
-           <terms id="_terms_and_definitions" obligation="normative" displayorder="1">
+           <terms id="_terms_and_definitions" obligation="normative" displayorder="2">
              <title depth="1">1.<tab/>Terms and Definitions</title>
              <p>For the purposes of this document, the following terms and definitions apply.</p>
              <term id="paddy1">
@@ -623,7 +630,7 @@ RSpec.describe IsoDoc do
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
 
-    input = <<~"INPUT"
+    input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
           <sections>
           <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
@@ -662,8 +669,9 @@ RSpec.describe IsoDoc do
     INPUT
     presxml = <<~PRESXML
           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+            <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
-          <terms id='_terms_and_definitions' obligation='normative' displayorder='1'>
+          <terms id='_terms_and_definitions' obligation='normative' displayorder='2'>
             <title depth='1'>
               1.
               <tab/>
@@ -710,7 +718,7 @@ RSpec.describe IsoDoc do
   end
 
   it "processes IsoXML term with multiple preferred or preferred and admitted terms" do
-    input = <<~"INPUT"
+    input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
           <sections>
           <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
@@ -755,108 +763,109 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     presxml = <<~PRESXML
-           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-         <sections>
-           <terms id='_terms_and_definitions' obligation='normative' displayorder='1'>
-             <title depth='1'>
-               1.
-               <tab/>
-               Terms and Definitions
-             </title>
-             <term id='paddy1'>
-               <p>
-                 <strong>A</strong>
-                 , &#x3c;rice&#x3e;: rice retaining its husk after threshing
-                 <em>Syn:</em>
-                 <strong>B</strong>
-                 .
-               </p>
-             </term>
-             <term>
-               <p>
-                 <strong>B</strong>
-                 :
-                 <em>See:</em>
-                 <strong>A</strong>
-                 .
-               </p>
-             </term>
-             <term id='paddy2'>
-               <p>
-                 <strong>C (D)</strong>
-                 , &#x3c;rice&#x3e;: rice retaining its husk after threshing
-               </p>
-             </term>
-             <term id='paddy1a'>
-               <p>
-                 <strong>E</strong>
-                 , &#x3c;rice&#x3e;: rice retaining its husk after threshing
-                 <em>Syn:</em>
-                 <strong>F</strong>
-                 .
-               </p>
-             </term>
-             <term>
-               <p>
-                 <strong>F</strong>
-                 :
-                 <em>See:</em>
-                 <strong>E</strong>
-                 .
-               </p>
-             </term>
-             <term id='paddy2a'>
-               <p>
-                 <strong>G (H)</strong>
-                 , &#x3c;rice&#x3e;: rice retaining its husk after threshing
-               </p>
-             </term>
-             <term id='paddy3'>
-               <p>
-                 <strong>I</strong>
-                 , &#x3c;rice&#x3e;, US: rice retaining its husk after threshing
-                 <em>Syn:</em>
-                 <strong>J</strong>
-                 .
-               </p>
-             </term>
-             <term>
-               <p>
-                 <strong>J</strong>
-                 :
-                 <em>See:</em>
-                 <strong>I</strong>
-                 .
-               </p>
-             </term>
-             <term id='paddy4'>
-               <p>
-                 <strong>K</strong>
-                 , &#x3c;rice&#x3e;, eng: rice retaining its husk after threshing
-                 <em>Syn:</em>
-                 <strong>L</strong>
-                 , fra.
-               </p>
-             </term>
-             <term>
-               <p>
-                 <strong>L</strong>
-                 , fra:
-                 <em>See:</em>
-                 <strong>K</strong>
-                 , eng.
-               </p>
-             </term>
-           </terms>
-         </sections>
-       </iso-standard>
+          <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+           <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
+        <sections>
+          <terms id='_terms_and_definitions' obligation='normative' displayorder='2'>
+            <title depth='1'>
+              1.
+              <tab/>
+              Terms and Definitions
+            </title>
+            <term id='paddy1'>
+              <p>
+                <strong>A</strong>
+                , &#x3c;rice&#x3e;: rice retaining its husk after threshing
+                <em>Syn:</em>
+                <strong>B</strong>
+                .
+              </p>
+            </term>
+            <term>
+              <p>
+                <strong>B</strong>
+                :
+                <em>See:</em>
+                <strong>A</strong>
+                .
+              </p>
+            </term>
+            <term id='paddy2'>
+              <p>
+                <strong>C (D)</strong>
+                , &#x3c;rice&#x3e;: rice retaining its husk after threshing
+              </p>
+            </term>
+            <term id='paddy1a'>
+              <p>
+                <strong>E</strong>
+                , &#x3c;rice&#x3e;: rice retaining its husk after threshing
+                <em>Syn:</em>
+                <strong>F</strong>
+                .
+              </p>
+            </term>
+            <term>
+              <p>
+                <strong>F</strong>
+                :
+                <em>See:</em>
+                <strong>E</strong>
+                .
+              </p>
+            </term>
+            <term id='paddy2a'>
+              <p>
+                <strong>G (H)</strong>
+                , &#x3c;rice&#x3e;: rice retaining its husk after threshing
+              </p>
+            </term>
+            <term id='paddy3'>
+              <p>
+                <strong>I</strong>
+                , &#x3c;rice&#x3e;, US: rice retaining its husk after threshing
+                <em>Syn:</em>
+                <strong>J</strong>
+                .
+              </p>
+            </term>
+            <term>
+              <p>
+                <strong>J</strong>
+                :
+                <em>See:</em>
+                <strong>I</strong>
+                .
+              </p>
+            </term>
+            <term id='paddy4'>
+              <p>
+                <strong>K</strong>
+                , &#x3c;rice&#x3e;, eng: rice retaining its husk after threshing
+                <em>Syn:</em>
+                <strong>L</strong>
+                , fra.
+              </p>
+            </term>
+            <term>
+              <p>
+                <strong>L</strong>
+                , fra:
+                <em>See:</em>
+                <strong>K</strong>
+                , eng.
+              </p>
+            </term>
+          </terms>
+        </sections>
+      </iso-standard>
     PRESXML
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
   end
 
   it "processes IsoXML term with grammatical information" do
-    input = <<~"INPUT"
+    input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
           <sections>
           <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
@@ -888,8 +897,9 @@ RSpec.describe IsoDoc do
     INPUT
     presxml = <<~PRESXML
       <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+            <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
          <sections>
-           <terms id='_terms_and_definitions' obligation='normative' displayorder='1'>
+           <terms id='_terms_and_definitions' obligation='normative' displayorder='2'>
              <title depth='1'>
                1.
                <tab/>
@@ -923,7 +933,7 @@ RSpec.describe IsoDoc do
   end
 
   it "processes IsoXML term with empty or graphical designations" do
-    input = <<~"INPUT"
+    input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
           <sections>
           <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
@@ -941,8 +951,9 @@ RSpec.describe IsoDoc do
     INPUT
     presxml = <<~PRESXML
           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+            <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
-          <terms id='_terms_and_definitions' obligation='normative' displayorder='1'>
+          <terms id='_terms_and_definitions' obligation='normative' displayorder='2'>
             <title depth='1'>
               1.
               <tab/>
@@ -969,7 +980,7 @@ RSpec.describe IsoDoc do
   end
 
   it "processes IsoXML term with nonverbal definitions" do
-    input = <<~"INPUT"
+    input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
                     <sections>
             <terms id='A' obligation='normative'>
@@ -1058,21 +1069,22 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     presxml = <<~PRESXML
-          <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-                   <sections>
-           <terms id="A" obligation="normative" displayorder="1">
-             <title depth="1">1.<tab/>Terms and definitions</title>
-             <p id="B">For the purposes of this document, the following terms and definitions apply.</p>
-             <term id="term-term-2">
-               <p><strong>Term 2</strong>: <figure id="E"><name>Figure 1</name><pre id="F">Literal</pre></figure><formula id="G"><name>1</name><stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>=</mo><mi>y</mi></math><latexmath>x = y</latexmath><asciimath>x = y</asciimath></stem></formula><termsource status="identical" type="authoritative"><origin bibitemid="ISO2191" type="inline" citeas=""><localityStack><locality type="section"><referenceFrom>3</referenceFrom></locality></localityStack>, Section 3</origin></termsource></p>
-             </term>
-             <term id="term-term">
-               <p><strong>Term</strong>: <p>Definition
-                       <origin bibitemid="ISO2191" type="inline" citeas=""><localityStack><locality type="section"><referenceFrom>1</referenceFrom></locality></localityStack>, Section 1</origin></p><table id="D"><name>Table 1</name><thead><tr><th valign="top" align="left">A</th><th valign="top" align="left">B</th></tr></thead><tbody><tr><td valign="top" align="left">C</td><td valign="top" align="left">D</td></tr></tbody></table>  (<origin bibitemid="ISO2191" type="inline" citeas=""><localityStack><locality type="section"><referenceFrom>2</referenceFrom></locality></localityStack>, Section 2</origin>)</p>
-             </term>
-           </terms>
-         </sections>
-       </iso-standard>
+         <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+           <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
+                  <sections>
+          <terms id="A" obligation="normative" displayorder="2">
+            <title depth="1">1.<tab/>Terms and definitions</title>
+            <p id="B">For the purposes of this document, the following terms and definitions apply.</p>
+            <term id="term-term-2">
+              <p><strong>Term 2</strong>: <figure id="E"><name>Figure 1</name><pre id="F">Literal</pre></figure><formula id="G"><name>1</name><stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>=</mo><mi>y</mi></math><latexmath>x = y</latexmath><asciimath>x = y</asciimath></stem></formula><termsource status="identical" type="authoritative"><origin bibitemid="ISO2191" type="inline" citeas=""><localityStack><locality type="section"><referenceFrom>3</referenceFrom></locality></localityStack>, Section 3</origin></termsource></p>
+            </term>
+            <term id="term-term">
+              <p><strong>Term</strong>: <p>Definition
+                      <origin bibitemid="ISO2191" type="inline" citeas=""><localityStack><locality type="section"><referenceFrom>1</referenceFrom></locality></localityStack>, Section 1</origin></p><table id="D"><name>Table 1</name><thead><tr><th valign="top" align="left">A</th><th valign="top" align="left">B</th></tr></thead><tbody><tr><td valign="top" align="left">C</td><td valign="top" align="left">D</td></tr></tbody></table>  (<origin bibitemid="ISO2191" type="inline" citeas=""><localityStack><locality type="section"><referenceFrom>2</referenceFrom></locality></localityStack>, Section 2</origin>)</p>
+            </term>
+          </terms>
+        </sections>
+      </iso-standard>
     PRESXML
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
@@ -1144,8 +1156,9 @@ RSpec.describe IsoDoc do
     INPUT
     output = <<~OUTPUT
       <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+            <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
-          <terms id='A' obligation='normative' displayorder='1'>
+          <terms id='A' obligation='normative' displayorder='2'>
             <title depth='1'>
               1.
               <tab/>
@@ -1223,8 +1236,9 @@ RSpec.describe IsoDoc do
     INPUT
     output = <<~OUTPUT
       <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+            <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
          <sections>
-           <terms id='A' obligation='normative' displayorder='1'>
+           <terms id='A' obligation='normative' displayorder='2'>
              <title depth='1'>
                1.
                <tab/>

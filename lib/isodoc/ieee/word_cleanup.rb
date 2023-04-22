@@ -38,6 +38,9 @@ module IsoDoc
 
       def make_WordToC(docxml, level)
         toc = ""
+        if source = docxml.at("//div[@class = 'TOC']")
+          toc = to_xml(source.children)
+        end
         xpath = (1..level).each.map do |i|
           "//h#{i}[not(ancestor::*[@class = 'WordSection2'])]"
         end.join (" | ")
@@ -70,7 +73,7 @@ module IsoDoc
         if hdr.at("./ancestor::div[@class = 'Annex']")
           hdr.delete("class")
           hdr["style"] = "mso-list:l13 level#{idx} lfo33;"
-        elsif hdr.at("./ancestor::div[@class = 'Section3']")
+        elsif hdr.at("./ancestor::div[@class = 'Section3' or @class = 'WordSectionContents']")
           hdr.name = "p"
           hdr["class"] = "IEEEStdsLevel#{idx}frontmatter"
         else

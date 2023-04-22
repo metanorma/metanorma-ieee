@@ -2,7 +2,7 @@ require "spec_helper"
 
 RSpec.describe IsoDoc do
   it "processes tables" do
-    input = <<~"INPUT"
+    input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
           <preface><foreword id="A">
           <table id="tableD-1" alt="tool tip" summary="long desc">
@@ -59,10 +59,11 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
 
-    presxml = <<~"PRESXML"
+    presxml = <<~PRESXML
       <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
          <preface>
-           <foreword displayorder='1' id="A">
+             <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause>
+           <foreword displayorder='2' id="A">
              <table id='tableD-1' alt='tool tip' summary='long desc'>
                <name>Table 1&#x2014;Hello</name>
                <thead>
@@ -224,7 +225,7 @@ RSpec.describe IsoDoc do
        </body>
     OUTPUT
 
-    word = <<~"WORD"
+    word = <<~WORD
           <div>
         <a name="A" id="A"/>
         <p class="IEEEStdsLevel1Header">Foreword</p>
@@ -385,7 +386,9 @@ RSpec.describe IsoDoc do
     presxml = <<~OUTPUT
           <?xml version='1.0'?>
            <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-          <preface><foreword displayorder="1" id="A">
+          <preface>
+              <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause>
+          <foreword displayorder="2" id="A">
           <figure id="figureA-1" keep-with-next="true" keep-lines-together="true">
         <name>Figure 1&#x2014;Split-it-right <em>sample</em> divider<fn reference="1"><p>X</p></fn></name>
         <image src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7" height="20" width="auto" id="_8357ede4-6d44-4672-bac4-9a85e82ab7f2" mimetype="image/png"/>
@@ -583,8 +586,13 @@ RSpec.describe IsoDoc do
     INPUT
     presxml = <<~OUTPUT
           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+          <preface>
+              <clause type="toc" displayorder="1">
+          <title depth="1">Contents</title>
+        </clause>
+        </preface>
         <sections>
-          <clause id='a' displayorder='1'>
+          <clause id='a' displayorder='2'>
             <title depth='1'>
               1.
               <tab/>
@@ -599,7 +607,7 @@ RSpec.describe IsoDoc do
               <p id='_f06fd0d1-a203-4f3d-a515-0bdba0f8d83a'>Second note.</p>
             </note>
           </clause>
-          <clause id='b' displayorder='2'>
+          <clause id='b' displayorder='3'>
             <title depth='1'>
               2.
               <tab/>
@@ -654,7 +662,11 @@ RSpec.describe IsoDoc do
   it "processes admonitions" do
     presxml = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml" type='presentation'>
-          <preface><foreword displayorder="1">
+          <preface>
+              <clause type="toc" displayorder="1">
+      <title depth="1">Contents</title>
+    </clause>
+          <foreword displayorder="2">
           <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6a" type="caution" keep-with-next="true" keep-lines-together="true">
           <name>CAUTION</name>
         <p id="_e94663cc-2473-4ccc-9a72-983a74d989f2">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
@@ -683,7 +695,10 @@ RSpec.describe IsoDoc do
        </body>
     OUTPUT
     word = <<~OUTPUT
-          <div class='WordSection2'>
+      <div class='WordSection2'>
+            <div class="WordSectionContents">
+          <h1 class="IEEEStdsLevel1frontmatter">Contents</h1>
+        </div>
         <p>
           <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
         </p>
@@ -715,7 +730,10 @@ RSpec.describe IsoDoc do
     presxml = <<~INPUT
       <iso-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
         <preface>
-          <foreword displayorder="1" id="A">
+            <clause type="toc" displayorder="1">
+         <title depth="1">Contents</title>
+        </clause>
+          <foreword displayorder="2" id="A">
             <example id='samplecode' keep-with-next='true' keep-lines-together='true'>
               <name>Example 1</name>
               <p>Hello</p>
@@ -805,7 +823,11 @@ RSpec.describe IsoDoc do
     INPUT
     presxml = <<~INPUT
              <iso-standard xmlns="http://riboseinc.com/isoxml"  type='presentation'>
-          <preface><foreword id="A" displayorder="1">
+          <preface>
+              <clause type="toc" displayorder="1">
+      <title depth="1">Contents</title>
+    </clause>
+        <foreword id="A" displayorder="2">
           <formula id="_be9158af-7e93-4ee2-90c5-26d31c181934" unnumbered="true"  keep-with-next="true" keep-lines-together="true">
         <stem type="AsciiMath">r = 1 %</stem>
       <dl id="_e4fe94fe-1cde-49d9-b1ad-743293b7e21d" class="formula_dl">
@@ -1023,7 +1045,7 @@ RSpec.describe IsoDoc do
          </standard-document>
     INPUT
     presxml = <<~OUTPUT
-          <clause id='A' inline-header='false' obligation='normative' displayorder='1'>
+          <clause id='A' inline-header='false' obligation='normative' displayorder='2'>
         <title depth='1'>
           1.
           <tab/>

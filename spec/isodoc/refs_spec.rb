@@ -210,8 +210,9 @@ RSpec.describe IsoDoc do
 
     presxml = <<~"PRESXML"
            <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+             <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
          <sections>
-           <clause id="A" inline-header="false" obligation="normative" displayorder="2">
+           <clause id="A" inline-header="false" obligation="normative" displayorder="3">
              <title depth="1">2.<tab/>Clause</title>
              <p id="_">
                <eref type="inline" bibitemid="ref1" citeas="ISO 639:1967">ISO 639:1967</eref>
@@ -224,7 +225,7 @@ RSpec.describe IsoDoc do
            </clause>
          </sections>
          <bibliography>
-           <references id="_" normative="true" obligation="informative" displayorder="1">
+           <references id="_" normative="true" obligation="informative" displayorder="2">
              <title depth="1">Normative References</title>
              <bibitem id="IETF_6281" type="standard">
                <formattedref>Code for the representation of names of languages.</formattedref>
@@ -260,7 +261,7 @@ RSpec.describe IsoDoc do
                <biblio-tag>[B3], ISO 639:1967, </biblio-tag>
              </bibitem>
            </references>
-           <references id="_" normative="false" obligation="informative" displayorder="3">
+           <references id="_" normative="false" obligation="informative" displayorder="4">
              <title depth="1">Bibliography</title>
              <bibitem id="ref6">
                <formattedref format="application/x-isodoc+xml">REF4</formattedref>

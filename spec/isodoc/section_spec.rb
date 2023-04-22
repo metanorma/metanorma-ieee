@@ -92,24 +92,25 @@ RSpec.describe IsoDoc::IEEE do
     presxml = <<~OUTPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
         <preface>
-          <abstract obligation="informative" displayorder="1">
+           <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> 
+          <abstract obligation="informative" displayorder="2">
             <title>Foreword</title>
             <p id="A">This is a preamble</p>
           </abstract>
-          <introduction id="B" obligation="informative" displayorder="2">
+          <introduction id="B" obligation="informative" displayorder="3">
             <title>Introduction</title>
             <clause id="C" inline-header="false" obligation="informative">
               <title depth="2">Introduction Subsection</title>
             </clause>
             <p>This is patent boilerplate</p>
           </introduction>
-          <acknowledgements obligation="informative" displayorder="3">
+          <acknowledgements obligation="informative" displayorder="4">
             <title>Acknolwedgements</title>
             <p id="A">This is a preamble</p>
           </acknowledgements>
         </preface>
         <sections>
-          <clause id="D" obligation="normative" type="overview" displayorder="4">
+          <clause id="D" obligation="normative" type="overview" displayorder="5">
             <title depth="1">1.<tab/>Overview</title>
             <p id="E">Text</p>
             <clause id="D1" obligation="normative" type="scope">
@@ -119,7 +120,7 @@ RSpec.describe IsoDoc::IEEE do
             <title depth="2">1.2.<tab/>Purpose</title>
             </clause>
           </clause>
-          <clause id="H" obligation="normative" displayorder="6">
+          <clause id="H" obligation="normative" displayorder="7">
             <title depth="1">3.<tab/>Terms, Definitions, Symbols and Abbreviated Terms</title>
             <terms id="I" obligation="normative">
               <title depth="2">3.1.<tab/>Normal Terms</title>
@@ -137,13 +138,13 @@ RSpec.describe IsoDoc::IEEE do
               </dl>
             </definitions>
           </clause>
-          <definitions id="L" displayorder="7"><title>4.</title>
+          <definitions id="L" displayorder="8"><title>4.</title>
             <dl>
               <dt>Symbol</dt>
               <dd>Definition</dd>
             </dl>
           </definitions>
-          <clause id="M" inline-header="false" obligation="normative" displayorder="8">
+          <clause id="M" inline-header="false" obligation="normative" displayorder="9">
             <title depth="1">5.<tab/>Clause 4</title>
             <clause id="N" inline-header="false" obligation="normative">
               <title depth="2">5.1.<tab/>Introduction</title>
@@ -153,7 +154,7 @@ RSpec.describe IsoDoc::IEEE do
             </clause>
           </clause>
         </sections>
-        <annex id="P" inline-header="false" obligation="normative" displayorder="9">
+        <annex id="P" inline-header="false" obligation="normative" displayorder="10">
           <title><strong>Annex A</strong><br/><span class="obligation">(normative)</span><br/><strong>Annex</strong></title>
           <clause id="Q" inline-header="false" obligation="normative">
             <title depth="2">A.1.<tab/>Annex A.1</title>
@@ -166,10 +167,10 @@ RSpec.describe IsoDoc::IEEE do
           </references>
         </annex>
         <bibliography>
-          <references id="R" normative="true" obligation="informative" displayorder="5">
+          <references id="R" normative="true" obligation="informative" displayorder="6">
             <title depth="1">2.<tab/>Normative References</title>
           </references>
-          <clause id="S" obligation="informative" displayorder="10">
+          <clause id="S" obligation="informative" displayorder="11">
             <title depth="1">Bibliography</title>
             <references id="T" normative="false" obligation="informative">
               <title depth="2">Bibliography Subsection</title>
@@ -290,6 +291,9 @@ RSpec.describe IsoDoc::IEEE do
           <br clear='all' class='section'/>
         </p>
         <div class='WordSection2'>
+            <div class="WordSectionContents">
+          <h1 class="IEEEStdsLevel1frontmatter">Contents</h1>
+        </div>
           <p>
             <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
           </p>
@@ -487,6 +491,9 @@ RSpec.describe IsoDoc::IEEE do
             </structuredidentifier>
           </ext>
         </bibdata>
+        <preface>
+           <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> 
+        </preface>
         <sections/>
       </iso-standard>
     INPUT
@@ -534,7 +541,8 @@ RSpec.describe IsoDoc::IEEE do
     INPUT
     presxml = <<~OUTPUT
          <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-        <annex id="a" inline-header="false" obligation="normative" displayorder="1">
+           <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
+        <annex id="a" inline-header="false" obligation="normative" displayorder="2">
         <title><strong>Annex A</strong><br/><span class='obligation'>(normative)</span><br/><strong>Appendix C</strong></title>
         <references id="_" normative="false" obligation="informative">
           <p id="_">

@@ -91,7 +91,8 @@ RSpec.describe IsoDoc::IEEE do
       .to be_equivalent_to xmlpp(<<~"OUTPUT")
         <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
           <preface>
-            <foreword displayorder='1'>
+              <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause>
+            <foreword displayorder='2'>
               <p>
                 <eref bibitemid='IEV' citeas='IEV' type='inline'>
                   <locality type='clause'>
@@ -166,7 +167,7 @@ RSpec.describe IsoDoc::IEEE do
             </foreword>
           </preface>
           <bibliography>
-            <references id='_normative_references' normative='true' obligation='informative' displayorder='2'>
+            <references id='_normative_references' normative='true' obligation='informative' displayorder='3'>
               <title depth='1'>
                 1.
                 <tab/>
@@ -357,7 +358,7 @@ RSpec.describe IsoDoc::IEEE do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-      <foreword displayorder='1'>
+      <foreword displayorder='2'>
         <p>
           <ul>
             <li> </li>
@@ -400,7 +401,8 @@ RSpec.describe IsoDoc::IEEE do
     output = <<~OUTPUT
       <iso-standard xmlns='http://riboseinc.com/isoxml' xmlns:m='http://www.w3.org/1998/Math/MathML' type='presentation'>
         <preface>
-          <foreword displayorder='1'>
+            <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause>
+          <foreword displayorder='2'>
             <p>
               <stem type='MathML'>
                  <m:math>

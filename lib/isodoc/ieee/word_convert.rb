@@ -47,12 +47,11 @@ module IsoDoc
           ulstyle: "l11", olstyle: "l16" }
       end
 
-      def abstract(isoxml, out)
-        f = isoxml.at(ns("//preface/abstract")) || return
+      def abstract(clause, out)
         page_break(out)
-        out.div **attr_code(id: f["id"], class: "abstract") do |s|
-          clause_name(f, f.at(ns("./title")), s, { class: "AbstractTitle" })
-          f.elements.each { |e| parse(e, s) unless e.name == "title" }
+        out.div **attr_code(id: clause["id"], class: "abstract") do |s|
+          clause_name(clause, clause.at(ns("./title")), s, { class: "AbstractTitle" })
+          clause.elements.each { |e| parse(e, s) unless e.name == "title" }
         end
       end
 
@@ -173,6 +172,16 @@ module IsoDoc
         para.span class: "note_label" do |s|
           name.children.each { |n| parse(n, s) }
           s << termnote_delim
+        end
+      end
+
+      def table_of_contents(clause, out)
+        out.div class: "WordSectionContents" do |div|
+          clause_name(clause, clause.at(ns("./title")), div,
+                      { class: "IEEEStdsLevel1frontmatter" })
+          clause.elements.each do |e|
+            parse(e, div) unless e.name == "title"
+          end
         end
       end
 

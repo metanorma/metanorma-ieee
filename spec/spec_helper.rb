@@ -290,6 +290,10 @@ HTML_HDR = <<~"HDR".freeze
   </div>
   <br/>
   <div class="main-section">
+      <br/>
+    <div class="TOC">
+      <h1 class="IntroTitle">Contents</h1>
+    </div>
 HDR
 
 def word2xml(filename)

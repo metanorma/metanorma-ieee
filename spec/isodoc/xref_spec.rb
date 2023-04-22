@@ -17,6 +17,7 @@ RSpec.describe Metanorma::IEEE do
                       <referenceFrom>1.2</referenceFrom>
                     </locality>
                   </eref></p>
+                  </foreword>
         </preface>
         <sections>
         <clause id="B">
@@ -28,7 +29,10 @@ RSpec.describe Metanorma::IEEE do
     output = <<~OUTPUT
       <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
          <preface>
-           <foreword obligation='informative' displayorder='1'>
+            <clause type="toc" displayorder="1">
+                <title depth="1">Contents</title>
+            </clause>
+           <foreword obligation='informative' displayorder='2'>
              <title>Foreword</title>
              <p id='X'>
                <xref target='A'>Clause 1.1</xref>
@@ -51,7 +55,8 @@ RSpec.describe Metanorma::IEEE do
                </eref>
              </p>
            </foreword>
-           <sections displayorder='2'>
+         </preface>
+           <sections>
              <clause id='B' displayorder='3'>
                <title>1.</title>
                <clause id='A'>
@@ -59,7 +64,6 @@ RSpec.describe Metanorma::IEEE do
                </clause>
              </clause>
            </sections>
-         </preface>
        </iso-standard>
     OUTPUT
     expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
@@ -100,7 +104,7 @@ RSpec.describe Metanorma::IEEE do
           </itu-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword displayorder='1'>
+      <foreword displayorder='2'>
          <p>
            <xref target='N1'>Equation (1)</xref>
            <xref target='N2'>Inequality (2)</xref>
@@ -169,7 +173,7 @@ RSpec.describe Metanorma::IEEE do
         </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword id='fwd' displayorder='1'>
+      <foreword id='fwd' displayorder='2'>
         <p>
           <xref target='N'>Figure 1</xref>
           <xref target='note1'>Figure 1-1</xref>
@@ -186,7 +190,7 @@ RSpec.describe Metanorma::IEEE do
       .at("//xmlns:foreword").to_xml))
       .to be_equivalent_to xmlpp(output)
     output = <<~OUTPUT
-      <foreword id='fwd' displayorder='1'>
+      <foreword id='fwd' displayorder='2'>
          <p>
            <xref target='N'>Figure 3.1</xref>
            <xref target='note1'>Figure 3.1-1</xref>
