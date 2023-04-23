@@ -29,7 +29,7 @@ RSpec.describe Metanorma::IEEE do
     output = <<~OUTPUT
       <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
          <preface>
-            <clause type="toc" displayorder="1">
+            <clause type="toc" id="_" displayorder="1">
                 <title depth="1">Contents</title>
             </clause>
            <foreword obligation='informative' displayorder='2'>
@@ -66,8 +66,8 @@ RSpec.describe Metanorma::IEEE do
            </sections>
        </iso-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-  .convert("test", input, true))).to be_equivalent_to xmlpp(output)
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+  .convert("test", input, true)))).to be_equivalent_to xmlpp(output)
   end
 
   it "cross-references formulae" do

@@ -210,7 +210,7 @@ RSpec.describe IsoDoc do
 
     presxml = <<~"PRESXML"
            <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-             <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
+             <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
          <sections>
            <clause id="A" inline-header="false" obligation="normative" displayorder="3">
              <title depth="1">2.<tab/>Clause</title>
@@ -295,7 +295,7 @@ RSpec.describe IsoDoc do
       IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true),
     )
-    expect(xmlpp(out.to_xml))
+    expect(xmlpp(strip_guid(out.to_xml)))
       .to be_equivalent_to xmlpp(presxml)
   end
 end

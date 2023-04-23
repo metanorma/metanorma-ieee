@@ -109,7 +109,7 @@ def xmlpp(xml)
     .gsub(%r{ schema-version="[^"]+"}, "")
 end
 
-ASCIIDOC_BLANK_HDR = <<~"HDR".freeze
+ASCIIDOC_BLANK_HDR = <<~HDR.freeze
   = Document title
   Author
   :docfile: test.adoc
@@ -118,7 +118,7 @@ ASCIIDOC_BLANK_HDR = <<~"HDR".freeze
 
 HDR
 
-VALIDATING_BLANK_HDR = <<~"HDR".freeze
+VALIDATING_BLANK_HDR = <<~HDR.freeze
   = Document title
   Author
   :docfile: test.adoc
@@ -279,7 +279,7 @@ def blank_hdr_gen
   HDR
 end
 
-HTML_HDR = <<~"HDR".freeze
+HTML_HDR = <<~HDR.freeze
   <body lang='en'>
   <div class="title-section">
     <p>&#160;</p>
@@ -291,7 +291,7 @@ HTML_HDR = <<~"HDR".freeze
   <br/>
   <div class="main-section">
       <br/>
-    <div class="TOC">
+    <div class="TOC" id="_">
       <h1 class="IntroTitle">Contents</h1>
     </div>
 HDR
@@ -305,7 +305,7 @@ def word2xml(filename)
 end
 
 def mock_pdf
-  allow(::Mn2pdf).to receive(:convert) do |url, output, _c, _d|
+  allow(Mn2pdf).to receive(:convert) do |url, output, _c, _d|
     FileUtils.cp(url.gsub(/"/, ""), output.gsub(/"/, ""))
   end
 end

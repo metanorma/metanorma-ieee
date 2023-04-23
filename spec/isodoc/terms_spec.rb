@@ -76,9 +76,9 @@ RSpec.describe IsoDoc do
 
     presxml = <<~PRESXML
           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-            <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
+            <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
-          <terms id='_terms_and_definitions' obligation='normative' displayorder='2'>
+          <terms id='_' obligation='normative' displayorder='2'>
             <title depth='1'>
               1.
               <tab/>
@@ -92,14 +92,14 @@ RSpec.describe IsoDoc do
                 its husk after threshing (<origin bibitemid='ISO7301' type='inline' citeas='ISO 7301:2011'><locality type='clause'><referenceFrom>3.1</referenceFrom></locality>ISO&#xa0;7301:2011, 3.1</origin>, modified &#x2013; The term "cargo rice" is shown as deprecated, and
                 Note 1 to entry is not included here)
               </p>
-              <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f892' keep-with-next='true' keep-lines-together='true'>
+              <termexample id='_' keep-with-next='true' keep-lines-together='true'>
                 <name>Example 1</name>
-                <p id='_65c9a509-9a89-4b54-a890-274126aeb55c'>Foreign seeds, husks, bran, sand, dust.</p>
+                <p id='_'>Foreign seeds, husks, bran, sand, dust.</p>
                 <ul>
                   <li>A</li>
                 </ul>
               </termexample>
-              <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f894'>
+              <termexample id='_'>
                 <name>Example 2</name>
                 <ul>
                   <li>A</li>
@@ -126,24 +126,24 @@ RSpec.describe IsoDoc do
                 , &#x3c;in agriculture&#x3e;;
                 <strong>rough rice</strong>. (<origin bibitemid='ISO7301' type='inline' droploc='true' citeas='ISO 7301:2011'><locality type='clause'><referenceFrom>3.1</referenceFrom></locality>ISO&#xa0;7301:2011, 3.1</origin>)</p>
               <deprecates>DEPRECATED: cargo rice</deprecates>
-              <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f893'>
+              <termexample id='_'>
                 <name>Example</name>
                 <ul>
                   <li>A</li>
                 </ul>
               </termexample>
-              <termnote id='_671a1994-4783-40d0-bc81-987d06ffb74e' keep-with-next='true' keep-lines-together='true'>
+              <termnote id='_' keep-with-next='true' keep-lines-together='true'>
                 <name>NOTE 1</name>
-                <p id='_19830f33-e46c-42cc-94ca-a5ef101132d5'>The starch of waxy rice consists almost entirely of amylopectin. The
+                <p id='_'>The starch of waxy rice consists almost entirely of amylopectin. The
                   kernels have a tendency to stick together after cooking.
                 </p>
               </termnote>
-              <termnote id='_671a1994-4783-40d0-bc81-987d06ffb74f'>
+              <termnote id='_'>
                 <name>NOTE 2</name>
                 <ul>
                   <li>A</li>
                 </ul>
-                <p id='_19830f33-e46c-42cc-94ca-a5ef101132d5'>
+                <p id='_'>
                   The starch of waxy rice consists almost entirely of amylopectin. The
                   kernels have a tendency to stick together after cooking.
                 </p>
@@ -175,7 +175,7 @@ RSpec.describe IsoDoc do
     html = <<~"OUTPUT"
        #{HTML_HDR}
             <p class='zzSTDTitle1'/>
-            <div id='_terms_and_definitions'>
+            <div id='_'>
               <h1> 1. &#xa0; Terms and Definitions </h1>
               <p>For the purposes of this document, the following terms and definitions apply.</p>
               <p class='TermNum' id='paddy1'/>
@@ -186,14 +186,14 @@ RSpec.describe IsoDoc do
                 The term "cargo rice" is shown as deprecated, and Note 1 to entry is not
                 included here)
               </p>
-              <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f892' class='example' style='page-break-after: avoid;page-break-inside: avoid;'>
+              <div id='_' class='example' style='page-break-after: avoid;page-break-inside: avoid;'>
                 <p class='example-title'>Example 1:</p>
-                <p id='_65c9a509-9a89-4b54-a890-274126aeb55c'>Foreign seeds, husks, bran, sand, dust.</p>
+                <p id='_'>Foreign seeds, husks, bran, sand, dust.</p>
                 <ul>
                   <li>A</li>
                 </ul>
               </div>
-              <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f894' class='example'>
+              <div id='_' class='example'>
                 <p class='example-title'>Example 2:</p>
                 <ul>
                   <li>A</li>
@@ -213,24 +213,24 @@ RSpec.describe IsoDoc do
                 <b>rough rice</b>. (ISO&#xa0;7301:2011, 3.1)
               </p>
               <p class='DeprecatedTerms' style='text-align:left;'>DEPRECATED: cargo rice</p>
-              <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f893' class='example'>
+              <div id='_' class='example'>
                 <p class='example-title'>Example:</p>
                 <ul>
                   <li>A</li>
                 </ul>
               </div>
-              <div id='_671a1994-4783-40d0-bc81-987d06ffb74e' class='Note' style='page-break-after: avoid;page-break-inside: avoid;'>
+              <div id='_' class='Note' style='page-break-after: avoid;page-break-inside: avoid;'>
                 <p>NOTE 1&#x2014;The starch of waxy rice consists almost entirely of
                   amylopectin. The kernels have a tendency to stick together after
                   cooking.
                 </p>
               </div>
-              <div id='_671a1994-4783-40d0-bc81-987d06ffb74f' class='Note'>
+              <div id='_' class='Note'>
                 <p>NOTE 2&#x2014;
                   <ul>
                     <li>A</li>
                   </ul>
-                  <p id='_19830f33-e46c-42cc-94ca-a5ef101132d5'>
+                  <p id='_'>
                      The starch of waxy rice consists almost entirely of amylopectin.
                     The kernels have a tendency to stick together after cooking.
                   </p>
@@ -281,7 +281,7 @@ RSpec.describe IsoDoc do
            <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
          </p>
          <div class='WordSectionMain'>
-           <div id='_terms_and_definitions'>
+           <div id='_'>
              <h1>
                 1.
                <span style='mso-tab-count:1'>&#xa0; </span>
@@ -296,14 +296,14 @@ RSpec.describe IsoDoc do
                The term "cargo rice" is shown as deprecated, and Note 1 to entry is not
                included here)
              </p>
-             <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f892' class='example' style='page-break-after: avoid;page-break-inside: avoid;'>
+             <div id='_' class='example' style='page-break-after: avoid;page-break-inside: avoid;'>
                <p class='example-title'>Example 1:</p>
-               <p id='_65c9a509-9a89-4b54-a890-274126aeb55c'>Foreign seeds, husks, bran, sand, dust.</p>
+               <p id='_'>Foreign seeds, husks, bran, sand, dust.</p>
                <ul>
                  <li>A</li>
                </ul>
              </div>
-             <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f894' class='example'>
+             <div id='_' class='example'>
                <p class='example-title'>Example 2:</p>
                <ul>
                  <li>A</li>
@@ -323,26 +323,26 @@ RSpec.describe IsoDoc do
                <b>rough rice</b>. (ISO&#xa0;7301:2011, 3.1)
              </p>
              <p class='DeprecatedTerms' style='text-align:left;'>DEPRECATED: cargo rice</p>
-             <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f893' class='example'>
+             <div id='_' class='example'>
                <p class='example-title'>Example:</p>
                <ul>
                  <li>A</li>
                </ul>
              </div>
-             <div id='_671a1994-4783-40d0-bc81-987d06ffb74e' class='Note' style='page-break-after: avoid;page-break-inside: avoid;'>
+             <div id='_' class='Note' style='page-break-after: avoid;page-break-inside: avoid;'>
                <p>
                  <span class='note_label'>NOTE 1&#x2014;</span>
                  The starch of waxy rice consists almost entirely of amylopectin. The
                  kernels have a tendency to stick together after cooking.
                </p>
              </div>
-             <div id='_671a1994-4783-40d0-bc81-987d06ffb74f' class='Note'>
+             <div id='_' class='Note'>
                <p>
                  <span class='note_label'>NOTE 2&#x2014;</span>
                  <ul>
                    <li>A</li>
                  </ul>
-                 <p id='_19830f33-e46c-42cc-94ca-a5ef101132d5'>
+                 <p id='_'>
                     The starch of waxy rice consists almost entirely of amylopectin.
                    The kernels have a tendency to stick together after cooking.
                  </p>
@@ -369,8 +369,8 @@ RSpec.describe IsoDoc do
          </body>
     WORD
 
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)))).to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
       .convert("test", presxml, true))
       .at("//body").to_xml)).to be_equivalent_to xmlpp(html)
@@ -440,7 +440,7 @@ RSpec.describe IsoDoc do
     INPUT
     output = <<~OUTPUT
       <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='presentation' version='#{Metanorma::IEEE::VERSION}'>
-            <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
+            <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
           <terms id='_' obligation='normative' displayorder='2'>
             <title depth='1'>
@@ -482,8 +482,8 @@ RSpec.describe IsoDoc do
         </sections>
       </ieee-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-        .convert("test", input, true))).to be_equivalent_to xmlpp(output)
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+        .convert("test", input, true)))).to be_equivalent_to xmlpp(output)
   end
 
   it "processes IsoXML term with multiple paragraph definitions" do
@@ -513,9 +513,9 @@ RSpec.describe IsoDoc do
     INPUT
     presxml = <<~PRESXML
           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-            <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
+            <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
-          <terms id='_terms_and_definitions' obligation='normative' displayorder='2'>
+          <terms id='_' obligation='normative' displayorder='2'>
             <title depth='1'>
               1.
               <tab/>
@@ -543,8 +543,8 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     PRESXML
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)))).to be_equivalent_to xmlpp(presxml)
   end
 
   it "processes IsoXML term with multiple definitions" do
@@ -593,9 +593,9 @@ RSpec.describe IsoDoc do
     INPUT
     presxml = <<~PRESXML
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-            <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
+            <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
          <sections>
-           <terms id="_terms_and_definitions" obligation="normative" displayorder="2">
+           <terms id="_" obligation="normative" displayorder="2">
              <title depth="1">1.<tab/>Terms and Definitions</title>
              <p>For the purposes of this document, the following terms and definitions apply.</p>
              <term id="paddy1">
@@ -609,14 +609,14 @@ RSpec.describe IsoDoc do
            <origin citeas=""><termref base="IEV" target="xyz"/></origin>, modified
             –
              with adjustments)</p>
-               <termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f892" keep-with-next="true" keep-lines-together="true">
+               <termexample id="_" keep-with-next="true" keep-lines-together="true">
                  <name>Example  1</name>
-                 <p id="_65c9a509-9a89-4b54-a890-274126aeb55c">Foreign seeds, husks, bran, sand, dust.</p>
+                 <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
                  <ul>
                    <li>A</li>
                  </ul>
                </termexample>
-               <termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f894">
+               <termexample id="_">
                  <name>Example  2</name>
                  <ul>
                    <li>A</li>
@@ -627,8 +627,8 @@ RSpec.describe IsoDoc do
          </sections>
        </iso-standard>
     PRESXML
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)))).to be_equivalent_to xmlpp(presxml)
 
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
@@ -669,9 +669,9 @@ RSpec.describe IsoDoc do
     INPUT
     presxml = <<~PRESXML
           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-            <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
+            <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
-          <terms id='_terms_and_definitions' obligation='normative' displayorder='2'>
+          <terms id='_' obligation='normative' displayorder='2'>
             <title depth='1'>
               1.
               <tab/>
@@ -695,14 +695,14 @@ RSpec.describe IsoDoc do
                 </origin>
                 , modified &#x2013; with adjustments)
               </p>
-              <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f892' keep-with-next='true' keep-lines-together='true'>
+              <termexample id='_' keep-with-next='true' keep-lines-together='true'>
                 <name>Example 1</name>
-                <p id='_65c9a509-9a89-4b54-a890-274126aeb55c'>Foreign seeds, husks, bran, sand, dust.</p>
+                <p id='_'>Foreign seeds, husks, bran, sand, dust.</p>
                 <ul>
                   <li>A</li>
                 </ul>
               </termexample>
-              <termexample id='_bd57bbf1-f948-4bae-b0ce-73c00431f894'>
+              <termexample id='_'>
                 <name>Example 2</name>
                 <ul>
                   <li>A</li>
@@ -713,8 +713,8 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     PRESXML
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)))).to be_equivalent_to xmlpp(presxml)
   end
 
   it "processes IsoXML term with multiple preferred or preferred and admitted terms" do
@@ -764,9 +764,9 @@ RSpec.describe IsoDoc do
     INPUT
     presxml = <<~PRESXML
           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-           <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
+           <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
-          <terms id='_terms_and_definitions' obligation='normative' displayorder='2'>
+          <terms id='_' obligation='normative' displayorder='2'>
             <title depth='1'>
               1.
               <tab/>
@@ -860,8 +860,8 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     PRESXML
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)))).to be_equivalent_to xmlpp(presxml)
   end
 
   it "processes IsoXML term with grammatical information" do
@@ -897,9 +897,9 @@ RSpec.describe IsoDoc do
     INPUT
     presxml = <<~PRESXML
       <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-            <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
+            <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
          <sections>
-           <terms id='_terms_and_definitions' obligation='normative' displayorder='2'>
+           <terms id='_' obligation='normative' displayorder='2'>
              <title depth='1'>
                1.
                <tab/>
@@ -928,8 +928,8 @@ RSpec.describe IsoDoc do
          </sections>
        </iso-standard>
     PRESXML
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)))).to be_equivalent_to xmlpp(presxml)
   end
 
   it "processes IsoXML term with empty or graphical designations" do
@@ -951,9 +951,9 @@ RSpec.describe IsoDoc do
     INPUT
     presxml = <<~PRESXML
           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-            <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
+            <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
-          <terms id='_terms_and_definitions' obligation='normative' displayorder='2'>
+          <terms id='_' obligation='normative' displayorder='2'>
             <title depth='1'>
               1.
               <tab/>
@@ -975,8 +975,8 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     PRESXML
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)))).to be_equivalent_to xmlpp(presxml)
   end
 
   it "processes IsoXML term with nonverbal definitions" do
@@ -1070,7 +1070,7 @@ RSpec.describe IsoDoc do
     INPUT
     presxml = <<~PRESXML
          <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-           <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
+           <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
                   <sections>
           <terms id="A" obligation="normative" displayorder="2">
             <title depth="1">1.<tab/>Terms and definitions</title>
@@ -1086,8 +1086,8 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     PRESXML
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)))).to be_equivalent_to xmlpp(presxml)
   end
 
   it "processes related terms and admitted terms" do
@@ -1156,7 +1156,7 @@ RSpec.describe IsoDoc do
     INPUT
     output = <<~OUTPUT
       <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-            <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
+            <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
           <terms id='A' obligation='normative' displayorder='2'>
             <title depth='1'>
@@ -1199,8 +1199,8 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-       .convert("test", input, true))).to be_equivalent_to xmlpp(output)
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+       .convert("test", input, true)))).to be_equivalent_to xmlpp(output)
   end
 
   it "processes missing related terms" do
@@ -1236,7 +1236,7 @@ RSpec.describe IsoDoc do
     INPUT
     output = <<~OUTPUT
       <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-            <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
+            <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
          <sections>
            <terms id='A' obligation='normative' displayorder='2'>
              <title depth='1'>
@@ -1269,7 +1269,7 @@ RSpec.describe IsoDoc do
          </sections>
        </iso-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-        .convert("test", input, true))).to be_equivalent_to xmlpp(output)
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+        .convert("test", input, true)))).to be_equivalent_to xmlpp(output)
   end
 end

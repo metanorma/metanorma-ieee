@@ -86,12 +86,12 @@ RSpec.describe IsoDoc::IEEE do
           </bibliography>
         </iso-standard>
       INPUT
-    expect(xmlpp(output)
+    expect(xmlpp(strip_guid(output))
       .sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))
-      .to be_equivalent_to xmlpp(<<~"OUTPUT")
+      .to be_equivalent_to xmlpp(strip_guid(<<~"OUTPUT"))
         <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
           <preface>
-              <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause>
+              <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause>
             <foreword displayorder='2'>
               <p>
                 <eref bibitemid='IEV' citeas='IEV' type='inline'>
@@ -167,7 +167,7 @@ RSpec.describe IsoDoc::IEEE do
             </foreword>
           </preface>
           <bibliography>
-            <references id='_normative_references' normative='true' obligation='informative' displayorder='3'>
+            <references id='_' normative='true' obligation='informative' displayorder='3'>
               <title depth='1'>
                 1.
                 <tab/>
@@ -401,7 +401,7 @@ RSpec.describe IsoDoc::IEEE do
     output = <<~OUTPUT
       <iso-standard xmlns='http://riboseinc.com/isoxml' xmlns:m='http://www.w3.org/1998/Math/MathML' type='presentation'>
         <preface>
-            <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause>
+            <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause>
           <foreword displayorder='2'>
             <p>
               <stem type='MathML'>
@@ -431,7 +431,7 @@ RSpec.describe IsoDoc::IEEE do
     xml = Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert.new({})
       .convert("test", input, true))
     xml.at("//xmlns:metanorma-extension").remove
-    expect(xmlpp(xml.to_xml))
+    expect(xmlpp(strip_guid(xml.to_xml)))
       .to be_equivalent_to xmlpp(output)
   end
 

@@ -62,7 +62,7 @@ RSpec.describe IsoDoc do
     presxml = <<~PRESXML
       <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
          <preface>
-             <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause>
+             <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause>
            <foreword displayorder='2' id="A">
              <table id='tableD-1' alt='tool tip' summary='long desc'>
                <name>Table 1&#x2014;Hello</name>
@@ -76,13 +76,13 @@ RSpec.describe IsoDoc do
                    <td align='center'>
                      Drago
                      <fn reference='a'>
-                       <p id='_0fe65e9a-5531-408e-8295-eeff35f41a55'>Parboiled rice.</p>
+                       <p id='_'>Parboiled rice.</p>
                      </fn>
                    </td>
                    <td align='center'>
                      Balilla
                      <fn reference='a'>
-                       <p id='_0fe65e9a-5531-408e-8295-eeff35f41a55'>Parboiled rice.</p>
+                       <p id='_'>Parboiled rice.</p>
                      </fn>
                    </td>
                    <td align='center'>Thaibonnet</td>
@@ -162,7 +162,7 @@ RSpec.describe IsoDoc do
                            <span id='tableD-1a' class='TableFootnoteRef'>a</span>
                            &#xa0;
                          </span>
-                         <p id='_0fe65e9a-5531-408e-8295-eeff35f41a55'>Parboiled rice.</p>
+                         <p id='_'>Parboiled rice.</p>
                        </div>
                      </aside>
                    </td>
@@ -337,8 +337,8 @@ RSpec.describe IsoDoc do
         </div>
       </div>
     WORD
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)))).to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
       .convert("test", presxml, true))
       .at("//body").to_xml)).to be_equivalent_to xmlpp(html)
@@ -387,14 +387,14 @@ RSpec.describe IsoDoc do
           <?xml version='1.0'?>
            <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
-              <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause>
+              <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause>
           <foreword displayorder="2" id="A">
           <figure id="figureA-1" keep-with-next="true" keep-lines-together="true">
         <name>Figure 1&#x2014;Split-it-right <em>sample</em> divider<fn reference="1"><p>X</p></fn></name>
-        <image src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7" height="20" width="auto" id="_8357ede4-6d44-4672-bac4-9a85e82ab7f2" mimetype="image/png"/>
-        <image src='data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjw/eG1sLXN0eWxlc2hlZXQgdHlwZT0idGV4dC94c2wiIGhyZWY9Ii4uLy4uLy4uL3hzbC9yZXNfZG9jL2ltZ2ZpbGUueHNsIj8+CjwhRE9DVFlQRSBpbWdmaWxlLmNvbnRlbnQgU1lTVEVNICIuLi8uLi8uLi9kdGQvdGV4dC5lbnQiPgo8aW1nZmlsZS5jb250ZW50IG1vZHVsZT0iZnVuZGFtZW50YWxzX29mX3Byb2R1Y3RfZGVzY3JpcHRpb25fYW5kX3N1cHBvcnQiIGZpbGU9ImFjdGlvbl9zY2hlbWFleHBnMS54bWwiPgo8aW1nIHNyYz0iYWN0aW9uX3NjaGVtYWV4cGcxLmdpZiI+CjxpbWcuYXJlYSBzaGFwZT0icmVjdCIgY29vcmRzPSIyMTAsMTg2LDM0MywyMjciIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9iYXNpY19hdHRyaWJ1dGVfc2NoZW1hL2Jhc2ljX2F0dHJpYnV0ZV9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMTAsMTAsOTYsNTEiIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9hY3Rpb25fc2NoZW1hL2FjdGlvbl9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMjEwLDI2NCwzNTgsMzA1IiBocmVmPSIuLi8uLi9yZXNvdXJjZXMvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEueG1sIiAvPgo8L2ltZz4KPC9pbWdmaWxlLmNvbnRlbnQ+Cg==' height='20' width='auto' id='_8357ede4-6d44-4672-bac4-9a85e82ab7f2' mimetype='application/xml'/>
+        <image src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7" height="20" width="auto" id="_" mimetype="image/png"/>
+        <image src='data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjw/eG1sLXN0eWxlc2hlZXQgdHlwZT0idGV4dC94c2wiIGhyZWY9Ii4uLy4uLy4uL3hzbC9yZXNfZG9jL2ltZ2ZpbGUueHNsIj8+CjwhRE9DVFlQRSBpbWdmaWxlLmNvbnRlbnQgU1lTVEVNICIuLi8uLi8uLi9kdGQvdGV4dC5lbnQiPgo8aW1nZmlsZS5jb250ZW50IG1vZHVsZT0iZnVuZGFtZW50YWxzX29mX3Byb2R1Y3RfZGVzY3JpcHRpb25fYW5kX3N1cHBvcnQiIGZpbGU9ImFjdGlvbl9zY2hlbWFleHBnMS54bWwiPgo8aW1nIHNyYz0iYWN0aW9uX3NjaGVtYWV4cGcxLmdpZiI+CjxpbWcuYXJlYSBzaGFwZT0icmVjdCIgY29vcmRzPSIyMTAsMTg2LDM0MywyMjciIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9iYXNpY19hdHRyaWJ1dGVfc2NoZW1hL2Jhc2ljX2F0dHJpYnV0ZV9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMTAsMTAsOTYsNTEiIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9hY3Rpb25fc2NoZW1hL2FjdGlvbl9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMjEwLDI2NCwzNTgsMzA1IiBocmVmPSIuLi8uLi9yZXNvdXJjZXMvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEueG1sIiAvPgo8L2ltZz4KPC9pbWdmaWxlLmNvbnRlbnQ+Cg==' height='20' width='auto' id='_' mimetype='application/xml'/>
         <fn reference="a">
-        <p id="_ef2c85b8-5a5a-4ecd-a1e6-92acefaaa852">The time <stem type="AsciiMath">t_90</stem> was estimated to be 18,2 min for this example.</p>
+        <p id="_">The time <stem type="AsciiMath">t_90</stem> was estimated to be 18,2 min for this example.</p>
       </fn>
         <dl>
         <dt>A</dt>
@@ -531,8 +531,8 @@ RSpec.describe IsoDoc do
         </div>
       </div>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true).gsub(/&lt;/, "&#x3c;")))
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true).gsub(/&lt;/, "&#x3c;"))))
       .to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(strip_guid(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
       .convert("test", presxml, true))
@@ -587,7 +587,7 @@ RSpec.describe IsoDoc do
     presxml = <<~OUTPUT
           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
           <preface>
-              <clause type="toc" displayorder="1">
+              <clause type="toc" id="_" displayorder="1">
           <title depth="1">Contents</title>
         </clause>
         </preface>
@@ -600,11 +600,11 @@ RSpec.describe IsoDoc do
             </title>
             <note id='note1'>
               <name>NOTE 1</name>
-              <p id='_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f'>First note.</p>
+              <p id='_'>First note.</p>
             </note>
             <note id='note2'>
               <name>NOTE 2</name>
-              <p id='_f06fd0d1-a203-4f3d-a515-0bdba0f8d83a'>Second note.</p>
+              <p id='_'>Second note.</p>
             </note>
           </clause>
           <clause id='b' displayorder='3'>
@@ -615,7 +615,7 @@ RSpec.describe IsoDoc do
             </title>
             <note id='note3'>
               <name>NOTE</name>
-              <p id='_f06fd0d1-a203-4f3d-a515-0bdba0f8d83b'>Third note.</p>
+              <p id='_'>Third note.</p>
             </note>
           </clause>
         </sections>
@@ -651,8 +651,8 @@ RSpec.describe IsoDoc do
         </div>
       </body>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-       .convert("test", input, true).gsub(/&lt;/, "&#x3c;")))
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+       .convert("test", input, true).gsub(/&lt;/, "&#x3c;"))))
       .to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
       .convert("test", presxml, true))
@@ -663,7 +663,7 @@ RSpec.describe IsoDoc do
     presxml = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml" type='presentation'>
           <preface>
-              <clause type="toc" displayorder="1">
+              <clause type="toc" id="_" displayorder="1">
       <title depth="1">Contents</title>
     </clause>
           <foreword displayorder="2">
@@ -730,7 +730,7 @@ RSpec.describe IsoDoc do
     presxml = <<~INPUT
       <iso-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
         <preface>
-            <clause type="toc" displayorder="1">
+            <clause type="toc" id="_" displayorder="1">
          <title depth="1">Contents</title>
         </clause>
           <foreword displayorder="2" id="A">
@@ -824,26 +824,26 @@ RSpec.describe IsoDoc do
     presxml = <<~INPUT
              <iso-standard xmlns="http://riboseinc.com/isoxml"  type='presentation'>
           <preface>
-              <clause type="toc" displayorder="1">
+              <clause type="toc" id="_" displayorder="1">
       <title depth="1">Contents</title>
     </clause>
         <foreword id="A" displayorder="2">
-          <formula id="_be9158af-7e93-4ee2-90c5-26d31c181934" unnumbered="true"  keep-with-next="true" keep-lines-together="true">
+          <formula id="_" unnumbered="true"  keep-with-next="true" keep-lines-together="true">
         <stem type="AsciiMath">r = 1 %</stem>
-      <dl id="_e4fe94fe-1cde-49d9-b1ad-743293b7e21d" class="formula_dl">
+      <dl id="_" class="formula_dl">
         <dt>
           <stem type="AsciiMath">r</stem>
         </dt>
         <dd>
-          <p id="_1b99995d-ff03-40f5-8f2e-ab9665a69b77">is the repeatability limit.</p>
+          <p id="_">is the repeatability limit.</p>
         </dd>
       </dl>
-          <note id="_83083c7a-6c85-43db-a9fa-4d8edd0c9fc0">
+          <note id="_">
           <name>NOTE</name>
-        <p id="_511aaa98-4116-42af-8e5b-c87cdf5bfdc8">[durationUnits] is essentially a duration statement without the "P" prefix. "P" is unnecessary because between "G" and "U" duration is always expressed.</p>
+        <p id="_">[durationUnits] is essentially a duration statement without the "P" prefix. "P" is unnecessary because between "G" and "U" duration is always expressed.</p>
       </note>
           </formula>
-          <formula id="_be9158af-7e93-4ee2-90c5-26d31c181935"><name>1</name>
+          <formula id="_"><name>1</name>
         <stem type="AsciiMath">r = 1 %</stem>
         </formula>
           </foreword></preface>
@@ -947,8 +947,8 @@ RSpec.describe IsoDoc do
         </div>
       </div>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-       .convert("test", input, true)))
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+       .convert("test", input, true))))
       .to be_equivalent_to xmlpp(presxml)
     expect(strip_guid(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
   .convert("test", presxml, true))

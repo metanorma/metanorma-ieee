@@ -92,7 +92,7 @@ RSpec.describe IsoDoc::IEEE do
     presxml = <<~OUTPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
         <preface>
-           <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> 
+           <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> 
           <abstract obligation="informative" displayorder="2">
             <title>Foreword</title>
             <p id="A">This is a preamble</p>
@@ -465,8 +465,8 @@ RSpec.describe IsoDoc::IEEE do
         </div>
       </body>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true)))
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true))))
       .to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
       .convert("test", presxml, true))
@@ -492,7 +492,7 @@ RSpec.describe IsoDoc::IEEE do
           </ext>
         </bibdata>
         <preface>
-           <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> 
+           <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> 
         </preface>
         <sections/>
       </iso-standard>
@@ -508,9 +508,9 @@ RSpec.describe IsoDoc::IEEE do
          <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Draft Recommended Practice for Title</p>
        </div>
     OUTPUT
-    expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
+    expect(xmlpp(strip_guid(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
       .convert("test", input, true))
-      .at("//body").to_xml))
+      .at("//body").to_xml)))
       .to be_equivalent_to xmlpp(html)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::WordConvert.new({})
       .convert("test", input, true))
@@ -541,7 +541,7 @@ RSpec.describe IsoDoc::IEEE do
     INPUT
     presxml = <<~OUTPUT
          <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-           <preface> <clause type="toc" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
+           <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <annex id="a" inline-header="false" obligation="normative" displayorder="2">
         <title><strong>Annex A</strong><br/><span class='obligation'>(normative)</span><br/><strong>Appendix C</strong></title>
         <references id="_" normative="false" obligation="informative">
@@ -607,8 +607,8 @@ RSpec.describe IsoDoc::IEEE do
          </div>
        </div>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-  .convert("test", input, true)))
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+  .convert("test", input, true))))
       .to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
       .convert("test", presxml, true))
