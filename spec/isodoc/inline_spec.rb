@@ -94,75 +94,21 @@ RSpec.describe IsoDoc::IEEE do
               <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause>
             <foreword displayorder='2'>
               <p>
-                <eref bibitemid='IEV' citeas='IEV' type='inline'>
-                  <locality type='clause'>
-                    <referenceFrom>1-2-3</referenceFrom>
-                  </locality>
-                  IEV, 1-2-3
-                </eref>
-                <eref bibitemid='ISO712' citeas='ISO 712' type='inline'>ISO&#xa0;712</eref>
-                <eref bibitemid='ISO712' type='inline'>ISO&#xa0;712</eref>
-                <eref bibitemid='ISO712' type='inline'>
-                  <locality type='table'>
-                    <referenceFrom>1</referenceFrom>
-                  </locality>
-                  ISO&#xa0;712, Table 1
-                </eref>
-                <eref bibitemid='ISO712' type='inline'>
-                  <locality type='table'>
-                    <referenceFrom>1</referenceFrom>
-                    <referenceTo>1</referenceTo>
-                  </locality>
-                  ISO&#xa0;712, Table 1&#x2013;1
-                </eref>
-                <eref bibitemid='ISO712' type='inline'>
-                  <locality type='clause'>
-                    <referenceFrom>1</referenceFrom>
-                  </locality>
-                  <locality type='table'>
-                    <referenceFrom>1</referenceFrom>
-                  </locality>
-                  ISO&#xa0;712, Clause 1, Table 1
-                </eref>
-                <eref bibitemid='ISO712' type='inline'>
-                  <locality type='clause'>
-                    <referenceFrom>1</referenceFrom>
-                  </locality>
-                  <locality type='list'>
-                    <referenceFrom>a</referenceFrom>
-                  </locality>
-                  ISO&#xa0;712, Clause 1, List a)
-                </eref>
-                <eref bibitemid='ISO712' type='inline'>
-                  <locality type='clause'>
-                    <referenceFrom>1</referenceFrom>
-                  </locality>
-                  ISO&#xa0;712, Clause 1
-                </eref>
-                <eref bibitemid='ISO712' type='inline'>
-                  <locality type='clause'>
-                    <referenceFrom>1.5</referenceFrom>
-                  </locality>
-                  ISO&#xa0;712, 1.5
-                </eref>
-                <eref bibitemid='ISO712' type='inline'>
-                  <locality type='table'>
-                    <referenceFrom>1</referenceFrom>
-                  </locality>
-                  A
-                </eref>
-                <eref bibitemid='ISO712' type='inline'>
-                  <locality type='whole'/>
-                  ISO&#xa0;712, Whole of text
-                </eref>
-                <eref bibitemid='ISO712' type='inline'>
-                  <locality type='locality:prelude'>
-                    <referenceFrom>7</referenceFrom>
-                  </locality>
-                  ISO&#xa0;712, Prelude 7
-                </eref>
-                <eref bibitemid='ISO712' citeas='ISO 712' type='inline'>A</eref>
-                <eref bibitemid='ISO712' citeas='ISO/IEC DIR 1' type='inline'>ISO/IEC&#xa0;DIR&#xa0;1</eref>
+               <eref bibitemid="IEV" citeas="IEV" type="inline"><locality type="clause"><referenceFrom>1-2-3</referenceFrom></locality>IEV, 1-2-3</eref>
+               <xref type="inline" target="ISO712">ISO 712</xref>
+               <xref type="inline" target="ISO712">ISO 712</xref>
+               <xref type="inline" target="ISO712">ISO 712, Table 1</xref>
+               <xref type="inline" target="ISO712">ISO 712, Table 1–1</xref>
+               <xref type="inline" target="ISO712">ISO 712, Clause 1, Table 1</xref>
+               <xref type="inline" target="ISO712">ISO 712, Clause 1, List a)</xref>
+               <xref type="inline" target="ISO712">ISO 712, Clause 1</xref>
+               <xref type="inline" target="ISO712">ISO 712, 1.5</xref>
+               <xref type="inline" target="ISO712">
+                 A</xref>
+               <xref type="inline" target="ISO712">ISO 712, Whole of text</xref>
+               <xref type="inline" target="ISO712">ISO 712, Prelude 7</xref>
+               <xref type="inline" target="ISO712">A</xref>
+               <xref type="inline" target="ISO712">ISO/IEC DIR 1</xref>
               </p>
             </foreword>
           </preface>

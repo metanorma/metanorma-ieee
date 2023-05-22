@@ -118,7 +118,7 @@ module Metanorma
         end
       end
 
-      def select_docid(ref)
+      def select_docid(ref, type = nil)
         ret = super
         if %w(standard techreport).include?(ref["type"]) then ret
         else

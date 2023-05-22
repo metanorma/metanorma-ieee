@@ -243,6 +243,7 @@ RSpec.describe Metanorma::IEEE do
                 <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4766.detail.rss</uri>
                 <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
                 <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
+                <docidentifier type="iso-reference">ISO 639(E)</docidentifier>
                 <docidentifier type="URN">urn:iso:std:iso:639:stage-95.99:ed-1</docidentifier>
                 <docnumber>639</docnumber>
                 <contributor>
@@ -284,6 +285,7 @@ RSpec.describe Metanorma::IEEE do
                     <uri type="src">https://www.iso.org/standard/4766.html</uri>
                     <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4766.detail.rss</uri>
                     <docidentifier type="ISO" primary="true">ISO 639:1988</docidentifier>
+                <docidentifier type="iso-reference">ISO 639:1988(E)</docidentifier>
                     <docidentifier type="URN">urn:iso:std:iso:639:stage-95.99:ed-1</docidentifier>
                     <docnumber>639</docnumber>
                     <date type="published">

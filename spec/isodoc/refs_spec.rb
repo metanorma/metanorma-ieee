@@ -215,12 +215,12 @@ RSpec.describe IsoDoc do
            <clause id="A" inline-header="false" obligation="normative" displayorder="3">
              <title depth="1">2.<tab/>Clause</title>
              <p id="_">
-               <eref type="inline" bibitemid="ref1" citeas="ISO 639:1967">ISO 639:1967</eref>
-               <eref type="inline" bibitemid="ref2" citeas="Aluffi">Aluffi</eref>
-               <eref type="inline" bibitemid="ref3" citeas="REF4">REF4</eref>
-               <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967">ISO 639:1967 [B3]</eref>
-               <eref type="inline" bibitemid="ref5" citeas="[B2]">Aluffi, Anderson, Hering, Mustaţă and Payne [B2]</eref>
-               <eref type="inline" bibitemid="ref6" citeas="[B1]">REF4 [B1]</eref>
+             <xref type="inline" target="ref1">ISO 639:1967</xref>
+              <xref type="inline" target="ref2">Aluffi</xref>
+              <xref type="inline" target="ref3">REF4</xref>
+              <xref type="inline" target="ref4">ISO 639:1967 [B3]</xref>
+              <xref type="inline" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2]</xref>
+              <xref type="inline" target="ref6">REF4 [B1]</xref>
              </p>
            </clause>
          </sections>
