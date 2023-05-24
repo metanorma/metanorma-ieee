@@ -41,7 +41,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "processes default metadata" do
-    output = Nokogiri::XML(Asciidoctor.convert(<<~"INPUT", *OPTIONS))
+    output = Nokogiri::XML(Asciidoctor.convert(<<~INPUT, *OPTIONS))
       = Document title
       Author
       :docfile: test.adoc
@@ -115,7 +115,7 @@ RSpec.describe Metanorma::IEEE do
     output.at("//xmlns:note").remove
     output = output.at("//xmlns:bibdata")
     expect(xmlpp(output.to_xml))
-      .to be_equivalent_to xmlpp(<<~"OUTPUT")
+      .to be_equivalent_to xmlpp(<<~OUTPUT)
             <bibdata type='standard'>
               <title language='en' format='text/plain'>Document title</title>
               <title type='provenance' language='en' format='application/xml'>Revision of ABC<br/>Incorporates BCD and EFG</title>
@@ -125,7 +125,8 @@ RSpec.describe Metanorma::IEEE do
               <title language='intro-fr' format='text/plain'>Introduction Française</title>
               <title language='main-fr' format='text/plain'>Titre Principal</title>
               <title language='part-fr' format='text/plain'>Part du Titre</title>
-              <docidentifier type='IEEE'>1000</docidentifier>
+              <docidentifier type="IEEE">IEEE Std A1-2000 Edition 2  (Amendment to IEEE Std ABC)</docidentifier>
+              <docidentifier type="IEEE-tm">IEEE Std A1-2000™ Edition 2  (Amendment to IEEE Std ABC)</docidentifier>
              <docidentifier type='IEEE' scope='PDF'>GHI</docidentifier>
              <docidentifier type='IEEE' scope='print'>JKL</docidentifier>
              <docidentifier type='ISBN' scope='PDF'>ABC</docidentifier>
@@ -215,7 +216,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "processes metadata with draft, no docstage, no balloting-group-type, docidentifier override" do
-    out = Nokogiri::XML(Asciidoctor.convert(<<~"INPUT", *OPTIONS))
+    out = Nokogiri::XML(Asciidoctor.convert(<<~INPUT, *OPTIONS))
       = Document title
       Author
       :docfile: test.adoc
@@ -282,7 +283,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "processes metadata with no draft, no docstage" do
-    out = Nokogiri::XML(Asciidoctor.convert(<<~"INPUT", *OPTIONS))
+    out = Nokogiri::XML(Asciidoctor.convert(<<~INPUT, *OPTIONS))
       = Document title
       Author
       :docfile: test.adoc

@@ -1,4 +1,5 @@
 require "isoics"
+require "pubid-ieee"
 
 module Metanorma
   module IEEE
@@ -25,13 +26,116 @@ module Metanorma
       end
 
       def metadata_id(node, xml)
-        id = node.attr("docnumber") || ""
-        xml.docidentifier (node.attr("docidentifier") || id), type: "IEEE"
+        if id = node.attr("docidentifier")
+          xml.docidentifier id, **attr_code(type: "IEEE")
+        else iso_id(node, xml)
+        end
         id = node.attr("stdid-pdf") and
           xml.docidentifier id, type: "IEEE", scope: "PDF"
         id = node.attr("stdid-print") and
           xml.docidentifier id, type: "IEEE", scope: "print"
         xml.docnumber node.attr("docnumber")
+      end
+
+      def iso_id(node, xml)
+        node.attr("docnumber") || node.attr("updates") or
+          return
+        params = iso_id_params(node)
+        iso_id_out(xml, params)
+      end
+
+      def iso_id_params(node)
+        params = iso_id_params_core(node)
+        params2 = iso_id_params_add(node)
+        relations = []
+        %w(updates supplements includes).each do |x|
+          if node.attr(x)
+            relation = relation_to_pubid(x, node)
+            orig_id = Pubid::Ieee::Identifier.parse(node.attr(x))
+            orig_id.edition ||= 1
+            relations << { relation: relation, id: orig_id }
+          end
+        end
+        iso_id_params_resolve(params, params2, node, relations)
+      end
+
+      def relation_to_pubid(relation, node)
+        case relation
+        when "includes" then "incorporates"
+        when "supplements" then "supplement"
+        when "updates"
+          if node.attr("amendment-number") then "amendment"
+          elsif node.attr("corrigendum-number") then "corrigendum_comment"
+          else "revision"
+          end
+        else "revision"
+        end
+      end
+
+      # unpublished is for internal use
+      def iso_id_params_core(node)
+        pub = (node.attr("publisher") || "IEEE").split(/[;,]/)
+        ret = { number: node.attr("docnumber"),
+                part: "-#{node.attr('partnumber')}",
+                subpart: "-#{node.attr('subpartnumber')}",
+                type: get_typeabbr(node),
+                redline: node.attr("doctype") == "redline",
+                conformance: node.attr("conformance"),
+                publisher: pub[0],
+                copublisher: pub[1..-1] }.compact
+        ret[:copublisher].empty? and ret.delete(:copublisher)
+        ret
+      end
+
+      # Draft? Supplement?
+      def get_typeabbr(_node)
+        :std
+      end
+
+      def iso_id_params_add(node)
+        { number: node.attr("amendment-number") ||
+          node.attr("corrigendum-number"),
+          year: iso_id_year(node),
+          edition: { version: node.attr("edition") } }.compact
+      end
+
+      def iso_id_year(node)
+        node.attr("copyright-year") || node.attr("updated-date")
+          &.sub(/-.*$/, "") || Date.today.year
+      end
+
+      def iso_id_params_resolve(params, params2, _node, relations)
+        unless relations.empty?
+          params.delete(:unpublished)
+          params.delete(:part)
+          params.delete(:subpart)
+        end
+        relations.each do |r|
+          params2[r[:relation].to_sym] = r[:id]
+        end
+        params.merge!(params2)
+        params
+      end
+
+      def iso_id_out(xml, params)
+        xml.docidentifier iso_id_default(params).to_s,
+                          **attr_code(type: "IEEE")
+        xml.docidentifier iso_id_default(params).to_s(with_trademark: true),
+                          **attr_code(type: "IEEE-tm")
+      rescue StandardError => e
+        clean_abort("Document identifier: #{e}", xml)
+      end
+
+      def iso_id_default(params)
+        params_nolang = params.dup.tap { |hs| hs.delete(:language) }
+        params1 = if params[:unpublished]
+                    params_nolang.dup.tap do |hs|
+                      hs.delete(:year)
+                    end
+                  else params_nolang
+                  end
+        params1.delete(:unpublished)
+        Pubid::Ieee::Identifier.create(**params1)
       end
 
       def metadata_publisher(node, xml)
