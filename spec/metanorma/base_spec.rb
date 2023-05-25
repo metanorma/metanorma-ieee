@@ -104,8 +104,9 @@ RSpec.describe Metanorma::IEEE do
       :isbn-print: DEF
       :stdid-pdf: GHI
       :stdid-print: JKL
-      :updates: ABC
-      :merges: BCD; EFG
+      :updates: IEEE Std 3
+      :merges: IEEE Std 1; IEEE Std 2
+      :supplements: IEEE Std 4
       :doctype: recommended-practice
       :docsubtype: amendment
       :trial-use: true
@@ -215,7 +216,7 @@ RSpec.describe Metanorma::IEEE do
       OUTPUT
   end
 
-  it "processes metadata with draft, no docstage, no balloting-group-type, docidentifier override" do
+  it "processes metadata with draft, no docstage, no balloting-group-type" do
     out = Nokogiri::XML(Asciidoctor.convert(<<~INPUT, *OPTIONS))
       = Document title
       Author
@@ -224,9 +225,10 @@ RSpec.describe Metanorma::IEEE do
       :novalid:
       :no-isobib:
       :draft: 3
+      :issued-date: 2021-03-21
+      :revision: 9
       :balloting-group: BG
       :society: SECRETARIAT
-      :docidentifier: OVERRIDE
       :docnumber: 1000
 
     INPUT
@@ -235,6 +237,9 @@ RSpec.describe Metanorma::IEEE do
         <title language="en" format="text/plain">Document title</title>
         <docidentifier type="IEEE">OVERRIDE</docidentifier>
         <docnumber>1000</docnumber>
+        <date type="issued">
+            <on>2021-03-21</on>
+        </date>
         <contributor>
           <role type="publisher"/>
           <organization>
@@ -282,7 +287,7 @@ RSpec.describe Metanorma::IEEE do
       .to be_equivalent_to xmlpp(output)
   end
 
-  it "processes metadata with no draft, no docstage" do
+  it "processes metadata with no draft, no docstage, docidentifier override" do
     out = Nokogiri::XML(Asciidoctor.convert(<<~INPUT, *OPTIONS))
       = Document title
       Author
@@ -290,11 +295,15 @@ RSpec.describe Metanorma::IEEE do
       :nodoc:
       :novalid:
       :no-isobib:
+      :docidentifier: OVERRIDE
+      :docnumber: 1000
 
     INPUT
     output = <<~OUTPUT
       <bibdata type='standard'>
         <title language='en' format='text/plain'>Document title</title>
+         <docidentifier type="IEEE">OVERRIDE</docidentifier>
+        <docnumber>1000</docnumber>
         <contributor>
           <role type='publisher'/>
           <organization>
@@ -319,6 +328,11 @@ RSpec.describe Metanorma::IEEE do
         <ext>
           <doctype>standard</doctype>
           <subdoctype>document</subdoctype>
+              <structuredidentifier>
+              <docnumber>1000</docnumber>
+              <agency>IEEE</agency>
+              <class>standard</class>
+            </structuredidentifier>
         </ext>
       </bibdata>
     OUTPUT

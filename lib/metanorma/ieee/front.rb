@@ -1,4 +1,5 @@
 require "isoics"
+require "date"
 require "pubid-ieee"
 
 module Metanorma
@@ -38,7 +39,8 @@ module Metanorma
       end
 
       def iso_id(node, xml)
-        node.attr("docnumber") || node.attr("updates") or
+        node.attr("docnumber") || node.attr("updates") ||
+          node.attr("supplements") || node.attr("includes") or
           return
         params = iso_id_params(node)
         iso_id_out(xml, params)
@@ -48,12 +50,15 @@ module Metanorma
         params = iso_id_params_core(node)
         params2 = iso_id_params_add(node)
         relations = []
-        %w(updates supplements includes).each do |x|
+        %w(updates supplements merges).each do |x|
           if node.attr(x)
             relation = relation_to_pubid(x, node)
-            orig_id = Pubid::Ieee::Identifier.parse(node.attr(x))
-            orig_id.edition ||= 1
-            relations << { relation: relation, id: orig_id }
+            id = node.attr(x).split(/;\s*/).map do |n|
+              orig_id = Pubid::Ieee::Identifier.parse(n)
+              orig_id.edition ||= 1
+              orig_id
+            end
+            relations << { relation: relation, id: id }
           end
         end
         iso_id_params_resolve(params, params2, node, relations)
@@ -61,7 +66,7 @@ module Metanorma
 
       def relation_to_pubid(relation, node)
         case relation
-        when "includes" then "incorporates"
+        when "merges" then "incorporates"
         when "supplements" then "supplement"
         when "updates"
           if node.attr("amendment-number") then "amendment"
@@ -75,6 +80,11 @@ module Metanorma
       # unpublished is for internal use
       def iso_id_params_core(node)
         pub = (node.attr("publisher") || "IEEE").split(/[;,]/)
+        draft = if node.attr("docstage") == "draft"
+                  { version: node.attr("draft")&.to_i, 
+                    revision:  node.attr("revision")&.to_i }
+                    .merge(date_parse(node.attr("issued-date")))
+      end
         ret = { number: node.attr("docnumber"),
                 part: "-#{node.attr('partnumber')}",
                 subpart: "-#{node.attr('subpartnumber')}",
@@ -82,8 +92,19 @@ module Metanorma
                 redline: node.attr("doctype") == "redline",
                 conformance: node.attr("conformance"),
                 publisher: pub[0],
+                draft: draft,
                 copublisher: pub[1..-1] }.compact
         ret[:copublisher].empty? and ret.delete(:copublisher)
+        ret
+      end
+
+      def date_parse(date)
+        date or return {}
+        d = date.split("-")
+        ret = {}
+        d[0] and ret[:year] = d[0]
+        d[2] and ret[:day] = d[2]
+        d[1] and ret[:month] = Date::MONTHNAMES[d[1].to_i]
         ret
       end
 
@@ -190,7 +211,7 @@ module Metanorma
       end
 
       def relaton_relations
-        super + %w(merges updates)
+        super + %w(merges updates supplements)
       end
 
       def metadata_ext(node, xml)

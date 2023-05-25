@@ -17,6 +17,8 @@ RSpec.describe Metanorma::IEEE do
          <title language='fr' format='text/plain' type='amendment'>Titre de Amendment</title>
          <title language='en' format='text/plain' type='corrigendum'>Corrigendum Title</title>
          <title language='fr' format='text/plain' type='corrigendum'>Titre de Corrigendum</title>
+           <docidentifier type="IEEE">IEEE Std 1212</docidentifier>
+           <docidentifier type="IEEE-tm">IEEE Std™ 1212</docidentifier>
            <docidentifier type="IEEE" scope="PDF">ABC</docidentifier>
            <docidentifier type="IEEE" scope="print">DEF</docidentifier>
            <docidentifier type="ISBN" scope="PDF">GHI</docidentifier>
@@ -249,7 +251,7 @@ RSpec.describe Metanorma::IEEE do
         :copieddate=>"XXX",
         :corr=>"C1",
         :createddate=>"XXX",
-        :docnumber=>"ABC",
+        :docnumber=>"IEEE Std 1212",
         :docnumeric=>"1000",
         :docsubtype=>"Amendment",
         :doctitle=>"Main Titlein multiple lines",
@@ -263,6 +265,7 @@ RSpec.describe Metanorma::IEEE do
         :edition=>"2",
         :feedback_endeddate=>"01 Aug 2018",
         :full_doctitle=>"Draft Recommended Practice for Main Titlein multiple lines",
+        :id_tm=>"IEEE Std&#x2122; 1212",
         :implementeddate=>"XXX",
         :isbn_pdf=>"GHI",
         :isbn_print=>"JKL",

@@ -81,6 +81,8 @@ module IsoDoc
         set(:stdid_pdf, dn&.text || "STDXXXXX")
         dn = isoxml.at(ns("//#{id}[@scope = 'print']"))
         set(:stdid_print, dn&.text || "STDPDXXXXX")
+        dn = isoxml.at(ns("//bibdata/docidentifier[@type = 'IEEE-tm']"))
+        set(:id_tm, dn&.text)
         dn = isoxml.at(ns("//bibdata/ext/structuredidentifier/amendment")) and
           set(:amd, dn.text)
         dn = isoxml.at(ns("//bibdata/ext/structuredidentifier/corrigendum")) and
