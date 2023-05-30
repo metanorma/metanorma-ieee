@@ -105,7 +105,7 @@ RSpec.describe Metanorma::IEEE do
       :stdid-pdf: GHI
       :stdid-print: JKL
       :updates: IEEE Std 3
-      :merges: IEEE Std 1; IEEE Std 2
+      :merges: IEEE Std 1
       :supplements: IEEE Std 4
       :doctype: recommended-practice
       :docsubtype: amendment
@@ -117,102 +117,226 @@ RSpec.describe Metanorma::IEEE do
     output = output.at("//xmlns:bibdata")
     expect(xmlpp(output.to_xml))
       .to be_equivalent_to xmlpp(<<~OUTPUT)
-            <bibdata type='standard'>
-              <title language='en' format='text/plain'>Document title</title>
-              <title type='provenance' language='en' format='application/xml'>Revision of ABC<br/>Incorporates BCD and EFG</title>
-              <title language='intro-en' format='text/plain'>Introduction</title>
-              <title language='main-en' format='text/plain'>Main Title -- Title</title>
-              <title language='part-en' format='text/plain'>Title Part</title>
-              <title language='intro-fr' format='text/plain'>Introduction Française</title>
-              <title language='main-fr' format='text/plain'>Titre Principal</title>
-              <title language='part-fr' format='text/plain'>Part du Titre</title>
-              <docidentifier type="IEEE">IEEE Std A1-2000 Edition 2  (Amendment to IEEE Std ABC)</docidentifier>
-              <docidentifier type="IEEE-tm">IEEE Std A1-2000™ Edition 2  (Amendment to IEEE Std ABC)</docidentifier>
-             <docidentifier type='IEEE' scope='PDF'>GHI</docidentifier>
-             <docidentifier type='IEEE' scope='print'>JKL</docidentifier>
-             <docidentifier type='ISBN' scope='PDF'>ABC</docidentifier>
-             <docidentifier type='ISBN' scope='print'>DEF</docidentifier>
-              <docnumber>1000</docnumber>
-              <date type='obsoleted'><on>1002-12-01</on></date>
-              <date type='confirmed'><on>1000-12-01</on></date>
-              <date type='issued'><on>1001-12-01</on></date>
-              <date type='feedback-ended'><on>1003-12-01</on></date>
-              <contributor>
-                <role type='publisher'/>
-                <organization>
-                  <name>Institute of Electrical and Electronic Engineers</name>
-                  <abbreviation>IEEE</abbreviation>
-                </organization>
-              </contributor>
-              <edition>2</edition>
-              <version>
-                <revision-date>2000-01-01</revision-date>
-                <draft>0.3.4</draft>
-              </version>
-              <language>en</language>
-              <script>Latn</script>
-              <status>
-                <stage>inactive</stage>
-              </status>
-              <copyright>
-                <from>2000</from>
-                <owner>
-                  <organization>
-                    <name>Institute of Electrical and Electronic Engineers</name>
-                    <abbreviation>IEEE</abbreviation>
-                  </organization>
-                </owner>
-              </copyright>
-              <relation type='merges'>
-                <bibitem>
-                  <title>--</title>
-                  <docidentifier>BCD</docidentifier>
-                </bibitem>
-              </relation>
-              <relation type='merges'>
-                <bibitem>
-                  <title>--</title>
-                  <docidentifier>EFG</docidentifier>
-                </bibitem>
-              </relation>
-              <relation type='updates'>
-                <bibitem>
-                  <title>--</title>
-                  <docidentifier>ABC</docidentifier>
-                </bibitem>
-              </relation>
-              <ext>
-                <doctype>recommended-practice</doctype>
-                <subdoctype>amendment</subdoctype>
-                <trial-use>true</trial-use>
-                <editorialgroup>
-                  <society>SECRETARIAT</society>
-                  <balloting-group type='entity'>SC</balloting-group>
-                  <working-group>WG</working-group>
-                  <working-group>WG1</working-group>
-                  <committee>TC</committee>
-                  <committee>TC1</committee>
-                </editorialgroup>
-                <ics>
-               <code>01.040.11</code>
-               <text>Health care technology (Vocabularies)</text>
-             </ics>
-             <ics>
-               <code>11.060.01</code>
-               <text>Dentistry in general</text>
-             </ics>
-                <structuredidentifier>
+            <bibdata type="standard">
+          <title language="en" format="text/plain">Document title</title>
+          <title type="provenance" language="en" format="application/xml">Revision of IEEE Std 3<br/>Incorporates IEEE Std 1</title>
+          <title language="intro-en" format="text/plain">Introduction</title>
+          <title language="main-en" format="text/plain">Main Title -- Title</title>
+          <title language="part-en" format="text/plain">Title Part</title>
+          <title language="intro-fr" format="text/plain">Introduction Française</title>
+          <title language="main-fr" format="text/plain">Titre Principal</title>
+          <title language="part-fr" format="text/plain">Part du Titre</title>
+          <docidentifier type="IEEE">IEEE Std A1-2000 Edition 2  (Incorporates IEEE Std 1) (Supplement to IEEE Std 4) (Amendment to IEEE Std 3 as amended by IEEE Std 3)</docidentifier>
+          <docidentifier type="IEEE-tm">IEEE Std A1-2000™ Edition 2  (Incorporates IEEE Std 1) (Supplement to IEEE Std 4) (Amendment to IEEE Std 3 as amended by IEEE Std 3)</docidentifier>
+          <docidentifier type="IEEE" scope="PDF">GHI</docidentifier>
+          <docidentifier type="IEEE" scope="print">JKL</docidentifier>
+          <docidentifier type="ISBN" scope="PDF">ABC</docidentifier>
+          <docidentifier type="ISBN" scope="print">DEF</docidentifier>
           <docnumber>1000</docnumber>
-          <agency>IEEE</agency>
-          <class>recommended-practice</class>
+          <date type="obsoleted">
+            <on>1002-12-01</on>
+          </date>
+          <date type="confirmed">
+            <on>1000-12-01</on>
+          </date>
+          <date type="issued">
+            <on>1001-12-01</on>
+          </date>
+          <date type="feedback-ended">
+            <on>1003-12-01</on>
+          </date>
+          <contributor>
+            <role type="publisher"/>
+            <organization>
+              <name>Institute of Electrical and Electronic Engineers</name>
+              <abbreviation>IEEE</abbreviation>
+            </organization>
+          </contributor>
           <edition>2</edition>
-          <version>0.3.4</version>
-          <amendment>A1</amendment>
-          <corrigendum>C1</corrigendum>
-          <year>2000</year>
-        </structuredidentifier>
-              </ext>
-            </bibdata>
+          <version>
+            <revision-date>2000-01-01</revision-date>
+            <draft>0.3.4</draft>
+          </version>
+          <language>en</language>
+          <script>Latn</script>
+          <status>
+            <stage>inactive</stage>
+          </status>
+          <copyright>
+            <from>2000</from>
+            <owner>
+              <organization>
+                <name>Institute of Electrical and Electronic Engineers</name>
+                <abbreviation>IEEE</abbreviation>
+              </organization>
+            </owner>
+          </copyright>
+          <relation type="merges">
+            <bibitem>
+              <title>--</title>
+              <docidentifier>IEEE Std 1</docidentifier>
+            </bibitem>
+          </relation>
+          <relation type="updates">
+            <bibitem>
+              <title>--</title>
+              <docidentifier>IEEE Std 3</docidentifier>
+            </bibitem>
+          </relation>
+          <relation type="supplements">
+            <bibitem>
+              <title>--</title>
+              <docidentifier>IEEE Std 4</docidentifier>
+            </bibitem>
+          </relation>
+          <ext>
+            <doctype>recommended-practice</doctype>
+            <subdoctype>amendment</subdoctype>
+            <trial-use>true</trial-use>
+            <editorialgroup>
+              <society>SECRETARIAT</society>
+              <balloting-group type="entity">SC</balloting-group>
+              <working-group>WG</working-group>
+              <working-group>WG1</working-group>
+              <committee>TC</committee>
+              <committee>TC1</committee>
+            </editorialgroup>
+            <ics>
+              <code>01.040.11</code>
+              <text>Health care technology (Vocabularies)</text>
+            </ics>
+            <ics>
+              <code>11.060.01</code>
+              <text>Dentistry in general</text>
+            </ics>
+            <structuredidentifier>
+              <docnumber>1000</docnumber>
+              <agency>IEEE</agency>
+              <class>recommended-practice</class>
+              <edition>2</edition>
+              <version>0.3.4</version>
+              <amendment>A1</amendment>
+              <corrigendum>C1</corrigendum>
+              <year>2000</year>
+            </structuredidentifier>
+          </ext>
+        </bibdata>
+      OUTPUT
+  end
+
+  it "processes multiple identifiers in dependencies" do
+    output = Nokogiri::XML(Asciidoctor.convert(<<~INPUT, *OPTIONS))
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :novalid:
+      :no-isobib:
+      :docnumber: 1000
+      :partnumber: 1
+      :edition: 2
+      :revdate: 2000-01-01
+      :draft: 0.3.4
+      :title-main-en: Main Title -- Title
+      :title-intro-fr: Introduction Française
+      :copyright-year: 2000
+      :updates: IEEE Std 3; IEEE Std 5
+      :merges: IEEE Std 1; IEEE Std 2
+      :supplements: IEEE Std 4; IEEE Std 6
+      :doctype: recommended-practice
+      :docsubtype: amendment
+      :amendment-number: A1
+      :corrigendum-number: C1
+    INPUT
+    output.at("//xmlns:note").remove
+    output = output.at("//xmlns:bibdata")
+    expect(xmlpp(output.to_xml))
+      .to be_equivalent_to xmlpp(<<~OUTPUT)
+            <bibdata type="standard">
+          <title language="en" format="text/plain">Document title</title>
+          <title type="provenance" language="en" format="application/xml">Revision of IEEE Std 3 and IEEE Std 5<br/>Incorporates IEEE Std 1 and IEEE Std 2</title>
+          <title language="main-en" format="text/plain">Main Title -- Title</title>
+          <title language="intro-fr" format="text/plain">Introduction Française</title>
+          <docidentifier type="IEEE">IEEE Std A1-2000 Edition 2  (Incorporates IEEE Std 1, and IEEE Std 2) (Supplement to IEEE Std 4) (Amendment to IEEE Std 3 as amended by IEEE Std 5)</docidentifier>
+          <docidentifier type="IEEE-tm">IEEE Std A1-2000™ Edition 2  (Incorporates IEEE Std 1, and IEEE Std 2) (Supplement to IEEE Std 4) (Amendment to IEEE Std 3 as amended by IEEE Std 5)</docidentifier>
+          <docnumber>1000</docnumber>
+          <contributor>
+            <role type="publisher"/>
+            <organization>
+              <name>Institute of Electrical and Electronic Engineers</name>
+              <abbreviation>IEEE</abbreviation>
+            </organization>
+          </contributor>
+          <edition>2</edition>
+          <version>
+            <revision-date>2000-01-01</revision-date>
+            <draft>0.3.4</draft>
+          </version>
+          <language>en</language>
+          <script>Latn</script>
+          <status>
+            <stage>draft</stage>
+          </status>
+          <copyright>
+            <from>2000</from>
+            <owner>
+              <organization>
+                <name>Institute of Electrical and Electronic Engineers</name>
+                <abbreviation>IEEE</abbreviation>
+              </organization>
+            </owner>
+          </copyright>
+          <relation type="merges">
+            <bibitem>
+              <title>--</title>
+              <docidentifier>IEEE Std 1</docidentifier>
+            </bibitem>
+          </relation>
+          <relation type="merges">
+            <bibitem>
+              <title>--</title>
+              <docidentifier>IEEE Std 2</docidentifier>
+            </bibitem>
+          </relation>
+          <relation type="updates">
+            <bibitem>
+              <title>--</title>
+              <docidentifier>IEEE Std 3</docidentifier>
+            </bibitem>
+          </relation>
+          <relation type="updates">
+            <bibitem>
+              <title>--</title>
+              <docidentifier>IEEE Std 5</docidentifier>
+            </bibitem>
+          </relation>
+          <relation type="supplements">
+            <bibitem>
+              <title>--</title>
+              <docidentifier>IEEE Std 4</docidentifier>
+            </bibitem>
+          </relation>
+          <relation type="supplements">
+            <bibitem>
+              <title>--</title>
+              <docidentifier>IEEE Std 6</docidentifier>
+            </bibitem>
+          </relation>
+          <ext>
+            <doctype>recommended-practice</doctype>
+            <subdoctype>amendment</subdoctype>
+            <structuredidentifier>
+              <docnumber>1000</docnumber>
+              <agency>IEEE</agency>
+              <class>recommended-practice</class>
+              <edition>2</edition>
+              <version>0.3.4</version>
+              <amendment>A1</amendment>
+              <corrigendum>C1</corrigendum>
+              <year>2000</year>
+            </structuredidentifier>
+          </ext>
+        </bibdata>
       OUTPUT
   end
 
@@ -233,9 +357,10 @@ RSpec.describe Metanorma::IEEE do
 
     INPUT
     output = <<~OUTPUT
-             <bibdata type="standard">
+      <bibdata type="standard">
         <title language="en" format="text/plain">Document title</title>
-        <docidentifier type="IEEE">OVERRIDE</docidentifier>
+          <docidentifier type="IEEE">IEEE Std 1000---2023</docidentifier>
+          <docidentifier type="IEEE-tm">IEEE Std 1000---2023™</docidentifier>
         <docnumber>1000</docnumber>
         <date type="issued">
             <on>2021-03-21</on>

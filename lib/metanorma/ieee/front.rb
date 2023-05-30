@@ -47,21 +47,24 @@ module Metanorma
       end
 
       def iso_id_params(node)
-        params = iso_id_params_core(node)
-        params2 = iso_id_params_add(node)
-        relations = []
-        %w(updates supplements merges).each do |x|
+        relns = %w(updates supplements merges).each_with_object([]) do |x, r|
           if node.attr(x)
             relation = relation_to_pubid(x, node)
-            id = node.attr(x).split(/;\s*/).map do |n|
-              orig_id = Pubid::Ieee::Identifier.parse(n)
-              orig_id.edition ||= 1
-              orig_id
-            end
-            relations << { relation: relation, id: id }
+            id = iso_id_params_parse_ids(node, x)
+            x == "supplements" and id = id.first
+            r << { relation: relation, id: id }
           end
         end
-        iso_id_params_resolve(params, params2, node, relations)
+        iso_id_params_resolve(iso_id_params_core(node), iso_id_params_add(node),
+                              node, relns)
+      end
+
+      def iso_id_params_parse_ids(node, relation)
+        node.attr(relation).split(/;\s*/).map do |n|
+          orig_id = Pubid::Ieee::Identifier.parse(n)
+          orig_id.edition ||= 1
+          orig_id
+        end
       end
 
       def relation_to_pubid(relation, node)
@@ -79,23 +82,32 @@ module Metanorma
 
       # unpublished is for internal use
       def iso_id_params_core(node)
-        pub = (node.attr("publisher") || "IEEE").split(/[;,]/)
-        draft = if node.attr("docstage") == "draft"
-                  { version: node.attr("draft")&.to_i, 
-                    revision:  node.attr("revision")&.to_i }
-                    .merge(date_parse(node.attr("issued-date")))
+        pub, copub = iso_id_params_pub(node)
+        { number: node.attr("docnumber"),
+          part: "-#{node.attr('partnumber')}",
+          subpart: "-#{node.attr('subpartnumber')}",
+          type: get_typeabbr(node),
+          redline: node.attr("doctype") == "redline",
+          conformance: node.attr("conformance"),
+          publisher: pub,
+          draft: iso_id_params_draft(node),
+          copublisher: copub }.compact
       end
-        ret = { number: node.attr("docnumber"),
-                part: "-#{node.attr('partnumber')}",
-                subpart: "-#{node.attr('subpartnumber')}",
-                type: get_typeabbr(node),
-                redline: node.attr("doctype") == "redline",
-                conformance: node.attr("conformance"),
-                publisher: pub[0],
-                draft: draft,
-                copublisher: pub[1..-1] }.compact
-        ret[:copublisher].empty? and ret.delete(:copublisher)
-        ret
+
+      def iso_id_params_pub(node)
+        pub = (node.attr("publisher") || "IEEE").split(/[;,]/)
+        publisher = pub[0]
+        copublisher = pub[1..-1]
+        copublisher.empty? and copublisher = nil
+        [publisher, copublisher]
+      end
+
+      def iso_id_params_draft(node)
+        if node.attr("docstage") == "draft"
+          { version: node.attr("draft")&.to_i,
+            revision: node.attr("revision")&.to_i }
+            .merge(date_parse(node.attr("issued-date")))
+        end
       end
 
       def date_parse(date)
