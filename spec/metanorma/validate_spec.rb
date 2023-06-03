@@ -6,7 +6,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "Warns of illegal doctype" do
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document title
       Author
       :docfile: test.adoc
@@ -21,7 +21,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "Warns of illegal docsubtype" do
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document title
       Author
       :docfile: test.adoc
@@ -36,7 +36,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "Warns of illegal docstage" do
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document title
       Author
       :docfile: test.adoc
@@ -51,7 +51,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "Warns of uncapitalised word in title other than preposition (or article)" do
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document title
       Author
       :docfile: test.adoc
@@ -64,7 +64,7 @@ RSpec.describe Metanorma::IEEE do
     expect(File.read("test.err"))
       .to include "Title contains uncapitalised word other than preposition"
 
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document save for the Title
       Author
       :docfile: test.adoc
@@ -79,7 +79,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "Warns of uncapitalised title of figure" do
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document title
       Author
       :docfile: test.adoc
@@ -93,7 +93,7 @@ RSpec.describe Metanorma::IEEE do
     expect(File.read("test.err"))
       .to include "figure heading should be capitalised"
 
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document save for the Title
       Author
       :docfile: test.adoc
@@ -109,7 +109,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "Warns of uncapitalised title of table" do
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document title
       Author
       :docfile: test.adoc
@@ -125,7 +125,7 @@ RSpec.describe Metanorma::IEEE do
     expect(File.read("test.err"))
       .to include "table heading should be capitalised"
 
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document save for the Title
       Author
       :docfile: test.adoc
@@ -143,7 +143,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "Warns of uncapitalised heading of table" do
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document title
       Author
       :docfile: test.adoc
@@ -160,7 +160,7 @@ RSpec.describe Metanorma::IEEE do
     expect(File.read("test.err"))
       .to include "table heading should be capitalised"
 
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document title
       Author
       :docfile: test.adoc
@@ -177,7 +177,7 @@ RSpec.describe Metanorma::IEEE do
     expect(File.read("test.err"))
       .to include "table heading should be capitalised"
 
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document save for the Title
       Author
       :docfile: test.adoc
@@ -210,7 +210,7 @@ RSpec.describe Metanorma::IEEE do
       .to include "Normative reference iso123 is not dated"
 
     VCR.use_cassette "iso123" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
         :docfile: test.adoc
@@ -240,7 +240,7 @@ RSpec.describe Metanorma::IEEE do
       * [[[iso123,ISO 123]]] _Standard_
     INPUT
     expect(File.read("test.err"))
-      .to include "Undated reference ISO 123 should not contain "\
+      .to include "Undated reference ISO 123 should not contain " \
                   "specific elements"
 
     Asciidoctor.convert(<<~"INPUT", *OPTIONS)
@@ -254,7 +254,7 @@ RSpec.describe Metanorma::IEEE do
       * [[[iso123,ISO 123-2000]]] _Standard_
     INPUT
     expect(File.read("test.err"))
-      .not_to include "Undated reference ISO 123-2000 should not contain "\
+      .not_to include "Undated reference ISO 123-2000 should not contain " \
                       "specific elements"
   end
 
@@ -410,7 +410,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "Warns of ranges in crossreferences" do
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document title
       Author
       :docfile: test.adoc
@@ -428,7 +428,7 @@ RSpec.describe Metanorma::IEEE do
 
     expect(File.read("test.err")).to include "Cross-reference contains range, should be separate cross-references"
 
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document title
       Author
       :docfile: test.adoc
@@ -446,7 +446,7 @@ RSpec.describe Metanorma::IEEE do
 
     expect(File.read("test.err")).to include "Cross-reference contains range, should be separate cross-references"
 
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document title
       Author
       :docfile: test.adoc
@@ -467,7 +467,7 @@ RSpec.describe Metanorma::IEEE do
 
   context "Warns of missing overview" do
     it "Overview clause missing" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
         :docfile: test.adoc
@@ -484,7 +484,7 @@ RSpec.describe Metanorma::IEEE do
     end
 
     it "Overview clause not missing if supplied" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
         :docfile: test.adoc
@@ -500,7 +500,7 @@ RSpec.describe Metanorma::IEEE do
     end
 
     it "Scope and Word usage clause not missing if supplied" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
         :docfile: test.adoc
@@ -521,7 +521,7 @@ RSpec.describe Metanorma::IEEE do
 
     it "Overview clause not missing in amendments" do
       FileUtils.rm_f "test.err"
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
         :docfile: test.adoc
@@ -538,7 +538,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "warns that title should match doctype" do
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Fred
       :docfile: test.adoc
       :doctype: recommended-practice
@@ -550,13 +550,13 @@ RSpec.describe Metanorma::IEEE do
     INPUT
     expect(File.exist?("test.err")).to be true
     expect(File.read("test.err"))
-      .to include "Expected title to start as: "\
+      .to include "Expected title to start as: " \
                   "Draft Trial-Use Recommended Practice"
   end
 
   context "Amends" do
     it "warns that editorial instruction is missing" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Fred
         :docfile: test.adoc
         :doctype: recommended-practice
@@ -571,7 +571,7 @@ RSpec.describe Metanorma::IEEE do
       expect(File.read("test.err"))
         .to include "Editorial instruction is missing from change"
 
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Fred
         :docfile: test.adoc
         :doctype: recommended-practice
@@ -589,7 +589,7 @@ RSpec.describe Metanorma::IEEE do
     end
 
     it "warns that editorial instruction should match amend type" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Fred
         :docfile: test.adoc
         :doctype: recommended-practice
@@ -605,7 +605,7 @@ RSpec.describe Metanorma::IEEE do
       expect(File.read("test.err"))
         .to include "'Add' change description should start with _Insert_"
 
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Fred
         :docfile: test.adoc
         :doctype: recommended-practice
@@ -621,7 +621,7 @@ RSpec.describe Metanorma::IEEE do
       expect(File.read("test.err"))
         .to include "'Delete' change description should start with _Delete_"
 
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Fred
         :docfile: test.adoc
         :doctype: recommended-practice
@@ -635,10 +635,10 @@ RSpec.describe Metanorma::IEEE do
       INPUT
       expect(File.exist?("test.err")).to be true
       expect(File.read("test.err"))
-        .to include "'Modify' change description should start with _Change_ "\
+        .to include "'Modify' change description should start with _Change_ " \
                     "or _Replace_"
 
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Fred
         :docfile: test.adoc
         :doctype: recommended-practice
@@ -657,10 +657,10 @@ RSpec.describe Metanorma::IEEE do
       INPUT
       expect(File.exist?("test.err")).to be true
       expect(File.read("test.err"))
-        .to include "'Modify' change description for change not involving "\
+        .to include "'Modify' change description for change not involving " \
                     "figure or equation should start with _Change_"
 
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Fred
         :docfile: test.adoc
         :doctype: recommended-practice
@@ -682,10 +682,10 @@ RSpec.describe Metanorma::IEEE do
       INPUT
       expect(File.exist?("test.err")).to be true
       expect(File.read("test.err"))
-        .to include "'Modify' change description for change involving figure "\
+        .to include "'Modify' change description for change involving figure " \
                     "or equation should start with _Replace_"
 
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Fred
         :docfile: test.adoc
         :doctype: recommended-practice
@@ -707,13 +707,13 @@ RSpec.describe Metanorma::IEEE do
       INPUT
       expect(File.exist?("test.err")).to be true
       expect(File.read("test.err"))
-        .not_to include "'Modify' change description for change involving "\
+        .not_to include "'Modify' change description for change involving " \
                         "figure or equation should start with _Replace_"
       expect(File.read("test.err"))
-        .not_to include "'Modify' change description for change not involving "\
+        .not_to include "'Modify' change description for change not involving " \
                         "figure or equation should start with _Change_"
       expect(File.read("test.err"))
-        .not_to include "'Modify' change description should start with "\
+        .not_to include "'Modify' change description should start with " \
                         "_Change_ or _Replace_"
     end
   end
@@ -721,7 +721,7 @@ RSpec.describe Metanorma::IEEE do
   context "Warns of missing normative references" do
     it "Normative references missing" do
       FileUtils.rm_f "test.err"
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
         :docfile: test.adoc
@@ -735,7 +735,7 @@ RSpec.describe Metanorma::IEEE do
     end
 
     it "Normative references not missing if supplied" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
         :docfile: test.adoc
@@ -751,7 +751,7 @@ RSpec.describe Metanorma::IEEE do
     end
 
     it "Normative references not missing in amendments" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
         :docfile: test.adoc
@@ -768,7 +768,7 @@ RSpec.describe Metanorma::IEEE do
 
   context "Warns of missing terms & definitions" do
     it "Terms & definitions missing" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
         :docfile: test.adoc
@@ -782,7 +782,7 @@ RSpec.describe Metanorma::IEEE do
     end
 
     it "Terms & definitions not missing if supplied" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
         :docfile: test.adoc
@@ -797,7 +797,7 @@ RSpec.describe Metanorma::IEEE do
     end
 
     it "Terms & definitions not missing in amendment" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
         :docfile: test.adoc
@@ -823,7 +823,7 @@ RSpec.describe Metanorma::IEEE do
       expect(File.read("test.err"))
         .to include "Initial section must be (content) Abstract"
 
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
         :docfile: test.adoc
@@ -855,7 +855,7 @@ RSpec.describe Metanorma::IEEE do
       expect(File.read("test.err"))
         .to include "Prefatory material must be followed by (clause) Overview"
 
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
         :docfile: test.adoc
@@ -891,10 +891,10 @@ RSpec.describe Metanorma::IEEE do
         Paragraph
       INPUT
       expect(File.read("test.err"))
-        .to include "Normative References must be followed by "\
+        .to include "Normative References must be followed by " \
                     "Definitions"
 
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
         :docfile: test.adoc
@@ -915,7 +915,7 @@ RSpec.describe Metanorma::IEEE do
         Paragraph
       INPUT
       expect(File.read("test.err"))
-        .not_to include "Normative References must be followed by "\
+        .not_to include "Normative References must be followed by " \
                         "Definitions"
     end
 
@@ -930,7 +930,7 @@ RSpec.describe Metanorma::IEEE do
 
       INPUT
       expect(File.read("test.err"))
-        .to include "Bibliography must be either the first or the last "\
+        .to include "Bibliography must be either the first or the last " \
                     "document annex"
 
       Asciidoctor.convert(<<~"INPUT", *OPTIONS)
@@ -950,7 +950,7 @@ RSpec.describe Metanorma::IEEE do
         == Appendix
       INPUT
       expect(File.read("test.err"))
-        .to include "Bibliography must be either the first or the last "\
+        .to include "Bibliography must be either the first or the last " \
                     "document annex"
 
       Asciidoctor.convert(<<~"INPUT", *OPTIONS)
@@ -968,7 +968,7 @@ RSpec.describe Metanorma::IEEE do
 
       INPUT
       expect(File.read("test.err"))
-        .not_to include "Bibliography must be either the first or the last "\
+        .not_to include "Bibliography must be either the first or the last " \
                         "document annex"
 
       Asciidoctor.convert(<<~"INPUT", *OPTIONS)
@@ -985,7 +985,7 @@ RSpec.describe Metanorma::IEEE do
         == Appendix
       INPUT
       expect(File.read("test.err"))
-        .not_to include "Bibliography must be either the first or the last "\
+        .not_to include "Bibliography must be either the first or the last " \
                         "document annex"
     end
   end
@@ -1118,7 +1118,7 @@ RSpec.describe Metanorma::IEEE do
 
   context "Image name validation" do
     it "warn on wrong image names" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
         :docfile: test.adoc
@@ -1144,7 +1144,7 @@ RSpec.describe Metanorma::IEEE do
     end
 
     it "warn on wrong image names within tables" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
         :docfile: test.adoc
@@ -1176,7 +1176,7 @@ RSpec.describe Metanorma::IEEE do
     end
 
     it "warn on two images in a table cell" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
         :docfile: test.adoc
@@ -1194,7 +1194,7 @@ RSpec.describe Metanorma::IEEE do
       expect(File.read("test.err"))
         .to include "More than one image in the table cell"
 
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
         :docfile: test.adoc

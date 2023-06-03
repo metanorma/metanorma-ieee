@@ -1,8 +1,32 @@
 class Html2Doc
   class IEEE < ::Html2Doc
     def style_list(elem, level, liststyle, listnumber)
-      super
+      return unless liststyle
+
+      sameelem_level = elem.ancestors.map(&:name).count(elem.parent.name)
+      if elem["style"]
+        elem["style"] += ";"
+      else
+        elem["style"] = ""
+      end
+      sameelem_level1 = sameelem_level
+      if liststyle == "l11" && sameelem_level.to_i > 1
+        liststyle = "l21"
+        sameelem_level1 -= 1
+      end
+      if liststyle == "l16"
+        s = case elem.parent["type"]
+            when "a" then 1
+            when "1" then 2
+            else 3
+            end
+        sameelem_level1 += s - (sameelem_level1 % 3)
+        sameelem_level1 < 1 and sameelem_level1 += 3
+      end
+      elem["style"] += "mso-list:#{liststyle} level#{sameelem_level1} lfo#{listnumber}-#{level};"
+      elem["style"] += "text-indent:-0.79cm; margin-left:#{0.4 + (level.to_i * 0.76)}cm;"
       elem.parent["level"] = level
+      elem.parent["sameelem_level"] = sameelem_level
     end
 
     def list2para(list)
@@ -10,7 +34,9 @@ class Html2Doc
 
       level = list["level"] || "1"
       list.delete("level")
-      list2para1(list, level, list.name)
+      samelevel = list["sameelem_level"] || "1"
+      list.delete("sameelem_level")
+      list2para1(list, samelevel, list.name)
     end
 
     def list2para1(list, level, type)

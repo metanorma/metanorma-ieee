@@ -236,6 +236,36 @@ module IsoDoc
         dlist["class"] = "formula_dl"
       end
 
+      def ol(docxml)
+        ol_numbering(docxml)
+        @xrefs.list_anchor_names(docxml.xpath(ns(@xrefs.sections_xpath)))
+        docxml.xpath(ns("//ol/li")).each { |f| ol_label(f) }
+      end
+
+      def ol_numbering(docxml)
+        docxml.xpath(ns("//clause | //annex | //foreword | //acknowledgements | //introduction | //preface/abstract | //appendix | //terms | //term | //definitions | //references | //colophon")).each do |_c|
+          (docxml.xpath(ns(".//ol")) -
+          docxml.xpath(ns("./clause//ol | ./appendix//ol | ./term//ol | ./terms//ol | ./definitions//ol | /references//ol | ./colophon//ol"))).each_with_index do |o, i|
+            ol_numbering1(o, i)
+          end
+        end
+      end
+
+      def ol_numbering1(elem, idx)
+        elem["type"] = ol_depth_rotate(elem, idx).to_s
+        elem.xpath(ns("./li")).each do |li|
+          li["id"] ||= "_#{UUIDTools::UUID.random_create}"
+        end
+      end
+
+      def ol_depth_rotate(node, idx)
+        depth = node.ancestors("ol").size + idx
+        type = :alphabet
+        type = :arabic if [2, 5, 8].include? depth
+        type = :roman if [3, 6, 9].include? depth
+        type
+      end
+
       include Init
     end
   end
