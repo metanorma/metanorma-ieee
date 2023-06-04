@@ -136,7 +136,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "numbers bibliography" do
-    VCR.use_cassette "multistandard1", match_requests_on: %i[method uri body] do
+    VCR.use_cassette "multistandard1" do #, match_requests_on: %i[method uri body] do
       input = <<~INPUT
         = Document title
         Author
@@ -370,7 +370,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "inserts trademarks against IEEE citations" do
-    VCR.use_cassette "ieee-multi", match_requests_on: %i[method uri body] do
+    VCR.use_cassette "ieee-multi" do
       input = <<~INPUT
         = Document title
         Author
