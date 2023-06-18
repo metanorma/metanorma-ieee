@@ -22,7 +22,7 @@ RSpec.describe Metanorma::IEEE do
     output = <<~OUTPUT
       <boilerplate>
          <copyright-statement>
-           <clause>
+           <clause id="_" inline-header="false" obligation="normative">
              <p id='copyright' align='left'>
                Copyright © #{Date.today.year} by The Institute of Electrical and Electronics
                Engineers, Inc.
@@ -35,7 +35,7 @@ RSpec.describe Metanorma::IEEE do
            </clause>
          </copyright-statement>
          <license-statement>
-           <clause>
+           <clause id="_" inline-header="false" obligation="normative">
              <p id='_'>
                This document is an unapproved draft of a proposed IEEE Standard. As
                such, this document is subject to change. USE AT YOUR OWN RISK! IEEE
@@ -69,7 +69,7 @@ RSpec.describe Metanorma::IEEE do
            </clause>
          </license-statement>
          <legal-statement>
-           <clause id='boilerplate-disclaimers'>
+           <clause id='boilerplate-disclaimers' inline-header="false" obligation="normative">
              <title>Important Notices and Disclaimers Concerning IEEE Standards Documents</title>
              <p id='_'>
                IEEE Standards documents are made available for use subject to important
@@ -79,7 +79,7 @@ RSpec.describe Metanorma::IEEE do
                ), appear in all standards and may be found under the heading “Important
                Notices and Disclaimers Concerning IEEE Standards Documents.”
              </p>
-             <clause>
+             <clause id="_" inline-header="false" obligation="normative">
                <title>
                  Notice and Disclaimer of Liability Concerning the Use of IEEE
                  Standards Documents
@@ -141,7 +141,7 @@ RSpec.describe Metanorma::IEEE do
                  WAS FORESEEABLE.
                </p>
              </clause>
-             <clause>
+             <clause id="_" inline-header="false" obligation="normative">
                <title>Translations</title>
                <p id='_'>
                  The IEEE consensus development process involves the review of
@@ -150,7 +150,7 @@ RSpec.describe Metanorma::IEEE do
                  IEEE standard.
                </p>
              </clause>
-             <clause>
+             <clause id="_" inline-header="false" obligation="normative">
                <title>Official statements</title>
                <p id='_'>
                  A statement, written or oral, that is not processed in accordance with
@@ -165,7 +165,7 @@ RSpec.describe Metanorma::IEEE do
                  Working Group.
                </p>
              </clause>
-             <clause>
+             <clause id="_" inline-header="false" obligation="normative">
                <title>Comments on standards</title>
                <p id='_'>
                  Comments for revision of IEEE Standards documents are welcome from any
@@ -216,7 +216,7 @@ RSpec.describe Metanorma::IEEE do
                  </fn>
                </p>
              </clause>
-             <clause>
+             <clause id="_" inline-header="false" obligation="normative">
                <title>Laws and regulations</title>
                <p id='_'>
                  Users of IEEE Standards documents should consult all applicable laws
@@ -229,7 +229,7 @@ RSpec.describe Metanorma::IEEE do
                  may not be construed as doing so.
                </p>
              </clause>
-             <clause>
+             <clause id="_" inline-header="false" obligation="normative">
                <title>Data privacy</title>
                <p id='_'>
                  Users of IEEE Standards documents should evaluate the standards for
@@ -238,7 +238,7 @@ RSpec.describe Metanorma::IEEE do
                  and regulations.
                </p>
              </clause>
-             <clause>
+             <clause id="_" inline-header="false" obligation="normative">
                <title>Copyrights</title>
                <p id='_'>
                  IEEE draft and approved standards are copyrighted by IEEE under US and
@@ -251,7 +251,7 @@ RSpec.describe Metanorma::IEEE do
                  does not waive any rights in copyright to the documents.
                </p>
              </clause>
-             <clause>
+             <clause id="_" inline-header="false" obligation="normative">
                <title>Photocopies</title>
                <p id='_'>
                  Subject to payment of the appropriate licensing fees, IEEE will grant
@@ -265,79 +265,42 @@ RSpec.describe Metanorma::IEEE do
                  through the Copyright Clearance Center.
                </p>
              </clause>
-             <clause>
+             <clause id="_" inline-header="false" obligation="normative">
                <title>Updating of IEEE Standards documents</title>
-               <p id='_'>
-                 Users of IEEE Standards documents should be aware that these documents
+               <p id='_'>Users of IEEE Standards documents should be aware that these documents
                  may be superseded at any time by the issuance of new editions or may
                  be amended from time to time through the issuance of amendments,
                  corrigenda, or errata. An official IEEE document at any point in time
                  consists of the current edition of the document together with any
-                 amendments, corrigenda, or errata then in effect.
-               </p>
-               <p id='_'>
-                 Every IEEE standard is subjected to review at least every 10 years.
+                 amendments, corrigenda, or errata then in effect.</p>
+               <p id='_'>Every IEEE standard is subjected to review at least every 10 years.
                  When a document is more than 10 years old and has not undergone a
                  revision process, it is reasonable to conclude that its contents,
                  although still of some value, do not wholly reflect the present state
                  of the art. Users are cautioned to check to determine that they have
-                 the latest edition of any IEEE standard.
-               </p>
-               <p id='_'>
-                 In order to determine whether a given document is the current edition
+                 the latest edition of any IEEE standard.</p>
+               <p id='_'>In order to determine whether a given document is the current edition
                  and whether it has been amended through the issuance of amendments,
                  corrigenda, or errata, visit 
                  <link target='https://ieeexplore.ieee.org/browse/standards/collection/ieee/'>IEEE Xplore</link>
                   or 
-                 <link target='https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html'>contact IEEE</link>
-                 .
-                 <fn reference='_boilerplate_3'>
-                   <p id='_'>
-                     Available at 
-                     <link target='https://ieeexplore.ieee.org/browse/standards/collection/ieee'/>
-                     .
-                   </p>
-                 </fn>
+                 <link target='https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html'>contact IEEE</link>.<fn reference='_boilerplate_3'><p id='_'>Available at <link target='https://ieeexplore.ieee.org/browse/standards/collection/ieee'/>.</p></fn>
                   For more information about the IEEE SA or IEEE’s standards
-                 development process, visit the IEEE SA Website.
-               </p>
+                 development process, visit the IEEE SA Website.</p>
              </clause>
-             <clause>
+             <clause id="_" inline-header="false" obligation="normative">
                <title>Errata</title>
-               <p id='_'>
-                 Errata, if any, for all IEEE standards can be accessed on the 
-                 <link target='https://standards.ieee.org/standard/index.html'>IEEE SA Website</link>
-                 .
-                 <fn reference='_boilerplate_4'>
-                   <p id='_'>
-                     Available at: 
-                     <link target='https://standards.ieee.org/standard/index.html'/>
-                     .
-                   </p>
-                 </fn>
+               <p id='_'>Errata, if any, for all IEEE standards can be accessed on the <link target='https://standards.ieee.org/standard/index.html'>IEEE SA Website</link>.<fn reference='_boilerplate_4'><p id='_'>Available at: <link target='https://standards.ieee.org/standard/index.html'/>.</p></fn>
                   Search for standard number and year of approval to access the web
                  page of the published standard. Errata links are located under the
                  Additional Resources Details section. Errata are also available in 
-                 <link target='https://ieeexplore.ieee.org/browse/standards/collection/ieee/'>IEEE Xplore</link>
-                 . Users are encouraged to periodically check for errata.
-               </p>
+                 <link target='https://ieeexplore.ieee.org/browse/standards/collection/ieee/'>IEEE Xplore</link>.
+              Users are encouraged to periodically check for errata.</p>
              </clause>
-             <clause>
+             <clause id="_" inline-header="false" obligation="normative">
                <title>Patents</title>
-               <p id='_'>
-                 IEEE Standards are developed in compliance with the 
-                 <link target='https://standards.ieee.org/about/sasb/patcom/materials.html'>IEEE SA Patent Policy</link>
-                 .
-                 <fn reference='_boilerplate_5'>
-                   <p id='_'>
-                     Available at: 
-                     <link target='https://standards.ieee.org/about/sasb/patcom/materials.html'/>
-                     .
-                   </p>
-                 </fn>
-               </p>
-               <p id='_'>
-                 Attention is called to the possibility that implementation of this
+               <p id='_'>IEEE Standards are developed in compliance with the <link target='https://standards.ieee.org/about/sasb/patcom/materials.html'>IEEE SA Patent Policy</link>.<fn reference='_boilerplate_5'><p id='_'>Available at: <link target='https://standards.ieee.org/about/sasb/patcom/materials.html'/>.</p></fn></p>
+               <p id='_'>Attention is called to the possibility that implementation of this
                  standard may require use of subject matter covered by patent rights.
                  By publication of this standard, no position is taken by the IEEE with
                  respect to the existence or validity of any patent rights in
@@ -349,10 +312,8 @@ RSpec.describe Metanorma::IEEE do
                  or unwilling to grant licenses under patent rights without
                  compensation or under reasonable rates, with reasonable terms and
                  conditions that are demonstrably free of any unfair discrimination to
-                 applicants desiring to obtain such licenses.
-               </p>
-               <p id='_'>
-                 Essential Patent Claims may exist for which a Letter of Assurance has
+                 applicants desiring to obtain such licenses.</p>
+               <p id='_'>Essential Patent Claims may exist for which a Letter of Assurance has
                  not been received. The IEEE is not responsible for identifying
                  Essential Patent Claims for which a license may be required, for
                  conducting inquiries into the legal validity or scope of Patents
@@ -363,13 +324,11 @@ RSpec.describe Metanorma::IEEE do
                  determination of the validity of any patent rights, and the risk of
                  infringement of such rights, is entirely their own responsibility.
                  Further information may be obtained from the IEEE Standards
-                 Association.
-               </p>
+                 Association.</p>
              </clause>
-             <clause>
+             <clause id="_" inline-header="false" obligation="normative">
                <title>IMPORTANT NOTICE</title>
-               <p id='_'>
-                 IEEE Standards do not guarantee or ensure safety, security, health, or
+               <p id='_'>IEEE Standards do not guarantee or ensure safety, security, health, or
                  environmental protection, or ensure against interference with or from
                  other devices or networks. IEEE Standards development activities
                  consider research and information presented to the standards
@@ -384,13 +343,10 @@ RSpec.describe Metanorma::IEEE do
                </p>
              </clause>
            </clause>
-           <clause id='boilerplate-participants'>
+           <clause id='boilerplate-participants' inline-header="false" obligation="normative" type="participants">
              <title>Participants</title>
-             <clause id='boilerplate-participants-wg'>
-               <p id='_'>
-                 At the time this draft Recommended Practice was completed, the Working
-                 Group had the following membership:
-               </p>
+             <clause id='boilerplate-participants-wg' inline-header="false" obligation="normative">
+               <p id='_'>At the time this draft Recommended Practice was completed, the Working Group had the following membership:</p>
                <ul id='_'>
                  <li>
                    <dl id='_'>
@@ -526,12 +482,8 @@ RSpec.describe Metanorma::IEEE do
                  </li>
                </ul>
              </clause>
-             <clause id='boilerplate-participants-bg'>
-               <p id='_'>
-                 The following members of the Standards Association balloting group
-                 voted on this Recommended Practice. Balloters may have voted for
-                 approval, disapproval, or abstention.
-               </p>
+             <clause id='boilerplate-participants-bg' inline-header="false" obligation="normative">
+               <p id='_'>The following members of the Standards Association balloting group voted on this Recommended Practice. Balloters may have voted for approval, disapproval, or abstention.</p>
                <ul id='_'>
                  <li>
                    <dl id='_'>
@@ -643,11 +595,8 @@ RSpec.describe Metanorma::IEEE do
                  </li>
                </ul>
              </clause>
-             <clause id='boilerplate-participants-sb'>
-               <p id='_'>
-                 When the IEEE SA Standards Board approved this Recommended Practice on
-                 01 Jan 1000, it had the following membership:
-               </p>
+             <clause id='boilerplate-participants-sb' inline-header="false" obligation="normative">
+               <p id='_'>When the IEEE SA Standards Board approved this Recommended Practice on 01 Jan 1000, it had the following membership:</p>
                <ul id='_'>
                  <li>
                    <dl id='_'>
@@ -811,59 +760,39 @@ RSpec.describe Metanorma::IEEE do
            </clause>
          </legal-statement>
          <feedback-statement>
-           <clause>
-             <p align='left' id='_'>
-               The Institute of Electrical and Electronics Engineers, Inc.
-               <br/>
-                3 Park Avenue, New York, NY 10016-5997, USA
-             </p>
+           <clause id="_" inline-header="false" obligation="normative">
+             <p align='left' id='_'>The Institute of Electrical and Electronics Engineers, Inc.<br/>
+                3 Park Avenue, New York, NY 10016-5997, USA</p>
            </clause>
-           <clause>
+           <clause id="_" inline-header="false" obligation="normative">
              <p id='_'>Copyright © #{Date.today.year} by The Institute of Electrical and Electronics Engineers, Inc.</p>
-             <p id='_'>
-               All rights reserved. Published 01 Jan 1000. Printed in the United States
-               of America.
-             </p>
+             <p id='_'>All rights reserved. Published 01 Jan 1000. Printed in the United States of America.</p>
            </clause>
-           <clause>
-             <p id='_'>
-               IEEE is a registered trademark in the U.S. Patent &#x26; Trademark
-               Office, owned by The Institute of Electrical and Electronics Engineers,
-               Incorporated.
-             </p>
+           <clause id="_" inline-header="false" obligation="normative">
+             <p id='_'>IEEE is a registered trademark in the U.S. Patent &#x26; Trademark Office, owned by The Institute of Electrical and Electronics Engineers, Incorporated.</p>
            </clause>
-           <clause>
+           <clause id="_" inline-header="false" obligation="normative">
              <table unnumbered='true' id='_'>
                <tbody>
                  <tr>
-                   <td>PDF:</td>
-                   <td>ISBN 978-0-XXXX-XXXX-X</td>
-                   <td>STDXXXXX</td>
+                   <td valign="top" align="left">PDF:</td>
+                   <td valign="top" align="left">ISBN 978-0-XXXX-XXXX-X</td>
+                   <td valign="top" align="left">STDXXXXX</td>
                  </tr>
                  <tr>
-                   <td>Print:</td>
-                   <td>ISBN 978-0-XXXX-XXXX-X</td>
-                   <td>STDPDXXXXX</td>
+                   <td valign="top" align="left">Print:</td>
+                   <td valign="top" align="left">ISBN 978-0-XXXX-XXXX-X</td>
+                   <td valign="top" align="left">STDPDXXXXX</td>
                  </tr>
                </tbody>
              </table>
            </clause>
-           <clause>
-             <p id='_'>
-               <em>IEEE prohibits discrimination, harassment, and bullying.</em>
+           <clause id="_" inline-header="false" obligation="normative">
+             <p id='_'><em>IEEE prohibits discrimination, harassment, and bullying.</em>
                <br/>
-               <em>
-                 For more information, visit 
-                 <link target='https://www.ieee.org/about/corporate/governance/p9-26.html'/>
-                 .
-               </em>
+               <em>For more information, visit <link target='https://www.ieee.org/about/corporate/governance/p9-26.html'/>.</em>
                <br/>
-               <em>
-                 No part of this publication may be reproduced in any form, in an
-                 electronic retrieval system or otherwise, without the prior written
-                 permission of the publisher.
-               </em>
-             </p>
+               <em>No part of this publication may be reproduced in any form, in an electronic retrieval system or otherwise, without the prior written permission of the publisher.</em></p>
            </clause>
          </feedback-statement>
        </boilerplate>
@@ -1004,7 +933,7 @@ RSpec.describe Metanorma::IEEE do
     output = <<~OUTPUT
       <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
          <sections>
-           <note id='boilerplate_front'>
+           <note id='boilerplate_front' type="boilerplate">
              <p id='_'>
                The editing instructions contained in this amendment define how to merge
                the material contained therein into the existing base standard and its
@@ -1145,7 +1074,7 @@ RSpec.describe Metanorma::IEEE do
     ret.at("//xmlns:bibdata").remove
     ret.at("//xmlns:boilerplate").remove
     ret.at("//xmlns:metanorma-extension").remove
-    ret.at("//xmlns:clause[@id = 'boilerplate_word_usage']").remove
+    ret.at("//xmlns:clause[@id = 'boilerplate_word_usage']")&.remove
     expect(xmlpp(strip_guid(ret.to_xml)))
       .to be_equivalent_to xmlpp(output)
   end
@@ -1211,7 +1140,7 @@ RSpec.describe Metanorma::IEEE do
     ret.at("//xmlns:bibdata").remove
     ret.at("//xmlns:boilerplate").remove
     ret.at("//xmlns:metanorma-extension").remove
-    ret.at("//xmlns:clause[@id = 'boilerplate_word_usage']").remove
+    ret.at("//xmlns:clause[@id = 'boilerplate_word_usage']")&.remove
     expect(xmlpp(strip_guid(ret.to_xml)))
       .to be_equivalent_to xmlpp(output)
   end
@@ -1323,9 +1252,9 @@ RSpec.describe Metanorma::IEEE do
 
     INPUT
     output = <<~OUTPUT
-      <clause id='boilerplate-participants'>
+      <clause id='boilerplate-participants' inline-header="false" obligation="normative" type="participants">
          <title>Participants</title>
-         <clause id='boilerplate-participants-wg'>
+         <clause id='boilerplate-participants-wg' inline-header="false" obligation="normative">
            <p id='_'>
              At the time this draft Standard was completed, the Working Group had the
              following membership:
@@ -1376,7 +1305,7 @@ RSpec.describe Metanorma::IEEE do
            </ul>
            <p id='_'>This is an additional clause.</p>
          </clause>
-         <clause id='boilerplate-participants-bg'>
+         <clause id='boilerplate-participants-bg' inline-header="false" obligation="normative">
            <p id='_'>
              The following members of the Standards Association balloting group voted
              on this Standard. Balloters may have voted for approval, disapproval, or
@@ -1432,7 +1361,7 @@ RSpec.describe Metanorma::IEEE do
              </li>
            </ul>
          </clause>
-         <clause id='boilerplate-participants-sb'>
+         <clause id='boilerplate-participants-sb' inline-header="false" obligation="normative">
            <p id='_'>
              When the IEEE SA Standards Board approved this Standard on &#x3c;Date
              Approved&#x3e;, it had the following membership:

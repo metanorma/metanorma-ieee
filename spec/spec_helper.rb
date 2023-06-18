@@ -127,26 +127,29 @@ VALIDATING_BLANK_HDR = <<~HDR.freeze
 
 HDR
 
-def boilerplate(xmldoc)
-  file = File.read(
-    File.join(File.dirname(__FILE__), "..", "lib", "metanorma", "ieee",
-              "boilerplate.xml"), encoding: "utf-8"
-  )
-  conv = Metanorma::IEEE::Converter.new(nil, backend: :ieee,
-                                             header_footer: true)
+def boilerplate_read(file, xmldoc)
+  conv = Metanorma::IEEE::Converter.new(:ieee, {})
   conv.init(Asciidoctor::Document.new([]))
-  ret = Nokogiri::XML(
-    conv.boilerplate_isodoc(xmldoc).populate_template(file, nil)
-    .gsub(/<p>/, "<p id='_'>")
-    .gsub(/<dl>/, "<dl id='_'>")
-    .gsub(/<p (?!id=)/, "<p id='_' ")
-    .gsub(/<ol>/, "<ol id='_'>")
-    .gsub(/<ul>/, "<ul id='_'>")
-    .gsub(/<\/?membership>/, ""),
-  )
-  ret.at("//clause[@id='boilerplate_word_usage']").remove
-  conv.smartquotes_cleanup(ret)
-  strip_guid(ret.to_xml)
+  x = conv.boilerplate_isodoc(xmldoc).populate_template(file, nil)
+  ret = conv.boilerplate_file_restructure(x)
+  conv.footnote_boilerplate_renumber(ret)
+  ret.to_xml(encoding: "UTF-8", indent: 2,
+             save_with: Nokogiri::XML::Node::SaveOptions::AS_XML)
+    .gsub(/<(\/)?sections>/, "<\\1boilerplate>")
+    .gsub(/ id="_[^"]+"/, " id='_'")
+end
+
+def boilerplate(xmldoc)
+  file = File.join(File.dirname(__FILE__), "..", "lib", "metanorma", "ieee",
+                   "boilerplate.adoc")
+  ret = Nokogiri::XML(boilerplate_read(
+                        File.read(file, encoding: "utf-8")
+                        .gsub(/<\/?membership>/, ""), xmldoc
+                      ))
+  ret.at("//clause[@id='boilerplate_word_usage']")&.remove
+  ret.xpath("//passthrough").each(&:remove)
+  strip_guid(ret.root.to_xml(encoding: "UTF-8", indent: 2,
+                             save_with: Nokogiri::XML::Node::SaveOptions::AS_XML))
 end
 
 def ieeedoc(lang)

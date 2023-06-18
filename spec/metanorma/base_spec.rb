@@ -41,7 +41,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "processes default metadata" do
-    output = Nokogiri::XML(Asciidoctor.convert(<<~"INPUT", *OPTIONS))
+    output = Nokogiri::XML(Asciidoctor.convert(<<~INPUT, *OPTIONS))
       = Document title
       Author
       :docfile: test.adoc
@@ -112,10 +112,10 @@ RSpec.describe Metanorma::IEEE do
       :amendment-number: A1
       :corrigendum-number: C1
     INPUT
-    output.at("//xmlns:note").remove
+    output.at("//xmlns:note")&.remove
     output = output.at("//xmlns:bibdata")
     expect(xmlpp(output.to_xml))
-      .to be_equivalent_to xmlpp(<<~"OUTPUT")
+      .to be_equivalent_to xmlpp(<<~OUTPUT)
             <bibdata type='standard'>
               <title language='en' format='text/plain'>Document title</title>
               <title type='provenance' language='en' format='application/xml'>Revision of ABC<br/>Incorporates BCD and EFG</title>
@@ -215,7 +215,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "processes metadata with draft, no docstage, no balloting-group-type, docidentifier override" do
-    out = Nokogiri::XML(Asciidoctor.convert(<<~"INPUT", *OPTIONS))
+    out = Nokogiri::XML(Asciidoctor.convert(<<~INPUT, *OPTIONS))
       = Document title
       Author
       :docfile: test.adoc
@@ -282,7 +282,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "processes metadata with no draft, no docstage" do
-    out = Nokogiri::XML(Asciidoctor.convert(<<~"INPUT", *OPTIONS))
+    out = Nokogiri::XML(Asciidoctor.convert(<<~INPUT, *OPTIONS))
       = Document title
       Author
       :docfile: test.adoc
@@ -445,7 +445,8 @@ RSpec.describe Metanorma::IEEE do
            </foreword>
            <introduction id='_' obligation='informative'>
              <title>Introduction</title>
-             <admonition>This introduction is not part of P, Standard for Document title </admonition>
+             <admonition>This introduction is not part of P, Standard for Document title
+</admonition>
              <clause id='_' inline-header='false' obligation='informative'>
                <title>Introduction Subsection</title>
              </clause>
@@ -469,69 +470,12 @@ RSpec.describe Metanorma::IEEE do
                <title>Purpose</title>
                <p id='_'>Text</p>
              </clause>
-             <clause id='boilerplate_word_usage'>
+             <clause id='boilerplate_word_usage' inline-header="false" obligation="normative">
                <title>Word usage</title>
-               <p id='_'>
-                 The word
-                 <em>shall</em>
-                  indicates mandatory requirements strictly to be followed in order to
-                 conform to the standard and from which no deviation is permitted (
-                 <em>shall</em>
-                  equals
-                 <em>is required to</em>
-                 ).
-                 <fn reference='_boilerplate_6'>
-                   <p id='_'>
-                     The use of the word
-                     <em>must</em>
-                      is deprecated and cannot be used when stating mandatory
-                     requirements;
-                     <em>must</em>
-                      is used only to describe unavoidable situations.
-                   </p>
-                 </fn>
-                 <fn reference='_boilerplate_7'>
-                   <p id='_'>
-                     The use of
-                     <em>will</em>
-                      is deprecated and cannot be used when stating mandatory
-                     requirements;
-                     <em>will</em>
-                      is only used in statements of fact.
-                   </p>
-                 </fn>
-               </p>
-               <p id='_'>
-                 The word
-                 <em>should</em>
-                  indicates that among several possibilities one is recommended as
-                 particularly suitable, without mentioning or excluding others; or that
-                 a certain course of action is preferred but not necessarily required (
-                 <em>should</em>
-                  equals
-                 <em>is recommended that</em>
-                 ).
-               </p>
-               <p id='_'>
-                 The word
-                 <em>may</em>
-                  is used to indicate a course of action permissible within the limits
-                 of the standard (
-                 <em>may</em>
-                  equals
-                 <em>is permitted to</em>
-                 ).
-               </p>
-               <p id='_'>
-                 The word
-                 <em>can</em>
-                  is used for statements of possibility and capability, whether
-                 material, physical, or causal (
-                 <em>can</em>
-                  equals
-                 <em>is able to</em>
-                 ).
-               </p>
+               <p id='_'>The word <em>shall</em> indicates mandatory requirements strictly to be followed in order to conform to the standard and from which no deviation is permitted (<em>shall</em> equals <em>is required to</em>).<fn reference='6'><p id='_'>The use of the word <em>must</em> is deprecated and cannot be used when stating mandatory requirements; <em>must</em> is used only to describe unavoidable situations.</p></fn><fn reference='7'><p id='_'>The use of <em>will</em> is deprecated and cannot be used when stating mandatory requirements; <em>will</em> is only used in statements of fact.</p></fn></p>
+               <p id='_'>The word <em>should</em> indicates that among several possibilities one is recommended as particularly suitable, without mentioning or excluding others; or that a certain course of action is preferred but not necessarily required (<em>should</em> equals <em>is recommended that</em>).</p>
+              <p id='_'>The word <em>may</em> is used to indicate a course of action permissible within the limits of the standard (<em>may</em> equals <em>is permitted to</em>).</p>
+               <p id='_'>The word <em>can</em> is used for statements of possibility and capability, whether material, physical, or causal (<em>can</em> equals <em>is able to</em>).</p>
              </clause>
            </clause>
            <terms id='_' obligation='normative'>
@@ -556,21 +500,7 @@ RSpec.describe Metanorma::IEEE do
              <terms id='_' obligation='normative'>
                <title>Intro 2</title>
                <p id='_'>No terms and definitions are listed in this document.</p>
-               <p id='_'>
-                 For the purposes of this document, the following terms and definitions
-                 apply. The
-                 <em>IEEE Standards Dictionary Online</em>
-                  should be consulted for terms not defined in this clause.
-                 <fn reference='_boilerplate_term1'>
-                   <p id='_'>
-                     <em>IEEE Standards Dictionary Online</em>
-                      is available at:
-                     <link target='http://dictionary.ieee.org'/>
-                     . An IEEE Account is required for access to the dictionary, and
-                     one can be created at no charge on the dictionary sign-in page.
-                   </p>
-                 </fn>
-               </p>
+               <p id='_'>For the purposes of this document, the following terms and definitions apply. The <em>IEEE Standards Dictionary Online</em> should be consulted for terms not defined in this clause.<fn reference='_boilerplate_term1'><p id='_'><em>IEEE Standards Dictionary Online</em> is available at: <link target='http://dictionary.ieee.org'/>. An IEEE Account is required for access to the dictionary, and one can be created at no charge on the dictionary sign-in page.</p></fn></p>
                <clause id='_' inline-header='false' obligation='normative'>
                  <title>Intro 3</title>
                </clause>
@@ -634,12 +564,7 @@ RSpec.describe Metanorma::IEEE do
            <title>Bibliography</title>
            <references id='_' normative='false' obligation='informative'>
              <title>Bibliography</title>
-             <p id='_'>
-               Bibliographical references are resources that provide additional or
-               helpful material but do not need to be understood or used to implement
-               this standard. Reference to these resources is made for informational
-               use only.
-             </p>
+             <p id='_'>Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
            </references>
          </annex>
          <bibliography>

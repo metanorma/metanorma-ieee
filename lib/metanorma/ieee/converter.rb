@@ -61,6 +61,10 @@ module Metanorma
                                        nil, false, "#{@filename}.pdf")
       end
 
+      def boilerplate_file(_xmldoc)
+        File.join(@libdir, "boilerplate.adoc")
+      end
+
       def html_extract_attributes(node)
         super.merge(hierarchicalassets:
                     node.attr("hierarchical-object-numbering"),

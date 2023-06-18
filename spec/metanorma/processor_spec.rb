@@ -25,7 +25,7 @@ RSpec.describe Metanorma::IEEE::Processor do
   end
 
   it "registers output formats against metanorma" do
-    expect(processor.output_formats.sort.to_s).to be_equivalent_to <<~"OUTPUT"
+    expect(processor.output_formats.sort.to_s).to be_equivalent_to <<~OUTPUT
       [[:doc, "doc"], [:html, "html"], [:ieee, "ieee.xml"], [:pdf, "pdf"], [:presentation, "presentation.xml"], [:rxl, "rxl"], [:xml, "xml"]]
     OUTPUT
   end
@@ -53,7 +53,7 @@ RSpec.describe Metanorma::IEEE::Processor do
     expect(xmlpp(strip_guid(File.read("test.html", encoding: "utf-8")
       .gsub(%r{^.*<main}m, "<main")
       .gsub(%r{</main>.*}m, "</main>"))))
-      .to be_equivalent_to xmlpp(<<~"OUTPUT")
+      .to be_equivalent_to xmlpp(<<~OUTPUT)
         <main class='main-section'>
           <button onclick='topFunction()' id='myBtn' title='Go to top'>Top</button>
           <p class='zzSTDTitle1'/>
@@ -74,10 +74,10 @@ RSpec.describe Metanorma::IEEE::Processor do
     expect(File.exist?("test.ieee.xml")).to be true
     FileUtils.rm_f "test.ieee.xml"
     begin
-    expect do
-      processor.output(inputxml, "test.xml", "test.ieee.xml", :ieee,
-                       { ieeedtd: "XXX" })
-    end.to raise_error StandardError
+      expect do
+        processor.output(inputxml, "test.xml", "test.ieee.xml", :ieee,
+                         { ieeedtd: "XXX" })
+      end.to raise_error StandardError
     rescue StandardError
     end
   end
