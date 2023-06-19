@@ -7,17 +7,21 @@ module Metanorma
       def initial_boilerplate(xml, isodoc)
         intro_boilerplate(xml, isodoc)
         super if @document_scheme == "ieee-sa-2021"
+        xml.at("//boilerplate") or return
         initial_note(xml)
         word_usage(xml)
         participants(xml)
-        xml.xpath("//dl[not(@id)]").each do |dl|
-          dl["id"] = "_#{UUIDTools::UUID.random_create}"
+        footnote_boilerplate_renumber(xml)
+      end
+
+      def footnote_boilerplate_renumber(xml)
+        xml.xpath("//boilerplate//fn").each_with_index do |f, i|
+          f["reference"] = "_boilerplate_#{i + 1}"
         end
       end
 
       def intro_boilerplate(xml, isodoc)
-        return unless intro = xml.at("//introduction/title")
-
+        intro = xml.at("//introduction/title") or return
         template = <<~ADM
           This introduction is not part of P{{ docnumeric }}{% if draft %}/D{{ draft }}{% endif %}, {{ full_doctitle }}
         ADM
@@ -34,8 +38,7 @@ module Metanorma
       end
 
       def word_usage(xml)
-        return unless @document_scheme == "ieee-sa-2021"
-
+        @document_scheme == "ieee-sa-2021" or return
         n = xml.at("//boilerplate//clause[@id = 'boilerplate_word_usage']")
           &.remove
         s = xml.at("//clause[@type = 'overview']")
@@ -106,8 +109,7 @@ module Metanorma
       end
 
       def other_footnote_renumber1(fnote, idx, seen)
-        return [idx, seen] if fnote["table"]
-
+        fnote["table"] and return [idx, seen]
         content = footnote_content(fnote)
         idx += 1
         if seen[content]
@@ -142,8 +144,7 @@ module Metanorma
       end
 
       def participants(xml)
-        return unless @document_scheme == "ieee-sa-2021"
-
+        @document_scheme == "ieee-sa-2021" or return
         { "boilerplate-participants-wg": "working group",
           "boilerplate-participants-bg": "balloting group",
           "boilerplate-participants-sb": "standards board" }.each do |k, v|
@@ -152,7 +153,7 @@ module Metanorma
         p = xml.at(".//p[@type = 'emeritus_sign']")
         ul = xml.at("//clause[@id = 'boilerplate-participants-sb']//ul")
         p && ul and ul.next = p
-        xml.at("//clause[@type = 'participants']")&.remove
+        xml.at("//sections//clause[@type = 'participants']")&.remove
       end
 
       def populate_participants(xml, target, subtitle)
@@ -176,8 +177,7 @@ module Metanorma
 
       def participants_dl_to_ul(clause)
         clause.xpath(".//dl").each do |dl|
-          next unless dl.ancestors("dl, ul, ol").empty?
-
+          dl.ancestors("dl, ul, ol").empty? or next
           dl.name = "ul"
           dl.xpath("./dt").each(&:remove)
           dl.xpath("./dd").each { |li| li.name = "li" }

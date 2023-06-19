@@ -81,9 +81,7 @@ RSpec.describe Metanorma::IEEE do
                      </locality>
                    </localityStack>
                  </origin>
-                 <modification>
-                   <p id='_'/>
-                 </modification>
+                 <modification/>
                </termsource>
              </term>
            </terms>
