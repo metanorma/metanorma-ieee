@@ -90,7 +90,7 @@ module IsoDoc
       end
 
       def div_cleanup(docxml)
-        d = docxml.at("//div[@class = 'WordSection2']"\
+        d = docxml.at("//div[@class = 'WordSection2']" \
                       "[div[@class = 'WordSection2']]") and
           d.replace(d.children)
         i = 0

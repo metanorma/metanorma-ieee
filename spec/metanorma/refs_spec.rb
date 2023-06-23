@@ -236,99 +236,137 @@ RSpec.describe Metanorma::IEEE do
                 <keyword>Internet-Draft</keyword>
                 <keyword>Vocabulary</keyword>
               </bibitem>
-              <bibitem id="ref1" type="standard">
-                             <title type="title-main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
-                <title type="main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
-                <uri type="src">https://www.iso.org/standard/4766.html</uri>
-                <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4766.detail.rss</uri>
-                <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
-                <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
-                <docidentifier type="iso-reference">ISO 639(E)</docidentifier>
-                <docidentifier type="URN">urn:iso:std:iso:639:stage-95.99:ed-1</docidentifier>
-                <docnumber>639</docnumber>
-                <contributor>
-                  <role type="publisher"/>
-                  <organization>
-                    <name>International Organization for Standardization</name>
-                    <abbreviation>ISO</abbreviation>
-                    <uri>www.iso.org</uri>
-                  </organization>
-                </contributor>
-                <edition>1</edition>
-                <language>en</language>
-                <script>Latn</script>
-                <status>
-                  <stage>95</stage>
-                  <substage>99</substage>
-                </status>
-                <copyright>
-                  <from>1988</from>
-                  <owner>
-                    <organization>
-                      <name>ISO</name>
-                    </organization>
-                  </owner>
-                </copyright>
-                <relation type="updates">
-                  <bibitem type="standard">
-                    <formattedref format="text/plain">ISO 639-1:2002</formattedref>
-                    <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>
-                    <date type="circulated">
-                      <on>2002-07-18</on>
-                    </date>
-                  </bibitem>
-                </relation>
-                <relation type="instance">
-                  <bibitem type="standard">
-                    <title type="title-main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
-                    <title type="main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
-                    <uri type="src">https://www.iso.org/standard/4766.html</uri>
-                    <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4766.detail.rss</uri>
-                    <docidentifier type="ISO" primary="true">ISO 639:1988</docidentifier>
-                <docidentifier type="iso-reference">ISO 639:1988(E)</docidentifier>
-                    <docidentifier type="URN">urn:iso:std:iso:639:stage-95.99:ed-1</docidentifier>
-                    <docnumber>639</docnumber>
-                    <date type="published">
-                      <on>1988-03</on>
-                    </date>
-                    <contributor>
-                      <role type="publisher"/>
-                      <organization>
-                        <name>International Organization for Standardization</name>
-                        <abbreviation>ISO</abbreviation>
-                        <uri>www.iso.org</uri>
-                      </organization>
-                    </contributor>
-                    <edition>1</edition>
-                    <language>en</language>
-                    <script>Latn</script>
-                    <abstract format="text/plain" language="en" script="Latn">Gives a two-letter lower-case code. The symbols were devised primarily for use in terminology, lexicography and linguistic, but they may be used for any application. It also includes guidance on the use of language symbols in some of these applications. The annex includes a classified list of languages and their symbols arranged by families.</abstract>
-                    <status>
-                      <stage>95</stage>
-                      <substage>99</substage>
-                    </status>
-                    <copyright>
-                      <from>1988</from>
-                      <owner>
-                        <organization>
-                          <name>ISO</name>
-                        </organization>
-                      </owner>
-                    </copyright>
-                    <relation type="updates">
-                      <bibitem type="standard">
-                        <formattedref format="text/plain">ISO 639-1:2002</formattedref>
-                        <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>
-                        <date type="circulated">
-                          <on>2002-07-18</on>
-                        </date>
-                      </bibitem>
-                    </relation>
-                    <place>Geneva</place>
-                  </bibitem>
-                </relation>
-                <place>Geneva</place>
-              </bibitem>
+                           <bibitem id="ref1" type="standard">
+               <title type="title-main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
+               <title type="main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
+               <uri type="src">https://www.iso.org/standard/74575.html</uri>
+               <uri type="rss">https://www.iso.org/contents/data/standard/07/45/74575.detail.rss</uri>
+               <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
+               <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
+               <docidentifier type="iso-reference">ISO 639(E)</docidentifier>
+               <docidentifier type="URN">urn:iso:std:iso:639:stage-60.00:ed-2</docidentifier>
+               <docnumber>639</docnumber>
+               <contributor>
+                 <role type="publisher"/>
+                 <organization>
+                   <name>International Organization for Standardization</name>
+                   <abbreviation>ISO</abbreviation>
+                   <uri>www.iso.org</uri>
+                 </organization>
+               </contributor>
+               <edition>2</edition>
+               <language>en</language>
+               <script>Latn</script>
+               <status>
+                 <stage>60</stage>
+                 <substage>00</substage>
+               </status>
+               <copyright>
+                 <from>2023</from>
+                 <owner>
+                   <organization>
+                     <name>ISO</name>
+                   </organization>
+                 </owner>
+               </copyright>
+               <relation type="obsoletes">
+                 <bibitem type="standard">
+                   <formattedref format="text/plain">ISO 639-1:2002</formattedref>
+                   <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>
+                 </bibitem>
+               </relation>
+               <relation type="obsoletes">
+                 <bibitem type="standard">
+                   <formattedref format="text/plain">ISO 639-2:1998</formattedref>
+                   <docidentifier type="ISO" primary="true">ISO 639-2:1998</docidentifier>
+                 </bibitem>
+               </relation>
+               <relation type="obsoletes">
+                 <bibitem type="standard">
+                   <formattedref format="text/plain">ISO 639-3:2007</formattedref>
+                   <docidentifier type="ISO" primary="true">ISO 639-3:2007</docidentifier>
+                 </bibitem>
+               </relation>
+               <relation type="obsoletes">
+                 <bibitem type="standard">
+                   <formattedref format="text/plain">ISO 639-4:2010</formattedref>
+                   <docidentifier type="ISO" primary="true">ISO 639-4:2010</docidentifier>
+                 </bibitem>
+               </relation>
+               <relation type="obsoletes">
+                 <bibitem type="standard">
+                   <formattedref format="text/plain">ISO 639-5:2008</formattedref>
+                   <docidentifier type="ISO" primary="true">ISO 639-5:2008</docidentifier>
+                 </bibitem>
+               </relation>
+               <relation type="instance">
+                 <bibitem type="standard">
+                   <title type="title-main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
+                   <title type="main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
+                   <uri type="src">https://www.iso.org/standard/74575.html</uri>
+                   <uri type="rss">https://www.iso.org/contents/data/standard/07/45/74575.detail.rss</uri>
+                   <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
+                   <docidentifier type="iso-reference">ISO 639(E)</docidentifier>
+                   <docidentifier type="URN">urn:iso:std:iso:639:stage-60.00:ed-2</docidentifier>
+                   <docnumber>639</docnumber>
+                   <contributor>
+                     <role type="publisher"/>
+                     <organization>
+                       <name>International Organization for Standardization</name>
+                       <abbreviation>ISO</abbreviation>
+                       <uri>www.iso.org</uri>
+                     </organization>
+                   </contributor>
+                   <edition>2</edition>
+                   <language>en</language>
+                   <script>Latn</script>
+                   <status>
+                     <stage>60</stage>
+                     <substage>00</substage>
+                   </status>
+                   <copyright>
+                     <from>2023</from>
+                     <owner>
+                       <organization>
+                         <name>ISO</name>
+                       </organization>
+                     </owner>
+                   </copyright>
+                   <relation type="obsoletes">
+                     <bibitem type="standard">
+                       <formattedref format="text/plain">ISO 639-1:2002</formattedref>
+                       <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>
+                     </bibitem>
+                   </relation>
+                   <relation type="obsoletes">
+                     <bibitem type="standard">
+                       <formattedref format="text/plain">ISO 639-2:1998</formattedref>
+                       <docidentifier type="ISO" primary="true">ISO 639-2:1998</docidentifier>
+                     </bibitem>
+                   </relation>
+                   <relation type="obsoletes">
+                     <bibitem type="standard">
+                       <formattedref format="text/plain">ISO 639-3:2007</formattedref>
+                       <docidentifier type="ISO" primary="true">ISO 639-3:2007</docidentifier>
+                     </bibitem>
+                   </relation>
+                   <relation type="obsoletes">
+                     <bibitem type="standard">
+                       <formattedref format="text/plain">ISO 639-4:2010</formattedref>
+                       <docidentifier type="ISO" primary="true">ISO 639-4:2010</docidentifier>
+                     </bibitem>
+                   </relation>
+                   <relation type="obsoletes">
+                     <bibitem type="standard">
+                       <formattedref format="text/plain">ISO 639-5:2008</formattedref>
+                       <docidentifier type="ISO" primary="true">ISO 639-5:2008</docidentifier>
+                     </bibitem>
+                   </relation>
+                   <place>Geneva</place>
+                 </bibitem>
+               </relation>
+               <place>Geneva</place>
+             </bibitem>
               <bibitem type="book" id="ref4">
                 <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
                 <title type="title-main" format="text/plain">Indiana Jones and the Last Crusade</title>
