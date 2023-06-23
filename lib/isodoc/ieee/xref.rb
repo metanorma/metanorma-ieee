@@ -69,12 +69,13 @@ module IsoDoc
       def termnote_anchor_names(docxml)
         docxml.xpath(ns("//*[termnote]")).each do |t|
           c = Counter.new
+          sequence = UUIDTools::UUID.random_create.to_s
           notes = t.xpath(ns("./termnote"))
           notes.noblank.each do |n|
             @anchors[n["id"]] =
               anchor_struct("#{@labels['termnote']} #{increment_label(notes, n, c)}",
                             n, @labels["note_xref"], "termnote", false)
-                .merge(sequence: UUIDTools::UUID.random_create.to_s)
+                .merge(sequence: sequence)
           end
         end
       end
