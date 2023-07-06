@@ -346,7 +346,7 @@ RSpec.describe Metanorma::IEEE do
            <clause id='boilerplate-participants' inline-header="false" obligation="normative" type="participants">
              <title>Participants</title>
              <clause id='boilerplate-participants-wg' inline-header="false" obligation="normative">
-               <p id='_'>At the time this draft Recommended Practice was completed, the Working Group had the following membership:</p>
+               <p id='_'>At the time this draft Recommended Practice was completed, the had the following membership:</p>
                <ul id='_'>
                  <li>
                    <dl id='_'>
@@ -1256,7 +1256,7 @@ RSpec.describe Metanorma::IEEE do
          <title>Participants</title>
          <clause id='boilerplate-participants-wg' inline-header="false" obligation="normative">
            <p id='_'>
-             At the time this draft Standard was completed, the Working Group had the
+             At the time this draft Standard was completed, the had the
              following membership:
            </p>
            <ul id='_'>
