@@ -1,4 +1,5 @@
 require_relative "init"
+require_relative "presentation_bibdata"
 require_relative "presentation_terms"
 require_relative "presentation_ref"
 require "isodoc"
@@ -25,7 +26,6 @@ module IsoDoc
 
       def prefix_clause(target, loc)
         loc["type"] == "clause" or return loc["type"]
-
         if subclause?(target, loc["type"],
                       loc&.at(ns("./referenceFrom"))&.text)
           ""
@@ -101,34 +101,6 @@ module IsoDoc
         prefix_name(elem, "<br/>", lbl, "title")
       end
 
-      def bibdata_i18n(bib)
-        super
-        bibdata_dates(bib)
-      end
-
-      def bibdata_dates(bib)
-        bib.xpath(ns("./date")).each do |d|
-          d.next = d.dup
-          d.next["format"] = "ddMMMyyyy"
-          d.next.xpath(ns("./from | ./to | ./on")).each do |x|
-            x.children = ddMMMyyyy(x.text)
-          end
-        end
-      end
-
-      def ddMMMyyyy(isodate)
-        return nil if isodate.nil?
-
-        arr = isodate.split("-")
-        if arr.size == 1 && (/^\d+$/.match isodate)
-          Date.new(*arr.map(&:to_i)).strftime("%Y")
-        elsif arr.size == 2
-          Date.new(*arr.map(&:to_i)).strftime("%b %Y")
-        else
-          Date.parse(isodate).strftime("%d %b %Y")
-        end
-      end
-
       def amend1(elem)
         elem.xpath(ns("./description/p")).each do |p|
           p.children = to_xml(p.children).strip
@@ -149,73 +121,6 @@ module IsoDoc
       def section(docxml)
         boilerplate(docxml)
         super
-      end
-
-      def boilerplate(docxml)
-        docxml.xpath(ns("//clause[@id = 'boilerplate-participants']/" \
-                        "clause/title")).each(&:remove)
-        docxml.xpath(ns("//clause[@id = 'boilerplate-participants']/clause"))
-          .each do |clause|
-          participants(clause)
-        end
-      end
-
-      def participants(clause)
-        clause.xpath(ns(".//ul")).each_with_index do |ulist, idx|
-          ulist.xpath(ns("./li")).each { |list| participants1(list, idx) }
-          ulist.replace(ulist.children)
-        end
-        affiliation_header(clause)
-      end
-
-      def affiliation_header(clause)
-        clause.xpath(ns(".//p[@type = 'officeorgrepmember']")).each do |p|
-          prev = p.previous_element
-          prev && prev.name == "p" &&
-            prev["type"] == "officeorgrepmember" and next
-          p.previous = <<~HDR
-            <p type='officeorgrepmemberhdr'><em>Organization
-            Represented</em><tab/><em>Name of Representative</em></p>
-          HDR
-        end
-      end
-
-      def participants1(list, idx)
-        key = ""
-        map = list.xpath(ns(".//dt | .//dd")).each_with_object({}) do |dtd, m|
-          (dtd.name == "dt" and key = dtd.text) or
-            m[key] = @c.encode(dtd.text.strip, :hexadecimal)
-        end
-        list.replace(participant_para(map, idx))
-      end
-
-      def participant_para(map, idx)
-        name = participant_name(map)
-        if map["role"]&.casecmp("member")&.zero?
-          participant_member_para(map, name, idx)
-        else
-          participant_officeholder_para(map, name, idx)
-        end
-      end
-
-      def participant_member_para(map, name, _idx)
-        if map["company"] && (map["name"] || map["surname"])
-          pers = map["name"] || "#{map['given']} #{map['surname']}"
-          "<p type='officeorgrepmember'>#{name}<tab/>#{pers}</p>"
-        elsif map["company"] then "<p type='officeorgmember'>#{name}</p>"
-        else "<p type='officemember'>#{name}</p>"
-        end
-      end
-
-      def participant_officeholder_para(map, name, idx)
-        name = "<strong>#{name}</strong>" if idx.zero?
-        br = map["role"].size > 30 ? "<br/>" : ""
-        "<p type='officeholder' align='center'>#{name}, #{br}" \
-          "<em>#{map['role']}</em></p>"
-      end
-
-      def participant_name(map)
-        map["company"] || map["name"] || "#{map['given']} #{map['surname']}"
       end
 
       def asciimath_dup(node)
@@ -243,9 +148,15 @@ module IsoDoc
       end
 
       def ol_numbering(docxml)
-        docxml.xpath(ns("//clause | //annex | //foreword | //acknowledgements | //introduction | //preface/abstract | //appendix | //terms | //term | //definitions | //references | //colophon")).each do |_c|
-          (docxml.xpath(ns(".//ol")) -
-          docxml.xpath(ns("./clause//ol | ./appendix//ol | ./term//ol | ./terms//ol | ./definitions//ol | /references//ol | ./colophon//ol"))).each_with_index do |o, i|
+        p = "//clause | //annex | //foreword | //acknowledgements | " \
+            "//introduction | //preface/abstract | //appendix | //terms | " \
+            "//term | //definitions | //references | //colophon"
+        docxml.xpath(ns(p)).each do |c|
+          (c.xpath(ns(".//ol")) -
+          c.xpath(ns("./clause//ol | ./appendix//ol | ./term//ol | " \
+                     "./terms//ol | ./definitions//ol | " \
+                     "/references//ol | ./colophon//ol")))
+            .each_with_index do |o, i|
             ol_numbering1(o, i)
           end
         end
@@ -264,6 +175,17 @@ module IsoDoc
         type = :arabic if [2, 5, 8].include? depth
         type = :roman if [3, 6, 9].include? depth
         type
+      end
+
+      def middle_title(docxml)
+        s = docxml.at(ns("//sections")) or return
+        ret = "<p class='zzSTDTitle1'>#{@meta.get[:full_doctitle]}"
+        @meta.get[:amd] || @meta.get[:corr] and ret += "<br/>"
+        @meta.get[:amd] and ret += "Amendment #{@meta.get[:amd]}"
+        @meta.get[:amd] && @meta.get[:corr] and ret += " "
+        @meta.get[:corr] and ret += "Corrigenda #{@meta.get[:corr]}"
+        ret += "</p>"
+        s.children.first.previous = ret
       end
 
       include Init

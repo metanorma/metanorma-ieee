@@ -8,12 +8,17 @@ module IsoDoc
         { id: node["id"], type: node["type"] }
       end
 
-      def scope(isoxml, out, num)
-        f = isoxml.at(ns("//clause[@type = 'overview']")) or return num
-        out.div **attr_code(id: f["id"]) do |div|
+      def top_element_render(elem, out)
+        elem.name == "clause" && elem["type"] == "overview" and
+          return scope(elem, out, 0)
+        super
+      end
+
+      def scope(node, out, num)
+        out.div **attr_code(id: node["id"]) do |div|
           num = num + 1
-          clause_name(f, f&.at(ns("./title")), div, nil)
-          f.elements.each do |e|
+          clause_name(node, node&.at(ns("./title")), div, nil)
+          node.elements.each do |e|
             parse(e, div) unless e.name == "title"
           end
         end
@@ -22,7 +27,7 @@ module IsoDoc
 
       def middle_clause(_docxml = nil)
         "//clause[parent::sections][not(@type = 'overview')]" \
-          "[not(descendant::terms)]"
+          "[not(descendant::terms)][not(descendant::references)]"
       end
 
       def para_attrs(node)
