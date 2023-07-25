@@ -110,7 +110,8 @@ RSpec.describe IsoDoc::IEEE do
           </acknowledgements>
         </preface>
         <sections>
-          <clause id="D" obligation="normative" type="overview" displayorder="5">
+        <p class="zzSTDTitle1" displayorder="5">??? for ???</p>
+          <clause id="D" obligation="normative" type="overview" displayorder="6">
             <title depth="1">1.<tab/>Overview</title>
             <p id="E">Text</p>
             <clause id="D1" obligation="normative" type="scope">
@@ -120,7 +121,7 @@ RSpec.describe IsoDoc::IEEE do
             <title depth="2">1.2.<tab/>Purpose</title>
             </clause>
           </clause>
-          <clause id="H" obligation="normative" displayorder="7">
+          <clause id="H" obligation="normative" displayorder="8">
             <title depth="1">3.<tab/>Terms, Definitions, Symbols and Abbreviated Terms</title>
             <terms id="I" obligation="normative">
               <title depth="2">3.1.<tab/>Normal Terms</title>
@@ -138,13 +139,13 @@ RSpec.describe IsoDoc::IEEE do
               </dl>
             </definitions>
           </clause>
-          <definitions id="L" displayorder="8"><title>4.</title>
+          <definitions id="L" displayorder="9"><title>4.</title>
             <dl>
               <dt>Symbol</dt>
               <dd>Definition</dd>
             </dl>
           </definitions>
-          <clause id="M" inline-header="false" obligation="normative" displayorder="9">
+          <clause id="M" inline-header="false" obligation="normative" displayorder="10">
             <title depth="1">5.<tab/>Clause 4</title>
             <clause id="N" inline-header="false" obligation="normative">
               <title depth="2">5.1.<tab/>Introduction</title>
@@ -153,8 +154,11 @@ RSpec.describe IsoDoc::IEEE do
               <title depth="2">5.2.<tab/>Clause 4.2</title>
             </clause>
           </clause>
+          <references id="R" normative="true" obligation="informative" displayorder="7">
+            <title depth="1">2.<tab/>Normative References</title>
+          </references>
         </sections>
-        <annex id="P" inline-header="false" obligation="normative" displayorder="10">
+        <annex id="P" inline-header="false" obligation="normative" displayorder="11">
           <title><strong>Annex A</strong><br/><span class="obligation">(normative)</span><br/><strong>Annex</strong></title>
           <clause id="Q" inline-header="false" obligation="normative">
             <title depth="2">A.1.<tab/>Annex A.1</title>
@@ -167,10 +171,7 @@ RSpec.describe IsoDoc::IEEE do
           </references>
         </annex>
         <bibliography>
-          <references id="R" normative="true" obligation="informative" displayorder="6">
-            <title depth="1">2.<tab/>Normative References</title>
-          </references>
-          <clause id="S" obligation="informative" displayorder="11">
+          <clause id="S" obligation="informative" displayorder="12">
             <title depth="1">Bibliography</title>
             <references id="T" normative="false" obligation="informative">
               <title depth="2">Bibliography Subsection</title>
@@ -200,7 +201,7 @@ RSpec.describe IsoDoc::IEEE do
              <h1 class='IntroTitle'>Acknolwedgements</h1>
              <p id='A'>This is a preamble</p>
            </div>
-           <p class='zzSTDTitle1'/>
+           <p class="zzSTDTitle1">??? for ???</p>
            <div id='D'>
              <h1>1.&#xa0; Overview</h1>
              <p id='E'>Text</p>
@@ -287,21 +288,21 @@ RSpec.describe IsoDoc::IEEE do
         <div class='WordSection1'>
           <p>&#xa0;</p>
         </div>
-        <p>
+        <p class="section-break">
           <br clear='all' class='section'/>
         </p>
         <div class='WordSection2'>
             <div class="WordSectionContents">
           <h1 class="IEEEStdsLevel1frontmatter">Contents</h1>
         </div>
-          <p>
+          <p class="page-break">
             <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
           </p>
           <div class='abstract'>
             <h1 class='AbstractTitle'>Foreword</h1>
             <p id='A'>This is a preamble</p>
           </div>
-          <p>
+          <p class="page-break">
             <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
           </p>
           <div class='Section3' id='B'>
@@ -311,7 +312,7 @@ RSpec.describe IsoDoc::IEEE do
             </div>
             <p>This is patent boilerplate</p>
           </div>
-          <p>
+          <p class="page-break">
             <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
           </p>
           <div class='Section3' id=''>
@@ -320,13 +321,13 @@ RSpec.describe IsoDoc::IEEE do
           </div>
           <p>&#xa0;</p>
         </div>
-        <p>
+        <p class="section-break">
           <br clear='all' class='section'/>
         </p>
         <div class='WordSectionMiddleTitle'>
           <p class='IEEEStdsTitle' style='margin-top:70.0pt'>??? for ???</p>
         </div>
-        <p>
+        <p class="section-break">
           <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
         </p>
         <div class='WordSectionMain'>
@@ -421,7 +422,7 @@ RSpec.describe IsoDoc::IEEE do
               </h2>
             </div>
           </div>
-          <p>
+          <p class="page-break">
             <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
           </p>
           <div id='P' class='Annex'>
@@ -453,7 +454,7 @@ RSpec.describe IsoDoc::IEEE do
               </h2>
             </div>
           </div>
-          <p>
+          <p class="page-break">
             <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
           </p>
           <div>
@@ -494,26 +495,46 @@ RSpec.describe IsoDoc::IEEE do
         <preface>
            <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> 
         </preface>
-        <sections/>
+        <sections>
+        <clause/>
+        </sections>
       </iso-standard>
     INPUT
+    presxml = <<~PRESXML
+      <sections>
+         <p class="zzSTDTitle1" displayorder="2">Draft Recommended Practice for Title</p>
+         <clause displayorder="3"/>
+       </sections>
+    PRESXML
     html = <<~OUTPUT
-      #{HTML_HDR}
-      <p class='zzSTDTitle1'>Title</p>
-          </div>
-        </body>
+      <div class="main-section">
+         <br/>
+         <div id="_" class="TOC">
+           <h1 class="IntroTitle">Contents</h1>
+         </div>
+         <p class="zzSTDTitle1">Draft Recommended Practice for Title</p>
+         <div>
+           <h1/>
+         </div>
+       </div>
     OUTPUT
     word = <<~OUTPUT
       <div class='WordSectionMiddleTitle'>
          <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Draft Recommended Practice for Title</p>
        </div>
     OUTPUT
+    p = IsoDoc::IEEE::PresentationXMLConvert
+      .new(presxml_options)
+      .convert("test", input, true)
+    expect(xmlpp(strip_guid(Nokogiri::XML(p)
+                .at("//xmlns:sections").to_xml)))
+      .to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(strip_guid(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
-      .convert("test", input, true))
-      .at("//body").to_xml)))
+      .convert("test", p, true))
+      .at("//div[@class = 'main-section']").to_xml)))
       .to be_equivalent_to xmlpp(html)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::WordConvert.new({})
-      .convert("test", input, true))
+      .convert("test", p, true))
       .at("//div[@class = 'WordSectionMiddleTitle']").to_xml))
       .to be_equivalent_to xmlpp(word)
   end
@@ -562,7 +583,6 @@ RSpec.describe IsoDoc::IEEE do
     OUTPUT
     html = <<~OUTPUT
       #{HTML_HDR}
-           <p class='zzSTDTitle1'/>
            <br/>
            <div id='a' class='Section3'>
              <h1 class='Annex'>

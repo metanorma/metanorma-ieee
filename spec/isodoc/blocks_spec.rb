@@ -220,7 +220,6 @@ RSpec.describe IsoDoc do
                </div>
              </table>
            </div>
-           <p class='zzSTDTitle1'/>
          </div>
        </body>
     OUTPUT
@@ -332,7 +331,8 @@ RSpec.describe IsoDoc do
         </div>
       </div>
     WORD
-    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+      .new(presxml_options)
       .convert("test", input, true)))).to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
       .convert("test", presxml, true))
@@ -342,7 +342,7 @@ RSpec.describe IsoDoc do
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
     expect(strip_guid(xmlpp(doc.to_xml
-      .gsub(/<m:/, "<").gsub(/<\/m:/, "</"))))
+      .gsub("<m:", "<").gsub("</m:", "</"))))
       .to be_equivalent_to xmlpp(word)
     expect(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
       .new({ hierarchicalassets: true })
@@ -435,7 +435,6 @@ RSpec.describe IsoDoc do
                 B</pre>
                 </div>
                                </div>
-                               <p class="zzSTDTitle1"/>
                                <aside id='fn:1' class='footnote'>
                   <p>X</p>
                 </aside>
@@ -526,8 +525,9 @@ RSpec.describe IsoDoc do
         </div>
       </div>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true).gsub(/&lt;/, "&#x3c;"))))
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+      .new(presxml_options)
+      .convert("test", input, true).gsub("&lt;", "&#x3c;"))))
       .to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(strip_guid(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
       .convert("test", presxml, true))
@@ -538,9 +538,9 @@ RSpec.describe IsoDoc do
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
     expect(strip_guid(xmlpp(doc.to_xml
-      .gsub(/<m:/, "<").gsub(/<\/m:/, "</")
+      .gsub("<m:", "<").gsub("</m:", "</")
       .gsub(/['"][^'".]+\.(gif|xml)['"]/, "'_.\\1'")
-      .gsub(/epub:/, "")
+      .gsub("epub:", "")
       .gsub(/mso-bookmark:_Ref\d+/, "mso-bookmark:_Ref"))))
       .to be_equivalent_to xmlpp(word)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
@@ -587,7 +587,8 @@ RSpec.describe IsoDoc do
         </clause>
         </preface>
         <sections>
-          <clause id='a' displayorder='2'>
+          <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
+          <clause id='a' displayorder='3'>
             <title depth='1'>
               1.
               <tab/>
@@ -602,7 +603,7 @@ RSpec.describe IsoDoc do
               <p id='_'>Second note.</p>
             </note>
           </clause>
-          <clause id='b' displayorder='3'>
+          <clause id='b' displayorder='4'>
             <title depth='1'>
               2.
               <tab/>
@@ -618,7 +619,7 @@ RSpec.describe IsoDoc do
     OUTPUT
     html = <<~"OUTPUT"
       #{HTML_HDR}
-          <p class='zzSTDTitle1'/>
+          <p class="zzSTDTitle1">??? for ???</p>
           <div id='a'>
             <h1> 1. &#xa0; First </h1>
             <div id='note1' class='Note'>
@@ -646,8 +647,9 @@ RSpec.describe IsoDoc do
         </div>
       </body>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-       .convert("test", input, true).gsub(/&lt;/, "&#x3c;"))))
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+      .new(presxml_options)
+       .convert("test", input, true).gsub("&lt;", "&#x3c;"))))
       .to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
       .convert("test", presxml, true))
@@ -656,21 +658,21 @@ RSpec.describe IsoDoc do
 
   it "processes admonitions" do
     presxml = <<~INPUT
-          <iso-standard xmlns="http://riboseinc.com/isoxml" type='presentation'>
-          <preface>
-              <clause type="toc" id="_" displayorder="1">
-      <title depth="1">Contents</title>
-    </clause>
-          <foreword displayorder="2">
-          <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6a" type="caution" keep-with-next="true" keep-lines-together="true">
-          <name>CAUTION</name>
-        <p id="_e94663cc-2473-4ccc-9a72-983a74d989f2">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
-      </admonition>
-          <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6b" type="caution" keep-with-next="true" keep-lines-together="true" notag="true">
-        <p id="_e94663cc-2473-4ccc-9a72-983a74d989f2">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
-      </admonition>
-          </foreword></preface>
-          </iso-standard>
+            <iso-standard xmlns="http://riboseinc.com/isoxml" type='presentation'>
+            <preface>
+                <clause type="toc" id="_" displayorder="1">
+        <title depth="1">Contents</title>
+      </clause>
+            <foreword displayorder="2">
+            <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6a" type="caution" keep-with-next="true" keep-lines-together="true">
+            <name>CAUTION</name>
+          <p id="_e94663cc-2473-4ccc-9a72-983a74d989f2">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
+        </admonition>
+            <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6b" type="caution" keep-with-next="true" keep-lines-together="true" notag="true">
+          <p id="_e94663cc-2473-4ccc-9a72-983a74d989f2">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
+        </admonition>
+            </foreword></preface>
+            </iso-standard>
     INPUT
     html = <<~OUTPUT
       #{HTML_HDR}
@@ -685,7 +687,6 @@ RSpec.describe IsoDoc do
         <p id="_">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
              </div>
            </div>
-           <p class='zzSTDTitle1'/>
          </div>
        </body>
     OUTPUT
@@ -694,7 +695,7 @@ RSpec.describe IsoDoc do
             <div class="WordSectionContents">
           <h1 class="IEEEStdsLevel1frontmatter">Contents</h1>
         </div>
-        <p>
+        <p class="page-break">
           <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
         </p>
         <div>
@@ -757,7 +758,6 @@ RSpec.describe IsoDoc do
                <p class='SourceTitle' style='text-align:center;'>Sample</p>
              </div>
            </div>
-        <p class="zzSTDTitle1"/>
         </div>
         </body>
     OUTPUT
@@ -788,7 +788,7 @@ RSpec.describe IsoDoc do
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
     expect(strip_guid(xmlpp(doc.to_xml
-      .gsub(/<m:/, "<").gsub(/<\/m:/, "</"))))
+      .gsub("<m:", "<").gsub("</m:", "</"))))
       .to be_equivalent_to xmlpp(word)
   end
 
@@ -817,32 +817,32 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     presxml = <<~INPUT
-             <iso-standard xmlns="http://riboseinc.com/isoxml"  type='presentation'>
-          <preface>
-              <clause type="toc" id="_" displayorder="1">
-      <title depth="1">Contents</title>
-    </clause>
-        <foreword id="A" displayorder="2">
-          <formula id="_" unnumbered="true"  keep-with-next="true" keep-lines-together="true">
-        <stem type="AsciiMath">r = 1 %</stem>
-      <dl id="_" class="formula_dl">
-        <dt>
-          <stem type="AsciiMath">r</stem>
-        </dt>
-        <dd>
-          <p id="_">is the repeatability limit.</p>
-        </dd>
-      </dl>
-          <note id="_">
-          <name>NOTE</name>
-        <p id="_">[durationUnits] is essentially a duration statement without the "P" prefix. "P" is unnecessary because between "G" and "U" duration is always expressed.</p>
-      </note>
+               <iso-standard xmlns="http://riboseinc.com/isoxml"  type='presentation'>
+            <preface>
+                <clause type="toc" id="_" displayorder="1">
+        <title depth="1">Contents</title>
+      </clause>
+          <foreword id="A" displayorder="2">
+            <formula id="_" unnumbered="true"  keep-with-next="true" keep-lines-together="true">
+          <stem type="AsciiMath">r = 1 %</stem>
+        <dl id="_" class="formula_dl">
+          <dt>
+            <stem type="AsciiMath">r</stem>
+          </dt>
+          <dd>
+            <p id="_">is the repeatability limit.</p>
+          </dd>
+        </dl>
+            <note id="_">
+            <name>NOTE</name>
+          <p id="_">[durationUnits] is essentially a duration statement without the "P" prefix. "P" is unnecessary because between "G" and "U" duration is always expressed.</p>
+        </note>
+            </formula>
+            <formula id="_"><name>1</name>
+          <stem type="AsciiMath">r = 1 %</stem>
           </formula>
-          <formula id="_"><name>1</name>
-        <stem type="AsciiMath">r = 1 %</stem>
-        </formula>
-          </foreword></preface>
-          </iso-standard>
+            </foreword></preface>
+            </iso-standard>
     INPUT
     html = <<~OUTPUT
           #{HTML_HDR}
@@ -881,7 +881,6 @@ RSpec.describe IsoDoc do
               </div>
             </div>
           </div>
-          <p class='zzSTDTitle1'/>
         </div>
       </body>
     OUTPUT
@@ -942,7 +941,8 @@ RSpec.describe IsoDoc do
         </div>
       </div>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+      .new(presxml_options)
        .convert("test", input, true))))
       .to be_equivalent_to xmlpp(presxml)
     expect(strip_guid(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
@@ -952,8 +952,8 @@ RSpec.describe IsoDoc do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
-    expect(strip_guid(xmlpp(doc.to_xml.gsub(/<m:/, "<").gsub(/<\/m:/,
-                                                             "</"))))
+    expect(strip_guid(xmlpp(doc.to_xml
+      .gsub("<m:", "<").gsub("</m:", "</"))))
       .to be_equivalent_to xmlpp(word)
   end
 
@@ -1040,7 +1040,7 @@ RSpec.describe IsoDoc do
          </standard-document>
     INPUT
     presxml = <<~OUTPUT
-          <clause id='A' inline-header='false' obligation='normative' displayorder='2'>
+          <clause id='A' inline-header='false' obligation='normative' displayorder='3'>
         <title depth='1'>
           1.
           <tab/>

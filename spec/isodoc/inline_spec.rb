@@ -112,8 +112,9 @@ RSpec.describe IsoDoc::IEEE do
               </p>
             </foreword>
           </preface>
-          <bibliography>
-            <references id='_' normative='true' obligation='informative' displayorder='3'>
+          <sections>
+          <p class="zzSTDTitle1" displayorder="3">??? for ???</p>
+            <references id='_' normative='true' obligation='informative' displayorder='4'>
               <title depth='1'>
                 1.
                 <tab/>
@@ -126,7 +127,8 @@ RSpec.describe IsoDoc::IEEE do
                 <biblio-tag>ISO&#xa0;712, </biblio-tag>
               </bibitem>
             </references>
-          </bibliography>
+            </sections
+          <bibliography/>
         </iso-standard>
       OUTPUT
   end
@@ -371,7 +373,9 @@ RSpec.describe IsoDoc::IEEE do
             </p>
           </foreword>
         </preface>
-        <sections> </sections>
+                 <sections>
+           <p class="zzSTDTitle1">??? for ???</p>
+         </sections>
       </iso-standard>
     OUTPUT
     xml = Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert.new({})

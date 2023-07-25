@@ -9,7 +9,7 @@ RSpec.describe Metanorma::IEEE::Processor do
   inputxml = <<~INPUT
       <ieee-standard xmlns="http://riboseinc.com/isoxml">
       <sections>
-        <terms id="H" obligation="normative"><title>Terms</title>
+        <terms id="H" obligation="normative" displayorder="1"><title>Terms</title>
           <term id="J">
             <name>1.1.</name>
             <preferred>Term2</preferred>
@@ -56,7 +56,6 @@ RSpec.describe Metanorma::IEEE::Processor do
       .to be_equivalent_to xmlpp(<<~OUTPUT)
         <main class='main-section'>
           <button onclick='topFunction()' id='myBtn' title='Go to top'>Top</button>
-          <p class='zzSTDTitle1'/>
           <div id='H'>
             <h1 id='_'>Terms</h1>
             <h2 class='TermNum' id='J'>1.1.</h2>
