@@ -324,12 +324,7 @@ RSpec.describe IsoDoc do
                 </td>
               </tr>
             </tfoot>
-            <dl>
-              <dt>
-                <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">Drago</p>
-              </dt>
-              <dd>A type of rice</dd>
-            </dl>
+            <p style="text-indent: -2.0cm; margin-left: 2.0cm; tab-stops: 2.0cm;" class="IEEEStdsParagraph">Drago<span style="mso-tab-count:1">  </span>A type of rice</p>
             <div>
               <p class="IEEEStdsSingleNote"><span class="note_label">NOTE—</span>This is a table about rice</p>
             </div>

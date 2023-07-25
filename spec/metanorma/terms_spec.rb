@@ -310,11 +310,7 @@ RSpec.describe Metanorma::IEEE do
                 </expression>
               </preferred>
               <related type='contrast'>
-                 <preferred>
-                 <expression>
-                   <name>thing</name>
-                   </expression>
-                 </preferred>
+              <refterm>thing</refterm>
                </related>
                       <definition>
           <verbal-definition>
