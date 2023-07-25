@@ -57,7 +57,8 @@ RSpec.describe Metanorma::IEEE do
            </foreword>
          </preface>
            <sections>
-             <clause id='B' displayorder='3'>
+           <p class="zzSTDTitle1" displayorder="3">??? for ???</p>
+             <clause id='B' displayorder='4'>
                <title>1.</title>
                <clause id='A'>
                  <title>1.1.</title>

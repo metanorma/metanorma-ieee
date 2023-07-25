@@ -67,11 +67,15 @@ module IsoDoc
           middle_title_ieee(docxml, div3)
         end
         section_break(body, continuous: true)
-        super
+        body.div class: "WordSectionMain" do |div3|
+          content(div3, docxml, ns(self.class::MAIN_ELEMENTS))
+          footnotes div3
+          comments div3
+        end
       end
 
       def middle_title_ieee(docxml, out)
-        title = docxml.at(ns("//p[@class = 'zzSTDTitle1']"))
+        title = docxml.at(ns("//p[@class = 'zzSTDTitle1']")) or return
         out.p(class: "IEEEStdsTitle", style: "margin-top:70.0pt") do |p|
           title.children.each { |n| parse(n, p) }
         end
