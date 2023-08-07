@@ -303,9 +303,9 @@ RSpec.describe IsoDoc do
                 <td align="left" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
                   <p class="IEEEStdsTableData-Left" style="text-align: left;page-break-after:auto">
                      Reproducibility limit,
-                     <span class="stem"><oMath><r><t>R</t></r></oMath></span>
+                     <span class="stem">(#(R)#)</span>
                       (= 2,83
-                     <span class="stem"><oMath><sSub><e><r><t>s</t></r></e><sub><r><t>R</t></r></sub></sSub></oMath></span>
+                      <span class="stem">(#(s_R)#)</span>
                      )
                    </p>
                 </td>
@@ -442,88 +442,56 @@ RSpec.describe IsoDoc do
                            </body>
     OUTPUT
     word = <<~OUTPUT
-          <div>
-        <a name='A' id='A'/>
-        <p class='IEEEStdsLevel1Header'>Foreword</p>
-        <div class='IEEEStdsImage' style='page-break-after: avoid;page-break-inside: avoid;'>
-          <a name='figureA-1' id='figureA-1'/>
-          <img src='_.gif' height='20' width='20'/>
-          <img src='_.xml' height='' width=''/>
-          <aside>
-            <div>
-              <a name='ftn_' id="ftn_"/>
-            </div>
-          </aside>
-          <p style='page-break-after:avoid;' class='IEEEStdsParagraph'>
-            <b>Key</b>
-          </p>
-          <table class='dl' style='page-break-after:avoid;'>
-            <tr>
-              <td valign='top' align='left'>
-                <p align='left' style='margin-left:0pt;text-align:left;' class='IEEEStdsParagraph'>A</p>
-              </td>
-              <td valign='top'>
-                <p class='IEEEStdsParagraph'>B</p>
-              </td>
-            </tr>
-            <tr>
-              <td valign='top' align='left'>
-                <span>
-                  <span class='TableFootnoteRef'>
-                    <a name='_' id="_"/>
-                    a
-                  </span>
-                  <span style='mso-tab-count:1'>&#xa0; </span>
-                </span>
-              </td>
-              <td valign='top'>
-                <p class='IEEEStdsParagraph'>
-                  <a name="_" id="_"/>
-                  The time
-                  <span class='stem'>
-                    <oMath>
-                      <sSub>
-                        <e>
-                          <r>
-                            <t>t</t>
-                          </r>
-                        </e>
-                        <sub>
-                          <r>
-                            <t>90</t>
-                          </r>
-                        </sub>
-                      </sSub>
-                    </oMath>
-                  </span>
-                   was estimated to be 18,2 min for this example.
-                </p>
-              </td>
-            </tr>
-          </table>
-          <p class='IEEEStdsRegularFigureCaption' style='text-align:center;'>
-            &#x2014;Split-it-right
-            <i>sample</i>
-             divider
-            <span style='mso-bookmark:_Ref'>
-              <a class='FootnoteRef' href='#_ftn1' type='footnote' style='mso-footnote-id:ftn1' name="_" title='' id="_">
-                <span class='MsoFootnoteReference'>
-                  <span style='mso-special-character:footnote'/>
-                </span>
-              </a>
-            </span>
-          </p>
-        </div>
-        <div class='IEEEStdsImage'>
-          <a name='figure-B' id='figure-B'/>
-          <pre style='page-break-after:avoid;'>A B</pre>
-          <p class='IEEEStdsRegularFigureCaption' style='text-align:center;'/>
-        </div>
-        <div class='IEEEStdsImage'>
-          <a name='figure-C' id='figure-C'/>
-          <pre>A B</pre>
-        </div>
-      </div>
+       <div>
+         <a name="A" id="A"/>
+         <p class="IEEEStdsLevel1Header">Foreword</p>
+         <div class="IEEEStdsImage" style="page-break-after: avoid;page-break-inside: avoid;">
+           <a name="figureA-1" id="figureA-1"/>
+           <img src="_.gif" height="20" width="20"/>
+           <img src="_.xml" height="" width=""/>
+           <aside>
+             <div>
+               <a name="ftn_" id="ftn_"/>
+             </div>
+           </aside>
+           <p style="page-break-after:avoid;" class="IEEEStdsParagraph">
+             <b>Key</b>
+           </p>
+           <table class="dl" style="page-break-after:avoid;">
+             <tr>
+               <td valign="top" align="left">
+                 <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">A</p>
+               </td>
+               <td valign="top">
+                 <p class="IEEEStdsParagraph">B</p>
+               </td>
+             </tr>
+             <tr>
+               <td valign="top" align="left">
+                 <span>
+                   <span class="TableFootnoteRef"><a name="_" id="_"/>a</span>
+                   <span style="mso-tab-count:1">  </span>
+                 </span>
+               </td>
+               <td valign="top">
+                 <p class="IEEEStdsParagraph"><a name="_" id="_"/>The time <span class="stem">(#(t_90)#)</span> was estimated to be 18,2 min for this example.</p>
+               </td>
+             </tr>
+           </table>
+           <p class="IEEEStdsRegularFigureCaption" style="text-align:center;">—Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref"><a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
+         </div>
+         <div class="IEEEStdsImage">
+           <a name="figure-B" id="figure-B"/>
+           <pre style="page-break-after:avoid;">A 
+       B</pre>
+           <p class="IEEEStdsRegularFigureCaption" style="text-align:center;"/>
+         </div>
+         <div class="IEEEStdsImage">
+           <a name="figure-C" id="figure-C"/>
+           <pre>A 
+       B</pre>
+         </div>
+       </div>
     OUTPUT
     expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
       .new(presxml_options)
@@ -885,61 +853,30 @@ RSpec.describe IsoDoc do
       </body>
     OUTPUT
     word = <<~OUTPUT
-          <div>
-        <a name='A' id='A'/>
-        <p class='IEEEStdsLevel1Header'>Foreword</p>
-        <div style='page-break-after: avoid;page-break-inside: avoid;'>
-          <a name="_" id="_"/>
-          <div class='IEEEStdsEquation'>
-            <p class='IEEEStdsEquation'>
-              <span class='stem'>
-                <oMath>
-                  <r>
-                    <t>r=1%</t>
-                  </r>
-                </oMath>
-              </span>
-              <span style='mso-tab-count:1'>&#xa0; </span>
-            </p>
-          </div>
-          <p class='IEEEStdsEquationVariableList'>
-            <span class='stem'>
-              <oMath>
-                <r>
-                  <t>r</t>
-                </r>
-              </oMath>
-            </span>
-            <span style='mso-tab-count:1'>&#xa0; </span>
-            is the repeatability limit.
-          </p>
-          <div>
-            <a name="_" id="_"/>
-            <p class='IEEEStdsSingleNote'>
-              <span class='note_label'>NOTE&#x2014;</span>
-              [durationUnits] is essentially a duration statement without the "P"
-              prefix. "P" is unnecessary because between "G" and "U" duration is
-              always expressed.
-            </p>
-          </div>
-        </div>
-        <div>
-          <a name="_" id="_"/>
-          <div class='IEEEStdsEquation'>
-            <p class='IEEEStdsEquation'>
-              <span class='stem'>
-                <oMath>
-                  <r>
-                    <t>r=1%</t>
-                  </r>
-                </oMath>
-              </span>
-              <span style='mso-tab-count:1'>&#xa0; </span>
-              (1)
-            </p>
-          </div>
-        </div>
-      </div>
+      <div>
+         <a name="A" id="A"/>
+         <p class="IEEEStdsLevel1Header">Foreword</p>
+         <div style="page-break-after: avoid;page-break-inside: avoid;">
+           <a name="_" id="_"/>
+           <div class="IEEEStdsEquation">
+             <p class="IEEEStdsEquation">
+               <span class="stem">(#(r = 1 %)#)</span>
+               <span style="mso-tab-count:1">  </span>
+             </p>
+           </div>
+           <p class="IEEEStdsEquationVariableList"><span class="stem">(#(r)#)</span><span style="mso-tab-count:1">  </span>is the repeatability limit.</p>
+           <div>
+             <a name="_" id="_"/>
+             <p class="IEEEStdsSingleNote"><span class="note_label">NOTE—</span>[durationUnits] is essentially a duration statement without the "P" prefix. "P" is unnecessary because between "G" and "U" duration is always expressed.</p>
+           </div>
+         </div>
+         <div>
+           <a name="_" id="_"/>
+           <div class="IEEEStdsEquation">
+             <p class="IEEEStdsEquation"><span class="stem">(#(r = 1 %)#)</span><span style="mso-tab-count:1">  </span>(1)</p>
+           </div>
+         </div>
+       </div>
     OUTPUT
     expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
       .new(presxml_options)
