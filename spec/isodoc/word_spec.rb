@@ -17,6 +17,9 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       </admonition>
       <p id="_7d8a8a7f-3ded-050d-1da9-978f17519335">This is an introduction</p>
       </introduction></preface>
+      <sections>
+      <clause/>
+      </sections>
       </iso-standard>
     INPUT
     output = <<~OUTPUT
@@ -24,7 +27,9 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Guide for Title</p>
       </div>
     OUTPUT
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
+    presxml = IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)
+    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[@class = 'WordSectionMiddleTitle']")
@@ -57,6 +62,9 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
        </admonition>
        <p id="_7d8a8a7f-3ded-050d-1da9-978f17519335">This is an introduction</p>
        </introduction></preface>
+      <sections>
+      <clause/>
+      </sections>
        </iso-standard>
     INPUT
     output = <<~OUTPUT
@@ -64,7 +72,9 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Guide for Title<br/>Amendment A1 Corrigenda C1</p>
       </div>
     OUTPUT
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
+    presxml = IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)
+    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[@class = 'WordSectionMiddleTitle']")
@@ -164,7 +174,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         </feedback_statement>
                  </boilerplate>
               <preface>
-              <foreword>
+              <foreword displayorder="1">
               <p>A.<fn reference="2">
             <p id="_1e228e29-baef-4f38-b048-b05a051747e4">Formerly denoted as 15 % (m/m).</p>
           </fn></p>
@@ -294,7 +304,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     input = <<~INPUT
         <iso-standard xmlns="http://riboseinc.com/isoxml">
                 <sections>
-      <clause id="A"><p>
+      <clause id="A" displayorder="1"><p>
       <ol>
       <li><p>A</p></li>
       <li><p>B</p></li>
@@ -886,7 +896,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         </feedback-statement>
       </boilerplate>
 
-      <sections><clause id="_clause" inline-header="false" obligation="normative">
+      <sections><clause id="_clause" inline-header="false" obligation="normative" displayorder="1">
       <title>Clause</title>
       <p id="_2e901de4-4c14-e534-d135-862a24df22ee">Hello</p>
       </clause>
@@ -1663,7 +1673,9 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         </div>
       </body>
     OUTPUT
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
+    presxml = IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)
+    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:body")
@@ -1675,7 +1687,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
   it "process admonitions" do
     input = <<~INPUT
               <iso-standard xmlns="http://riboseinc.com/isoxml" type='presentation'>
-         <sections><clause id="a">
+         <sections><clause id="a" displayorder="1">
           <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6a" type="caution" keep-with-next="true" keep-lines-together="true">
           <name>CAUTION</name>
         <p id="_e94663cc-2473-4ccc-9a72-983a74d989f2">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
@@ -1722,7 +1734,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
   it "process editorial notes" do
     input = <<~INPUT
               <iso-standard xmlns="http://riboseinc.com/isoxml" type='presentation'>
-         <sections><clause id="a">
+         <sections><clause id="a" displayorder="1">
           <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6a" type="editorial" keep-with-next="true" keep-lines-together="true">
           <name>EDITORIAL</name>
         <p id="_e94663cc-2473-4ccc-9a72-983a74d989f2">Only use paddy or parboiled rice for the determination of husked rice yield.</p>

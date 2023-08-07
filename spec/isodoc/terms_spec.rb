@@ -82,7 +82,8 @@ RSpec.describe IsoDoc do
            </clause>
          </preface>
          <sections>
-           <terms id="_" obligation="normative" displayorder="2">
+         <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
+           <terms id="_" obligation="normative" displayorder="3">
              <title depth="1">1.<tab/>Terms and Definitions</title>
              <p>For the purposes of this document, the following terms and definitions apply.</p>
              <term id="paddy1">
@@ -145,7 +146,7 @@ RSpec.describe IsoDoc do
 
     html = <<~"OUTPUT"
        #{HTML_HDR}
-           <p class="zzSTDTitle1"/>
+       <p class="zzSTDTitle1">??? for ???</p>
            <div id="_">
              <h1>1.  Terms and Definitions</h1>
              <p>For the purposes of this document, the following terms and definitions apply.</p>
@@ -203,7 +204,7 @@ RSpec.describe IsoDoc do
          <div class="WordSection1">
            <p> </p>
          </div>
-         <p>
+         <p class="section-break">
            <br clear="all" class="section"/>
          </p>
          <div class="WordSection2">
@@ -212,13 +213,13 @@ RSpec.describe IsoDoc do
            </div>
            <p> </p>
          </div>
-         <p>
+         <p class="section-break">
            <br clear="all" class="section"/>
          </p>
          <div class="WordSectionMiddleTitle">
            <p class="IEEEStdsTitle" style="margin-top:70.0pt">??? for ???</p>
          </div>
-         <p>
+         <p class="section-break">
            <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
          </p>
          <div class="WordSectionMain">
@@ -353,7 +354,8 @@ RSpec.describe IsoDoc do
       <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='presentation' version='#{Metanorma::IEEE::VERSION}'>
             <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
-          <terms id='_' obligation='normative' displayorder='2'>
+        <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
+          <terms id='_' obligation='normative' displayorder='3'>
             <title depth='1'>
               1.
               <tab/>
@@ -426,7 +428,8 @@ RSpec.describe IsoDoc do
           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
             <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
-          <terms id='_' obligation='normative' displayorder='2'>
+        <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
+          <terms id='_' obligation='normative' displayorder='3'>
             <title depth='1'>
               1.
               <tab/>
@@ -506,7 +509,8 @@ RSpec.describe IsoDoc do
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
             <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
          <sections>
-           <terms id="_" obligation="normative" displayorder="2">
+         <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
+           <terms id="_" obligation="normative" displayorder="3">
              <title depth="1">1.<tab/>Terms and Definitions</title>
              <p>For the purposes of this document, the following terms and definitions apply.</p>
              <term id="paddy1">
@@ -582,7 +586,8 @@ RSpec.describe IsoDoc do
           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
             <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
-          <terms id='_' obligation='normative' displayorder='2'>
+        <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
+          <terms id='_' obligation='normative' displayorder='3'>
             <title depth='1'>
               1.
               <tab/>
@@ -677,7 +682,8 @@ RSpec.describe IsoDoc do
           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
            <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
-          <terms id='_' obligation='normative' displayorder='2'>
+        <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
+          <terms id='_' obligation='normative' displayorder='3'>
             <title depth='1'>
               1.
               <tab/>
@@ -809,8 +815,8 @@ RSpec.describe IsoDoc do
     presxml = <<~PRESXML
       <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
             <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
-         <sections>
-           <terms id='_' obligation='normative' displayorder='2'>
+         <sections><p class="zzSTDTitle1" displayorder="2">??? for ???</p>
+           <terms id='_' obligation='normative' displayorder='3'>
              <title depth='1'>
                1.
                <tab/>
@@ -864,7 +870,8 @@ RSpec.describe IsoDoc do
           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
             <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
-          <terms id='_' obligation='normative' displayorder='2'>
+        <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
+          <terms id='_' obligation='normative' displayorder='3'>
             <title depth='1'>
               1.
               <tab/>
@@ -983,7 +990,8 @@ RSpec.describe IsoDoc do
          <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
            <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
                   <sections>
-          <terms id="A" obligation="normative" displayorder="2">
+                  <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
+          <terms id="A" obligation="normative" displayorder="3">
             <title depth="1">1.<tab/>Terms and definitions</title>
             <p id="B">For the purposes of this document, the following terms and definitions apply.</p>
             <term id="term-term-2">
@@ -1069,7 +1077,8 @@ RSpec.describe IsoDoc do
       <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
             <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
-          <terms id='A' obligation='normative' displayorder='2'>
+        <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
+          <terms id='A' obligation='normative' displayorder='3'>
             <title depth='1'>
               1.
               <tab/>
@@ -1149,7 +1158,8 @@ RSpec.describe IsoDoc do
       <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
             <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
          <sections>
-           <terms id='A' obligation='normative' displayorder='2'>
+         <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
+           <terms id='A' obligation='normative' displayorder='3'>
              <title depth='1'>
                1.
                <tab/>

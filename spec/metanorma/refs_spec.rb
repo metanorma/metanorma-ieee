@@ -69,7 +69,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "sorts bibliography" do
-    VCR.use_cassette "multistandard" do
+    VCR.use_cassette "multistandard0" do
       input = <<~INPUT
         = Document title
         Author
@@ -136,7 +136,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "numbers bibliography" do
-    VCR.use_cassette "multistandard1" do #, match_requests_on: %i[method uri body] do
+    VCR.use_cassette "multistandard1", match_requests_on: %i[method uri body] do
       input = <<~INPUT
         = Document title
         Author
@@ -513,7 +513,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "cites references" do
-    VCR.use_cassette "multistandard2" do
+    VCR.use_cassette "multistandard2", match_requests_on: %i[method uri body]  do
       input = <<~INPUT
         = Document title
         Author

@@ -209,10 +209,11 @@ RSpec.describe IsoDoc do
     INPUT
 
     presxml = <<~"PRESXML"
-           <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
              <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
          <sections>
-           <clause id="A" inline-header="false" obligation="normative" displayorder="3">
+         <p class="zzSTDTitle1" displayorder="3">??? for ???</p>
+           <clause id="A" inline-header="false" obligation="normative" displayorder="4">
              <title depth="1">2.<tab/>Clause</title>
              <p id="_">
              <xref type="inline" target="ref1">ISO 639:1967</xref>
@@ -223,8 +224,6 @@ RSpec.describe IsoDoc do
               <xref type="inline" target="ref6">REF4 [B1]</xref>
              </p>
            </clause>
-         </sections>
-         <bibliography>
            <references id="_" normative="true" obligation="informative" displayorder="2">
              <title depth="1">Normative References</title>
              <bibitem id="IETF_6281" type="standard">
@@ -261,7 +260,9 @@ RSpec.describe IsoDoc do
                <biblio-tag>[B3], ISO 639:1967, </biblio-tag>
              </bibitem>
            </references>
-           <references id="_" normative="false" obligation="informative" displayorder="4">
+           </sections>
+           <bibliography>
+           <references id="_" normative="false" obligation="informative" displayorder="5">
              <title depth="1">Bibliography</title>
              <bibitem id="ref6">
                <formattedref format="application/x-isodoc+xml">REF4</formattedref>

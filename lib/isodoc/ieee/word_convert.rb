@@ -50,32 +50,34 @@ module IsoDoc
       def abstract(clause, out)
         page_break(out)
         out.div **attr_code(id: clause["id"], class: "abstract") do |s|
-          clause_name(clause, clause.at(ns("./title")), s, { class: "AbstractTitle" })
+          clause_name(clause, clause.at(ns("./title")), s,
+                      { class: "AbstractTitle" })
           clause.elements.each { |e| parse(e, s) unless e.name == "title" }
         end
       end
 
+      MAIN_ELEMENTS =
+        "//sections/*[@displayorder][not(@class = 'zzSTDTitle1')] | " \
+        "//annex[@displayorder] | " \
+        "//bibliography/*[@displayorder] | //colophon/*[@displayorder] | " \
+        "//indexsect[@displayorder]".freeze
+
       def make_body3(body, docxml)
-        body.div class: "WordSectionMiddleTitle" do |_div3|
-          middle_title_ieee(docxml, body)
+        body.div class: "WordSectionMiddleTitle" do |div3|
+          middle_title_ieee(docxml, div3)
         end
         section_break(body, continuous: true)
         body.div class: "WordSectionMain" do |div3|
-          middle docxml, div3
+          content(div3, docxml, ns(self.class::MAIN_ELEMENTS))
           footnotes div3
           comments div3
         end
       end
 
-      def middle_title(isoxml, out); end
-
-      def middle_title_ieee(_docxml, out)
+      def middle_title_ieee(docxml, out)
+        title = docxml.at(ns("//p[@class = 'zzSTDTitle1']")) or return
         out.p(class: "IEEEStdsTitle", style: "margin-top:70.0pt") do |p|
-          p << @meta.get[:full_doctitle]
-          @meta.get[:amd] || @meta.get[:corr] and p << "<br/>"
-          @meta.get[:amd] and p << "Amendment #{@meta.get[:amd]}"
-          @meta.get[:amd] && @meta.get[:corr] and p << " "
-          @meta.get[:corr] and p << "Corrigenda #{@meta.get[:corr]}"
+          title.children.each { |n| parse(n, p) }
         end
       end
 
@@ -137,7 +139,6 @@ module IsoDoc
       end
 
       def annex_name(_annex, name, div)
-        preceding_floating_titles(name, div)
         return if name.nil?
 
         name&.at(ns("./strong"))&.remove # supplied by CSS list numbering
