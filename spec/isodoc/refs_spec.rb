@@ -2,7 +2,7 @@ require "spec_helper"
 
 RSpec.describe IsoDoc do
   it "processes biblio citations" do
-    input = <<~"INPUT"
+    input = <<~INPUT
                 <iso-standard xmlns="http://riboseinc.com/isoxml">
                 <sections>
                 <clause id='A' inline-header='false' obligation='normative'>
@@ -208,7 +208,7 @@ RSpec.describe IsoDoc do
             </iso-standard>
     INPUT
 
-    presxml = <<~"PRESXML"
+    presxml = <<~PRESXML
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
              <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
          <sections>
@@ -216,7 +216,7 @@ RSpec.describe IsoDoc do
            <clause id="A" inline-header="false" obligation="normative" displayorder="4">
              <title depth="1">2.<tab/>Clause</title>
              <p id="_">
-             <xref type="inline" target="ref1">ISO 639:1967</xref>
+             <xref type="inline" target="ref1"><span class="std_publisher">ISO</span>&#xa0;<span class="std_docNumber">639</span>:<span class="std_year">1967</span></xref>
               <xref type="inline" target="ref2">Aluffi</xref>
               <xref type="inline" target="ref3">REF4</xref>
               <xref type="inline" target="ref4">ISO 639:1967 [B3]</xref>
