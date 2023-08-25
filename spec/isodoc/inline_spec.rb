@@ -3,7 +3,7 @@ require "spec_helper"
 RSpec.describe IsoDoc::IEEE do
   it "processes eref content" do
     output = IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-      .convert("test", <<~"INPUT", true)
+      .convert("test", <<~INPUT, true)
         <iso-standard xmlns="http://riboseinc.com/isoxml">
           <preface>
             <foreword>
@@ -88,14 +88,14 @@ RSpec.describe IsoDoc::IEEE do
       INPUT
     expect(xmlpp(strip_guid(output))
       .sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))
-      .to be_equivalent_to xmlpp(strip_guid(<<~"OUTPUT"))
+      .to be_equivalent_to xmlpp(strip_guid(<<~OUTPUT))
         <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
           <preface>
               <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause>
             <foreword displayorder='2'>
               <p>
                <eref bibitemid="IEV" citeas="IEV" type="inline"><locality type="clause"><referenceFrom>1-2-3</referenceFrom></locality>IEV, 1-2-3</eref>
-               <xref type="inline" target="ISO712">ISO 712</xref>
+               <xref type="inline" target="ISO712"><span class="std_publisher">ISO</span>&#xa0;<span class="std_docNumber">712</span></xref>
                <xref type="inline" target="ISO712">ISO 712</xref>
                <xref type="inline" target="ISO712">ISO 712, Table 1</xref>
                <xref type="inline" target="ISO712">ISO 712, Table 1–1</xref>
@@ -108,7 +108,7 @@ RSpec.describe IsoDoc::IEEE do
                <xref type="inline" target="ISO712">ISO 712, Whole of text</xref>
                <xref type="inline" target="ISO712">ISO 712, Prelude 7</xref>
                <xref type="inline" target="ISO712">A</xref>
-               <xref type="inline" target="ISO712">ISO/IEC DIR 1</xref>
+               <xref type="inline" target="ISO712"><span class="std_publisher">ISO</span>/<span class="std_publisher">IEC</span>&#xa0;<span class="std_documentType">DIR</span>&#xa0;<span class="std_docNumber">1</span></xref>
               </p>
             </foreword>
           </preface>
@@ -384,5 +384,4 @@ RSpec.describe IsoDoc::IEEE do
     expect(xmlpp(strip_guid(xml.to_xml)))
       .to be_equivalent_to xmlpp(output)
   end
-
 end
