@@ -78,6 +78,10 @@ module IsoDoc
         end
         idx
       end
+
+      def expand_citeas(text)
+        std_docid_semantic(super)
+      end
     end
   end
 end
