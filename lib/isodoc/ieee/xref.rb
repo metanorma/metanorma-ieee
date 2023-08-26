@@ -11,34 +11,21 @@ module IsoDoc
         @hierarchical_assets = options[:hierarchicalassets]
       end
 
-      def initial_anchor_names(doc)
-        if @parse_settings.empty? || @parse_settings[:clauses]
-          doc.xpath(ns("//preface/*")).each do |c|
-            c.element? and preface_names(c)
-          end
-        end
-        if @parse_settings.empty?
-          if @hierarchical_assets
-            hierarchical_asset_names(doc.xpath("//xmlns:preface/child::*"),
-                                     "Preface")
-          else
-            sequential_asset_names(doc.xpath(ns("//preface/*")))
-          end
-        end
-        if @parse_settings.empty? || @parse_settings[:clauses]
-          n = Counter.new
-          n = section_names(doc.at(ns("//clause[@type = 'overview']")), n, 1)
-          n = section_names(doc.at(ns(@klass.norm_ref_xpath)), n, 1)
-          n = section_names(doc.at(ns("//sections/terms | " \
-                                      "//sections/clause[descendant::terms]")), n, 1)
-          n = section_names(doc.at(ns("//sections/definitions")), n, 1)
-          clause_names(doc, n)
-        end
+      def clause_order_main(docxml)
+        [
+          { path: "//clause[@type = 'overview']" },
+          { path: @klass.norm_ref_xpath },
+          { path: "//sections/terms | " \
+                  "//sections/clause[descendant::terms]" },
+          { path: "//sections/definitions | " \
+                  "//sections/clause[descendant::definitions][not(descendant::terms)]" },
+          { path: @klass.middle_clause(docxml), multi: true },
+        ]
       end
 
       def middle_sections
         " #{@klass.norm_ref_xpath} | " \
-          "//sections/terms | //preface/clause | " \
+          "//sections/terms | " \
           "//sections/definitions | //clause[parent::sections]"
       end
 
@@ -47,10 +34,13 @@ module IsoDoc
           "#{@klass.norm_ref_xpath} | //sections/terms | " \
           "//sections/definitions | //clause[parent::sections]"
         if @hierarchical_assets
+          hierarchical_asset_names(doc.xpath("//xmlns:preface/child::*"),
+                                   "Preface")
           doc.xpath(ns(middle_sections)).each do |c|
             hierarchical_asset_names(c, @anchors[c["id"]][:label])
           end
         else
+          sequential_asset_names(doc.xpath(ns("//preface/*")))
           sequential_asset_names(doc.xpath(ns(middle_sections)))
         end
       end

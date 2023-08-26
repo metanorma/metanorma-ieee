@@ -29,7 +29,7 @@ module IsoDoc
                      b.at(ns("./formattedref")))&.text,
               author: @author[b["id"]] || (b.at(ns("./title")) ||
                      b.at(ns("./formattedref")))&.text,
-              ord: b.at(ns("./docidentifier[@type = 'metanorma' or "\
+              ord: b.at(ns("./docidentifier[@type = 'metanorma' or " \
                            "@type = 'metanorma-ordinal']"))&.text }
         end
       end
