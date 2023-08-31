@@ -10,6 +10,11 @@ module IsoDoc
       def initialize(options)
         @libdir = File.dirname(__FILE__)
         super
+        init_wp(options)
+      end
+
+      def init_wp(options)
+        @wp = ::IsoDoc::IEEE::WordWPConvert.new(options)
       end
 
       def convert1(docxml, filename, dir)
@@ -18,6 +23,18 @@ module IsoDoc
           @header = html_doc_path("header_amd.html")
         end
         super
+      end
+
+      def convert(input_filename, file = nil, debug = false,
+          output_filename = nil)
+        file ||= File.read(input_filename, encoding: "utf-8")
+        docxml = Nokogiri::XML(file) { |config| config.huge }
+        doctype = docxml&.at(ns("//bibdata/ext/dcotype"))&.text
+        if @wp && doctype == "whitepaper"
+          @wp.convert(input_filename, file, debug, output_filename)
+        else
+          super
+        end
       end
 
       def default_fonts(options)
@@ -51,7 +68,7 @@ module IsoDoc
         page_break(out)
         out.div **attr_code(id: clause["id"], class: "abstract") do |s|
           clause_name(clause, clause.at(ns("./title")), s,
-                      { class: "AbstractTitle" })
+                      { class: STYLESMAP[:AbstractTitle] })
           clause.elements.each { |e| parse(e, s) unless e.name == "title" }
         end
       end
@@ -76,13 +93,13 @@ module IsoDoc
 
       def middle_title_ieee(docxml, out)
         title = docxml.at(ns("//p[@class = 'zzSTDTitle1']")) or return
-        out.p(class: "IEEEStdsTitle", style: "margin-top:70.0pt") do |p|
+        out.p(class: STYLESMAP[:zzSTDTitle1], style: "margin-top:70.0pt") do |p|
           title.children.each { |n| parse(n, p) }
         end
       end
 
       def admonition_name_parse(_node, div, name)
-        div.p class: "IEEEStdsWarning", style: "text-align:center;" do |p|
+        div.p class: STYLESMAP[:admonition], style: "text-align:center;" do |p|
           p.b do |b|
             name.children.each { |n| parse(n, b) }
           end
@@ -92,8 +109,8 @@ module IsoDoc
       def admonition_class(node)
         if node["type"] == "editorial" then "zzHelp"
         elsif node.ancestors("introduction").empty?
-          "IEEEStdsWarning"
-        else "IEEEStdsIntroduction"
+          STYLESMAP[:admonition]
+        else STYLESMAP[:intro]
         end
       end
 
@@ -121,6 +138,7 @@ module IsoDoc
         end
       end
 
+      # STYLE
       def formula_where1(out, dterm, ddefn)
         out.p class: "IEEEStdsEquationVariableList" do |p|
           dterm.children.each { |n| parse(n, p) }
@@ -176,6 +194,7 @@ module IsoDoc
         end
       end
 
+      # STYLE
       def table_of_contents(clause, out)
         out.div class: "WordSectionContents" do |div|
           clause_name(clause, clause.at(ns("./title")), div,

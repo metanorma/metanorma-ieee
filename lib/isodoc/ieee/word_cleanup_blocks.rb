@@ -1,13 +1,13 @@
 module IsoDoc
   module IEEE
     class WordConvert < IsoDoc::WordConvert
+      # STYLE
       def admonition_cleanup(docxml)
         super
         docxml.xpath("//div[@class = 'zzHelp']").each do |d|
           d.xpath(".//p").each do |p|
-            %w(IEEEStdsWarning IEEEStdsParagraph).include?(p["class"]) ||
-              !p["class"] or next
-
+            [STYLESMAP[:admonition], STYLESMAP[:MsoNormal]]
+              .include?(p["class"]) || !p["class"] or next
             p["class"] = "zzHelp"
           end
         end
@@ -22,15 +22,20 @@ module IsoDoc
       def thead_cleanup(docxml)
         docxml.xpath("//thead").each do |h|
           h.xpath(".//td | .//th").each do |t|
-            if t.at("./p")
-              t.xpath("./p").each do |p|
-                p["class"] = "IEEEStdsTableColumnHead"
-              end
-            else
-              t.children =
-                "<p class='IEEEStdsTableColumnHead'>#{to_xml(t.children)}</p>"
-            end
+            thead_cell_cleanup(t)
           end
+        end
+      end
+
+      def thead_cell_cleanup(cell)
+        s = STYLESMAP[:table_columnhead]
+        if cell.at("./p")
+          cell.xpath("./p").each do |p|
+            p["class"] = s
+          end
+        else
+          cell.children =
+            "<p class='#{s}'>#{to_xml(t.children)}</p>"
         end
       end
 
@@ -63,12 +68,12 @@ module IsoDoc
       end
 
       def td_style(cell, idx)
-        if cell.name == "th" && idx.zero? then "IEEEStdsTableLineHead"
-        elsif cell.name == "th" then "IEEEStdsTableLineSubhead"
+        if cell.name == "th" && idx.zero? then STYLESMAP[:table_head]
+        elsif cell.name == "th" then STYLESMAP[:table_subhead]
         elsif cell["align"] == "center" ||
-            /text-align:center/.match?(cell["style"])
-          "IEEEStdsTableData-Center"
-        else "IEEEStdsTableData-Left"
+            cell["style"].include?("text-align:center")
+          STYLESMAP[:tabledata_center]
+        else STYLESMAP[:tabledata_left]
         end
       end
 
@@ -95,7 +100,7 @@ module IsoDoc
       def example_caption(docxml)
         docxml.xpath("//p[@class = 'example-title']").each do |s|
           s.children = "<em>#{to_xml(s.children)}</em>"
-          s["class"] = "IEEEStdsParagraph"
+          s["class"] = STYLESMAP[:MsoNormal]
         end
       end
 
@@ -135,6 +140,7 @@ module IsoDoc
       end
 
       # hardcoded list style for notes
+      # STYLE
       def note_style_cleanup1(multi, div, seq)
         div.xpath(".//p[@class = 'Note' or not(@class)]")
           .each_with_index do |p, i|
