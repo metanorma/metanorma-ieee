@@ -11,7 +11,7 @@ module IsoDoc
 
       def bibdate(isoxml, _out)
         isoxml.xpath(ns("//bibdata/date[@format = 'ddMMMyyyy']")).each do |d|
-          set("#{d['type'].gsub(/-/, '_')}date".to_sym, Common::date_range(d))
+          set("#{d['type'].gsub('-', '_')}date".to_sym, Common::date_range(d))
         end
         draft = isoxml.at(ns("//bibdata/date[@type = 'issued']")) ||
           isoxml.at(ns("//bibdata/date[@type = 'circulated']")) ||
@@ -42,25 +42,25 @@ module IsoDoc
       end
 
       def society(xml)
-        society = xml.at(ns("//bibdata/ext/editorialgroup/"\
+        society = xml.at(ns("//bibdata/ext/editorialgroup/" \
                             "society"))&.text || "&lt;Society&gt;"
         set(:society, society)
       end
 
       def tc(xml)
-        tc = xml.at(ns("//bibdata/ext/editorialgroup/"\
+        tc = xml.at(ns("//bibdata/ext/editorialgroup/" \
                        "committee"))&.text || "&lt;Committee Name&gt;"
         set(:technical_committee, tc)
       end
 
       def wg(xml)
-        wg = xml.at(ns("//bibdata/ext/editorialgroup/"\
+        wg = xml.at(ns("//bibdata/ext/editorialgroup/" \
                        "working-group")) or return nil
         set(:working_group, wg.text)
       end
 
       def bg(xml)
-        bg = xml.at(ns("//bibdata/ext/editorialgroup/"\
+        bg = xml.at(ns("//bibdata/ext/editorialgroup/" \
                        "balloting-group")) or return nil
         set(:balloting_group, bg.text)
         set(:balloting_group_type, bg["type"])

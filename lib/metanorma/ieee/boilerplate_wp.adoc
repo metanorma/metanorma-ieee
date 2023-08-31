@@ -1,0 +1,103 @@
+== copyright-statement
+=== {blank}
+[[copyright]]
+[align="left"]
+Copyright © {{ docyear }} by The Institute of Electrical and Electronics Engineers, Inc. +
+Three Park Avenue +
+New York, New York 10016-5997, USA
+
+All rights reserved.
+
+== legal-statement
+[[boilerplate-tm]]
+=== Trademarks and Disclaimers
+
+IEEE believes the information in this publication is accurate as of its publication date; such information is subject to change without notice. IEEE is not responsible for any inadvertent errors.
+
+The ideas and proposals in this specification are the respective author’s views and do not represent the views of the affiliated organization.
+
+[[boilerplate-liability]]
+=== Notice and Disclaimer of Liability Concerning the Use of IEEE SA Documents
+
+This IEEE Standards Association ("IEEE SA") publication ("Work") is not a consensus standard document. Specifically, this document is NOT AN IEEE STANDARD. Information contained in this Work has been created by, or obtained from, sources believed to be reliable, and reviewed by members of the activity that produced this Work. IEEE and the {{ working_group }} expressly disclaim all warranties (express, implied, and statutory) related to this Work, including, but not limited to, the warranties of: merchantability; fitness for a particular purpose; non-infringement; quality, accuracy, effectiveness, currency, or completeness of the Work or content within the Work. In addition, IEEE and the {{ working_group }} disclaim any and all conditions relating to: results; and workmanlike effort. This document is supplied "AS IS" and "WITH ALL FAULTS."
+
+Although the {{ working_group }} members who have created this Work believe that the information and guidance given in this Work serve as an enhancement to users, all persons must rely upon their own skill and judgment when making use of it. IN NO EVENT SHALL IEEE SA OR {{ working_group }} MEMBERS BE LIABLE FOR ANY ERRORS OR OMISSIONS OR DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO: PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS WORK, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE AND REGARDLESS OF WHETHER SUCH DAMAGE WAS FORESEEABLE.
+
+Further, information contained in this Work may be protected by intellectual property rights held by third parties or organizations, and the use of this information may require the user to negotiate with any such rights holders in order to legally acquire the rights to do so, and such rights holders may refuse to grant such rights. Attention is also called to the possibility that implementation of any or all of this Work may require use of subject matter covered by patent rights. By publication of this Work, no position is taken by the IEEE with respect to the existence or validity of any patent rights in connection therewith. The IEEE is not responsible for identifying patent rights for which a license may be required, or for conducting inquiries into the legal validity or scope of patents claims. Users are expressly advised that determination of the validity of any patent rights, and the risk of infringement of such rights, is entirely their own responsibility. No commitment to grant licenses under patent rights on a reasonable or non-discriminatory basis has been sought or received from any rights holder.
+
+This Work is published with the understanding that IEEE and the {{ working_group }} members are supplying information through this Work, not attempting to render engineering or other professional services. If such services are required, the assistance of an appropriate professional should be sought. IEEE is not responsible for the statements and opinions advanced in this Work.
+
+
+[[boilerplate-participants]]
+=== Participants
+
+[[boilerplate-participants-review]]
+==== {blank}
+Special thanks are given to the following reviewers of this paper:
+
+++++
+<membership>
+++++
+
+* {blank}
+name::: Balloter1
+role::: Member
+* {blank}
+name::: Balloter2
+role::: Member
+* {blank}
+name::: Balloter3
+role::: Member
+* {blank}
+name::: Balloter4
+role::: Member
+* {blank}
+name::: Balloter5
+role::: Member
+* {blank}
+name::: Balloter6
+role::: Member
+* {blank}
+name::: Balloter7
+role::: Member
+* {blank}
+name::: Balloter8
+role::: Member
+* {blank}
+name::: Balloter9
+role::: Member
+
+++++
+</membership>
+++++
+
+== feedback-statement
+=== {blank}
+[align=left]
+The Institute of Electrical and Electronics Engineers, Inc.  3 Park Avenue, New York, NY 10016-5997, USA
+
+=== {blank}
+Copyright © {{ docyear }} by The Institute of Electrical and Electronics Engineers, Inc.
+
+All rights reserved. {{ issueddate }}. Printed in the United States of America.
+
+=== {blank}
+[[_isbn_pdf_print]]
+[%unnumbered]
+|===
+|PDF: |ISBN {{ isbn_pdf }} |{{ stdid_pdf }}
+{% if isbn_print %}
+|Print: |ISBN {{ isbn_print }} |{{ stdid_print}}
+{% endif %}
+|===
+
+=== {blank}
+IEEE is a registered trademark in the U.S. Patent &#x26; Trademark Office, owned by The Institute of Electrical and Electronics Engineers, Incorporated. All other trademarks are the property of the respective trademark owners.
+
+=== {blank}
+IEEE prohibits discrimination, harassment, and bullying. +
+For more information, visit https://www.ieee.org/about/corporate/governance/p9-26.html[].
+
+No part of this publication may be reproduced in any form, in an electronic retrieval system or otherwise, without the prior written permission of the publisher.
+
+Find IEEE standards and standards-related product listings at: http://standards.ieee.org[].

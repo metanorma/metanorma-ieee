@@ -25,6 +25,7 @@ module IsoDoc
         officer_style(docxml)
       end
 
+      # STYLE
       def copyright_style(docxml)
         docxml.at("//div[@class = 'boilerplate-copyright']")&.xpath(".//p")
           &.reverse&.each_with_index do |p, i|
@@ -33,6 +34,7 @@ module IsoDoc
         end
       end
 
+      # STYLE
       def license_style(docxml)
         docxml.at("//div[@class = 'boilerplate-license']")&.xpath(".//p")
           &.reverse&.each_with_index do |p, i|
@@ -71,7 +73,7 @@ module IsoDoc
       def officemember_style(docxml)
         docxml.xpath("//p[@type = 'officemember' or @type = 'officeorgmember']")
           .each do |p|
-          p["class"] = "IEEEStdsNamesList"
+          p["class"] = STYLESMAP[:nameslist]
         end
         docxml.xpath("//p[@type = 'emeritus_sign']").each do |p|
           p["class"] = "IEEEStdsParaMemEmeritus"
@@ -80,12 +82,12 @@ module IsoDoc
 
       def officeorgrep_style(docxml)
         docxml.xpath("//p[@type = 'officeorgrepmemberhdr']").each do |p|
-          p["class"] = "IEEEStdsNamesList"
+          p["class"] = STYLESMAP[:nameslist]
           p["style"] =
             "margin-bottom:6.0pt;tab-stops:right 432.0pt;"
         end
         docxml.xpath("//p[@type = 'officeorgrepmember']").each do |p|
-          p["class"] = "IEEEStdsNamesList"
+          p["class"] = STYLESMAP[:nameslist]
           p["style"] =
             "margin-top:6.0pt;tab-stops:right dotted 432.0pt;"
         end
@@ -128,6 +130,7 @@ module IsoDoc
         end
       end
 
+      # STYLE
       def feedback_table1(trow)
         trow.name = "p"
         trow["class"] = "IEEEStdsCRTextReg"
@@ -149,6 +152,7 @@ module IsoDoc
         end
       end
 
+      # STYLE
       def feedback_style1(div, idx)
         div.xpath(".//p").each_with_index do |p, j|
           p["class"] = idx == 4 ? "IEEEStdsCRTextItal" : "IEEEStdsCRTextReg"
@@ -160,13 +164,14 @@ module IsoDoc
 
       def authority_cleanup1(docxml, klass)
         dest = docxml.at("//div[@id = 'boilerplate-#{klass}-destination']")
-        auth = docxml.at("//div[@id = 'boilerplate-#{klass}' "\
+        auth = docxml.at("//div[@id = 'boilerplate-#{klass}' " \
                          "or @class = 'boilerplate-#{klass}']")
         auth&.xpath(".//h1[not(text())] | .//h2[not(text())]")&.each(&:remove)
         authority_cleanup_hdr(auth)
         dest and auth and dest.replace(auth.remove)
       end
 
+      # STYLE
       def authority_cleanup_hdr(auth)
         (1..2).each do |i|
           auth&.xpath(".//h#{i}")&.each do |h|
@@ -195,14 +200,14 @@ module IsoDoc
             p["style"] ||= ""
             p["style"] = 'font-family: "Arial", sans-serif;' + p["style"]
           end
-          %w(ul ol).include?(e1.name) or e1["class"] = "IEEEStdsAbstractBody"
+          %w(ul ol).include?(e1.name) or e1["class"] = STYLESMAP[:abstract]
           dest << e1
         end
       end
 
       def abstract_header(dest)
         dest.elements.first.children.first.previous =
-          "<span class='IEEEStdsAbstractHeader'><span lang='EN-US'>"\
+          "<span class='IEEEStdsAbstractHeader'><span lang='EN-US'>" \
           "Abstract:</span></span> "
       end
 
@@ -221,7 +226,7 @@ module IsoDoc
         dest.replace(intro.remove)
         i = docxml.at("//h1[@class = 'IntroTitle']")
         if i.next_element.name == "div" &&
-            i.next_element["class"] == "IEEEStdsIntroduction"
+            i.next_element["class"] == STYLESMAP[:intro]
           i.next_element.name = "p"
         end
       end
