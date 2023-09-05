@@ -157,7 +157,7 @@ module Metanorma
       end
 
       def populate_participants(xml, target, subtitle)
-        t = xml.at("//clause[@id = '#{target}']/membership")
+        t = xml.at("//clause[@id = '#{target}']/membership") or return
         s = xml.xpath("//clause[@type = 'participants']/clause").detect do |x|
           n = x.at("./title") and n.text.strip.downcase == subtitle
         end

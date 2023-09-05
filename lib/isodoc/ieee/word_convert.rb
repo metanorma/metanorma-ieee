@@ -3,6 +3,7 @@ require_relative "init"
 require_relative "word_cleanup"
 require_relative "word_cleanup_blocks"
 require_relative "word_authority"
+require_relative "word_wp_convert"
 
 module IsoDoc
   module IEEE
@@ -29,7 +30,7 @@ module IsoDoc
           output_filename = nil)
         file ||= File.read(input_filename, encoding: "utf-8")
         docxml = Nokogiri::XML(file) { |config| config.huge }
-        doctype = docxml&.at(ns("//bibdata/ext/dcotype"))&.text
+        doctype = docxml&.at(ns("//bibdata/ext/doctype"))&.text
         if @wp && doctype == "whitepaper"
           @wp.convert(input_filename, file, debug, output_filename)
         else
@@ -68,7 +69,7 @@ module IsoDoc
         page_break(out)
         out.div **attr_code(id: clause["id"], class: "abstract") do |s|
           clause_name(clause, clause.at(ns("./title")), s,
-                      { class: STYLESMAP[:AbstractTitle] })
+                      { class: stylesmap[:AbstractTitle] })
           clause.elements.each { |e| parse(e, s) unless e.name == "title" }
         end
       end
@@ -93,13 +94,13 @@ module IsoDoc
 
       def middle_title_ieee(docxml, out)
         title = docxml.at(ns("//p[@class = 'zzSTDTitle1']")) or return
-        out.p(class: STYLESMAP[:zzSTDTitle1], style: "margin-top:70.0pt") do |p|
+        out.p(class: stylesmap[:zzSTDTitle1], style: "margin-top:70.0pt") do |p|
           title.children.each { |n| parse(n, p) }
         end
       end
 
       def admonition_name_parse(_node, div, name)
-        div.p class: STYLESMAP[:admonition], style: "text-align:center;" do |p|
+        div.p class: stylesmap[:admonition], style: "text-align:center;" do |p|
           p.b do |b|
             name.children.each { |n| parse(n, b) }
           end
@@ -109,8 +110,8 @@ module IsoDoc
       def admonition_class(node)
         if node["type"] == "editorial" then "zzHelp"
         elsif node.ancestors("introduction").empty?
-          STYLESMAP[:admonition]
-        else STYLESMAP[:intro]
+          stylesmap[:admonition]
+        else stylesmap[:intro]
         end
       end
 

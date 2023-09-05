@@ -18,7 +18,7 @@ module IsoDoc
       end
 
       def sourcecode_style
-        STYLESMAP[:Sourcecode]
+        stylesmap[:Sourcecode]
       end
 
       def word_cleanup(docxml)
@@ -75,10 +75,10 @@ module IsoDoc
           hdr["style"] = "mso-list:l13 level#{idx} lfo33;"
         elsif hdr.at("./ancestor::div[@class = 'Section3' or @class = 'WordSectionContents']")
           hdr.name = "p"
-          hdr["class"] = STYLESMAP["level#{idx}frontmatter".to_sym]
+          hdr["class"] = stylesmap["level#{idx}frontmatter".to_sym]
         else
           hdr.name = "p"
-          hdr["class"] = STYLESMAP["level#{idx}header".to_sym]
+          hdr["class"] = stylesmap["level#{idx}header".to_sym]
         end
       end
 
@@ -103,56 +103,58 @@ module IsoDoc
         end
       end
 
-      STYLESMAP = {
-        example: "IEEEStdsParagraph",
-        MsoNormal: "IEEEStdsParagraph",
-        NormRef: "IEEEStdsParagraph",
-        Biblio: "IEEEStdsBibliographicEntry",
-        figure: "IEEEStdsImage",
-        formula: "IEEEStdsEquation",
-        Sourcecode: "IEEEStdsComputerCode",
-        TableTitle: "IEEEStdsRegularTableCaption",
-        FigureTitle: "IEEEStdsRegularFigureCaption",
-        admonition: "IEEEStdsWarning",
-        abstract: "IEEEStdsAbstractBody",
-        AbstractTitle: "AbstractTitle",
-        level1frontmatter: "IEEEStdsLevel1frontmatter",
-        level2frontmatter: "IEEEStdsLevel2frontmatter",
-        level3frontmatter: "IEEEStdsLevel3frontmatter",
-        level1header: "IEEEStdsLevel1Header",
-        level2header: "IEEEStdsLevel2Header",
-        level3header: "IEEEStdsLevel3Header",
-        level4header: "IEEEStdsLevel4Header",
-        level5header: "IEEEStdsLevel5Header",
-        level6header: "IEEEStdsLevel6Header",
-        zzSTDTitle1: "IEEEStdsTitle",
-        tabledata_center: "IEEEStdsTableData-Center",
-        tabledata_left: "IEEEStdsTableData-Left",
-        table_head: "IEEEStdsTableLineHead",
-        table_subhead: "IEEEStdsTableLineSubhead",
-        table_columnhead: "IEEEStdsTableColumnHead",
-        nameslist: "IEEEStdsNamesList",
-        intro: "IEEEStdsIntroduction",
-      }.freeze
+      def stylesmap
+        {
+          example: "IEEEStdsParagraph",
+          MsoNormal: "IEEEStdsParagraph",
+          NormRef: "IEEEStdsParagraph",
+          Biblio: "IEEEStdsBibliographicEntry",
+          figure: "IEEEStdsImage",
+          formula: "IEEEStdsEquation",
+          Sourcecode: "IEEEStdsComputerCode",
+          TableTitle: "IEEEStdsRegularTableCaption",
+          FigureTitle: "IEEEStdsRegularFigureCaption",
+          admonition: "IEEEStdsWarning",
+          abstract: "IEEEStdsAbstractBody",
+          AbstractTitle: "AbstractTitle",
+          level1frontmatter: "IEEEStdsLevel1frontmatter",
+          level2frontmatter: "IEEEStdsLevel2frontmatter",
+          level3frontmatter: "IEEEStdsLevel3frontmatter",
+          level1header: "IEEEStdsLevel1Header",
+          level2header: "IEEEStdsLevel2Header",
+          level3header: "IEEEStdsLevel3Header",
+          level4header: "IEEEStdsLevel4Header",
+          level5header: "IEEEStdsLevel5Header",
+          level6header: "IEEEStdsLevel6Header",
+          zzSTDTitle1: "IEEEStdsTitle",
+          tabledata_center: "IEEEStdsTableData-Center",
+          tabledata_left: "IEEEStdsTableData-Left",
+          table_head: "IEEEStdsTableLineHead",
+          table_subhead: "IEEEStdsTableLineSubhead",
+          table_columnhead: "IEEEStdsTableColumnHead",
+          nameslist: "IEEEStdsNamesList",
+          intro: "IEEEStdsIntroduction",
+        }
+      end
 
       def table_toc_class
-        [STYLESMAP[:TableTitle], "TableTitle", "tabletitle"]
+        [stylesmap[:TableTitle], "TableTitle", "tabletitle"]
       end
 
       def figure_toc_class
-        [STYLESMAP[:FigureTitle], "FigureTitle", "figuretitle"]
+        [stylesmap[:FigureTitle], "FigureTitle", "figuretitle"]
       end
 
       def style_cleanup(docxml)
         note_style_cleanup(docxml)
         docxml.xpath("//div[@class = 'formula']/p").each do |p|
-          p["class"] = STYLESMAP[:formula]
+          p["class"] = stylesmap[:formula]
         end
-        STYLESMAP.each do |k, v|
+        stylesmap.each do |k, v|
           docxml.xpath("//*[@class = '#{k}']").each { |s| s["class"] = v }
         end
         docxml.xpath("//p[not(@class)]").each do |p|
-          p["class"] = STYLESMAP[:MsoNormal]
+          p["class"] = stylesmap[:MsoNormal]
         end
       end
     end

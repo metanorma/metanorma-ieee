@@ -7,6 +7,16 @@ module IsoDoc
       def initialize(lang, script, i18n, fonts_options = {})
         super
         @metadata[:issueddate] = "&lt;Date Approved&gt;"
+        logos
+      end
+
+      def logos
+        here = File.join(File.dirname(__FILE__), "html")
+        %i(wp_image001_emz wp_image003_emz wp_image008_emz)
+          .each do |w|
+          img = w.to_s.sub("_emz", ".emz")
+          set(w, File.expand_path(File.join(here, img)))
+        end
       end
 
       def bibdate(isoxml, _out)

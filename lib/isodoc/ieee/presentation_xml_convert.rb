@@ -174,6 +174,20 @@ module IsoDoc
         s.children.first.previous = ret
       end
 
+      def preface_rearrange(doc)
+        move_abstract(doc)
+        super
+      end
+
+      def move_abstract(doc)
+        doc.at(ns("//bibdata/ext/doctype"))&.text == "whitepaper" or return
+        source = doc.at(ns("//preface/abstract")) or return
+        dest = doc.at(ns("//sections")) ||
+          doc.at(ns("//preface")).after("<sections> </sections>").next_element
+        dest.children.empty? and dest.children = " "
+        dest.children.first.next = source
+      end
+
       include Init
     end
   end
