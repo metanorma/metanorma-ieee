@@ -11,8 +11,14 @@ module IsoDoc
         @hierarchical_assets = options[:hierarchicalassets]
       end
 
+      def initial_anchor_names(doc)
+        @doctype = doc&.at(ns("//bibdata/ext/doctype"))&.text
+        super
+      end
+
       def clause_order_main(docxml)
         [
+          { path: "//sections/abstract" }, # whitepaper
           { path: "//clause[@type = 'overview']" },
           { path: @klass.norm_ref_xpath },
           { path: "//sections/terms | " \

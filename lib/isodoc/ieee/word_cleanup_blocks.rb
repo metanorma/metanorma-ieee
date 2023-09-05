@@ -6,7 +6,7 @@ module IsoDoc
         super
         docxml.xpath("//div[@class = 'zzHelp']").each do |d|
           d.xpath(".//p").each do |p|
-            [STYLESMAP[:admonition], STYLESMAP[:MsoNormal]]
+            [stylesmap[:admonition], stylesmap[:MsoNormal]]
               .include?(p["class"]) || !p["class"] or next
             p["class"] = "zzHelp"
           end
@@ -28,14 +28,14 @@ module IsoDoc
       end
 
       def thead_cell_cleanup(cell)
-        s = STYLESMAP[:table_columnhead]
+        s = stylesmap[:table_columnhead]
         if cell.at("./p")
           cell.xpath("./p").each do |p|
             p["class"] = s
           end
         else
           cell.children =
-            "<p class='#{s}'>#{to_xml(t.children)}</p>"
+            "<p class='#{s}'>#{to_xml(cell.children)}</p>"
         end
       end
 
@@ -68,12 +68,12 @@ module IsoDoc
       end
 
       def td_style(cell, idx)
-        if cell.name == "th" && idx.zero? then STYLESMAP[:table_head]
-        elsif cell.name == "th" then STYLESMAP[:table_subhead]
+        if cell.name == "th" && idx.zero? then stylesmap[:table_head]
+        elsif cell.name == "th" then stylesmap[:table_subhead]
         elsif cell["align"] == "center" ||
             cell["style"].include?("text-align:center")
-          STYLESMAP[:tabledata_center]
-        else STYLESMAP[:tabledata_left]
+          stylesmap[:tabledata_center]
+        else stylesmap[:tabledata_left]
         end
       end
 
@@ -100,7 +100,7 @@ module IsoDoc
       def example_caption(docxml)
         docxml.xpath("//p[@class = 'example-title']").each do |s|
           s.children = "<em>#{to_xml(s.children)}</em>"
-          s["class"] = STYLESMAP[:MsoNormal]
+          s["class"] = stylesmap[:MsoNormal]
         end
       end
 
