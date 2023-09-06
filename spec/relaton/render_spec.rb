@@ -318,31 +318,34 @@ RSpec.describe Relaton::Render::IEEE do
   end
 
   it "renders software" do
-    input = <<~INPUT
-      <bibitem type="software">
-        <title>metanorma-standoc</title>
-        <uri>https://github.com/metanorma/metanorma-standoc</uri>
-        <date type="published"><on>2019-09-04</on></date>
-        <contributor>
-          <role type="author"/>
-          <organization>
-            <name>Ribose Inc.</name>
-          </organization>
-        </contributor>
-        <contributor>
-          <role type="distributor"/>
-          <organization>
-            <name>GitHub</name>
-          </organization>
-        </contributor>
-        <edition>1.3.1</edition>
-      </bibitem>
-    INPUT
-    output = <<~OUTPUT
-      <formattedref>Ribose Inc., “metanorma-standoc.” 2019, <link target='https://github.com/metanorma/metanorma-standoc'>https://github.com/metanorma/metanorma-standoc</link>.</formattedref>
-    OUTPUT
-    expect(renderer.render(input))
-      .to be_equivalent_to output
+    VCR.use_cassette "standoc" do
+      input = <<~INPUT
+        <bibitem type="software">
+          <title>metanorma-standoc</title>
+          <uri>https://github.com/metanorma/metanorma-standoc</uri>
+          <date type="published"><on>2019-09-04</on></date>
+          <date type="accessed"><on>2023-09-06</on></date>
+          <contributor>
+            <role type="author"/>
+            <organization>
+              <name>Ribose Inc.</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type="distributor"/>
+            <organization>
+              <name>GitHub</name>
+            </organization>
+          </contributor>
+          <edition>1.3.1</edition>
+        </bibitem>
+      INPUT
+      output = <<~OUTPUT
+        <formattedref>Ribose Inc., “metanorma-standoc.” 2019, accessed September 6, 2023, <link target='https://github.com/metanorma/metanorma-standoc'>https://github.com/metanorma/metanorma-standoc</link>.</formattedref>
+      OUTPUT
+      expect(renderer.render(input))
+        .to be_equivalent_to output
+    end
   end
 
   it "renders home standard" do
