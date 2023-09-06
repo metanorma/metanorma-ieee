@@ -223,13 +223,13 @@ RSpec.describe Metanorma::IEEE do
                     <docidentifier type="IETF" primary="true">RFC7991</docidentifier>
                   </bibitem>
                 </relation>
-                        <series type="stream">
-          <title format="text/plain">IAB</title>
-        </series>
                 <series>
                   <title format="text/plain">RFC</title>
                   <number>7749</number>
                 </series>
+                        <series type="stream">
+          <title format="text/plain">IAB</title>
+        </series>
                 <keyword>XML</keyword>
                 <keyword>IETF</keyword>
                 <keyword>RFC</keyword>
@@ -299,7 +299,7 @@ RSpec.describe Metanorma::IEEE do
                    <docidentifier type="ISO" primary="true">ISO 639-5:2008</docidentifier>
                  </bibitem>
                </relation>
-               <relation type="instance">
+               <relation type="instanceOf">
                  <bibitem type="standard">
                    <title type="title-main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
                    <title type="main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>

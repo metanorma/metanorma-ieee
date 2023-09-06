@@ -368,7 +368,7 @@ RSpec.describe IsoDoc::IEEE do
                    </m:msup>
                  </m:math>
                  <latexmath>( x + y )^{2}</latexmath>
-                <asciimath>( x + y )^(2)</asciimath>
+                <asciimath>(x + y)^(2)</asciimath>
               </stem>
             </p>
           </foreword>

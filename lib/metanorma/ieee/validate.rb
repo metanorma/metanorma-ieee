@@ -28,12 +28,11 @@ module Metanorma
       end
 
       def doctype_validate(xmldoc)
-        doctype = xmldoc&.at("//bibdata/ext/doctype")&.text
         %w(standard recommended-practice guide whitepaper redline other)
-          .include? doctype or
+          .include?(@doctype) or
           @log.add("Document Attributes", nil,
-                   "#{doctype} is not a recognised document type")
-        docsubtype = xmldoc&.at("//bibdata/ext/subdoctype")&.text or return
+                   "#{@doctype} is not a recognised document type")
+        docsubtype = xmldoc.at("//bibdata/ext/subdoctype")&.text or return
         %w(amendment corrigendum erratum document).include? docsubtype or
           @log.add("Document Attributes", nil,
                    "#{docsubtype} is not a recognised document subtype")
