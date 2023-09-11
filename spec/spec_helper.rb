@@ -63,9 +63,9 @@ end
 
 def htmlencode(xml)
   HTMLEntities.new.encode(xml, :hexadecimal)
-    .gsub(/&#x3e;/, ">").gsub(/&#xa;/, "\n")
-    .gsub(/&#x22;/, '"').gsub(/&#x3c;/, "<")
-    .gsub(/&#x26;/, "&").gsub(/&#x27;/, "'")
+    .gsub("&#x3e;", ">").gsub("&#xa;", "\n")
+    .gsub("&#x22;", '"').gsub("&#x3c;", "<")
+    .gsub("&#x26;", "&").gsub("&#x27;", "'")
     .gsub(/\\u(....)/) do |_s|
     "&#x#{$1.downcase};"
   end
@@ -303,12 +303,12 @@ def word2xml(filename)
   File.read(filename, encoding: "UTF-8")
     .sub(/^.*<html/m, "<html")
     .sub(/<\/html>.*$/m, "</html>")
-    .gsub(/<\/o:/, "</").gsub(/<o:/, "<")
-    .gsub(/epub:type/, "type")
+    .gsub("</o:", "</").gsub("<o:", "<")
+    .gsub("epub:type", "type")
 end
 
 def mock_pdf
   allow(Mn2pdf).to receive(:convert) do |url, output, _c, _d|
-    FileUtils.cp(url.gsub(/"/, ""), output.gsub(/"/, ""))
+    FileUtils.cp(url.gsub('"', ""), output.gsub('"', ""))
   end
 end
