@@ -557,8 +557,8 @@ RSpec.describe Metanorma::IEEE do
             <eref type='inline' bibitemid='ref3' citeas='REF4'/>
             <eref type='inline' bibitemid='ref4' citeas='ISO&#xa0;639:1967'/>
             <eref type='inline' bibitemid='ref5' citeas='IETF&#xa0;RFC&#xa0;7749'/>
-            <eref type='inline' bibitemid='ref6' citeas='[B1]'/>
-            <eref type='inline' bibitemid='ref7' citeas='[B2]'/>
+            <eref type='inline' bibitemid='ref6' citeas='[B3]'/>
+            <eref type='inline' bibitemid='ref7' citeas='[B4]'/>
           </p>
         </clause>
       OUTPUT
