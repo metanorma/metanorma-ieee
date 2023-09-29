@@ -9,17 +9,17 @@ extenttemplate:
   misc: "{{ volume }}, {{issue}}, {{ page }}, {{ duration }}"
 template:
   # skip authoritative_identifier, it is inserted in front of formattedref within metanorma
-  standard: "{% if home_standard %}{{ title }}.{% else %}{{ creatornames }}, “{{ title }},” {{ extent }},  {{ labels['version'] }}_{{ edition_raw }}, {{date}}, {{labels['updated'] | capitalize }}_{{date_updated}}, {{status }}, {{ authorizer }}, {{ uri }} .{% endif %}"
-  article: "{{creatornames}}, “{{title}},” <em>{{ series }}</em>, {{ extent }}, {{ date }}, {{ labels['viewed'] }}_{{date_accessed}}, {{ uri }} ."
-  book: "{{creatornames}}, <em>{{title}}</em>, {{ edition }}, {{place}}: {{publisher}}, {{date}}, {{ labels['viewed'] }}_{{date_accessed}}, {{ uri }} ."
+  standard: "{% if home_standard %}{{ title }}.{% else %}{{ creatornames }}, “{{ title }},” {{ extent }},  {{ labels['version'] }}_{{ edition_raw }}, {{date}}, {{labels['updated'] | capitalize }}_{{date_updated}}, {{status }}, {{ authorizer }}, {% if uri %}{{ uri }}{% else %}{% if doi %}DOI: {{ doi | join: ', ' }}{% endif %}{% endif %} .{% endif %}"
+  article: "{{creatornames}}, “{{title}},” <em>{{ series }}</em>, {{ extent }}, {{ date }}, {{ labels['viewed'] }}_{{date_accessed}}, {% if uri %}{{ uri }}{% else %}{% if doi %}DOI: {{ doi | join: ', ' }}{% endif %}{% endif %} ."
+  book: "{{creatornames}}, <em>{{title}}</em>, {{ edition }}, {{place}}: {{publisher}}, {{date}}, {{ labels['viewed'] }}_{{date_accessed}}, {% if uri %}{{ uri }}{% else %}{% if doi %}DOI: {{ doi | join: ', ' }}{% endif %}{% endif %} ."
   techreport: book
   booklet: book
   manual: book
   proceedings: book
-  inproceedings: "{{ creatornames }}, “{{ title }},” <em>{{host_title}}</em>, {{place}}, {{extent}}, {{date}}, {{ labels['viewed'] }}_{{date_accessed}}, {{ uri }} ."
-  inbook: "{{ creatornames }}, “{{ title }},” {{ labels['in'] }} {{ host_creatornames}} ({{ host_role}}) : <em>{{host_title}}</em>, {{place}}: {{publisher}}, {{date}}, {{extent}}, {{ labels['viewed'] }}_{{date_accessed}}, {{ uri }} ."
+  inproceedings: "{{ creatornames }}, “{{ title }},” <em>{{host_title}}</em>, {{place}}, {{extent}}, {{date}}, {{ labels['viewed'] }}_{{date_accessed}}, {% if uri %}{{ uri }}{% else %}{% if doi %}DOI: {{ doi | join: ', ' }}{% endif %}{% endif %} ."
+  inbook: "{{ creatornames }}, “{{ title }},” {{ labels['in'] }} {{ host_creatornames}} ({{ host_role}}) : <em>{{host_title}}</em>, {{place}}: {{publisher}}, {{date}}, {{extent}}, {{ labels['viewed'] }}_{{date_accessed}}, {% if uri %}{{ uri }}{% else %}{% if doi %}DOI: {{ doi | join: ', ' }}{% endif %}{% endif %} ."
   incollection: inbook
-  thesis: "{{ creatornames }} , “{{ title }}.” {{ medium | capitalize }}, {{ publisher }}, {{ date }}, {{ labels['viewed'] }}_{{date_accessed}}, {{ uri }} ."
+  thesis: "{{ creatornames }} , “{{ title }}.” {{ medium | capitalize }}, {{ publisher }}, {{ date }}, {{ labels['viewed'] }}_{{date_accessed}}, {% if uri %}{{ uri }}{% else %}{% if doi %}DOI: {{ doi | join: ', ' }}{% endif %}{% endif %} ."
   unpublished: thesis
   misc: thesis
   website: thesis

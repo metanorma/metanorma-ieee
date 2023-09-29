@@ -244,9 +244,9 @@ RSpec.describe IsoDoc do
                <biblio-tag>[B1], REF4, </biblio-tag>
              </bibitem>
              <bibitem type="book" id="ref2">
-               <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne, <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022a.</formattedref>
+               <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne, <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022a, DOI: https://doi.org/10.1017/9781108877831.</formattedref>
                <title>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</title>
-               <docidentifier type="DOI">DOI https://doi.org/10.1017/9781108877831</docidentifier>
+               <docidentifier type="DOI">https://doi.org/10.1017/9781108877831</docidentifier>
                <docidentifier type="ISBN">ISBN 9781108877831</docidentifier>
                <biblio-tag/>
              </bibitem>
@@ -272,9 +272,9 @@ RSpec.describe IsoDoc do
                <biblio-tag>[B1]<tab/>REF4, </biblio-tag>
              </bibitem>
              <bibitem type="book" id="ref5">
-               <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne, <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022b.</formattedref>
+               <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne, <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022b, DOI: https://doi.org/10.1017/9781108877831.</formattedref>
                <title>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</title>
-               <docidentifier type="DOI">DOI https://doi.org/10.1017/9781108877831</docidentifier>
+               <docidentifier type="DOI">https://doi.org/10.1017/9781108877831</docidentifier>
                <docidentifier type="ISBN">ISBN 9781108877831</docidentifier>
                <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
                <biblio-tag>[B2]<tab/></biblio-tag>
