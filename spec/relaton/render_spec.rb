@@ -56,7 +56,7 @@ RSpec.describe Relaton::Render::IEEE do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne, <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022.</formattedref>
+      <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne, <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022, DOI: https://doi.org/10.1017/9781108877831.</formattedref>
     OUTPUT
     expect(renderer.render(input))
       .to be_equivalent_to output
@@ -151,7 +151,7 @@ RSpec.describe Relaton::Render::IEEE do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, S. Payne, P. Dopey, D. Grumpy, M. Sneezy, M. Happy, S. Doc <em>et al.</em>, <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022.</formattedref>
+      <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, S. Payne, P. Dopey, D. Grumpy, M. Sneezy, M. Happy, S. Doc <em>et al.</em>, <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022, DOI: https://doi.org/10.1017/9781108877831.</formattedref>
     OUTPUT
     expect(renderer.render(input))
       .to be_equivalent_to output
@@ -311,7 +311,7 @@ RSpec.describe Relaton::Render::IEEE do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne, “Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday,” <em><em>London Mathematical Society Lecture Note Series</em> (N.S.)</em>, vol. 1 no. 7, pp. 89–112, 2022.</formattedref>
+      <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne, “Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday,” <em><em>London Mathematical Society Lecture Note Series</em> (N.S.)</em>, vol. 1 no. 7, pp. 89–112, 2022, DOI: https://doi.org/10.1017/9781108877831.</formattedref>
     OUTPUT
     expect(renderer.render(input))
       .to be_equivalent_to output
