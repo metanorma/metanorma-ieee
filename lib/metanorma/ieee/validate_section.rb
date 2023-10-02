@@ -2,8 +2,7 @@ module Metanorma
   module IEEE
     class Converter < Standoc::Converter
       def section_validate(doc)
-        doctype = doc&.at("//bibdata/ext/doctype")&.text
-        unless %w(amendment technical-corrigendum).include? doctype
+        unless %w(amendment technical-corrigendum).include? @doctype
           sections_presence_validate(doc.root)
           sections_sequence_validate(doc.root)
         end

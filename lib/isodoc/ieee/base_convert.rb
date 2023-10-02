@@ -38,6 +38,11 @@ module IsoDoc
         "&#x2014;"
       end
 
+      def omit_docid_prefix(prefix)
+        prefix == "DOI" and return true
+        super
+      end
+
       def note_p_parse(node, div)
         name = node&.at(ns("./name"))&.remove
         div.p do |p|
