@@ -92,8 +92,7 @@ module IsoDoc
       end
 
       def three_column_officemembers(div)
-        return unless div
-
+        div or return
         ret = three_column_officemembers_split(div)
         three_column_officemembers_render(div, ret)
       end
