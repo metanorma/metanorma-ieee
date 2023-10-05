@@ -137,11 +137,33 @@ module IsoDoc
         officer_style(docxml)
       end
 
+      def feedback_table(docxml)
+        docxml.at("//div[@class = 'boilerplate-copyright']")&.xpath(".//table")
+          &.each do |t|
+          t.xpath(".//tr").each do |tr|
+            feedback_table1(tr)
+          end
+          t.replace(t.at(".//tbody").elements)
+        end
+      end
+
+      def feedback_table1(trow)
+        trow.name = "p"
+        trow["class"] = "CopyrightInformationPage"
+        trow["align"] = "left"
+        trow.xpath("./td").each do |td|
+          td.next_element and td << "<span style='mso-tab-count:1'> </span>"
+          td.xpath("./p").each { |p| p.replace(p.children) }
+          td.replace(td.children)
+        end
+      end
+
       def copyright_style(docxml)
         docxml.at("//div[@class = 'boilerplate-copyright']")&.xpath(".//p")
           &.each do |p|
           p["class"] ||= "CopyrightInformationPage"
         end
+        feedback_table(docxml)
       end
 
       def legal_style(docxml)

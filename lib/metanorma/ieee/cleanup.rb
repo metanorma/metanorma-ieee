@@ -143,13 +143,17 @@ module Metanorma
         i
       end
 
-      def participants(xml)
-        @document_scheme == "ieee-sa-2021" or return
+      PARTICIPANT_BOILERPLATE_LOCATIONS =
         { "boilerplate-participants-wg": "working group",
           "boilerplate-participants-bg": "balloting group",
-          "boilerplate-participants-sb": "standards board" }.each do |k, v|
-            populate_participants(xml, k.to_s, v)
-          end
+          "boilerplate-participants-sb": "standards board",
+          "boilerplate-participants-blank": nil }.freeze
+
+      def participants(xml)
+        @document_scheme == "ieee-sa-2021" or return
+        PARTICIPANT_BOILERPLATE_LOCATIONS.each do |k, v|
+          populate_participants(xml, k.to_s, v)
+        end
         p = xml.at(".//p[@type = 'emeritus_sign']")
         ul = xml.at("//clause[@id = 'boilerplate-participants-sb']//ul")
         p && ul and ul.next = p
