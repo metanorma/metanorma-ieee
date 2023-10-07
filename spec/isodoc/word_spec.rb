@@ -24,7 +24,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     INPUT
     output = <<~OUTPUT
       <div class='WordSectionMiddleTitle'>
-      <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Guide for Title</p>
+      <p class='IEEEStdsTitle' style='margin-left:0cm;margin-top:70.0pt'>Guide for Title</p>
       </div>
     OUTPUT
     presxml = IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
@@ -69,7 +69,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     INPUT
     output = <<~OUTPUT
       <div class='WordSectionMiddleTitle'>
-      <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Guide for Title<br/>Amendment A1 Corrigenda C1</p>
+      <p class='IEEEStdsTitle' style='margin-left:0cm;margin-top:70.0pt'>Guide for Title<br/>Amendment A1 Corrigenda C1</p>
       </div>
     OUTPUT
     presxml = IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
@@ -128,10 +128,10 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     output = <<~OUTPUT
       <div>
         <a name='abstract-destination' id='abstract-destination'/>
-        <div class='IEEEStdsAbstractBody'>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty </div>
-        <p class='IEEEStdsAbstractBody'>Text</p>
-        <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;font-family: &quot;Arial&quot;, sans-serif;" class="IEEEStdsUnorderedListCxSpFirst">List</p>
-        <p class='IEEEStdsAbstractBody'>
+        <div class='IEEEStdsWarning'>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty </div>
+        <p class='IEEEStdsAbstractBody' style="font-family: 'Arial', sans-serif;">Text</p>
+        <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;font-family: 'Arial', sans-serif;" class="IEEEStdsUnorderedListCxSpFirst">List</p>
+        <p class='IEEEStdsAbstractBody' style="font-family: 'Arial', sans-serif;">
           <a name="_" id="_"/>
           This is an introduction
         </p>
@@ -1529,7 +1529,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
           <br clear='all' class='section'/>
         </p>
         <div class='WordSectionMiddleTitle'>
-          <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Draft Standard for Empty</p>
+          <p class='IEEEStdsTitle' style='margin-left:0cm;margin-top:70.0pt'>Draft Standard for Empty</p>
         </div>
         <p class='IEEEStdsParagraph'>
           <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>

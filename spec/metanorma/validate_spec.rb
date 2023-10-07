@@ -2,7 +2,7 @@ require "spec_helper"
 
 RSpec.describe Metanorma::IEEE do
   before(:all) do
-    FileUtils.rm_f "test.err"
+    FileUtils.rm_f "test.err.html"
   end
 
   it "Warns of illegal doctype" do
@@ -16,7 +16,7 @@ RSpec.describe Metanorma::IEEE do
 
       text
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "pizza is not a recognised document type"
   end
 
@@ -31,7 +31,7 @@ RSpec.describe Metanorma::IEEE do
 
       text
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "pizza is not a recognised document subtype"
   end
 
@@ -46,7 +46,7 @@ RSpec.describe Metanorma::IEEE do
 
       text
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "pizza is not a recognised stage"
   end
 
@@ -61,7 +61,7 @@ RSpec.describe Metanorma::IEEE do
 
       text
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Title contains uncapitalised word other than preposition"
 
     Asciidoctor.convert(<<~INPUT, *OPTIONS)
@@ -74,7 +74,7 @@ RSpec.describe Metanorma::IEEE do
 
       text
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "Title contains uncapitalised word other than preposition"
   end
 
@@ -90,7 +90,7 @@ RSpec.describe Metanorma::IEEE do
       .uncapitalised caption
       image::spec/assets/rice_image1.png[]
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "figure heading should be capitalised"
 
     Asciidoctor.convert(<<~INPUT, *OPTIONS)
@@ -104,7 +104,7 @@ RSpec.describe Metanorma::IEEE do
       .Capitalised caption
       image::spec/assets/rice_image1.png[]
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "figure heading should be capitalised"
   end
 
@@ -122,7 +122,7 @@ RSpec.describe Metanorma::IEEE do
       |A |B
       |===
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "table heading should be capitalised"
 
     Asciidoctor.convert(<<~INPUT, *OPTIONS)
@@ -138,7 +138,7 @@ RSpec.describe Metanorma::IEEE do
       |A |B
       |===
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "table heading should be capitalised"
   end
 
@@ -157,7 +157,7 @@ RSpec.describe Metanorma::IEEE do
       |C |D
       |===
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "table heading should be capitalised"
 
     Asciidoctor.convert(<<~INPUT, *OPTIONS)
@@ -174,7 +174,7 @@ RSpec.describe Metanorma::IEEE do
       h|c |D
       |===
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "table heading should be capitalised"
 
     Asciidoctor.convert(<<~INPUT, *OPTIONS)
@@ -191,7 +191,7 @@ RSpec.describe Metanorma::IEEE do
       |c |D
       |===
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "table heading should be capitalised"
   end
 
@@ -206,7 +206,7 @@ RSpec.describe Metanorma::IEEE do
       == Normative References
       * [[[iso123,ISO 123]]] _Standard_
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Normative reference iso123 is not dated"
 
     VCR.use_cassette "iso123" do
@@ -223,7 +223,7 @@ RSpec.describe Metanorma::IEEE do
         == Normative References
         * [[[iso123,ISO 123]]] _Standard_
       INPUT
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .not_to include "Normative reference iso123 is not dated"
     end
   end
@@ -239,7 +239,7 @@ RSpec.describe Metanorma::IEEE do
       == Normative References
       * [[[iso123,ISO 123]]] _Standard_
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Undated reference ISO 123 should not contain " \
                   "specific elements"
 
@@ -253,7 +253,7 @@ RSpec.describe Metanorma::IEEE do
       == Normative References
       * [[[iso123,ISO 123-2000]]] _Standard_
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "Undated reference ISO 123-2000 should not contain " \
                       "specific elements"
   end
@@ -268,7 +268,7 @@ RSpec.describe Metanorma::IEEE do
       ** List
       *** List
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Use ordered lists for lists more than two levels deep"
 
     Asciidoctor.convert(<<~"INPUT", *OPTIONS)
@@ -279,7 +279,7 @@ RSpec.describe Metanorma::IEEE do
       * List
       ** List
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "Use ordered lists for lists more than two levels deep"
   end
 
@@ -296,7 +296,7 @@ RSpec.describe Metanorma::IEEE do
       ..... List
       ...... List
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Ordered lists should not be more than five levels deep"
 
     Asciidoctor.convert(<<~"INPUT", *OPTIONS)
@@ -310,7 +310,7 @@ RSpec.describe Metanorma::IEEE do
       .... List
       ..... List
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "Ordered lists should not be more than five levels deep"
   end
 
@@ -332,7 +332,7 @@ RSpec.describe Metanorma::IEEE do
       ====== Clause
 
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Exceeds the maximum clause depth of 5"
 
     Asciidoctor.convert(<<~"INPUT", *OPTIONS)
@@ -349,7 +349,7 @@ RSpec.describe Metanorma::IEEE do
       ====== Clause
 
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "exceeds the maximum clause depth of 5"
   end
 
@@ -361,7 +361,7 @@ RSpec.describe Metanorma::IEEE do
       === Subclause
 
     INPUT
-    expect(File.read("test.err")).to include "subclause is only child"
+    expect(File.read("test.err.html")).to include "subclause is only child"
   end
 
   it "Warn if more than one ordered lists in a clause" do
@@ -384,7 +384,7 @@ RSpec.describe Metanorma::IEEE do
       . B
 
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "More than 1 ordered list in a numbered clause"
 
     Asciidoctor.convert(<<~"INPUT", *OPTIONS)
@@ -405,7 +405,7 @@ RSpec.describe Metanorma::IEEE do
       a
 
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "More than 1 ordered list in a numbered clause"
   end
 
@@ -426,7 +426,7 @@ RSpec.describe Metanorma::IEEE do
       * [[[ref1,XYZ]]] _Standard_
     INPUT
 
-    expect(File.read("test.err")).to include "Cross-reference contains range, should be separate cross-references"
+    expect(File.read("test.err.html")).to include "Cross-reference contains range, should be separate cross-references"
 
     Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document title
@@ -444,7 +444,7 @@ RSpec.describe Metanorma::IEEE do
       * [[[ref1,XYZ]]] _Standard_
     INPUT
 
-    expect(File.read("test.err")).to include "Cross-reference contains range, should be separate cross-references"
+    expect(File.read("test.err.html")).to include "Cross-reference contains range, should be separate cross-references"
 
     Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document title
@@ -462,7 +462,7 @@ RSpec.describe Metanorma::IEEE do
       * [[[ref1,XYZ]]] _Standard_
     INPUT
 
-    expect(File.read("test.err")).not_to include "Cross-reference contains range, should be separate cross-references"
+    expect(File.read("test.err.html")).not_to include "Cross-reference contains range, should be separate cross-references"
   end
 
   context "Warns of missing overview" do
@@ -478,9 +478,9 @@ RSpec.describe Metanorma::IEEE do
         text
       INPUT
 
-      expect(File.read("test.err")).to include "Overview clause missing"
-      expect(File.read("test.err")).to include "Scope subclause missing"
-      expect(File.read("test.err")).to include "Word Usage subclause missing"
+      expect(File.read("test.err.html")).to include "Overview clause missing"
+      expect(File.read("test.err.html")).to include "Scope subclause missing"
+      expect(File.read("test.err.html")).to include "Word Usage subclause missing"
     end
 
     it "Overview clause not missing if supplied" do
@@ -494,9 +494,9 @@ RSpec.describe Metanorma::IEEE do
 
         == Overview
       INPUT
-      expect(File.read("test.err")).not_to include "Overview clause missing"
-      expect(File.read("test.err")).to include "Scope subclause missing"
-      expect(File.read("test.err")).to include "Word Usage subclause missing"
+      expect(File.read("test.err.html")).not_to include "Overview clause missing"
+      expect(File.read("test.err.html")).to include "Scope subclause missing"
+      expect(File.read("test.err.html")).to include "Word Usage subclause missing"
     end
 
     it "Scope and Word usage clause not missing if supplied" do
@@ -514,13 +514,13 @@ RSpec.describe Metanorma::IEEE do
 
         === Word Usage
       INPUT
-      expect(File.read("test.err")).not_to include "Overview clause missing"
-      expect(File.read("test.err")).not_to include "Scope subclause missing"
-      expect(File.read("test.err")).not_to include "Word Usage subclause missing"
+      expect(File.read("test.err.html")).not_to include "Overview clause missing"
+      expect(File.read("test.err.html")).not_to include "Scope subclause missing"
+      expect(File.read("test.err.html")).not_to include "Word Usage subclause missing"
     end
 
     it "Overview clause not missing in amendments" do
-      FileUtils.rm_f "test.err"
+      FileUtils.rm_f "test.err.html"
       Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
@@ -531,9 +531,9 @@ RSpec.describe Metanorma::IEEE do
 
         text
       INPUT
-      expect(File.read("test.err")).not_to include "Overview clause missing"
-      expect(File.read("test.err")).not_to include "Scope subclause missing"
-      expect(File.read("test.err")).not_to include "Word Usage subclause missing"
+      expect(File.read("test.err.html")).not_to include "Overview clause missing"
+      expect(File.read("test.err.html")).not_to include "Scope subclause missing"
+      expect(File.read("test.err.html")).not_to include "Word Usage subclause missing"
     end
   end
 
@@ -548,8 +548,8 @@ RSpec.describe Metanorma::IEEE do
       :no-pdf:
 
     INPUT
-    expect(File.exist?("test.err")).to be true
-    expect(File.read("test.err"))
+    expect(File.exist?("test.err.html")).to be true
+    expect(File.read("test.err.html"))
       .to include "Expected title to start as: " \
                   "Draft Trial-Use Recommended Practice"
   end
@@ -567,8 +567,8 @@ RSpec.describe Metanorma::IEEE do
         == Change Clause
 
       INPUT
-      expect(File.exist?("test.err")).to be true
-      expect(File.read("test.err"))
+      expect(File.exist?("test.err.html")).to be true
+      expect(File.read("test.err.html"))
         .to include "Editorial instruction is missing from change"
 
       Asciidoctor.convert(<<~INPUT, *OPTIONS)
@@ -583,8 +583,8 @@ RSpec.describe Metanorma::IEEE do
 
         _This table contains information on polygon cells which are not included in ISO 10303-52. Remove table 2 completely and replace with:_
       INPUT
-      expect(File.exist?("test.err")).to be true
-      expect(File.read("test.err"))
+      expect(File.exist?("test.err.html")).to be true
+      expect(File.read("test.err.html"))
         .not_to include "Editorial instruction is missing from change"
     end
 
@@ -601,8 +601,8 @@ RSpec.describe Metanorma::IEEE do
         _This table contains information on polygon cells which are not included in ISO 10303-52. Remove table 2 completely and replace with:_
 
       INPUT
-      expect(File.exist?("test.err")).to be true
-      expect(File.read("test.err"))
+      expect(File.exist?("test.err.html")).to be true
+      expect(File.read("test.err.html"))
         .to include "'Add' change description should start with _Insert_"
 
       Asciidoctor.convert(<<~INPUT, *OPTIONS)
@@ -617,8 +617,8 @@ RSpec.describe Metanorma::IEEE do
         _This table contains information on polygon cells which are not included in ISO 10303-52. Remove table 2 completely and replace with:_
 
       INPUT
-      expect(File.exist?("test.err")).to be true
-      expect(File.read("test.err"))
+      expect(File.exist?("test.err.html")).to be true
+      expect(File.read("test.err.html"))
         .to include "'Delete' change description should start with _Delete_"
 
       Asciidoctor.convert(<<~INPUT, *OPTIONS)
@@ -633,8 +633,8 @@ RSpec.describe Metanorma::IEEE do
         _This table contains information on polygon cells which are not included in ISO 10303-52. Remove table 2 completely and replace with:_
 
       INPUT
-      expect(File.exist?("test.err")).to be true
-      expect(File.read("test.err"))
+      expect(File.exist?("test.err.html")).to be true
+      expect(File.read("test.err.html"))
         .to include "'Modify' change description should start with _Change_ " \
                     "or _Replace_"
 
@@ -655,8 +655,8 @@ RSpec.describe Metanorma::IEEE do
         ____
 
       INPUT
-      expect(File.exist?("test.err")).to be true
-      expect(File.read("test.err"))
+      expect(File.exist?("test.err.html")).to be true
+      expect(File.read("test.err.html"))
         .to include "'Modify' change description for change not involving " \
                     "figure or equation should start with _Change_"
 
@@ -680,8 +680,8 @@ RSpec.describe Metanorma::IEEE do
         ____
 
       INPUT
-      expect(File.exist?("test.err")).to be true
-      expect(File.read("test.err"))
+      expect(File.exist?("test.err.html")).to be true
+      expect(File.read("test.err.html"))
         .to include "'Modify' change description for change involving figure " \
                     "or equation should start with _Replace_"
 
@@ -705,14 +705,14 @@ RSpec.describe Metanorma::IEEE do
         ____
 
       INPUT
-      expect(File.exist?("test.err")).to be true
-      expect(File.read("test.err"))
+      expect(File.exist?("test.err.html")).to be true
+      expect(File.read("test.err.html"))
         .not_to include "'Modify' change description for change involving " \
                         "figure or equation should start with _Replace_"
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .not_to include "'Modify' change description for change not involving " \
                         "figure or equation should start with _Change_"
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .not_to include "'Modify' change description should start with " \
                         "_Change_ or _Replace_"
     end
@@ -720,7 +720,7 @@ RSpec.describe Metanorma::IEEE do
 
   context "Warns of missing normative references" do
     it "Normative references missing" do
-      FileUtils.rm_f "test.err"
+      FileUtils.rm_f "test.err.html"
       Asciidoctor.convert(<<~INPUT, *OPTIONS)
         = Document title
         Author
@@ -731,7 +731,7 @@ RSpec.describe Metanorma::IEEE do
 
         text
       INPUT
-      expect(File.read("test.err")).to include "Normative references missing"
+      expect(File.read("test.err.html")).to include "Normative references missing"
     end
 
     it "Normative references not missing if supplied" do
@@ -746,7 +746,7 @@ RSpec.describe Metanorma::IEEE do
         [bibliography]
         == Normative references
       INPUT
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .not_to include "Normative references missing"
     end
 
@@ -761,7 +761,7 @@ RSpec.describe Metanorma::IEEE do
 
         text
       INPUT
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .not_to include "Normative references missing"
     end
   end
@@ -778,7 +778,7 @@ RSpec.describe Metanorma::IEEE do
 
         text
       INPUT
-      expect(File.read("test.err")).to include "Definitions missing"
+      expect(File.read("test.err.html")).to include "Definitions missing"
     end
 
     it "Terms & definitions not missing if supplied" do
@@ -793,7 +793,7 @@ RSpec.describe Metanorma::IEEE do
         == Terms and definitions
         === Term 1
       INPUT
-      expect(File.read("test.err")).not_to include "Definitions missing"
+      expect(File.read("test.err.html")).not_to include "Definitions missing"
     end
 
     it "Terms & definitions not missing in amendment" do
@@ -807,7 +807,7 @@ RSpec.describe Metanorma::IEEE do
 
         text
       INPUT
-      expect(File.read("test.err")).not_to include "Definitions missing"
+      expect(File.read("test.err.html")).not_to include "Definitions missing"
     end
   end
 
@@ -820,7 +820,7 @@ RSpec.describe Metanorma::IEEE do
 
         Paragraph
       INPUT
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .to include "Initial section must be (content) Abstract"
 
       Asciidoctor.convert(<<~INPUT, *OPTIONS)
@@ -838,7 +838,7 @@ RSpec.describe Metanorma::IEEE do
 
         Paragraph
       INPUT
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .not_to include "Initial section must be (content) Abstract"
     end
 
@@ -852,7 +852,7 @@ RSpec.describe Metanorma::IEEE do
 
         Paragraph
       INPUT
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .to include "Prefatory material must be followed by (clause) Overview"
 
       Asciidoctor.convert(<<~INPUT, *OPTIONS)
@@ -870,7 +870,7 @@ RSpec.describe Metanorma::IEEE do
 
         Paragraph
       INPUT
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .not_to include "Prefatory material must be followed by (clause) Overview"
     end
 
@@ -890,7 +890,7 @@ RSpec.describe Metanorma::IEEE do
 
         Paragraph
       INPUT
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .to include "Normative References must be followed by " \
                     "Definitions"
 
@@ -914,7 +914,7 @@ RSpec.describe Metanorma::IEEE do
 
         Paragraph
       INPUT
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .not_to include "Normative References must be followed by " \
                         "Definitions"
     end
@@ -929,7 +929,7 @@ RSpec.describe Metanorma::IEEE do
         == Bibiliography
 
       INPUT
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .to include "Bibliography must be either the first or the last " \
                     "document annex"
 
@@ -949,7 +949,7 @@ RSpec.describe Metanorma::IEEE do
         [appendix]
         == Appendix
       INPUT
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .to include "Bibliography must be either the first or the last " \
                     "document annex"
 
@@ -967,7 +967,7 @@ RSpec.describe Metanorma::IEEE do
         === Bibiliography
 
       INPUT
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .not_to include "Bibliography must be either the first or the last " \
                         "document annex"
 
@@ -984,7 +984,7 @@ RSpec.describe Metanorma::IEEE do
         [appendix]
         == Appendix
       INPUT
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .not_to include "Bibliography must be either the first or the last " \
                         "document annex"
     end
@@ -998,7 +998,7 @@ RSpec.describe Metanorma::IEEE do
         == Clause
         8,1
       INPUT
-      expect(File.read("test.err")).to include "possible decimal comma"
+      expect(File.read("test.err.html")).to include "possible decimal comma"
     end
 
     it "Style warning if leading decimal point without zero" do
@@ -1008,7 +1008,7 @@ RSpec.describe Metanorma::IEEE do
         == Clause
         Number: .1
       INPUT
-      expect(File.read("test.err")).to include "decimal without initial zero"
+      expect(File.read("test.err.html")).to include "decimal without initial zero"
     end
 
     it "Style warning if percent sign without space" do
@@ -1018,7 +1018,7 @@ RSpec.describe Metanorma::IEEE do
         == Clause
         9%
       INPUT
-      expect(File.read("test.err")).to include "no space before percent sign"
+      expect(File.read("test.err.html")).to include "no space before percent sign"
     end
 
     it "Style warning if no space between number and unit" do
@@ -1028,7 +1028,7 @@ RSpec.describe Metanorma::IEEE do
         == Clause
         7km
       INPUT
-      expect(File.read("test.err")).to include "no space between number and SI unit"
+      expect(File.read("test.err.html")).to include "no space between number and SI unit"
     end
 
     it "Style warning if no unit on both unit and tolerance" do
@@ -1038,7 +1038,7 @@ RSpec.describe Metanorma::IEEE do
         == Clause
         7 ± 2 km
       INPUT
-      expect(File.read("test.err")).to include "unit is needed on both value and tolerance"
+      expect(File.read("test.err.html")).to include "unit is needed on both value and tolerance"
     end
 
     it "Style warning if 5-digit numeral in table" do
@@ -1054,7 +1054,7 @@ RSpec.describe Metanorma::IEEE do
         |===
 
       INPUT
-      expect(File.read("test.err")).not_to include "number in table not broken up in threes"
+      expect(File.read("test.err.html")).not_to include "number in table not broken up in threes"
 
       Asciidoctor.convert(<<~"INPUT", *OPTIONS)
         #{VALIDATING_BLANK_HDR}
@@ -1064,7 +1064,7 @@ RSpec.describe Metanorma::IEEE do
         | 98765 | 0
         |===
       INPUT
-      expect(File.read("test.err")).to include "number in table not broken up in threes"
+      expect(File.read("test.err.html")).to include "number in table not broken up in threes"
 
       Asciidoctor.convert(<<~"INPUT", *OPTIONS)
         #{VALIDATING_BLANK_HDR}
@@ -1074,7 +1074,7 @@ RSpec.describe Metanorma::IEEE do
         | 10.98765 | 0
         |===
       INPUT
-      expect(File.read("test.err")).to include "number in table not broken up in threes"
+      expect(File.read("test.err.html")).to include "number in table not broken up in threes"
     end
 
     it "Style warning if 4-digit numeral in table column with 5-digit numerals" do
@@ -1088,7 +1088,7 @@ RSpec.describe Metanorma::IEEE do
         |===
 
       INPUT
-      expect(File.read("test.err")).not_to include " is a 4-digit number in a table column with numbers broken up in threes"
+      expect(File.read("test.err.html")).not_to include " is a 4-digit number in a table column with numbers broken up in threes"
 
       Asciidoctor.convert(<<~"INPUT", *OPTIONS)
         #{VALIDATING_BLANK_HDR}
@@ -1100,7 +1100,7 @@ RSpec.describe Metanorma::IEEE do
         |===
 
       INPUT
-      expect(File.read("test.err")).to include " is a 4-digit number in a table column with numbers broken up in threes"
+      expect(File.read("test.err.html")).to include " is a 4-digit number in a table column with numbers broken up in threes"
 
       Asciidoctor.convert(<<~"INPUT", *OPTIONS)
         #{VALIDATING_BLANK_HDR}
@@ -1112,7 +1112,7 @@ RSpec.describe Metanorma::IEEE do
         |===
 
       INPUT
-      expect(File.read("test.err")).to include " is a 4-digit number in a table column with numbers broken up in threes"
+      expect(File.read("test.err.html")).to include " is a 4-digit number in a table column with numbers broken up in threes"
     end
   end
 
@@ -1135,11 +1135,11 @@ RSpec.describe Metanorma::IEEE do
 
         image::spec/assets/1000-2000_fig4.png[]
       INPUT
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .to include "Image name document-2000_fig1 is expected to be 1000-2000_fig1"
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .not_to include "Image name 1000-2000_fig2 is expected to be 1000-2000_fig2"
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .to include "Image name 1000-2000_fig4 is expected to be 1000-2000_fig3"
     end
 
@@ -1167,11 +1167,11 @@ RSpec.describe Metanorma::IEEE do
         a| image::spec/assets/1000-fig4.png[] | D
         |===
       INPUT
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .not_to include "Image name Tab2Row1Col2.png is expected to be Tab2Row1Col2"
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .to include "Image name 1000-fig2.png is expected to be Tab2Row2Col2"
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .to include "Image name 1000-fig4.png is expected to be Tab2Row3Col1"
     end
 
@@ -1191,7 +1191,7 @@ RSpec.describe Metanorma::IEEE do
         image::spec/assets/rice_image2.png[] | B
         |===
       INPUT
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .to include "More than one image in the table cell"
 
       Asciidoctor.convert(<<~INPUT, *OPTIONS)
@@ -1208,7 +1208,7 @@ RSpec.describe Metanorma::IEEE do
         a| image::spec/assets/rice_image1.png[] | B
         |===
       INPUT
-      expect(File.read("test.err"))
+      expect(File.read("test.err.html"))
         .not_to include "More than one image in the table cell"
     end
 
@@ -1221,8 +1221,8 @@ RSpec.describe Metanorma::IEEE do
         === Term
         related:contrast[que]
       INPUT
-      expect(File.read("test.err"))
-        .not_to include "Error: Term reference to `que` missing:`"
+      expect(File.read("test.err.html"))
+        .not_to include "Error: Term reference to <code>que</code> missing:`"
 
       Asciidoctor.convert(<<~"INPUT", *OPTIONS)
         #{VALIDATING_BLANK_HDR}
@@ -1232,8 +1232,8 @@ RSpec.describe Metanorma::IEEE do
         === Term
         symbol:[que]
       INPUT
-      expect(File.read("test.err"))
-        .to include "Symbol reference in `symbol[que]` missing:"
+      expect(File.read("test.err.html"))
+        .to include "Symbol reference in <code>symbol[que]</code> missing:"
 
       Asciidoctor.convert(<<~"INPUT", *OPTIONS)
         #{VALIDATING_BLANK_HDR}
@@ -1250,10 +1250,10 @@ RSpec.describe Metanorma::IEEE do
 
         que1:: X
       INPUT
-      expect(File.read("test.err"))
-        .not_to include "Error: Term reference to `que` missing:`"
-      expect(File.read("test.err"))
-        .not_to include "Symbol reference in `symbol[que1]` missing:"
+      expect(File.read("test.err.html"))
+        .not_to include "Error: Term reference to <code>que</code> missing:"
+      expect(File.read("test.err.html"))
+        .not_to include "Symbol reference in <code>symbol[que1]</code> missing:"
     end
   end
 end
