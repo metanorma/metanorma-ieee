@@ -1,3 +1,5 @@
+require_relative "word_wp_cleanup"
+
 module IsoDoc
   module IEEE
     class WordWPConvert < WordConvert
@@ -15,7 +17,7 @@ module IsoDoc
           header: html_doc_path("header_wp.html"),
           wordcoverpage: html_doc_path("word_ieee_titlepage_wp.html"),
           wordintropage: html_doc_path("word_ieee_intro_wp.html"),
-          ulstyle: "l11", olstyle: "l16" }
+          ulstyle: "l23", olstyle: "l16" }
       end
 
       def default_fonts(_options)
@@ -26,55 +28,6 @@ module IsoDoc
           footnotefontsize: "7.0pt",
           smallerfontsize: "10.0pt",
           monospacefontsize: "10.0pt" }
-      end
-
-      def stylesmap
-        {
-          example: "IEEEStdsParagraph", # x
-          MsoNormal: "MsoBodyText",
-          NormRef: "MsoBodyText",
-          Biblio: "References",
-          figure: "MsoBodyText",
-          formula: "IEEEStdsEquation", # x
-          Sourcecode: "IEEEStdsComputerCode", # x
-          TableTitle: "TableTitles",
-          FigureTitle: "FigureHeadings",
-          admonition: "IEEEStdsWarning", # x
-          abstract: "Abstract",
-          AbstractTitle: "Unnumberedheading",
-          level1frontmatter: "Unnumberedheading",
-          level2frontmatter: "IEEEStdsLevel2frontmatter", # x
-          level3frontmatter: "IEEEStdsLevel3frontmatter", # x
-          level1header: "IEEESectionHeader",
-          level2header: "IEEEStdsLevel2Header", # x
-          level3header: "IEEEStdsLevel3Header", # x
-          level4header: "IEEEStdsLevel4Header", # x
-          level5header: "IEEEStdsLevel5Header", # x
-          level6header: "IEEEStdsLevel6Header", # x
-          zzSTDTitle1: "Titleofdocument",
-          tabledata_center: "IEEEStdsTableData-Center", # x
-          tabledata_left: "Tablecelltext",
-          table_head: "IEEEStdsTableLineHead", # x
-          table_subhead: "IEEEStdsTableLineSubhead", # x
-          table_columnhead: "Tablecolumnheader",
-          nameslist: "IEEEnames",
-          intro: "Intro",
-        }
-      end
-
-      APPENDIX_STYLE = %w(Appendix Appendixlevel2 Appendixlevel3).freeze
-
-      def headings_style(hdr, idx)
-        if hdr.at("./ancestor::div[@class = 'Annex']")
-          hdr["class"] = APPENDIX_STYLE[idx]
-          hdr["style"] = "mso-list:l15 level#{idx} lfo33;"
-        elsif hdr.at("./ancestor::div[@class = 'Section3' or @class = 'WordSectionContents']")
-          hdr.name = "p"
-          hdr["class"] = stylesmap["level#{idx}frontmatter".to_sym]
-        else
-          hdr.name = "p"
-          hdr["class"] = stylesmap["level#{idx}header".to_sym]
-        end
       end
 
       def make_body3(body, docxml)
@@ -100,95 +53,55 @@ module IsoDoc
                   style: "#{keep_style(node)};text-align:center;")
       end
 
-      def toWord(result, filename, dir, header)
-        result = from_xhtml(word_cleanup(to_xhtml(result)))
-          .gsub("-DOUBLE_HYPHEN_ESCAPE-", "--")
-        @wordstylesheet = wordstylesheet_update
-        ::Html2Doc::IEEE_WP.new(
-          filename: filename,
-          imagedir: @localdir,
-          stylesheet: @wordstylesheet&.path,
-          header_file: header&.path, dir: dir,
-          asciimathdelims: [@openmathdelim, @closemathdelim],
-          liststyles: { ul: @ulstyle, ol: @olstyle }
-        ).process(result)
-        header&.unlink
-        @wordstylesheet.unlink if @wordstylesheet.is_a?(Tempfile)
+      ABSTRACT_MARGIN =
+        "margin-top:18.0pt;margin-right:7.2pt;margin-bottom:6.0pt;" \
+        "margin-left:0cm;".freeze
+
+      def abstract(clause, out)
+        middle_title_ieee(clause.document.root, out)
+        out.div **attr_code(id: clause["id"], class: "abstract_div") do |s|
+          abstract_body(clause, s)
+        end
+        page_break(out)
       end
 
-      def table_cleanup(docxml)
+      def abstract_body(clause, out)
+        out << BLUELINE
+        clause_name(clause, clause.at(ns("./title")), out,
+                    { class: stylesmap[:AbstractTitle],
+                      style: ABSTRACT_MARGIN })
+        clause.elements.each { |e| parse(e, out) unless e.name == "title" }
+      end
+
+      def middle_title_ieee(xmldoc, out)
         super
-        docxml.xpath("//div[@class = 'table_container']//p[@class = 'Note']")
-          .each do |n|
-          n["class"] = "Tablenotes"
-        end
+        out.p
       end
 
-      def authority_cleanup(docxml)
-        %w(copyright disclaimers tm participants).each do |t|
-          authority_cleanup1(docxml, t)
-        end
-        authority_style(docxml)
+      def clause(node, out)
+        super
+        node.next_element and page_break(out) # only main clauses
       end
 
-      def authority_style(docxml)
-        copyright_style(docxml)
-        legal_style(docxml)
-        officer_style(docxml)
-      end
-
-      def feedback_table(docxml)
-        docxml.at("//div[@class = 'boilerplate-copyright']")&.xpath(".//table")
-          &.each do |t|
-          t.xpath(".//tr").each do |tr|
-            feedback_table1(tr)
-          end
-          t.replace(t.at(".//tbody").elements)
-        end
-      end
-
-      def feedback_table1(trow)
-        trow.name = "p"
-        trow["class"] = "CopyrightInformationPage"
-        trow["align"] = "left"
-        trow.xpath("./td").each do |td|
-          td.next_element and td << "<span style='mso-tab-count:1'> </span>"
-          td.xpath("./p").each { |p| p.replace(p.children) }
-          td.replace(td.children)
-        end
-      end
-
-      def copyright_style(docxml)
-        docxml.at("//div[@class = 'boilerplate-copyright']")&.xpath(".//p")
-          &.each do |p|
-          p["class"] ||= "CopyrightInformationPage"
-        end
-        feedback_table(docxml)
-      end
-
-      def legal_style(docxml)
-        %w(disclaimers tm).each do |e|
-          docxml.at("//div[@id = 'boilerplate-#{e}']")&.xpath(".//p")
-            &.each do |p|
-            p["class"] ||= "Disclaimertext"
+      def figure_parse1(node, out)
+        out.div **figure_attrs(node) do |div|
+          figure_name_parse(node, div, node.at(ns("./name")))
+          node.children.each do |n|
+            figure_key(out) if n.name == "dl"
+            parse(n, div) unless n.name == "name"
           end
         end
       end
 
-      def officer_style(docxml)
-        officemember_style(docxml)
+      def clause_parse_subtitle(title, heading)
+        title.parent.name == "annex" or return super
       end
 
-      def officemember_style(docxml)
-        docxml.xpath("//p[@type = 'officemember' or @type = 'officeorgmember']")
-          .each do |p|
-          p["class"] = stylesmap[:nameslist]
-        end
-      end
-
-      def abstract_cleanup(docxml)
-        if f = docxml.at("//div[@class = 'abstract']")
-          abstract_cleanup1(f, nil)
+      def variant_title(node, out)
+        node.parent.name == "annex" or return super
+        out.p { |e| e << "&#xa0;" }
+        out.p **attr_code(class: "Unnumberedheading") do |p|
+          node.children.each { |c| parse(c, p) }
         end
       end
     end

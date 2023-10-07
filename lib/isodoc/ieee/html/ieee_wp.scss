@@ -7,7 +7,7 @@ p.Titleofdocument, li.Titleofdocument, div.Titleofdocument
 	margin-bottom:6.0pt;
 	margin-left:5.05pt;
 	mso-pagination:widow-orphan;
-	mso-outline-level:1;
+	/*mso-outline-level:1;*/ /* Removed by Metanorma */
 	font-size:20.0pt;
 	mso-bidi-font-size:25.0pt;
 	font-family:$headerfont;;
@@ -2738,7 +2738,7 @@ p.Titleline, li.Titleline, div.Titleline
 	line-height:25.0pt;
 	mso-line-height-rule:exactly;
 	mso-pagination:widow-orphan;
-	mso-outline-level:1;
+	/*mso-outline-level:1;*/ /* Removed by Metanorma */
 	font-size:20.0pt;
 	mso-bidi-font-size:$smallerfontsize;
 	font-family:$headerfont;;

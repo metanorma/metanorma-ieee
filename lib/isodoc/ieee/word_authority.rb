@@ -192,11 +192,11 @@ module IsoDoc
       def abstract_cleanup1(source, dest)
         source.elements.reject { |e| %w(h1 h2).include?(e.name) }.each do |e|
           e1 = e.dup
-          e1.xpath(".//p").each do |p|
+          e1.xpath("self::p | .//p").each do |p|
+            p["class"] = stylesmap[:abstract]
             p["style"] ||= ""
-            p["style"] = 'font-family: "Arial", sans-serif;' + p["style"]
+            p["style"] = "font-family: 'Arial', sans-serif;#{p['style']}"
           end
-          %w(ul ol).include?(e1.name) or e1["class"] = stylesmap[:abstract]
           dest and dest << e1
         end
       end
