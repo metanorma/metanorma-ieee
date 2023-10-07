@@ -76,10 +76,10 @@ RSpec.describe IsoDoc::IEEE do
           <div class='main-section'>
             <hr/>
             <div id='abstract-destination'>
-               <p class='IEEEStdsAbstractBody'>Abstract text</p>
+               <p class='IEEEStdsAbstractBody' style="font-family: 'Arial', sans-serif;">Abstract text</p>
                <ul>
                  <li>
-                   <p style='font-family: &#x22;Arial&#x22;, sans-serif;' class='IEEEStdsParagraph'>X</p>
+                   <p style="font-family: 'Arial', sans-serif;" class='IEEEStdsAbstractBody'>X</p>
                  </li>
                </ul>
             </div>
@@ -134,7 +134,7 @@ RSpec.describe IsoDoc::IEEE do
               </div>
               <hr/>
               <div id='abstract-destination'>
-                <p class='IEEEStdsAbstractBody'>
+                <p class='IEEEStdsAbstractBody' style="font-family: 'Arial', sans-serif;">
                   <span class='IEEEStdsAbstractHeader'>
                     <span lang='EN-US'>Abstract:</span>
                   </span>

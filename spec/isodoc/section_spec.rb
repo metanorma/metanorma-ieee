@@ -325,7 +325,7 @@ RSpec.describe IsoDoc::IEEE do
           <br clear='all' class='section'/>
         </p>
         <div class='WordSectionMiddleTitle'>
-          <p class='IEEEStdsTitle' style='margin-top:70.0pt'>??? for ???</p>
+          <p class='IEEEStdsTitle' style='margin-left:0cm;margin-top:70.0pt'>??? for ???</p>
         </div>
         <p class="section-break">
           <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
@@ -520,7 +520,7 @@ RSpec.describe IsoDoc::IEEE do
     OUTPUT
     word = <<~OUTPUT
       <div class='WordSectionMiddleTitle'>
-         <p class='IEEEStdsTitle' style='margin-top:70.0pt'>Draft Recommended Practice for Title</p>
+         <p class='IEEEStdsTitle' style='margin-left:0cm;margin-top:70.0pt'>Draft Recommended Practice for Title</p>
        </div>
     OUTPUT
     p = IsoDoc::IEEE::PresentationXMLConvert
