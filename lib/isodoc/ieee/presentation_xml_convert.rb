@@ -39,9 +39,8 @@ module IsoDoc
       end
 
       def eref_localities1(opt)
-        return nil if opt[:type] == "anchor"
-
-        opt[:type] = opt[:type].downcase
+        opt[:type] == "anchor" and return nil
+        opt[:type].downcase!
         opt[:lang] == "zh" and return l10n(eref_localities1_zh(opt))
         ret = ""
         opt[:node]["droploc"] != "true" &&
@@ -80,6 +79,23 @@ module IsoDoc
       end
 
       def annex1(elem)
+        if @doctype == "whitepaper"
+          annex1_whitepaper(elem)
+        else
+          annex1_default(elem)
+        end
+      end
+
+      def annex1_whitepaper(elem)
+        lbl = @xrefs.anchor(elem["id"], :label)
+        if t = elem.at(ns("./title"))
+          t.name = "variant-title"
+          t["type"] = "sub"
+        end
+        elem.children.first.previous = "<title>#{lbl}</title>"
+      end
+
+      def annex1_default(elem)
         lbl = @xrefs.anchor(elem["id"], :label)
         if t = elem.at(ns("./title"))
           t.children = "<strong>#{to_xml(t.children)}</strong>"

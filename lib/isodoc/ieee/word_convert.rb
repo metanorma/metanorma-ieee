@@ -93,7 +93,8 @@ module IsoDoc
 
       def middle_title_ieee(docxml, out)
         title = docxml.at(ns("//p[@class = 'zzSTDTitle1']")) or return
-        out.p(class: stylesmap[:zzSTDTitle1], style: "margin-top:70.0pt") do |p|
+        out.p(class: stylesmap[:zzSTDTitle1],
+              style: "margin-left:0cm;margin-top:70.0pt") do |p|
           title.children.each { |n| parse(n, p) }
         end
       end
