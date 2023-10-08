@@ -32,6 +32,7 @@ module IsoDoc
 
       def make_body3(body, docxml)
         body.div class: "WordSection3" do |div3|
+          middle_title_ieee(docxml, div3)
           content(div3, docxml, ns(self.class::MAIN_ELEMENTS))
         end
         section_break(body)
@@ -57,8 +58,19 @@ module IsoDoc
         "margin-top:18.0pt;margin-right:7.2pt;margin-bottom:6.0pt;" \
         "margin-left:0cm;".freeze
 
+      def para_parse(node, out)
+        node["class"] == "zzSTDTitle1" and
+          return middle_title_ieee(node.document.root, out)
+        super
+      end
+
+      def middle_title_ieee(docxml, out)
+        super
+        out << BLUELINE
+        out.p
+      end
+
       def abstract(clause, out)
-        middle_title_ieee(clause.document.root, out)
         out.div **attr_code(id: clause["id"], class: "abstract_div") do |s|
           abstract_body(clause, s)
         end
@@ -66,16 +78,10 @@ module IsoDoc
       end
 
       def abstract_body(clause, out)
-        out << BLUELINE
         clause_name(clause, clause.at(ns("./title")), out,
                     { class: stylesmap[:AbstractTitle],
                       style: ABSTRACT_MARGIN })
         clause.elements.each { |e| parse(e, out) unless e.name == "title" }
-      end
-
-      def middle_title_ieee(xmldoc, out)
-        super
-        out.p
       end
 
       def clause(node, out)
@@ -94,7 +100,7 @@ module IsoDoc
       end
 
       def clause_parse_subtitle(title, heading)
-        title.parent.name == "annex" or return super
+        title&.parent&.name == "annex" or return super
       end
 
       def variant_title(node, out)
