@@ -433,154 +433,408 @@ RSpec.describe Metanorma::IEEE do
       == Thematic Index
     INPUT
     output = <<~OUTPUT
-      #{@blank_hdr.sub(%r{</script>}, '</script><abstract><p>Text</p></abstract>').sub(%r{<boilerplate>.*</boilerplate>}m, '')}
-               <preface>
-           <abstract id='_'>
-             <title>Abstract</title>
-             <p id='_'>Text</p>
-           </abstract>
-           <foreword id='_' obligation='informative'>
-             <title>Foreword</title>
-             <p id='_'>Text</p>
-           </foreword>
-           <introduction id='_' obligation='informative'>
-             <title>Introduction</title>
-             <admonition>This introduction is not part of P, Standard for Document title
-</admonition>
-             <clause id='_' inline-header='false' obligation='informative'>
-               <title>Introduction Subsection</title>
-             </clause>
-           </introduction>
-           <clause id='_' inline-header='false' obligation='informative'>
-             <title>Dedication</title>
-           </clause>
-           <acknowledgements id='_' obligation='informative'>
-             <title>Acknowledgements</title>
-           </acknowledgements>
-         </preface>
-         <sections>
-           <clause id='_' type='overview' inline-header='false' obligation='normative'>
-             <title>Overview</title>
-             <p id='_'>Text</p>
-             <clause id='_' type='scope' inline-header='false' obligation='normative'>
-               <title>Scope</title>
-               <p id='_'>Text</p>
-             </clause>
-             <clause id='_' type='purpose' inline-header='false' obligation='normative'>
-               <title>Purpose</title>
-               <p id='_'>Text</p>
-             </clause>
-             <clause id='boilerplate_word_usage' inline-header="false" obligation="normative">
-               <title>Word usage</title>
-               <p id='_'>The word <em>shall</em> indicates mandatory requirements strictly to be followed in order to conform to the standard and from which no deviation is permitted (<em>shall</em> equals <em>is required to</em>).<fn reference='6'><p id='_'>The use of the word <em>must</em> is deprecated and cannot be used when stating mandatory requirements; <em>must</em> is used only to describe unavoidable situations.</p></fn><fn reference='7'><p id='_'>The use of <em>will</em> is deprecated and cannot be used when stating mandatory requirements; <em>will</em> is only used in statements of fact.</p></fn></p>
-               <p id='_'>The word <em>should</em> indicates that among several possibilities one is recommended as particularly suitable, without mentioning or excluding others; or that a certain course of action is preferred but not necessarily required (<em>should</em> equals <em>is recommended that</em>).</p>
-              <p id='_'>The word <em>may</em> is used to indicate a course of action permissible within the limits of the standard (<em>may</em> equals <em>is permitted to</em>).</p>
-               <p id='_'>The word <em>can</em> is used for statements of possibility and capability, whether material, physical, or causal (<em>can</em> equals <em>is able to</em>).</p>
-             </clause>
-           </clause>
-           <terms id='_' obligation='normative'>
-             <title>Definitions</title>
-             <p id='_'>Boilerplate text</p>
-             <term id='term-Term1'>
-               <preferred>
-                 <expression>
-                   <name>Term1</name>
-                 </expression>
-               </preferred>
-             </term>
-           </terms>
-           <clause id='_' obligation='normative'>
-             <title>Definitions, acronyms and abbreviations</title>
-             <clause id='_' inline-header='false' obligation='normative'>
-               <title>Introduction</title>
-               <clause id='_' inline-header='false' obligation='normative'>
-                 <title>Intro 1</title>
-               </clause>
-             </clause>
-             <terms id='_' obligation='normative'>
-               <title>Intro 2</title>
-               <p id='_'>No terms and definitions are listed in this document.</p>
-               <p id='_'>For the purposes of this document, the following terms and definitions apply. The <em>IEEE Standards Dictionary Online</em> should be consulted for terms not defined in this clause.<fn reference='_boilerplate_term1'><p id='_'><em>IEEE Standards Dictionary Online</em> is available at: <link target='http://dictionary.ieee.org'/>. An IEEE Account is required for access to the dictionary, and one can be created at no charge on the dictionary sign-in page.</p></fn></p>
-               <clause id='_' inline-header='false' obligation='normative'>
-                 <title>Intro 3</title>
-               </clause>
-             </terms>
-             <clause id='_' obligation='normative'>
-               <title>Intro 4</title>
-               <terms id='_' obligation='normative'>
-                 <title>Intro 5</title>
-                 <term id='term-Term1-1'>
-                   <preferred>
-                     <expression>
-                       <name>Term1</name>
-                     </expression>
-                   </preferred>
-                 </term>
-               </terms>
-             </clause>
-             <terms id='_' obligation='normative'>
-               <title>Normal Terms</title>
-               <term id='term-Term2'>
-                 <preferred>
-                   <expression>
-                     <name>Term2</name>
-                   </expression>
-                 </preferred>
-               </term>
-             </terms>
-             <definitions id='_' obligation='normative'>
-               <title>Acronyms and abbreviations</title>
-               <clause id='_' inline-header='false' obligation='normative'>
-                 <title>General</title>
-               </clause>
-               <definitions id='_' type='symbols' obligation='normative'>
-                 <title>Acronyms and abbreviations</title>
-               </definitions>
-             </definitions>
-           </clause>
-           <definitions id='_' type='abbreviated_terms' obligation='normative'>
-             <title>Acronyms and abbreviations</title>
-           </definitions>
-           <clause id='_' inline-header='false' obligation='normative'>
-             <title>Clause 4</title>
-             <clause id='_' inline-header='false' obligation='normative'>
-               <title>Introduction</title>
-             </clause>
-             <clause id='_' inline-header='false' obligation='normative'>
-               <title>Clause 4.2</title>
-             </clause>
-           </clause>
-           <terms id='_' obligation='normative'>
-             <title>Terms and Definitions</title>
-           </terms>
-         </sections>
-         <annex id='_' inline-header='false' obligation='normative'>
-           <title>Annex</title>
-           <clause id='_' inline-header='false' obligation='normative'>
-             <title>Annex A.1</title>
-           </clause>
-         </annex>
-         <annex id='_' obligation='' language='' script=''>
-           <title>Bibliography</title>
-           <references id='_' normative='false' obligation='informative'>
-             <title>Bibliography</title>
-             <p id='_'>Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
-           </references>
-         </annex>
-         <bibliography>
-           <references id='_' normative='true' obligation='informative'>
-             <title>Normative references</title>
-             <p id='_'>There are no normative references in this document.</p>
-           </references>
-         </bibliography>
-         <indexsect id='_'>
-           <title>Index</title>
-           <p id='_'>This is an index</p>
-         </indexsect>
-         <indexsect id='_' type='thematic'>
-           <title>Thematic Index</title>
-         </indexsect>
-       </ieee-standard>
+            #{@blank_hdr.sub(%r{</script>}, '</script><abstract><p>Text</p></abstract>').sub(%r{<boilerplate>.*</boilerplate>}m, '')}
+                     <preface>
+                 <abstract id='_'>
+                   <title>Abstract</title>
+                   <p id='_'>Text</p>
+                 </abstract>
+                 <foreword id='_' obligation='informative'>
+                   <title>Foreword</title>
+                   <p id='_'>Text</p>
+                 </foreword>
+                 <introduction id='_' obligation='informative'>
+                   <title>Introduction</title>
+                   <admonition>This introduction is not part of P, Standard for Document title
+      </admonition>
+                   <clause id='_' inline-header='false' obligation='informative'>
+                     <title>Introduction Subsection</title>
+                   </clause>
+                 </introduction>
+                 <clause id='_' inline-header='false' obligation='informative'>
+                   <title>Dedication</title>
+                 </clause>
+                 <acknowledgements id='_' obligation='informative'>
+                   <title>Acknowledgements</title>
+                 </acknowledgements>
+               </preface>
+               <sections>
+                 <clause id='_' type='overview' inline-header='false' obligation='normative'>
+                   <title>Overview</title>
+                   <p id='_'>Text</p>
+                   <clause id='_' type='scope' inline-header='false' obligation='normative'>
+                     <title>Scope</title>
+                     <p id='_'>Text</p>
+                   </clause>
+                   <clause id='_' type='purpose' inline-header='false' obligation='normative'>
+                     <title>Purpose</title>
+                     <p id='_'>Text</p>
+                   </clause>
+                   <clause id='boilerplate_word_usage' inline-header="false" obligation="normative">
+                     <title>Word usage</title>
+                     <p id='_'>The word <em>shall</em> indicates mandatory requirements strictly to be followed in order to conform to the standard and from which no deviation is permitted (<em>shall</em> equals <em>is required to</em>).<fn reference='6'><p id='_'>The use of the word <em>must</em> is deprecated and cannot be used when stating mandatory requirements; <em>must</em> is used only to describe unavoidable situations.</p></fn><fn reference='7'><p id='_'>The use of <em>will</em> is deprecated and cannot be used when stating mandatory requirements; <em>will</em> is only used in statements of fact.</p></fn></p>
+                     <p id='_'>The word <em>should</em> indicates that among several possibilities one is recommended as particularly suitable, without mentioning or excluding others; or that a certain course of action is preferred but not necessarily required (<em>should</em> equals <em>is recommended that</em>).</p>
+                    <p id='_'>The word <em>may</em> is used to indicate a course of action permissible within the limits of the standard (<em>may</em> equals <em>is permitted to</em>).</p>
+                     <p id='_'>The word <em>can</em> is used for statements of possibility and capability, whether material, physical, or causal (<em>can</em> equals <em>is able to</em>).</p>
+                   </clause>
+                 </clause>
+                 <terms id='_' obligation='normative'>
+                   <title>Definitions</title>
+                   <p id='_'>Boilerplate text</p>
+                   <term id='term-Term1'>
+                     <preferred>
+                       <expression>
+                         <name>Term1</name>
+                       </expression>
+                     </preferred>
+                   </term>
+                 </terms>
+                 <clause id='_' obligation='normative'>
+                   <title>Definitions, acronyms and abbreviations</title>
+                   <clause id='_' inline-header='false' obligation='normative'>
+                     <title>Introduction</title>
+                     <clause id='_' inline-header='false' obligation='normative'>
+                       <title>Intro 1</title>
+                     </clause>
+                   </clause>
+                   <terms id='_' obligation='normative'>
+                     <title>Intro 2</title>
+                     <p id='_'>No terms and definitions are listed in this document.</p>
+                     <p id='_'>For the purposes of this document, the following terms and definitions apply. The <em>IEEE Standards Dictionary Online</em> should be consulted for terms not defined in this clause.<fn reference='_boilerplate_term1'><p id='_'><em>IEEE Standards Dictionary Online</em> is available at: <link target='http://dictionary.ieee.org'/>. An IEEE Account is required for access to the dictionary, and one can be created at no charge on the dictionary sign-in page.</p></fn></p>
+                     <clause id='_' inline-header='false' obligation='normative'>
+                       <title>Intro 3</title>
+                     </clause>
+                   </terms>
+                   <clause id='_' obligation='normative'>
+                     <title>Intro 4</title>
+                     <terms id='_' obligation='normative'>
+                       <title>Intro 5</title>
+                       <term id='term-Term1-1'>
+                         <preferred>
+                           <expression>
+                             <name>Term1</name>
+                           </expression>
+                         </preferred>
+                       </term>
+                     </terms>
+                   </clause>
+                   <terms id='_' obligation='normative'>
+                     <title>Normal Terms</title>
+                     <term id='term-Term2'>
+                       <preferred>
+                         <expression>
+                           <name>Term2</name>
+                         </expression>
+                       </preferred>
+                     </term>
+                   </terms>
+                   <definitions id='_' obligation='normative'>
+                     <title>Acronyms and abbreviations</title>
+                     <clause id='_' inline-header='false' obligation='normative'>
+                       <title>General</title>
+                     </clause>
+                     <definitions id='_' type='symbols' obligation='normative'>
+                       <title>Acronyms and abbreviations</title>
+                     </definitions>
+                   </definitions>
+                 </clause>
+                 <definitions id='_' type='abbreviated_terms' obligation='normative'>
+                   <title>Acronyms and abbreviations</title>
+                 </definitions>
+                 <clause id='_' inline-header='false' obligation='normative'>
+                   <title>Clause 4</title>
+                   <clause id='_' inline-header='false' obligation='normative'>
+                     <title>Introduction</title>
+                   </clause>
+                   <clause id='_' inline-header='false' obligation='normative'>
+                     <title>Clause 4.2</title>
+                   </clause>
+                 </clause>
+                 <terms id='_' obligation='normative'>
+                   <title>Terms and Definitions</title>
+                 </terms>
+               </sections>
+               <annex id='_' inline-header='false' obligation='normative'>
+                 <title>Annex</title>
+                 <clause id='_' inline-header='false' obligation='normative'>
+                   <title>Annex A.1</title>
+                 </clause>
+               </annex>
+               <annex id='_' obligation='' language='' script=''>
+                 <title>Bibliography</title>
+                 <references id='_' normative='false' obligation='informative'>
+                   <title>Bibliography</title>
+                   <p id='_'>Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
+                 </references>
+               </annex>
+               <bibliography>
+                 <references id='_' normative='true' obligation='informative'>
+                   <title>Normative references</title>
+                   <p id='_'>There are no normative references in this document.</p>
+                 </references>
+               </bibliography>
+               <indexsect id='_'>
+                 <title>Index</title>
+                 <p id='_'>This is an index</p>
+               </indexsect>
+               <indexsect id='_' type='thematic'>
+                 <title>Thematic Index</title>
+               </indexsect>
+             </ieee-standard>
+    OUTPUT
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS)
+      .sub(%r{<boilerplate>.*</boilerplate>}m, ""))))
+      .to be_equivalent_to xmlpp(output)
+  end
+
+  it "processes sections, white paper" do
+    input = <<~INPUT
+      #{ASCIIDOC_BLANK_HDR.sub(':nodoc:', ":doctype: whitepaper\n:nodoc:")}
+      .Foreword
+
+      Text
+
+      [abstract]
+      == Abstract
+
+      Text
+
+      == Participants
+
+      === Working Group
+
+      == Introduction
+
+      === Introduction Subsection
+
+      == Acknowledgements
+
+      [.preface]
+      == Dedication
+
+      == Overview
+
+      Text
+
+      === Scope
+
+      Text
+
+      === Purpose
+
+      Text
+
+      [bibliography]
+      == Normative References
+
+      == Definitions
+
+      [.boilerplate]
+      === Boilerplate
+
+      Boilerplate text
+
+      === Term1
+
+      == Terms, Definitions, Symbols and Abbreviated Terms
+
+      [.nonterm]
+      === Introduction
+
+      ==== Intro 1
+
+      === Intro 2
+
+      [.nonterm]
+      ==== Intro 3
+
+      === Intro 4
+
+      ==== Intro 5
+
+      ===== Term1
+
+      === Normal Terms
+
+      ==== Term2
+
+      === Acronyms and abbreviations
+
+      [.nonterm]
+      ==== General
+
+      ==== Symbols
+
+      == Abbreviated Terms
+      == Clause 4
+
+      === Introduction
+
+      === Clause 4.2
+
+      == Terms and Definitions
+
+      [appendix,normative=true]
+      == Annex
+
+      === Annex A.1
+
+      [appendix,normative=false]
+      == Bibliography
+
+      [bibliography]
+      === Bibliography
+
+      [index]
+      == Index
+
+      This is an index
+
+      [index,type=thematic]
+      == Thematic Index
+    INPUT
+    output = <<~OUTPUT
+            #{@blank_hdr.sub("<doctype>standard</doctype>", " <doctype>whitepaper</doctype>").sub(%r{</script>}, '</script><abstract><p>Text</p></abstract>').sub(%r{<boilerplate>.*</boilerplate>}m, '')}
+                     <preface>
+                 <abstract id='_'>
+                   <title>Abstract</title>
+                   <p id='_'>Text</p>
+                 </abstract>
+                 <foreword id='_' obligation='informative'>
+                   <title>Foreword</title>
+                   <p id='_'>Text</p>
+                 </foreword>
+                 <introduction id='_' obligation='informative'>
+                   <title>Introduction</title>
+                   <admonition>This introduction is not part of P, Whitepaper for Document title
+      </admonition>
+                   <clause id='_' inline-header='false' obligation='informative'>
+                     <title>Introduction Subsection</title>
+                   </clause>
+                 </introduction>
+                 <clause id='_' inline-header='false' obligation='informative'>
+                   <title>Dedication</title>
+                 </clause>
+                 <acknowledgements id='_' obligation='informative'>
+                   <title>Acknowledgements</title>
+                 </acknowledgements>
+               </preface>
+               <sections>
+                 <clause id='_' type='overview' inline-header='false' obligation='normative'>
+                   <title>Overview</title>
+                   <p id='_'>Text</p>
+                   <clause id='_' type='scope' inline-header='false' obligation='normative'>
+                     <title>Scope</title>
+                     <p id='_'>Text</p>
+                   </clause>
+                   <clause id='_' type='purpose' inline-header='false' obligation='normative'>
+                     <title>Purpose</title>
+                     <p id='_'>Text</p>
+                   </clause>
+                 </clause>
+                 <terms id='_' obligation='normative'>
+                   <title>Definitions</title>
+                   <p id='_'>Boilerplate text</p>
+                   <term id='term-Term1'>
+                     <preferred>
+                       <expression>
+                         <name>Term1</name>
+                       </expression>
+                     </preferred>
+                   </term>
+                 </terms>
+                 <clause id='_' obligation='normative'>
+                   <title>Definitions, acronyms and abbreviations</title>
+                   <clause id='_' inline-header='false' obligation='normative'>
+                     <title>Introduction</title>
+                     <clause id='_' inline-header='false' obligation='normative'>
+                       <title>Intro 1</title>
+                     </clause>
+                   </clause>
+                   <terms id='_' obligation='normative'>
+                     <title>Intro 2</title>
+                     <p id='_'>No terms and definitions are listed in this document.</p>
+                     <p id='_'>For the purposes of this document, the following terms and definitions apply. The <em>IEEE Standards Dictionary Online</em> should be consulted for terms not defined in this clause.<fn reference='_boilerplate_term1'><p id='_'><em>IEEE Standards Dictionary Online</em> is available at: <link target='http://dictionary.ieee.org'/>. An IEEE Account is required for access to the dictionary, and one can be created at no charge on the dictionary sign-in page.</p></fn></p>
+                     <clause id='_' inline-header='false' obligation='normative'>
+                       <title>Intro 3</title>
+                     </clause>
+                   </terms>
+                   <clause id='_' obligation='normative'>
+                     <title>Intro 4</title>
+                     <terms id='_' obligation='normative'>
+                       <title>Intro 5</title>
+                       <term id='term-Term1-1'>
+                         <preferred>
+                           <expression>
+                             <name>Term1</name>
+                           </expression>
+                         </preferred>
+                       </term>
+                     </terms>
+                   </clause>
+                   <terms id='_' obligation='normative'>
+                     <title>Normal Terms</title>
+                     <term id='term-Term2'>
+                       <preferred>
+                         <expression>
+                           <name>Term2</name>
+                         </expression>
+                       </preferred>
+                     </term>
+                   </terms>
+                   <definitions id='_' obligation='normative'>
+                     <title>Acronyms and abbreviations</title>
+                     <clause id='_' inline-header='false' obligation='normative'>
+                       <title>General</title>
+                     </clause>
+                     <definitions id='_' type='symbols' obligation='normative'>
+                       <title>Acronyms and abbreviations</title>
+                     </definitions>
+                   </definitions>
+                 </clause>
+                 <definitions id='_' type='abbreviated_terms' obligation='normative'>
+                   <title>Acronyms and abbreviations</title>
+                 </definitions>
+                 <clause id='_' inline-header='false' obligation='normative'>
+                   <title>Clause 4</title>
+                   <clause id='_' inline-header='false' obligation='normative'>
+                     <title>Introduction</title>
+                   </clause>
+                   <clause id='_' inline-header='false' obligation='normative'>
+                     <title>Clause 4.2</title>
+                   </clause>
+                 </clause>
+                 <terms id='_' obligation='normative'>
+                   <title>Terms and Definitions</title>
+                 </terms>
+               </sections>
+               <annex id='_' inline-header='false' obligation='normative'>
+                 <title>Annex</title>
+                 <clause id='_' inline-header='false' obligation='normative'>
+                   <title>Annex A.1</title>
+                 </clause>
+               </annex>
+               <annex id='_' obligation='' language='' script=''>
+                 <title>Bibliography</title>
+                 <references id='_' normative='false' obligation='informative'>
+                   <title>Bibliography</title>
+                   <p id='_'>Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
+                 </references>
+               </annex>
+               <bibliography>
+                 <references id='_' normative='true' obligation='informative'>
+                   <title>References</title>
+                   <p id='_'>There are no normative references in this document.</p>
+                 </references>
+               </bibliography>
+               <indexsect id='_'>
+                 <title>Index</title>
+                 <p id='_'>This is an index</p>
+               </indexsect>
+               <indexsect id='_' type='thematic'>
+                 <title>Thematic Index</title>
+               </indexsect>
+             </ieee-standard>
     OUTPUT
     expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS)
       .sub(%r{<boilerplate>.*</boilerplate>}m, ""))))

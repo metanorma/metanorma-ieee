@@ -180,14 +180,23 @@ module IsoDoc
       end
 
       def middle_title(docxml)
-        s = docxml.at(ns("//sections")) or return
+        s = middle_title_insert(docxml) or return
+        s.previous = middle_title_body
+      end
+
+      def middle_title_body
         ret = "<p class='zzSTDTitle1'>#{@meta.get[:full_doctitle]}"
         @meta.get[:amd] || @meta.get[:corr] and ret += "<br/>"
         @meta.get[:amd] and ret += "Amendment #{@meta.get[:amd]}"
         @meta.get[:amd] && @meta.get[:corr] and ret += " "
         @meta.get[:corr] and ret += "Corrigenda #{@meta.get[:corr]}"
         ret += "</p>"
-        s.children.first.previous = ret
+        ret
+      end
+
+      def middle_title_insert(docxml)
+        s = docxml.at(ns("//sections")) or return
+        s.children.first
       end
 
       def preface_rearrange(doc)
