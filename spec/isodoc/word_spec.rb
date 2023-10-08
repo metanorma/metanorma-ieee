@@ -812,6 +812,99 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       .to be_equivalent_to xmlpp(output)
   end
 
+  it "process tables" do
+    input = <<~INPUT
+          <iso-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
+          <bibdata><ext><doctype>standard</doctype></ext></bibdata>
+        <sections>
+          <clause id="a" displayorder="1">
+          <table id="figureA-1" keep-with-next="true" keep-lines-together="true">
+        <name>Figure 1&#xA0;&#x2014; Split-it-right <em>sample</em> divider<fn reference="1"><p>X</p></fn></name>
+        <thead><tr><th>A</th></tr></thead>
+        <tbody><tr><td>B</td></tr></tbody>
+        <note id="A"><p>This is a note</p></note>
+        </table>
+          </clause>
+        </sections>
+      </iso-standard>
+    INPUT
+    output = <<~OUTPUT
+      <div>
+         <a name="a" id="a"/>
+         <p class="IEEEStdsLevel1Header"/>
+         <p class="IEEEStdsRegularTableCaption" style="text-align:center;">Figure 1 — Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref"><a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
+         <div align="center" class="table_container">
+           <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;page-break-after: avoid;page-break-inside: avoid;">
+             <a name="figureA-1" id="figureA-1"/>
+             <thead>
+               <tr>
+                 <th style="font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
+                   <p class="IEEEStdsTableColumnHead" style="page-break-after:avoid">A</p>
+                 </th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr>
+                 <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                   <p class="IEEEStdsTableData-Left" style="page-break-after:auto">B</p>
+                 </td>
+               </tr>
+             </tbody>
+                   <div>
+        <a name="A" id="A"/>
+        <p class="IEEEStdsParagraph">This is a note</p>
+      </div>
+           </table>
+         </div>
+       </div>
+    OUTPUT
+    IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
+    expect(File.exist?("test.doc")).to be true
+    doc = Nokogiri::XML(word2xml("test.doc"))
+      .at("//xmlns:div[xmlns:a[@id = 'a']]")
+    expect(strip_guid(xmlpp(doc.to_xml)))
+      .to be_equivalent_to xmlpp(output)
+
+    output = <<~OUTPUT
+      <div>
+         <a name="a" id="a"/>
+         <p class="IEEESectionHeader"/>
+         <p class="TableTitles" style="text-align:center;">Figure 1 — Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref"><a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
+         <div align="center" class="table_container">
+           <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;page-break-after: avoid;page-break-inside: avoid;">
+             <a name="figureA-1" id="figureA-1"/>
+             <thead>
+               <tr>
+                 <th style="font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
+                   <p class="Tablecolumnheader" style="page-break-after:avoid">A</p>
+                 </th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr>
+                 <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                   <p class="Tablecelltext" style="page-break-after:auto">B</p>
+                 </td>
+               </tr>
+             </tbody>
+             <div class="Note">
+               <a name="A" id="A"/>
+               <p class="Tablenotes">This is a note</p>
+             </div>
+           </table>
+         </div>
+       </div>
+    OUTPUT
+    IsoDoc::IEEE::WordConvert.new({})
+      .convert("test", input.sub("<doctype>standard</doctype>",
+                                 "<doctype>whitepaper</doctype>"), false)
+    expect(File.exist?("test.doc")).to be true
+    doc = Nokogiri::XML(word2xml("test.doc"))
+      .at("//xmlns:div[xmlns:a[@id = 'a']]")
+    expect(strip_guid(xmlpp(doc.to_xml)))
+      .to be_equivalent_to xmlpp(output)
+  end
+
   it "process clause" do
     input = <<~INPUT
           <iso-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
@@ -930,7 +1023,6 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(strip_guid(xmlpp(doc.to_xml)))
       .to be_equivalent_to xmlpp(word)
   end
-
 
   it "process annex" do
     input = <<~INPUT

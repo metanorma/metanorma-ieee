@@ -92,7 +92,7 @@ module IsoDoc
 
       def table_cleanup(docxml)
         super
-        docxml.xpath("//div[@class = 'table_container']//p[@class = 'Note']")
+        docxml.xpath("//div[@class = 'table_container']//div[@class = 'Note']//p")
           .each do |n|
           n["class"] = "Tablenotes"
         end
