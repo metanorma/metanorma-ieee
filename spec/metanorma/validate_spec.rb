@@ -1233,7 +1233,7 @@ RSpec.describe Metanorma::IEEE do
         symbol:[que]
       INPUT
       expect(File.read("test.err.html"))
-        .to include "Symbol reference in <code>symbol[que]</code> missing:"
+        .to include "Symbol reference in <code>symbol​[que]</code> missing:"
 
       Asciidoctor.convert(<<~"INPUT", *OPTIONS)
         #{VALIDATING_BLANK_HDR}
@@ -1253,7 +1253,7 @@ RSpec.describe Metanorma::IEEE do
       expect(File.read("test.err.html"))
         .not_to include "Error: Term reference to <code>que</code> missing:"
       expect(File.read("test.err.html"))
-        .not_to include "Symbol reference in <code>symbol[que1]</code> missing:"
+        .not_to include "Symbol reference in <code>symbol​[que1]</code> missing:"
     end
   end
 end
