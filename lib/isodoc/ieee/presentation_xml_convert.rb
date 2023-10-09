@@ -39,9 +39,8 @@ module IsoDoc
       end
 
       def eref_localities1(opt)
-        return nil if opt[:type] == "anchor"
-
-        opt[:type] = opt[:type].downcase
+        opt[:type] == "anchor" and return nil
+        opt[:type].downcase!
         opt[:lang] == "zh" and return l10n(eref_localities1_zh(opt))
         ret = ""
         opt[:node]["droploc"] != "true" &&
@@ -80,6 +79,23 @@ module IsoDoc
       end
 
       def annex1(elem)
+        if @doctype == "whitepaper"
+          annex1_whitepaper(elem)
+        else
+          annex1_default(elem)
+        end
+      end
+
+      def annex1_whitepaper(elem)
+        lbl = @xrefs.anchor(elem["id"], :label)
+        if t = elem.at(ns("./title"))
+          t.name = "variant-title"
+          t["type"] = "sub"
+        end
+        elem.children.first.previous = "<title>#{lbl}</title>"
+      end
+
+      def annex1_default(elem)
         lbl = @xrefs.anchor(elem["id"], :label)
         if t = elem.at(ns("./title"))
           t.children = "<strong>#{to_xml(t.children)}</strong>"
@@ -164,14 +180,37 @@ module IsoDoc
       end
 
       def middle_title(docxml)
-        s = docxml.at(ns("//sections")) or return
+        s = middle_title_insert(docxml) or return
+        s.previous = middle_title_body
+      end
+
+      def middle_title_body
         ret = "<p class='zzSTDTitle1'>#{@meta.get[:full_doctitle]}"
         @meta.get[:amd] || @meta.get[:corr] and ret += "<br/>"
         @meta.get[:amd] and ret += "Amendment #{@meta.get[:amd]}"
         @meta.get[:amd] && @meta.get[:corr] and ret += " "
         @meta.get[:corr] and ret += "Corrigenda #{@meta.get[:corr]}"
         ret += "</p>"
-        s.children.first.previous = ret
+        ret
+      end
+
+      def middle_title_insert(docxml)
+        s = docxml.at(ns("//sections")) or return
+        s.children.first
+      end
+
+      def preface_rearrange(doc)
+        move_abstract(doc)
+        super
+      end
+
+      def move_abstract(doc)
+        doc.at(ns("//bibdata/ext/doctype"))&.text == "whitepaper" or return
+        source = doc.at(ns("//preface/abstract")) or return
+        dest = doc.at(ns("//sections")) ||
+          doc.at(ns("//preface")).after("<sections> </sections>").next_element
+        dest.children.empty? and dest.children = " "
+        dest.children.first.next = source
       end
 
       include Init

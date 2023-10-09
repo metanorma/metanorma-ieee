@@ -143,13 +143,17 @@ module Metanorma
         i
       end
 
-      def participants(xml)
-        @document_scheme == "ieee-sa-2021" or return
+      PARTICIPANT_BOILERPLATE_LOCATIONS =
         { "boilerplate-participants-wg": "working group",
           "boilerplate-participants-bg": "balloting group",
-          "boilerplate-participants-sb": "standards board" }.each do |k, v|
-            populate_participants(xml, k.to_s, v)
-          end
+          "boilerplate-participants-sb": "standards board",
+          "boilerplate-participants-blank": nil }.freeze
+
+      def participants(xml)
+        @document_scheme == "ieee-sa-2021" or return
+        PARTICIPANT_BOILERPLATE_LOCATIONS.each do |k, v|
+          populate_participants(xml, k.to_s, v)
+        end
         p = xml.at(".//p[@type = 'emeritus_sign']")
         ul = xml.at("//clause[@id = 'boilerplate-participants-sb']//ul")
         p && ul and ul.next = p
@@ -157,7 +161,7 @@ module Metanorma
       end
 
       def populate_participants(xml, target, subtitle)
-        t = xml.at("//clause[@id = '#{target}']/membership")
+        t = xml.at("//clause[@id = '#{target}']/membership") or return
         s = xml.xpath("//clause[@type = 'participants']/clause").detect do |x|
           n = x.at("./title") and n.text.strip.downcase == subtitle
         end

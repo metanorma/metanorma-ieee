@@ -125,6 +125,14 @@ module Metanorma
           ref.at("./docidentifier[@type = 'metanorma-ordinal']") || ret
         end
       end
+
+      def section_names_refs_cleanup(xml)
+        if @doctype == "whitepaper"
+          replace_title(xml, "//bibliography/references",
+                        @i18n&.references, true)
+        else super
+        end
+      end
     end
   end
 end

@@ -201,7 +201,7 @@ RSpec.describe IsoDoc do
     OUTPUT
 
     word = <<~WORD
-          <body lang="EN-US" link="blue" vlink="#954F72">
+      <body lang="EN-US" link="blue" vlink="#954F72">
         <div class="WordSection1">
           <p> </p>
         </div>
@@ -218,7 +218,7 @@ RSpec.describe IsoDoc do
           <br clear="all" class="section"/>
         </p>
         <div class="WordSectionMiddleTitle">
-          <p class="IEEEStdsTitle" style="margin-top:70.0pt">??? for ???</p>
+          <p class="IEEEStdsTitle" style="margin-left:0cm;margin-top:70.0pt">??? for ???</p>
         </div>
         <p class="section-break">
           <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>

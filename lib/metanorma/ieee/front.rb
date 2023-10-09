@@ -4,11 +4,10 @@ module Metanorma
   module IEEE
     class Converter < Standoc::Converter
       def metadata_committee(node, xml)
-        return unless node.attr("committee") || node.attr("society")
-
+        node.attr("committee") || node.attr("society") ||
+          node.attr("working-group") or return
         node.attr("balloting-group") && !node.attr("balloting-group-type") and
           node.set_attr("balloting-group-type", "individual")
-
         xml.editorialgroup do |a|
           committee_component("society", node, a)
           committee_component("balloting-group", node, a)
@@ -50,15 +49,17 @@ module Metanorma
         publishers = node.attr("copyright-holder") || node.attr("publisher") ||
           "IEEE"
         csv_split(publishers).each do |p|
-          xml.copyright do |c|
-            c.from (node.attr("copyright-year") || Date.today.year)
-            c.owner do |owner|
-              owner.organization do |o|
-                organization(
-                  o, p, true, node,
-                  !(node.attr("copyright-holder") || node.attr("publisher"))
-                )
-              end
+          metadata_copyright1(node, p, xml)
+        end
+      end
+
+      def metadata_copyright1(node, pub, xml)
+        xml.copyright do |c|
+          c.from (node.attr("copyright-year") || Date.today.year)
+          c.owner do |owner|
+            owner.organization do |o|
+              organization(o, pub, true, node,
+                           !(node.attr("copyright-holder") || node.attr("publisher")))
             end
           end
         end

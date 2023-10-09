@@ -2,9 +2,12 @@ require "spec_helper"
 require "fileutils"
 
 RSpec.describe Metanorma::IEEE do
+  logoloc = File.expand_path(File.join(File.dirname(__FILE__), "..", "..",
+                                       "lib", "isodoc", "ieee", "html"))
+
   it "processes default metadata" do
     csdc = IsoDoc::IEEE::HtmlConvert.new({})
-    docxml, = csdc.convert_init(<<~"INPUT", "test", true)
+    docxml, = csdc.convert_init(<<~INPUT, "test", true)
        <ieee-standard xmlns="https://www.calconnect.org/standards/ieee">
            <bibdata type="standard">
            <title language="en" format="text/plain" type="main">Main Title<br/>in multiple lines</title>
@@ -235,7 +238,7 @@ RSpec.describe Metanorma::IEEE do
          </ieee-standard>
     INPUT
     expect(htmlencode(metadata(csdc.info(docxml, nil)).to_s
-      .gsub(/, :/, ",\n:"))).to be_equivalent_to <<~"OUTPUT"
+      .gsub(", :", ",\n:"))).to be_equivalent_to <<~"OUTPUT"
         {:abbrev_doctitle=>"Draft Rec. Prac. for Main Titlein multiple lines",
         :accesseddate=>"XXX",
         :agency=>"IEEE",
@@ -292,13 +295,16 @@ RSpec.describe Metanorma::IEEE do
         :updateddate=>"XXX",
         :vote_endeddate=>"XXX",
         :vote_starteddate=>"XXX",
-        :working_group=>"WG"}
+        :working_group=>"WG",
+        :wp_image001_emz=>"#{File.join(logoloc, 'wp_image001.emz')}",
+        :wp_image003_emz=>"#{File.join(logoloc, 'wp_image003.emz')}",
+        :wp_image008_emz=>"#{File.join(logoloc, 'wp_image008.emz')}"}
       OUTPUT
   end
 
   it "processes metadata with no nominated contributors or scoped identifiers" do
     csdc = IsoDoc::IEEE::HtmlConvert.new({})
-    docxml, = csdc.convert_init(<<~"INPUT", "test", true)
+    docxml, = csdc.convert_init(<<~INPUT, "test", true)
       <ieee-standard xmlns="https://www.calconnect.org/standards/ieee">
         <bibdata type="standard">
         <title language="en" format="text/plain" type="main">Main Title<br/>in multiple lines</title>
@@ -361,7 +367,7 @@ RSpec.describe Metanorma::IEEE do
       </ieee-standard>
     INPUT
     expect(htmlencode(metadata(csdc.info(docxml, nil)).to_s
-      .gsub(/, :/, ",\n:"))).to be_equivalent_to <<~"OUTPUT"
+      .gsub(", :", ",\n:"))).to be_equivalent_to <<~"OUTPUT"
         {:abbrev_doctitle=>"Draft Rec. Prac. for Main Titlein multiple lines",
         :accesseddate=>"XXX",
         :balloting_group=>"BG",
@@ -408,7 +414,10 @@ RSpec.describe Metanorma::IEEE do
         :updateddate=>"XXX",
         :vote_endeddate=>"XXX",
         :vote_starteddate=>"XXX",
-        :working_group=>"WG"}
+        :working_group=>"WG",
+        :wp_image001_emz=>"#{File.join(logoloc, 'wp_image001.emz')}",
+        :wp_image003_emz=>"#{File.join(logoloc, 'wp_image003.emz')}",
+        :wp_image008_emz=>"#{File.join(logoloc, 'wp_image008.emz')}"}
       OUTPUT
   end
 end

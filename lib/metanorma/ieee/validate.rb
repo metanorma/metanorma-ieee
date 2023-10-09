@@ -54,7 +54,7 @@ module Metanorma
       def locality_range_validate(root)
         root.xpath("//eref | xref").each do |e|
           e.at(".//localityStack[@connective = 'from'] | .//referenceTo") and
-            @log.add("Style", e, "Cross-reference contains range, "\
+            @log.add("Style", e, "Cross-reference contains range, " \
                                  "should be separate cross-references")
         end
       end
@@ -64,7 +64,7 @@ module Metanorma
         root.xpath("//eref[descendant::locality]").each do |t|
           if !/[:-](\d+{4})$/.match?(t["citeas"])
             @log.add("Style", t,
-                     "Undated reference #{t['citeas']} should not contain "\
+                     "Undated reference #{t['citeas']} should not contain " \
                      "specific elements")
           end
         end
@@ -203,7 +203,7 @@ module Metanorma
           desc = a.at("./description")
           if desc && !desc.text.strip.empty?
             amend_validate1(a, desc.text.strip,
-                            a.at("./newcontent//figure | "\
+                            a.at("./newcontent//figure | " \
                                  "./newcontent//formula"))
           else @log.add("Style", a,
                         "Editorial instruction is missing from change")
@@ -226,9 +226,9 @@ module Metanorma
 
       AMD_VALID_MOD = [
         "'Modify' change description should start with _Change_ or _Replace_",
-        "'Modify' change description for change involving figure or equation "\
+        "'Modify' change description for change involving figure or equation " \
         "should start with _Replace_",
-        "'Modify' change description for change not involving figure or "\
+        "'Modify' change description for change not involving figure or " \
         "equation should start with _Change_",
       ].freeze
 

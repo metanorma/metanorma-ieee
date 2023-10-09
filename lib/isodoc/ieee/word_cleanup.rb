@@ -3,7 +3,7 @@ module IsoDoc
     class WordConvert < IsoDoc::WordConvert
       def toWord(result, filename, dir, header)
         result = from_xhtml(word_cleanup(to_xhtml(result)))
-          .gsub(/-DOUBLE_HYPHEN_ESCAPE-/, "--")
+          .gsub("-DOUBLE_HYPHEN_ESCAPE-", "--")
         @wordstylesheet = wordstylesheet_update
         ::Html2Doc::IEEE.new(
           filename: filename,
@@ -18,7 +18,7 @@ module IsoDoc
       end
 
       def sourcecode_style
-        "IEEEStdsComputerCode"
+        stylesmap[:Sourcecode]
       end
 
       def word_cleanup(docxml)
@@ -75,10 +75,10 @@ module IsoDoc
           hdr["style"] = "mso-list:l13 level#{idx} lfo33;"
         elsif hdr.at("./ancestor::div[@class = 'Section3' or @class = 'WordSectionContents']")
           hdr.name = "p"
-          hdr["class"] = "IEEEStdsLevel#{idx}frontmatter"
+          hdr["class"] = stylesmap["level#{idx}frontmatter".to_sym]
         else
           hdr.name = "p"
-          hdr["class"] = "IEEEStdsLevel#{idx}Header"
+          hdr["class"] = stylesmap["level#{idx}header".to_sym]
         end
       end
 
@@ -89,6 +89,7 @@ module IsoDoc
         end
       end
 
+      # STYLE
       def div_cleanup(docxml)
         d = docxml.at("//div[@class = 'WordSection2']" \
                       "[div[@class = 'WordSection2']]") and
@@ -102,36 +103,58 @@ module IsoDoc
         end
       end
 
-      STYLESMAP = {
-        example: "IEEEStdsParagraph",
-        MsoNormal: "IEEEStdsParagraph",
-        NormRef: "IEEEStdsParagraph",
-        Biblio: "IEEEStdsBibliographicEntry",
-        figure: "IEEEStdsImage",
-        formula: "IEEEStdsEquation",
-        Sourcecode: "IEEEStdsComputerCode",
-        TableTitle: "IEEEStdsRegularTableCaption",
-        FigureTitle: "IEEEStdsRegularFigureCaption",
-      }.freeze
+      def stylesmap
+        {
+          example: "IEEEStdsParagraph",
+          MsoNormal: "IEEEStdsParagraph",
+          NormRef: "IEEEStdsParagraph",
+          Biblio: "IEEEStdsBibliographicEntry",
+          figure: "IEEEStdsImage",
+          formula: "IEEEStdsEquation",
+          Sourcecode: "IEEEStdsComputerCode",
+          TableTitle: "IEEEStdsRegularTableCaption",
+          FigureTitle: "IEEEStdsRegularFigureCaption",
+          admonition: "IEEEStdsWarning",
+          abstract: "IEEEStdsAbstractBody",
+          AbstractTitle: "AbstractTitle",
+          level1frontmatter: "IEEEStdsLevel1frontmatter",
+          level2frontmatter: "IEEEStdsLevel2frontmatter",
+          level3frontmatter: "IEEEStdsLevel3frontmatter",
+          level1header: "IEEEStdsLevel1Header",
+          level2header: "IEEEStdsLevel2Header",
+          level3header: "IEEEStdsLevel3Header",
+          level4header: "IEEEStdsLevel4Header",
+          level5header: "IEEEStdsLevel5Header",
+          level6header: "IEEEStdsLevel6Header",
+          zzSTDTitle1: "IEEEStdsTitle",
+          tabledata_center: "IEEEStdsTableData-Center",
+          tabledata_left: "IEEEStdsTableData-Left",
+          table_head: "IEEEStdsTableLineHead",
+          table_subhead: "IEEEStdsTableLineSubhead",
+          table_columnhead: "IEEEStdsTableColumnHead",
+          nameslist: "IEEEStdsNamesList",
+          intro: "IEEEStdsIntroduction",
+        }
+      end
 
       def table_toc_class
-        %w(IEEEStdsRegularTableCaption TableTitle tabletitle)
+        [stylesmap[:TableTitle], "TableTitle", "tabletitle"]
       end
 
       def figure_toc_class
-        %w(IEEEStdsRegularFigureCaption FigureTitle figuretitle)
+        [stylesmap[:FigureTitle], "FigureTitle", "figuretitle"]
       end
 
       def style_cleanup(docxml)
         note_style_cleanup(docxml)
         docxml.xpath("//div[@class = 'formula']/p").each do |p|
-          p["class"] = "IEEEStdsEquation"
+          p["class"] = stylesmap[:formula]
         end
-        STYLESMAP.each do |k, v|
+        stylesmap.each do |k, v|
           docxml.xpath("//*[@class = '#{k}']").each { |s| s["class"] = v }
         end
         docxml.xpath("//p[not(@class)]").each do |p|
-          p["class"] = "IEEEStdsParagraph"
+          p["class"] = stylesmap[:MsoNormal]
         end
       end
     end

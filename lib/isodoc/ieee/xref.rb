@@ -11,8 +11,14 @@ module IsoDoc
         @hierarchical_assets = options[:hierarchicalassets]
       end
 
+      def initial_anchor_names(doc)
+        @doctype = doc&.at(ns("//bibdata/ext/doctype"))&.text
+        super
+      end
+
       def clause_order_main(docxml)
-        [
+        ret = [
+          { path: "//sections/abstract" }, # whitepaper
           { path: "//clause[@type = 'overview']" },
           { path: @klass.norm_ref_xpath },
           { path: "//sections/terms | " \
@@ -21,6 +27,16 @@ module IsoDoc
                   "//sections/clause[descendant::definitions][not(descendant::terms)]" },
           { path: @klass.middle_clause(docxml), multi: true },
         ]
+        docxml.at(ns("//bibdata/ext/doctype"))&.text == "whitepaper" and
+          ret << { path: @klass.bibliography_xpath }
+        ret
+      end
+
+      def clause_order_back(docxml)
+        ret = super
+        docxml.at(ns("//bibdata/ext/doctype"))&.text == "whitepaper" and
+          ret.shift
+        ret
       end
 
       def middle_sections
@@ -83,7 +99,13 @@ module IsoDoc
       end
 
       def annex_name_lbl(clause, num)
-        super.sub(%r{<br/>(.*)$}, "<br/><span class='obligation'>\\1</span>")
+        if @doctype == "whitepaper"
+          title = Common::case_with_markup(@labels["annex"], "capital",
+                                           @script)
+          l10n("#{title} #{num}")
+        else
+          super.sub(%r{<br/>(.*)$}, "<br/><span class='obligation'>\\1</span>")
+        end
       end
     end
   end
