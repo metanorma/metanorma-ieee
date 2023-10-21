@@ -81,7 +81,9 @@ module Metanorma
       end
 
       def presentation_xml_converter(node)
-        IsoDoc::IEEE::PresentationXMLConvert.new(html_extract_attributes(node))
+        IsoDoc::IEEE::PresentationXMLConvert
+          .new(html_extract_attributes(node)
+          .merge(output_formats: ::Metanorma::IEEE::Processor.new.output_formats))
       end
 
       def html_converter(node)
