@@ -11,7 +11,7 @@ module IsoDoc
       def initialize(options)
         @libdir = File.dirname(__FILE__)
         super
-        init_wp(options)
+        init_wp(options.dup)
       end
 
       def init_wp(options)

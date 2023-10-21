@@ -499,8 +499,6 @@ RSpec.describe Metanorma::IEEE do
                    </clause>
                    <terms id='_' obligation='normative'>
                      <title>Intro 2</title>
-                     <p id='_'>No terms and definitions are listed in this document.</p>
-                     <p id='_'>For the purposes of this document, the following terms and definitions apply. The <em>IEEE Standards Dictionary Online</em> should be consulted for terms not defined in this clause.<fn reference='_boilerplate_term1'><p id='_'><em>IEEE Standards Dictionary Online</em> is available at: <link target='http://dictionary.ieee.org'/>. An IEEE Account is required for access to the dictionary, and one can be created at no charge on the dictionary sign-in page.</p></fn></p>
                      <clause id='_' inline-header='false' obligation='normative'>
                        <title>Intro 3</title>
                      </clause>
@@ -753,8 +751,6 @@ RSpec.describe Metanorma::IEEE do
                    </clause>
                    <terms id='_' obligation='normative'>
                      <title>Intro 2</title>
-                     <p id='_'>No terms and definitions are listed in this document.</p>
-                     <p id='_'>For the purposes of this document, the following terms and definitions apply. The <em>IEEE Standards Dictionary Online</em> should be consulted for terms not defined in this clause.<fn reference='_boilerplate_term1'><p id='_'><em>IEEE Standards Dictionary Online</em> is available at: <link target='http://dictionary.ieee.org'/>. An IEEE Account is required for access to the dictionary, and one can be created at no charge on the dictionary sign-in page.</p></fn></p>
                      <clause id='_' inline-header='false' obligation='normative'>
                        <title>Intro 3</title>
                      </clause>
