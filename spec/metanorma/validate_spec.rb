@@ -1136,11 +1136,11 @@ RSpec.describe Metanorma::IEEE do
         image::spec/assets/1000-2000_fig4.png[]
       INPUT
       expect(File.read("test.err.html"))
-        .to include "Image name document-2000_fig1 is expected to be 1000-2000_fig1"
+        .to include "Image name document-2000_​fig1 is expected to be 1000-2000_​fig1"
       expect(File.read("test.err.html"))
-        .not_to include "Image name 1000-2000_fig2 is expected to be 1000-2000_fig2"
+        .not_to include "Image name document-2000_​fig2 is expected to be 1000-2000_​fig2"
       expect(File.read("test.err.html"))
-        .to include "Image name 1000-2000_fig4 is expected to be 1000-2000_fig3"
+        .to include "Image name 1000-2000_​fig4 is expected to be 1000-2000_​fig3"
     end
 
     it "warn on wrong image names within tables" do
