@@ -95,7 +95,7 @@ RSpec.describe IsoDoc::IEEE do
             <foreword displayorder='2'>
               <p>
                <eref bibitemid="IEV" citeas="IEV" type="inline"><locality type="clause"><referenceFrom>1-2-3</referenceFrom></locality>IEV, 1-2-3</eref>
-               <xref type="inline" target="ISO712"><span class="std_publisher">ISO</span>&#xa0;<span class="std_docNumber">712</span></xref>
+               <xref type="inline" target="ISO712"><span class="std_publisher">ISO&#xa0;</span><span class="std_docNumber">712</span></xref>
                <xref type="inline" target="ISO712">ISO 712</xref>
                <xref type="inline" target="ISO712">ISO 712, Table 1</xref>
                <xref type="inline" target="ISO712">ISO 712, Table 1–1</xref>
@@ -108,7 +108,7 @@ RSpec.describe IsoDoc::IEEE do
                <xref type="inline" target="ISO712">ISO 712, Whole of text</xref>
                <xref type="inline" target="ISO712">ISO 712, Prelude 7</xref>
                <xref type="inline" target="ISO712">A</xref>
-               <xref type="inline" target="ISO712"><span class="std_publisher">ISO</span>/<span class="std_publisher">IEC</span>&#xa0;<span class="std_documentType">DIR</span>&#xa0;<span class="std_docNumber">1</span></xref>
+               <xref type="inline" target="ISO712"><span class="std_publisher">ISO</span>/<span class="std_publisher">IEC&#xa0;</span><span class="std_documentType">DIR&#xa0;</span><span class="std_docNumber">1</span></xref>
               </p>
             </foreword>
           </preface>

@@ -175,8 +175,8 @@ RSpec.describe Metanorma::IEEE do
       INPUT
       output = <<~OUTPUT
           <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
-           <sections> </sections>
-           <bibliography>
+         <sections/>
+         <bibliography>
            <references id="_" normative="false" obligation="informative">
              <title>Bibliography</title>
              <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
@@ -240,11 +240,12 @@ RSpec.describe Metanorma::IEEE do
                <title type="title-main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
                <title type="main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
                <uri type="src">https://www.iso.org/standard/74575.html</uri>
+               <uri type="obp">https://www.iso.org/obp/ui/en/#!iso:std:74575:en</uri>
                <uri type="rss">https://www.iso.org/contents/data/standard/07/45/74575.detail.rss</uri>
                <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
                <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
                <docidentifier type="iso-reference">ISO 639(E)</docidentifier>
-               <docidentifier type="URN">urn:iso:std:iso:639:stage-60.00:ed-2</docidentifier>
+               <docidentifier type="URN">urn:iso:std:iso:639:stage-60.60:ed-2</docidentifier>
                <docnumber>639</docnumber>
                <contributor>
                  <role type="publisher"/>
@@ -259,7 +260,7 @@ RSpec.describe Metanorma::IEEE do
                <script>Latn</script>
                <status>
                  <stage>60</stage>
-                 <substage>00</substage>
+                 <substage>60</substage>
                </status>
                <copyright>
                  <from>2023</from>
@@ -304,13 +305,14 @@ RSpec.describe Metanorma::IEEE do
                    <title type="title-main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
                    <title type="main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
                    <uri type="src">https://www.iso.org/standard/74575.html</uri>
+                   <uri type="obp">https://www.iso.org/obp/ui/en/#!iso:std:74575:en</uri>
                    <uri type="rss">https://www.iso.org/contents/data/standard/07/45/74575.detail.rss</uri>
                    <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
                    <docidentifier type="iso-reference">ISO 639(E)</docidentifier>
-                   <docidentifier type="URN">urn:iso:std:iso:639:stage-60.00:ed-2</docidentifier>
+                   <docidentifier type="URN">urn:iso:std:iso:639:stage-60.60:ed-2</docidentifier>
                    <docnumber>639</docnumber>
                    <date type="published">
-                     <on>2023-10</on>
+                     <on>2023-11</on>
                    </date>
                    <contributor>
                      <role type="publisher"/>
@@ -323,9 +325,10 @@ RSpec.describe Metanorma::IEEE do
                    <edition>2</edition>
                    <language>en</language>
                    <script>Latn</script>
+                   <abstract format="text/plain" language="en" script="Latn">This document specifies the ISO 639 language code and establishes the harmonized terminology and general principles of language coding. It provides rules for the selection, formation, presentation and use of language identifiers as well as language reference names. It also gives provisions (i.e. principles, rules and guidelines) for the selection, formation and presentation of language names in English and French. Furthermore, it introduces provisions for the adoption of standardized language code elements using language names other than English or French. NOTE            English, French and Russian are the official ISO languages. In addition, this document gives guidance on the use of language identifiers and describes their possible combination with identifiers of other codes. Specifically excluded from the ISO 639 language code are reconstructed languages or formal languages, such as computer programming languages and markup languages. The ISO 639 language code is maintained by the ISO 639 Maintenance Agency (ISO 639/MA) (see Annex B).</abstract>
                    <status>
                      <stage>60</stage>
-                     <substage>00</substage>
+                     <substage>60</substage>
                    </status>
                    <copyright>
                      <from>2023</from>
