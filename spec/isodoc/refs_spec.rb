@@ -216,7 +216,7 @@ RSpec.describe IsoDoc do
            <clause id="A" inline-header="false" obligation="normative" displayorder="4">
              <title depth="1">2.<tab/>Clause</title>
              <p id="_">
-             <xref type="inline" target="ref1"><span class="std_publisher">ISO</span>&#xa0;<span class="std_docNumber">639</span>:<span class="std_year">1967</span></xref>
+              <xref type="inline" target="ref1"><span class="std_publisher">ISO </span><span class="std_docNumber">639</span>:<span class="std_year">1967</span></xref>
               <xref type="inline" target="ref2">Aluffi</xref>
               <xref type="inline" target="ref3">REF4</xref>
               <xref type="inline" target="ref4">ISO 639:1967 [B3]</xref>

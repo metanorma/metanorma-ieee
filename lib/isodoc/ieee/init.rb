@@ -50,7 +50,7 @@ module IsoDoc
         ret = std_docid_sdo(m[:text]) +
           "<span class='std_docNumber'>#{m[:num]}</span>"
         m[:yr] and ret += ":<span class='std_year'>#{m[:yr]}</span>"
-        ret
+        ret.gsub(%r{</span>(\p{Zs}+)<}, "\\1</span><")
       end
 
       def std_docid_sdo(text)
@@ -63,7 +63,7 @@ module IsoDoc
             found = true
             "<span class='#{k}'>#{x}</span>"
           else x end
-        end.reverse.join
+        end.reverse.join.gsub(%r{</span>(\p{Zs}+)<}, "\\1</span><")
       end
     end
   end
