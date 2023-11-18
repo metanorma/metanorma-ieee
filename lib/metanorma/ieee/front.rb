@@ -93,11 +93,15 @@ module Metanorma
       def metadata_ext(node, xml)
         super
         structured_id(node, xml)
+        program(node, xml)
+      end
+
+      def program(node, xml)
+        p = node.attr("program") and xml.program p
       end
 
       def structured_id(node, xml)
-        return unless node.attr("docnumber")
-
+        node.attr("docnumber") or return
         xml.structuredidentifier do |i|
           i.docnumber node.attr("docnumber")
           i.agency "IEEE"

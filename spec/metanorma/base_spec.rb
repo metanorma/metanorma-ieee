@@ -111,6 +111,7 @@ RSpec.describe Metanorma::IEEE do
       :trial-use: true
       :amendment-number: A1
       :corrigendum-number: C1
+      :program: HIJ
     INPUT
     output.at("//xmlns:note")&.remove
     output = output.at("//xmlns:bibdata")
@@ -209,6 +210,7 @@ RSpec.describe Metanorma::IEEE do
           <corrigendum>C1</corrigendum>
           <year>2000</year>
         </structuredidentifier>
+        <program>HIJ</program>
               </ext>
             </bibdata>
       OUTPUT

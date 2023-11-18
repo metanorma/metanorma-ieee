@@ -231,6 +231,7 @@ RSpec.describe Metanorma::IEEE do
         <corrigendum>C1</corrigendum>
         <year>2000</year>
       </structuredidentifier>
+      <program>HIJ</program>
            </ext>
          </bibdata>
          <preface/><sections/>
@@ -275,6 +276,7 @@ RSpec.describe Metanorma::IEEE do
         :keywords=>["word2", "word1"],
         :lang=>"en",
         :obsoleteddate=>"XXX",
+        :program=>"HIJ",
         :provenance_doctitle=>"Revision of ABC<br/>Incorporates BCD and EFG",
         :publisheddate=>"01 Sep 2018",
         :publisher=>"Institute of Electrical and Electronic Engineers",
