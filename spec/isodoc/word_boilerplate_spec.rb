@@ -1145,12 +1145,26 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       <ieee-standard xmlns="https://www.metanorma.org/ns/ieee" type="semantic" version="1.1.2" schema-version="v1.2.5">
       <bibdata type="standard">
       <title language="en" format="text/plain">Paper Title</title>
-      <docidentifier type="IEEE" scope="PDF">STD 2</docidentifier><docidentifier type="IEEE" scope="print">STD 3</docidentifier><docidentifier type="ISBN" scope="PDF">ISBN 2</docidentifier><docidentifier type="ISBN" scope="print">ISBN 3</docidentifier><date type="issued"><on>2929</on></date><contributor><role type="publisher"/><organization>
+      <docidentifier type="IEEE" scope="PDF">STD 2</docidentifier><docidentifier type="IEEE" scope="print">STD 3</docidentifier><docidentifier type="ISBN" scope="PDF">ISBN 2</docidentifier><docidentifier type="ISBN" scope="print">ISBN 3</docidentifier><date type="issued"><on>2929</on></date>
+      <contributor><role type="author"/><person>
+        <name><forename>Y</forename><surname>X</surname></name>
+        <affiliation>
+        <name>Z</name>
+        </affiliation>
+        </person></contributor><contributor><role type="author"/><person>
+        <name><forename>Y1</forename><surname>X1</surname></name>
+        <affiliation>
+        <name>Z1</name>
+        </affiliation>
+        </person></contributor>
+      <contributor>
+        <role type="publisher"/><organization>
       <name>Institute of Electrical and Electronic Engineers</name>
       <abbreviation>IEEE</abbreviation></organization></contributor><language>en</language><script>Latn</script><abstract><p>Abstract paragraph to go here. Abstract should be written in the passive voice.</p>
       </abstract><status><stage>approved</stage></status><copyright><from>2020</from><owner><organization>
       <name>Institute of Electrical and Electronic Engineers</name>
-      <abbreviation>IEEE</abbreviation></organization></owner></copyright><ext><doctype>whitepaper</doctype><subdoctype>document</subdoctype><editorialgroup><society/><balloting-group/><working-group>NAME OF GROUP</working-group><committee/></editorialgroup></ext></bibdata><metanorma-extension><presentation-metadata><name>TOC Heading Levels</name><value>2</value></presentation-metadata><presentation-metadata><name>HTML TOC Heading Levels</name><value>2</value></presentation-metadata><presentation-metadata><name>DOC TOC Heading Levels</name><value>2</value></presentation-metadata></metanorma-extension>
+      <abbreviation>IEEE</abbreviation></organization></owner></copyright><ext><doctype>whitepaper</doctype><subdoctype>document</subdoctype><editorialgroup><society/><balloting-group/><working-group>NAME OF GROUP</working-group><committee/></editorialgroup><program>NAME OF PROGRAM</program></ext></bibdata>
+      <metanorma-extension><presentation-metadata><name>TOC Heading Levels</name><value>2</value></presentation-metadata><presentation-metadata><name>HTML TOC Heading Levels</name><value>2</value></presentation-metadata><presentation-metadata><name>DOC TOC Heading Levels</name><value>2</value></presentation-metadata></metanorma-extension>
       <boilerplate><copyright-statement>
 
       <clause id="_ac978fe4-3697-abcd-2c35-fb5a0f0016e8" inline-header="false" obligation="normative">
@@ -1246,7 +1260,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       </ieee-standard>
     INPUT
     word = <<~OUTPUT
-    <body lang="EN-US" link="blue" vlink="#954F72" xml:lang="EN-US">
+           <body lang="EN-US" link="blue" vlink="#954F72" xml:lang="EN-US">
          <div class="WordSection1">
            <p class="MsoBodyText">
              <span lang="EN-US" style="mso-no-proof:yes" xml:lang="EN-US">
@@ -1295,7 +1309,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
              </span>
            </p>
            <p class="StyleHeading3Left175" style="margin-right:7.2pt">
-             <span lang="EN-US" style="font-family:&quot;Arial Black&quot;,sans-serif" xml:lang="EN-US">Program title to go here<p/></span>
+             <span lang="EN-US" style="font-family:&quot;Arial Black&quot;,sans-serif" xml:lang="EN-US">NAME OF PROGRAM<p/></span>
            </p>
            <p class="MsoBodyText">
              <span lang="EN-US" xml:lang="EN-US">
@@ -1312,7 +1326,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
                  <span style="mso-bookmark:_Toc45554015">
                    <span style="mso-bookmark:_Toc45552042">
                      <span style="mso-bookmark:_Toc45551699">
-                       <span lang="EN-US" xml:lang="EN-US">Paper title to go here</span>
+                       <span lang="EN-US" xml:lang="EN-US">Paper Title</span>
                      </span>
                    </span>
                  </span>
@@ -1340,28 +1354,22 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
            </p>
            <p class="Authornames" style="margin-right:7.2pt">
              <span class="SpellE">
-               <span lang="EN-US" xml:lang="EN-US">Firstname</span>
-             </span>
-             <span lang="EN-US" xml:lang="EN-US">
-               <span class="SpellE">Lastname</span>
+               <span lang="EN-US" xml:lang="EN-US">Y X</span>
              </span>
            </p>
            <p class="Authornames" style="margin-right:7.2pt">
-             <i style="mso-bidi-font-style: normal">
-               <span lang="EN-US" xml:lang="EN-US">Title<p/></span>
+             <i style="mso-bidi-font-style:                         normal">
+               <span lang="EN-US" xml:lang="EN-US">Z<p/></span>
              </i>
            </p>
            <p class="Authornames" style="margin-right:7.2pt">
              <span class="SpellE">
-               <span lang="EN-US" xml:lang="EN-US">Firstname</span>
-             </span>
-             <span lang="EN-US" xml:lang="EN-US">
-               <span class="SpellE">Lastname</span>
+               <span lang="EN-US" xml:lang="EN-US">Y1 X1</span>
              </span>
            </p>
            <p class="Authornames" style="margin-right:7.2pt">
-             <i style="mso-bidi-font-style: normal">
-               <span lang="EN-US" xml:lang="EN-US">Title<p/></span>
+             <i style="mso-bidi-font-style:                         normal">
+               <span lang="EN-US" xml:lang="EN-US">Z1<p/></span>
              </i>
            </p>
            <p class="names" style="margin-right:7.2pt">

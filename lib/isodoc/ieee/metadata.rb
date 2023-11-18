@@ -49,6 +49,12 @@ module IsoDoc
         tc(xml)
         wg(xml)
         bg(xml)
+        program(xml)
+      end
+
+      def program(xml)
+        p = xml.at(ns("//bibdata/ext/program")) and
+          set(:program, p.text)
       end
 
       def society(xml)
