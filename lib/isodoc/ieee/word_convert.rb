@@ -28,7 +28,7 @@ module IsoDoc
       def convert(input_filename, file = nil, debug = false,
           output_filename = nil)
         file ||= File.read(input_filename, encoding: "utf-8")
-        docxml = Nokogiri::XML(file) { |config| config.huge }
+        docxml = Nokogiri::XML(file, &:huge)
         doctype = docxml&.at(ns("//bibdata/ext/doctype"))&.text
         if @wp && doctype == "whitepaper"
           @wp.convert(input_filename, file, debug, output_filename)

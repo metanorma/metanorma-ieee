@@ -203,7 +203,7 @@ AAAPAAAAAAAAAAAAAAAAACEEAABkcnMvZG93bnJldi54bWxQSwUGAAAAAAQABADzAAAAMwUAAAAA
 <p class="MsoBodyText"><span lang="EN-US"><o:p>&#xa0;</o:p></span></p>
 
 <p class="StyleHeading3Left175" style='margin-right:7.2pt'><span lang="EN-US"
-style='font-family:"Arial Black",sans-serif'>Program title to go here<o:p></o:p></span></p>
+                                                                 style='font-family:"Arial Black",sans-serif'>{{ program }}<o:p></o:p></span></p>
 
 <p class="MsoBodyText"><span lang="EN-US"><o:p>&#xa0;</o:p></span></p>
 
@@ -211,7 +211,7 @@ style='font-family:"Arial Black",sans-serif'>Program title to go here<o:p></o:p>
 name="_Toc45552042"></a><a name="_Toc45554015"></a><a name="_Toc46424326"></a><a
 name="_Toc46476187"><span style='mso-bookmark:_Toc46424326'><span
 style='mso-bookmark:_Toc45554015'><span style='mso-bookmark:_Toc45552042'><span
-style='mso-bookmark:_Toc45551699'><span lang="EN-US">Paper title to go here</span></span></span></span></span></a></p>
+                                        style='mso-bookmark:_Toc45551699'><span lang="EN-US">{{ doctitle }}</span></span></span></span></span></a></p>
 
 <p class="MsoBodyText"><span lang="EN-US"><o:p>&#xa0;</o:p></span></p>
 
@@ -222,17 +222,16 @@ by</span></p>
 
 <p class="AuthoredbyCover" style='margin-right:7.2pt'><span lang="EN-US"><o:p>&#xa0;</o:p></span></p>
 
+{% for au in authors_affiliations %}
+{% for name in au[1] %}
 <p class="Authornames" style='margin-right:7.2pt'><span class="SpellE"><span
-lang="EN-US">Firstname</span></span><span lang="EN-US"> <span class="SpellE">Lastname</span></span></p>
+                                                        lang="EN-US">{{ name }}</span></span></p>
 
 <p class="Authornames" style='margin-right:7.2pt'><i style='mso-bidi-font-style:
-normal'><span lang="EN-US">Title<o:p></o:p></span></i></p>
+                        normal'><span lang="EN-US">{{ au[0] }}<o:p></o:p></span></i></p>
 
-<p class="Authornames" style='margin-right:7.2pt'><span class="SpellE"><span
-lang="EN-US">Firstname</span></span><span lang="EN-US"> <span class="SpellE">Lastname</span></span></p>
-
-<p class="Authornames" style='margin-right:7.2pt'><i style='mso-bidi-font-style:
-normal'><span lang="EN-US">Title<o:p></o:p></span></i></p>
+{% endfor %}
+{% endfor %}
 
 <p class="names" style='margin-right:7.2pt'><v:shape id="_x0000_s2061"
  type="#_x0000_t75" style='position:absolute;left:0;text-align:left;
