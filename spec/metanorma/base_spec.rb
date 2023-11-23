@@ -136,6 +136,13 @@ RSpec.describe Metanorma::IEEE do
               <date type='confirmed'><on>1000-12-01</on></date>
               <date type='issued'><on>1001-12-01</on></date>
               <date type='feedback-ended'><on>1003-12-01</on></date>
+                         <contributor>
+             <role type="author"/>
+             <organization>
+               <name>Institute of Electrical and Electronic Engineers</name>
+               <abbreviation>IEEE</abbreviation>
+             </organization>
+           </contributor>
               <contributor>
                 <role type='publisher'/>
                 <organization>
@@ -236,6 +243,13 @@ RSpec.describe Metanorma::IEEE do
         <title language="en" format="text/plain">Document title</title>
         <docidentifier type="IEEE">OVERRIDE</docidentifier>
         <docnumber>1000</docnumber>
+                   <contributor>
+             <role type="author"/>
+             <organization>
+               <name>Institute of Electrical and Electronic Engineers</name>
+               <abbreviation>IEEE</abbreviation>
+             </organization>
+           </contributor>
         <contributor>
           <role type="publisher"/>
           <organization>
@@ -266,8 +280,6 @@ RSpec.describe Metanorma::IEEE do
           <editorialgroup>
             <society>SECRETARIAT</society>
             <balloting-group type="individual">BG</balloting-group>
-            <working-group/>
-            <committee/>
           </editorialgroup>
           <structuredidentifier>
             <docnumber>1000</docnumber>
@@ -296,6 +308,13 @@ RSpec.describe Metanorma::IEEE do
     output = <<~OUTPUT
       <bibdata type='standard'>
         <title language='en' format='text/plain'>Document title</title>
+                   <contributor>
+             <role type="author"/>
+             <organization>
+               <name>Institute of Electrical and Electronic Engineers</name>
+               <abbreviation>IEEE</abbreviation>
+             </organization>
+           </contributor>
         <contributor>
           <role type='publisher'/>
           <organization>
