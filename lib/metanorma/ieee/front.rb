@@ -33,6 +33,7 @@ module Metanorma
         xml.docnumber node.attr("docnumber")
       end
 
+=begin
       def metadata_publisher(node, xml)
         publishers = node.attr("publisher") || "IEEE"
         csv_split(publishers).each do |p|
@@ -44,7 +45,13 @@ module Metanorma
           end
         end
       end
+=end
 
+def default_publisher
+  "IEEE"
+end
+
+=begin
       def metadata_copyright(node, xml)
         publishers = node.attr("copyright-holder") || node.attr("publisher") ||
           "IEEE"
@@ -64,6 +71,7 @@ module Metanorma
           end
         end
       end
+=end
 
       def metadata_status(node, xml)
         status = node.attr("status") || node.attr("docstage") ||

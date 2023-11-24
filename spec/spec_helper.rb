@@ -236,6 +236,13 @@ BLANK_HDR = <<~"HDR".freeze
   <ieee-standard xmlns="https://www.metanorma.org/ns/ieee" type="semantic" version="#{Metanorma::IEEE::VERSION}">
          <bibdata type="standard">
        <title language="en" format="text/plain">Document title</title>
+                  <contributor>
+             <role type="author"/>
+             <organization>
+               <name>Institute of Electrical and Electronic Engineers</name>
+               <abbreviation>IEEE</abbreviation>
+             </organization>
+           </contributor>
        <contributor><role type="publisher"/><organization>
        <name>Institute of Electrical and Electronic Engineers</name>
        <abbreviation>IEEE</abbreviation></organization></contributor>
