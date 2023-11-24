@@ -33,45 +33,9 @@ module Metanorma
         xml.docnumber node.attr("docnumber")
       end
 
-=begin
-      def metadata_publisher(node, xml)
-        publishers = node.attr("publisher") || "IEEE"
-        csv_split(publishers).each do |p|
-          xml.contributor do |c|
-            c.role type: "publisher"
-            c.organization do |a|
-              organization(a, p, true, node, !node.attr("publisher"))
-            end
-          end
-        end
+      def default_publisher
+        "IEEE"
       end
-=end
-
-def default_publisher
-  "IEEE"
-end
-
-=begin
-      def metadata_copyright(node, xml)
-        publishers = node.attr("copyright-holder") || node.attr("publisher") ||
-          "IEEE"
-        csv_split(publishers).each do |p|
-          metadata_copyright1(node, p, xml)
-        end
-      end
-
-      def metadata_copyright1(node, pub, xml)
-        xml.copyright do |c|
-          c.from (node.attr("copyright-year") || Date.today.year)
-          c.owner do |owner|
-            owner.organization do |o|
-              organization(o, pub, true, node,
-                           !(node.attr("copyright-holder") || node.attr("publisher")))
-            end
-          end
-        end
-      end
-=end
 
       def metadata_status(node, xml)
         status = node.attr("status") || node.attr("docstage") ||
