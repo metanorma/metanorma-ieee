@@ -898,7 +898,7 @@ RSpec.describe IsoDoc::IEEE do
     OUTPUT
     html = <<~OUTPUT
       <div id='boilerplate-participants'>
-         <h1 class='IntroTitle'>Participants</h1>
+         <h1 class='IntroTitle' id="_">Participants</h1>
          <div id='boilerplate-participants-wg'>
            <p id='_'>
               At the time this draft Standard was completed, the Working Group had the
@@ -1136,8 +1136,8 @@ RSpec.describe IsoDoc::IEEE do
       .to be_equivalent_to xmlpp(presxml)
     IsoDoc::IEEE::HtmlConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.html")).to be true
-    expect(xmlpp(Nokogiri::XML(File.read("test.html"))
-      .at("//div[@id = 'boilerplate-participants']").to_xml))
+    expect(strip_guid(xmlpp(Nokogiri::XML(File.read("test.html"))
+      .at("//div[@id = 'boilerplate-participants']").to_xml)))
       .to be_equivalent_to xmlpp(html)
     IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
