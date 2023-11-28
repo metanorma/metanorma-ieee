@@ -61,11 +61,11 @@ module IsoDoc
         end
       end
 
-      def sequential_formula_names(clause)
+      def sequential_formula_names(clause, container: false)
         c = Counter.new
         clause.xpath(ns(".//formula")).noblank.each do |t|
           @anchors[t["id"]] = anchor_struct(
-            c.increment(t).print, nil,
+            c.increment(t).print, container ? t : nil,
             t["inequality"] ? @labels["inequality"] : @labels["formula"],
             "formula", t["unnumbered"]
           )
