@@ -59,8 +59,7 @@ module IsoDoc
           !start_of_sentence(node) and
           linkend = linkend.sub(/^Clause /, "")
         container = @xrefs.anchor(node["target"], :container, false)
-        prefix_container?(container, node) and
-          linkend = prefix_container(container, linkend, node, node["target"])
+        linkend = prefix_container(container, linkend, node, node["target"])
         capitalise_xref(node, linkend, anchor_value(node["target"]))
       end
 
