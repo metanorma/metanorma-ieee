@@ -898,7 +898,7 @@ RSpec.describe IsoDoc::IEEE do
     OUTPUT
     html = <<~OUTPUT
       <div id='boilerplate-participants'>
-         <h1 class='IntroTitle' id="_">Participants</h1>
+         <h1 class='IntroTitle'>Participants</h1>
          <div id='boilerplate-participants-wg'>
            <p id='_'>
               At the time this draft Standard was completed, the Working Group had the
