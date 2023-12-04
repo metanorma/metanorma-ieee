@@ -301,13 +301,14 @@ RSpec.describe Metanorma::IEEE do
         :working_group=>"WG",
         :wp_image001_emz=>"#{File.join(logoloc, 'wp_image001.emz')}",
         :wp_image003_emz=>"#{File.join(logoloc, 'wp_image003.emz')}",
+        :wp_image007_emz=>"#{File.join(logoloc, 'wp_image007.emz')}",
         :wp_image008_emz=>"#{File.join(logoloc, 'wp_image008.emz')}"}
       OUTPUT
   end
 
-  it "processes ICAP metadata" do
+  it "processes ICAP, ICR metadata" do
     csdc = IsoDoc::IEEE::HtmlConvert.new({})
-    docxml, = csdc.convert_init(<<~INPUT, "test", true)
+    input = <<~INPUT
        <ieee-standard xmlns="https://www.calconnect.org/standards/ieee">
            <bibdata type="standard">
            <title language="en" format="text/plain" type="main">Main Title<br/>in multiple lines</title>
@@ -538,6 +539,7 @@ RSpec.describe Metanorma::IEEE do
          <annex obligation="informative"/>
          </ieee-standard>
     INPUT
+    docxml, = csdc.convert_init(input, "test", true)
     expect(htmlencode(metadata(csdc.info(docxml, nil)).to_s
       .gsub(", :", ",\n:"))).to be_equivalent_to <<~"OUTPUT"
         {:abbrev_doctitle=>"Draft ??? for Main Titlein multiple lines",
@@ -600,8 +602,76 @@ RSpec.describe Metanorma::IEEE do
         :working_group=>"WG",
         :wp_image001_emz=>"#{File.join(logoloc, 'wp_image001_icap.emz')}",
         :wp_image003_emz=>"#{File.join(logoloc, 'wp_image003_icap.emz')}",
+        :wp_image007_emz=>"#{File.join(logoloc, 'wp_image007_icap.emz')}",
         :wp_image008_emz=>"#{File.join(logoloc, 'wp_image008_icap.emz')}"}
       OUTPUT
+    docxml, = csdc.convert_init(input
+      .sub(">icap<", ">industry-connection-report<"), "test", true)
+    expect(htmlencode(metadata(csdc.info(docxml, nil)).to_s
+      .gsub(", :", ",\n:"))).to be_equivalent_to <<~"OUTPUT"
+        {:abbrev_doctitle=>"Draft ??? for Main Titlein multiple lines",
+        :accesseddate=>"XXX",
+        :agency=>"IEEE",
+        :amd=>"A1",
+        :authors=>["AB", "CD", "CD1", "E, F, Jr.", "GH", "IJ", "KL", "MN", "OP", "QR", "ST", "UV", "KL", "MN"],
+        :authors_affiliations=>{""=>["AB", "CD", "CD1", "E, F, Jr.", "GH", "IJ", "KL", "MN", "OP", "QR", "ST", "UV", "KL", "MN"]},
+        :balloting_group=>"BG",
+        :balloting_group_type=>"entity",
+        :circulateddate=>"XXX",
+        :confirmeddate=>"XXX",
+        :copieddate=>"XXX",
+        :corr=>"C1",
+        :correcteddate=>"XXX",
+        :createddate=>"XXX",
+        :docnumber=>"ABC",
+        :docnumeric=>"1000",
+        :docsubtype=>"Industry Connection Report",
+        :doctitle=>"Main Titlein multiple lines",
+        :doctype=>"Whitepaper",
+        :docyear=>"2001",
+        :draft=>"3.4",
+        :draft_month=>"July",
+        :draft_year=>"2018",
+        :draftinfo=>" (draft 3.4, 2000-01-01)",
+        :edition=>"2",
+        :feedback_endeddate=>"01 Aug 2018",
+        :full_doctitle=>"Draft Whitepaper for Main Titlein multiple lines",
+        :implementeddate=>"XXX",
+        :isbn_pdf=>"GHI",
+        :isbn_print=>"JKL",
+        :issueddate=>"01 Jul 2018",
+        :iteration=>"3",
+        :keywords=>["word2", "word1"],
+        :lang=>"en",
+        :obsoleteddate=>"XXX",
+        :program=>"HIJ",
+        :provenance_doctitle=>"Revision of ABC<br/>Incorporates BCD and EFG",
+        :publisheddate=>"01 Sep 2018",
+        :publisher=>"Institute of Electrical and Electronic Engineers",
+        :receiveddate=>"XXX",
+        :revdate=>"2000-01-01",
+        :revdate_monthyear=>"January 2000",
+        :script=>"Latn",
+        :society=>"Society",
+        :stage=>"Final Draft",
+        :stage_display=>"Final Draft",
+        :stageabbr=>"FD",
+        :stdid_pdf=>"ABC",
+        :stdid_print=>"DEF",
+        :technical_committee=>"Tech Committee",
+        :transmitteddate=>"XXX",
+        :trial_use=>true,
+        :unchangeddate=>"XXX",
+        :unpublished=>true,
+        :updateddate=>"XXX",
+        :vote_endeddate=>"XXX",
+        :vote_starteddate=>"XXX",
+        :working_group=>"WG",
+        :wp_image001_emz=>"#{File.join(logoloc, 'wp_image001_icr.emz')}",
+        :wp_image003_emz=>"#{File.join(logoloc, 'wp_image003_icr.emz')}",
+        :wp_image007_emz=>"#{File.join(logoloc, 'wp_image007_icr.emz')}",
+        :wp_image008_emz=>"#{File.join(logoloc, 'wp_image008_icr.emz')}"}
+    OUTPUT
   end
 
   it "processes metadata with no nominated contributors or scoped identifiers" do
@@ -720,6 +790,7 @@ RSpec.describe Metanorma::IEEE do
         :working_group=>"WG",
         :wp_image001_emz=>"#{File.join(logoloc, 'wp_image001.emz')}",
         :wp_image003_emz=>"#{File.join(logoloc, 'wp_image003.emz')}",
+        :wp_image007_emz=>"#{File.join(logoloc, 'wp_image007.emz')}",
         :wp_image008_emz=>"#{File.join(logoloc, 'wp_image008.emz')}"}
       OUTPUT
   end
