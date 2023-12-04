@@ -11,9 +11,12 @@ module IsoDoc
 
       def logos
         here = File.join(File.dirname(__FILE__), "html")
-        %i(wp_image001_emz wp_image003_emz wp_image008_emz)
+        suffix = ".emz"
+        @icap and suffix = "_icap.emz"
+        @icr and suffix = "_icr.emz"
+        %i(wp_image001_emz wp_image003_emz wp_image007_emz wp_image008_emz)
           .each do |w|
-          img = w.to_s.sub("_emz", @icap ? "_icap.emz" : ".emz")
+          img = w.to_s.sub("_emz", suffix)
           set(w, File.expand_path(File.join(here, img)))
         end
       end
@@ -125,6 +128,7 @@ module IsoDoc
       def metadata_parse_init(isoxml)
         d = isoxml.at(ns("//bibdata/ext/subdoctype"))
         @icap = d&.text&.downcase == "icap"
+        @icr = d&.text&.downcase == "industry-connection-report"
         logos
       end
 

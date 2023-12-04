@@ -347,6 +347,63 @@ RSpec.describe Metanorma::IEEE do
       .to be_equivalent_to xmlpp(output)
   end
 
+  it "processes metadata for industry-connection-report white paper" do
+    out = Nokogiri::XML(Asciidoctor.convert(<<~INPUT, *OPTIONS))
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :novalid:
+      :no-isobib:
+      :docsubtype: industry-connection-report
+      :doctype: whitepaper
+
+    INPUT
+    output = <<~OUTPUT
+      <bibdata type='standard'>
+        <title language='en' format='text/plain'>Document title</title>
+                   <contributor>
+             <role type="author"/>
+             <organization>
+               <name>Institute of Electrical and Electronic Engineers</name>
+               <abbreviation>IEEE</abbreviation>
+             </organization>
+           </contributor>
+        <contributor>
+          <role type='publisher'/>
+          <organization>
+            <name>Institute of Electrical and Electronic Engineers</name>
+            <abbreviation>IEEE</abbreviation>
+          </organization>
+        </contributor>
+        <language>en</language>
+        <script>Latn</script>
+        <status>
+          <stage>approved</stage>
+        </status>
+        <copyright>
+          <from>#{Date.today.year}</from>
+          <owner>
+            <organization>
+              <name>Institute of Electrical and Electronic Engineers</name>
+              <abbreviation>IEEE</abbreviation>
+            </organization>
+          </owner>
+        </copyright>
+        <ext>
+           <doctype>whitepaper</doctype>
+           <subdoctype>industry-connection-report</subdoctype>
+           <editorialgroup>
+             <working-group>IEEE SA Industry Connections activity</working-group>
+           </editorialgroup>
+         </ext>
+       </bibdata>
+    OUTPUT
+    out = out.at("//xmlns:bibdata")
+    expect(xmlpp(out.to_xml))
+      .to be_equivalent_to xmlpp(output)
+  end
+
   it "processes sections" do
     input = <<~INPUT
       #{ASCIIDOC_BLANK_HDR}
