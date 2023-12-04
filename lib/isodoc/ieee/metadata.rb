@@ -19,6 +19,18 @@ module IsoDoc
         end
       end
 
+      def logos
+        here = File.join(File.dirname(__FILE__), "html")
+        suffix = ".emz"
+        @icap and suffix = "_icap.emz"
+        @icr and suffix = "_icr.emz"
+        %i(wp_image001_emz wp_image003_emz wp_image007_emz wp_image008_emz)
+          .each do |w|
+          img = w.to_s.sub("_emz", suffix)
+          set(w, File.expand_path(File.join(here, img)))
+        end
+      end
+
       def bibdate(isoxml, _out)
         isoxml.xpath(ns("//bibdata/date[@format = 'ddMMMyyyy']")).each do |d|
           set("#{d['type'].gsub('-', '_')}date".to_sym, Common::date_range(d))
@@ -38,7 +50,8 @@ module IsoDoc
         set(:doctype, b.split(/[- ]/).map(&:capitalize).join(" "))
         set(:doctype_abbrev, @labels["doctype_abbrev"][b])
         s = isoxml.at(ns("//bibdata/ext/subdoctype"))&.text and
-          set(:docsubtype, s.split(/[- ]/).map(&:capitalize).join(" "))
+          set(:docsubtype, s.split(/[- ]/).map(&:capitalize).join(" ")
+          .gsub(/^Icap$/, "ICAP"))
         s = isoxml.at(ns("//bibdata/ext/trial-use"))&.text and s == "true" and
           set(:trial_use, true)
       end
@@ -55,6 +68,8 @@ module IsoDoc
       def program(xml)
         p = xml.at(ns("//bibdata/ext/program")) and
           set(:program, p.text)
+        @icap and
+          set(:program, "IEEE CONFORMITY ASSESSMENT PROGRAM (ICAP)")
       end
 
       def society(xml)
@@ -104,12 +119,13 @@ module IsoDoc
       end
 
       def title(isoxml, _out)
+        metadata_parse_init(isoxml)
         super
-        draft = isoxml&.at(ns("//bibdata/version/draft"))
+        draft = isoxml.at(ns("//bibdata/version/draft"))
         doctype(isoxml, _out)
         set(:full_doctitle, fulltitle(@metadata[:doctype], draft))
         set(:abbrev_doctitle, fulltitle(@metadata[:doctype_abbrev], draft))
-        prov = isoxml&.at(ns("//bibdata/title[@type='provenance']")) and
+        prov = isoxml.at(ns("//bibdata/title[@type='provenance']")) and
           set(:provenance_doctitle, Common::to_xml(prov.children))
       end
 
@@ -117,6 +133,13 @@ module IsoDoc
         title = "#{type || '???'} for #{@metadata[:doctitle] || '???'}"
         draft and title = "Draft #{title}"
         title
+      end
+
+      def metadata_parse_init(isoxml)
+        d = isoxml.at(ns("//bibdata/ext/subdoctype"))
+        @icap = d&.text&.downcase == "icap"
+        @icr = d&.text&.downcase == "industry-connection-report"
+        logos
       end
 
       def ddMMMyyyy(isodate)

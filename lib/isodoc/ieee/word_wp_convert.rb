@@ -30,6 +30,13 @@ module IsoDoc
           monospacefontsize: "10.0pt" }
       end
 
+      def convert1(docxml, filename, dir)
+        s = docxml.at(ns("//bibdata/ext/subdoctype"))&.text
+        s == "industry-connection-report" and
+          @wordcoverpage = html_doc_path("word_ieee_titlepage_icr.html")
+        super
+      end
+
       def make_body3(body, docxml)
         body.div class: "WordSection3" do |div3|
           middle_title_ieee(docxml, div3)
