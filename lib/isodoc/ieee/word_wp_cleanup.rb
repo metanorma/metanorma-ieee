@@ -215,6 +215,19 @@ module IsoDoc
           end
         end
       end
+
+      def insert_toc(intro, docxml, level)
+        toc = assemble_toc(docxml, level)
+        if intro&.include?("WORDTOC")
+          #s = docxml.at("//div[@class = 'WordSectionContents']")
+          #s.at("./p[@class='Unnumberedheading']")&.remove
+          intro.sub("WORDTOC", toc)
+        else
+          source = docxml.at("//div[@class = 'TOC']") and
+            source.children = toc
+          intro
+        end
+      end
     end
   end
 end

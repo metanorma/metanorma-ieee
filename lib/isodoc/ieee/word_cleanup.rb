@@ -157,6 +157,13 @@ module IsoDoc
           p["class"] = stylesmap[:MsoNormal]
         end
       end
+
+      def insert_toc(intro, docxml, level)
+        toc = assemble_toc(docxml, level)
+        source = docxml.at("//div[@class = 'WordSectionContents']") and
+          source << toc
+        intro
+      end
     end
   end
 end
