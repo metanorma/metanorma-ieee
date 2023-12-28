@@ -725,7 +725,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "footnotes availability of references" do
-    VCR.use_cassette "availability", match_requests_on: %i[method uri body] do
+    VCR.use_cassette "availability" do
       input = <<~INPUT
         = Document title
         Author
