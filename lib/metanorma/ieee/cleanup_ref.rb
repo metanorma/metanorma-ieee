@@ -133,9 +133,13 @@ module Metanorma
       def bibitem_cleanup(xmldoc)
         super
         f = File.join(File.dirname(__FILE__), "ieee-footnotes.yaml")
-        provenance_notes = YAML.safe_load(File.read(f))
-        withdrawn_note(xmldoc, provenance_notes)
-        available_note(xmldoc, provenance_notes)
+        @provenance_notes = YAML.safe_load(File.read(f))
+        withdrawn_note(xmldoc, @provenance_notes)
+      end
+
+      def biblio_reorder(xmldoc)
+        super
+        available_note(xmldoc, @provenance_notes)
       end
 
       def bib_pubs(bib)
@@ -159,19 +163,19 @@ module Metanorma
       AVAIL_PUBS = {
         ieee: IEEE,
         cispr: "International special committee on radio interference",
-        iec: "International Electrotechnical Commission",
-        iso: "International Organization for Standardization",
-        itur: "International Telecommunication Union",
-        nist: "National Institute of Standards and Technology",
         oasis: "OASIS",
         "3gpp": "3rd Generation Partnership Project",
       }.freeze
 
       def available_note(xmldoc, provenance_notes)
-        iso_iec_available_note(xmldoc, provenance_notes["iso-iec"])
-        itu_t_available_note(xmldoc, provenance_notes["itut"])
+        iso_iec_available_note(xmldoc, provenance_notes["iso-iec"], true, true)
+        iso_iec_available_note(xmldoc, provenance_notes["iso"], true, false)
+        iso_iec_available_note(xmldoc, provenance_notes["iec"], false, true)
+        itu_available_note(xmldoc, provenance_notes["itut"], true)
+        itu_available_note(xmldoc, provenance_notes["itur"], false)
+        nist_available_note(xmldoc, provenance_notes["fips"], true)
+        nist_available_note(xmldoc, provenance_notes["nist"], false)
         ietf_available_note(xmldoc, provenance_notes["ietf"])
-        fips_available_note(xmldoc, provenance_notes["fips"])
         w3c_available_note(xmldoc, provenance_notes["w3c"])
         etsi_available_note(xmldoc, provenance_notes["etsi"])
         AVAIL_PUBS.each do |k, v|
@@ -180,66 +184,64 @@ module Metanorma
       end
 
       def sdo_available_note(xmldoc, note, publisher)
-        xmldoc.xpath(BIBITEM_NO_AVAIL).each do |b|
-          bib_pubs(b).include?(publisher) or next
-          insert_availability_note(b, note)
-          break
+        ret = xmldoc.xpath(BIBITEM_NO_AVAIL).detect do |b|
+          bib_pubs(b).include?(publisher)
         end
+        insert_availability_note(ret, note)
       end
 
-      def iso_iec_available_note(xmldoc, note)
-        xmldoc.xpath(BIBITEM_NO_AVAIL).each do |b|
-          bib_pubs(b).include?("International Electrotechnical Commission") &&
-            bib_pubs(b).include?("International Organization for Standardization") or next
-          insert_availability_note(b, note)
-          break
+      def iso_iec_available_note(xmldoc, note, iso, iec)
+        ret = xmldoc.xpath(BIBITEM_NO_AVAIL).detect do |b|
+          pubs = bib_pubs(b)
+          has_iec = pubs.include?("International Electrotechnical Commission")
+          has_iso = pubs.include?("International Organization for Standardization")
+          ((has_iec && iec) || (!has_iec && !iec)) &&
+            ((has_iso && iso) || (!has_iso && !iso))
         end
+        insert_availability_note(ret, note)
       end
 
       def ietf_available_note(xmldoc, note)
-        xmldoc.xpath(BIBITEM_NO_AVAIL).each do |b|
-          b.at("./docidentifier[@type = 'IETF']") or next
-          insert_availability_note(b, note)
-          break
+        ret = xmldoc.xpath(BIBITEM_NO_AVAIL).detect do |b|
+          b.at("./docidentifier[@type = 'IETF']")
         end
+        insert_availability_note(ret, note)
       end
 
-      def itu_t_available_note(xmldoc, note)
-        xmldoc.xpath(BIBITEM_NO_AVAIL).each do |b|
-          bib_pubs(b).include?("International Telecommunication Union") or next
-          id = b.at("./docidentifier[@type = 'ITU']")
-          /^ITU-T/.match?(id.text) or next
-          insert_availability_note(b, note)
-          break
+      def itu_available_note(xmldoc, note, itu_t)
+        ret = xmldoc.xpath(BIBITEM_NO_AVAIL).detect do |b|
+          has_itu_t = /^ITU-T/.match?(b.at("./docidentifier[@type = 'ITU']")&.text)
+          bib_pubs(b).include?("International Telecommunication Union") &&
+            (!has_itu_t && !itu_t) || (has_itu_t && itu_t)
         end
+        insert_availability_note(ret, note)
       end
 
-      def fips_available_note(xmldoc, note)
-        xmldoc.xpath(BIBITEM_NO_AVAIL).each do |b|
-          b.at("./docidentifier[@type = 'NIST']") or next
-          /\bFIPS\b/.match?(b.text) or next
-          insert_availability_note(b, note)
-          break
+      def nist_available_note(xmldoc, note, fips)
+        ret = xmldoc.xpath(BIBITEM_NO_AVAIL).detect do |b|
+          id = b.at("./docidentifier[@type = 'NIST']")
+          has_fips = /\bFIPS\b/.match?(id&.text)
+          id && ((has_fips && !fips) || (!has_fips && fips))
         end
+        insert_availability_note(ret, note)
       end
 
       def w3c_available_note(xmldoc, note)
-        xmldoc.xpath(BIBITEM_NO_AVAIL).each do |b|
-          b.at("./docidentifier[@type = 'W3C']") or next
-          insert_availability_note(b, note)
-          break
+        ret = xmldoc.xpath(BIBITEM_NO_AVAIL).detect do |b|
+          b.at("./docidentifier[@type = 'W3C']")
         end
+        insert_availability_note(ret, note)
       end
 
       def etsi_available_note(xmldoc, note)
-        xmldoc.xpath(BIBITEM_NO_AVAIL).each do |b|
-          b.at("./docidentifier[@type = 'ETSI']") or next
-          insert_availability_note(b, note)
-          break
+        ret = xmldoc.xpath(BIBITEM_NO_AVAIL).detect do |b|
+          b.at("./docidentifier[@type = 'ETSI']")
         end
+        insert_availability_note(ret, note)
       end
 
       def insert_availability_note(bib, msg)
+        bib or return
         note = %(<note type="Availability"><p>#{msg}</p></note>)
         if b = bib.at("./language | ./script | ./abstract | ./status")
           b.previous = note
