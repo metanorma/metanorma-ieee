@@ -248,7 +248,10 @@ RSpec.describe IsoDoc do
                <biblio-tag>[B1], REF4, </biblio-tag>
              </bibitem>
              <bibitem type="book" id="ref2">
-               <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne, <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022a, DOI: https://doi.org/10.1017/9781108877831.</formattedref>
+               <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne, <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022a, DOI: https://doi.org/10.1017/9781108877831.<fn reference="_"><p>
+                IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
+
+              </p></fn></formattedref>
                <title>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</title>
                <docidentifier type="DOI">https://doi.org/10.1017/9781108877831</docidentifier>
                <docidentifier type="ISBN">ISBN 9781108877831</docidentifier>
@@ -256,14 +259,7 @@ RSpec.describe IsoDoc do
                  <p id="_">IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
         </p>
                </note>
-               <biblio-tag>
-                 <fn reference="_">
-                   <p>
-                IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
-        
-              </p>
-                 </fn>
-               </biblio-tag>
+               <biblio-tag/>
              </bibitem>
              <bibitem type="standard" id="ref1">
                <formattedref>Indiana Jones and the Last Crusade.</formattedref>

@@ -50,10 +50,10 @@ module IsoDoc
 
       def bibrender_relaton(xml, renderings)
         f = renderings[xml["id"]][:formattedref]
-        f &&= "<formattedref>#{f}</formattedref>"
+        fn = availability_note(xml)
+        f &&= "<formattedref>#{f}#{fn}</formattedref>"
         keep = "./docidentifier | ./uri | ./note | ./title | ./biblio-tag"
-        xml.children =
-          "#{f}#{xml.xpath(ns(keep)).to_xml}"
+        xml.children = "#{f}#{xml.xpath(ns(keep)).to_xml}"
         @author[xml["id"]] = renderings[xml["id"]][:author]
       end
 
@@ -83,11 +83,10 @@ module IsoDoc
         std_docid_semantic(super)
       end
 
-      def date_note_process(bib)
-        ret = super
-        date_note = bib.at(ns("./note[@type = 'Availability']")) or return ret
+      def availability_note(bib)
+        note = bib.at(ns("./note[@type = 'Availability']")) or return ""
         id = UUIDTools::UUID.random_create.to_s
-        "#{ret}<fn reference='#{id}'><p>#{date_note.content}</p></fn>"
+        "<fn reference='#{id}'><p>#{note.content}</p></fn>"
       end
     end
   end
