@@ -81,6 +81,10 @@ RSpec.describe IsoDoc do
                   <name><surname>Payne</surname><forename>Sam</forename></name>
                 </person>
               </contributor>
+             <note type="Availability">
+               <p id="_">IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
+       </p>
+             </note>
               <edition>1</edition>
               <series>
               <title>London Mathematical Society Lecture Note Series</title>
@@ -248,7 +252,18 @@ RSpec.describe IsoDoc do
                <title>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</title>
                <docidentifier type="DOI">https://doi.org/10.1017/9781108877831</docidentifier>
                <docidentifier type="ISBN">ISBN 9781108877831</docidentifier>
-               <biblio-tag/>
+               <note type="Availability">
+                 <p id="_">IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
+        </p>
+               </note>
+               <biblio-tag>
+                 <fn reference="_">
+                   <p>
+                IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
+        
+              </p>
+                 </fn>
+               </biblio-tag>
              </bibitem>
              <bibitem type="standard" id="ref1">
                <formattedref>Indiana Jones and the Last Crusade.</formattedref>

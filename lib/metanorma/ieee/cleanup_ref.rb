@@ -75,12 +75,13 @@ module Metanorma
         trademark_ieee_erefs(xmldoc)
       end
 
+      IEEE = "Institute of Electrical and Electronics Engineers".freeze
+
       # Style manual 12.3.5
       def trademark_ieee_erefs(xmldoc)
         ieee = xmldoc.xpath("//references/bibitem")
           .each_with_object({}) do |b, m|
-          n = b.at("./contributor[role/@type = 'publisher']/organization/name")
-          n&.text == "Institute of Electrical and Electronics Engineers" and
+          bib_pubs(b).include?(IEEE) and
             m[b["id"]] = b.at("./docidentifier[@scope = 'trademark']")&.text
         end
         trademark_ieee_erefs1(xmldoc, "//preface//eref", ieee)
@@ -132,6 +133,36 @@ module Metanorma
                         @i18n&.references, true)
         else super
         end
+      end
+
+      def bibitem_cleanup(xmldoc)
+        super
+        f = File.join(File.dirname(__FILE__), "ieee-footnotes.yaml")
+        provenance_notes = YAML.safe_load(File.read(f))
+        withdrawn_note(xmldoc, provenance_notes)
+        available_note(xmldoc, provenance_notes)
+      end
+
+      def bib_pubs(bib)
+        bib.xpath("./contributor[role/@type = 'publisher']/organization/name")
+          .map(&:text)
+      end
+
+      def available_note(xmldoc, provenance_notes); end
+
+      def withdrawn_note(xmldoc, provenance_notes)
+        xmldoc.xpath("//references/bibitem").each do |b|
+          bib_pubs(b).include?(IEEE) or next
+          b.at("./status/stage")&.text == "withdrawn" or next
+          docid = b.at("./docidentifier[@type = 'IEEE'][not(@scope)]")
+          note = provenance_notes["ieee-withdrawn"].sub("%", docid.text)
+          insert_availability_note(b, note)
+        end
+      end
+
+      def insert_availability_note(bib, msg)
+        bib.at("./language | ./script | ./abstract | ./status")
+          .previous = %(<note type="Availability"><p>#{msg}</p></note>)
       end
     end
   end

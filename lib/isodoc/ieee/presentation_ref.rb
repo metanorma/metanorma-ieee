@@ -82,6 +82,13 @@ module IsoDoc
       def expand_citeas(text)
         std_docid_semantic(super)
       end
+
+      def date_note_process(bib)
+        ret = super
+        date_note = bib.at(ns("./note[@type = 'Availability']")) or return ret
+        id = UUIDTools::UUID.random_create.to_s
+        "#{ret}<fn reference='#{id}'><p>#{date_note.content}</p></fn>"
+      end
     end
   end
 end
