@@ -15,13 +15,11 @@ module Metanorma
         if ref.at("./note[@type = 'boilerplate']")
           unwrap_boilerplate_clauses(ref, ".")
         else
-          pref = @i18n.biblio_pref
-          ref.at("./title").next = "<p>#{pref}</p>"
+          ref.at("./title").next = "<p>#{@i18n.biblio_pref}</p>"
         end
       end
 
       def sort_biblio(bib)
-        @c = HTMLEntities.new
         @i = IsoDoc::IEEE::PresentationXMLConvert
           .new({ lang: @lang, script: @script, locale: @locale })
         @i.i18n_init(@lang, @script, @locale)
@@ -75,12 +73,13 @@ module Metanorma
         trademark_ieee_erefs(xmldoc)
       end
 
+      IEEE = "Institute of Electrical and Electronics Engineers".freeze
+
       # Style manual 12.3.5
       def trademark_ieee_erefs(xmldoc)
         ieee = xmldoc.xpath("//references/bibitem")
           .each_with_object({}) do |b, m|
-          n = b.at("./contributor[role/@type = 'publisher']/organization/name")
-          n&.text == "Institute of Electrical and Electronics Engineers" and
+          bib_pubs(b).include?(IEEE) and
             m[b["id"]] = b.at("./docidentifier[@scope = 'trademark']")&.text
         end
         trademark_ieee_erefs1(xmldoc, "//preface//eref", ieee)
@@ -127,10 +126,128 @@ module Metanorma
       end
 
       def section_names_refs_cleanup(xml)
-        if @doctype == "whitepaper"
-          replace_title(xml, "//bibliography/references",
-                        @i18n&.references, true)
-        else super
+        @doctype == "whitepaper" or return super
+        replace_title(xml, "//bibliography/references", @i18n&.references, true)
+      end
+
+      def bibitem_cleanup(xmldoc)
+        super
+        f = File.join(File.dirname(__FILE__), "ieee-footnotes.yaml")
+        @provenance_notes = YAML.safe_load(File.read(f))
+        withdrawn_note(xmldoc, @provenance_notes)
+      end
+
+      def biblio_reorder(xmldoc)
+        super
+        available_note(xmldoc, @provenance_notes)
+      end
+
+      def bib_pubs(bib)
+        bib.xpath("./contributor[role/@type = 'publisher']/organization/name")
+          .map(&:text)
+      end
+
+      BIBITEM_NO_AVAIL =
+        "//references/bibitem[not(note[@type = 'Availability'])]".freeze
+
+      def withdrawn_note(xmldoc, provenance_notes)
+        xmldoc.xpath(BIBITEM_NO_AVAIL).each do |b|
+          bib_pubs(b).include?(IEEE) or next
+          b.at("./status/stage")&.text == "withdrawn" or next
+          docid = b.at("./docidentifier[@type = 'IEEE'][not(@scope)]")
+          note = provenance_notes["ieee-withdrawn"].sub("%", docid.text)
+          insert_availability_note(b, note)
+        end
+      end
+
+      AVAIL_PUBS = {
+        ieee: IEEE,
+        cispr: "International special committee on radio interference",
+        oasis: "OASIS",
+        "3gpp": "3rd Generation Partnership Project",
+      }.freeze
+
+      def available_note(xmldoc, provenance_notes)
+        iso_iec_available_note(xmldoc, provenance_notes["iso-iec"], true, true)
+        iso_iec_available_note(xmldoc, provenance_notes["iso"], true, false)
+        iso_iec_available_note(xmldoc, provenance_notes["iec"], false, true)
+        itu_available_note(xmldoc, provenance_notes["itut"], true)
+        itu_available_note(xmldoc, provenance_notes["itur"], false)
+        nist_available_note(xmldoc, provenance_notes["fips"], true)
+        nist_available_note(xmldoc, provenance_notes["nist"], false)
+        ietf_available_note(xmldoc, provenance_notes["ietf"])
+        w3c_available_note(xmldoc, provenance_notes["w3c"])
+        etsi_available_note(xmldoc, provenance_notes["etsi"])
+        AVAIL_PUBS.each do |k, v|
+          sdo_available_note(xmldoc, provenance_notes[k.to_s], v)
+        end
+      end
+
+      def sdo_available_note(xmldoc, note, publisher)
+        ret = xmldoc.xpath(BIBITEM_NO_AVAIL).detect do |b|
+          bib_pubs(b).include?(publisher)
+        end
+        insert_availability_note(ret, note)
+      end
+
+      def iso_iec_available_note(xmldoc, note, iso, iec)
+        ret = xmldoc.xpath(BIBITEM_NO_AVAIL).detect do |b|
+          pubs = bib_pubs(b)
+          has_iec = pubs.include?("International Electrotechnical Commission")
+          has_iso = pubs.include?("International Organization for Standardization")
+          ((has_iec && iec) || (!has_iec && !iec)) &&
+            ((has_iso && iso) || (!has_iso && !iso))
+        end
+        insert_availability_note(ret, note)
+      end
+
+      def ietf_available_note(xmldoc, note)
+        ret = xmldoc.xpath(BIBITEM_NO_AVAIL).detect do |b|
+          b.at("./docidentifier[@type = 'IETF']")
+        end
+        insert_availability_note(ret, note)
+      end
+
+      def itu_available_note(xmldoc, note, itu_t)
+        ret = xmldoc.xpath(BIBITEM_NO_AVAIL).detect do |b|
+          has_itu_t = /^ITU-T/.match?(b.at("./docidentifier[@type = 'ITU']")&.text)
+          bib_pubs(b).include?("International Telecommunication Union") &&
+            (!has_itu_t && !itu_t) || (has_itu_t && itu_t)
+        end
+        insert_availability_note(ret, note)
+      end
+
+      def nist_available_note(xmldoc, note, fips)
+        ret = xmldoc.xpath(BIBITEM_NO_AVAIL).detect do |b|
+          id = b.at("./docidentifier[@type = 'NIST']")
+          has_fips = /\bFIPS\b/.match?(id&.text)
+          id && ((has_fips && !fips) || (!has_fips && fips))
+        end
+        insert_availability_note(ret, note)
+      end
+
+      def w3c_available_note(xmldoc, note)
+        ret = xmldoc.xpath(BIBITEM_NO_AVAIL).detect do |b|
+          b.at("./docidentifier[@type = 'W3C']")
+        end
+        insert_availability_note(ret, note)
+      end
+
+      def etsi_available_note(xmldoc, note)
+        ret = xmldoc.xpath(BIBITEM_NO_AVAIL).detect do |b|
+          b.at("./docidentifier[@type = 'ETSI']")
+        end
+        insert_availability_note(ret, note)
+      end
+
+      def insert_availability_note(bib, msg)
+        bib or return
+        note = %(<note type="Availability"><p>#{msg}</p></note>)
+        if b = bib.at("./language | ./script | ./abstract | ./status")
+          b.previous = note
+        else b = bib.at("./contributor") || bib.at("./date") ||
+          bib.at("./docnumber") || bib.at("./docidentifier") ||
+          bib.at("./title") and b.next = note
         end
       end
     end

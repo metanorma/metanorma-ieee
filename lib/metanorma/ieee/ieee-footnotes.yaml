@@ -1,0 +1,77 @@
+---
+ieee: |
+  IEEE publications are available from The Institute of Electrical and
+  Electronics Engineers (http://standards.ieee.org/).
+
+iec: |
+  IEC publications are available from the International Electrotechnical
+  Commission (http://www.iec.ch/). IEC publications are also available in
+  the United States from the American National Standards Institute
+  (http://www.ansi.org/).
+
+cispr: |
+  CISPR documents are available from the International Electrotechnical
+  Commission (http://www.iec.ch/). CISPR documents are also available in
+  the United States from the American National Standards Institute
+  (http://www.ansi.org)
+
+ietf: |
+  IETF documents (e.g., RFCs) are available from the Internet Engineering Task Force (http://www.ietf.org/).
+
+iso: |
+  ISO publications are available from the ISO Central Secretariat
+  (http://www.iso.org/). ISO publications are also available in the United
+  States from the American National Standards Institute
+  (http://www.ansi.org/).
+
+iso-iec: |
+  ISO/IEC documents are available from the International Organization for
+  Standardization (https://www.iso.org/). ISO/IEC publications are also
+  available in the United States from Global Engineering Documents
+  (https://global.ihs.com/). Electronic copies are available in the United
+  States from the American National Standards Institute
+  (https://www.ansi.org/)
+
+fips: |
+  FIPS publications are available from the National Technical Information
+  Service (NTIS) (http://csrc.nist.gov).
+
+nist: |
+  NIST publications are available from the National Institute of Standards
+  and Technology (http://www.nist.gov/).
+
+astm: |
+  ASTM publications are available from the American Society for Testing
+  and Materials (http://www.astm.org/).
+
+etsi: |
+  ETSI publications are available the European Telecommunications
+  Standards Institute (http://www.etsi.org).
+
+ansi: |
+  ANSI publications are available from the American National Standards
+  Institute (http://www.ansi.org/).
+
+itut: |
+  ITU-T publications are available from the International
+  Telecommunications Union (http://www.itu.int/).
+
+itur: |
+  ITU publications are available from the International Telecommunications
+  Union (http://www.itu.int/).
+
+w3c: |
+  W3C recommendations are available from the World Wide Web Consortium
+  (https://www.w3.org).
+
+oasis: |
+  OASIS publications are available from the Organization for the
+  Organization for the Advancement of Structured Information Standards
+  (http://www.oasis-open.org)
+
+3gpp: |
+  3GPP(TM) documents are available from the 3rd Generation Partnership
+  Project Web site (http://www.3gpp.org).
+
+ieee-withdrawn: |
+  % has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
