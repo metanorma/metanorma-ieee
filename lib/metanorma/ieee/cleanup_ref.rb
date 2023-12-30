@@ -164,6 +164,7 @@ module Metanorma
         ieee: IEEE,
         cispr: "International special committee on radio interference",
         oasis: "OASIS",
+        "w3c": "World Wide Web Consortium",
         "3gpp": "3rd Generation Partnership Project",
       }.freeze
 
@@ -176,7 +177,6 @@ module Metanorma
         nist_available_note(xmldoc, provenance_notes["fips"], true)
         nist_available_note(xmldoc, provenance_notes["nist"], false)
         ietf_available_note(xmldoc, provenance_notes["ietf"])
-        w3c_available_note(xmldoc, provenance_notes["w3c"])
         etsi_available_note(xmldoc, provenance_notes["etsi"])
         AVAIL_PUBS.each do |k, v|
           sdo_available_note(xmldoc, provenance_notes[k.to_s], v)
@@ -222,13 +222,6 @@ module Metanorma
           id = b.at("./docidentifier[@type = 'NIST']")
           has_fips = /\bFIPS\b/.match?(id&.text)
           id && ((has_fips && !fips) || (!has_fips && fips))
-        end
-        insert_availability_note(ret, note)
-      end
-
-      def w3c_available_note(xmldoc, note)
-        ret = xmldoc.xpath(BIBITEM_NO_AVAIL).detect do |b|
-          b.at("./docidentifier[@type = 'W3C']")
         end
         insert_availability_note(ret, note)
       end
