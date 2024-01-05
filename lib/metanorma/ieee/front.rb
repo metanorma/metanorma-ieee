@@ -1,4 +1,5 @@
 require "isoics"
+require "pubid-ieee"
 
 module Metanorma
   module IEEE
@@ -16,7 +17,8 @@ module Metanorma
       def metadata_committee_prep(node)
         node.attr("doctype") == "whitepaper" &&
           node.attr("docsubtype") == "industry-connection-report" and
-          node.set_attr("working-group", "IEEE SA Industry Connections activity")
+          node.set_attr("working-group",
+                        "IEEE SA Industry Connections activity")
         node.attr("committee") || node.attr("society") ||
           node.attr("working-group") or return
         node.attr("balloting-group") && !node.attr("balloting-group-type") and
@@ -32,13 +34,74 @@ module Metanorma
       end
 
       def metadata_id(node, xml)
-        id = node.attr("docnumber") || ""
-        xml.docidentifier (node.attr("docidentifier") || id), type: "IEEE"
+        if id = node.attr("docidentifier")
+          xml.docidentifier id, **attr_code(type: "IEEE")
+        else ieee_id(node, xml)
+        end
         id = node.attr("stdid-pdf") and
           xml.docidentifier id, type: "IEEE", scope: "PDF"
         id = node.attr("stdid-print") and
           xml.docidentifier id, type: "IEEE", scope: "print"
         xml.docnumber node.attr("docnumber")
+      end
+
+      def ieee_id(node, xml)
+        params = ieee_id_params(node)
+        params[:number] or return
+        ieee_id_out(xml, params)
+      end
+
+      def ieee_id_params(node)
+        core = ieee_id_params_core(node)
+        amd = ieee_id_params_amd(node, core) || {}
+        core.merge(amd)
+      end
+
+      def ieee_id_params_core(node)
+        pub = ieee_id_pub(node)
+        ret = { number: node.attr("docnumber"),
+                part: node.attr("partnumber"),
+                year: ieee_id_year(node, initial: true),
+                redline: @doctype == "redline",
+                publisher: pub[0],
+                copublisher: pub[1..-1] }.compact
+        ret[:copublisher].empty? and ret.delete(:copublisher)
+        ret
+      end
+
+      def ieee_id_params_amd(node, core)
+        if a = node.attr("corrigendum-number")
+          { corrigendum: { version: a,
+                           year: ieee_id_year(node, initial: false) } }
+        elsif node.attr("amendment-number")
+          { amendment: pubid_select(core).create(**core) }
+        end
+      end
+
+      def ieee_id_pub(node)
+        (node.attr("publisher") || default_publisher).split(/[;,]/)
+          .map(&:strip).map { |x| org_abbrev[x] || x }
+      end
+
+      def ieee_id_year(node, initial: false)
+        unless initial
+          y = node.attr("copyright-year") || node.attr("updated-date")
+        end
+        y ||= node.attr("published-date") || node.attr("copyright-year")
+        y&.sub(/-.*$/, "") || Date.today.year
+      end
+
+      def ieee_id_out(xml, params)
+        id = pubid_select(params).create(**params)
+        xml.docidentifier id.to_s, type: "IEEE"
+      end
+
+      def pubid_select(_params)
+        base_pubid
+      end
+
+      def base_pubid
+        Pubid::Ieee::Identifier
       end
 
       def default_publisher
@@ -63,7 +126,9 @@ module Metanorma
       end
 
       def org_abbrev
-        { "Institute of Electrical and Electronic Engineers" => "IEEE" }
+        { "Institute of Electrical and Electronic Engineers" => "IEEE",
+          "International Organization for Standardization" => "ISO",
+          "International Electrotechnical Commission" => "IEC" }
       end
 
       def relaton_relations

@@ -86,6 +86,7 @@ RSpec.describe Metanorma::IEEE do
       :copyright-year: 2000
       :horizontal: true
       :confirmed-date: 1000-12-01
+      :updated-date: 2023-12-01
       :issued-date: 1001-12-01
       :obsoleted-date: 1002-12-01
       :feedback-ended-date: 1003-12-01
@@ -117,109 +118,120 @@ RSpec.describe Metanorma::IEEE do
     output = output.at("//xmlns:bibdata")
     expect(xmlpp(output.to_xml))
       .to be_equivalent_to xmlpp(<<~OUTPUT)
-            <bibdata type='standard'>
-              <title language='en' format='text/plain'>Document title</title>
-              <title type='provenance' language='en' format='application/xml'>Revision of ABC<br/>Incorporates BCD and EFG</title>
-              <title language='intro-en' format='text/plain'>Introduction</title>
-              <title language='main-en' format='text/plain'>Main Title -- Title</title>
-              <title language='part-en' format='text/plain'>Title Part</title>
-              <title language='intro-fr' format='text/plain'>Introduction Française</title>
-              <title language='main-fr' format='text/plain'>Titre Principal</title>
-              <title language='part-fr' format='text/plain'>Part du Titre</title>
-              <docidentifier type='IEEE'>1000</docidentifier>
-             <docidentifier type='IEEE' scope='PDF'>GHI</docidentifier>
-             <docidentifier type='IEEE' scope='print'>JKL</docidentifier>
-             <docidentifier type='ISBN' scope='PDF'>ABC</docidentifier>
-             <docidentifier type='ISBN' scope='print'>DEF</docidentifier>
-              <docnumber>1000</docnumber>
-              <date type='obsoleted'><on>1002-12-01</on></date>
-              <date type='confirmed'><on>1000-12-01</on></date>
-              <date type='issued'><on>1001-12-01</on></date>
-              <date type='feedback-ended'><on>1003-12-01</on></date>
-                         <contributor>
-             <role type="author"/>
+          <bibdata type="standard">
+         <title language="en" format="text/plain">Document title</title>
+         <title type="provenance" language="en" format="application/xml">Revision of ABC<br/>Incorporates BCD and EFG</title>
+         <title language="intro-en" format="text/plain">Introduction</title>
+         <title language="main-en" format="text/plain">Main Title -- Title</title>
+         <title language="part-en" format="text/plain">Title Part</title>
+         <title language="intro-fr" format="text/plain">Introduction Française</title>
+         <title language="main-fr" format="text/plain">Titre Principal</title>
+         <title language="part-fr" format="text/plain">Part du Titre</title>
+         <docidentifier type="IEEE">IEEE Std 10001-2000/Cor C1-2000</docidentifier>
+         <docidentifier type="IEEE" scope="PDF">GHI</docidentifier>
+         <docidentifier type="IEEE" scope="print">JKL</docidentifier>
+         <docidentifier type="ISBN" scope="PDF">ABC</docidentifier>
+         <docidentifier type="ISBN" scope="print">DEF</docidentifier>
+         <docnumber>1000</docnumber>
+         <date type="obsoleted">
+           <on>1002-12-01</on>
+         </date>
+         <date type="confirmed">
+           <on>1000-12-01</on>
+         </date>
+         <date type="updated">
+           <on>2023-12-01</on>
+         </date>
+         <date type="issued">
+           <on>1001-12-01</on>
+         </date>
+         <date type="feedback-ended">
+           <on>1003-12-01</on>
+         </date>
+         <contributor>
+           <role type="author"/>
+           <organization>
+             <name>Institute of Electrical and Electronic Engineers</name>
+             <abbreviation>IEEE</abbreviation>
+           </organization>
+         </contributor>
+         <contributor>
+           <role type="publisher"/>
+           <organization>
+             <name>Institute of Electrical and Electronic Engineers</name>
+             <abbreviation>IEEE</abbreviation>
+           </organization>
+         </contributor>
+         <edition>2</edition>
+         <version>
+           <revision-date>2000-01-01</revision-date>
+           <draft>0.3.4</draft>
+         </version>
+         <language>en</language>
+         <script>Latn</script>
+         <status>
+           <stage>inactive</stage>
+         </status>
+         <copyright>
+           <from>2000</from>
+           <owner>
              <organization>
                <name>Institute of Electrical and Electronic Engineers</name>
                <abbreviation>IEEE</abbreviation>
              </organization>
-           </contributor>
-              <contributor>
-                <role type='publisher'/>
-                <organization>
-                  <name>Institute of Electrical and Electronic Engineers</name>
-                  <abbreviation>IEEE</abbreviation>
-                </organization>
-              </contributor>
-              <edition>2</edition>
-              <version>
-                <revision-date>2000-01-01</revision-date>
-                <draft>0.3.4</draft>
-              </version>
-              <language>en</language>
-              <script>Latn</script>
-              <status>
-                <stage>inactive</stage>
-              </status>
-              <copyright>
-                <from>2000</from>
-                <owner>
-                  <organization>
-                    <name>Institute of Electrical and Electronic Engineers</name>
-                    <abbreviation>IEEE</abbreviation>
-                  </organization>
-                </owner>
-              </copyright>
-              <relation type='merges'>
-                <bibitem>
-                  <title>--</title>
-                  <docidentifier>BCD</docidentifier>
-                </bibitem>
-              </relation>
-              <relation type='merges'>
-                <bibitem>
-                  <title>--</title>
-                  <docidentifier>EFG</docidentifier>
-                </bibitem>
-              </relation>
-              <relation type='updates'>
-                <bibitem>
-                  <title>--</title>
-                  <docidentifier>ABC</docidentifier>
-                </bibitem>
-              </relation>
-              <ext>
-                <doctype>recommended-practice</doctype>
-                <subdoctype>amendment</subdoctype>
-                <trial-use>true</trial-use>
-                <editorialgroup>
-                  <society>SECRETARIAT</society>
-                  <balloting-group type='entity'>SC</balloting-group>
-                  <working-group>WG</working-group>
-                  <working-group>WG1</working-group>
-                  <committee>TC</committee>
-                  <committee>TC1</committee>
-                </editorialgroup>
-                <ics>
-               <code>01.040.11</code>
-               <text>Health care technology (Vocabularies)</text>
-             </ics>
-             <ics>
-               <code>11.060.01</code>
-               <text>Dentistry in general</text>
-             </ics>
-                <structuredidentifier>
-          <docnumber>1000</docnumber>
-          <agency>IEEE</agency>
-          <class>recommended-practice</class>
-          <edition>2</edition>
-          <version>0.3.4</version>
-          <amendment>A1</amendment>
-          <corrigendum>C1</corrigendum>
-          <year>2000</year>
-        </structuredidentifier>
-        <program>HIJ</program>
-              </ext>
-            </bibdata>
+           </owner>
+         </copyright>
+         <relation type="merges">
+           <bibitem>
+             <title>--</title>
+             <docidentifier>BCD</docidentifier>
+           </bibitem>
+         </relation>
+         <relation type="merges">
+           <bibitem>
+             <title>--</title>
+             <docidentifier>EFG</docidentifier>
+           </bibitem>
+         </relation>
+         <relation type="updates">
+           <bibitem>
+             <title>--</title>
+             <docidentifier>ABC</docidentifier>
+           </bibitem>
+         </relation>
+         <ext>
+           <doctype>recommended-practice</doctype>
+           <subdoctype>amendment</subdoctype>
+           <trial-use>true</trial-use>
+           <editorialgroup>
+             <society>SECRETARIAT</society>
+             <balloting-group type="entity">SC</balloting-group>
+             <working-group>WG</working-group>
+             <working-group>WG1</working-group>
+             <committee>TC</committee>
+             <committee>TC1</committee>
+           </editorialgroup>
+           <ics>
+             <code>01.040.11</code>
+             <text>Health care technology (Vocabularies)</text>
+           </ics>
+           <ics>
+             <code>11.060.01</code>
+             <text>Dentistry in general</text>
+           </ics>
+           <structuredidentifier>
+             <docnumber>1000</docnumber>
+             <agency>IEEE</agency>
+             <class>recommended-practice</class>
+             <edition>2</edition>
+             <version>0.3.4</version>
+             <amendment>A1</amendment>
+             <corrigendum>C1</corrigendum>
+             <year>2000</year>
+           </structuredidentifier>
+           <program>HIJ</program>
+         </ext>
+       </bibdata>
       OUTPUT
   end
 
