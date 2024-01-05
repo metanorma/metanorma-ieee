@@ -143,8 +143,7 @@ module IsoDoc
       end
 
       def ddMMMyyyy(isodate)
-        return nil if isodate.nil?
-
+        isodate.nil? and return nil
         arr = isodate.split("-")
         if arr.size == 1 && (/^\d+$/.match isodate)
           Date.new(*arr.map(&:to_i)).strftime("%Y")

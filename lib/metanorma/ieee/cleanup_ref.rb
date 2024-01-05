@@ -163,6 +163,7 @@ module Metanorma
       AVAIL_PUBS = {
         ieee: IEEE,
         cispr: "International special committee on radio interference",
+        etsi: "European Telecommunications Standards Institute",
         oasis: "OASIS",
         "w3c": "World Wide Web Consortium",
         "3gpp": "3rd Generation Partnership Project",
@@ -177,7 +178,6 @@ module Metanorma
         nist_available_note(xmldoc, provenance_notes["fips"], true)
         nist_available_note(xmldoc, provenance_notes["nist"], false)
         ietf_available_note(xmldoc, provenance_notes["ietf"])
-        etsi_available_note(xmldoc, provenance_notes["etsi"])
         AVAIL_PUBS.each do |k, v|
           sdo_available_note(xmldoc, provenance_notes[k.to_s], v)
         end
@@ -222,13 +222,6 @@ module Metanorma
           id = b.at("./docidentifier[@type = 'NIST']")
           has_fips = /\bFIPS\b/.match?(id&.text)
           id && ((has_fips && !fips) || (!has_fips && fips))
-        end
-        insert_availability_note(ret, note)
-      end
-
-      def etsi_available_note(xmldoc, note)
-        ret = xmldoc.xpath(BIBITEM_NO_AVAIL).detect do |b|
-          b.at("./docidentifier[@type = 'ETSI']")
         end
         insert_availability_note(ret, note)
       end
