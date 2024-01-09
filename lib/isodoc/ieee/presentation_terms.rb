@@ -34,8 +34,7 @@ module IsoDoc
 
       def unwrap_definition(docxml)
         docxml.xpath(ns(".//definition/verbal-definition")).each do |v|
-          next unless v.elements.all? { |e| %w(termsource p).include?(e.name) }
-
+          v.elements.all? { |e| %w(termsource p).include?(e.name) } or next
           p = v.xpath(ns("./p"))
           v.children =
             "<p>#{p.map(&:children).map { |x| to_xml(x) }.join("\n")}</p>" \
@@ -73,7 +72,7 @@ module IsoDoc
                        "./preferred/graphical-symbol/figure/@id | " \
                        "./preferred"))
         f = term.at(ns("./field-of-application")) || term.at(ns("./domain"))
-        HTMLEntities.new.decode("#{sort_terms_key1(d)} :: #{sort_terms_key1(f)}")
+        @c.decode("#{sort_terms_key1(d)} :: #{sort_terms_key1(f)}")
       end
 
       def sort_terms_key1(elem)
@@ -190,8 +189,7 @@ module IsoDoc
       end
 
       def collapse_unwrap_definition(defn)
-        return nil if defn.nil?
-
+        defn.nil? and return nil
         s = defn.remove.xpath(ns("./termsource"))
         p = defn.at(ns("./p"))
         !s.empty? && p and p << s.map(&:remove).map(&:children)
