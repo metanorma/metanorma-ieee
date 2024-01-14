@@ -190,14 +190,13 @@ module Metanorma
 
       def populate_participants2(list)
         curr = list
-        p = curr.at("./p") and curr = p
+        p = curr.at("./p[text() != '']") and curr = p
         if dl = curr.at("./dl")
           ret = extract_participants(dl)
           dl.children = ret.keys.map do |k|
             "<dt>#{k}</dt><dd><p>#{ret[k]}</p></dd>"
           end.join
-        else
-          list.children = "<dl><dt>name</dt><dd><p>#{curr.children.to_xml}" \
+        else list.children = "<dl><dt>name</dt><dd><p>#{curr.children.to_xml}" \
                           "</p></dd><dt>role</dt><dd><p>member</p></dd></dl>"
         end
       end
@@ -206,11 +205,16 @@ module Metanorma
         key = ""
         map = dlist.xpath("./dt | ./dd").each_with_object({}) do |dtd, m|
           (dtd.name == "dt" and key = dtd.text.sub(/:+$/, "")) or
-            m[key.strip.downcase] =
-              @c.encode(@c.decode(dtd.text.strip), :hexadecimal)
+            m[key.strip.downcase] = text_from_paras(dtd)
         end
+        map["company"] &&= "<span class='organization'>#{map['company']}</span>"
         map["role"] ||= "member"
         map
+      end
+
+      def text_from_paras(node)
+        r = node.at("./p") and node = r
+        node.children.to_xml.strip
       end
 
       def bibdata_cleanup(xmldoc)

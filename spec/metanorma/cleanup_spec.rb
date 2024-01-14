@@ -755,7 +755,7 @@ RSpec.describe Metanorma::IEEE do
                    </dl>
                  </li>
                </ul>
-               <p type='emeritus_sign' id='_'>*Member Emeritus</p>
+               <p type='emeritus_sign' id='_'><span class="cite_fn">*</span>Member Emeritus</p>
              </clause>
            </clause>
          </legal-statement>
@@ -1193,7 +1193,7 @@ RSpec.describe Metanorma::IEEE do
       * {blank}
       +
       --
-      name::: Socrates
+      name::: span:surname[Socrates] span:forename[Adalbert]
       role::: Chair
       --
       * {blank}
@@ -1215,7 +1215,7 @@ RSpec.describe Metanorma::IEEE do
       === Balloting Group
 
       * Athanasius of Alexandria
-      * Basil of Caesarea
+      * span:forename[Basil] of span:surname[Caesarea]
 
       And this is another list
 
@@ -1252,217 +1252,232 @@ RSpec.describe Metanorma::IEEE do
 
     INPUT
     output = <<~OUTPUT
-      <clause id='boilerplate-participants' inline-header="false" obligation="normative" type="participants">
+           <clause id="boilerplate-participants" type="participants" inline-header="false" obligation="normative">
          <title>Participants</title>
-         <clause id='boilerplate-participants-wg' inline-header="false" obligation="normative">
-           <p id='_'>
-             At the time this draft Standard was completed, the had the
-             following membership:
-           </p>
-           <ul id='_'>
+         <clause id="boilerplate-participants-wg" inline-header="false" obligation="normative">
+           <p id="_">At the time this draft Standard was completed, the  had the following membership:</p>
+           <ul id="_">
              <li>
-               <dl id='_'>
+               <dl id="_">
                  <dt>name</dt>
-                 <dd/>
+                 <dd>
+                   <p id="_">
+                     <span class="surname">Socrates</span>
+                     <span class="forename">Adalbert</span>
+                   </p>
+                 </dd>
                  <dt>role</dt>
                  <dd>
-                   <p id='_'>member</p>
+                   <p id="_">Chair</p>
                  </dd>
                </dl>
              </li>
              <li>
-               <dl id='_'>
+               <dl id="_">
                  <dt>name</dt>
-                 <dd/>
+                 <dd>
+                   <p id="_">Plato</p>
+                 </dd>
                  <dt>role</dt>
                  <dd>
-                   <p id='_'>member</p>
+                   <p id="_">Technical editor</p>
                  </dd>
                </dl>
              </li>
              <li>
-               <dl id='_'>
+               <dl id="_">
                  <dt>name</dt>
-                 <dd/>
+                 <dd>
+                   <p id="_">Aristotle</p>
+                 </dd>
                  <dt>role</dt>
                  <dd>
-                   <p id='_'>member</p>
+                   <p id="_">Member</p>
                  </dd>
                </dl>
              </li>
              <li>
-               <dl id='_'>
+               <dl id="_">
                  <dt>name</dt>
                  <dd>
-                   <p id='_'>Anaximander</p>
+                   <p id="_">Anaximander</p>
                  </dd>
                  <dt>role</dt>
                  <dd>
-                   <p id='_'>member</p>
+                   <p id="_">member</p>
                  </dd>
                </dl>
              </li>
            </ul>
-           <p id='_'>This is an additional clause.</p>
+           <p id="_">This is an additional clause.</p>
          </clause>
-         <clause id='boilerplate-participants-bg' inline-header="false" obligation="normative">
-           <p id='_'>
-             The following members of the Standards Association balloting group voted
-             on this Standard. Balloters may have voted for approval, disapproval, or
-             abstention.
-           </p>
-           <ul id='_'>
+         <clause id="boilerplate-participants-bg" inline-header="false" obligation="normative">
+           <p id="_">The following members of the   Standards Association balloting group voted on this Standard. Balloters may have voted for approval, disapproval, or abstention.</p>
+           <ul id="_">
              <li>
-               <dl id='_'>
+               <dl id="_">
                  <dt>name</dt>
                  <dd>
-                   <p id='_'>Athanasius of Alexandria</p>
+                   <p id="_">Athanasius of Alexandria</p>
                  </dd>
                  <dt>role</dt>
                  <dd>
-                   <p id='_'>member</p>
+                   <p id="_">member</p>
                  </dd>
                </dl>
              </li>
              <li>
-               <dl id='_'>
+               <dl id="_">
                  <dt>name</dt>
                  <dd>
-                   <p id='_'>Basil of Caesarea</p>
+                   <p id="_"><span class="forename">Basil</span> of <span class="surname">Caesarea</span></p>
                  </dd>
                  <dt>role</dt>
                  <dd>
-                   <p id='_'>member</p>
+                   <p id="_">member</p>
                  </dd>
                </dl>
              </li>
            </ul>
-           <p id='_'>And this is another list</p>
-           <ul id='_'>
+           <p id="_">And this is another list</p>
+           <ul id="_">
              <li>
-               <dl id='_'>
-                 <dt>name</dt>
-                 <dd/>
+               <dl id="_">
+                 <dt>company</dt>
+                 <dd>
+                   <p id="_">
+                     <span class="organization">Microsoft</span>
+                   </p>
+                 </dd>
                  <dt>role</dt>
                  <dd>
-                   <p id='_'>member</p>
+                   <p id="_">member</p>
                  </dd>
                </dl>
              </li>
              <li>
-               <dl id='_'>
-                 <dt>name</dt>
-                 <dd/>
+               <dl id="_">
+                 <dt>company</dt>
+                 <dd>
+                   <p id="_">
+                     <span class="organization">Alphabet</span>
+                   </p>
+                 </dd>
                  <dt>role</dt>
                  <dd>
-                   <p id='_'>member</p>
+                   <p id="_">Member</p>
                  </dd>
                </dl>
              </li>
            </ul>
          </clause>
-         <clause id='boilerplate-participants-sb' inline-header="false" obligation="normative">
-           <p id='_'>
-             When the IEEE SA Standards Board approved this Standard on &#x3c;Date
-             Approved&#x3e;, it had the following membership:
-           </p>
-           <ul id='_'>
+         <clause id="boilerplate-participants-sb" inline-header="false" obligation="normative">
+           <p id="_">When the IEEE SA Standards Board approved this Standard on &lt;Date Approved&gt;, it had the following membership:</p>
+           <ul id="_">
              <li>
-               <dl id='_'>
+               <dl id="_">
                  <dt>name</dt>
                  <dd>
-                   <p id='_'>Aeschylus</p>
+                   <p id="_">Aeschylus</p>
                  </dd>
                  <dt>role</dt>
                  <dd>
-                   <p id='_'>Chair</p>
+                   <p id="_">Chair</p>
                  </dd>
                </dl>
              </li>
              <li>
-               <dl id='_'>
+               <dl id="_">
                  <dt>name</dt>
                  <dd>
-                   <p id='_'>Sophocles</p>
+                   <p id="_">Sophocles</p>
                  </dd>
                  <dt>role</dt>
                  <dd>
-                   <p id='_'>Technical editor</p>
+                   <p id="_">Technical editor</p>
                  </dd>
                </dl>
              </li>
              <li>
-               <dl id='_'>
+               <dl id="_">
                  <dt>name</dt>
                  <dd>
-                   <p id='_'>Euripides</p>
+                   <p id="_">Euripides</p>
                  </dd>
                  <dt>role</dt>
                  <dd>
-                   <p id='_'>member</p>
+                   <p id="_">member</p>
                  </dd>
                </dl>
              </li>
              <li>
-               <dl id='_'>
+               <dl id="_">
                  <dt>name</dt>
                  <dd>
-                   <p id='_'>Aristophanes</p>
+                   <p id="_">Aristophanes</p>
                  </dd>
                  <dt>role</dt>
                  <dd>
-                   <p id='_'>member</p>
+                   <p id="_">member</p>
                  </dd>
                </dl>
              </li>
            </ul>
-           <p type='emeritus_sign' id='_'>*Member Emeritus</p>
-           <p id='_'>This is an additional clause.</p>
-           <ul id='_'>
+           <p id="_" type="emeritus_sign"><span class="cite_fn">*</span>Member Emeritus</p>
+           <p id="_">This is an additional clause.</p>
+           <ul id="_">
              <li>
-               <dl id='_'>
-                 <dt>name</dt>
-                 <dd/>
+               <dl id="_">
+                 <dt>company</dt>
+                 <dd>
+                   <p id="_">
+                     <span class="organization">Waldorf-Astoria</span>
+                   </p>
+                 </dd>
                  <dt>role</dt>
                  <dd>
-                   <p id='_'>member</p>
+                   <p id="_">member</p>
                  </dd>
                </dl>
              </li>
              <li>
-               <dl id='_'>
-                 <dt>name</dt>
-                 <dd/>
+               <dl id="_">
+                 <dt>company</dt>
+                 <dd>
+                   <p id="_">
+                     <span class="organization">Ritz</span>
+                   </p>
+                 </dd>
                  <dt>role</dt>
                  <dd>
-                   <p id='_'>member</p>
+                   <p id="_">Member</p>
                  </dd>
                </dl>
              </li>
            </ul>
-           <p id='_'>And again:</p>
-           <ul id='_'>
+           <p id="_">And again:</p>
+           <ul id="_">
              <li>
-               <dl id='_'>
+               <dl id="_">
                  <dt>name</dt>
                  <dd>
-                   <p id='_'>name1</p>
+                   <p id="_">name1</p>
                  </dd>
                  <dt>role</dt>
                  <dd>
-                   <p id='_'>member</p>
+                   <p id="_">member</p>
                  </dd>
                </dl>
              </li>
              <li>
-               <dl id='_'>
+               <dl id="_">
                  <dt>name</dt>
                  <dd>
-                   <p id='_'>name2</p>
+                   <p id="_">name2</p>
                  </dd>
                  <dt>role</dt>
                  <dd>
-                   <p id='_'>member</p>
+                   <p id="_">member</p>
                  </dd>
                </dl>
              </li>
