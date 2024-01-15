@@ -89,15 +89,15 @@ RSpec.describe Metanorma::IEEE do
       :issued-date: 1001-12-01
       :obsoleted-date: 1002-12-01
       :feedback-ended-date: 1003-12-01
-      :wg-chair: AB
+      :wg-chair: span:surname[A] span:forename[B]
       :wg-vicechair: CD
       :wg-secretary: CD1
-      :wg-members: E, F, Jr.; GH; IJ
+      :wg-members: span:surname[E], span:forename[F], Jr.; GH; IJ
       :wg-org-members: Alibaba, Inc.; Alphabet, Ltd.
       :balloting-group-members: KL; MN
       :std-board-chair: OP
       :std-board-vicechair: QR
-      :std-board-pastchair: ST
+      :std-board-pastchair: span:surname[S] span:forename[T]
       :std-board-secretary: UV
       :std-board-members: WX; YZ
       :isbn-pdf: ABC
@@ -770,7 +770,7 @@ RSpec.describe Metanorma::IEEE do
       == Thematic Index
     INPUT
     output = <<~OUTPUT
-            #{@blank_hdr.sub("<doctype>standard</doctype>", " <doctype>whitepaper</doctype>").sub(%r{</script>}, '</script><abstract><p>Text</p></abstract>').sub(%r{<boilerplate>.*</boilerplate>}m, '')}
+            #{@blank_hdr.sub('<doctype>standard</doctype>', ' <doctype>whitepaper</doctype>').sub(%r{</script>}, '</script><abstract><p>Text</p></abstract>').sub(%r{<boilerplate>.*</boilerplate>}m, '')}
                      <preface>
                  <abstract id='_'>
                    <title>Abstract</title>

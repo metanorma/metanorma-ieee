@@ -134,6 +134,8 @@ module IsoDoc
           table_columnhead: "IEEEStdsTableColumnHead",
           nameslist: "IEEEStdsNamesList",
           intro: "IEEEStdsIntroduction",
+          surname: "au_surname",
+          forename: "au_fname",
         }
       end
 

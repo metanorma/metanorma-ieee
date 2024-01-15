@@ -382,7 +382,7 @@ role::: Member
 ++++
 
 [type=emeritus_sign]
-*Member Emeritus
+span:cite_fn[*]Member Emeritus
 
 == feedback-statement
 === {blank}
