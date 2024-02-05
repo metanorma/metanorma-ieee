@@ -149,7 +149,6 @@ module Metanorma
         (xmldoc.xpath("//figure") - xmldoc.xpath("//table//figure"))
           .each do |f|
             (i = f.at("./image") and !i["src"]&.start_with?("data:")) or next
-
             num = xrefs.anchor(f["id"], :label)
             base = File.basename(i["src"], ".*")
             base == "#{pref}_fig#{num}" or
@@ -170,7 +169,6 @@ module Metanorma
         xmldoc.xpath("//table[.//figure]").each do |t|
           xmldoc.xpath(".//figure").each do |f|
             (i = f.at("./image") and !i["src"]&.start_with?("data:")) or next
-
             num = tablefigurenumber(t, f, xrefs)
             base = File.basename(i["src"])
             base == num or

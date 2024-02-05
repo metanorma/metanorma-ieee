@@ -17,8 +17,7 @@ module IsoDoc
       end
 
       def ddMMMyyyy(isodate)
-        return nil if isodate.nil?
-
+        isodate.nil? and return nil
         arr = isodate.split("-")
         if arr.size == 1 && (/^\d+$/.match isodate)
           Date.new(*arr.map(&:to_i)).strftime("%Y")
@@ -62,9 +61,15 @@ module IsoDoc
         key = ""
         map = list.xpath(ns(".//dt | .//dd")).each_with_object({}) do |dtd, m|
           (dtd.name == "dt" and key = dtd.text) or
-            m[key] = @c.encode(dtd.text.strip, :hexadecimal)
+            m[key] = text_from_paras(dtd)
+              .gsub(/\*/, "<span class='cite_fn'>*</span>")
         end
         list.replace(participant_para(map, idx))
+      end
+
+      def text_from_paras(node)
+        r = node.at(ns("./p")) and node = r
+        node.children.to_xml.strip
       end
 
       def participant_para(map, idx)
@@ -89,7 +94,7 @@ module IsoDoc
         name = "<strong>#{name}</strong>" if idx.zero?
         br = map["role"].size > 30 ? "<br/>" : ""
         "<p type='officeholder' align='center'>#{name}, #{br}" \
-          "<em>#{map['role']}</em></p>"
+          "<em><span class='au_role'>#{map['role']}</span></em></p>"
       end
 
       def participant_name(map)
