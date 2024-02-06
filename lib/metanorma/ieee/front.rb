@@ -57,6 +57,10 @@ module Metanorma
         core.merge(amd)
       end
 
+      def compact_blank(hash)
+        hash.compact.reject { |_, v| v.is_a?(String) && v.empty? }
+      end
+
       def ieee_id_params_core(node)
         pub = ieee_id_pub(node)
         ret = { number: node.attr("docnumber"),
@@ -64,9 +68,9 @@ module Metanorma
                 year: ieee_id_year(node, initial: true),
                 redline: @doctype == "redline",
                 publisher: pub[0],
-                copublisher: pub[1..-1] }.compact
+                copublisher: pub[1..-1] }
         ret[:copublisher].empty? and ret.delete(:copublisher)
-        ret
+        compact_blank(ret)
       end
 
       def ieee_id_params_amd(node, core)
