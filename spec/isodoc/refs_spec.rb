@@ -310,4 +310,75 @@ RSpec.describe IsoDoc do
     expect(xmlpp(strip_guid(out.to_xml)))
       .to be_equivalent_to xmlpp(presxml)
   end
+
+  it "re-sorts biblio citations" do
+    input = <<~INPUT
+      <iso-standard xmlns="http://riboseinc.com/isoxml">
+      <sections/>
+      <bibliography>
+       <references id='_' normative='false' obligation='informative'>
+         <title>Normative References</title>
+         <bibitem id="IETF_6281" type="standard" schema-version="v1.2.1">
+         <title>Title 1</title>
+         <docidentifier>ABC</docidentifier>
+         </bibitem>
+         <bibitem id="IETF_6282" type="standard" schema-version="v1.2.1">
+         <title>Title 1</title>
+         <docidentifier>DEF</docidentifier>
+         <docidentifier metanorma-ordinal>[B1]</docidentifier>
+         </bibitem>
+         <bibitem id="IETF_6283" type="standard" schema-version="v1.2.1">
+         <title>Title 2</title>
+         <docidentifier>GHI</docidentifier>
+         <docidentifier metanorma>[1]</docidentifier>
+         </bibitem>
+         </references>
+         </bibliography>
+         </iso-standard>
+    INPUT
+    presxml = <<~PRESXML
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+        <preface>
+          <clause type="toc" id="_" displayorder="1">
+            <title depth="1">Contents</title>
+          </clause>
+        </preface>
+        <sections/>
+        <bibliography>
+          <references id="_" normative="false" obligation="informative" displayorder="2">
+            <title depth="1">Normative References</title>
+            <bibitem id="IETF_6281" type="standard">
+              <formattedref>“Title 1,”.</formattedref>
+              <title>Title 1</title>
+              <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
+              <docidentifier>ABC</docidentifier>
+              <biblio-tag>[B1]<tab/>ABC, </biblio-tag>
+            </bibitem>
+            <bibitem id="IETF_6282" type="standard">
+              <formattedref>“Title 1,”.</formattedref>
+              <title>Title 1</title>
+              <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
+              <docidentifier>DEF</docidentifier>
+              <docidentifier>[B1]</docidentifier>
+              <biblio-tag>[B2]<tab/>DEF, </biblio-tag>
+            </bibitem>
+            <bibitem id="IETF_6283" type="standard">
+              <formattedref>“Title 2,”.</formattedref>
+              <title>Title 2</title>
+              <docidentifier type="metanorma-ordinal">[B3]</docidentifier>
+              <docidentifier>GHI</docidentifier>
+              <docidentifier>[1]</docidentifier>
+              <biblio-tag>[B3]<tab/>GHI, </biblio-tag>
+            </bibitem>
+          </references>
+        </bibliography>
+      </iso-standard>
+    PRESXML
+    out = Nokogiri::XML(
+      IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true),
+    )
+    expect(xmlpp(strip_guid(out.to_xml)))
+      .to be_equivalent_to xmlpp(presxml)
+  end
 end

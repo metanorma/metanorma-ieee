@@ -883,7 +883,7 @@ RSpec.describe Metanorma::IEEE do
                use only.
              </p>
              <bibitem id='ABC'>
-               <formattedref format='application/x-isodoc+xml'/>
+             <formattedref format="application/x-isodoc+xml">[NO INFORMATION AVAILABLE]</formattedref>
                <docidentifier>DEF</docidentifier>
                <docidentifier type='metanorma-ordinal'>[B1]</docidentifier>
              </bibitem>
@@ -901,7 +901,7 @@ RSpec.describe Metanorma::IEEE do
              document (including any amendments or corrigenda) applies.
            </p>
            <bibitem id='GHI'>
-             <formattedref format='application/x-isodoc+xml'/>
+           <formattedref format="application/x-isodoc+xml">[NO INFORMATION AVAILABLE]</formattedref>
              <docidentifier>JKL</docidentifier>
            </bibitem>
          </references>
@@ -1014,7 +1014,7 @@ RSpec.describe Metanorma::IEEE do
              <title>Bibliography</title>
              <p id='_'>This is boilerplate</p>
              <bibitem id='ABC'>
-               <formattedref format='application/x-isodoc+xml'/>
+             <formattedref format="application/x-isodoc+xml">[NO INFORMATION AVAILABLE]</formattedref>
                <docidentifier>DEF</docidentifier><docidentifier type='metanorma-ordinal'>[B1]</docidentifier>
              </bibitem>
            </references>
