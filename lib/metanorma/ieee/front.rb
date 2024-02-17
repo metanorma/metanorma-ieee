@@ -31,6 +31,7 @@ module Metanorma
           xml.docidentifier a, type: "ISBN", scope: "PDF"
         a = node.attr("isbn-print") and
           xml.docidentifier a, type: "ISBN", scope: "print"
+        xml.docnumber node.attr("docnumber")
       end
 
       def metadata_id(node, xml)
@@ -42,7 +43,6 @@ module Metanorma
           xml.docidentifier id, type: "IEEE", scope: "PDF"
         id = node.attr("stdid-print") and
           xml.docidentifier id, type: "IEEE", scope: "print"
-        xml.docnumber node.attr("docnumber")
       end
 
       def ieee_id(node, xml)
