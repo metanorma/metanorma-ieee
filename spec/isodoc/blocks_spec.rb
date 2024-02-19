@@ -442,56 +442,56 @@ RSpec.describe IsoDoc do
                            </body>
     OUTPUT
     word = <<~OUTPUT
-       <div>
-         <a name="A" id="A"/>
-         <p class="IEEEStdsLevel1Header">Foreword</p>
-         <div class="IEEEStdsImage" style="page-break-after: avoid;page-break-inside: avoid;">
-           <a name="figureA-1" id="figureA-1"/>
-           <img src="_.gif" height="20" width="20"/>
-           <img src="_.xml" height="" width=""/>
-           <aside>
-             <div>
-               <a name="ftn_" id="ftn_"/>
-             </div>
-           </aside>
-           <p style="page-break-after:avoid;" class="IEEEStdsParagraph">
-             <b>Key</b>
-           </p>
-           <table class="dl" style="page-break-after:avoid;">
-             <tr>
-               <td valign="top" align="left">
-                 <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">A</p>
-               </td>
-               <td valign="top">
-                 <p class="IEEEStdsParagraph">B</p>
-               </td>
-             </tr>
-             <tr>
-               <td valign="top" align="left">
-                 <span>
-                   <span class="TableFootnoteRef"><a name="_" id="_"/>a</span>
-                   <span style="mso-tab-count:1">  </span>
-                 </span>
-               </td>
-               <td valign="top">
-                 <p class="IEEEStdsParagraph"><a name="_" id="_"/>The time <span class="stem">(#(t_90)#)</span> was estimated to be 18,2 min for this example.</p>
-               </td>
-             </tr>
-           </table>
-           <p class="IEEEStdsRegularFigureCaption" style="text-align:center;">—Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref"><a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
-         </div>
-         <div class="IEEEStdsImage">
-           <a name="figure-B" id="figure-B"/>
-           <pre style="page-break-after:avoid;">A 
-       B</pre>
-           <p class="IEEEStdsRegularFigureCaption" style="text-align:center;"/>
-         </div>
-         <div class="IEEEStdsImage">
-           <a name="figure-C" id="figure-C"/>
-           <pre>A 
-       B</pre>
-         </div>
-       </div>
+      <div>
+        <a name="A" id="A"/>
+        <p class="IEEEStdsLevel1Header">Foreword</p>
+        <div class="IEEEStdsImage" style="page-break-after: avoid;page-break-inside: avoid;">
+          <a name="figureA-1" id="figureA-1"/>
+          <img src="_.gif" height="20" width="20"/>
+          <img src="_.xml" height="20" width="0"/>
+          <aside>
+            <div>
+              <a name="ftn_" id="ftn_"/>
+            </div>
+          </aside>
+          <p style="page-break-after:avoid;" class="IEEEStdsParagraph">
+            <b>Key</b>
+          </p>
+          <table class="dl" style="page-break-after:avoid;">
+            <tr>
+              <td valign="top" align="left">
+                <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">A</p>
+              </td>
+              <td valign="top">
+                <p class="IEEEStdsParagraph">B</p>
+              </td>
+            </tr>
+            <tr>
+              <td valign="top" align="left">
+                <span>
+                  <span class="TableFootnoteRef"><a name="_" id="_"/>a</span>
+                  <span style="mso-tab-count:1">  </span>
+                </span>
+              </td>
+              <td valign="top">
+                <p class="IEEEStdsParagraph"><a name="_" id="_"/>The time <span class="stem">(#(t_90)#)</span> was estimated to be 18,2 min for this example.</p>
+              </td>
+            </tr>
+          </table>
+          <p class="IEEEStdsRegularFigureCaption" style="text-align:center;">—Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref"><a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
+        </div>
+        <div class="IEEEStdsImage">
+          <a name="figure-B" id="figure-B"/>
+          <pre style="page-break-after:avoid;">A
+      B</pre>
+          <p class="IEEEStdsRegularFigureCaption" style="text-align:center;"/>
+        </div>
+        <div class="IEEEStdsImage">
+          <a name="figure-C" id="figure-C"/>
+          <pre>A
+      B</pre>
+        </div>
+      </div>
     OUTPUT
     expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
       .new(presxml_options)

@@ -240,7 +240,7 @@ RSpec.describe Metanorma::IEEE do
     INPUT
     expect(htmlencode(metadata(csdc.info(docxml, nil)).to_s
       .gsub(", :", ",\n:"))).to be_equivalent_to <<~"OUTPUT"
-        {:abbrev_doctitle=>"Draft Rec. Prac. for Main Titlein multiple lines",
+        {:abbrev_doctitle=>"Draft Rec. Prac. for Main Title<br/>in multiple lines",
         :accesseddate=>"XXX",
         :adapteddate=>"XXX",
         :agency=>"IEEE",
@@ -259,7 +259,7 @@ RSpec.describe Metanorma::IEEE do
         :docnumber=>"ABC",
         :docnumeric=>"1000",
         :docsubtype=>"Amendment",
-        :doctitle=>"Main Titlein multiple lines",
+        :doctitle=>"Main Title<br/>in multiple lines",
         :doctype=>"Recommended Practice",
         :doctype_abbrev=>"Rec. Prac.",
         :docyear=>"2001",
@@ -269,7 +269,7 @@ RSpec.describe Metanorma::IEEE do
         :draftinfo=>" (draft 3.4, 2000-01-01)",
         :edition=>"2",
         :feedback_endeddate=>"01 Aug 2018",
-        :full_doctitle=>"Draft Recommended Practice for Main Titlein multiple lines",
+        :full_doctitle=>"Draft Recommended Practice for Main Title<br/>in multiple lines",
         :implementeddate=>"XXX",
         :isbn_pdf=>"GHI",
         :isbn_print=>"JKL",
@@ -545,7 +545,7 @@ RSpec.describe Metanorma::IEEE do
     docxml, = csdc.convert_init(input, "test", true)
     expect(htmlencode(metadata(csdc.info(docxml, nil)).to_s
       .gsub(", :", ",\n:"))).to be_equivalent_to <<~"OUTPUT"
-        {:abbrev_doctitle=>"Draft ??? for Main Titlein multiple lines",
+        {:abbrev_doctitle=>"Draft ??? for Main Title<br/>in multiple lines",
         :accesseddate=>"XXX",
         :adapteddate=>"XXX",
         :agency=>"IEEE",
@@ -564,7 +564,7 @@ RSpec.describe Metanorma::IEEE do
         :docnumber=>"ABC",
         :docnumeric=>"1000",
         :docsubtype=>"ICAP",
-        :doctitle=>"Main Titlein multiple lines",
+        :doctitle=>"Main Title<br/>in multiple lines",
         :doctype=>"Whitepaper",
         :docyear=>"2001",
         :draft=>"3.4",
@@ -573,7 +573,7 @@ RSpec.describe Metanorma::IEEE do
         :draftinfo=>" (draft 3.4, 2000-01-01)",
         :edition=>"2",
         :feedback_endeddate=>"01 Aug 2018",
-        :full_doctitle=>"Draft Whitepaper for Main Titlein multiple lines",
+        :full_doctitle=>"Draft Whitepaper for Main Title<br/>in multiple lines",
         :implementeddate=>"XXX",
         :isbn_pdf=>"GHI",
         :isbn_print=>"JKL",
@@ -615,7 +615,7 @@ RSpec.describe Metanorma::IEEE do
       .sub(">icap<", ">industry-connection-report<"), "test", true)
     expect(htmlencode(metadata(csdc.info(docxml, nil)).to_s
       .gsub(", :", ",\n:"))).to be_equivalent_to <<~"OUTPUT"
-        {:abbrev_doctitle=>"Draft ??? for Main Titlein multiple lines",
+        {:abbrev_doctitle=>"Draft ??? for Main Title<br/>in multiple lines",
         :accesseddate=>"XXX",
         :adapteddate=>"XXX",
         :agency=>"IEEE",
@@ -634,7 +634,7 @@ RSpec.describe Metanorma::IEEE do
         :docnumber=>"ABC",
         :docnumeric=>"1000",
         :docsubtype=>"Industry Connection Report",
-        :doctitle=>"Main Titlein multiple lines",
+        :doctitle=>"Main Title<br/>in multiple lines",
         :doctype=>"Whitepaper",
         :docyear=>"2001",
         :draft=>"3.4",
@@ -643,7 +643,7 @@ RSpec.describe Metanorma::IEEE do
         :draftinfo=>" (draft 3.4, 2000-01-01)",
         :edition=>"2",
         :feedback_endeddate=>"01 Aug 2018",
-        :full_doctitle=>"Draft Whitepaper for Main Titlein multiple lines",
+        :full_doctitle=>"Draft Whitepaper for Main Title<br/>in multiple lines",
         :implementeddate=>"XXX",
         :isbn_pdf=>"GHI",
         :isbn_print=>"JKL",
@@ -749,7 +749,7 @@ RSpec.describe Metanorma::IEEE do
     INPUT
     expect(htmlencode(metadata(csdc.info(docxml, nil)).to_s
       .gsub(", :", ",\n:"))).to be_equivalent_to <<~"OUTPUT"
-        {:abbrev_doctitle=>"Draft Rec. Prac. for Main Titlein multiple lines",
+        {:abbrev_doctitle=>"Draft Rec. Prac. for Main Title<br/>in multiple lines",
         :accesseddate=>"XXX",
         :adapteddate=>"XXX",
         :announceddate=>"XXX",
@@ -762,7 +762,7 @@ RSpec.describe Metanorma::IEEE do
         :createddate=>"XXX",
         :docnumeric=>"1000",
         :docsubtype=>"Document",
-        :doctitle=>"Main Titlein multiple lines",
+        :doctitle=>"Main Title<br/>in multiple lines",
         :doctype=>"Recommended Practice",
         :doctype_abbrev=>"Rec. Prac.",
         :docyear=>"2001",
@@ -771,7 +771,7 @@ RSpec.describe Metanorma::IEEE do
         :draft_year=>"2000",
         :draftinfo=>" (draft 3.4, 2000-01-01)",
         :edition=>"2",
-        :full_doctitle=>"Draft Recommended Practice for Main Titlein multiple lines",
+        :full_doctitle=>"Draft Recommended Practice for Main Title<br/>in multiple lines",
         :implementeddate=>"XXX",
         :isbn_pdf=>"978-0-XXXX-XXXX-X",
         :isbn_print=>"978-0-XXXX-XXXX-X",
