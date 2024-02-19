@@ -44,7 +44,7 @@ module IsoDoc
       # AGENCY+ TYPE NUMBER YEAR
       def std_docid_semantic_full(ident)
         m = ident.match(%r{(?<text>[^0-9]+\p{Zs})
-                        (?<num>[0-9]+)
+                        (?<num>[0-9]+[^:]*)
                         (?:[:](?<yr>(?:19|20)\d\d))?}x)
         m or return ident
         ret = std_docid_sdo(m[:text]) +

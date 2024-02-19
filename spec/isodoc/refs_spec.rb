@@ -9,6 +9,7 @@ RSpec.describe IsoDoc do
                 <title>Clause</title>
                 <p id='_'>
                   <eref type='inline' bibitemid='ref1' citeas='ISO 639:1967'/>
+                  <eref type='inline' bibitemid='ref7' citeas='ISO 639-2:1998'/>
                   <eref type='inline' bibitemid='ref2' citeas='Aluffi'/>
                   <eref type='inline' bibitemid='ref3' citeas='REF4'/>
                   <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967'/>
@@ -40,6 +41,44 @@ RSpec.describe IsoDoc do
                 </organization>        </owner>      </copyright>      <relation type="updates">        <bibitem type="standard">          <formattedref format="text/plain">ISO 639-1:2002</formattedref>          <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>          <date type="circulated">            <on>2002-07-18</on>          </date>        </bibitem>
             </relation>      <place>Geneva</place>    </bibitem>
         </relation>  <place>Geneva</place></bibitem>
+        <bibitem id="ref7">
+          <title type="title-main" format="text/plain" language="en" script="Latn">Codes for the representation of names of languages</title>
+          <title type="title-part" format="text/plain" language="en" script="Latn">Part 2: Alpha-3 code</title>
+          <title type="main" format="text/plain" language="en" script="Latn">Codes for the representation of names of languages - Part 2: Alpha-3 code</title>
+          <title type="title-main" format="text/plain" language="fr" script="Latn">Codes pour la représentation des noms de langue</title>
+          <title type="title-part" format="text/plain" language="fr" script="Latn">Partie 2: Code alpha-3</title>
+          <title type="main" format="text/plain" language="fr" script="Latn">Codes pour la représentation des noms de langue - Partie 2: Code alpha-3</title>
+          <uri type="src">https://www.iso.org/standard/4767.html</uri>
+          <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4767.detail.rss</uri>
+          <docidentifier type="ISO" primary="true">ISO 639-2</docidentifier>
+          <docidentifier type="iso-reference">ISO 639-2(E)</docidentifier>
+          <docidentifier type="URN">urn:iso:std:iso:639:-2:stage-95.99:ed-1</docidentifier>
+          <docnumber>639</docnumber>
+          <contributor>
+            <role type="publisher"/>
+            <organization>
+              <name>International Organization for Standardization</name>
+              <abbreviation>ISO</abbreviation>
+              <uri>www.iso.org</uri>
+            </organization>
+          </contributor>
+          <edition>1</edition>
+          <language>en</language>
+          <language>fr</language>
+          <script>Latn</script>
+          <status>
+            <stage>95</stage>
+            <substage>99</substage>
+          </status>
+          <copyright>
+            <from>1998</from>
+            <owner>
+              <organization>
+                <name>ISO</name>
+              </organization>
+            </owner>
+          </copyright>
+        </bibitem>
                    <bibitem id='ref3'>
                      <formattedref format='application/x-isodoc+xml'>REF4</formattedref>
                      <docidentifier>REF4</docidentifier>
@@ -215,17 +254,18 @@ RSpec.describe IsoDoc do
     presxml = <<~PRESXML
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
              <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
-         <sections>
-         <p class="zzSTDTitle1" displayorder="3">??? for ???</p>
+                      <sections>
+           <p class="zzSTDTitle1" displayorder="3">??? for ???</p>
            <clause id="A" inline-header="false" obligation="normative" displayorder="4">
              <title depth="1">2.<tab/>Clause</title>
              <p id="_">
-              <xref type="inline" target="ref1"><span class="std_publisher">ISO </span><span class="std_docNumber">639</span>:<span class="std_year">1967</span></xref>
-              <xref type="inline" target="ref2">Aluffi</xref>
-              <xref type="inline" target="ref3">REF4</xref>
-              <xref type="inline" target="ref4">ISO 639:1967 [B3]</xref>
-              <xref type="inline" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2]</xref>
-              <xref type="inline" target="ref6">REF4 [B1]</xref>
+               <xref type="inline" target="ref1"><span class="std_publisher">ISO </span><span class="std_docNumber">639</span>:<span class="std_year">1967</span></xref>
+               <xref type="inline" target="ref7"><span class="std_publisher">ISO </span><span class="std_docNumber">639-2</span>:<span class="std_year">1998</span></xref>
+               <xref type="inline" target="ref2">Aluffi</xref>
+               <xref type="inline" target="ref3">REF4</xref>
+               <xref type="inline" target="ref4">ISO 639:1967 [B3]</xref>
+               <xref type="inline" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2]</xref>
+               <xref type="inline" target="ref6">REF4 [B1]</xref>
              </p>
            </clause>
            <references id="_" normative="true" obligation="informative" displayorder="2">
@@ -239,6 +279,21 @@ RSpec.describe IsoDoc do
                <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
                <docidentifier type="URN">URN urn:iso:std:iso:639:ed-1</docidentifier>
                <biblio-tag>ISO 639, </biblio-tag>
+             </bibitem>
+             <bibitem id="ref7">
+               <formattedref>Codes for the representation of names of languages - Part 2: Alpha-3 code.</formattedref>
+               <title type="title-main" format="text/plain" language="en" script="Latn">Codes for the representation of names of languages</title>
+               <title type="title-part" format="text/plain" language="en" script="Latn">Part 2: Alpha-3 code</title>
+               <title type="main" format="text/plain" language="en" script="Latn">Codes for the representation of names of languages - Part 2: Alpha-3 code</title>
+               <title type="title-main" format="text/plain" language="fr" script="Latn">Codes pour la représentation des noms de langue</title>
+               <title type="title-part" format="text/plain" language="fr" script="Latn">Partie 2: Code alpha-3</title>
+               <title type="main" format="text/plain" language="fr" script="Latn">Codes pour la représentation des noms de langue - Partie 2: Code alpha-3</title>
+               <uri type="src">https://www.iso.org/standard/4767.html</uri>
+               <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4767.detail.rss</uri>
+               <docidentifier type="ISO" primary="true">ISO 639-2</docidentifier>
+               <docidentifier type="iso-reference">iso-reference ISO 639-2(E)</docidentifier>
+               <docidentifier type="URN">URN urn:iso:std:iso:639:-2:stage-95.99:ed-1</docidentifier>
+               <biblio-tag>ISO 639-2, </biblio-tag>
              </bibitem>
              <bibitem id="ref3">
                <formattedref format="application/x-isodoc+xml">REF4</formattedref>
@@ -271,23 +326,23 @@ RSpec.describe IsoDoc do
                <biblio-tag>[B3], ISO 639:1967, </biblio-tag>
              </bibitem>
            </references>
-           </sections>
-           <bibliography>
+         </sections>
+         <bibliography>
            <references id="_" normative="false" obligation="informative" displayorder="5">
              <title depth="1">Bibliography</title>
              <bibitem id="ref6">
                <formattedref format="application/x-isodoc+xml">REF4</formattedref>
-               <docidentifier>REF4</docidentifier>
                <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
+               <docidentifier>REF4</docidentifier>
                <docnumber>4</docnumber>
                <biblio-tag>[B1]<tab/>REF4, </biblio-tag>
              </bibitem>
              <bibitem type="book" id="ref5">
                <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne, <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022b, DOI: https://doi.org/10.1017/9781108877831.</formattedref>
                <title>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</title>
+               <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
                <docidentifier type="DOI">https://doi.org/10.1017/9781108877831</docidentifier>
                <docidentifier type="ISBN">ISBN 9781108877831</docidentifier>
-               <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
                <biblio-tag>[B2]<tab/></biblio-tag>
              </bibitem>
              <bibitem type="standard" id="ref4">
@@ -295,8 +350,8 @@ RSpec.describe IsoDoc do
                <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
                <title type="title-main" format="text/plain">Indiana Jones and the Last Crusade</title>
                <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
-               <docidentifier type="ISO">ISO 639:1967</docidentifier>
                <docidentifier type="metanorma-ordinal">[B3]</docidentifier>
+               <docidentifier type="ISO">ISO 639:1967</docidentifier>
                <biblio-tag>[B3]<tab/>ISO 639:1967, </biblio-tag>
              </bibitem>
            </references>
