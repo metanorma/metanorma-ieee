@@ -72,10 +72,16 @@ module IsoDoc
         end
         unless bibliography_bibitem_number_skip(bibitem)
           idx += 1
-          bibitem.at(ns(".//docidentifier")).previous =
+          docidentifier_insert_pt(bibitem).next =
             "<docidentifier type='metanorma-ordinal'>[B#{idx}]</docidentifier>"
         end
         idx
+      end
+
+      def docidentifier_insert_pt(bibitem)
+        bibitem.at(ns(".//docidentifier"))&.previous ||
+          bibitem.at(ns(".//title")) ||
+          bibitem.at(ns(".//formattedref"))
       end
 
       def expand_citeas(text)
