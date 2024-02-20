@@ -45,17 +45,17 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Tue, 20 Feb 2024 02:17:31 GMT
+      - Tue, 20 Feb 2024 02:52:28 GMT
       Via:
       - 1.1 varnish
       X-Served-By:
-      - cache-mel11233-MEL
+      - cache-mel11253-MEL
       X-Cache:
       - HIT
       X-Cache-Hits:
       - '1'
       X-Timer:
-      - S1708395452.875980,VS0,VE1
+      - S1708397549.750987,VS0,VE1
       Vary:
       - Authorization,Accept-Encoding,Origin
       Access-Control-Allow-Origin:
@@ -63,11 +63,11 @@ http_interactions:
       Cross-Origin-Resource-Policy:
       - cross-origin
       X-Fastly-Request-Id:
-      - 02b312d18042b23198cb9edf668c7a1878ab799e
+      - 672b577ea5dc5ef9998a290d98c4722412c44810
       Expires:
-      - Tue, 20 Feb 2024 02:22:31 GMT
+      - Tue, 20 Feb 2024 02:57:28 GMT
       Source-Age:
-      - '28'
+      - '22'
     body:
       encoding: ASCII-8BIT
       string: "---\nschema-version: v1.2.8\nid: RFC7749\ntitle:\n- content: The \"xml2rfc\"
@@ -98,7 +98,7 @@ http_interactions:
         text/plain\nkeyword:\n- content: XML\n- content: IETF\n- content: RFC\n- content:
         Internet-Draft\n- content: Vocabulary\next:\n  schema-version: v1.0.1\n  stream:
         IAB\n"
-  recorded_at: Tue, 20 Feb 2024 02:17:32 GMT
+  recorded_at: Tue, 20 Feb 2024 02:52:29 GMT
 - request:
     method: get
     uri: https://raw.githubusercontent.com/relaton/relaton-data-rfcs/main/data/RFC7749.yaml
@@ -144,17 +144,17 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Tue, 20 Feb 2024 02:17:33 GMT
+      - Tue, 20 Feb 2024 02:52:31 GMT
       Via:
       - 1.1 varnish
       X-Served-By:
-      - cache-mel11221-MEL
+      - cache-mel11260-MEL
       X-Cache:
       - HIT
       X-Cache-Hits:
       - '1'
       X-Timer:
-      - S1708395454.906989,VS0,VE1
+      - S1708397551.114693,VS0,VE1
       Vary:
       - Authorization,Accept-Encoding,Origin
       Access-Control-Allow-Origin:
@@ -162,11 +162,11 @@ http_interactions:
       Cross-Origin-Resource-Policy:
       - cross-origin
       X-Fastly-Request-Id:
-      - 2615317ce28f9244caed7b3524da8e70be1a0592
+      - 2c240798fc0ca45e6d8b603c0c74bb40adfa7248
       Expires:
-      - Tue, 20 Feb 2024 02:22:33 GMT
+      - Tue, 20 Feb 2024 02:57:31 GMT
       Source-Age:
-      - '30'
+      - '24'
     body:
       encoding: ASCII-8BIT
       string: "---\nschema-version: v1.2.8\nid: RFC7749\ntitle:\n- content: The \"xml2rfc\"
@@ -197,5 +197,5 @@ http_interactions:
         text/plain\nkeyword:\n- content: XML\n- content: IETF\n- content: RFC\n- content:
         Internet-Draft\n- content: Vocabulary\next:\n  schema-version: v1.0.1\n  stream:
         IAB\n"
-  recorded_at: Tue, 20 Feb 2024 02:17:34 GMT
+  recorded_at: Tue, 20 Feb 2024 02:52:31 GMT
 recorded_with: VCR 6.1.0

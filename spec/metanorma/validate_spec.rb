@@ -1,6 +1,11 @@
 require "spec_helper"
 
 RSpec.describe Metanorma::IEEE do
+  before do
+    allow_any_instance_of(Relaton::Index::FileIO)
+      .to receive(:check_file).and_return(nil)
+  end
+
   before(:all) do
     FileUtils.rm_f "test.err.html"
   end
