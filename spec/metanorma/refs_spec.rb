@@ -2,8 +2,18 @@ require "spec_helper"
 
 RSpec.describe Metanorma::IEEE do
   before do
-    allow_any_instance_of(Relaton::Index::FileIO)
-      .to receive(:check_file).and_return(nil)
+    # Force to download Relaton index file
+    allow_any_instance_of(Relaton::Index::Type).to receive(:actual?)
+      .and_return(false)
+    allow_any_instance_of(Relaton::Index::FileIO).to receive(:check_file)
+      .and_return(nil)
+  end
+
+  before do
+    # Force to download NIST pubs-export.zip
+    allow(File).to receive(:exist?).with(RelatonNist::PubsExport::DATAFILE)
+      .and_return false
+    allow(File).to receive(:exist?).and_call_original
   end
 
   it "sorts normative references" do
@@ -141,7 +151,8 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "numbers bibliography" do
-    VCR.use_cassette "multistandard1", match_requests_on: %i[method uri body] do
+    VCR.use_cassette "multistandard1",
+                     match_requests_on: %i[method uri body] do
       input = <<~INPUT
         = Document title
         Author

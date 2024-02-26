@@ -12,10 +12,10 @@
 <div class="doctitle-part">({{ provenance_doctitle }})</div>
 {%endif%}
 
-<div><p>Developed by the</p>
-  <p><b>{{ technical_committee }}</b></p>
-<p>of the</p>
-<p><b>IEEE {{ society }}</b></p>
+<div><p>{{ developed_attribution }}</p>
+  {%if sponsored_attribution %}
+  <p>{{ sponsored_attribution }}</p>
+  {%endif%}
 <p>Approved {{ issueddate }}</p>
 <p>IEEE SA Standards Board</p>
 </div>

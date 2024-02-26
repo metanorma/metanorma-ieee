@@ -4,6 +4,8 @@ module IsoDoc
       def bibdata_i18n(bib)
         super
         bibdata_dates(bib)
+        developed_attrib(bib)
+        sponsored_attrib(bib)
       end
 
       def bibdata_dates(bib)
@@ -99,6 +101,58 @@ module IsoDoc
 
       def participant_name(map)
         map["company"] || map["name"] || "#{map['given']} #{map['surname']}"
+      end
+
+      # TODO i18n if needed
+      def developed_attrib(bibdata)
+        society = bibdata.at(ns("./ext/editorialgroup/society"))
+        tc = bibdata.at(ns("./ext/editorialgroup/committee"))
+        society || tc or return
+        ret = developer_name(tc, society)
+        bibdata.at(ns("./ext")) << <<~TAG
+          <developed-attribution>#{@i18n.developed_attrib}<br/>#{ret}</developed-attribution>
+        TAG
+      end
+
+      def developer_name(comm, society)
+        ret = ""
+        comm and ret += "<strong>#{comm.text}</strong>"
+        comm && society and ret += "<br/>of the<br/>"
+        society and ret += "IEEE <strong>#{society.text}</strong>"
+        ret
+      end
+
+      # TODO i18n if needed
+      def sponsored_attrib(bibdata)
+        ret = sponsors_extract(bibdata).map do |x|
+          sponsor_name(x)
+        end.join("<br/>and the<br/>")
+        ret.empty? and return
+        bibdata.at(ns("./ext")) << <<~TAG
+          <sponsored-attribution>#{@i18n.sponsored_attrib}<br/>#{ret}</sponsored-attribution>
+        TAG
+      end
+
+      def sponsors_extract(bibdata)
+        bibdata.xpath(ns("./contributor[role/@type = 'enabler']/organization"))
+          .each_with_object([]) do |o, m|
+            ret = sponsor_extract(o).reverse
+            if ret.size > 1 && ["IEEE", "Institute of Electrical and Electronic Engineers"].include?(ret[-1])
+              ret.pop
+              ret[-1] = "IEEE #{ret[-1]}"
+            end
+            m << ret
+          end
+      end
+
+      def sponsor_name(sponsor)
+        sponsor.map { |x| "<strong>#{x}</strong>" }.join("<br/>of the<br/>")
+      end
+
+      def sponsor_extract(org)
+        org.nil? and return []
+        [org.at(ns("./name")).children.to_xml] +
+          sponsor_extract(org.at(ns("./subdivision")))
       end
     end
   end

@@ -63,6 +63,14 @@ module IsoDoc
         wg(xml)
         bg(xml)
         program(xml)
+        attributions(xml)
+      end
+
+      def attributions(xml)
+        a = xml.at(ns("//bibdata/ext/developed-attribution")) and
+          set(:developed_attribution, a.children.to_xml)
+        a = xml.at(ns("//bibdata/ext/sponsored-attribution")) and
+          set(:sponsored_attribution, a.children.to_xml)
       end
 
       def program(xml)

@@ -12,6 +12,8 @@ example: Example
 table_of_contents: Contents
 viewed: accessed
 adapted_from: "adapted from "
+developed_attrib: Developed by the
+sponsored_attrib: Sponsored by the
 references: References
 doctype_abbrev:
   standard: Std.
