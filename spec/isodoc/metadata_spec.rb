@@ -171,6 +171,12 @@ RSpec.describe Metanorma::IEEE do
                 <name>Standards Committee</name>
                 </subdivision>
                 </subdivision>
+                <subdivision>
+                <name>Power &amp; Energy Society</name>
+                <subdivision>
+                <name>Power Committee</name>
+                </subdivision>
+                </subdivision>
               </organization>
             </contributor>
             <contributor>
@@ -343,7 +349,8 @@ RSpec.describe Metanorma::IEEE do
     presxml = <<~OUTPUT
           <ext><doctype>recommended-practice</doctype><subdoctype>amendment</subdoctype><trial-use>true</trial-use><editorialgroup><society>Society</society><balloting-group type="entity">BG</balloting-group><working-group>WG</working-group><committee>Tech Committee</committee></editorialgroup><structuredidentifier><docnumber>1000</docnumber><agency>IEEE</agency><class>recommended-practice</class><edition>2</edition><version>0.3.4</version><amendment>A1</amendment><corrigendum>C1</corrigendum><year>2000</year></structuredidentifier><program>HIJ</program>
         <developed-attribution>Developed by the<br/><strong>Tech Committee</strong><br/>of the<br/>IEEE <strong>Society</strong></developed-attribution>
-      <sponsored-attribution>Sponsored by the<br/><strong>Standards Committee</strong><br/>of the<br/><strong>IEEE Communications Society</strong><br/>and the<br/><strong>Standards Committee</strong><br/>of the<br/><strong>Communications Society</strong><br/>of the<br/><strong>Inetrnational Standardization Organization</strong></sponsored-attribution></ext>
+      <sponsored-attribution>Sponsored by the<br/><strong>Standards Committee</strong><br/>of the<br/><strong>IEEE Communications Society</strong><br/>and the<br/><strong>Power Committee</strong><br/>of the<br/><strong>IEEE Power &amp; Energy Society</strong><br/>and the<br/><strong>Standards Committee</strong><br/>of the<br/><strong>Communications Society</strong><br/>of the<br/><strong>Inetrnational Standardization Organization</strong></sponsored-attribution>
+      </ext>
     OUTPUT
     xml = IsoDoc::IEEE::PresentationXMLConvert
       .new(presxml_options)

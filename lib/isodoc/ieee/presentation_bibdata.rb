@@ -134,15 +134,16 @@ module IsoDoc
       end
 
       def sponsors_extract(bibdata)
-        bibdata.xpath(ns("./contributor[role/@type = 'enabler']/organization"))
-          .each_with_object([]) do |o, m|
-            ret = sponsor_extract(o).reverse
-            if ret.size > 1 && ["IEEE", "Institute of Electrical and Electronic Engineers"].include?(ret[-1])
-              ret.pop
-              ret[-1] = "IEEE #{ret[-1]}"
-            end
-            m << ret
+        o = bibdata.xpath(ns("./contributor[role/@type = 'enabler']/organization"))
+        sponsor_extract(o).map do |x|
+          if x.size > 1 && ["IEEE",
+                            "Institute of Electrical and Electronic Engineers"]
+              .include?(x[-1])
+            x.pop
+            x[-1] = "IEEE #{x[-1]}"
           end
+          x
+        end
       end
 
       def sponsor_name(sponsor)
@@ -150,9 +151,13 @@ module IsoDoc
       end
 
       def sponsor_extract(org)
-        org.nil? and return []
-        [org.at(ns("./name")).children.to_xml] +
-          sponsor_extract(org.at(ns("./subdivision")))
+        org.empty? and return [[]]
+        org.each_with_object([]) do |o, m|
+          head = o.at(ns("./name")).children.to_xml
+          sponsor_extract(o.xpath(ns("./subdivision"))).each do |tail|
+            m << tail.dup.push(head)
+          end
+        end
       end
     end
   end
