@@ -34,11 +34,6 @@ module IsoDoc
         end
       end
 
-      def bibrenderer
-        ::Relaton::Render::IEEE::General.new(language: @lang,
-                                             i18nhash: @i18n.get)
-      end
-
       def citestyle
         "author-date"
       end
@@ -62,7 +57,7 @@ module IsoDoc
           .new(language: @lang, i18nhash: @i18n.get,
                template: { (bibitem["type"] || "misc").to_sym =>
                            "{{ creatornames }}" })
-          .parse1(RelatonBib::XMLParser.from_xml(bibitem.to_xml))
+          .render1(RelatonBib::XMLParser.from_xml(bibitem.to_xml))
       end
 
       def bibliography_bibitem_number1(bibitem, idx)

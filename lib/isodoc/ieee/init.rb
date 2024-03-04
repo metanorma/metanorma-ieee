@@ -21,6 +21,11 @@ module IsoDoc
                                        i18nyaml: i18nyaml || @i18nyaml)
       end
 
+      def bibrenderer
+        ::Relaton::Render::IEEE::General.new(language: @lang,
+                                             i18nhash: @i18n.get)
+      end
+
       def fileloc(loc)
         File.join(File.dirname(__FILE__), loc)
       end
