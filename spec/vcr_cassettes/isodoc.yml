@@ -1,0 +1,223 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: https://www.iso.org/standard/4767.html
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Expires:
+      - Wed, 09 May 1979 05:30:00 GMT
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, proxy-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - BIGipServerpool_prod_iso_www-jahia=730354058.36895.0000; path=/; Httponly;
+        Secure
+      - JSESSIONID=52F038E578425A81EE8C85AEBE0C7F9E; Path=/; Secure; HttpOnly
+      Vary:
+      - accept-encoding
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - text/html;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Mon, 04 Mar 2024 01:55:00 HST
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Mon, 04 Mar 2024 11:55:00 GMT
+- request:
+    method: head
+    uri: https://www.iso.org/standard/4767.html
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Expires:
+      - Wed, 09 May 1979 05:30:00 GMT
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, proxy-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - BIGipServerpool_prod_iso_www-jahia=747131274.36895.0000; path=/; Httponly;
+        Secure
+      - JSESSIONID=A4BEBEB37C6CC06DD0076B5F78896B78; Path=/; Secure; HttpOnly
+      Vary:
+      - accept-encoding
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - text/html;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Mon, 04 Mar 2024 11:55:01 GMT
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Mon, 04 Mar 2024 11:55:02 GMT
+- request:
+    method: head
+    uri: https://www.iso.org/standard/4767.html
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Expires:
+      - Wed, 09 May 1979 05:30:00 GMT
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, proxy-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - BIGipServerpool_prod_iso_www-jahia=747131274.36895.0000; path=/; Httponly;
+        Secure
+      - JSESSIONID=1F6C2DB133EEEEB9AF8E4F653427D5BB; Path=/; Secure; HttpOnly
+      Vary:
+      - accept-encoding
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - text/html;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Mon, 04 Mar 2024 12:55:02 MET
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Mon, 04 Mar 2024 11:55:03 GMT
+- request:
+    method: head
+    uri: https://www.iso.org/standard/4767.html
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Expires:
+      - Wed, 09 May 1979 05:30:00 GMT
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, proxy-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - BIGipServerpool_prod_iso_www-jahia=747131274.36895.0000; path=/; Httponly;
+        Secure
+      - JSESSIONID=CCB875473B3CA83351232B535B6414DA; Path=/; Secure; HttpOnly
+      Vary:
+      - accept-encoding
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - text/html;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Mon, 04 Mar 2024 11:55:03 GMT
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Mon, 04 Mar 2024 11:55:04 GMT
+- request:
+    method: head
+    uri: https://www.iso.org/standard/4767.html
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Expires:
+      - Wed, 09 May 1979 05:30:00 GMT
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, proxy-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - BIGipServerpool_prod_iso_www-jahia=730354058.36895.0000; path=/; Httponly;
+        Secure
+      - JSESSIONID=AAB839698C39EFA8A378277F09880F51; Path=/; Secure; HttpOnly
+      Vary:
+      - accept-encoding
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - text/html;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Mon, 04 Mar 2024 01:55:04 HST
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Mon, 04 Mar 2024 11:55:05 GMT
+recorded_with: VCR 6.1.0
