@@ -575,6 +575,7 @@ RSpec.describe IsoDoc::IEEE do
           <bibitem id="ABC">
             <formattedref format="application/x-isodoc+xml"/>
             <docidentifier type="metanorma-ordinal">[B1]</docidentifier><docidentifier>DEF</docidentifier>
+            <docidentifier scope="biblio-tag">DEF</docidentifier>
             <biblio-tag>[B1]<tab/>DEF, </biblio-tag>
           </bibitem>
         </references>
@@ -622,12 +623,13 @@ RSpec.describe IsoDoc::IEEE do
            </p>
            <p class='IEEEStdsBibliographicEntry'>
              <a name='ABC' id='ABC'/>
-             DEF, 
+             DEF,
            </p>
          </div>
        </div>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+      .new(presxml_options)
   .convert("test", input, true))))
       .to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})

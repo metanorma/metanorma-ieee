@@ -131,7 +131,9 @@ module Metanorma
         xrefs = IsoDoc::IEEE::Xref
           .new(@lang, @script, klass, IsoDoc::IEEE::I18n.new(@lang, @script),
                { hierarchicalassets: @hierarchical_assets })
-        xrefs.parse(Nokogiri::XML(xmldoc.to_xml))
+        # don't process refs without relaton-render init
+        xrefs.parse_inclusions(clauses: true, assets: true)
+          .parse(Nokogiri::XML(xmldoc.to_xml))
         xrefs
       end
 
@@ -160,8 +162,8 @@ module Metanorma
       # Style manual 17.2
       def figure_name_style_validate(docxml)
         docxml.xpath("//figure/name").each do |td|
-          style_regex(/^(?<num>\p{Lower}\s*)/, "figure heading should be capitalised",
-                      td, td.text)
+          style_regex(/^(?<num>\p{Lower}\s*)/,
+                      "figure heading should be capitalised", td, td.text)
         end
       end
 

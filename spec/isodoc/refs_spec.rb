@@ -279,6 +279,7 @@ RSpec.describe IsoDoc do
                  <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4766.detail.rss</uri>
                  <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
                  <docidentifier type="URN">URN urn:iso:std:iso:639:ed-1</docidentifier>
+                 <docidentifier scope="biblio-tag">ISO 639</docidentifier>
                  <biblio-tag>ISO 639, </biblio-tag>
                </bibitem>
                <bibitem id="ref7">
@@ -294,12 +295,14 @@ RSpec.describe IsoDoc do
                  <docidentifier type="ISO" primary="true">ISO 639-2</docidentifier>
                  <docidentifier type="iso-reference">iso-reference ISO 639-2(E)</docidentifier>
                  <docidentifier type="URN">URN urn:iso:std:iso:639:-2:stage-95.99:ed-1</docidentifier>
+                 <docidentifier scope="biblio-tag">ISO 639-2</docidentifier>
                  <biblio-tag>ISO 639-2, </biblio-tag>
                </bibitem>
                <bibitem id="ref3">
                  <formattedref format="application/x-isodoc+xml">REF4</formattedref>
                  <docidentifier>REF4</docidentifier>
                  <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
+                 <docidentifier scope="biblio-tag">REF4</docidentifier>
                  <docnumber>4</docnumber>
                  <biblio-tag>[B1], REF4, </biblio-tag>
                </bibitem>
@@ -324,6 +327,7 @@ RSpec.describe IsoDoc do
                  <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
                  <docidentifier type="ISO">ISO 639:1967</docidentifier>
                  <docidentifier type="metanorma-ordinal">[B3]</docidentifier>
+                 <docidentifier scope="biblio-tag">ISO 639:1967</docidentifier>
                  <biblio-tag>[B3], ISO 639:1967, </biblio-tag>
                </bibitem>
              </references>
@@ -335,6 +339,7 @@ RSpec.describe IsoDoc do
                  <formattedref format="application/x-isodoc+xml">REF4</formattedref>
                  <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
                  <docidentifier>REF4</docidentifier>
+                 <docidentifier scope="biblio-tag">REF4</docidentifier>
                  <docnumber>4</docnumber>
                  <biblio-tag>[B1]<tab/>REF4, </biblio-tag>
                </bibitem>
@@ -353,6 +358,7 @@ RSpec.describe IsoDoc do
                  <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
                  <docidentifier type="metanorma-ordinal">[B3]</docidentifier>
                  <docidentifier type="ISO">ISO 639:1967</docidentifier>
+                 <docidentifier scope="biblio-tag">ISO 639:1967</docidentifier>
                  <biblio-tag>[B3]<tab/>ISO 639:1967, </biblio-tag>
                </bibitem>
              </references>
@@ -409,6 +415,7 @@ RSpec.describe IsoDoc do
               <title>Title 1</title>
               <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
               <docidentifier>ABC</docidentifier>
+              <docidentifier scope="biblio-tag">ABC</docidentifier>
               <biblio-tag>[B1]<tab/>ABC, </biblio-tag>
             </bibitem>
             <bibitem id="IETF_6282" type="standard">
@@ -416,6 +423,7 @@ RSpec.describe IsoDoc do
               <title>Title 1</title>
               <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
               <docidentifier>DEF</docidentifier>
+              <docidentifier scope="biblio-tag">DEF</docidentifier>
               <biblio-tag>[B2]<tab/>DEF, </biblio-tag>
             </bibitem>
             <bibitem id="IETF_6283" type="standard">
@@ -423,6 +431,7 @@ RSpec.describe IsoDoc do
               <title>Title 2</title>
               <docidentifier type="metanorma-ordinal">[B3]</docidentifier>
               <docidentifier>GHI</docidentifier>
+              <docidentifier scope="biblio-tag">GHI</docidentifier>
               <biblio-tag>[B3]<tab/>GHI, </biblio-tag>
             </bibitem>
           </references>
