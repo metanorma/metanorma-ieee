@@ -51,7 +51,7 @@ RSpec.describe IsoDoc do
             <title type="main" format="text/plain" language="fr" script="Latn">Codes pour la représentation des noms de langue - Partie 2: Code alpha-3</title>
             <uri type="src">https://www.iso.org/standard/4767.html</uri>
             <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4767.detail.rss</uri>
-            <docidentifier type="ISO" primary="true">ISO 639-2</docidentifier>
+            <docidentifier type="ISO" primary="true">ISO 639-2:1998</docidentifier>
             <docidentifier type="iso-reference">ISO 639-2(E)</docidentifier>
             <docidentifier type="URN">urn:iso:std:iso:639:-2:stage-95.99:ed-1</docidentifier>
             <docnumber>639</docnumber>
@@ -167,7 +167,7 @@ RSpec.describe IsoDoc do
                    <references id='_' normative='false' obligation='informative'>
                      <title>Bibliography</title>
                      <bibitem id='ref6'>
-                       <formattedref format='application/x-isodoc+xml'>REF4</formattedref>
+                       <formattedref format='application/x-isodoc+xml'>Title</formattedref>
                        <docidentifier>REF4</docidentifier>
                        <docidentifier type='metanorma-ordinal'>[B1]</docidentifier>
                        <docnumber>4</docnumber>
@@ -252,6 +252,9 @@ RSpec.describe IsoDoc do
               </iso-standard>
       INPUT
 
+      # <xref type="inline" target="ref2">https://doi.org/10.1017/9781108877831</xref>
+      # <!-- known issue: with no other identifier supplied (as a normative reference), DOI is still last resort, citeas no longer overwrites that -->
+
       presxml = <<~PRESXML
         <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
                <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
@@ -262,11 +265,11 @@ RSpec.describe IsoDoc do
                <p id="_">
                  <xref type="inline" target="ref1"><span class="std_publisher">ISO </span><span class="std_docNumber">639</span>:<span class="std_year">1967</span></xref>
                  <xref type="inline" target="ref7"><span class="std_publisher">ISO </span><span class="std_docNumber">639-2</span>:<span class="std_year">1998</span></xref>
-                 <xref type="inline" target="ref2">Aluffi</xref>
+                 <xref type="inline" target="ref2">https://doi.org/10.1017/9781108877831</xref>
                  <xref type="inline" target="ref3">REF4</xref>
-                 <xref type="inline" target="ref4">ISO 639:1967 [B3]</xref>
+                 <xref type="inline" target="ref4">ISO 639:1967 [B3]</xref>
                  <xref type="inline" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2]</xref>
-                 <xref type="inline" target="ref6">REF4 [B1]</xref>
+                 <xref type="inline" target="ref6">Title REF4</xref>
                </p>
              </clause>
              <references id="_" normative="true" obligation="informative" displayorder="2">
@@ -292,11 +295,11 @@ RSpec.describe IsoDoc do
                  <title type="main" format="text/plain" language="fr" script="Latn">Codes pour la représentation des noms de langue - Partie 2: Code alpha-3</title>
                  <uri type="src">https://www.iso.org/standard/4767.html</uri>
                  <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4767.detail.rss</uri>
-                 <docidentifier type="ISO" primary="true">ISO 639-2</docidentifier>
+                 <docidentifier type="ISO" primary="true">ISO 639-2:1998</docidentifier>
                  <docidentifier type="iso-reference">iso-reference ISO 639-2(E)</docidentifier>
                  <docidentifier type="URN">URN urn:iso:std:iso:639:-2:stage-95.99:ed-1</docidentifier>
-                 <docidentifier scope="biblio-tag">ISO 639-2</docidentifier>
-                 <biblio-tag>ISO 639-2, </biblio-tag>
+                 <docidentifier scope="biblio-tag">ISO 639-2:1998</docidentifier>
+                 <biblio-tag>ISO 639-2:1998, </biblio-tag>
                </bibitem>
                <bibitem id="ref3">
                  <formattedref format="application/x-isodoc+xml">REF4</formattedref>
@@ -336,7 +339,7 @@ RSpec.describe IsoDoc do
              <references id="_" normative="false" obligation="informative" displayorder="5">
                <title depth="1">Bibliography</title>
                <bibitem id="ref6">
-                 <formattedref format="application/x-isodoc+xml">REF4</formattedref>
+                 <formattedref format="application/x-isodoc+xml">Title</formattedref>
                  <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
                  <docidentifier>REF4</docidentifier>
                  <docidentifier scope="biblio-tag">REF4</docidentifier>

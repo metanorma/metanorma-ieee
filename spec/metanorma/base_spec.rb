@@ -127,7 +127,7 @@ RSpec.describe Metanorma::IEEE do
          <title language="intro-fr" format="text/plain">Introduction Française</title>
          <title language="main-fr" format="text/plain">Titre Principal</title>
          <title language="part-fr" format="text/plain">Part du Titre</title>
-         <docidentifier type="IEEE">IEEE Std 10001-2000/Cor C1-2000</docidentifier>
+         <docidentifier type="IEEE" primary="true">IEEE Std 10001-2000/Cor C1-2000</docidentifier>
          <docidentifier type="IEEE" scope="PDF">GHI</docidentifier>
          <docidentifier type="IEEE" scope="print">JKL</docidentifier>
          <docidentifier type="ISBN" scope="PDF">ABC</docidentifier>
@@ -253,7 +253,7 @@ RSpec.describe Metanorma::IEEE do
     output = <<~OUTPUT
              <bibdata type="standard">
         <title language="en" format="text/plain">Document title</title>
-        <docidentifier type="IEEE">OVERRIDE</docidentifier>
+        <docidentifier primary="true" type="IEEE">OVERRIDE</docidentifier>
         <docnumber>1000</docnumber>
                    <contributor>
              <role type="author"/>

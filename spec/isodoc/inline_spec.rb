@@ -108,7 +108,10 @@ RSpec.describe IsoDoc::IEEE do
                <xref type="inline" target="ISO712">ISO 712, Whole of text</xref>
                <xref type="inline" target="ISO712">ISO 712, Prelude 7</xref>
                <xref type="inline" target="ISO712">A</xref>
-               <xref type="inline" target="ISO712"><span class="std_publisher">ISO</span>/<span class="std_publisher">IEC&#xa0;</span><span class="std_documentType">DIR&#xa0;</span><span class="std_docNumber">1</span></xref>
+                       <xref type="inline" target="ISO712">
+          <span class="std_publisher">ISO </span>
+          <span class="std_docNumber">712</span>
+        </xref>
               </p>
             </foreword>
           </preface>
