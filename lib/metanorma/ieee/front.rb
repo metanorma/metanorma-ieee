@@ -36,7 +36,7 @@ module Metanorma
 
       def metadata_id(node, xml)
         if id = node.attr("docidentifier")
-          xml.docidentifier id, **attr_code(type: "IEEE")
+          xml.docidentifier id, **attr_code(type: "IEEE", primary: "true")
         else ieee_id(node, xml)
         end
         id = node.attr("stdid-pdf") and
@@ -97,7 +97,7 @@ module Metanorma
 
       def ieee_id_out(xml, params)
         id = pubid_select(params).create(**params)
-        xml.docidentifier id.to_s, type: "IEEE"
+        xml.docidentifier id.to_s, type: "IEEE", primary: "true"
       end
 
       def pubid_select(_params)
