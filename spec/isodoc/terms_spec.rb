@@ -75,7 +75,7 @@ RSpec.describe IsoDoc do
     INPUT
 
     presxml = <<~PRESXML
-           <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
          <preface>
            <clause type="toc" id="_" displayorder="1">
              <title depth="1">Contents</title>
@@ -88,7 +88,7 @@ RSpec.describe IsoDoc do
              <p>For the purposes of this document, the following terms and definitions apply.</p>
              <term id="paddy1">
              <p><strong>paddy</strong>, &lt;rice&gt;, &lt;in agriculture, dated&gt;: rice retaining its husk after threshing  (<origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality><span class="std_publisher">ISO </span><span class="std_docNumber">7301</span>:<span class="std_year">2011</span>, 3.1</origin>, modified
-            –
+            &#x2014;
            The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here)</p>
                <termexample id="_" keep-with-next="true" keep-lines-together="true">
                  <name>Example  1</name>
@@ -109,7 +109,7 @@ RSpec.describe IsoDoc do
 
          ;
            <origin citeas=""><termref base="IEV" target="xyz"/></origin>, adapted
-            –
+            &#x2014;
              with adjustments</termsource>
              </term>
              <term id="paddy">
@@ -152,7 +152,7 @@ RSpec.describe IsoDoc do
              <p>For the purposes of this document, the following terms and definitions apply.</p>
              <p class="TermNum" id="paddy1"/>
              <p><b>paddy</b>, &lt;rice&gt;, &lt;in agriculture, dated&gt;: rice retaining its husk after threshing  (<span class="std_publisher">ISO </span><span class="std_docNumber">7301</span>:<span class="std_year">2011</span>, 3.1, modified
-            –
+            &#x2014;
            The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here)</p>
              <div id="_" class="example" style="page-break-after: avoid;page-break-inside: avoid;">
                <p class="example-title">Example  1:</p>
@@ -173,7 +173,7 @@ RSpec.describe IsoDoc do
 
          ;
            Termbase IEV, term ID xyz, adapted
-            –
+            &#x2014;
              with adjustments</p>
              <p class="TermNum" id="paddy"/>
              <p><b>paddy</b>: rice retaining its husk after threshing <i>Syn:</i><b>paddy rice</b>, &lt;in agriculture&gt;; <b>rough rice</b>. (<span class="std_publisher">ISO </span><span class="std_docNumber">7301</span>:<span class="std_year">2011</span>, 3.1)</p>
@@ -229,7 +229,7 @@ RSpec.describe IsoDoc do
              <p>For the purposes of this document, the following terms and definitions apply.</p>
              <p class="TermNum" id="paddy1"/>
              <p><b>paddy</b>, &lt;rice&gt;, &lt;in agriculture, dated&gt;: rice retaining its husk after threshing  (<span class="std_publisher">ISO </span><span class="std_docNumber">7301</span>:<span class="std_year">2011</span>, 3.1, modified
-            –
+            &#x2014;
            The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here)</p>
              <div id="_" class="example" style="page-break-after: avoid;page-break-inside: avoid;">
                <p class="example-title">Example  1:</p>
@@ -250,7 +250,7 @@ RSpec.describe IsoDoc do
 
          ;
            Termbase IEV, term ID xyz, adapted
-            –
+            &#x2014;
              with adjustments</p>
              <p class="TermNum" id="paddy"/>
              <p><b>paddy</b>: rice retaining its husk after threshing <i>Syn:</i><b>paddy rice</b>, &lt;in agriculture&gt;; <b>rough rice</b>. (<span class="std_publisher">ISO </span><span class="std_docNumber">7301</span>:<span class="std_year">2011</span>, 3.1)</p>
@@ -448,7 +448,7 @@ RSpec.describe IsoDoc do
                   <locality type='clause'>
                     <referenceFrom>3.1</referenceFrom>
                   </locality>
-                  <span class="std_publisher">ISO&#xa0;</span><span class="std_docNumber">7301</span>:<span class="std_year">2011</span>, 3.1</origin>, modified &#x2013; The term "cargo rice" is shown as deprecated, and
+                  <span class="std_publisher">ISO&#xa0;</span><span class="std_docNumber">7301</span>:<span class="std_year">2011</span>, 3.1</origin>, modified &#x2014; The term "cargo rice" is shown as deprecated, and
                 Note 1 to entry is not included here (<origin citeas=''>
                   <termref base='IEV' target='xyz'>t1</termref>
                 </origin>)
@@ -518,13 +518,13 @@ RSpec.describe IsoDoc do
              <term id="paddy1">
                <p><strong>paddy</strong>, &lt;rice&gt;: <p><strong>(A)</strong> rice retaining its <xref target="paddy1"><em>husk</em></xref> after threshing
          <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality><span class="std_publisher">ISO&#xa0;</span><span class="std_docNumber">7301</span>:<span class="std_year">2011</span>,  3.1</origin>, modified
-            –
+            &#x2014;
            The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here
 
        </p><p><strong>(B)</strong> rice retaining its husk after threshing, mark 2</p>  (<origin citeas=""><termref base="IEV" target="xyz">t1</termref></origin>
          ;
            <origin citeas=""><termref base="IEV" target="xyz"/></origin>, modified
-            –
+            &#x2014;
              with adjustments)</p>
                <termexample id="_" keep-with-next="true" keep-lines-together="true">
                  <name>Example  1</name>
@@ -612,7 +612,7 @@ RSpec.describe IsoDoc do
                 <origin citeas=''>
                   <termref base='IEV' target='xyz'/>
                 </origin>
-                , modified &#x2013; with adjustments)
+                , modified &#x2014; with adjustments)
               </p>
               <termexample id='_' keep-with-next='true' keep-lines-together='true'>
                 <name>Example 1</name>
