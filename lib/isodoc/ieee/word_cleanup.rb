@@ -2,9 +2,6 @@ module IsoDoc
   module IEEE
     class WordConvert < IsoDoc::WordConvert
       def toWord(result, filename, dir, header)
-        result = from_xhtml(word_cleanup(to_xhtml(result)))
-          .gsub("-DOUBLE_HYPHEN_ESCAPE-", "--")
-        @wordstylesheet = wordstylesheet_update
         ::Html2Doc::IEEE.new(
           filename: filename,
           imagedir: @localdir,
