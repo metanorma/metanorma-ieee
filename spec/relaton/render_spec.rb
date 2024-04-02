@@ -341,7 +341,7 @@ RSpec.describe Relaton::Render::IEEE do
         </bibitem>
       INPUT
       output = <<~OUTPUT
-        <formattedref>Ribose Inc., “metanorma-standoc.” 2019, accessed September 6, 2023, <link target='https://github.com/metanorma/metanorma-standoc'>https://github.com/metanorma/metanorma-standoc</link>.</formattedref>
+        <formattedref>Ribose Inc., “metanorma-standoc,” 2019, accessed September 6, 2023, <link target='https://github.com/metanorma/metanorma-standoc'>https://github.com/metanorma/metanorma-standoc</link>.</formattedref>
       OUTPUT
       expect(renderer.render(input))
         .to be_equivalent_to output
@@ -521,7 +521,7 @@ RSpec.describe Relaton::Render::IEEE do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <<formattedref>Portes, A., and R. G. Rumbaut, “Children of Immigrants. Longitudinal Sudy (CILS) 1991–2006 ICPSR20520.” Dataset, 2012, accessed May 6, 2018, <link target='https://doi.org/10.3886/ICPSR20520.v2'>https://doi.org/10.3886/ICPSR20520.v2</link>.</formattedref>
+      <<formattedref>Portes, A., and R. G. Rumbaut, “Children of Immigrants. Longitudinal Sudy (CILS) 1991–2006 ICPSR20520,” Dataset, 2012, accessed May 6, 2018, <link target='https://doi.org/10.3886/ICPSR20520.v2'>https://doi.org/10.3886/ICPSR20520.v2</link>.</formattedref>
     OUTPUT
     expect(renderer.render(input))
       .to be_equivalent_to output
@@ -555,7 +555,7 @@ RSpec.describe Relaton::Render::IEEE do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref>Liberman, M., and G. Pullum, “Language Log.” University of Pennsylvania, 2003–, accessed September 3, 2019, <link target='https://languagelog.ldc.upenn.edu/nll/'>https://languagelog.ldc.upenn.edu/nll/</link>.</formattedref>
+      <formattedref>Liberman, M., and G. Pullum, “Language Log,” University of Pennsylvania, 2003–, accessed September 3, 2019, <link target='https://languagelog.ldc.upenn.edu/nll/'>https://languagelog.ldc.upenn.edu/nll/</link>.</formattedref>
     OUTPUT
     expect(renderer.render(input))
       .to be_equivalent_to output
@@ -586,7 +586,7 @@ RSpec.describe Relaton::Render::IEEE do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref>Jenkins, S., and J. Ruostekoski, “Controlled manipulation of light by cooperativeresponse of atoms in an optical lattice.” Preprint, 2012, accessed June 24, 2020, <link target='https://eprints.soton.ac.uk/338797/'>https://eprints.soton.ac.uk/338797/</link>.</formattedref>
+      <formattedref>Jenkins, S., and J. Ruostekoski, “Controlled manipulation of light by cooperativeresponse of atoms in an optical lattice,” Preprint, 2012, accessed June 24, 2020, <link target='https://eprints.soton.ac.uk/338797/'>https://eprints.soton.ac.uk/338797/</link>.</formattedref>
     OUTPUT
     expect(renderer.render(input))
       .to be_equivalent_to output
@@ -617,7 +617,7 @@ RSpec.describe Relaton::Render::IEEE do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref>Jenkins, S., and J. Ruostekoski, “Controlled manipulation of light by cooperativeresponse of atoms in an optical lattice.” Preprint, 2012, accessed June 24, 2020, <link target='https://eprints.soton.ac.uk/338797/'>https://eprints.soton.ac.uk/338797/</link>.</formattedref>
+      <formattedref>Jenkins, S., and J. Ruostekoski, “Controlled manipulation of light by cooperativeresponse of atoms in an optical lattice,” Preprint, 2012, accessed June 24, 2020, <link target='https://eprints.soton.ac.uk/338797/'>https://eprints.soton.ac.uk/338797/</link>.</formattedref>
     OUTPUT
     expect(renderer.render(input))
       .to be_equivalent_to output

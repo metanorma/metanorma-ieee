@@ -371,7 +371,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
           </p>
           <p class='IEEEStdsTitleParaSans'>
             <span lang='EN-US' xml:lang='EN-US'>
-              <p>&#xa0;</p>
+              <p class="MsoNormal">&#xa0;</p>
             </span>
           </p>
           <p class='IEEEStdsTitleParaSansBold'>
@@ -385,12 +385,12 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
           </p>
           <p class='IEEEStdsTitleParaSans'>
             <span lang='EN-US' xml:lang='EN-US'>
-              <p>&#xa0;</p>
+              <p class="MsoNormal">&#xa0;</p>
             </span>
           </p>
           <p class='IEEEStdsTitleParaSans'>
             <span lang='EN-US' xml:lang='EN-US'>
-              <p>&#xa0;</p>
+              <p class="MsoNormal">&#xa0;</p>
             </span>
           </p>
           <p class='IEEEStdsTitleParaSans'>
@@ -398,7 +398,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
           </p>
           <p class='IEEEStdsTitleParaSans'>
             <span lang='EN-US' xml:lang='EN-US'>
-              <p>&#xa0;</p>
+              <p class="MsoNormal">&#xa0;</p>
             </span>
           </p>
           <p class='IEEEStdsTitleParaSansBold'>
@@ -406,7 +406,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
           </p>
           <p class='IEEEStdsCopyrightaddrs'>
             <span lang='EN-US' xml:lang='EN-US'>
-              <p>&#xa0;</p>
+              <p class="MsoNormal">&#xa0;</p>
             </span>
           </p>
           <div class='boilerplate-copyright'>
@@ -476,7 +476,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
             <a name="_" id="_">
               <span class='IEEEStdsKeywordsHeader'>
                 <span lang='EN-US' xml:lang='EN-US'>
-                  <p>&#xa0;</p>
+                  <p class="MsoNormal">&#xa0;</p>
                 </span>
               </span>
             </a>
@@ -491,7 +491,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
           </p>
           <p class='IEEEStdsParagraph'>
             <span lang='EN-US' xml:lang='EN-US'>
-              <p>&#xa0;</p>
+              <p class="MsoNormal">&#xa0;</p>
             </span>
           </p>
           <p class='IEEEStdsCRFootnote'>
@@ -1160,7 +1160,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       <contributor>
         <role type="publisher"/><organization>
       <name>Institute of Electrical and Electronic Engineers</name>
-      <abbreviation>IEEE</abbreviation></organization></contributor><language>en</language><script>Latn</script><abstract><p>Abstract paragraph to go here. Abstract should be written in the passive voice.</p>
+      <abbreviation>IEEE</abbreviation></organization></contributor><language>en</language><script>Latn</script><abstract><p class="MsoNormal">Abstract paragraph to go here. Abstract should be written in the passive voice.</p>
       </abstract><status><stage>approved</stage></status><copyright><from>2020</from><owner><organization>
       <name>Institute of Electrical and Electronic Engineers</name>
       <abbreviation>IEEE</abbreviation></organization></owner></copyright><ext><doctype>whitepaper</doctype><subdoctype>document</subdoctype><editorialgroup><society/><balloting-group/><working-group>NAME OF GROUP</working-group><committee/></editorialgroup><program>NAME OF PROGRAM</program></ext></bibdata>
@@ -1269,51 +1269,51 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
            </p>
            <p class="MsoBodyText">
              <span lang="EN-US" xml:lang="EN-US">
-               <p> </p>
+               <p class="MsoNormal"> </p>
              </span>
            </p>
            <p class="MsoBodyText">
              <span lang="EN-US" xml:lang="EN-US">
-               <p> </p>
+               <p class="MsoNormal"> </p>
              </span>
            </p>
            <p class="MsoBodyText">
              <span lang="EN-US" xml:lang="EN-US">
-               <p> </p>
+               <p class="MsoNormal"> </p>
              </span>
            </p>
            <p class="MsoBodyText"/>
            <p class="MsoBodyText">
              <span lang="EN-US" xml:lang="EN-US">
-               <p> </p>
+               <p class="MsoNormal"> </p>
              </span>
            </p>
            <p class="MsoBodyText">
              <span lang="EN-US" xml:lang="EN-US">
-               <p> </p>
+               <p class="MsoNormal"> </p>
              </span>
            </p>
            <p class="MsoBodyText">
              <span lang="EN-US" xml:lang="EN-US">
-               <p> </p>
+               <p class="MsoNormal"> </p>
              </span>
            </p>
            <p class="MsoBodyText">
              <span lang="EN-US" xml:lang="EN-US">
-               <p> </p>
+               <p class="MsoNormal"> </p>
              </span>
            </p>
            <p class="MsoBodyText">
              <span lang="EN-US" xml:lang="EN-US">
-               <p> </p>
+               <p class="MsoNormal"> </p>
              </span>
            </p>
            <p class="StyleHeading3Left175" style="margin-right:7.2pt">
-             <span lang="EN-US" style="font-family:&quot;Arial Black&quot;,sans-serif" xml:lang="EN-US">NAME OF PROGRAM<p/></span>
+             <span lang="EN-US" style="font-family:&quot;Arial Black&quot;,sans-serif" xml:lang="EN-US">NAME OF PROGRAM<p class="MsoNormal"/></span>
            </p>
            <p class="MsoBodyText">
              <span lang="EN-US" xml:lang="EN-US">
-               <p> </p>
+               <p class="MsoNormal"> </p>
              </span>
            </p>
            <p class="Titleline" style="margin-right:7.2pt">
@@ -1335,12 +1335,12 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
            </p>
            <p class="MsoBodyText">
              <span lang="EN-US" xml:lang="EN-US">
-               <p> </p>
+               <p class="MsoNormal"> </p>
              </span>
            </p>
            <p class="MsoBodyText">
              <span lang="EN-US" xml:lang="EN-US">
-               <p> </p>
+               <p class="MsoNormal"> </p>
              </span>
            </p>
            <p class="AuthoredbyCover" style="margin-right:7.2pt">
@@ -1349,7 +1349,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
            </p>
            <p class="AuthoredbyCover" style="margin-right:7.2pt">
              <span lang="EN-US" xml:lang="EN-US">
-               <p> </p>
+               <p class="MsoNormal"> </p>
              </span>
            </p>
            <p class="Authornames" style="margin-right:7.2pt">
@@ -1359,7 +1359,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
            </p>
            <p class="Authornames" style="margin-right:7.2pt">
              <i style="mso-bidi-font-style:                         normal">
-               <span lang="EN-US" xml:lang="EN-US">Z<p/></span>
+               <span lang="EN-US" xml:lang="EN-US">Z<p class="MsoNormal"/></span>
              </i>
            </p>
            <p class="Authornames" style="margin-right:7.2pt">
@@ -1369,7 +1369,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
            </p>
            <p class="Authornames" style="margin-right:7.2pt">
              <i style="mso-bidi-font-style:                         normal">
-               <span lang="EN-US" xml:lang="EN-US">Z1<p/></span>
+               <span lang="EN-US" xml:lang="EN-US">Z1<p class="MsoNormal"/></span>
              </i>
            </p>
            <p class="names" style="margin-right:7.2pt">
@@ -1415,7 +1415,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
        </span>-->
            <p class="MsoBodyText">
              <span lang="EN-US" xml:lang="EN-US">
-               <p> </p>
+               <p class="MsoNormal"> </p>
              </span>
            </p>
            <div class="boilerplate-copyright">
@@ -1491,17 +1491,17 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
          <div class="WordSection4">
            <p class="MsoBodyText">
              <span lang="EN-US" xml:lang="EN-US">
-               <p> </p>
+               <p class="MsoNormal"> </p>
              </span>
            </p>
            <p class="MsoBodyText">
              <span lang="EN-US" xml:lang="EN-US">
-               <p> </p>
+               <p class="MsoNormal"> </p>
              </span>
            </p>
            <p class="MsoBodyText">
              <span lang="EN-US" xml:lang="EN-US">
-               <p> </p>
+               <p class="MsoNormal"> </p>
              </span>
            </p>
            <p class="MsoBodyText"/>
@@ -1527,62 +1527,62 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
              </br>
              <p class="BackCover" style="margin-right:7.2pt">
                <span lang="EN-US" xml:lang="EN-US">
-                 <p> </p>
+                 <p class="MsoNormal"> </p>
                </span>
              </p>
              <p class="MsoBodyText">
                <span lang="EN-US" xml:lang="EN-US">
-                 <p> </p>
+                 <p class="MsoNormal"> </p>
                </span>
              </p>
              <p class="MsoBodyText">
                <span lang="EN-US" xml:lang="EN-US">
-                 <p> </p>
+                 <p class="MsoNormal"> </p>
                </span>
              </p>
              <p class="MsoBodyText">
                <span lang="EN-US" xml:lang="EN-US">
-                 <p> </p>
+                 <p class="MsoNormal"> </p>
                </span>
              </p>
              <p class="MsoBodyText">
                <span lang="EN-US" xml:lang="EN-US">
-                 <p> </p>
+                 <p class="MsoNormal"> </p>
                </span>
              </p>
              <p class="MsoBodyText">
                <span lang="EN-US" xml:lang="EN-US">
-                 <p> </p>
+                 <p class="MsoNormal"> </p>
                </span>
              </p>
              <p class="MsoBodyText">
                <span lang="EN-US" xml:lang="EN-US">
-                 <p> </p>
+                 <p class="MsoNormal"> </p>
                </span>
              </p>
              <p class="MsoBodyText">
                <span lang="EN-US" xml:lang="EN-US">
-                 <p> </p>
+                 <p class="MsoNormal"> </p>
                </span>
              </p>
              <p class="MsoBodyText">
                <span lang="EN-US" xml:lang="EN-US">
-                 <p> </p>
+                 <p class="MsoNormal"> </p>
                </span>
              </p>
              <p class="MsoBodyText">
                <span lang="EN-US" xml:lang="EN-US">
-                 <p> </p>
+                 <p class="MsoNormal"> </p>
                </span>
              </p>
              <p class="MsoBodyText">
                <span lang="EN-US" xml:lang="EN-US">
-                 <p> </p>
+                 <p class="MsoNormal"> </p>
                </span>
              </p>
              <p class="MsoBodyText">
                <span lang="EN-US" xml:lang="EN-US">
-                 <p> </p>
+                 <p class="MsoNormal"> </p>
                </span>
              </p>
              <p class="MsoBodyText" style="text-indent:126.0pt;line-height:normal">

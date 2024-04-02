@@ -1,4 +1,5 @@
 require "spec_helper"
+require "relaton_iso"
 
 RSpec.describe Metanorma::IEEE do
   before do

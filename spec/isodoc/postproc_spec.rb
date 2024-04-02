@@ -67,12 +67,6 @@ RSpec.describe IsoDoc::IEEE do
       <html>
         <head/>
         <body>
-          <div class='WordSection1'>
-            <p class='IEEEStdsParagraph'/>
-          </div>
-          <div class='WordSection2'>
-            <p class='IEEEStdsParagraph'/>
-          </div>
           <div class='main-section'>
             <hr/>
             <div id='abstract-destination'>
@@ -119,12 +113,6 @@ RSpec.describe IsoDoc::IEEE do
           <html>
         <head/>
         <body>
-          <div class='WordSection1'>
-            <p class='IEEEStdsParagraph'/>
-          </div>
-          <div class='WordSection2'>
-            <p class='IEEEStdsParagraph'/>
-          </div>
           <div class='main-section'>
             <div id='x' type='overview'>
               <p class='IEEEStdsLevel1Header'>Overview</p>
@@ -180,12 +168,6 @@ RSpec.describe IsoDoc::IEEE do
       <html>
         <head/>
         <body>
-          <div class='WordSection1'>
-            <p class='IEEEStdsParagraph'/>
-          </div>
-          <div class='WordSection2'>
-            <p class='IEEEStdsParagraph'/>
-          </div>
           <div class='main-section'>
             <hr/>
             <div id='x'>
@@ -239,12 +221,6 @@ RSpec.describe IsoDoc::IEEE do
          <head/>
          <body>
            <div class='WordSection1'>
-             <p class='IEEEStdsParagraph'/>
-           </div>
-           <div class='WordSection2'>
-             <p class='IEEEStdsParagraph'/>
-           </div>
-           <div class='WordSection3'>
              <div id='D'>
                <p class='IEEEStdsLevel1Header'>Overview </p>
                <p id='E' class='IEEEStdsParagraph'>Text</p>
