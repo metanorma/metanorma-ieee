@@ -19,7 +19,7 @@ template:
   inproceedings: "{{ creatornames }}, “{{ title }},” <em>{{host_title}}</em>, {{place}}, {{extent}}, {{date}}, {{ labels['viewed'] }}_{{date_accessed}}, {% if uri %}{{ uri }}{% else %}{% if doi %}DOI: {{ doi | join: ', ' }}{% endif %}{% endif %} ."
   inbook: "{{ creatornames }}, “{{ title }},” {{ labels['in'] }} {{ host_creatornames}} ({{ host_role}}) : <em>{{host_title}}</em>, {{place}}: {{publisher}}, {{date}}, {{extent}}, {{ labels['viewed'] }}_{{date_accessed}}, {% if uri %}{{ uri }}{% else %}{% if doi %}DOI: {{ doi | join: ', ' }}{% endif %}{% endif %} ."
   incollection: inbook
-  thesis: "{{ creatornames }} , “{{ title }}.” {{ medium | capitalize }}, {{ publisher }}, {{ date }}, {{ labels['viewed'] }}_{{date_accessed}}, {% if uri %}{{ uri }}{% else %}{% if doi %}DOI: {{ doi | join: ', ' }}{% endif %}{% endif %} ."
+  thesis: "{{ creatornames }} , “{{ title }},” {{ medium | capitalize }}, {{ publisher }}, {{ date }}, {{ labels['viewed'] }}_{{date_accessed}}, {% if uri %}{{ uri }}{% else %}{% if doi %}DOI: {{ doi | join: ', ' }}{% endif %}{% endif %} ."
   unpublished: thesis
   misc: thesis
   website: thesis
