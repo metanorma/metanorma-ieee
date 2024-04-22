@@ -745,27 +745,27 @@ RSpec.describe Metanorma::IEEE do
         [bibliography]
         == Normative References
 
-        * [[[ref1,ISO/IEC 27001]]] REF5
-        * [[[ref2,ISO 10642]]] REF5
-        * [[[ref3,IEC 61131-3]]] REF5
-        * [[[ref4,ITU-T G.984.2]]] REF5
-        * [[[ref5,ITU-R P.839]]] REF5
-        * [[[ref6,IEEE Std 81-1983]]] REF5
-        * [[[ref7,IEEE 43-2013 Redline]]] REF5
-        * [[[ref8,FIPS 140-2]]] REF5
-        * [[[ref9,NIST SP 800-171]]] REF5
-        * [[[ref10,W3C XPTR]]] REF5
-        * [[[ref11,ETSI GS NFV 002]]] REFS
-        * [[[ref21,ISO/IEC 2382]]] REF5
-        * [[[ref22,ISO 639]]] REF5
-        * [[[ref23,IEC 60050]]] REF5
-        * [[[ref24,ITU-T K.20]]] REF5
-        * [[[ref25,ITU-R P.838]]] REF5
-        * [[[ref26,IEEE Std 194-1977]]] REF5
-        * [[[ref28,FIPS 140-3]]] REF5
-        * [[[ref29,NIST SP 800-30]]] REF5
-        * [[[ref30,W3C XML]]] REF5
-        * [[[ref31,ETSI GS ZSM 012 V1.1.1]]] REFS
+        * [[[ref1,ISO/IEC 27001]]] REF01
+        * [[[ref2,ISO 10642]]] REF02
+        * [[[ref3,IEC 61131-3]]] REF03
+        * [[[ref4,ITU-T G.984.2]]] REF04
+        * [[[ref5,ITU-R P.839]]] REF05
+        * [[[ref6,IEEE Std 81-1983]]] REF06
+        * [[[ref7,IEEE 43-2013 Redline]]] REF07
+        * [[[ref8,FIPS 140-2]]] REF08
+        * [[[ref9,NIST SP 800-171]]] REF09
+        * [[[ref10,W3C XPTR]]] REF10
+        * [[[ref11,ETSI GS NFV 002]]] REF11
+        * [[[ref21,ISO/IEC 2382]]] REF12
+        * [[[ref22,ISO 639]]] REF13
+        * [[[ref23,IEC 60050]]] REF14
+        * [[[ref24,ITU-T K.20]]] REF15
+        * [[[ref25,ITU-R P.838]]] REF16
+        * [[[ref26,IEEE Std 194-1977]]] REF17
+        * [[[ref28,FIPS 140-3]]] REF18
+        * [[[ref29,NIST SP 800-30]]] REF19
+        * [[[ref30,W3C XML]]] REF20
+        * [[[ref31,ETSI GS ZSM 012 V1.1.1]]] REF21
       INPUT
       output = <<~OUTPUT
         <bibliography>
