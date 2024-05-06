@@ -157,15 +157,19 @@ RSpec.describe IsoDoc do
              <div id="_" class="example" style="page-break-after: avoid;page-break-inside: avoid;">
                <p class="example-title">Example  1:</p>
                <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
+               <div class="ul_wrap">
                <ul>
                  <li>A</li>
                </ul>
+               </div>
              </div>
              <div id="_" class="example">
                <p class="example-title">Example  2:</p>
+               <div class="ul_wrap">
                <ul>
                  <li>A</li>
                </ul>
+               </div>
              </div>
              <p>adapted from t1, adapted
 
@@ -180,15 +184,21 @@ RSpec.describe IsoDoc do
              <p class="DeprecatedTerms" style="text-align:left;">DEPRECATED: cargo rice</p>
              <div id="_" class="example">
                <p class="example-title">Example:</p>
+               <div class="ul_wrap">
                <ul>
                  <li>A</li>
                </ul>
+               </div>
              </div>
              <div id="_" class="Note" style="page-break-after: avoid;page-break-inside: avoid;">
                <p>NOTE  1—The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
              </div>
              <div id="_" class="Note">
-               <p>NOTE  2—<ul><li>A</li></ul><p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p></p>
+               <p>NOTE  2—
+              <div class="ul_wrap">
+              <ul><li>A</li></ul>
+              </div>
+              <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p></p>
              </div>
              <p class="TermNum" id=""/>
              <p><b>paddy rice</b>, &lt;in agriculture&gt;:  <i>See:</i><b>paddy</b>. </p>
@@ -234,15 +244,19 @@ RSpec.describe IsoDoc do
              <div id="_" class="example" style="page-break-after: avoid;page-break-inside: avoid;">
                <p class="example-title">Example  1:</p>
                <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
+               <div class="ul_wrap">
                <ul>
                  <li>A</li>
                </ul>
+               </div>
              </div>
              <div id="_" class="example">
                <p class="example-title">Example  2:</p>
+               <div class="ul_wrap">
                <ul>
                  <li>A</li>
                </ul>
+               </div>
              </div>
              <p>adapted from t1, adapted
 
@@ -257,9 +271,11 @@ RSpec.describe IsoDoc do
              <p class="DeprecatedTerms" style="text-align:left;">DEPRECATED: cargo rice</p>
              <div id="_" class="example">
                <p class="example-title">Example:</p>
+               <div class="ul_wrap">
                <ul>
                  <li>A</li>
                </ul>
+               </div>
              </div>
              <div id="_" class="Note" style="page-break-after: avoid;page-break-inside: avoid;">
                <p><span class="note_label">NOTE  1—</span>The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
@@ -267,9 +283,11 @@ RSpec.describe IsoDoc do
              <div id="_" class="Note">
                <p>
                  <span class="note_label">NOTE  2—</span>
+                 <div class="ul_wrap">
                  <ul>
                    <li>A</li>
                  </ul>
+                 </div>
                  <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
                </p>
              </div>

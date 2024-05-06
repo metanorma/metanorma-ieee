@@ -25,7 +25,7 @@ RSpec.describe IsoDoc::IEEE do
       <main class='main-section'>
         <br/>
         <div id='x' class='abstract'>
-          <h1 class='AbstractTitle'>Abstract</h1>
+          <h1 class='AbstractTitle'><a class="anchor" href="#x"/><a class="header" href="#x">Abstract</a></h1>
           <p>Abstract text</p>
         </div>
         <hr/>

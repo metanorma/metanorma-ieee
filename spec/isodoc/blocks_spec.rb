@@ -207,12 +207,14 @@ RSpec.describe IsoDoc do
                    <td style='text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;'>6,06</td>
                  </tr>
                </tfoot>
+               <div class="figdl">
                <dl>
                  <dt>
                    <p>Drago</p>
                  </dt>
                  <dd>A type of rice</dd>
                </dl>
+               </div>
                <div class='Note'>
                  <p>
                  <span class='note_label'>NOTE&#x2014;</span>This is a table about rice
@@ -323,7 +325,9 @@ RSpec.describe IsoDoc do
                 </td>
               </tr>
             </tfoot>
+            <div class="figdl">
             <p style="text-indent: -2.0cm; margin-left: 2.0cm; tab-stops: 2.0cm;" class="IEEEStdsParagraph">Drago<span style="mso-tab-count:1">  </span>A type of rice</p>
+            </div>
             <div>
               <p class="IEEEStdsSingleNote"><span class="note_label">NOTE—</span>This is a table about rice</p>
             </div>
@@ -419,7 +423,10 @@ RSpec.describe IsoDoc do
                          <a href="#_" class="TableFootnoteRef">a</a><aside class="footnote"><div id="fn:_"><span><span id="_" class="TableFootnoteRef">a</span>&#160; </span>
                          <p id="_">The time <span class="stem">(#(t_90)#)</span> was estimated to be 18,2 min for this example.</p>
                        </div></aside>
-                         <p  style='page-break-after:avoid;'><b>Key</b></p><dl><dt><p>A</p></dt><dd><p>B</p></dd></dl>
+                         <p  style='page-break-after:avoid;'><b>Key</b></p>
+                         <div class="figdl">
+                      <dl><dt><p>A</p></dt><dd><p>B</p></dd></dl>
+                      </div>
                        <p class="FigureTitle" style="text-align:center;">Figure 1&#8212;Split-it-right <i>sample</i> divider
                        <a class='FootnoteRef' href='#fn:1'>
                   <sup>1</sup>
@@ -823,6 +830,7 @@ RSpec.describe IsoDoc do
                   <span class='stem'>(#(r = 1 %)#)</span>
                 </p>
               </div>
+              <div class="figdl">
               <dl id="_" class='formula_dl'>
                 <dt>
                   <span class='stem'>(#(r)#)</span>
@@ -831,6 +839,7 @@ RSpec.describe IsoDoc do
                   <p id="_">is the repeatability limit.</p>
                 </dd>
               </dl>
+              </div>
               <div id="_" class='Note'>
                 <p>
                   <span class='note_label'>NOTE&#x2014;</span>

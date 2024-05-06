@@ -227,22 +227,26 @@ RSpec.describe IsoDoc::IEEE do
              </div>
              <div id='K'>
                <h2>3.2.</h2>
+               <div class="figdl">
                <dl>
                  <dt>
                    <p>Symbol</p>
                  </dt>
                  <dd>Definition</dd>
                </dl>
+               </div>
              </div>
            </div>
            <div id='L' class='Symbols'>
              <h1>4.</h1>
+             <div class="figdl">
              <dl>
                <dt>
                  <p>Symbol</p>
                </dt>
                <dd>Definition</dd>
              </dl>
+             </div>
            </div>
            <div id='M'>
              <h1>5.&#xa0; Clause 4</h1>
@@ -936,7 +940,7 @@ RSpec.describe IsoDoc::IEEE do
     OUTPUT
     html = <<~OUTPUT
       <div id="boilerplate-participants" type="participants">
-         <h1 class="IntroTitle">Participants</h1>
+         <h1 class="IntroTitle"><a class="anchor" href="#boilerplate-participants"/><a class="header" href="#boilerplate-participants">Participants</a></h1>
          <div id="boilerplate-participants-wg">
            <p id="_">At the time this draft Standard was completed, the  had the following membership:</p>
            <p style="text-align:center;"><b><span class="surname">Socrates</span><span class="forename">Adalbert</span></b>, <i><span class="au_role">Chair</span></i></p>
@@ -978,7 +982,7 @@ RSpec.describe IsoDoc::IEEE do
        </div>
     OUTPUT
     word = <<~OUTPUT
-          <body lang="EN-US" link="blue" vlink="#954F72" xml:lang="EN-US">
+      <body lang="EN-US" link="blue" vlink="#954F72" xml:lang="EN-US">
          <p class="IEEEStdsParagraph">
            <br clear="all" class="section"/>
          </p>

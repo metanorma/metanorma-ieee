@@ -54,12 +54,20 @@ RSpec.describe Metanorma::IEEE::Processor do
       .gsub(%r{^.*<main}m, "<main")
       .gsub(%r{</main>.*}m, "</main>"))))
       .to be_equivalent_to xmlpp(<<~OUTPUT)
-        <main class='main-section'>
-          <button onclick='topFunction()' id='myBtn' title='Go to top'>Top</button>
-          <div id='H'>
-            <h1 id='_'>Terms</h1>
-            <h2 class='TermNum' id='J'>1.1.</h2>
-            <p class='Terms' style='text-align:left;'>Term2</p>
+        <main class="main-section">
+          <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+          <div id="H">
+            <h1 id="_">
+              <a class="anchor" href="#H"/>
+              <a class="header" href="#H">Terms</a>
+            </h1>
+            <div id="J">
+              <h2 class="TermNum" id="_">
+                <a class="anchor" href="#J"/>
+                <a class="header" href="#J">1.1.</a>
+              </h2>
+            </div>
+            <p class="Terms" style="text-align:left;">Term2</p>
           </div>
         </main>
       OUTPUT

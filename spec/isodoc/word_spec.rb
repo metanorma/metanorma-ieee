@@ -145,7 +145,9 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         <a name='abstract-destination' id='abstract-destination'/>
         <div class='IEEEStdsWarning'>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty </div>
         <p class='IEEEStdsAbstractBody' style="font-family: 'Arial', sans-serif;">Text</p>
+        <div class="ul_wrap">
         <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;font-family: 'Arial', sans-serif;" class="IEEEStdsUnorderedListCxSpFirst">List</p>
+        </div>
         <p class='IEEEStdsAbstractBody' style="font-family: 'Arial', sans-serif;">
           <a name="_" id="_"/>
           This is an introduction
@@ -166,7 +168,9 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         <div class="IEEEStdsWarning">This introduction is not part of P1000/D0.3.4, Draft Standard for Empty
       </div>
         <p class="Abstract" style="margin-left:0cm;margin-right:0.25cm;">Text</p>
+        <div class="ul_wrap">
         <p style="mso-list:l23 level1 lfo1;margin-left:0cm;margin-right:0.25cm;" class="BulletedList">List</p>
+        </div>
         <p class="Abstract" style="margin-left:0cm;margin-right:0.25cm;"><a name="_" id="_"/>This is an introduction</p>
       </div>
     OUTPUT
@@ -390,45 +394,58 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
             </iso-standard>
     INPUT
     word = <<~OUTPUT
-          <div>
-        <a name="A" id="A"/>
-        <p class="IEEEStdsLevel1Header"/>
-        <p class="IEEEStdsParagraph">
-          <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpFirst">A</p>
-          <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpMiddle">B</p>
-          <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpMiddle">
-            <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpFirst">C</p>
-            <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpMiddle">D</p>
-            <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpMiddle">
-              <p style="mso-list:l16 level6 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpFirst">E</p>
-              <p style="mso-list:l16 level6 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpMiddle">F</p>
-              <p style="mso-list:l16 level6 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpMiddle">
-                <p style="mso-list:l16 level6 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpFirst">G</p>
-                <p style="mso-list:l16 level6 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpMiddle">H</p>
-                <p style="mso-list:l16 level6 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpMiddle">
-                  <p style="mso-list:l16 level6 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpFirst">I</p>
-                  <p style="mso-list:l16 level6 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpMiddle">J</p>
-                  <p style="mso-list:l16 level6 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpMiddle">
-                    <p style="mso-list:l16 level7 lfo2-6;text-indent:-0.79cm; margin-left:4.960000000000001cm;" class="IEEEStdsNumberedListLevel6CxSpFirst">K</p>
-                    <p style="mso-list:l16 level7 lfo2-6;text-indent:-0.79cm; margin-left:4.960000000000001cm;" class="IEEEStdsNumberedListLevel6CxSpMiddle">L</p>
-                    <p style="mso-list:l16 level7 lfo2-6;text-indent:-0.79cm; margin-left:4.960000000000001cm;" class="IEEEStdsNumberedListLevel6CxSpLast">M</p>
-                  </p>
-                  <p style="mso-list:l16 level6 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpLast">N</p>
-                </p>
-                <p style="mso-list:l16 level6 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpLast">O</p>
-              </p>
-              <p style="mso-list:l16 level6 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpLast">P</p>
-            </p>
-            <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpLast">Q</p>
-          </p>
-          <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpLast">R</p>
-          <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpFirst">A</p>
-          <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpMiddle">B</p>
-          <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpMiddle">B1
-      <p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2">C</p><p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2">D</p><p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2"><p style="mso-list:l21 level2 lfo1-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsUnorderedListLevel2">E</p><p style="mso-list:l21 level2 lfo1-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsUnorderedListLevel2">F</p></p><p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2">Q</p></p>
-          <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpLast">R</p>
-        </p>
-      </div>
+      <div>
+         <a name="A" id="A"/>
+         <p class="IEEEStdsLevel1Header"/>
+         <p class="IEEEStdsParagraph">
+           <div class="ol_wrap">
+             <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpFirst">A</p>
+             <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpMiddle">B</p>
+             <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpMiddle">
+               <div class="ol_wrap">
+                 <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpFirst">C</p>
+                 <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpMiddle">D</p>
+                 <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpMiddle">
+                   <div class="ol_wrap">
+                     <p style="mso-list:l16 level6 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpFirst">E</p>
+                     <p style="mso-list:l16 level6 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpMiddle">F</p>
+                     <p style="mso-list:l16 level6 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpMiddle">
+                       <div class="ol_wrap">
+                         <p style="mso-list:l16 level6 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpFirst">G</p>
+                         <p style="mso-list:l16 level6 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpMiddle">H</p>
+                         <p style="mso-list:l16 level6 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpMiddle">
+                           <div class="ol_wrap">
+                             <p style="mso-list:l16 level6 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpFirst">I</p>
+                             <p style="mso-list:l16 level6 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpMiddle">J</p>
+                             <p style="mso-list:l16 level6 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpMiddle">
+                               <div class="ol_wrap">
+                                 <p style="mso-list:l16 level7 lfo2-6;text-indent:-0.79cm; margin-left:4.960000000000001cm;" class="IEEEStdsNumberedListLevel6CxSpFirst">K</p>
+                                 <p style="mso-list:l16 level7 lfo2-6;text-indent:-0.79cm; margin-left:4.960000000000001cm;" class="IEEEStdsNumberedListLevel6CxSpMiddle">L</p>
+                                 <p style="mso-list:l16 level7 lfo2-6;text-indent:-0.79cm; margin-left:4.960000000000001cm;" class="IEEEStdsNumberedListLevel6CxSpLast">M</p>
+                               </div>
+                             </p>
+                             <p style="mso-list:l16 level6 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpLast">N</p>
+                           </div>
+                         </p>
+                         <p style="mso-list:l16 level6 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpLast">O</p>
+                       </div>
+                     </p>
+                     <p style="mso-list:l16 level6 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpLast">P</p>
+                   </div>
+                 </p>
+                 <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpLast">Q</p>
+               </div>
+             </p>
+             <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpLast">R</p>
+           </div>
+           <div class="ul_wrap">
+             <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpFirst">A</p>
+             <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpMiddle">B</p>
+             <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpMiddle">B1<div class="ListContLevel1"><div class="ul_wrap"><p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2">C</p><p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2">D</p><p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2"><div class="ul_wrap"><p style="mso-list:l21 level2 lfo1-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsUnorderedListLevel2">E</p><p style="mso-list:l21 level2 lfo1-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsUnorderedListLevel2">F</p></div></p><p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2">Q</p></div></div></p>
+             <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpLast">R</p>
+           </div>
+         </p>
+       </div>
     OUTPUT
     IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
     expect(File.exist?("test.doc")).to be true
@@ -438,45 +455,58 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       .to be_equivalent_to xmlpp(word)
 
     word = <<~OUTPUT
-      <div>
-        <a name="A" id="A"/>
-        <p class="IEEESectionHeader"/>
-        <p class="MsoBodyText">
-          <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpFirst">A</p>
-          <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpMiddle">B</p>
-          <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpMiddle">
-            <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpFirst">C</p>
-            <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpMiddle">D</p>
-            <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpMiddle">
-              <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpFirst">E</p>
-              <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpMiddle">F</p>
-              <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpMiddle">
-                <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpFirst">G</p>
-                <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpMiddle">H</p>
-                <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpMiddle">
-                  <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpFirst">I</p>
-                  <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpMiddle">J</p>
-                  <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpMiddle">
-                    <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpFirst">K</p>
-                    <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpMiddle">L</p>
-                    <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpLast">M</p>
-                  </p>
-                  <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpLast">N</p>
-                </p>
-                <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpLast">O</p>
-              </p>
-              <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpLast">P</p>
-            </p>
-            <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpLast">Q</p>
-          </p>
-          <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpLast">R</p>
-          <p style="mso-list:l23 level1 lfo1;" class="BulletedList">A</p>
-          <p style="mso-list:l23 level1 lfo1;" class="BulletedList">B</p>
-          <p style="mso-list:l23 level1 lfo1;" class="BulletedList">B1
-      <p style="mso-list:l23 level2 lfo1;" class="BulletedList">C</p><p style="mso-list:l23 level2 lfo1;" class="BulletedList">D</p><p style="mso-list:l23 level2 lfo1;" class="BulletedList"><p style="mso-list:l23 level3 lfo1;" class="BulletedList">E</p><p style="mso-list:l23 level3 lfo1;" class="BulletedList">F</p></p><p style="mso-list:l23 level2 lfo1;" class="BulletedList">Q</p></p>
-          <p style="mso-list:l23 level1 lfo1;" class="BulletedList">R</p>
-        </p>
-      </div>
+       <div>
+         <a name="A" id="A"/>
+         <p class="IEEESectionHeader"/>
+         <p class="MsoBodyText">
+           <div class="ol_wrap">
+             <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpFirst">A</p>
+             <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpMiddle">B</p>
+             <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpMiddle">
+               <div class="ol_wrap">
+                 <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpFirst">C</p>
+                 <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpMiddle">D</p>
+                 <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpMiddle">
+                   <div class="ol_wrap">
+                     <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpFirst">E</p>
+                     <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpMiddle">F</p>
+                     <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpMiddle">
+                       <div class="ol_wrap">
+                         <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpFirst">G</p>
+                         <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpMiddle">H</p>
+                         <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpMiddle">
+                           <div class="ol_wrap">
+                             <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpFirst">I</p>
+                             <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpMiddle">J</p>
+                             <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpMiddle">
+                               <div class="ol_wrap">
+                                 <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpFirst">K</p>
+                                 <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpMiddle">L</p>
+                                 <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpLast">M</p>
+                               </div>
+                             </p>
+                             <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpLast">N</p>
+                           </div>
+                         </p>
+                         <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpLast">O</p>
+                       </div>
+                     </p>
+                     <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpLast">P</p>
+                   </div>
+                 </p>
+                 <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpLast">Q</p>
+               </div>
+             </p>
+             <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpLast">R</p>
+           </div>
+           <div class="ul_wrap">
+             <p style="mso-list:l23 level1 lfo1;" class="BulletedList">A</p>
+             <p style="mso-list:l23 level1 lfo1;" class="BulletedList">B</p>
+             <p style="mso-list:l23 level1 lfo1;" class="BulletedList">B1<div class="ListContLevel1"><div class="ul_wrap"><p style="mso-list:l23 level2 lfo1;" class="BulletedList">C</p><p style="mso-list:l23 level2 lfo1;" class="BulletedList">D</p><p style="mso-list:l23 level2 lfo1;" class="BulletedList"><div class="ul_wrap"><p style="mso-list:l23 level3 lfo1;" class="BulletedList">E</p><p style="mso-list:l23 level3 lfo1;" class="BulletedList">F</p></div></p><p style="mso-list:l23 level2 lfo1;" class="BulletedList">Q</p></div></div></p>
+             <p style="mso-list:l23 level1 lfo1;" class="BulletedList">R</p>
+           </div>
+         </p>
+       </div>
     OUTPUT
     IsoDoc::IEEE::WordConvert.new({}).convert("test", input
     .sub("<doctype>standard</doctype>", "<doctype>whitepaper</doctype>"), false)
