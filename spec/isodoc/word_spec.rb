@@ -143,7 +143,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     output = <<~OUTPUT
       <div>
         <a name='abstract-destination' id='abstract-destination'/>
-        <div class='IEEEStdsWarning'>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty </div>
+        <div class='IEEEStdsWarning'><span class="IEEEStdsAbstractHeader"><span lang="EN-US" xml:lang="EN-US">Abstract:</span></span> This introduction is not part of P1000/D0.3.4, Draft Standard for Empty </div>
         <p class='IEEEStdsAbstractBody' style="font-family: 'Arial', sans-serif;">Text</p>
         <div class="ul_wrap">
         <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;font-family: 'Arial', sans-serif;" class="IEEEStdsUnorderedListCxSpFirst">List</p>

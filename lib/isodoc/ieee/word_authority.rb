@@ -138,8 +138,8 @@ module IsoDoc
       end
 
       def feedback_style(docxml)
-        docxml.at("//div[@class = 'boilerplate-feedback']")&.xpath("./div")
-          &.each_with_index do |div, i|
+        f = docxml.at("//div[@class = 'boilerplate-feedback']") or return
+        f.xpath("./div").each_with_index do |div, i|
           i.zero? or div.elements.first.previous = "<p>&#xa0;</p>"
           i == 4 and
             div.xpath(".//p[br]").each do |p|
@@ -182,6 +182,7 @@ module IsoDoc
         if f = docxml.at("//div[@class = 'abstract']")
           f.previous_element.remove
           abstract_cleanup1(f, dest)
+          abstract_header(dest)
           f.remove
         elsif f = docxml.at("//div[@type = 'scope']")
           abstract_cleanup1(f, dest)
