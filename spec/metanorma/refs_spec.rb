@@ -835,7 +835,7 @@ RSpec.describe Metanorma::IEEE do
              <bibitem id="ref2" type="standard">
                <docidentifier type="ISO" primary="true">ISO 10642</docidentifier>
                <docidentifier type="iso-reference">ISO 10642(E)</docidentifier>
-               <docidentifier type="URN">urn:iso:std:iso:10642:stage-90.20</docidentifier>
+               <docidentifier type="URN">urn:iso:std:iso:10642:stage-90.60</docidentifier>
                <note type="Availability">
                  <p id="_">ISO publications are available from the ISO Central Secretariat
          (http://www.iso.org/). ISO publications are also available in the United

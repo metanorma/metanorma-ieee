@@ -579,7 +579,7 @@ RSpec.describe Metanorma::IEEE do
                      </preferred>
                    </term>
                  </terms>
-                 <clause id='_' obligation='normative'>
+                 <clause id='_' obligation='normative' type="terms">
                    <title>Definitions, acronyms and abbreviations</title>
                    <clause id='_' inline-header='false' obligation='normative'>
                      <title>Introduction</title>
@@ -593,7 +593,7 @@ RSpec.describe Metanorma::IEEE do
                        <title>Intro 3</title>
                      </clause>
                    </terms>
-                   <clause id='_' obligation='normative'>
+                   <clause id='_' obligation='normative' type="terms">
                      <title>Intro 4</title>
                      <terms id='_' obligation='normative'>
                        <title>Intro 5</title>
@@ -831,7 +831,7 @@ RSpec.describe Metanorma::IEEE do
                      </preferred>
                    </term>
                  </terms>
-                 <clause id='_' obligation='normative'>
+                 <clause id='_' obligation='normative' type="terms">
                    <title>Definitions, acronyms and abbreviations</title>
                    <clause id='_' inline-header='false' obligation='normative'>
                      <title>Introduction</title>
@@ -845,7 +845,7 @@ RSpec.describe Metanorma::IEEE do
                        <title>Intro 3</title>
                      </clause>
                    </terms>
-                   <clause id='_' obligation='normative'>
+                   <clause id='_' obligation='normative' type="terms">
                      <title>Intro 4</title>
                      <terms id='_' obligation='normative'>
                        <title>Intro 5</title>
