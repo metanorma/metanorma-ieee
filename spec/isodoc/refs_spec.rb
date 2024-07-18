@@ -448,4 +448,76 @@ RSpec.describe IsoDoc do
     expect(xmlpp(strip_guid(out.to_xml)))
       .to be_equivalent_to xmlpp(presxml)
   end
+
+  it "renders reference without identifier" do
+    input = <<~INPUT
+      <iso-standard xmlns="http://riboseinc.com/isoxml">
+      <sections/>
+          <bibliography>
+           <references id="_" normative="true" obligation="informative">
+             <title>Normative references</title>
+             <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
+             <bibitem id="ref1">
+               <formattedref format="application/x-isodoc+xml">Reference 1</formattedref>
+             </bibitem>
+             <bibitem id="ref2">
+               <formattedref format="application/x-isodoc+xml">Reference 2</formattedref>
+               <docidentifier>A</docidentifier>
+             </bibitem>
+           </references>
+           <references id="_" normative="false" obligation="informative">
+             <title>Bibliography</title>
+             <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
+             <bibitem id="ref3">
+               <formattedref format="application/x-isodoc+xml">Reference 2</formattedref>
+               <docidentifier type="metanorma">[B1]</docidentifier>
+             </bibitem>
+           </references>
+         </bibliography>
+      </ieee-standard>
+    INPUT
+    presxml = <<~PRESXML
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+         <preface>
+           <clause type="toc" id="_" displayorder="1">
+             <title depth="1">Contents</title>
+           </clause>
+         </preface>
+         <sections>
+           <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
+           <references id="_" normative="true" obligation="informative" displayorder="3">
+             <title depth="1">Normative references</title>
+             <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
+             <bibitem id="ref1">
+               <formattedref format="application/x-isodoc+xml">Reference 1</formattedref>
+               <biblio-tag/>
+             </bibitem>
+             <bibitem id="ref2">
+               <formattedref format="application/x-isodoc+xml">Reference 2</formattedref>
+               <docidentifier>A</docidentifier>
+               <docidentifier scope="biblio-tag">A</docidentifier>
+               <biblio-tag>A, </biblio-tag>
+             </bibitem>
+           </references>
+         </sections>
+         <bibliography>
+           <references id="_" normative="false" obligation="informative" displayorder="4">
+             <title depth="1">Bibliography</title>
+             <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
+             <bibitem id="ref3">
+               <formattedref format="application/x-isodoc+xml">Reference 2</formattedref>
+               <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
+               <biblio-tag>[B1]<tab/></biblio-tag>
+             </bibitem>
+           </references>
+         </bibliography>
+       </iso-standard>
+    PRESXML
+    out = Nokogiri::XML(
+      IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true),
+    )
+    expect(xmlpp(strip_guid(out.to_xml)))
+      .to be_equivalent_to xmlpp(presxml)
+  end
 end

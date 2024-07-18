@@ -23,9 +23,7 @@ module Metanorma
         @i = IsoDoc::IEEE::PresentationXMLConvert
           .new({ lang: @lang, script: @script, locale: @locale })
         @i.i18n_init(@lang, @script, @locale)
-        bib.sort do |a, b|
-          sort_biblio_key(a) <=> sort_biblio_key(b)
-        end
+        bib.sort { |a, b| sort_biblio_key(a) <=> sort_biblio_key(b) }
       end
 
       # Alphabetic by rendering: author surname or designation, followed by title
@@ -58,7 +56,15 @@ module Metanorma
 
       def normref_cleanup(xmldoc)
         super
+        normref_no_ordinals(xmldoc)
         normref_reorder(xmldoc)
+      end
+
+      def normref_no_ordinals(xmldoc)
+        xmldoc.xpath("//references[@normative = 'true']/bibitem/" \
+                    "docidentifier[@type = 'metanorma']").each do |d|
+                      /^\[?\d+\]?$/.match?(d.text) and d.remove
+        end
       end
 
       def normref_reorder(xmldoc)
