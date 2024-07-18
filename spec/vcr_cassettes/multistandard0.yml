@@ -45,17 +45,17 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Thu, 18 Jul 2024 12:56:16 GMT
+      - Thu, 18 Jul 2024 14:28:26 GMT
       Via:
       - 1.1 varnish
       X-Served-By:
-      - cache-mel11275-MEL
+      - cache-mel11229-MEL
       X-Cache:
       - HIT
       X-Cache-Hits:
       - '1'
       X-Timer:
-      - S1721307376.176344,VS0,VE1
+      - S1721312907.618211,VS0,VE1
       Vary:
       - Authorization,Accept-Encoding,Origin
       Access-Control-Allow-Origin:
@@ -63,11 +63,11 @@ http_interactions:
       Cross-Origin-Resource-Policy:
       - cross-origin
       X-Fastly-Request-Id:
-      - 962d48ce285563215d401bbc8070e6e6898e0418
+      - 2b402c5f2c6caf703e336926d268bcab2c8460cc
       Expires:
-      - Thu, 18 Jul 2024 13:01:16 GMT
+      - Thu, 18 Jul 2024 14:33:26 GMT
       Source-Age:
-      - '9'
+      - '8'
     body:
       encoding: ASCII-8BIT
       string: "---\nschema-version: v1.2.9\nid: RFC7749\ntitle:\n- content: The \"xml2rfc\"
@@ -98,5 +98,5 @@ http_interactions:
         text/plain\nkeyword:\n- content: XML\n- content: IETF\n- content: RFC\n- content:
         Internet-Draft\n- content: Vocabulary\next:\n  schema-version: v1.0.1\n  stream:
         IAB\n"
-  recorded_at: Thu, 18 Jul 2024 12:56:16 GMT
+  recorded_at: Thu, 18 Jul 2024 14:28:27 GMT
 recorded_with: VCR 6.1.0
