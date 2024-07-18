@@ -41,21 +41,21 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Github-Request-Id:
-      - C1ED:27ACCA:2CB9B7:38B0DD:668BB784
+      - 336A:16F891:62467A:7AC5F9:669910E1
       Accept-Ranges:
       - bytes
       Date:
-      - Mon, 08 Jul 2024 09:56:04 GMT
+      - Thu, 18 Jul 2024 12:56:31 GMT
       Via:
       - 1.1 varnish
       X-Served-By:
-      - cache-mel11240-MEL
+      - cache-mel11237-MEL
       X-Cache:
       - HIT
       X-Cache-Hits:
       - '1'
       X-Timer:
-      - S1720432564.395438,VS0,VE1
+      - S1721307391.221204,VS0,VE1
       Vary:
       - Authorization,Accept-Encoding,Origin
       Access-Control-Allow-Origin:
@@ -63,9 +63,9 @@ http_interactions:
       Cross-Origin-Resource-Policy:
       - cross-origin
       X-Fastly-Request-Id:
-      - 666e7c6558db8fcdc0a9a82b208136b99733de0d
+      - 968d058c65d67887c76c5bc024b64564c2c1ff20
       Expires:
-      - Mon, 08 Jul 2024 10:01:04 GMT
+      - Thu, 18 Jul 2024 13:01:31 GMT
       Source-Age:
       - '24'
     body:
@@ -98,7 +98,7 @@ http_interactions:
         text/plain\nkeyword:\n- content: XML\n- content: IETF\n- content: RFC\n- content:
         Internet-Draft\n- content: Vocabulary\next:\n  schema-version: v1.0.1\n  stream:
         IAB\n"
-  recorded_at: Mon, 08 Jul 2024 09:56:04 GMT
+  recorded_at: Thu, 18 Jul 2024 12:56:31 GMT
 - request:
     method: get
     uri: https://raw.githubusercontent.com/relaton/relaton-data-rfcs/main/data/RFC7749.yaml
@@ -140,21 +140,21 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Github-Request-Id:
-      - C1ED:27ACCA:2CB9B7:38B0DD:668BB784
+      - 336A:16F891:62467A:7AC5F9:669910E1
       Accept-Ranges:
       - bytes
       Date:
-      - Mon, 08 Jul 2024 09:56:06 GMT
+      - Thu, 18 Jul 2024 12:56:33 GMT
       Via:
       - 1.1 varnish
       X-Served-By:
-      - cache-mel11237-MEL
+      - cache-mel11282-MEL
       X-Cache:
       - HIT
       X-Cache-Hits:
       - '1'
       X-Timer:
-      - S1720432567.905739,VS0,VE1
+      - S1721307394.549014,VS0,VE1
       Vary:
       - Authorization,Accept-Encoding,Origin
       Access-Control-Allow-Origin:
@@ -162,11 +162,11 @@ http_interactions:
       Cross-Origin-Resource-Policy:
       - cross-origin
       X-Fastly-Request-Id:
-      - 1e68024e853cb192ee4e9d91f622a8182db4c7ab
+      - 94721346854984acb35ec11991c41a35e1ee06d8
       Expires:
-      - Mon, 08 Jul 2024 10:01:06 GMT
+      - Thu, 18 Jul 2024 13:01:33 GMT
       Source-Age:
-      - '27'
+      - '26'
     body:
       encoding: ASCII-8BIT
       string: "---\nschema-version: v1.2.9\nid: RFC7749\ntitle:\n- content: The \"xml2rfc\"
@@ -197,5 +197,5 @@ http_interactions:
         text/plain\nkeyword:\n- content: XML\n- content: IETF\n- content: RFC\n- content:
         Internet-Draft\n- content: Vocabulary\next:\n  schema-version: v1.0.1\n  stream:
         IAB\n"
-  recorded_at: Mon, 08 Jul 2024 09:56:07 GMT
+  recorded_at: Thu, 18 Jul 2024 12:56:33 GMT
 recorded_with: VCR 6.1.0

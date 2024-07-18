@@ -835,7 +835,7 @@ RSpec.describe Metanorma::IEEE do
              <bibitem id="ref2" type="standard">
                <docidentifier type="ISO" primary="true">ISO 10642</docidentifier>
                <docidentifier type="iso-reference">ISO 10642(E)</docidentifier>
-               <docidentifier type="URN">urn:iso:std:iso:10642:stage-90.60</docidentifier>
+               <docidentifier type="URN">urn:iso:std:iso:10642:stage-90.93</docidentifier>
                <note type="Availability">
                  <p id="_">ISO publications are available from the ISO Central Secretariat
          (http://www.iso.org/). ISO publications are also available in the United
@@ -924,5 +924,70 @@ RSpec.describe Metanorma::IEEE do
       expect(xmlpp(strip_guid(out.to_xml)))
         .to be_equivalent_to xmlpp(output)
     end
+  end
+
+  it "removes ordinals from Normative references" do
+    input = <<~INPUT
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib-cache:
+
+      == Clause
+
+      <<ref1>>
+      <<ref2>>
+      <<ref3>>
+
+      [bibliography]
+      == Normative References
+
+      * [[[ref1,1]]] Reference 1
+      * [[[ref2,A]]] Reference 2
+
+      [bibliography]
+      == Bibliography
+
+      * [[[ref3,2]]] Reference 2
+
+    INPUT
+    output = <<~OUTPUT
+        #{blank_hdr_gen}
+         <sections>
+           <clause id="_" inline-header="false" obligation="normative">
+             <title>Clause</title>
+             <p id="_">
+               <eref type="inline" bibitemid="ref1" citeas="ref1"/>
+               <eref type="inline" bibitemid="ref2" citeas="A"/>
+               <eref type="inline" bibitemid="ref3" citeas="[B1]"/>
+             </p>
+           </clause>
+         </sections>
+         <bibliography>
+           <references id="_" normative="true" obligation="informative">
+             <title>Normative references</title>
+             <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
+             <bibitem id="ref1">
+               <formattedref format="application/x-isodoc+xml">Reference 1</formattedref>
+             </bibitem>
+             <bibitem id="ref2">
+               <formattedref format="application/x-isodoc+xml">Reference 2</formattedref>
+               <docidentifier>A</docidentifier>
+             </bibitem>
+           </references>
+           <references id="_" normative="false" obligation="informative">
+             <title>Bibliography</title>
+             <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
+             <bibitem id="ref3">
+               <formattedref format="application/x-isodoc+xml">Reference 2</formattedref>
+               <docidentifier type="metanorma">[B1]</docidentifier>
+             </bibitem>
+           </references>
+         </bibliography>
+      </ieee-standard>
+    OUTPUT
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to xmlpp(output)
   end
 end
