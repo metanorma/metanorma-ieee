@@ -19,8 +19,8 @@ RSpec.describe Metanorma::IEEE do
       <sections/>
       </ieee-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "converts a blank document" do
@@ -35,8 +35,8 @@ RSpec.describe Metanorma::IEEE do
         <sections/>
       </ieee-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to Xml::C14n.format(output)
     expect(File.exist?("test.html")).to be true
   end
 
@@ -116,8 +116,8 @@ RSpec.describe Metanorma::IEEE do
     INPUT
     output.at("//xmlns:note")&.remove
     output = output.at("//xmlns:bibdata")
-    expect(xmlpp(output.to_xml))
-      .to be_equivalent_to xmlpp(<<~OUTPUT)
+    expect(Xml::C14n.format(output.to_xml))
+      .to be_equivalent_to Xml::C14n.format(<<~OUTPUT)
           <bibdata type="standard">
          <title language="en" format="text/plain">Document title</title>
          <title type="provenance" language="en" format="application/xml">Revision of ABC<br/>Incorporates BCD and EFG</title>
@@ -303,8 +303,8 @@ RSpec.describe Metanorma::IEEE do
       </bibdata>
     OUTPUT
     out = out.at("//xmlns:bibdata")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes metadata with no draft, no docstage" do
@@ -355,8 +355,8 @@ RSpec.describe Metanorma::IEEE do
       </bibdata>
     OUTPUT
     out = out.at("//xmlns:bibdata")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes metadata for industry-connection-report white paper" do
@@ -412,8 +412,8 @@ RSpec.describe Metanorma::IEEE do
        </bibdata>
     OUTPUT
     out = out.at("//xmlns:bibdata")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes sections" do
@@ -670,9 +670,9 @@ RSpec.describe Metanorma::IEEE do
                </indexsect>
              </ieee-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS)
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS)
       .sub(%r{<boilerplate>.*</boilerplate>}m, ""))))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes sections, white paper" do
@@ -922,8 +922,8 @@ RSpec.describe Metanorma::IEEE do
                </indexsect>
              </ieee-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS)
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS)
       .sub(%r{<boilerplate>.*</boilerplate>}m, ""))))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 end

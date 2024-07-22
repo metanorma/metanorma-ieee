@@ -67,8 +67,8 @@ RSpec.describe Metanorma::IEEE do
            </sections>
        </iso-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-  .convert("test", input, true)))).to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+  .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "cross-references formulae" do
@@ -114,10 +114,10 @@ RSpec.describe Metanorma::IEEE do
          </p>
        </foreword>
     OUTPUT
-    expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes figures as hierarchical assets" do
@@ -185,11 +185,11 @@ RSpec.describe Metanorma::IEEE do
         </p>
       </foreword>
     OUTPUT
-    expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
       .new({})
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
     output = <<~OUTPUT
       <foreword id='fwd' displayorder='2'>
          <p>
@@ -202,10 +202,10 @@ RSpec.describe Metanorma::IEEE do
          </p>
        </foreword>
     OUTPUT
-    expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
       .new({ hierarchicalassets: true })
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 end

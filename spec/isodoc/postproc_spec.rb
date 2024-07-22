@@ -32,14 +32,14 @@ RSpec.describe IsoDoc::IEEE do
         <div id='abstract-destination'/>
       </main>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::HtmlConvert
+    expect(Xml::C14n.format(IsoDoc::IEEE::HtmlConvert
       .new(htmlcoverpage: nil,
            htmlintropage: nil,
            bare: true,
            filename: "test")
        .html_cleanup(Nokogiri::XML(input)).to_xml)
        .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
-      .to be_equivalent_to xmlpp(doc)
+      .to be_equivalent_to Xml::C14n.format(doc)
   end
 
   it "moves abstract in Word, and style abstracts" do
@@ -81,13 +81,13 @@ RSpec.describe IsoDoc::IEEE do
         </body>
       </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::WordConvert
+    expect(Xml::C14n.format(IsoDoc::IEEE::WordConvert
       .new(wordcoverpage: nil,
            wordintropage: nil,
            filename: "test")
        .word_cleanup(Nokogiri::XML(input)).to_xml)
        .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
-      .to be_equivalent_to xmlpp(doc)
+      .to be_equivalent_to Xml::C14n.format(doc)
   end
 
   it "copies scope in Word in the absence of abstract" do
@@ -134,13 +134,13 @@ RSpec.describe IsoDoc::IEEE do
         </body>
       </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::WordConvert
+    expect(Xml::C14n.format(IsoDoc::IEEE::WordConvert
       .new(wordcoverpage: nil,
            wordintropage: nil,
            filename: "test")
    .word_cleanup(Nokogiri::XML(input)).to_xml)
    .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
-      .to be_equivalent_to xmlpp(doc)
+      .to be_equivalent_to Xml::C14n.format(doc)
   end
 
   it "moves introduction in Word" do
@@ -179,13 +179,13 @@ RSpec.describe IsoDoc::IEEE do
         </body>
       </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::WordConvert
+    expect(Xml::C14n.format(IsoDoc::IEEE::WordConvert
       .new(wordcoverpage: nil,
            wordintropage: nil,
            filename: "test")
        .word_cleanup(Nokogiri::XML(input)).to_xml)
        .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
-      .to be_equivalent_to xmlpp(doc)
+      .to be_equivalent_to Xml::C14n.format(doc)
   end
 
   it "renders headings in Word" do
@@ -236,13 +236,13 @@ RSpec.describe IsoDoc::IEEE do
          </body>
        </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::WordConvert
+    expect(Xml::C14n.format(IsoDoc::IEEE::WordConvert
        .new(wordcoverpage: nil,
             wordintropage: nil,
             filename: "test")
         .word_cleanup(Nokogiri::XML(input)).to_xml)
         .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
-      .to be_equivalent_to xmlpp(doc)
+      .to be_equivalent_to Xml::C14n.format(doc)
   end
 
   private

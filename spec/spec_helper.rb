@@ -25,6 +25,7 @@ require "equivalent-xml"
 require "htmlentities"
 require "metanorma"
 require "metanorma/ieee"
+require "xml-c14n"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -85,27 +86,6 @@ def strip_guid(xml)
     .gsub(%r[ src='([^/]+)/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\.], " src='\\1/_.")
     .gsub(%r[ reference=['"][0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}.], ' reference="_"')
     .gsub(%r[mso-bookmark:_Ref\d+], "mso-bookmark:_Ref")
-end
-
-def xmlpp(xml)
-  c = HTMLEntities.new
-  xml &&= xml.split(/(&\S+?;)/).map do |n|
-    if /^&\S+?;$/.match?(n)
-      c.encode(c.decode(n), :hexadecimal)
-    else n
-    end
-  end.join
-  xsl = <<~XSL
-    <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-      <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
-      <xsl:strip-space elements="*"/>
-      <xsl:template match="/">
-        <xsl:copy-of select="."/>
-      </xsl:template>
-    </xsl:stylesheet>
-  XSL
-  Nokogiri::XSLT(xsl).transform(Nokogiri::XML(xml, &:noblanks))
-    .to_xml(indent: 2, encoding: "UTF-8")
     .gsub(%r{<fetched>[^<]+</fetched>}, "<fetched/>")
     .gsub(%r{ schema-version="[^"]+"}, "")
 end

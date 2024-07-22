@@ -470,17 +470,17 @@ RSpec.describe IsoDoc::IEEE do
         </div>
       </body>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+    expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))))
-      .to be_equivalent_to xmlpp(presxml)
-    expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
+      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
       .convert("test", presxml, true))
       .at("//body").to_xml))
-      .to be_equivalent_to xmlpp(html)
-    expect(xmlpp(IsoDoc::IEEE::WordConvert.new({})
+      .to be_equivalent_to Xml::C14n.format(html)
+    expect(Xml::C14n.format(IsoDoc::IEEE::WordConvert.new({})
       .convert("test", presxml, true)
       .sub(/^.*<body /m, "<body ").sub(%r{</body>.*$}m, "</body>")))
-      .to be_equivalent_to xmlpp(word)
+      .to be_equivalent_to Xml::C14n.format(word)
   end
 
   it "processes middle title" do
@@ -530,17 +530,17 @@ RSpec.describe IsoDoc::IEEE do
     p = IsoDoc::IEEE::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(xmlpp(strip_guid(Nokogiri::XML(p)
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(p)
                 .at("//xmlns:sections").to_xml)))
-      .to be_equivalent_to xmlpp(presxml)
-    expect(xmlpp(strip_guid(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
+      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
       .convert("test", p, true))
       .at("//div[@class = 'main-section']").to_xml)))
-      .to be_equivalent_to xmlpp(html)
-    expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::WordConvert.new({})
+      .to be_equivalent_to Xml::C14n.format(html)
+    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::WordConvert.new({})
       .convert("test", p, true))
       .at("//div[@class = 'WordSectionMiddleTitle']").to_xml))
-      .to be_equivalent_to xmlpp(word)
+      .to be_equivalent_to Xml::C14n.format(word)
   end
 
   it "processes bibliography annex" do
@@ -632,20 +632,20 @@ RSpec.describe IsoDoc::IEEE do
          </div>
        </div>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
       .new(presxml_options)
   .convert("test", input, true))))
-      .to be_equivalent_to xmlpp(presxml)
-    expect(xmlpp(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
+      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
       .convert("test", presxml, true))
       .at("//body").to_xml))
-      .to be_equivalent_to xmlpp(html)
+      .to be_equivalent_to Xml::C14n.format(html)
     IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(word)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(word)
   end
 
   it "processes participants" do
@@ -1092,14 +1092,14 @@ RSpec.describe IsoDoc::IEEE do
     OUTPUT
     FileUtils.rm_rf "test.html"
     FileUtils.rm_rf "test.doc"
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+    expect(Xml::C14n.format(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
   .convert("test", input, true)))
-      .to be_equivalent_to xmlpp(presxml)
+      .to be_equivalent_to Xml::C14n.format(presxml)
     IsoDoc::IEEE::HtmlConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.html")).to be true
-    expect(strip_guid(xmlpp(Nokogiri::XML(File.read("test.html"))
+    expect(strip_guid(Xml::C14n.format(Nokogiri::XML(File.read("test.html"))
       .at("//div[@id = 'boilerplate-participants']").to_xml)))
-      .to be_equivalent_to xmlpp(html)
+      .to be_equivalent_to Xml::C14n.format(html)
     IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc")).at("//xmlns:body")
@@ -1108,7 +1108,7 @@ RSpec.describe IsoDoc::IEEE do
     doc.at("//xmlns:div[@class = 'WordSectionContents']")&.remove
     doc.at("//xmlns:div[@class = 'WordSectionMiddleTitle']")&.remove
     doc.at("//xmlns:div[@class = 'WordSectionMain']")&.remove
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(word)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(word)
   end
 end

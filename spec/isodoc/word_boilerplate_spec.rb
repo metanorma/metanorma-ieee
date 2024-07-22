@@ -1135,8 +1135,8 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:body")
     doc.at("//xmlns:div[@class = 'WordSectionContents']")&.remove
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(word)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(word)
   end
 
   it "processes boilerplate, whitepaper" do
@@ -1607,7 +1607,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     doc.xpath("//xmlns:p[@class = 'MsoToc1']").each(&:remove)
     doc.xpath("//v:shape | //v:shapetype | //v:rect | //v:line | //v:group",
               "v" => "urn:schemas-microsoft-com:vml").each(&:remove)
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(word)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(word)
   end
 end

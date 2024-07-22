@@ -33,8 +33,8 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[@class = 'WordSectionMiddleTitle']")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
 
     FileUtils.rm_f "test.doc"
     output = <<~OUTPUT
@@ -47,8 +47,8 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:p[@class = 'Titleofdocument']")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes middle title for amendment/corrigendum" do
@@ -92,8 +92,8 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[@class = 'WordSectionMiddleTitle']")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes introduction" do
@@ -122,8 +122,8 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//*[@class = 'IEEEStdsIntroduction']/..")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes abstract" do
@@ -158,8 +158,8 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//*[@name = 'abstract-destination']/..")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
 
     output = <<~OUTPUT
       <div class="abstract_div">
@@ -180,8 +180,8 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[@class = 'abstract_div']")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes footnotes" do
@@ -330,12 +330,12 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[@style = 'mso-element:footnote-list']")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(footnotes)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(footnotes)
     doc = Nokogiri::XML(word2xml("test.doc"))
       .xpath("//xmlns:p[.//xmlns:a[@class = 'FootnoteRef']]")
-    expect(strip_guid(xmlpp("<div>#{doc.to_xml}</div>")))
-      .to be_equivalent_to xmlpp(references)
+    expect(strip_guid(Xml::C14n.format("<div>#{doc.to_xml}</div>")))
+      .to be_equivalent_to Xml::C14n.format(references)
   end
 
   it "processes lists" do
@@ -451,8 +451,8 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(word)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(word)
 
     word = <<~OUTPUT
        <div>
@@ -513,8 +513,8 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(word)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(word)
   end
 
   it "processes notes" do
@@ -589,8 +589,8 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(word)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(word)
   end
 
   it "processes termnotes" do
@@ -658,8 +658,8 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(word)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(word)
   end
 
   it "process admonitions" do
@@ -705,8 +705,8 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "process editorial notes" do
@@ -741,8 +741,8 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "process sourcecode" do
@@ -783,8 +783,8 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "process figures" do
@@ -818,8 +818,8 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
 
     output = <<~OUTPUT
       <div>
@@ -838,8 +838,8 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "process tables" do
@@ -892,8 +892,8 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
 
     output = <<~OUTPUT
       <div>
@@ -931,8 +931,8 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "process clause" do
@@ -991,14 +991,14 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       .convert("test", input, true)
     xml = Nokogiri::XML(output)
     xml.at("//xmlns:localized-strings")&.remove
-    expect(strip_guid(xmlpp(xml.to_xml)))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(strip_guid(Xml::C14n.format(xml.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(presxml)
     IsoDoc::IEEE::WordConvert.new({}).convert("test", output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(word)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(word)
 
     presxml = <<~OUTPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
@@ -1043,15 +1043,15 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
                                  "<doctype>whitepaper</doctype>"), true)
     xml = Nokogiri::XML(output)
     xml.at("//xmlns:localized-strings")&.remove
-    expect(strip_guid(xmlpp(xml.to_xml)))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(strip_guid(Xml::C14n.format(xml.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(presxml)
     IsoDoc::IEEE::WordConvert.new({})
       .convert("test", output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(word)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(word)
   end
 
   it "process annex" do
@@ -1116,14 +1116,14 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       .convert("test", input, true)
     xml = Nokogiri::XML(output)
     xml.at("//xmlns:localized-strings")&.remove
-    expect(strip_guid(xmlpp(xml.to_xml)))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(strip_guid(Xml::C14n.format(xml.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(presxml)
     IsoDoc::IEEE::WordConvert.new({}).convert("test", output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(word)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(word)
 
     presxml = <<~OUTPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
@@ -1176,14 +1176,14 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
                                  "<doctype>whitepaper</doctype>"), true)
     xml = Nokogiri::XML(output)
     xml.at("//xmlns:localized-strings")&.remove
-    expect(strip_guid(xmlpp(xml.to_xml)))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(strip_guid(Xml::C14n.format(xml.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(presxml)
     IsoDoc::IEEE::WordConvert.new({})
       .convert("test", output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
-    expect(strip_guid(xmlpp(doc.to_xml)))
-      .to be_equivalent_to xmlpp(word)
+    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(word)
   end
 end

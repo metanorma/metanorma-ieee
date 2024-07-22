@@ -86,9 +86,9 @@ RSpec.describe IsoDoc::IEEE do
           </bibliography>
         </iso-standard>
       INPUT
-    expect(xmlpp(strip_guid(output))
+    expect(Xml::C14n.format(strip_guid(output))
       .sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))
-      .to be_equivalent_to xmlpp(strip_guid(<<~OUTPUT))
+      .to be_equivalent_to Xml::C14n.format(strip_guid(<<~OUTPUT))
         <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
           <preface>
               <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause>
@@ -202,8 +202,8 @@ RSpec.describe IsoDoc::IEEE do
          </p>
        </itu-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true))).to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true))).to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes concept markup" do
@@ -333,8 +333,8 @@ RSpec.describe IsoDoc::IEEE do
     OUTPUT
     xml = Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))
-    expect(xmlpp(xml.at("//xmlns:foreword").to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(xml.at("//xmlns:foreword").to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "duplicates MathML with AsciiMath and LaTeXMath" do
@@ -385,7 +385,7 @@ RSpec.describe IsoDoc::IEEE do
     xml = Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert.new({})
       .convert("test", input, true))
     xml.at("//xmlns:metanorma-extension").remove
-    expect(xmlpp(strip_guid(xml.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(xml.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 end

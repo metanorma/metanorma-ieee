@@ -372,8 +372,8 @@ RSpec.describe IsoDoc do
         IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
         .convert("test", input, true),
       )
-      expect(xmlpp(strip_guid(out.to_xml)))
-        .to be_equivalent_to xmlpp(presxml)
+      expect(Xml::C14n.format(strip_guid(out.to_xml)))
+        .to be_equivalent_to Xml::C14n.format(presxml)
     end
   end
 
@@ -445,8 +445,8 @@ RSpec.describe IsoDoc do
       IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true),
     )
-    expect(xmlpp(strip_guid(out.to_xml)))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "renders reference without identifier" do
@@ -517,7 +517,7 @@ RSpec.describe IsoDoc do
       IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true),
     )
-    expect(xmlpp(strip_guid(out.to_xml)))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 end

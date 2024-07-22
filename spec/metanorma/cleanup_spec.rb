@@ -649,8 +649,8 @@ RSpec.describe Metanorma::IEEE do
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.at("//xmlns:bibdata").remove
     ret = ret.at("//xmlns:boilerplate")
-    expect(xmlpp(strip_guid(ret.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(ret.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "does not insert boilerplate in front of sections if legacy document scheme nominated" do
@@ -678,8 +678,8 @@ RSpec.describe Metanorma::IEEE do
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.xpath("//xmlns:bibdata | //xmlns:metanorma-extension").each(&:remove)
-    expect(xmlpp(strip_guid(ret.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(ret.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "inserts introduction boilerplate in front of sections" do
@@ -761,8 +761,8 @@ RSpec.describe Metanorma::IEEE do
     ret.at("//xmlns:bibdata").remove
     ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:boilerplate").remove
-    expect(xmlpp(strip_guid(ret.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(ret.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "inserts boilerplate note in front of sections for amendment" do
@@ -835,8 +835,8 @@ RSpec.describe Metanorma::IEEE do
     ret.at("//xmlns:bibdata").remove
     ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:boilerplate").remove
-    expect(xmlpp(strip_guid(ret.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(ret.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "does not insert boilerplate in front of bibliography if already provided" do
@@ -874,8 +874,8 @@ RSpec.describe Metanorma::IEEE do
     ret.at("//xmlns:bibdata").remove
     ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:boilerplate").remove
-    expect(xmlpp(strip_guid(ret.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(ret.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "removes extraneous instances of overview clauses" do
@@ -924,8 +924,8 @@ RSpec.describe Metanorma::IEEE do
     ret.at("//xmlns:boilerplate").remove
     ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:clause[@id = 'boilerplate_word_usage']")&.remove
-    expect(xmlpp(strip_guid(ret.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(ret.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "inserts footnote note on first note" do
@@ -990,8 +990,8 @@ RSpec.describe Metanorma::IEEE do
     ret.at("//xmlns:boilerplate").remove
     ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:clause[@id = 'boilerplate_word_usage']")&.remove
-    expect(xmlpp(strip_guid(ret.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(ret.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes footnotes" do
@@ -1027,8 +1027,8 @@ RSpec.describe Metanorma::IEEE do
       </sections>
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
-    expect(xmlpp(strip_guid(ret.at("//xmlns:sections").to_xml)))
-      .to be_equivalent_to(xmlpp(output))
+    expect(Xml::C14n.format(strip_guid(ret.at("//xmlns:sections").to_xml)))
+      .to be_equivalent_to(Xml::C14n.format(output))
   end
 
   it "processes participants" do
@@ -1336,8 +1336,8 @@ RSpec.describe Metanorma::IEEE do
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       .at("//xmlns:clause[@id = 'boilerplate-participants']")
-    expect(xmlpp(strip_guid(ret.to_xml)))
-      .to be_equivalent_to(xmlpp(output))
+    expect(Xml::C14n.format(strip_guid(ret.to_xml)))
+      .to be_equivalent_to(Xml::C14n.format(output))
   end
 
   it "do not insert word usage clause if this is legacy document schema" do
@@ -1428,7 +1428,7 @@ RSpec.describe Metanorma::IEEE do
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.xpath("//xmlns:bibdata | //xmlns:metanorma-extension").each(&:remove)
-    expect(xmlpp(strip_guid(ret.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(ret.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 end

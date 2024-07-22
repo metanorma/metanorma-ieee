@@ -416,8 +416,8 @@ RSpec.describe Metanorma::IEEE do
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:note | " \
                 "//xmlns:metanorma-extension | //xmlns:fetched").remove
-      expect(xmlpp(strip_guid(out.to_xml)))
-        .to be_equivalent_to xmlpp(output)
+      expect(Xml::C14n.format(strip_guid(out.to_xml)))
+        .to be_equivalent_to Xml::C14n.format(output)
     end
   end
 
@@ -521,8 +521,8 @@ RSpec.describe Metanorma::IEEE do
                 "//xmlns:references | //xmlns:metanorma-extension | " \
                 "//xmlns:clause[@id = 'boilerplate_word_usage']")
         .remove
-      expect(xmlpp(strip_guid(out.to_xml)))
-        .to be_equivalent_to xmlpp(output)
+      expect(Xml::C14n.format(strip_guid(out.to_xml)))
+        .to be_equivalent_to Xml::C14n.format(output)
     end
   end
 
@@ -579,8 +579,8 @@ RSpec.describe Metanorma::IEEE do
       OUTPUT
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
         .at("//xmlns:clause[@id = 'A']")
-      expect(xmlpp(strip_guid(out.to_xml)))
-        .to be_equivalent_to xmlpp(output)
+      expect(Xml::C14n.format(strip_guid(out.to_xml)))
+        .to be_equivalent_to Xml::C14n.format(output)
     end
   end
 
@@ -727,8 +727,8 @@ RSpec.describe Metanorma::IEEE do
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
         .at("//xmlns:bibliography")
       out.xpath("//xmlns:abstract").each(&:remove)
-      expect(xmlpp(strip_guid(out.to_xml)))
-        .to be_equivalent_to xmlpp(output)
+      expect(Xml::C14n.format(strip_guid(out.to_xml)))
+        .to be_equivalent_to Xml::C14n.format(output)
     end
   end
 
@@ -921,8 +921,8 @@ RSpec.describe Metanorma::IEEE do
         .at("//xmlns:bibliography")
       out.xpath("//xmlns:bibitem/*[local-name() != 'note' and local-name() != 'docidentifier']")
         .each(&:remove)
-      expect(xmlpp(strip_guid(out.to_xml)))
-        .to be_equivalent_to xmlpp(output)
+      expect(Xml::C14n.format(strip_guid(out.to_xml)))
+        .to be_equivalent_to Xml::C14n.format(output)
     end
   end
 
@@ -987,7 +987,7 @@ RSpec.describe Metanorma::IEEE do
          </bibliography>
       </ieee-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 end
