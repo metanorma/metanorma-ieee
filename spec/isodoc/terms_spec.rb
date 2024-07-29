@@ -302,13 +302,14 @@ RSpec.describe IsoDoc do
 
     expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
       .new(presxml_options)
-      .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(presxml)
+      .convert("test", input, true))))
+      .to be_equivalent_to Xml::C14n.format(presxml)
     expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
       .convert("test", presxml, true))
       .at("//body").to_xml)).to be_equivalent_to Xml::C14n.format(html)
     expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::WordConvert.new({})
       .convert("test", presxml, true))
-                .at("//body").to_xml)).to be_equivalent_to Xml::C14n.format(word)
+      .at("//body").to_xml)).to be_equivalent_to Xml::C14n.format(word)
   end
 
   it "sorts terms" do
@@ -417,7 +418,8 @@ RSpec.describe IsoDoc do
     OUTPUT
     expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
       .new(presxml_options)
-        .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(output)
+        .convert("test", input, true))))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes IsoXML term with multiple paragraph definitions" do
@@ -478,7 +480,8 @@ RSpec.describe IsoDoc do
     PRESXML
     expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
       .new(presxml_options)
-      .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(presxml)
+      .convert("test", input, true))))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes IsoXML term with multiple definitions" do
@@ -564,7 +567,8 @@ RSpec.describe IsoDoc do
     PRESXML
     expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
       .new(presxml_options)
-      .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(presxml)
+      .convert("test", input, true))))
+      .to be_equivalent_to Xml::C14n.format(presxml)
 
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
@@ -652,7 +656,8 @@ RSpec.describe IsoDoc do
     PRESXML
     expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
       .new(presxml_options)
-      .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(presxml)
+      .convert("test", input, true))))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes IsoXML term with multiple preferred or preferred and admitted terms" do
@@ -801,7 +806,8 @@ RSpec.describe IsoDoc do
     PRESXML
     expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
       .new(presxml_options)
-      .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(presxml)
+      .convert("test", input, true))))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes IsoXML term with grammatical information" do
@@ -870,7 +876,8 @@ RSpec.describe IsoDoc do
     PRESXML
     expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
       .new(presxml_options)
-      .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(presxml)
+      .convert("test", input, true))))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes IsoXML term with empty or graphical designations" do
@@ -919,7 +926,8 @@ RSpec.describe IsoDoc do
     PRESXML
     expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
       .new(presxml_options)
-      .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(presxml)
+      .convert("test", input, true))))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes IsoXML term with nonverbal definitions" do
@@ -1031,8 +1039,9 @@ RSpec.describe IsoDoc do
       </iso-standard>
     PRESXML
     expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
-.new(presxml_options)
-      .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(presxml)
+      .new(presxml_options)
+      .convert("test", input, true))))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes related terms and admitted terms" do
@@ -1147,7 +1156,8 @@ RSpec.describe IsoDoc do
     OUTPUT
     expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
        .new(presxml_options)
-       .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(output)
+       .convert("test", input, true))))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes missing related terms" do
@@ -1218,7 +1228,8 @@ RSpec.describe IsoDoc do
        </iso-standard>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
-.new(presxml_options)
-        .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(output)
+        .new(presxml_options)
+        .convert("test", input, true))))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 end
