@@ -12,15 +12,6 @@ module IsoDoc
 
       def logos
         here = File.join(File.dirname(__FILE__), "html")
-        %i(wp_image001_emz wp_image003_emz wp_image008_emz)
-          .each do |w|
-          img = w.to_s.sub("_emz", ".emz")
-          set(w, File.expand_path(File.join(here, img)))
-        end
-      end
-
-      def logos
-        here = File.join(File.dirname(__FILE__), "html")
         suffix = ".emz"
         @icap and suffix = "_icap.emz"
         @icr and suffix = "_icr.emz"
@@ -33,7 +24,7 @@ module IsoDoc
 
       def bibdate(isoxml, _out)
         isoxml.xpath(ns("//bibdata/date[@format = 'ddMMMyyyy']")).each do |d|
-          set("#{d['type'].gsub('-', '_')}date".to_sym, Common::date_range(d))
+          set("#{d['type'].tr('-', '_')}date".to_sym, Common::date_range(d))
         end
         draft = isoxml.at(ns("//bibdata/date[@type = 'issued']")) ||
           isoxml.at(ns("//bibdata/date[@type = 'circulated']")) ||

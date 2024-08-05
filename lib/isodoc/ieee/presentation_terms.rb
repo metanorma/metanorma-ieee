@@ -86,7 +86,7 @@ module IsoDoc
         ins = coll.first.previous_element
         ret = sort_related(coll)
         coll.each(&:remove)
-        ret.reverse.each { |t| ins.next = t }
+        ret.reverse_each { |t| ins.next = t }
         ins.parent.xpath(ns("./related"))
       end
 
@@ -144,7 +144,7 @@ module IsoDoc
         coll = terms.xpath(ns("./term"))
         ret = sort_terms(coll)
         coll.each(&:remove)
-        ret.reverse.each { |t| ins.next = t }
+        ret.reverse_each { |t| ins.next = t }
       end
 
       def sort_terms(terms)

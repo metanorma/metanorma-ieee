@@ -252,9 +252,6 @@ RSpec.describe IsoDoc do
               </iso-standard>
       INPUT
 
-      # <xref type="inline" target="ref2">https://doi.org/10.1017/9781108877831</xref>
-      # <!-- known issue: with no other identifier supplied (as a normative reference), DOI is still last resort, citeas no longer overwrites that -->
-
       presxml = <<~PRESXML
         <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
                <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
@@ -265,7 +262,7 @@ RSpec.describe IsoDoc do
                <p id="_">
                  <xref type="inline" target="ref1"><span class="std_publisher">ISO </span><span class="std_docNumber">639</span>:<span class="std_year">1967</span></xref>
                  <xref type="inline" target="ref7"><span class="std_publisher">ISO </span><span class="std_docNumber">639-2</span>:<span class="std_year">1998</span></xref>
-                 <xref type="inline" target="ref2">https://doi.org/10.1017/9781108877831</xref>
+                 <xref type="inline" target="ref2">Aluffi, Anderson, Hering, Mustaţă and Payne 2022a</xref>
                  <xref type="inline" target="ref3">REF4</xref>
                  <xref type="inline" target="ref4">ISO 639:1967 [B3]</xref>
                  <xref type="inline" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2]</xref>
@@ -321,7 +318,8 @@ RSpec.describe IsoDoc do
                    <p id="_">IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
           </p>
                  </note>
-                 <biblio-tag/>
+                 <docidentifier type="metanorma">Aluffi, Anderson, Hering, Mustaţă and Payne 2022a</docidentifier>
+                 <biblio-tag>Aluffi, Anderson, Hering, Mustaţă and Payne 2022a, </biblio-tag>
                </bibitem>
                <bibitem type="standard" id="ref1">
                  <formattedref>Indiana Jones and the Last Crusade.</formattedref>
@@ -517,6 +515,75 @@ RSpec.describe IsoDoc do
       IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true),
     )
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(presxml)
+  end
+
+  it "removes page locality" do
+    input = <<~INPUT
+      <iso-standard xmlns="http://riboseinc.com/isoxml">
+                <sections>
+                  <clause id='A' inline-header='false' obligation='normative'>
+                  <title>Clause</title>
+                  <p id='_'>
+                    <eref type='inline' bibitemid='IETF_6281' citeas='ISO 639:1967'>
+                    <localityStack><locality type="page"><referenceFrom>4</referenceFrom><referenceTo>9</referenceTo></locality></localityStack>
+                    </eref>
+                    <eref type='inline' bibitemid='IETF_6281' citeas='ISO 639:1967'>
+                    <localityStack><locality type="figure"><referenceFrom>4</referenceFrom><referenceTo>9</referenceTo></locality></localityStack>
+                    </eref>
+                    <eref type='inline' bibitemid='Johns' citeas='ISO 639-2:1998'>
+                    <localityStack><locality type="page"><referenceFrom>4</referenceFrom><referenceTo>9</referenceTo></locality></localityStack>
+                    </eref>
+                    <eref type='inline' bibitemid='Johns' citeas='ISO 639-2:1998'>
+                    <localityStack><locality type="figure"><referenceFrom>4</referenceFrom><referenceTo>9</referenceTo></locality></localityStack>
+                    </eref>
+                  </p>
+                </clause>
+              </sections>
+      <bibliography>
+       <references id='_' normative='true' obligation='informative'>
+         <title>Normative References</title>
+         <bibitem id="IETF_6281" type="standard" schema-version="v1.2.1">
+         <title>Title 1</title>
+         <docidentifier>IETF 6281</docidentifier>
+         </bibitem>
+         <bibitem id="Johns" type="book" schema-version="v1.2.1">
+         <title>Title 1</title>
+         <docidentifier type="metanorma">Johns 2022</docidentifier>
+         </bibitem>
+         </references>
+         </bibliography>
+         </iso-standard>
+    INPUT
+    presxml = <<~PRESXML
+      <clause id="A" inline-header="false" obligation="normative" displayorder="4">
+          <title depth="1">
+             2.
+             <tab/>
+             Clause
+          </title>
+          <p id="_">
+             <xref type="inline" target="IETF_6281">
+                <span class="std_publisher">IETF </span>
+                <span class="std_docNumber">6281</span>
+                , 4–9
+             </xref>
+             <xref type="inline" target="IETF_6281">
+                <span class="std_publisher">IETF </span>
+                <span class="std_docNumber">6281</span>
+                , Figure 4–9
+             </xref>
+             <xref type="inline" target="Johns">Johns 2022, 4–9</xref>
+             <xref type="inline" target="Johns">Johns 2022, Figure 4–9</xref>
+          </p>
+       </clause>
+    PRESXML
+    out = Nokogiri::XML(
+      IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true),
+    )
+    out = out.at("//xmlns:clause[@id = 'A']")
     expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end

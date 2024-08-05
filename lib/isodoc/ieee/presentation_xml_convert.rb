@@ -63,13 +63,17 @@ module IsoDoc
         capitalise_xref(node, linkend, anchor_value(node["target"]))
       end
 
+      def eref_locality_populate(type, node, number)
+        type == "page" and return ""
+        super
+      end
+
       def block_delim
         "&#x2014;"
       end
 
       def note1(elem)
-        return if elem.parent.name == "bibitem" || elem["notag"] == "true"
-
+        elem.parent.name == "bibitem" || elem["notag"] == "true" and return
         n = @xrefs.get[elem["id"]]
         lbl = if n.nil? || n[:label].nil? || n[:label].empty? then @i18n.note
               else l10n("#{@i18n.note} #{n[:label]}")

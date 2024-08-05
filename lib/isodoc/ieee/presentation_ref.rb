@@ -45,13 +45,34 @@ module IsoDoc
         super
       end
 
+      KEEP_BIBRENDER_XPATH =
+        "./docidentifier | ./uri | ./note | ./title | ./biblio-tag".freeze
+
       def bibrender_relaton(xml, renderings)
         f = renderings[xml["id"]][:formattedref]
         fn = availability_note(xml)
         f &&= "<formattedref>#{f}#{fn}</formattedref>"
-        keep = "./docidentifier | ./uri | ./note | ./title | ./biblio-tag"
-        xml.children = "#{f}#{xml.xpath(ns(keep)).to_xml}"
+        xml.children = "#{f}#{xml.xpath(ns(KEEP_BIBRENDER_XPATH)).to_xml}"
+        author_date(xml, renderings)
         @author[xml["id"]] = renderings[xml["id"]][:author]
+      end
+
+      def author_date(xml, renderings)
+        author_date?(xml) or return
+        cit = renderings[xml["id"]][:citation]
+        xml << "<docidentifier type='metanorma'>#{cit}</docidentifier>"
+        xml.at(ns("./biblio-tag"))&.remove
+        xml << "<biblio-tag>#{cit}, </biblio-tag>"
+      end
+
+      def author_date?(xml)
+        ret = !xml["type"]
+        ret ||= %w(standard techreport website webresource)
+          .include?(xml["type"])
+        ret ||= xml.at(".//ancestor::xmlns:references[@normative = 'false']")
+        ret ||= xml.at(ns("./docidentifier[@type = 'metanorma']"))
+        ret and return false
+        true
       end
 
       def creatornames(bibitem)
