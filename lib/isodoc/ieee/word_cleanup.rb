@@ -137,11 +137,11 @@ module IsoDoc
       end
 
       def table_toc_class
-        [stylesmap[:TableTitle], "TableTitle", "tabletitle"]
+        ["IEEEStds Regular Table Caption", "TableTitle", "tabletitle"]
       end
 
       def figure_toc_class
-        [stylesmap[:FigureTitle], "FigureTitle", "figuretitle"]
+        ["IEEEStds Regular Figure Caption", "FigureTitle", "figuretitle"]
       end
 
       def style_cleanup(docxml)
