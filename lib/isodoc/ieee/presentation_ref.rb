@@ -79,7 +79,10 @@ module IsoDoc
         ::Relaton::Render::IEEE::General
           .new(language: @lang, i18nhash: @i18n.get,
                template: { (bibitem["type"] || "misc").to_sym =>
-                           "{{ creatornames }}" })
+                           "{{ creatornames }}" },
+              extenttemplate: { (bibitem["type"] || "misc").to_sym => "{{page}}"} ,
+              sizetemplate: { (bibitem["type"] || "misc").to_sym => "{{data}}"} ,
+              )
           .render1(RelatonBib::XMLParser.from_xml(bibitem.to_xml))
       end
 
