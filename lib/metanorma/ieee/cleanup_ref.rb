@@ -23,7 +23,10 @@ module Metanorma
         @i = IsoDoc::IEEE::PresentationXMLConvert
           .new({ lang: @lang, script: @script, locale: @locale })
         @i.i18n_init(@lang, @script, @locale)
-        bib.sort { |a, b| sort_biblio_key(a) <=> sort_biblio_key(b) }
+        sort_keys = bib.each_with_object({}) do |b, m|
+          m[b["id"]] = sort_biblio_key(b)
+        end
+        bib.sort { |a, b| sort_keys[a["id"]] <=> sort_keys[b["id"]] }
       end
 
       # Alphabetic by rendering: author surname or designation, followed by title
