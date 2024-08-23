@@ -35,7 +35,7 @@ module IsoDoc
 
       def subclause?(target, type, from)
         (from&.match?(/\./) && type == "clause") ||
-          target&.gsub(/<[^>]+>/, "")&.match(/^IEV$|^IEC 60050-/)
+          target&.gsub(/<[^<>]+>/, "")&.match?(/^IEV$|^IEC 60050-/)
       end
 
       def eref_localities1(opt)

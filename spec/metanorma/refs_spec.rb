@@ -856,7 +856,7 @@ RSpec.describe Metanorma::IEEE do
                <docidentifier type="ITU" primary="true">ITU-R P.839-4</docidentifier>
              </bibitem>
              <bibitem id="ref4" type="standard">
-               <docidentifier type="ITU" primary="true">ITU-T G.984.2</docidentifier>
+               <docidentifier type="ITU" primary="true">ITU-T G.984.2 (08/2019)</docidentifier>
                <note type="Availability">
                  <p id="_">ITU-T publications are available from the International
          Telecommunications Union (http://www.itu.int/).
@@ -864,7 +864,7 @@ RSpec.describe Metanorma::IEEE do
                </note>
              </bibitem>
              <bibitem id="ref24" type="standard">
-               <docidentifier type="ITU" primary="true">ITU-T K.20</docidentifier>
+               <docidentifier type="ITU" primary="true">ITU-T K.20 (11/2022)</docidentifier>
              </bibitem>
              <bibitem id="ref11">
                <docidentifier type="ETSI" primary="true">ETSI GS NFV 002 V1.2.1 (2014-12)</docidentifier>
