@@ -1,5 +1,5 @@
 class Html2Doc
-  class IEEE < ::Html2Doc
+  class Ieee < ::Html2Doc
     def style_list(elem, level, liststyle, listnumber)
       return unless liststyle
 

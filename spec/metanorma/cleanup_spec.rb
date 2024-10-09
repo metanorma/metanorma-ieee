@@ -1,7 +1,7 @@
 require "spec_helper"
 require "fileutils"
 
-RSpec.describe Metanorma::IEEE do
+RSpec.describe Metanorma::Ieee do
   before(:all) do
     @blank_hdr = blank_hdr_gen
   end
@@ -668,7 +668,7 @@ RSpec.describe Metanorma::IEEE do
       == Clause 1
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
         <sections>
           <clause id='_' inline-header='false' obligation='normative'>
             <title>Clause 1</title>
@@ -710,7 +710,7 @@ RSpec.describe Metanorma::IEEE do
       * [[[ABC,DEF]]]
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
              <preface>
          <introduction id='_' obligation='informative'>
            <title>Introduction</title>
@@ -780,7 +780,7 @@ RSpec.describe Metanorma::IEEE do
 
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
          <sections>
            <note id='boilerplate_front' type="boilerplate">
              <p id='_'>
@@ -855,7 +855,7 @@ RSpec.describe Metanorma::IEEE do
       * [[[ABC,DEF]]]
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
          <sections> </sections>
          <annex id='_' inline-header='false' obligation='normative'>
            <title>Appendix C</title>
@@ -896,7 +896,7 @@ RSpec.describe Metanorma::IEEE do
 
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
                <sections>
            <clause id='_' type='overview' inline-header='false' obligation='normative'>
              <title>Overview</title>
@@ -950,7 +950,7 @@ RSpec.describe Metanorma::IEEE do
 
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
          <sections>
            <clause id='_' type='overview' inline-header='false' obligation='normative'>
              <title>Overview</title>
@@ -1383,7 +1383,7 @@ RSpec.describe Metanorma::IEEE do
       Text
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
          <preface>
            <abstract id='_'>
              <title>Abstract</title>

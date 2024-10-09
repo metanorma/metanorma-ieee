@@ -1,5 +1,5 @@
 module Metanorma
-  module IEEE
+  module Ieee
     class TermLookupCleanup < Metanorma::Standoc::TermLookupCleanup
       def remove_missing_ref_term(node, _target, type)
         type == "symbol" and return super

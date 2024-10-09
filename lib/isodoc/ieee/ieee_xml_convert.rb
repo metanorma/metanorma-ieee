@@ -2,8 +2,8 @@ require "isodoc"
 require "mnconvert"
 
 module IsoDoc
-  module IEEE
-    class IEEEXMLConvert < IsoDoc::XslfoPdfConvert
+  module Ieee
+    class IeeeXMLConvert < IsoDoc::XslfoPdfConvert
       def initialize(options) # rubocop:disable Lint/MissingSuper
         @libdir = File.dirname(__FILE__)
         @format = :ieee

@@ -300,21 +300,21 @@ RSpec.describe IsoDoc do
        </body>
     WORD
 
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))))
       .to be_equivalent_to Xml::C14n.format(presxml)
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
+    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", presxml, true))
       .at("//body").to_xml)).to be_equivalent_to Xml::C14n.format(html)
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::WordConvert.new({})
+    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::WordConvert.new({})
       .convert("test", presxml, true))
       .at("//body").to_xml)).to be_equivalent_to Xml::C14n.format(word)
   end
 
   it "sorts terms" do
     input = <<~INPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
          <sections>
            <terms id='_' obligation='normative'>
              <title>Definitions</title>
@@ -372,7 +372,7 @@ RSpec.describe IsoDoc do
        </ieee-standard>
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='presentation' version='#{Metanorma::IEEE::VERSION}'>
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='presentation' version='#{Metanorma::Ieee::VERSION}'>
             <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
         <sections>
         <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
@@ -416,7 +416,7 @@ RSpec.describe IsoDoc do
         </sections>
       </ieee-standard>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
         .convert("test", input, true))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -478,7 +478,7 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     PRESXML
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))))
       .to be_equivalent_to Xml::C14n.format(presxml)
@@ -565,7 +565,7 @@ RSpec.describe IsoDoc do
          </sections>
        </iso-standard>
     PRESXML
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))))
       .to be_equivalent_to Xml::C14n.format(presxml)
@@ -654,7 +654,7 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     PRESXML
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))))
       .to be_equivalent_to Xml::C14n.format(presxml)
@@ -804,7 +804,7 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     PRESXML
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))))
       .to be_equivalent_to Xml::C14n.format(presxml)
@@ -874,7 +874,7 @@ RSpec.describe IsoDoc do
          </sections>
        </iso-standard>
     PRESXML
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))))
       .to be_equivalent_to Xml::C14n.format(presxml)
@@ -924,7 +924,7 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     PRESXML
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))))
       .to be_equivalent_to Xml::C14n.format(presxml)
@@ -1038,7 +1038,7 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     PRESXML
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))))
       .to be_equivalent_to Xml::C14n.format(presxml)
@@ -1154,7 +1154,7 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
        .new(presxml_options)
        .convert("test", input, true))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -1227,7 +1227,7 @@ RSpec.describe IsoDoc do
          </sections>
        </iso-standard>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
         .new(presxml_options)
         .convert("test", input, true))))
       .to be_equivalent_to Xml::C14n.format(output)

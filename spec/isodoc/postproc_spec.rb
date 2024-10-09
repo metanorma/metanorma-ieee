@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe IsoDoc::IEEE do
+RSpec.describe IsoDoc::Ieee do
   it "removes paragraph types in HTML" do
     mock_populate_template
     input = <<~INPUT
@@ -32,7 +32,7 @@ RSpec.describe IsoDoc::IEEE do
         <div id='abstract-destination'/>
       </main>
     OUTPUT
-    expect(Xml::C14n.format(IsoDoc::IEEE::HtmlConvert
+    expect(Xml::C14n.format(IsoDoc::Ieee::HtmlConvert
       .new(htmlcoverpage: nil,
            htmlintropage: nil,
            bare: true,
@@ -81,7 +81,7 @@ RSpec.describe IsoDoc::IEEE do
         </body>
       </html>
     OUTPUT
-    expect(Xml::C14n.format(IsoDoc::IEEE::WordConvert
+    expect(Xml::C14n.format(IsoDoc::Ieee::WordConvert
       .new(wordcoverpage: nil,
            wordintropage: nil,
            filename: "test")
@@ -134,7 +134,7 @@ RSpec.describe IsoDoc::IEEE do
         </body>
       </html>
     OUTPUT
-    expect(Xml::C14n.format(IsoDoc::IEEE::WordConvert
+    expect(Xml::C14n.format(IsoDoc::Ieee::WordConvert
       .new(wordcoverpage: nil,
            wordintropage: nil,
            filename: "test")
@@ -179,7 +179,7 @@ RSpec.describe IsoDoc::IEEE do
         </body>
       </html>
     OUTPUT
-    expect(Xml::C14n.format(IsoDoc::IEEE::WordConvert
+    expect(Xml::C14n.format(IsoDoc::Ieee::WordConvert
       .new(wordcoverpage: nil,
            wordintropage: nil,
            filename: "test")
@@ -236,7 +236,7 @@ RSpec.describe IsoDoc::IEEE do
          </body>
        </html>
     OUTPUT
-    expect(Xml::C14n.format(IsoDoc::IEEE::WordConvert
+    expect(Xml::C14n.format(IsoDoc::Ieee::WordConvert
        .new(wordcoverpage: nil,
             wordintropage: nil,
             filename: "test")

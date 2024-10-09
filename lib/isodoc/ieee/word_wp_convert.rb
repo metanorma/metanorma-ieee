@@ -1,7 +1,7 @@
 require_relative "word_wp_cleanup"
 
 module IsoDoc
-  module IEEE
+  module Ieee
     class WordWPConvert < WordConvert
       def initialize(options)
         @libdir ||= File.dirname(__FILE__) # rubocop:disable Lint/DisjunctiveAssignmentInConstructor

@@ -1,7 +1,7 @@
 require "spec_helper"
 require "fileutils"
 
-RSpec.describe Metanorma::IEEE do
+RSpec.describe Metanorma::Ieee do
   it "automatically removes 'Clause' before subclauses if not at the start of a sentence" do
     input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
@@ -67,7 +67,7 @@ RSpec.describe Metanorma::IEEE do
            </sections>
        </iso-standard>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
   .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(output)
   end
 
@@ -114,7 +114,7 @@ RSpec.describe Metanorma::IEEE do
          </p>
        </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -185,7 +185,7 @@ RSpec.describe Metanorma::IEEE do
         </p>
       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
       .new({})
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml))
@@ -202,7 +202,7 @@ RSpec.describe Metanorma::IEEE do
          </p>
        </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
       .new({ hierarchicalassets: true })
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml))

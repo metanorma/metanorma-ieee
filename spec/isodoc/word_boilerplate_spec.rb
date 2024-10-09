@@ -1,7 +1,7 @@
 require "spec_helper"
 require "fileutils"
 
-RSpec.describe IsoDoc::IEEE::WordConvert do
+RSpec.describe IsoDoc::Ieee::WordConvert do
   it "processes boilerplate" do
     FileUtils.rm_f "test.doc"
     input = <<~INPUT
@@ -1128,9 +1128,9 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         </div>
       </body>
     OUTPUT
-    presxml = IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+    presxml = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:body")
@@ -1596,10 +1596,10 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
          <div style="mso-element:footnote-list"/>
        </body>
     OUTPUT
-    presxml = IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+    presxml = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input.sub("<doctype>standard</doctype>",
                                  "<doctype>whitepaper</doctype>"), true)
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:body")

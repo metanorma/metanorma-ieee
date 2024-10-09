@@ -1,5 +1,5 @@
 module IsoDoc
-  module IEEE
+  module Ieee
     class PresentationXMLConvert < IsoDoc::PresentationXMLConvert
       def multidef(elem)
         number_multidef(elem)

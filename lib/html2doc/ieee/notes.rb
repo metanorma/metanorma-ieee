@@ -1,5 +1,5 @@
 class Html2Doc
-  class IEEE < ::Html2Doc
+  class Ieee < ::Html2Doc
     def process_footnote_texts(docxml, footnotes)
       body = docxml.at("//body")
       list = body.add_child("<div style='mso-element:footnote-list'/>")

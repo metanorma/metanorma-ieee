@@ -6,5 +6,5 @@ require "html2doc/ieee_wp"
 require "metanorma"
 
 if defined? Metanorma::Registry
-  Metanorma::Registry.instance.register(Metanorma::IEEE::Processor)
+  Metanorma::Registry.instance.register(Metanorma::Ieee::Processor)
 end

@@ -1,5 +1,5 @@
 module IsoDoc
-  module IEEE
+  module Ieee
     class WordWPConvert < WordConvert
       def stylesmap
         {
@@ -75,7 +75,7 @@ module IsoDoc
       end
 
       def toWord(result, filename, dir, header)
-        ::Html2Doc::IEEE_WP.new(
+        ::Html2Doc::Ieee_Wp.new(
           filename: filename,
           imagedir: @localdir,
           stylesheet: @wordstylesheet&.path,

@@ -367,7 +367,7 @@ RSpec.describe IsoDoc do
          </iso-standard>
       PRESXML
       out = Nokogiri::XML(
-        IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+        IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
         .convert("test", input, true),
       )
       expect(Xml::C14n.format(strip_guid(out.to_xml)))
@@ -440,7 +440,7 @@ RSpec.describe IsoDoc do
       </iso-standard>
     PRESXML
     out = Nokogiri::XML(
-      IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true),
     )
     expect(Xml::C14n.format(strip_guid(out.to_xml)))
@@ -512,7 +512,7 @@ RSpec.describe IsoDoc do
        </iso-standard>
     PRESXML
     out = Nokogiri::XML(
-      IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true),
     )
     expect(Xml::C14n.format(strip_guid(out.to_xml)))
@@ -580,7 +580,7 @@ RSpec.describe IsoDoc do
        </clause>
     PRESXML
     out = Nokogiri::XML(
-      IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true),
     )
     out = out.at("//xmlns:clause[@id = 'A']")

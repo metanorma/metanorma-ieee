@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe Metanorma::IEEE do
+RSpec.describe Metanorma::Ieee do
   it "processes adapted termsources" do
     input = <<~INPUT
       #{ASCIIDOC_BLANK_HDR}
@@ -22,7 +22,7 @@ RSpec.describe Metanorma::IEEE do
       <<ISO2191,section=1>>,
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
                <sections>
            <terms id='_' obligation='normative'>
              <title>Definitions</title>
@@ -136,7 +136,7 @@ RSpec.describe Metanorma::IEEE do
 
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
          <sections>
            <terms id='_' obligation='normative'>
              <title>Definitions</title>
@@ -284,7 +284,7 @@ RSpec.describe Metanorma::IEEE do
       symbol:[thing1]
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
         <sections>
           <terms id='_' obligation='normative'>
             <title>Definitions</title>

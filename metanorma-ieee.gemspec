@@ -4,7 +4,7 @@ require "metanorma/ieee/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "metanorma-ieee"
-  spec.version       = Metanorma::IEEE::VERSION
+  spec.version       = Metanorma::Ieee::VERSION
   spec.authors       = ["Ribose Inc."]
   spec.email         = ["open.source@ribose.com"]
 

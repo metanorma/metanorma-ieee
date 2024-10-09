@@ -2,7 +2,7 @@ require "isoics"
 require "pubid-ieee"
 
 module Metanorma
-  module IEEE
+  module Ieee
     class Converter < Standoc::Converter
       def metadata_committee(node, xml)
         metadata_committee_prep(node) or return

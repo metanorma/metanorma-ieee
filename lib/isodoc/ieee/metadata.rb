@@ -2,7 +2,7 @@ require "isodoc"
 require "twitter_cldr"
 
 module IsoDoc
-  module IEEE
+  module Ieee
     class Metadata < IsoDoc::Metadata
       def initialize(lang, script, i18n, fonts_options = {})
         super

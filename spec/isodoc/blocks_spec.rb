@@ -335,20 +335,20 @@ RSpec.describe IsoDoc do
         </div>
       </div>
     WORD
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(presxml)
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
+    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", presxml, true))
       .at("//body").to_xml)).to be_equivalent_to Xml::C14n.format(html)
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
     expect(strip_guid(Xml::C14n.format(doc.to_xml
       .gsub("<m:", "<").gsub("</m:", "</"))))
       .to be_equivalent_to Xml::C14n.format(word)
-    expect(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
       .new({ hierarchicalassets: true })
       .convert("test", input, true))
       .at("//xmlns:table/xmlns:name").to_xml)
@@ -500,15 +500,15 @@ RSpec.describe IsoDoc do
         </div>
       </div>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true).gsub("&lt;", "&#x3c;"))))
       .to be_equivalent_to Xml::C14n.format(presxml)
-    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", presxml, true))
       .at("//body").to_xml))).to be_equivalent_to Xml::C14n.format(html)
     FileUtils.rm_rf "spec/assets/odf1.emf"
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
@@ -518,7 +518,7 @@ RSpec.describe IsoDoc do
       .gsub("epub:", "")
       .gsub(/mso-bookmark:_Ref\d+/, "mso-bookmark:_Ref"))))
       .to be_equivalent_to Xml::C14n.format(word)
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
      .new({ hierarchicalassets: true })
      .convert("test", input, true))
      .at("//xmlns:figure/xmlns:name").to_xml))
@@ -622,11 +622,11 @@ RSpec.describe IsoDoc do
         </div>
       </body>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
        .convert("test", input, true).gsub("&lt;", "&#x3c;"))))
       .to be_equivalent_to Xml::C14n.format(presxml)
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
+    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", presxml, true))
       .at("//body").to_xml)).to be_equivalent_to Xml::C14n.format(html)
   end
@@ -688,10 +688,10 @@ RSpec.describe IsoDoc do
         <p>&#xa0;</p>
       </div>
     OUTPUT
-    expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
+    expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", presxml, true))
       .at("//body").to_xml))).to be_equivalent_to Xml::C14n.format(html)
-    expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::WordConvert.new({})
+    expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::WordConvert.new({})
       .convert("test", presxml, true))
                 .at("//div[@class = 'WordSection2']").to_xml)))
       .to be_equivalent_to Xml::C14n.format(word)
@@ -755,10 +755,10 @@ RSpec.describe IsoDoc do
          </div>
        </div>
     OUTPUT
-    expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
+    expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", presxml, true))
       .at("//body").to_xml))).to be_equivalent_to Xml::C14n.format(html)
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
@@ -887,14 +887,14 @@ RSpec.describe IsoDoc do
          </div>
        </div>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IEEE::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
        .convert("test", input, true))))
       .to be_equivalent_to Xml::C14n.format(presxml)
-    expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::IEEE::HtmlConvert.new({})
+    expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
   .convert("test", presxml, true))
   .at("//body").to_xml))).to be_equivalent_to Xml::C14n.format(html)
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
@@ -1051,7 +1051,7 @@ RSpec.describe IsoDoc do
       </clause>
     OUTPUT
     expect(Xml::C14n.format(Nokogiri::XML(
-      IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+      IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true),
     ).at("//xmlns:clause[@id = 'A']").to_xml))
       .to be_equivalent_to Xml::C14n.format(presxml)

@@ -6,7 +6,7 @@ require_relative "word_authority"
 require_relative "word_wp_convert"
 
 module IsoDoc
-  module IEEE
+  module Ieee
     class WordConvert < IsoDoc::WordConvert
       def initialize(options)
         @libdir = File.dirname(__FILE__)
@@ -15,7 +15,7 @@ module IsoDoc
       end
 
       def init_wp(options)
-        @wp = ::IsoDoc::IEEE::WordWPConvert.new(options)
+        @wp = ::IsoDoc::Ieee::WordWPConvert.new(options)
       end
 
       def convert1(docxml, filename, dir)

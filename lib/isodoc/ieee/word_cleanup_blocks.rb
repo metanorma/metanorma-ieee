@@ -1,5 +1,5 @@
 module IsoDoc
-  module IEEE
+  module Ieee
     class WordConvert < IsoDoc::WordConvert
       # STYLE
       def admonition_cleanup(docxml)

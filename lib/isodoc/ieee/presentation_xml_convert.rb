@@ -5,7 +5,7 @@ require_relative "presentation_ref"
 require "isodoc"
 
 module IsoDoc
-  module IEEE
+  module Ieee
     class PresentationXMLConvert < IsoDoc::PresentationXMLConvert
       def initialize(options)
         @hierarchical_assets = options[:hierarchicalassets]

@@ -1,5 +1,5 @@
 module Metanorma
-  module IEEE
+  module Ieee
     class Converter < Standoc::Converter
       def section_validate(doc)
         unless %w(amendment technical-corrigendum).include? @doctype

@@ -1,5 +1,5 @@
 module Metanorma
-  module IEEE
+  module Ieee
     class Converter < Standoc::Converter
       ASSETS_TO_STYLE =
         "//termsource | //formula | //termnote | " \
