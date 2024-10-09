@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe Relaton::Render::IEEE do
+RSpec.describe Relaton::Render::Ieee do
   it "renders book, five editors" do
     input = <<~INPUT
       <bibitem type="book">
@@ -626,8 +626,8 @@ RSpec.describe Relaton::Render::IEEE do
   private
 
   def renderer
-    i = IsoDoc::IEEE::PresentationXMLConvert.new({})
+    i = IsoDoc::Ieee::PresentationXMLConvert.new({})
     i.i18n_init("en", "Latn", nil)
-    Relaton::Render::IEEE::General.new(i18nhash: i.i18n.get)
+    Relaton::Render::Ieee::General.new(i18nhash: i.i18n.get)
   end
 end

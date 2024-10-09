@@ -1,12 +1,12 @@
 require "spec_helper"
 require "fileutils"
 
-RSpec.describe Metanorma::IEEE do
+RSpec.describe Metanorma::Ieee do
   logoloc = File.expand_path(File.join(File.dirname(__FILE__), "..", "..",
                                        "lib", "isodoc", "ieee", "html"))
 
   it "processes default metadata" do
-    csdc = IsoDoc::IEEE::HtmlConvert.new({})
+    csdc = IsoDoc::Ieee::HtmlConvert.new({})
     docxml, = csdc.convert_init(<<~INPUT, "test", true)
        <ieee-standard xmlns="https://www.calconnect.org/standards/ieee">
            <bibdata type="standard">
@@ -310,7 +310,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "processes ICAP, ICR metadata" do
-    csdc = IsoDoc::IEEE::HtmlConvert.new({})
+    csdc = IsoDoc::Ieee::HtmlConvert.new({})
     input = <<~INPUT
        <ieee-standard xmlns="https://www.calconnect.org/standards/ieee">
            <bibdata type="standard">
@@ -684,7 +684,7 @@ RSpec.describe Metanorma::IEEE do
   end
 
   it "processes metadata with no nominated contributors or scoped identifiers" do
-    csdc = IsoDoc::IEEE::HtmlConvert.new({})
+    csdc = IsoDoc::Ieee::HtmlConvert.new({})
     docxml, = csdc.convert_init(<<~INPUT, "test", true)
       <ieee-standard xmlns="https://www.calconnect.org/standards/ieee">
         <bibdata type="standard">

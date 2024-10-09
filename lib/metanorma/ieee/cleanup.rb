@@ -2,7 +2,7 @@ require_relative "cleanup_ref"
 require_relative "term_lookup_cleanup"
 
 module Metanorma
-  module IEEE
+  module Ieee
     class Converter < Standoc::Converter
       def initial_boilerplate(xml, isodoc)
         intro_boilerplate(xml, isodoc)
@@ -130,7 +130,7 @@ module Metanorma
       def term_defs_boilerplate_cont(src, term, isodoc); end
 
       def termlookup_cleanup(xmldoc)
-        Metanorma::IEEE::TermLookupCleanup.new(xmldoc, @log).call
+        Metanorma::Ieee::TermLookupCleanup.new(xmldoc, @log).call
       end
 
       def boilerplate_isodoc(xmldoc)

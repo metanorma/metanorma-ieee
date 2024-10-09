@@ -1,7 +1,7 @@
 require "spec_helper"
 require "relaton_iso"
 
-RSpec.describe Metanorma::IEEE do
+RSpec.describe Metanorma::Ieee do
   before do
     allow_any_instance_of(Relaton::Index::FileIO)
       .to receive(:check_file).and_return(nil)
@@ -180,7 +180,7 @@ RSpec.describe Metanorma::IEEE do
 
       INPUT
       output = <<~OUTPUT
-            <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+            <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
            <sections/>
            <bibliography>
             <references id="_" normative="false" obligation="informative">
@@ -467,7 +467,7 @@ RSpec.describe Metanorma::IEEE do
         * [[[ref3,IEEE 802.1D-1990]]] REF2
       INPUT
       output = <<~OUTPUT
-          <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::IEEE::VERSION}'>
+          <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
                    <preface>
             <introduction id='_' obligation='informative'>
               <title>Introduction</title>

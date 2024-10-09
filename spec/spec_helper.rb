@@ -109,7 +109,7 @@ VALIDATING_BLANK_HDR = <<~HDR.freeze
 HDR
 
 def boilerplate_read(file, xmldoc)
-  conv = Metanorma::IEEE::Converter.new(:ieee, {})
+  conv = Metanorma::Ieee::Converter.new(:ieee, {})
   conv.init(Asciidoctor::Document.new([]))
   x = conv.boilerplate_isodoc(xmldoc).populate_template(file, nil)
   ret = conv.boilerplate_file_restructure(x)
@@ -151,6 +151,7 @@ def ieeedoc(lang)
              <keyword>B</keyword>
              <ext>
              <doctype>recommendation</doctype>
+             <flavor>ieee</flavor>
              </ext>
              </bibdata>
     <preface>
@@ -214,7 +215,7 @@ end
 
 BLANK_HDR = <<~"HDR".freeze
   <?xml version="1.0" encoding="UTF-8"?>
-  <ieee-standard xmlns="https://www.metanorma.org/ns/ieee" type="semantic" version="#{Metanorma::IEEE::VERSION}">
+  <ieee-standard xmlns="https://www.metanorma.org/ns/ieee" type="semantic" version="#{Metanorma::Ieee::VERSION}">
          <bibdata type="standard">
        <title language="en" format="text/plain">Document title</title>
                   <contributor>
@@ -245,6 +246,7 @@ BLANK_HDR = <<~"HDR".freeze
     <ext>
            <doctype>standard</doctype>
            <subdoctype>document</subdoctype>
+           <flavor>ieee</flavor>
    </ext>
   </bibdata>
                     <metanorma-extension>

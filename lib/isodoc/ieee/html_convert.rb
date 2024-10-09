@@ -2,7 +2,7 @@ require "isodoc"
 require_relative "init"
 
 module IsoDoc
-  module IEEE
+  module Ieee
     class HtmlConvert < IsoDoc::HtmlConvert
       def initialize(options)
         @libdir = File.dirname(__FILE__)

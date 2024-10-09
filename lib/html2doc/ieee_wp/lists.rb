@@ -1,5 +1,5 @@
 class Html2Doc
-  class IEEE_WP < ::Html2Doc
+  class Ieee_Wp < ::Html2Doc
     def list2para(list)
       list.name == "ol" and return super
       return if list.xpath("./li").empty?

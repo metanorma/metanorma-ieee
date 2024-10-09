@@ -7,7 +7,7 @@ require_relative "cleanup"
 require_relative "validate"
 
 module Metanorma
-  module IEEE
+  module Ieee
     class Converter < Standoc::Converter
       XML_ROOT_TAG = "ieee-standard".freeze
       XML_NAMESPACE = "https://www.metanorma.org/ns/ieee".freeze
@@ -81,29 +81,29 @@ module Metanorma
       end
 
       def presentation_xml_converter(node)
-        IsoDoc::IEEE::PresentationXMLConvert
+        IsoDoc::Ieee::PresentationXMLConvert
           .new(html_extract_attributes(node)
-          .merge(output_formats: ::Metanorma::IEEE::Processor.new.output_formats))
+          .merge(output_formats: ::Metanorma::Ieee::Processor.new.output_formats))
       end
 
       def html_converter(node)
-        IsoDoc::IEEE::HtmlConvert.new(html_extract_attributes(node))
+        IsoDoc::Ieee::HtmlConvert.new(html_extract_attributes(node))
       end
 
       def pdf_converter(node)
         return nil if node.attr("no-pdf")
 
-        IsoDoc::IEEE::PdfConvert.new(pdf_extract_attributes(node))
+        IsoDoc::Ieee::PdfConvert.new(pdf_extract_attributes(node))
       end
 
       def doc_converter(node)
-        IsoDoc::IEEE::WordConvert.new(doc_extract_attributes(node))
+        IsoDoc::Ieee::WordConvert.new(doc_extract_attributes(node))
       end
 
       def ieee_xml_converter(node)
         return nil if node.attr("no-pdf")
 
-        IsoDoc::Iso::IEEEXMLConvert.new(html_extract_attributes(node))
+        IsoDoc::Iso::IeeeXMLConvert.new(html_extract_attributes(node))
       end
     end
   end

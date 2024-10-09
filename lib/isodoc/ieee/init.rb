@@ -4,7 +4,7 @@ require_relative "xref"
 require_relative "i18n"
 
 module IsoDoc
-  module IEEE
+  module Ieee
     module Init
       def metadata_init(lang, script, locale, i18n)
         @meta = Metadata.new(lang, script, locale, i18n)
@@ -22,7 +22,7 @@ module IsoDoc
       end
 
       def bibrenderer
-        ::Relaton::Render::IEEE::General.new(language: @lang,
+        ::Relaton::Render::Ieee::General.new(language: @lang,
                                              i18nhash: @i18n.get)
       end
 

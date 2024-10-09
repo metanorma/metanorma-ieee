@@ -1,8 +1,8 @@
 module IsoDoc
-  module IEEE
+  module Ieee
     class WordConvert < IsoDoc::WordConvert
       def toWord(result, filename, dir, header)
-        ::Html2Doc::IEEE.new(
+        ::Html2Doc::Ieee.new(
           filename: filename,
           imagedir: @localdir,
           stylesheet: @wordstylesheet&.path,

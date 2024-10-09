@@ -1,7 +1,7 @@
 require "isodoc"
 
 module IsoDoc
-  module IEEE
+  module Ieee
     class Counter < ::IsoDoc::XrefGen::Counter
     end
 
