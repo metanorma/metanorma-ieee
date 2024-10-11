@@ -1,5 +1,5 @@
 module Metanorma
-  module IEEE
+  module Ieee
     class Converter < Standoc::Converter
       BIBLIO =
         "//bibliography/references[@normative = 'false'][not(@hidden)] | " \
@@ -20,7 +20,7 @@ module Metanorma
       end
 
       def sort_biblio(bib)
-        @i = IsoDoc::IEEE::PresentationXMLConvert
+        @i = IsoDoc::Ieee::PresentationXMLConvert
           .new({ lang: @lang, script: @script, locale: @locale })
         @i.i18n_init(@lang, @script, @locale)
         sort_keys = bib.each_with_object({}) do |b, m|

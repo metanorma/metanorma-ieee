@@ -2,7 +2,7 @@ require_relative "validate_section"
 require_relative "validate_style"
 
 module Metanorma
-  module IEEE
+  module Ieee
     class Converter < Standoc::Converter
       def validate(doc)
         content_validate(doc)
@@ -127,9 +127,9 @@ module Metanorma
       end
 
       def xrefs(xmldoc)
-        klass = IsoDoc::IEEE::HtmlConvert.new(language: @lang, script: @script)
-        xrefs = IsoDoc::IEEE::Xref
-          .new(@lang, @script, klass, IsoDoc::IEEE::I18n.new(@lang, @script),
+        klass = IsoDoc::Ieee::HtmlConvert.new(language: @lang, script: @script)
+        xrefs = IsoDoc::Ieee::Xref
+          .new(@lang, @script, klass, IsoDoc::Ieee::I18n.new(@lang, @script),
                { hierarchicalassets: @hierarchical_assets })
         # don't process refs without relaton-render init
         xrefs.parse_inclusions(clauses: true, assets: true)

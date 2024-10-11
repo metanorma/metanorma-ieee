@@ -6,6 +6,6 @@ require "isodoc/ieee/word_convert"
 require "isodoc/ieee/presentation_xml_convert"
 
 module IsoDoc
-  module IEEE
+  module Ieee
   end
 end

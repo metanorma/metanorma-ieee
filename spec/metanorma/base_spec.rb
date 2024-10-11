@@ -1,13 +1,13 @@
 require "spec_helper"
 require "fileutils"
 
-RSpec.describe Metanorma::IEEE do
+RSpec.describe Metanorma::Ieee do
   before(:all) do
     @blank_hdr = blank_hdr_gen
   end
 
   it "has a version number" do
-    expect(Metanorma::IEEE::VERSION).not_to be nil
+    expect(Metanorma::Ieee::VERSION).not_to be nil
   end
 
   it "processes a blank document" do
@@ -202,6 +202,7 @@ RSpec.describe Metanorma::IEEE do
          <ext>
            <doctype>recommended-practice</doctype>
            <subdoctype>amendment</subdoctype>
+           <flavor>ieee</flavor>
            <trial-use>true</trial-use>
            <editorialgroup>
              <society>SECRETARIAT</society>
@@ -289,6 +290,7 @@ RSpec.describe Metanorma::IEEE do
         <ext>
           <doctype>standard</doctype>
           <subdoctype>document</subdoctype>
+           <flavor>ieee</flavor>
           <editorialgroup>
             <society>SECRETARIAT</society>
             <balloting-group type="individual">BG</balloting-group>
@@ -351,6 +353,7 @@ RSpec.describe Metanorma::IEEE do
         <ext>
           <doctype>standard</doctype>
           <subdoctype>document</subdoctype>
+           <flavor>ieee</flavor>
         </ext>
       </bibdata>
     OUTPUT
@@ -405,6 +408,7 @@ RSpec.describe Metanorma::IEEE do
         <ext>
            <doctype>whitepaper</doctype>
            <subdoctype>industry-connection-report</subdoctype>
+           <flavor>ieee</flavor>
            <editorialgroup>
              <working-group>IEEE SA Industry Connections activity</working-group>
            </editorialgroup>

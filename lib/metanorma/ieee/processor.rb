@@ -1,7 +1,7 @@
 require "metanorma/processor"
 
 module Metanorma
-  module IEEE
+  module Ieee
     class Processor < Metanorma::Processor
       def initialize
         @short = :ieee
@@ -30,27 +30,27 @@ module Metanorma
       end
 
       def version
-        "Metanorma::IEEE #{Metanorma::IEEE::VERSION}"
+        "Metanorma::Ieee #{Metanorma::Ieee::VERSION}"
       end
 
       def output(isodoc_node, inname, outname, format, options = {})
         options_preprocess(options)
         case format
         when :html
-          IsoDoc::IEEE::HtmlConvert.new(options).convert(inname, isodoc_node,
+          IsoDoc::Ieee::HtmlConvert.new(options).convert(inname, isodoc_node,
                                                          nil, outname)
         when :doc
-          IsoDoc::IEEE::WordConvert.new(options).convert(inname, isodoc_node,
+          IsoDoc::Ieee::WordConvert.new(options).convert(inname, isodoc_node,
                                                          nil, outname)
         when :pdf
-          IsoDoc::IEEE::PdfConvert.new(options).convert(inname, isodoc_node,
+          IsoDoc::Ieee::PdfConvert.new(options).convert(inname, isodoc_node,
                                                         nil, outname)
         when :presentation
-          IsoDoc::IEEE::PresentationXMLConvert.new(options).convert(
+          IsoDoc::Ieee::PresentationXMLConvert.new(options).convert(
             inname, isodoc_node, nil, outname
           )
         when :ieee
-          IsoDoc::IEEE::IEEEXMLConvert.new(options)
+          IsoDoc::Ieee::IeeeXMLConvert.new(options)
             .convert(inname, isodoc_node, nil, outname)
         else
           super

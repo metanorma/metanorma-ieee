@@ -1,7 +1,7 @@
 require_relative "../../relaton/render/general"
 
 module IsoDoc
-  module IEEE
+  module Ieee
     class PresentationXMLConvert < IsoDoc::PresentationXMLConvert
       # Style manual 19
       def anchor_linkend(node, linkend)
@@ -76,14 +76,13 @@ module IsoDoc
       end
 
       def creatornames(bibitem)
-        ::Relaton::Render::IEEE::General
+        ::Relaton::Render::Ieee::General
           .new(language: @lang, i18nhash: @i18n.get,
-               #template: { (bibitem["type"] || "misc").to_sym =>
-                           #"{{ creatornames }}" },
-        template: "{{ creatornames }}" ,
-              extenttemplate: { (bibitem["type"] || "misc").to_sym => "{{page}}"} ,
-              sizetemplate: { (bibitem["type"] || "misc").to_sym => "{{data}}"} ,
-              )
+               # template: { (bibitem["type"] || "misc").to_sym =>
+               # "{{ creatornames }}" },
+               template: "{{ creatornames }}",
+               extenttemplate: { (bibitem["type"] || "misc").to_sym => "{{page}}" },
+               sizetemplate: { (bibitem["type"] || "misc").to_sym => "{{data}}" })
           .render1(RelatonBib::XMLParser.from_xml(bibitem.to_xml))
       end
 

@@ -2,7 +2,7 @@ require "isodoc"
 require "fileutils"
 
 module IsoDoc
-  module IEEE
+  module Ieee
     module BaseConvert
       def clause_attrs(node)
         { id: node["id"], type: node["type"] }

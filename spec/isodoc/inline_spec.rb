@@ -1,8 +1,8 @@
 require "spec_helper"
 
-RSpec.describe IsoDoc::IEEE do
+RSpec.describe IsoDoc::Ieee do
   it "processes eref content" do
-    output = IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+    output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", <<~INPUT, true)
         <iso-standard xmlns="http://riboseinc.com/isoxml">
           <preface>
@@ -202,7 +202,7 @@ RSpec.describe IsoDoc::IEEE do
          </p>
        </itu-standard>
     OUTPUT
-    expect(Xml::C14n.format(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+    expect(Xml::C14n.format(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))).to be_equivalent_to Xml::C14n.format(output)
   end
 
@@ -331,7 +331,7 @@ RSpec.describe IsoDoc::IEEE do
         </p>
         </foreword>
     OUTPUT
-    xml = Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+    xml = Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))
     expect(Xml::C14n.format(xml.at("//xmlns:foreword").to_xml))
       .to be_equivalent_to Xml::C14n.format(presxml)
@@ -382,7 +382,7 @@ RSpec.describe IsoDoc::IEEE do
          </sections>
       </iso-standard>
     OUTPUT
-    xml = Nokogiri::XML(IsoDoc::IEEE::PresentationXMLConvert.new({})
+    xml = Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new({})
       .convert("test", input, true))
     xml.at("//xmlns:metanorma-extension").remove
     expect(Xml::C14n.format(strip_guid(xml.to_xml)))

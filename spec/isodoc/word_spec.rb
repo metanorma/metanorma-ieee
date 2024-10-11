@@ -1,7 +1,7 @@
 require "spec_helper"
 require "fileutils"
 
-RSpec.describe IsoDoc::IEEE::WordConvert do
+RSpec.describe IsoDoc::Ieee::WordConvert do
   it "processes middle title" do
     FileUtils.rm_f "test.doc"
     input = <<~INPUT
@@ -27,9 +27,9 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       <p class='IEEEStdsTitle' style='margin-left:0cm;margin-top:70.0pt'>Standard for Title</p>
       </div>
     OUTPUT
-    presxml = IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+    presxml = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[@class = 'WordSectionMiddleTitle']")
@@ -40,10 +40,10 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     output = <<~OUTPUT
       <p class="Titleofdocument" style="margin-left:0cm;margin-top:70.0pt">Whitepaper for Title</p>
     OUTPUT
-    presxml = IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+    presxml = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input
       .sub("<doctype>standard</doctype>", "<doctype>whitepaper</doctype>"), true)
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:p[@class = 'Titleofdocument']")
@@ -86,9 +86,9 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
       <p class='IEEEStdsTitle' style='margin-left:0cm;margin-top:70.0pt'>Guide for Title<br/>Amendment A1 Corrigenda C1</p>
       </div>
     OUTPUT
-    presxml = IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+    presxml = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[@class = 'WordSectionMiddleTitle']")
@@ -118,7 +118,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         </p>
       </div>
     OUTPUT
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", input, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//*[@class = 'IEEEStdsIntroduction']/..")
@@ -154,7 +154,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         </p>
       </div>
     OUTPUT
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", input, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//*[@name = 'abstract-destination']/..")
@@ -174,7 +174,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         <p class="Abstract" style="margin-left:0cm;margin-right:0.25cm;"><a name="_" id="_"/>This is an introduction</p>
       </div>
     OUTPUT
-    IsoDoc::IEEE::WordConvert.new({})
+    IsoDoc::Ieee::WordConvert.new({})
       .convert("test", input
       .sub("<doctype>standard</doctype>", "<doctype>whitepaper</doctype>"), false)
     expect(File.exist?("test.doc")).to be true
@@ -326,7 +326,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         </div>
       </div>
     OUTPUT
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", input, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[@style = 'mso-element:footnote-list']")
@@ -447,7 +447,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
          </p>
        </div>
     OUTPUT
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", input, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
@@ -508,7 +508,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
          </p>
        </div>
     OUTPUT
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", input
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", input
     .sub("<doctype>standard</doctype>", "<doctype>whitepaper</doctype>"), false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
@@ -583,9 +583,9 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         </div>
       </div>
     OUTPUT
-    presxml = IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+    presxml = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
@@ -652,9 +652,9 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         </div>
       </div>
     OUTPUT
-    presxml = IsoDoc::IEEE::PresentationXMLConvert.new(presxml_options)
+    presxml = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", presxml, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
@@ -701,7 +701,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         </div>
       </div>
     OUTPUT
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", input, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
@@ -737,7 +737,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         </div>
       </div>
     OUTPUT
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", input, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
@@ -779,7 +779,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         <p class='IEEEStdsComputerCode'> Que? </p>
       </div>
     OUTPUT
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", input, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
@@ -814,7 +814,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
          </div>
        </div>
     OUTPUT
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", input, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
@@ -832,7 +832,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
          </div>
        </div>
     OUTPUT
-    IsoDoc::IEEE::WordConvert.new({})
+    IsoDoc::Ieee::WordConvert.new({})
       .convert("test", input.sub("<doctype>standard</doctype>",
                                  "<doctype>whitepaper</doctype>"), false)
     expect(File.exist?("test.doc")).to be true
@@ -888,7 +888,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
          </div>
        </div>
     OUTPUT
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", input, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", input, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
@@ -925,7 +925,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
          </div>
        </div>
     OUTPUT
-    IsoDoc::IEEE::WordConvert.new({})
+    IsoDoc::Ieee::WordConvert.new({})
       .convert("test", input.sub("<doctype>standard</doctype>",
                                  "<doctype>whitepaper</doctype>"), false)
     expect(File.exist?("test.doc")).to be true
@@ -986,14 +986,14 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
          </div>
        </div>
     OUTPUT
-    output = IsoDoc::IEEE::PresentationXMLConvert
+    output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
     xml = Nokogiri::XML(output)
     xml.at("//xmlns:localized-strings")&.remove
     expect(strip_guid(Xml::C14n.format(xml.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", output, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
@@ -1037,7 +1037,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
          </div>
        </div>
     OUTPUT
-    output = IsoDoc::IEEE::PresentationXMLConvert
+    output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input.sub("<doctype>standard</doctype>",
                                  "<doctype>whitepaper</doctype>"), true)
@@ -1045,7 +1045,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     xml.at("//xmlns:localized-strings")&.remove
     expect(strip_guid(Xml::C14n.format(xml.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
-    IsoDoc::IEEE::WordConvert.new({})
+    IsoDoc::Ieee::WordConvert.new({})
       .convert("test", output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
@@ -1111,14 +1111,14 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
         </div>
       </div>
     OUTPUT
-    output = IsoDoc::IEEE::PresentationXMLConvert
+    output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
     xml = Nokogiri::XML(output)
     xml.at("//xmlns:localized-strings")&.remove
     expect(strip_guid(Xml::C14n.format(xml.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
-    IsoDoc::IEEE::WordConvert.new({}).convert("test", output, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
@@ -1170,7 +1170,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
          </div>
        </div>
     OUTPUT
-    output = IsoDoc::IEEE::PresentationXMLConvert
+    output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input.sub("<doctype>standard</doctype>",
                                  "<doctype>whitepaper</doctype>"), true)
@@ -1178,7 +1178,7 @@ RSpec.describe IsoDoc::IEEE::WordConvert do
     xml.at("//xmlns:localized-strings")&.remove
     expect(strip_guid(Xml::C14n.format(xml.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
-    IsoDoc::IEEE::WordConvert.new({})
+    IsoDoc::Ieee::WordConvert.new({})
       .convert("test", output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))

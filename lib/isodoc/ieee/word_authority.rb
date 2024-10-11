@@ -1,5 +1,5 @@
 module IsoDoc
-  module IEEE
+  module Ieee
     class WordConvert < IsoDoc::WordConvert
       def authority_cleanup(docxml)
         feedback_footnote(docxml)

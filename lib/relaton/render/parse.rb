@@ -1,6 +1,6 @@
 module Relaton
   module Render
-    module IEEE
+    module Ieee
       class Parse < ::Relaton::Render::Parse
         def simple_or_host_xml2hash(doc, host)
           ret = super

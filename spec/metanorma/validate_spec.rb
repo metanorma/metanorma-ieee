@@ -1,7 +1,7 @@
 require "spec_helper"
 require "relaton_iso"
 
-RSpec.describe Metanorma::IEEE do
+RSpec.describe Metanorma::Ieee do
   before do
     allow_any_instance_of(Relaton::Index::FileIO)
       .to receive(:check_file).and_return(nil)
