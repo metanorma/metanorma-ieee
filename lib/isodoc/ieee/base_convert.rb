@@ -34,10 +34,6 @@ module IsoDoc
         super.merge(type: node["type"])
       end
 
-      def note_delim
-        "&#x2014;"
-      end
-
       def omit_docid_prefix(prefix)
         prefix == "DOI" and return true
         super
@@ -48,7 +44,6 @@ module IsoDoc
         div.p do |p|
           name and p.span class: "note_label" do |s|
             name.children.each { |n| parse(n, s) }
-            s << note_delim
           end
           node.first_element_child.children.each { |n| parse(n, p) }
         end
@@ -60,7 +55,6 @@ module IsoDoc
         name and div.p do |p|
           p.span class: "note_label" do |s|
             name.children.each { |n| parse(n, s) }
-            s << note_delim
           end
         end
         node.children.each { |n| parse(n, div) }

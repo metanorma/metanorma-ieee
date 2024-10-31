@@ -72,6 +72,11 @@ module IsoDoc
         "&#x2014;"
       end
 
+      def note_delim(_elem)
+        "&#x2014;"
+      end
+
+=begin
       def note1(elem)
         elem.parent.name == "bibitem" || elem["notag"] == "true" and return
         n = @xrefs.get[elem["id"]]
@@ -80,6 +85,7 @@ module IsoDoc
               end
         prefix_name(elem, block_delim, lbl, "name")
       end
+=end
 
       def annex1(elem)
         if @doctype == "whitepaper"

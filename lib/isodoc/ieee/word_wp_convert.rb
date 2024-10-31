@@ -100,7 +100,6 @@ module IsoDoc
         out.div **figure_attrs(node) do |div|
           figure_name_parse(node, div, node.at(ns("./name")))
           node.children.each do |n|
-            figure_key(out) if n.name == "dl"
             parse(n, div) unless n.name == "name"
           end
         end
