@@ -440,85 +440,119 @@ RSpec.describe IsoDoc do
                                  <div id="figureA-1" class="figure" style='page-break-after: avoid;page-break-inside: avoid;'>
                          <img src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7" height="20" width="auto"/>
                          <img src='data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjw/eG1sLXN0eWxlc2hlZXQgdHlwZT0idGV4dC94c2wiIGhyZWY9Ii4uLy4uLy4uL3hzbC9yZXNfZG9jL2ltZ2ZpbGUueHNsIj8+CjwhRE9DVFlQRSBpbWdmaWxlLmNvbnRlbnQgU1lTVEVNICIuLi8uLi8uLi9kdGQvdGV4dC5lbnQiPgo8aW1nZmlsZS5jb250ZW50IG1vZHVsZT0iZnVuZGFtZW50YWxzX29mX3Byb2R1Y3RfZGVzY3JpcHRpb25fYW5kX3N1cHBvcnQiIGZpbGU9ImFjdGlvbl9zY2hlbWFleHBnMS54bWwiPgo8aW1nIHNyYz0iYWN0aW9uX3NjaGVtYWV4cGcxLmdpZiI+CjxpbWcuYXJlYSBzaGFwZT0icmVjdCIgY29vcmRzPSIyMTAsMTg2LDM0MywyMjciIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9iYXNpY19hdHRyaWJ1dGVfc2NoZW1hL2Jhc2ljX2F0dHJpYnV0ZV9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMTAsMTAsOTYsNTEiIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9hY3Rpb25fc2NoZW1hL2FjdGlvbl9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMjEwLDI2NCwzNTgsMzA1IiBocmVmPSIuLi8uLi9yZXNvdXJjZXMvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEueG1sIiAvPgo8L2ltZz4KPC9pbWdmaWxlLmNvbnRlbnQ+Cg==' height='20' width='auto'/>
-                         <a href="#_" class="TableFootnoteRef">a</a><aside class="footnote"><div id="fn:_"><span><span id="_" class="TableFootnoteRef">a</span>&#160; </span>
-                         <p id="_">The time <span class="stem">(#(t_90)#)</span> was estimated to be 18,2 min for this example.</p>
-                       </div></aside>
-                         <p  style='page-break-after:avoid;'><b>Key</b></p>
-                         <div class="figdl">
-                      <dl><dt><p>A</p></dt><dd><p>B</p></dd></dl>
-                      </div>
-                       <p class="FigureTitle" style="text-align:center;">Figure 1&#8212;Split-it-right <i>sample</i> divider
-                       <a class='FootnoteRef' href='#fn:1'>
-                  <sup>1</sup>
-                </a>
-                        </p></div>
-                               <div class="figure" id="figure-B">
-                <pre>A &#x3c;
-                B</pre>
-                <p class="FigureTitle" style="text-align:center;">Figure 2</p>
+                          <p style="page-break-after: avoid;">
+                      <b>
+                         Key
+                         <b/>
+                      </b>
+                   </p>
+                   <div class="figdl">
+                      <dl class="formula_dl">
+                         <dt>
+                            <p>a</p>
+                         </dt>
+                         <dd>
+                            <p id="_">
+                               The time
+                               <span class="stem">(#(t_90)#)</span>
+                               was estimated to be 18,2 min for this example.
+                            </p>
+                         </dd>
+                         <dt>
+                            <p>A</p>
+                         </dt>
+                         <dd>
+                            <p>B</p>
+                         </dd>
+                      </dl>
+                   </div>
+                   <p class="FigureTitle" style="text-align:center;">
+                      Figure 1—Split-it-right
+                      <i>sample</i>
+                      divider
+                      <a class="FootnoteRef" href="#fn:1">
+                         <sup>1</sup>
+                      </a>
+                   </p>
                 </div>
-                               <div class="figure" id="figure-C">
-                <pre>A &#x3c;
-                B</pre>
+                <div id="figure-B" class="figure">
+                   <pre>A &lt;
+       B</pre>
+                   <p class="FigureTitle" style="text-align:center;">Figure 2</p>
                 </div>
-                               </div>
-                               <aside id='fn:1' class='footnote'>
-                  <p>X</p>
-                </aside>
-                             </div>
-                           </body>
+                <div id="figure-C" class="figure">
+                   <pre>A &lt;
+       B</pre>
+                </div>
+             </div>
+             <aside id="fn:1" class="footnote">
+                <p>X</p>
+             </aside>
+          </div>
+       </body>
     OUTPUT
     word = <<~OUTPUT
       <div>
-        <a name="A" id="A"/>
-        <p class="IEEEStdsLevel1Header">Foreword</p>
-        <div class="IEEEStdsImage" style="page-break-after: avoid;page-break-inside: avoid;">
-          <a name="figureA-1" id="figureA-1"/>
-          <img src="_.gif" height="20" width="20"/>
-          <img src="_.xml" height="20" width="0"/>
-          <aside>
-            <div>
-              <a name="ftn_" id="ftn_"/>
-            </div>
-          </aside>
-          <p style="page-break-after:avoid;" class="IEEEStdsParagraph">
-            <b>Key</b>
-          </p>
-          <table class="dl" style="page-break-after:avoid;">
-            <tr>
-              <td valign="top" align="left">
-                <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">A</p>
-              </td>
-              <td valign="top">
-                <p class="IEEEStdsParagraph">B</p>
-              </td>
-            </tr>
-            <tr>
-              <td valign="top" align="left">
-                <span>
-                  <span class="TableFootnoteRef"><a name="_" id="_"/>a</span>
-                  <span style="mso-tab-count:1">  </span>
+          <a name="A" id="A"/>
+          <p class="IEEEStdsLevel1Header">Foreword</p>
+          <div class="IEEEStdsImage" style="page-break-after: avoid;page-break-inside: avoid;">
+             <a name="figureA-1" id="figureA-1"/>
+             <img src="_.gif" height="20" width="20"/>
+             <img src="_.xml" height="20" width="0"/>
+             <p style="page-break-after: avoid;" class="IEEEStdsParagraph">
+                <b>
+                   Key
+                   <b/>
+                </b>
+             </p>
+             <table class="formula_dl" style="page-break-after:avoid;">
+                <tr>
+                   <td valign="top" align="left">
+                      <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">a</p>
+                   </td>
+                   <td valign="top">
+                      <p class="IEEEStdsParagraph">
+                         <a name="_" id="_"/>
+                         The time
+                         <span class="stem">(#(t_90)#)</span>
+                         was estimated to be 18,2 min for this example.
+                      </p>
+                   </td>
+                </tr>
+                <tr>
+                   <td valign="top" align="left">
+                      <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">A</p>
+                   </td>
+                   <td valign="top">
+                      <p class="IEEEStdsParagraph">B</p>
+                   </td>
+                </tr>
+             </table>
+             <p class="IEEEStdsRegularFigureCaption" style="text-align:center;">
+                Figure 1—Split-it-right
+                <i>sample</i>
+                divider
+                <span style="mso-bookmark:_Ref">
+                   <a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_">
+                      <span class="MsoFootnoteReference">
+                         <span style="mso-special-character:footnote"/>
+                      </span>
+                   </a>
                 </span>
-              </td>
-              <td valign="top">
-                <p class="IEEEStdsParagraph"><a name="_" id="_"/>The time <span class="stem">(#(t_90)#)</span> was estimated to be 18,2 min for this example.</p>
-              </td>
-            </tr>
-          </table>
-          <p class="IEEEStdsRegularFigureCaption" style="text-align:center;">—Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref"><a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
-        </div>
-        <div class="IEEEStdsImage">
-          <a name="figure-B" id="figure-B"/>
-          <pre style="page-break-after:avoid;">A
-      B</pre>
-          <p class="IEEEStdsRegularFigureCaption" style="text-align:center;"/>
-        </div>
-        <div class="IEEEStdsImage">
-          <a name="figure-C" id="figure-C"/>
-          <pre>A
-      B</pre>
-        </div>
-      </div>
+             </p>
+          </div>
+          <div class="IEEEStdsImage">
+             <a name="figure-B" id="figure-B"/>
+             <pre style="page-break-after:avoid;">A 
+       B</pre>
+             <p class="IEEEStdsRegularFigureCaption" style="text-align:center;"/>
+          </div>
+          <div class="IEEEStdsImage">
+             <a name="figure-C" id="figure-C"/>
+             <pre>A 
+       B</pre>
+          </div>
+       </div>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
