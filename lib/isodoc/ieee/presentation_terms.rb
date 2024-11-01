@@ -235,10 +235,19 @@ module IsoDoc
         pref << " (#{tail})"
       end
 
+      def termnote_delim(_elem)
+        "&#x2014;"
+      end
+
       def termnote1(elem)
-        lbl = l10n(@xrefs.anchor(elem["id"], :label)&.strip || "???")
+        lbl = termnote_label(elem)
         prefix_name(elem, block_delim, lower2cap(lbl), "name")
       end
+
+      def termnote_label(elem)
+        lbl = l10n(@xrefs.anchor(elem["id"], :label)&.strip || "???")
+      l10n "#{lbl}#{termnote_delim(elem)}"
+    end
 
       def term(docxml); end
 

@@ -60,10 +60,6 @@ module IsoDoc
         node.children.each { |n| parse(n, div) }
       end
 
-      def termnote_delim
-        "&#x2014;"
-      end
-
       def bracket_if_num(num)
         return nil if num.nil?
 

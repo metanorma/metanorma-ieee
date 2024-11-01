@@ -191,7 +191,6 @@ module IsoDoc
       def termnote_label(para, name)
         para.span class: "note_label" do |s|
           name.children.each { |n| parse(n, s) }
-          s << termnote_delim
         end
       end
 

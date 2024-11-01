@@ -76,17 +76,6 @@ module IsoDoc
         "&#x2014;"
       end
 
-=begin
-      def note1(elem)
-        elem.parent.name == "bibitem" || elem["notag"] == "true" and return
-        n = @xrefs.get[elem["id"]]
-        lbl = if n.nil? || n[:label].nil? || n[:label].empty? then @i18n.note
-              else l10n("#{@i18n.note} #{n[:label]}")
-              end
-        prefix_name(elem, block_delim, lbl, "name")
-      end
-=end
-
       def annex1(elem)
         if @doctype == "whitepaper"
           annex1_whitepaper(elem)
