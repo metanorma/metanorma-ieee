@@ -10,8 +10,7 @@ module IsoDoc
         c = IsoDoc::XrefGen::Counter.new("@")
         elem.xpath(ns("./definition")).each do |d|
           c.increment(d)
-          d.elements.first.children.first.previous =
-            "<strong>(#{c.print})</strong>&#xa0;"
+          d.elements.first.add_first_child "<strong>(#{c.print})</strong>&#xa0;"
         end
       end
 

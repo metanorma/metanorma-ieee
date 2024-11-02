@@ -90,7 +90,7 @@ module IsoDoc
           t.name = "variant-title"
           t["type"] = "sub"
         end
-        elem.children.first.previous = "<title>#{lbl}</title>"
+        elem.add_first_child "<title>#{lbl}</title>"
       end
 
       def annex1_default(elem)
