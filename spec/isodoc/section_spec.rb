@@ -132,14 +132,24 @@ RSpec.describe IsoDoc::Ieee do
       </p>
       </term>
             </terms>
-            <definitions id="K"><title>3.2.</title>
+            <definitions id="K">
+            <title depth="2">
+               3.2.
+               <tab/>
+               Acronyms and abbreviations
+            </title>
               <dl>
                 <dt>Symbol</dt>
                 <dd>Definition</dd>
               </dl>
             </definitions>
           </clause>
-          <definitions id="L" displayorder="9"><title>4.</title>
+          <definitions id="L" displayorder="9">
+         <title depth="1">
+            4.
+            <tab/>
+            Acronyms and abbreviations
+         </title>
             <dl>
               <dt>Symbol</dt>
               <dd>Definition</dd>
@@ -226,7 +236,11 @@ RSpec.describe IsoDoc::Ieee do
                </p>
              </div>
              <div id='K'>
-               <h2>3.2.</h2>
+           <h2>
+        3.2.
+         
+        Acronyms and abbreviations
+     </h2>
                <div class="figdl">
                <dl>
                  <dt>
@@ -238,7 +252,11 @@ RSpec.describe IsoDoc::Ieee do
              </div>
            </div>
            <div id='L' class='Symbols'>
-             <h1>4.</h1>
+         <h1>
+      4.
+       
+      Acronyms and abbreviations
+   </h1>
              <div class="figdl">
              <dl>
                <dt>
@@ -383,7 +401,11 @@ RSpec.describe IsoDoc::Ieee do
               </p>
             </div>
             <div id='K'>
-              <h2>3.2.</h2>
+                   <h2>
+                      3.2.
+                      <span style="mso-tab-count:1">  </span>
+                      Acronyms and abbreviations
+                   </h2>
               <table class='dl'>
                 <tr>
                   <td valign='top' align='left'>
@@ -395,7 +417,11 @@ RSpec.describe IsoDoc::Ieee do
             </div>
           </div>
           <div id='L' class='Symbols'>
-            <h1>4.</h1>
+                <h1>
+                   4.
+                   <span style="mso-tab-count:1">  </span>
+                   Acronyms and abbreviations
+                </h1>
             <table class='dl'>
               <tr>
                 <td valign='top' align='left'>

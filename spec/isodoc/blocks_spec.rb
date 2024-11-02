@@ -63,7 +63,7 @@ RSpec.describe IsoDoc do
       <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
          <preface>
              <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause>
-           <foreword displayorder='2' id="A">
+           <foreword displayorder='2' id="A"><title>Foreword</title>
              <table id='tableD-1' alt='tool tip' summary='long desc'>
                <name>Table 1&#x2014;Hello</name>
                <thead>
@@ -386,7 +386,7 @@ RSpec.describe IsoDoc do
            <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
               <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause>
-              <foreword id="A" displayorder="2">
+              <foreword id="A" displayorder="2"><title>Foreword</title>
                 <figure id="figureA-1" keep-with-next="true" keep-lines-together="true">
                    <name>
                       Figure 1—Split-it-right
@@ -692,7 +692,7 @@ RSpec.describe IsoDoc do
                 <clause type="toc" id="_" displayorder="1">
         <title depth="1">Contents</title>
       </clause>
-            <foreword displayorder="2">
+            <foreword displayorder="2"><title>Foreword</title>
             <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6a" type="caution" keep-with-next="true" keep-lines-together="true">
             <name>CAUTION</name>
           <p id="_e94663cc-2473-4ccc-9a72-983a74d989f2">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
@@ -758,7 +758,7 @@ RSpec.describe IsoDoc do
             <clause type="toc" id="_" displayorder="1">
          <title depth="1">Contents</title>
         </clause>
-          <foreword displayorder="2" id="A">
+          <foreword displayorder="2" id="A"><title>Foreword</title>
             <example id='samplecode' keep-with-next='true' keep-lines-together='true'>
               <name>Example 1</name>
               <p>Hello</p>
@@ -851,7 +851,7 @@ RSpec.describe IsoDoc do
                 <clause type="toc" id="_" displayorder="1">
         <title depth="1">Contents</title>
       </clause>
-          <foreword id="A" displayorder="2">
+          <foreword id="A" displayorder="2"><title>Foreword</title>
             <formula id="_" unnumbered="true"  keep-with-next="true" keep-lines-together="true">
           <stem type="AsciiMath">r = 1 %</stem>
         <dl id="_" class="formula_dl">

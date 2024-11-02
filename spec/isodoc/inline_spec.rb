@@ -92,7 +92,7 @@ RSpec.describe IsoDoc::Ieee do
         <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
           <preface>
               <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause>
-            <foreword displayorder='2'>
+            <foreword displayorder='2'><title>Foreword</title>
               <p>
                <eref bibitemid="IEV" citeas="IEV" type="inline"><locality type="clause"><referenceFrom>1-2-3</referenceFrom></locality>IEV, 1-2-3</eref>
                <xref type="inline" target="ISO712"><span class="std_publisher">ISO&#xa0;</span><span class="std_docNumber">712</span></xref>
@@ -310,7 +310,7 @@ RSpec.describe IsoDoc::Ieee do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-      <foreword displayorder='2'>
+      <foreword displayorder='2'><title>Foreword</title>
         <p>
           <ul>
             <li> </li>
@@ -354,7 +354,7 @@ RSpec.describe IsoDoc::Ieee do
       <iso-standard xmlns='http://riboseinc.com/isoxml' xmlns:m='http://www.w3.org/1998/Math/MathML' type='presentation'>
         <preface>
             <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause>
-          <foreword displayorder='2'>
+          <foreword displayorder='2'><title>Foreword</title>
             <p>
               <stem type='MathML'>
                  <m:math>

@@ -105,7 +105,7 @@ RSpec.describe Metanorma::Ieee do
           </itu-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword displayorder='2'>
+      <foreword displayorder='2'><title>Foreword</title>
          <p>
            <xref target='N1'>Equation (1)</xref>
            <xref target='N2'>Inequality (2)</xref>
@@ -174,7 +174,7 @@ RSpec.describe Metanorma::Ieee do
         </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword id='fwd' displayorder='2'>
+      <foreword id='fwd' displayorder='2'><title>Foreword</title>
         <p>
           <xref target='N'>Figure 1</xref>
           <xref target='note1'>Figure 1-1</xref>
@@ -191,7 +191,7 @@ RSpec.describe Metanorma::Ieee do
       .at("//xmlns:foreword").to_xml))
       .to be_equivalent_to Xml::C14n.format(output)
     output = <<~OUTPUT
-      <foreword id='fwd' displayorder='2'>
+      <foreword id='fwd' displayorder='2'><title>Foreword</title>
          <p>
            <xref target='N'>Figure 3.1</xref>
            <xref target='note1'>Figure 3.1-1</xref>
