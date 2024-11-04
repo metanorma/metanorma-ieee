@@ -114,6 +114,20 @@ module IsoDoc
         id = UUIDTools::UUID.random_create.to_s
         "<fn reference='#{id}'><p>#{note.content}</p></fn>"
       end
+
+      def omit_docid_prefix(prefix)
+        prefix == "DOI" and return true
+        super
+      end
+
+      def bracket_if_num(num)
+        return nil if num.nil?
+
+        num = num.text.sub(/^\[/, "").sub(/\]$/, "")
+        return "[#{num}]" if /^B?\d+$/.match?(num)
+
+        num
+      end
     end
   end
 end
