@@ -93,9 +93,7 @@ RSpec.describe IsoDoc do
                 <term id="paddy1">
                    <p>
                       <strong>paddy</strong>
-                      , &lt;in agriculture, dated&gt;: &lt;
-                      <domain>rice</domain>
-                      &gt; rice retaining its husk after threshing (
+                      , &lt;rice&gt;, &lt;in agriculture, dated&gt;: rice retaining its husk after threshing (
                       <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011">
                          <locality type="clause">
                             <referenceFrom>3.1</referenceFrom>
@@ -209,7 +207,7 @@ RSpec.describe IsoDoc do
                 <p class="TermNum" id="paddy1"/>
                 <p>
                    <b>paddy</b>
-                   , &lt;in agriculture, dated&gt;: &lt; rice &gt; rice retaining its husk after threshing (
+                   , &lt;rice&gt;, &lt;in agriculture, dated&gt;: rice retaining its husk after threshing (
                    <span class="std_publisher">ISO </span>
                    <span class="std_docNumber">7301</span>
                    :
@@ -333,7 +331,7 @@ RSpec.describe IsoDoc do
                 <p class="TermNum" id="paddy1"/>
                 <p>
                    <b>paddy</b>
-                   , &lt;in agriculture, dated&gt;: &lt; rice &gt; rice retaining its husk after threshing (
+                   , &lt;rice&gt;, &lt;in agriculture, dated&gt;: rice retaining its husk after threshing (
                    <span class="std_publisher">ISO </span>
                    <span class="std_docNumber">7301</span>
                    :
@@ -587,9 +585,8 @@ RSpec.describe IsoDoc do
             <p>For the purposes of this document, the following terms and definitions apply.</p>
             <term id='paddy1'>
               <p>
-                <strong>paddy</strong>:
-                &#x3c;<domain>rice</domain>&#x3e; rice retaining its husk after threshing, mark 2
-                rice retaining its husk after threshing, mark 3
+                <strong>paddy</strong>
+                , &lt;rice&gt;: rice retaining its husk after threshing, mark 2 rice retaining its husk after threshing, mark 3
                 <origin bibitemid='ISO7301' type='inline' citeas='ISO 7301:2011'>
                   <locality type='clause'>
                     <referenceFrom>3.1</referenceFrom>
@@ -663,7 +660,7 @@ RSpec.describe IsoDoc do
              <title depth="1">1.<tab/>Terms and Definitions</title>
              <p>For the purposes of this document, the following terms and definitions apply.</p>
              <term id="paddy1">
-               <p><strong>paddy</strong>: <p>&lt;<domain>rice</domain>&gt; <strong>(A)</strong> rice retaining its <xref target="paddy1"><em>husk</em></xref> after threshing
+               <p><strong>paddy</strong>, &lt;rice&gt;: <p><strong>(A)</strong> rice retaining its <xref target="paddy1"><em>husk</em></xref> after threshing
          <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality><span class="std_publisher">ISO&#xa0;</span><span class="std_docNumber">7301</span>:<span class="std_year">2011</span>,  3.1</origin>, modified
             &#x2014;
            The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here
@@ -747,8 +744,8 @@ RSpec.describe IsoDoc do
             <p>For the purposes of this document, the following terms and definitions apply.</p>
             <term id='paddy1'>
               <p>
-                <strong>paddy</strong>:
-                &#x3c;<domain>rice</domain>&#x3e;
+                <strong>paddy</strong>,
+                &#x3c;rice&#x3e;:
                 <strong>(A)</strong>
                 &#xa0;rice retaining its husk after threshing
                 <strong>(B)</strong>
@@ -845,7 +842,7 @@ RSpec.describe IsoDoc do
             <term id='paddy1'>
               <p>
                 <strong>A</strong>
-                : &#x3c;<domain>rice</domain>&#x3e; rice retaining its husk after threshing
+                , &lt;rice&gt;: rice retaining its husk after threshing
                 <em>Syn:</em>
                 <strong>B</strong>
                 .
@@ -862,14 +859,14 @@ RSpec.describe IsoDoc do
             </term>
             <term id='paddy2'>
               <p>
-                <strong>C (D)</strong>:
-                &#x3c;<domain>rice</domain>&#x3e; rice retaining its husk after threshing
+                <strong>C (D)</strong>
+                , &lt;rice&gt;: rice retaining its husk after threshing
               </p>
             </term>
             <term id='paddy1a'>
               <p>
-                <strong>E</strong>:
-                &#x3c;<domain>rice</domain>&#x3e; rice retaining its husk after threshing
+                <strong>E</strong>
+                , &lt;rice&gt;: rice retaining its husk after threshing
                 <em>Syn:</em>
                 <strong>F</strong>
                 .
@@ -886,14 +883,14 @@ RSpec.describe IsoDoc do
             </term>
             <term id='paddy2a'>
               <p>
-                <strong>G (H)</strong>:
-                &#x3c;<domain>rice</domain>&#x3e; rice retaining its husk after threshing
+                <strong>G (H)</strong>
+                , &lt;rice&gt;: rice retaining its husk after threshing
               </p>
             </term>
             <term id='paddy3'>
               <p>
                 <strong>I</strong>
-                , US:  &#x3c;<domain>rice</domain>&#x3e; rice retaining its husk after threshing
+                , &lt;rice&gt;, US: rice retaining its husk after threshing
                 <em>Syn:</em>
                 <strong>J</strong>
                 .
@@ -911,7 +908,7 @@ RSpec.describe IsoDoc do
             <term id='paddy4'>
               <p>
                 <strong>K</strong>
-                , eng: &#x3c;<domain>rice</domain>&#x3e; rice retaining its husk after threshing
+                , &lt;rice&gt;, eng: rice retaining its husk after threshing
                 <em>Syn:</em>
                 <strong>L</strong>
                 , fra.
@@ -989,9 +986,7 @@ RSpec.describe IsoDoc do
              <term id='paddy1'>
                <p>
                  <strong>paddy</strong>
-                 , m, f, sg, noun, en Latn US, /p&#xe6;di&#x2d0;/:
-                 &#x3c;<domain>rice</domain>&#x3e;
-                 rice retaining its husk after threshing
+                 , &lt;rice&gt;, m, f, sg, noun, en Latn US, /pædiː/: rice retaining its husk after threshing
                  <em>Syn:</em>
                  <strong>muddy rice</strong>
                  , n, noun.
@@ -1038,7 +1033,7 @@ RSpec.describe IsoDoc do
             <term id='paddy1'>
               <p>
                 <strong/>
-                : &#x3c;<domain>rice</domain>&#x3e; rice retaining its husk after threshing
+                , &lt;rice&gt;: rice retaining its husk after threshing
               </p>
               <preferred isInternational='true'>
                 <figure id='_'>
