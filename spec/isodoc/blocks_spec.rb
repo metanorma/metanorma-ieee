@@ -401,11 +401,10 @@ RSpec.describe IsoDoc do
                    <p keep-with-next="true">
                       <strong>
                          Key
-                         <strong/>
                       </strong>
                    </p>
                    <dl class="formula_dl">
-                      <dt>a</dt>
+                      <dt><p><sup>a</sup></p></dt>
                       <dd>
                          <p id="_">
                             The time
@@ -443,13 +442,12 @@ RSpec.describe IsoDoc do
                           <p style="page-break-after: avoid;">
                       <b>
                          Key
-                         <b/>
                       </b>
                    </p>
                    <div class="figdl">
                       <dl class="formula_dl">
                          <dt>
-                            <p>a</p>
+                            <p><sup>a</sup></p>
                          </dt>
                          <dd>
                             <p id="_">
@@ -502,13 +500,12 @@ RSpec.describe IsoDoc do
              <p style="page-break-after: avoid;" class="IEEEStdsParagraph">
                 <b>
                    Key
-                   <b/>
                 </b>
              </p>
              <table class="formula_dl" style="page-break-after:avoid;">
                 <tr>
                    <td valign="top" align="left">
-                      <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">a</p>
+                      <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph"><p class="IEEEStdsParagraph"><sup>a</sup></p></p>
                    </td>
                    <td valign="top">
                       <p class="IEEEStdsParagraph">

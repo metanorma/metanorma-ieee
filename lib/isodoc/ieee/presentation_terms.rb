@@ -213,6 +213,13 @@ module IsoDoc
         end
       end
 
+      # domain is rendered in designation_field instead
+      def termdomain(elem)
+        d = elem.at(ns(".//domain")) or return
+        d["hidden"] = "true"
+      end
+
+      # TODO wrap domain not in <domain>, but <span class="domain"> or equivalent
       def designation_field(desgn, name)
         if desgn.name == "preferred"
           f = desgn.xpath(ns("./../domain | ./../subject")).map(&:remove)
@@ -245,8 +252,8 @@ module IsoDoc
 
       def termnote_label(elem)
         lbl = l10n(@xrefs.anchor(elem["id"], :label)&.strip || "???")
-      l10n "#{lbl}#{termnote_delim(elem)}"
-    end
+        l10n "#{lbl}#{termnote_delim(elem)}"
+      end
 
       def term(docxml); end
 
