@@ -18,8 +18,9 @@ module IsoDoc
         ret = resolve_eref_connectives(eref_locality_stacks(refs, target,
                                                             node))
         node["droploc"] = droploc
+        p = prefix_clause(target, refs.first.at(ns("./locality")))
         eref_localities1({ target: target, number: "pl",
-                           type: prefix_clause(target, refs.first.at(ns("./locality"))),
+                           type: p,
                            from: l10n(ret[1..-1].join), node: node,
                            lang: @lang })
       end
