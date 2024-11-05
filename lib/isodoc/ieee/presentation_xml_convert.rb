@@ -18,8 +18,9 @@ module IsoDoc
         ret = resolve_eref_connectives(eref_locality_stacks(refs, target,
                                                             node))
         node["droploc"] = droploc
+        p = prefix_clause(target, refs.first.at(ns("./locality")))
         eref_localities1({ target: target, number: "pl",
-                           type: prefix_clause(target, refs.first.at(ns("./locality"))),
+                           type: p,
                            from: l10n(ret[1..-1].join), node: node,
                            lang: @lang })
       end
@@ -72,13 +73,8 @@ module IsoDoc
         "&#x2014;"
       end
 
-      def note1(elem)
-        elem.parent.name == "bibitem" || elem["notag"] == "true" and return
-        n = @xrefs.get[elem["id"]]
-        lbl = if n.nil? || n[:label].nil? || n[:label].empty? then @i18n.note
-              else l10n("#{@i18n.note} #{n[:label]}")
-              end
-        prefix_name(elem, block_delim, lbl, "name")
+      def note_delim(_elem)
+        "&#x2014;"
       end
 
       def annex1(elem)
@@ -95,7 +91,7 @@ module IsoDoc
           t.name = "variant-title"
           t["type"] = "sub"
         end
-        elem.children.first.previous = "<title>#{lbl}</title>"
+        elem.add_first_child "<title>#{lbl}</title>"
       end
 
       def annex1_default(elem)

@@ -153,9 +153,9 @@ module IsoDoc
       def feedback_style1(div, idx)
         div.xpath(".//p").each_with_index do |p, j|
           p["class"] = idx == 4 ? "IEEEStdsCRTextItal" : "IEEEStdsCRTextReg"
-          j.zero? && idx.zero? and
-            p.children.first.previous =
-              '<a style="mso-footnote-id:ftn0" href="#_ftnref0" name="_ftn0" title=""/>'
+          j.zero? && idx.zero? and p.add_first_child <<~XML
+            <a style="mso-footnote-id:ftn0" href="#_ftnref0" name="_ftn0" title=""/>
+          XML
         end
       end
 
@@ -203,9 +203,9 @@ module IsoDoc
       end
 
       def abstract_header(dest)
-        dest.elements.first.children.first.previous =
-          "<span class='IEEEStdsAbstractHeader'><span lang='EN-US'>" \
-          "Abstract:</span></span> "
+        dest.elements.first.add_first_child <<~XML
+          <span class='IEEEStdsAbstractHeader'><span lang='EN-US'>Abstract:</span></span>
+        XML
       end
 
       def introduction_cleanup(docxml)

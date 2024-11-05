@@ -34,21 +34,11 @@ module IsoDoc
         super.merge(type: node["type"])
       end
 
-      def note_delim
-        "&#x2014;"
-      end
-
-      def omit_docid_prefix(prefix)
-        prefix == "DOI" and return true
-        super
-      end
-
       def note_p_parse(node, div)
         name = node&.at(ns("./name"))&.remove
         div.p do |p|
           name and p.span class: "note_label" do |s|
             name.children.each { |n| parse(n, s) }
-            s << note_delim
           end
           node.first_element_child.children.each { |n| parse(n, p) }
         end
@@ -60,25 +50,12 @@ module IsoDoc
         name and div.p do |p|
           p.span class: "note_label" do |s|
             name.children.each { |n| parse(n, s) }
-            s << note_delim
           end
         end
         node.children.each { |n| parse(n, div) }
       end
 
-      def termnote_delim
-        "&#x2014;"
-      end
-
-      def bracket_if_num(num)
-        return nil if num.nil?
-
-        num = num.text.sub(/^\[/, "").sub(/\]$/, "")
-        return "[#{num}]" if /^B?\d+$/.match?(num)
-
-        num
-      end
-
+      # TODO ":" to Presentation XML
       def example_label(_node, div, name)
         return if name.nil?
 

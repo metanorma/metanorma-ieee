@@ -81,222 +81,346 @@ RSpec.describe IsoDoc do
              <title depth="1">Contents</title>
            </clause>
          </preface>
-         <sections>
-           <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
-           <terms id="_" obligation="normative" displayorder="3">
-             <title depth="1">1.<tab/>Terms and Definitions</title>
-             <p>For the purposes of this document, the following terms and definitions apply.</p>
-             <term id="paddy1">
-             <p><strong>paddy</strong>, &lt;rice&gt;, &lt;in agriculture, dated&gt;: rice retaining its husk after threshing  (<origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality><span class="std_publisher">ISO </span><span class="std_docNumber">7301</span>:<span class="std_year">2011</span>, 3.1</origin>, modified
-            &#x2014;
-           The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here)</p>
-               <termexample id="_" keep-with-next="true" keep-lines-together="true">
-                 <name>Example  1</name>
-                 <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
-                 <ul>
-                   <li>A</li>
-                 </ul>
-               </termexample>
-               <termexample id="_">
-                 <name>Example  2</name>
-                 <ul>
-                   <li>A</li>
-                 </ul>
-               </termexample>
-               <termsource status="adapted">adapted from <origin citeas=""><termref base="IEV" target="xyz">t1</termref></origin>, adapted
-
-
-
-         ;
-           <origin citeas=""><termref base="IEV" target="xyz"/></origin>, adapted
-            &#x2014;
-             with adjustments</termsource>
-             </term>
-             <term id="paddy">
-               <p><strong>paddy</strong>: rice retaining its husk after threshing <em>Syn:</em><strong>paddy rice</strong>, &lt;in agriculture&gt;; <strong>rough rice</strong>. (<origin bibitemid="ISO7301" type="inline" droploc="true" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality><span class="std_publisher">ISO </span><span class="std_docNumber">7301</span>:<span class="std_year">2011</span>, 3.1</origin>)</p>
-               <deprecates>DEPRECATED: cargo rice</deprecates>
-               <termexample id="_">
-                 <name>Example</name>
-                 <ul>
-                   <li>A</li>
-                 </ul>
-               </termexample>
-               <termnote id="_" keep-with-next="true" keep-lines-together="true">
-                 <name>NOTE  1</name>
-                 <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
-               </termnote>
-               <termnote id="_">
-                 <name>NOTE  2</name>
-                 <ul>
-                   <li>A</li>
-                 </ul>
-                 <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
-               </termnote>
-             </term>
-             <term>
-               <p><strong>paddy rice</strong>, &lt;in agriculture&gt;:  <em>See:</em><strong>paddy</strong>. </p>
-             </term>
-             <term>
-               <p><strong>rough rice</strong>:  <em>See:</em><strong>paddy</strong>. </p>
-             </term>
-           </terms>
-         </sections>
+                   <sections>
+             <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
+             <terms id="_" obligation="normative" displayorder="3">
+                <title depth="1">
+                   1.
+                   <tab/>
+                   Terms and Definitions
+                </title>
+                <p>For the purposes of this document, the following terms and definitions apply.</p>
+                <term id="paddy1">
+                   <p>
+                      <strong>paddy</strong>
+                      , &lt;rice&gt;, &lt;in agriculture, dated&gt;: rice retaining its husk after threshing (
+                      <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011">
+                         <locality type="clause">
+                            <referenceFrom>3.1</referenceFrom>
+                         </locality>
+                         <span class="std_publisher">ISO </span>
+                         <span class="std_docNumber">7301</span>
+                         :
+                         <span class="std_year">2011</span>
+                         , 3.1
+                      </origin>
+                      , modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here)
+                   </p>
+                   <termexample id="_" keep-with-next="true" keep-lines-together="true">
+                      <name>Example  1</name>
+                      <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
+                      <ul>
+                         <li>A</li>
+                      </ul>
+                   </termexample>
+                   <termexample id="_">
+                      <name>Example  2</name>
+                      <ul>
+                         <li>A</li>
+                      </ul>
+                   </termexample>
+                   <termsource status="adapted">
+                      adapted from
+                      <origin citeas="">
+                         <termref base="IEV" target="xyz">t1</termref>
+                      </origin>
+                      , adapted ;
+                      <origin citeas="">
+                         <termref base="IEV" target="xyz"/>
+                      </origin>
+                      , adapted — with adjustments
+                   </termsource>
+                </term>
+                <term id="paddy">
+                   <p>
+                      <strong>paddy</strong>
+                      : rice retaining its husk after threshing
+                      <em>Syn:</em>
+                      <strong>paddy rice</strong>
+                      , &lt;in agriculture&gt;;
+                      <strong>rough rice</strong>
+                      . (
+                      <origin bibitemid="ISO7301" type="inline" droploc="true" citeas="ISO 7301:2011">
+                         <locality type="clause">
+                            <referenceFrom>3.1</referenceFrom>
+                         </locality>
+                         <span class="std_publisher">ISO </span>
+                         <span class="std_docNumber">7301</span>
+                         :
+                         <span class="std_year">2011</span>
+                         , 3.1
+                      </origin>
+                      )
+                   </p>
+                   <deprecates>DEPRECATED: cargo rice</deprecates>
+                   <termexample id="_">
+                      <name>Example</name>
+                      <ul>
+                         <li>A</li>
+                      </ul>
+                   </termexample>
+                   <termnote id="_" keep-with-next="true" keep-lines-together="true">
+                      <name>NOTE  1—</name>
+                      <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
+                   </termnote>
+                   <termnote id="_">
+                      <name>NOTE  2—</name>
+                      <ul>
+                         <li>A</li>
+                      </ul>
+                      <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
+                   </termnote>
+                </term>
+                <term>
+                   <p>
+                      <strong>paddy rice</strong>
+                      , &lt;in agriculture&gt;:
+                      <em>See:</em>
+                      <strong>paddy</strong>
+                      .
+                   </p>
+                </term>
+                <term>
+                   <p>
+                      <strong>rough rice</strong>
+                      :
+                      <em>See:</em>
+                      <strong>paddy</strong>
+                      .
+                   </p>
+                </term>
+             </terms>
+          </sections>
        </iso-standard>
     PRESXML
 
     html = <<~"OUTPUT"
       #{HTML_HDR}
-           <p class="zzSTDTitle1">??? for ???</p>
-           <div id="_">
-             <h1>1.  Terms and Definitions</h1>
-             <p>For the purposes of this document, the following terms and definitions apply.</p>
-             <p class="TermNum" id="paddy1"/>
-             <p><b>paddy</b>, &lt;rice&gt;, &lt;in agriculture, dated&gt;: rice retaining its husk after threshing  (<span class="std_publisher">ISO </span><span class="std_docNumber">7301</span>:<span class="std_year">2011</span>, 3.1, modified
-            &#x2014;
-           The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here)</p>
-             <div id="_" class="example" style="page-break-after: avoid;page-break-inside: avoid;">
-               <p class="example-title">Example  1:</p>
-               <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
-               <div class="ul_wrap">
-               <ul>
-                 <li>A</li>
-               </ul>
-               </div>
+             <p class="zzSTDTitle1">??? for ???</p>
+             <div id="_">
+                <h1>
+                    1.
+                     
+                    Terms and Definitions
+                 </h1>
+                <p>For the purposes of this document, the following terms and definitions apply.</p>
+                <p class="TermNum" id="paddy1"/>
+                <p>
+                   <b>paddy</b>
+                   , &lt;rice&gt;, &lt;in agriculture, dated&gt;: rice retaining its husk after threshing (
+                   <span class="std_publisher">ISO </span>
+                   <span class="std_docNumber">7301</span>
+                   :
+                   <span class="std_year">2011</span>
+                   , 3.1 , modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here)
+                </p>
+                <div id="_" class="example" style="page-break-after: avoid;page-break-inside: avoid;">
+                   <p class="example-title">Example  1:</p>
+                   <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
+                   <div class="ul_wrap">
+                      <ul>
+                         <li>A</li>
+                      </ul>
+                   </div>
+                </div>
+                <div id="_" class="example">
+                   <p class="example-title">Example  2:</p>
+                   <div class="ul_wrap">
+                      <ul>
+                         <li>A</li>
+                      </ul>
+                   </div>
+                </div>
+                <p>
+                       adapted from
+                       t1
+                       , adapted ;
+                       Termbase IEV, term ID xyz
+                       , adapted — with adjustments
+                    </p>
+                <p class="TermNum" id="paddy"/>
+                <p>
+                   <b>paddy</b>
+                   : rice retaining its husk after threshing
+                   <i>Syn:</i>
+                   <b>paddy rice</b>
+                   , &lt;in agriculture&gt;;
+                   <b>rough rice</b>
+                   . (
+                   <span class="std_publisher">ISO </span>
+                   <span class="std_docNumber">7301</span>
+                   :
+                   <span class="std_year">2011</span>
+                   , 3.1 )
+                </p>
+                <p class="DeprecatedTerms" style="text-align:left;">DEPRECATED: cargo rice</p>
+                <div id="_" class="example">
+                   <p class="example-title">Example:</p>
+                   <div class="ul_wrap">
+                      <ul>
+                         <li>A</li>
+                      </ul>
+                   </div>
+                </div>
+                <div id="_" class="Note" style="page-break-after: avoid;page-break-inside: avoid;">
+                   <p>NOTE  1— The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
+                </div>
+                <div id="_" class="Note">
+                   <p>
+                      NOTE 2—
+                      <div class="ul_wrap">
+                         <ul>
+                            <li>A</li>
+                         </ul>
+                      </div>
+                      <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
+                   </p>
+                </div>
+                <p class="TermNum" id=""/>
+                <p>
+                   <b>paddy rice</b>
+                   , &lt;in agriculture&gt;:
+                   <i>See:</i>
+                   <b>paddy</b>
+                   .
+                </p>
+                <p class="TermNum" id=""/>
+                <p>
+                   <b>rough rice</b>
+                   :
+                   <i>See:</i>
+                   <b>paddy</b>
+                   .
+                </p>
              </div>
-             <div id="_" class="example">
-               <p class="example-title">Example  2:</p>
-               <div class="ul_wrap">
-               <ul>
-                 <li>A</li>
-               </ul>
-               </div>
-             </div>
-             <p>adapted from t1, adapted
-
-
-
-         ;
-           Termbase IEV, term ID xyz, adapted
-            &#x2014;
-             with adjustments</p>
-             <p class="TermNum" id="paddy"/>
-             <p><b>paddy</b>: rice retaining its husk after threshing <i>Syn:</i><b>paddy rice</b>, &lt;in agriculture&gt;; <b>rough rice</b>. (<span class="std_publisher">ISO </span><span class="std_docNumber">7301</span>:<span class="std_year">2011</span>, 3.1)</p>
-             <p class="DeprecatedTerms" style="text-align:left;">DEPRECATED: cargo rice</p>
-             <div id="_" class="example">
-               <p class="example-title">Example:</p>
-               <div class="ul_wrap">
-               <ul>
-                 <li>A</li>
-               </ul>
-               </div>
-             </div>
-             <div id="_" class="Note" style="page-break-after: avoid;page-break-inside: avoid;">
-               <p>NOTE  1—The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
-             </div>
-             <div id="_" class="Note">
-               <p>NOTE  2—
-              <div class="ul_wrap">
-              <ul><li>A</li></ul>
-              </div>
-              <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p></p>
-             </div>
-             <p class="TermNum" id=""/>
-             <p><b>paddy rice</b>, &lt;in agriculture&gt;:  <i>See:</i><b>paddy</b>. </p>
-             <p class="TermNum" id=""/>
-             <p><b>rough rice</b>:  <i>See:</i><b>paddy</b>. </p>
-           </div>
-         </div>
+          </div>
        </body>
-
     OUTPUT
 
     word = <<~WORD
-      <body lang="EN-US" link="blue" vlink="#954F72">
-        <div class="WordSection1">
-          <p> </p>
-        </div>
-        <p class="section-break">
-          <br clear="all" class="section"/>
-        </p>
-        <div class="WordSection2">
-          <div class="WordSectionContents">
-            <h1 class="IEEEStdsLevel1frontmatter">Contents</h1>
+       <body lang="EN-US" link="blue" vlink="#954F72">
+          <div class="WordSection1">
+             <p> </p>
           </div>
-          <p> </p>
-        </div>
-        <p class="section-break">
-          <br clear="all" class="section"/>
-        </p>
-        <div class="WordSectionMiddleTitle">
-          <p class="IEEEStdsTitle" style="margin-left:0cm;margin-top:70.0pt">??? for ???</p>
-        </div>
-        <p class="section-break">
-          <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
-        </p>
-                 <div class="WordSectionMain">
-           <div id="_">
-             <h1>1.<span style="mso-tab-count:1">  </span>Terms and Definitions</h1>
-             <p>For the purposes of this document, the following terms and definitions apply.</p>
-             <p class="TermNum" id="paddy1"/>
-             <p><b>paddy</b>, &lt;rice&gt;, &lt;in agriculture, dated&gt;: rice retaining its husk after threshing  (<span class="std_publisher">ISO </span><span class="std_docNumber">7301</span>:<span class="std_year">2011</span>, 3.1, modified
-            &#x2014;
-           The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here)</p>
-             <div id="_" class="example" style="page-break-after: avoid;page-break-inside: avoid;">
-               <p class="example-title">Example  1:</p>
-               <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
-               <div class="ul_wrap">
-               <ul>
-                 <li>A</li>
-               </ul>
-               </div>
+          <p class="section-break">
+             <br clear="all" class="section"/>
+          </p>
+          <div class="WordSection2">
+             <div class="WordSectionContents">
+                <h1 class="IEEEStdsLevel1frontmatter">Contents</h1>
              </div>
-             <div id="_" class="example">
-               <p class="example-title">Example  2:</p>
-               <div class="ul_wrap">
-               <ul>
-                 <li>A</li>
-               </ul>
-               </div>
+             <p> </p>
+          </div>
+          <p class="section-break">
+             <br clear="all" class="section"/>
+          </p>
+          <div class="WordSectionMiddleTitle">
+             <p class="IEEEStdsTitle" style="margin-left:0cm;margin-top:70.0pt">??? for ???</p>
+          </div>
+          <p class="section-break">
+             <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+          </p>
+          <div class="WordSectionMain">
+             <div id="_">
+                <h1>
+                   1.
+                   <span style="mso-tab-count:1">  </span>
+                   Terms and Definitions
+                </h1>
+                <p>For the purposes of this document, the following terms and definitions apply.</p>
+                <p class="TermNum" id="paddy1"/>
+                <p>
+                   <b>paddy</b>
+                   , &lt;rice&gt;, &lt;in agriculture, dated&gt;: rice retaining its husk after threshing (
+                   <span class="std_publisher">ISO </span>
+                   <span class="std_docNumber">7301</span>
+                   :
+                   <span class="std_year">2011</span>
+                   , 3.1 , modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here)
+                </p>
+                <div id="_" class="example" style="page-break-after: avoid;page-break-inside: avoid;">
+                   <p class="example-title">Example  1:</p>
+                   <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
+                   <div class="ul_wrap">
+                      <ul>
+                         <li>A</li>
+                      </ul>
+                   </div>
+                </div>
+                <div id="_" class="example">
+                   <p class="example-title">Example  2:</p>
+                   <div class="ul_wrap">
+                      <ul>
+                         <li>A</li>
+                      </ul>
+                   </div>
+                </div>
+                <p>
+                       adapted from
+                       t1
+                       , adapted ;
+                       Termbase IEV, term ID xyz
+                       , adapted — with adjustments
+                    </p>
+                <p class="TermNum" id="paddy"/>
+                <p>
+                   <b>paddy</b>
+                   : rice retaining its husk after threshing
+                   <i>Syn:</i>
+                   <b>paddy rice</b>
+                   , &lt;in agriculture&gt;;
+                   <b>rough rice</b>
+                   . (
+                   <span class="std_publisher">ISO </span>
+                   <span class="std_docNumber">7301</span>
+                   :
+                   <span class="std_year">2011</span>
+                   , 3.1 )
+                </p>
+                <p class="DeprecatedTerms" style="text-align:left;">DEPRECATED: cargo rice</p>
+                <div id="_" class="example">
+                   <p class="example-title">Example:</p>
+                   <div class="ul_wrap">
+                      <ul>
+                         <li>A</li>
+                      </ul>
+                   </div>
+                </div>
+                <div id="_" class="Note" style="page-break-after: avoid;page-break-inside: avoid;">
+                   <p>
+                      <span class="note_label">NOTE  1—</span>
+                      The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.
+                   </p>
+                </div>
+                <div id="_" class="Note">
+                   <p>
+                      <span class="note_label">NOTE  2—</span>
+                      <div class="ul_wrap">
+                         <ul>
+                            <li>A</li>
+                         </ul>
+                      </div>
+                      <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
+                   </p>
+                </div>
+                <p class="TermNum" id=""/>
+                <p>
+                   <b>paddy rice</b>
+                   , &lt;in agriculture&gt;:
+                   <i>See:</i>
+                   <b>paddy</b>
+                   .
+                </p>
+                <p class="TermNum" id=""/>
+                <p>
+                   <b>rough rice</b>
+                   :
+                   <i>See:</i>
+                   <b>paddy</b>
+                   .
+                </p>
              </div>
-             <p>adapted from t1, adapted
-
-
-
-         ;
-           Termbase IEV, term ID xyz, adapted
-            &#x2014;
-             with adjustments</p>
-             <p class="TermNum" id="paddy"/>
-             <p><b>paddy</b>: rice retaining its husk after threshing <i>Syn:</i><b>paddy rice</b>, &lt;in agriculture&gt;; <b>rough rice</b>. (<span class="std_publisher">ISO </span><span class="std_docNumber">7301</span>:<span class="std_year">2011</span>, 3.1)</p>
-             <p class="DeprecatedTerms" style="text-align:left;">DEPRECATED: cargo rice</p>
-             <div id="_" class="example">
-               <p class="example-title">Example:</p>
-               <div class="ul_wrap">
-               <ul>
-                 <li>A</li>
-               </ul>
-               </div>
-             </div>
-             <div id="_" class="Note" style="page-break-after: avoid;page-break-inside: avoid;">
-               <p><span class="note_label">NOTE  1—</span>The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
-             </div>
-             <div id="_" class="Note">
-               <p>
-                 <span class="note_label">NOTE  2—</span>
-                 <div class="ul_wrap">
-                 <ul>
-                   <li>A</li>
-                 </ul>
-                 </div>
-                 <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
-               </p>
-             </div>
-             <p class="TermNum" id=""/>
-             <p><b>paddy rice</b>, &lt;in agriculture&gt;:  <i>See:</i><b>paddy</b>. </p>
-             <p class="TermNum" id=""/>
-             <p><b>rough rice</b>:  <i>See:</i><b>paddy</b>. </p>
-           </div>
-         </div>
+          </div>
        </body>
     WORD
 
@@ -462,8 +586,7 @@ RSpec.describe IsoDoc do
             <term id='paddy1'>
               <p>
                 <strong>paddy</strong>
-                , &#x3c;rice&#x3e;: rice retaining its husk after threshing, mark 2
-                rice retaining its husk after threshing, mark 3
+                , &lt;rice&gt;: rice retaining its husk after threshing, mark 2 rice retaining its husk after threshing, mark 3
                 <origin bibitemid='ISO7301' type='inline' citeas='ISO 7301:2011'>
                   <locality type='clause'>
                     <referenceFrom>3.1</referenceFrom>
@@ -621,8 +744,8 @@ RSpec.describe IsoDoc do
             <p>For the purposes of this document, the following terms and definitions apply.</p>
             <term id='paddy1'>
               <p>
-                <strong>paddy</strong>
-                , &#x3c;rice&#x3e;:
+                <strong>paddy</strong>,
+                &#x3c;rice&#x3e;:
                 <strong>(A)</strong>
                 &#xa0;rice retaining its husk after threshing
                 <strong>(B)</strong>
@@ -719,7 +842,7 @@ RSpec.describe IsoDoc do
             <term id='paddy1'>
               <p>
                 <strong>A</strong>
-                , &#x3c;rice&#x3e;: rice retaining its husk after threshing
+                , &lt;rice&gt;: rice retaining its husk after threshing
                 <em>Syn:</em>
                 <strong>B</strong>
                 .
@@ -737,13 +860,13 @@ RSpec.describe IsoDoc do
             <term id='paddy2'>
               <p>
                 <strong>C (D)</strong>
-                , &#x3c;rice&#x3e;: rice retaining its husk after threshing
+                , &lt;rice&gt;: rice retaining its husk after threshing
               </p>
             </term>
             <term id='paddy1a'>
               <p>
                 <strong>E</strong>
-                , &#x3c;rice&#x3e;: rice retaining its husk after threshing
+                , &lt;rice&gt;: rice retaining its husk after threshing
                 <em>Syn:</em>
                 <strong>F</strong>
                 .
@@ -761,13 +884,13 @@ RSpec.describe IsoDoc do
             <term id='paddy2a'>
               <p>
                 <strong>G (H)</strong>
-                , &#x3c;rice&#x3e;: rice retaining its husk after threshing
+                , &lt;rice&gt;: rice retaining its husk after threshing
               </p>
             </term>
             <term id='paddy3'>
               <p>
                 <strong>I</strong>
-                , &#x3c;rice&#x3e;, US: rice retaining its husk after threshing
+                , &lt;rice&gt;, US: rice retaining its husk after threshing
                 <em>Syn:</em>
                 <strong>J</strong>
                 .
@@ -785,7 +908,7 @@ RSpec.describe IsoDoc do
             <term id='paddy4'>
               <p>
                 <strong>K</strong>
-                , &#x3c;rice&#x3e;, eng: rice retaining its husk after threshing
+                , &lt;rice&gt;, eng: rice retaining its husk after threshing
                 <em>Syn:</em>
                 <strong>L</strong>
                 , fra.
@@ -863,8 +986,7 @@ RSpec.describe IsoDoc do
              <term id='paddy1'>
                <p>
                  <strong>paddy</strong>
-                 , &#x3c;rice&#x3e;, m, f, sg, noun, en Latn US, /p&#xe6;di&#x2d0;/:
-                 rice retaining its husk after threshing
+                 , &lt;rice&gt;, m, f, sg, noun, en Latn US, /pædiː/: rice retaining its husk after threshing
                  <em>Syn:</em>
                  <strong>muddy rice</strong>
                  , n, noun.
@@ -911,7 +1033,7 @@ RSpec.describe IsoDoc do
             <term id='paddy1'>
               <p>
                 <strong/>
-                , &#x3c;rice&#x3e;: rice retaining its husk after threshing
+                , &lt;rice&gt;: rice retaining its husk after threshing
               </p>
               <preferred isInternational='true'>
                 <figure id='_'>
@@ -1028,7 +1150,7 @@ RSpec.describe IsoDoc do
             <title depth="1">1.<tab/>Terms and definitions</title>
             <p id="B">For the purposes of this document, the following terms and definitions apply.</p>
             <term id="term-term-2">
-              <p><strong>Term 2</strong>: <figure id="E"><name>Figure 1</name><pre id="F">Literal</pre></figure><formula id="G"><name>1</name><stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>=</mo><mi>y</mi></math><latexmath>x = y</latexmath><asciimath>x = y</asciimath></stem></formula><termsource status="identical" type="authoritative"><origin bibitemid="ISO2191" type="inline" citeas=""><localityStack><locality type="section"><referenceFrom>3</referenceFrom></locality></localityStack>, Section 3</origin></termsource></p>
+              <p><strong>Term 2</strong>: <figure id="E"><name>Figure 1</name><pre id="F">Literal</pre></figure><formula id="G"><name>(1)</name><stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>=</mo><mi>y</mi></math><latexmath>x = y</latexmath><asciimath>x = y</asciimath></stem></formula><termsource status="identical" type="authoritative"><origin bibitemid="ISO2191" type="inline" citeas=""><localityStack><locality type="section"><referenceFrom>3</referenceFrom></locality></localityStack>, Section 3</origin></termsource></p>
             </term>
             <term id="term-term">
               <p><strong>Term</strong>: <p>Definition

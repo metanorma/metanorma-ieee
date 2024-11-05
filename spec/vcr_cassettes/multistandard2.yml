@@ -41,21 +41,21 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Github-Request-Id:
-      - AD5B:1EDF45:39B1DB:486EBB:671EE932
+      - D946:1B3BFD:4A5453:5D6EDF:672A0CE9
       Accept-Ranges:
       - bytes
       Date:
-      - Mon, 28 Oct 2024 01:30:48 GMT
+      - Tue, 05 Nov 2024 12:18:06 GMT
       Via:
       - 1.1 varnish
       X-Served-By:
-      - cache-mel11241-MEL
+      - cache-mel11272-MEL
       X-Cache:
       - HIT
       X-Cache-Hits:
       - '1'
       X-Timer:
-      - S1730079048.076676,VS0,VE1
+      - S1730809086.111423,VS0,VE1
       Vary:
       - Authorization,Accept-Encoding,Origin
       Access-Control-Allow-Origin:
@@ -63,11 +63,11 @@ http_interactions:
       Cross-Origin-Resource-Policy:
       - cross-origin
       X-Fastly-Request-Id:
-      - 99e462432cd93bc876eeba7a9b75078d012e19d0
+      - 1f103284915fd5bdd2193c849e2ff1739cebb65d
       Expires:
-      - Mon, 28 Oct 2024 01:35:48 GMT
+      - Tue, 05 Nov 2024 12:23:06 GMT
       Source-Age:
-      - '20'
+      - '19'
     body:
       encoding: ASCII-8BIT
       string: "---\nschema-version: v1.2.9\nid: RFC7749\ntitle:\n- content: The \"xml2rfc\"
@@ -98,7 +98,7 @@ http_interactions:
         text/plain\nkeyword:\n- content: XML\n- content: IETF\n- content: RFC\n- content:
         Internet-Draft\n- content: Vocabulary\next:\n  schema-version: v1.0.1\n  stream:
         IAB\n"
-  recorded_at: Mon, 28 Oct 2024 01:30:48 GMT
+  recorded_at: Tue, 05 Nov 2024 12:18:06 GMT
 - request:
     method: get
     uri: https://raw.githubusercontent.com/relaton/relaton-data-rfcs/main/data/RFC7749.yaml
@@ -140,21 +140,21 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Github-Request-Id:
-      - AD5B:1EDF45:39B1DB:486EBB:671EE932
+      - D946:1B3BFD:4A5453:5D6EDF:672A0CE9
       Accept-Ranges:
       - bytes
       Date:
-      - Mon, 28 Oct 2024 01:30:50 GMT
+      - Tue, 05 Nov 2024 12:18:08 GMT
       Via:
       - 1.1 varnish
       X-Served-By:
-      - cache-mel11277-MEL
+      - cache-mel11257-MEL
       X-Cache:
       - HIT
       X-Cache-Hits:
       - '1'
       X-Timer:
-      - S1730079050.373401,VS0,VE1
+      - S1730809088.425383,VS0,VE1
       Vary:
       - Authorization,Accept-Encoding,Origin
       Access-Control-Allow-Origin:
@@ -162,11 +162,11 @@ http_interactions:
       Cross-Origin-Resource-Policy:
       - cross-origin
       X-Fastly-Request-Id:
-      - 2c4b5571fbdd18fd8c7e087c58a9625bd389ae91
+      - a812681a749998ffa5310e5091fb5243f814426d
       Expires:
-      - Mon, 28 Oct 2024 01:35:50 GMT
+      - Tue, 05 Nov 2024 12:23:08 GMT
       Source-Age:
-      - '22'
+      - '21'
     body:
       encoding: ASCII-8BIT
       string: "---\nschema-version: v1.2.9\nid: RFC7749\ntitle:\n- content: The \"xml2rfc\"
@@ -197,5 +197,5 @@ http_interactions:
         text/plain\nkeyword:\n- content: XML\n- content: IETF\n- content: RFC\n- content:
         Internet-Draft\n- content: Vocabulary\next:\n  schema-version: v1.0.1\n  stream:
         IAB\n"
-  recorded_at: Mon, 28 Oct 2024 01:30:50 GMT
+  recorded_at: Tue, 05 Nov 2024 12:18:08 GMT
 recorded_with: VCR 6.1.0
