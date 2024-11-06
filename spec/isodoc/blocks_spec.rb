@@ -739,16 +739,32 @@ RSpec.describe IsoDoc do
         <p>&#xa0;</p>
       </div>
     OUTPUT
-    expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
+      .new({})
       .convert("test", presxml, true))
       .at("//body").to_xml))).to be_equivalent_to Xml::C14n.format(html)
-    expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::WordConvert.new({})
+    expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::WordConvert
+      .new({})
       .convert("test", presxml, true))
                 .at("//div[@class = 'WordSection2']").to_xml)))
       .to be_equivalent_to Xml::C14n.format(word)
   end
 
   it "processes examples" do
+    input = <<~INPUT
+      <iso-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
+        <preface>
+          <foreword id="A"><title>Foreword</title>
+            <example id='samplecode' keep-with-next='true' keep-lines-together='true'>
+              <p>Hello</p>
+              <sourcecode id='X'>
+                <name>Sample</name>
+              </sourcecode>
+            </example>
+          </foreword>
+        </preface>
+      </iso-standard>
+    INPUT
     presxml = <<~INPUT
       <iso-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
         <preface>
@@ -757,7 +773,7 @@ RSpec.describe IsoDoc do
         </clause>
           <foreword displayorder="2" id="A"><title>Foreword</title>
             <example id='samplecode' keep-with-next='true' keep-lines-together='true'>
-              <name>Example 1</name>
+              <name><em>Example:</em></name>
               <p>Hello</p>
               <sourcecode id='X'>
                 <name>Sample</name>
@@ -773,7 +789,7 @@ RSpec.describe IsoDoc do
         <div id="A">
                     <h1 class='ForewordTitle'>Foreword</h1>
                                  <div id='samplecode' class='example' style='page-break-after: avoid;page-break-inside: avoid;'>
-               <p class='example-title'>Example 1:</p>
+               <p class='example-title'><i>Example:</i></p>
                <p>Hello</p>
                <pre id='X' class='sourcecode'>
                  <br/>
@@ -794,7 +810,7 @@ RSpec.describe IsoDoc do
          <div class='IEEEStdsParagraph' style='page-break-after: avoid;page-break-inside: avoid;'>
            <a name='samplecode' id='samplecode'/>
            <p class='IEEEStdsParagraph'>
-             <em>Example 1:</em>
+             <i>Example:</i>
            </p>
            <p class='IEEEStdsParagraph'>Hello</p>
            <p class='IEEEStdsComputerCode' style='page-break-after:avoid;'>
@@ -806,7 +822,12 @@ RSpec.describe IsoDoc do
          </div>
        </div>
     OUTPUT
-    expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+      .new(presxml_options)
+       .convert("test", input, true).gsub("&lt;", "&#x3c;"))))
+      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
+      .new({})
       .convert("test", presxml, true))
       .at("//body").to_xml))).to be_equivalent_to Xml::C14n.format(html)
     IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
@@ -1095,7 +1116,7 @@ RSpec.describe IsoDoc do
             <name>Figure</name>
           </figure>
           <example id='F' number='A.7'>
-            <name>Example A.7</name>
+            <name><em>Example A.7:</em></name>
             <p id='G'>This is not generalised further.</p>
           </example>
         </quote>

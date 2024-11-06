@@ -99,7 +99,6 @@ module IsoDoc
 
       def example_caption(docxml)
         docxml.xpath("//p[@class = 'example-title']").each do |s|
-          s.children = "<em>#{to_xml(s.children)}</em>"
           s["class"] = stylesmap[:MsoNormal]
         end
       end

@@ -55,11 +55,9 @@ module IsoDoc
         node.children.each { |n| parse(n, div) }
       end
 
-      # TODO ":" to Presentation XML
       def example_label(_node, div, name)
         return if name.nil?
 
-        name << ":"
         div.p class: "example-title" do |p|
           name.children.each { |n| parse(n, p) }
         end
