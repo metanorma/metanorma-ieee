@@ -107,14 +107,14 @@ RSpec.describe IsoDoc do
                       , modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here)
                    </p>
                    <termexample id="_" keep-with-next="true" keep-lines-together="true">
-                      <name>Example  1</name>
+                      <name><em>Example  1:</em></name>
                       <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
                       <ul>
                          <li>A</li>
                       </ul>
                    </termexample>
                    <termexample id="_">
-                      <name>Example  2</name>
+                      <name><em>Example  2:</em></name>
                       <ul>
                          <li>A</li>
                       </ul>
@@ -154,7 +154,7 @@ RSpec.describe IsoDoc do
                    </p>
                    <deprecates>DEPRECATED: cargo rice</deprecates>
                    <termexample id="_">
-                      <name>Example</name>
+                      <name><em>Example:</em></name>
                       <ul>
                          <li>A</li>
                       </ul>
@@ -215,7 +215,7 @@ RSpec.describe IsoDoc do
                    , 3.1 , modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here)
                 </p>
                 <div id="_" class="example" style="page-break-after: avoid;page-break-inside: avoid;">
-                   <p class="example-title">Example  1:</p>
+                   <p class="example-title"><i>Example  1:</i></p>
                    <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
                    <div class="ul_wrap">
                       <ul>
@@ -224,7 +224,7 @@ RSpec.describe IsoDoc do
                    </div>
                 </div>
                 <div id="_" class="example">
-                   <p class="example-title">Example  2:</p>
+                   <p class="example-title"><i>Example  2:</i></p>
                    <div class="ul_wrap">
                       <ul>
                          <li>A</li>
@@ -255,7 +255,7 @@ RSpec.describe IsoDoc do
                 </p>
                 <p class="DeprecatedTerms" style="text-align:left;">DEPRECATED: cargo rice</p>
                 <div id="_" class="example">
-                   <p class="example-title">Example:</p>
+                   <p class="example-title"><i>Example:</i></p>
                    <div class="ul_wrap">
                       <ul>
                          <li>A</li>
@@ -339,7 +339,7 @@ RSpec.describe IsoDoc do
                    , 3.1 , modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here)
                 </p>
                 <div id="_" class="example" style="page-break-after: avoid;page-break-inside: avoid;">
-                   <p class="example-title">Example  1:</p>
+                   <p class="example-title"><i>Example  1:</i></p>
                    <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
                    <div class="ul_wrap">
                       <ul>
@@ -348,7 +348,7 @@ RSpec.describe IsoDoc do
                    </div>
                 </div>
                 <div id="_" class="example">
-                   <p class="example-title">Example  2:</p>
+                   <p class="example-title"><i>Example  2:</i></p>
                    <div class="ul_wrap">
                       <ul>
                          <li>A</li>
@@ -379,7 +379,7 @@ RSpec.describe IsoDoc do
                 </p>
                 <p class="DeprecatedTerms" style="text-align:left;">DEPRECATED: cargo rice</p>
                 <div id="_" class="example">
-                   <p class="example-title">Example:</p>
+                   <p class="example-title"><i>Example:</i></p>
                    <div class="ul_wrap">
                       <ul>
                          <li>A</li>
@@ -671,14 +671,14 @@ RSpec.describe IsoDoc do
             &#x2014;
              with adjustments)</p>
                <termexample id="_" keep-with-next="true" keep-lines-together="true">
-                 <name>Example  1</name>
+                 <name><em>Example  1:</em></name>
                  <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
                  <ul>
                    <li>A</li>
                  </ul>
                </termexample>
                <termexample id="_">
-                 <name>Example  2</name>
+                 <name><em>Example  2:</em></name>
                  <ul>
                    <li>A</li>
                  </ul>
@@ -760,14 +760,14 @@ RSpec.describe IsoDoc do
                 , modified &#x2014; with adjustments)
               </p>
               <termexample id='_' keep-with-next='true' keep-lines-together='true'>
-                <name>Example 1</name>
+                <name><em>Example 1:</em></name>
                 <p id='_'>Foreign seeds, husks, bran, sand, dust.</p>
                 <ul>
                   <li>A</li>
                 </ul>
               </termexample>
               <termexample id='_'>
-                <name>Example 2</name>
+                <name><em>Example 2:</em></name>
                 <ul>
                   <li>A</li>
                 </ul>

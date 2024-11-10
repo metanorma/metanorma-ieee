@@ -212,6 +212,13 @@ module IsoDoc
         dest.children.first.next = source
       end
 
+      def example1(elem)
+        super
+        n = elem.at(ns("./name")) or return
+        n << l10n(":")
+        n.children.wrap("<em></em>")
+      end
+
       include Init
     end
   end
