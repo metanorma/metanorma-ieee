@@ -14787,7 +14787,7 @@
 	<!-- remove preprocess-xslt -->
 	<xsl:template xmlns:redirect="http://xml.apache.org/xalan/redirect" match="*[local-name() = 'preprocess-xslt']" mode="update_xml_step1"/>
 
-	<xsl:template xmlns:redirect="http://xml.apache.org/xalan/redirect" match="*[local-name() = 'stem'] |        *[local-name() = 'image'] |        *[local-name() = 'sourcecode'] |        *[local-name() = 'bibdata'] |        *[local-name() = 'localized-strings']" mode="update_xml_step1">
+	<xsl:template xmlns:redirect="http://xml.apache.org/xalan/redirect" match="*[local-name() = 'stem'][not(.//*[local-name() = 'passthrough'])] |        *[local-name() = 'image'][not(.//*[local-name() = 'passthrough'])] |        *[local-name() = 'sourcecode'][not(.//*[local-name() = 'passthrough'])] |        *[local-name() = 'bibdata'][not(.//*[local-name() = 'passthrough'])] |        *[local-name() = 'localized-strings']" mode="update_xml_step1">
 		<xsl:copy-of select="."/>
 	</xsl:template>
 
@@ -14851,6 +14851,14 @@
 				</xsl:copy>
 			</xsl:otherwise>
 		</xsl:choose>
+	</xsl:template>
+
+	<xsl:variable xmlns:redirect="http://xml.apache.org/xalan/redirect" name="regex_passthrough">.*\bpdf\b.*</xsl:variable>
+	<xsl:template xmlns:redirect="http://xml.apache.org/xalan/redirect" match="*[local-name() = 'passthrough']" mode="update_xml_step1">
+		<!-- <xsl:if test="contains(@formats, ' pdf ')"> -->
+		<xsl:if test="normalize-space(java:matches(java:java.lang.String.new(@formats), $regex_passthrough)) = 'true'">
+			<xsl:apply-templates mode="update_xml_step1"/>
+		</xsl:if>
 	</xsl:template>
 
 	<!-- =========================================================================== -->
