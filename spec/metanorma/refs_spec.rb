@@ -855,7 +855,6 @@ RSpec.describe Metanorma::Ieee do
              </bibitem>
              <bibitem id="ref8" type="standard">
                 <docidentifier type="NIST" primary="true">NIST FIPS 140-2 fpd</docidentifier>
-                <docidentifier type="DOI">NIST.FIPS.140-2</docidentifier>
                 <note type="Availability">
                    <p id="_">NIST publications are available from the National Institute of Standards and Technology (http://www.nist.gov/).</p>
                 </note>
@@ -865,7 +864,6 @@ RSpec.describe Metanorma::Ieee do
              </bibitem>
              <bibitem id="ref9" type="standard">
                 <docidentifier type="NIST" primary="true">NIST SP 800-171 fpd</docidentifier>
-                <docidentifier type="DOI">NIST.SP.800-171</docidentifier>
                 <note type="Availability">
                    <p id="_">FIPS publications are available from the National Technical Information Service (NTIS) (http://csrc.nist.gov).</p>
                 </note>
