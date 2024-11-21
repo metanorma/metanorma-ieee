@@ -85,10 +85,10 @@ module IsoDoc
       end
 
       def abstract_body(clause, out)
-        clause_name(clause, clause.at(ns("./title")), out,
+        clause_name(clause, clause.at(ns("./fmt-title")), out,
                     { class: stylesmap[:AbstractTitle],
                       style: ABSTRACT_MARGIN })
-        clause.elements.each { |e| parse(e, out) unless e.name == "title" }
+        clause.elements.each { |e| parse(e, out) unless e.name == "fmt-title" }
       end
 
       def clause(node, out)
@@ -98,9 +98,9 @@ module IsoDoc
 
       def figure_parse1(node, out)
         out.div **figure_attrs(node) do |div|
-          figure_name_parse(node, div, node.at(ns("./name")))
+          figure_name_parse(node, div, node.at(ns("./fmt-name")))
           node.children.each do |n|
-            parse(n, div) unless n.name == "name"
+            parse(n, div) unless n.name == "fmt-name"
           end
         end
       end

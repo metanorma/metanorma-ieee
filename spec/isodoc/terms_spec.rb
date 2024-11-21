@@ -423,16 +423,16 @@ RSpec.describe IsoDoc do
           </div>
        </body>
     WORD
-
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
-      .convert("test", input, true))))
+      .convert("test", input, true)
+    expect(Xml::C14n.format(strip_guid(pres_output)))
       .to be_equivalent_to Xml::C14n.format(presxml)
     expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
-      .convert("test", presxml, true))
+      .convert("test", pres_output, true))
       .at("//body").to_xml)).to be_equivalent_to Xml::C14n.format(html)
     expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::WordConvert.new({})
-      .convert("test", presxml, true))
+      .convert("test", pres_output, true))
       .at("//body").to_xml)).to be_equivalent_to Xml::C14n.format(word)
   end
 

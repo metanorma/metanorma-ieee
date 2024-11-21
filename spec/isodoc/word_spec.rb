@@ -101,7 +101,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
         <preface><introduction id="_introduction" obligation="informative" displayorder="1" id="A">
-      <title>Introduction</title><admonition>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty
+      <fmt-title>Introduction</fmt-title><admonition>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty
       </admonition>
       <p id="_7d8a8a7f-3ded-050d-1da9-978f17519335">This is an introduction</p>
       </introduction></preface>
@@ -132,7 +132,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       <iso-standard xmlns="http://riboseinc.com/isoxml">
       <bibdata><ext><doctype>standard</doctype></ext></bibdata>
         <preface><abstract id="_introduction" obligation="informative" displayorder="1" id="A">
-      <title>Introduction</title><admonition>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty
+      <fmt-title>Introduction</fmt-title><admonition>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty
       </admonition>
       <p>Text</p>
       <ul><li><p>List</p></li></ul>
@@ -667,7 +667,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
               <iso-standard xmlns="http://riboseinc.com/isoxml" type='presentation'>
          <sections><clause id="a" displayorder="1">
           <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6a" type="caution" keep-with-next="true" keep-lines-together="true">
-          <name>CAUTION</name>
+          <fmt-name>CAUTION</fmt-name>
         <p id="_e94663cc-2473-4ccc-9a72-983a74d989f2">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
       </admonition>
           <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6b" type="caution" keep-with-next="true" keep-lines-together="true" notag="true">
@@ -714,7 +714,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
               <iso-standard xmlns="http://riboseinc.com/isoxml" type='presentation'>
          <sections><clause id="a" displayorder="1">
           <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6a" type="editorial" keep-with-next="true" keep-lines-together="true">
-          <name>EDITORIAL</name>
+          <fmt-name>EDITORIAL</fmt-name>
         <p id="_e94663cc-2473-4ccc-9a72-983a74d989f2">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
       </admonition>
           </clause></sections>
@@ -751,10 +751,10 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         <sections>
           <clause id="a" displayorder="1">
             <sourcecode lang='ruby' id='samplecode'>
-              <name>
+              <fmt-name>
                 Figure 1&#xA0;&#x2014; Ruby
                 <em>code</em>
-              </name>
+              </fmt-name>
                puts x
             </sourcecode>
             <sourcecode unnumbered='true'> Que? </sourcecode>
@@ -794,7 +794,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         <sections>
           <clause id="a" displayorder="1">
           <figure id="figureA-1" keep-with-next="true" keep-lines-together="true">
-        <name>Figure 1&#xA0;&#x2014; Split-it-right <em>sample</em> divider<fn reference="1"><p>X</p></fn></name>
+        <fmt-name>Figure 1&#xA0;&#x2014; Split-it-right <em>sample</em> divider<fn reference="1"><p>X</p></fn></fmt-name>
         <image height="20" width="30" id="_" mimetype="image/png" alt="alttext" title="titletxt"/>
         </figure>
           </clause>
@@ -849,7 +849,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         <sections>
           <clause id="a" displayorder="1">
           <table id="figureA-1" keep-with-next="true" keep-lines-together="true">
-        <name>Figure 1&#xA0;&#x2014; Split-it-right <em>sample</em> divider<fn reference="1"><p>X</p></fn></name>
+        <fmt-name>Figure 1&#xA0;&#x2014; Split-it-right <em>sample</em> divider<fn reference="1"><p>X</p></fn></fmt-name>
         <thead><tr><th>A</th></tr></thead>
         <tbody><tr><td>B</td></tr></tbody>
         <note id="A"><p>This is a note</p></note>
@@ -940,7 +940,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
           <iso-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
           <bibdata><ext><doctype>standard</doctype></ext></bibdata>
           <sections>
-        <clause id="A"><title>This is the clause title</title>
+        <clause id="A"><fmt-title>This is the clause title</fmt-title>
         <p>body</p>
         <clause id="B"><title>This is a subclause</title>
         <p>body</p>
@@ -986,14 +986,14 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
          </div>
        </div>
     OUTPUT
-    output = IsoDoc::Ieee::PresentationXMLConvert
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    xml = Nokogiri::XML(output)
+    xml = Nokogiri::XML(pres_output)
     xml.at("//xmlns:localized-strings")&.remove
     expect(strip_guid(Xml::C14n.format(xml.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
-    IsoDoc::Ieee::WordConvert.new({}).convert("test", output, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
@@ -1037,16 +1037,16 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
          </div>
        </div>
     OUTPUT
-    output = IsoDoc::Ieee::PresentationXMLConvert
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input.sub("<doctype>standard</doctype>",
                                  "<doctype>whitepaper</doctype>"), true)
-    xml = Nokogiri::XML(output)
+    xml = Nokogiri::XML(pres_output)
     xml.at("//xmlns:localized-strings")&.remove
     expect(strip_guid(Xml::C14n.format(xml.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
     IsoDoc::Ieee::WordConvert.new({})
-      .convert("test", output, false)
+      .convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
@@ -1111,14 +1111,14 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         </div>
       </div>
     OUTPUT
-    output = IsoDoc::Ieee::PresentationXMLConvert
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    xml = Nokogiri::XML(output)
+    xml = Nokogiri::XML(pres_output)
     xml.at("//xmlns:localized-strings")&.remove
     expect(strip_guid(Xml::C14n.format(xml.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
-    IsoDoc::Ieee::WordConvert.new({}).convert("test", output, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
@@ -1170,16 +1170,16 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
          </div>
        </div>
     OUTPUT
-    output = IsoDoc::Ieee::PresentationXMLConvert
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input.sub("<doctype>standard</doctype>",
                                  "<doctype>whitepaper</doctype>"), true)
-    xml = Nokogiri::XML(output)
+    xml = Nokogiri::XML(pres_output)
     xml.at("//xmlns:localized-strings")&.remove
     expect(strip_guid(Xml::C14n.format(xml.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
     IsoDoc::Ieee::WordConvert.new({})
-      .convert("test", output, false)
+      .convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")

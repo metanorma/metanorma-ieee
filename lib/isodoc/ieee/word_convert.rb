@@ -67,9 +67,9 @@ module IsoDoc
       def abstract(clause, out)
         page_break(out)
         out.div **attr_code(id: clause["id"], class: "abstract") do |s|
-          clause_name(clause, clause.at(ns("./title")), s,
+          clause_name(clause, clause.at(ns("./fmt-title")), s,
                       { class: stylesmap[:AbstractTitle] })
-          clause.elements.each { |e| parse(e, s) unless e.name == "title" }
+          clause.elements.each { |e| parse(e, s) unless e.name == "fmt-title" }
         end
       end
 
@@ -120,8 +120,7 @@ module IsoDoc
           formula_parse1(node, div)
           formula_where(node.at(ns("./dl")), div)
           node.children.each do |n|
-            next if %w(stem dl name).include? n.name
-
+            %w(stem dl fmt-name).include? n.name and next
             parse(n, div)
           end
         end
@@ -179,7 +178,7 @@ module IsoDoc
       end
 
       def termnote_parse(node, out)
-        name = node&.at(ns("./name"))&.remove
+        name = node&.at(ns("./fmt-name"))&.remove
         out.div **note_attrs(node) do |div|
           div.p do |p|
             name and termnote_label(p, name)
@@ -197,10 +196,10 @@ module IsoDoc
       # STYLE
       def table_of_contents(clause, out)
         out.div class: "WordSectionContents" do |div|
-          clause_name(clause, clause.at(ns("./title")), div,
+          clause_name(clause, clause.at(ns("./fmt-title")), div,
                       { class: "IEEEStdsLevel1frontmatter" })
           clause.elements.each do |e|
-            parse(e, div) unless e.name == "title"
+            parse(e, div) unless e.name == "fmt-title"
           end
         end
       end

@@ -65,9 +65,9 @@ module IsoDoc
         c = Counter.new
         clause.xpath(ns(".//formula")).noblank.each do |t|
           @anchors[t["id"]] = anchor_struct(
-            c.increment(t).print, container ? t : nil,
+            c.increment(t).print, t,
             t["inequality"] ? @labels["inequality"] : @labels["formula"],
-            "formula", t["unnumbered"]
+            "formula", { container: container, unnumb: t["unnumbered"] }
           )
         end
       end
@@ -79,8 +79,10 @@ module IsoDoc
           notes = t.xpath(ns("./termnote"))
           notes.noblank.each do |n|
             @anchors[n["id"]] =
-              anchor_struct("#{@labels['termnote']} #{increment_label(notes, n, c)}",
-                            n, @labels["note_xref"], "termnote", false)
+              anchor_struct(
+                termnote_label(n, increment_label(notes, n, c)),
+                #"#{@labels['termnote']} #{increment_label(notes, n, c)}",
+                            n, @labels["note_xref"], "termnote", { container: true })
                 .merge(sequence: sequence)
           end
         end
@@ -93,7 +95,7 @@ module IsoDoc
 
           @anchors[n["id"]] =
             anchor_struct(increment_label(notes, n, counter), n,
-                          @labels["note_xref"], "note", false)
+                          @labels["note_xref"], "note", { container: true })
               .merge(sequence: sequence)
         end
       end
@@ -103,8 +105,6 @@ module IsoDoc
           title = Common::case_with_markup(@labels["annex"], "capital",
                                            @script)
           l10n("#{title} #{num}")
-        else
-          super.sub(%r{<br/>(.*)$}, "<br/><span class='obligation'>\\1</span>")
         end
       end
     end

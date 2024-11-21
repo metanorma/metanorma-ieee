@@ -71,7 +71,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         </license-statement>
         <legal-statement>
           <clause id="boilerplate-disclaimers">
-            <title>Important Notices and Disclaimers Concerning IEEE Standards Documents</title>
+            <fmt-title>Important Notices and Disclaimers Concerning IEEE Standards Documents</fmt-title>
 
             <p id="_DV_M4">IEEE Standards
             documents are made available for use subject to important notices and legal
@@ -80,8 +80,8 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
               and Disclaimers Concerning IEEE Standards Documents.”</p>
 
             <clause>
-              <title>Notice
-                and Disclaimer of Liability Concerning the Use of IEEE Standards Documents</title>
+              <fmt-title>Notice
+                and Disclaimer of Liability Concerning the Use of IEEE Standards Documents</fmt-title>
 
               <p id="_69eb5ada-bedb-ac75-a8dc-bdb1e050fd5c">IEEE Standards documents are
               developed within the IEEE Societies and the Standards Coordinating Committees
@@ -133,7 +133,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                 DAMAGE WAS FORESEEABLE.</p>
 
             </clause>
-            <clause><title>Translations</title>
+            <clause><fmt-title>Translations</fmt-title>
 
               <p id="_a911590b-2110-6281-346f-c74c928f3d9f">The IEEE consensus
               development process involves the review of documents in English only. In the
@@ -141,7 +141,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                 by IEEE is the approved IEEE standard.</p>
             </clause>
 
-            <clause><title>Official statements</title>
+            <clause><fmt-title>Official statements</fmt-title>
 
               <p id="_67fa69dd-43f1-1dbb-33b3-56c6b487a592">A statement, written
               or oral, that is not processed in accordance with the IEEE SA Standards Board
@@ -154,7 +154,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                 IEEE SA, the Standards Committee, or the Working Group.</p>
             </clause>
 
-            <clause><title>Comments on standards</title>
+            <clause><fmt-title>Comments on standards</fmt-title>
 
               <p id="_5e37882d-40b2-dc67-c9aa-9ae6b00dbd11">Comments for revision of IEEE
               Standards documents are welcome from any interested party, regardless of membership
@@ -179,7 +179,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
               <p id="_c455e6e2-76b8-d43c-3792-2c22fae0d2cf">Comments on standards should be submitted using the <link target="https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html">Contact Us</link> form.<fn><p id="_dfdb1b60-39fe-7a76-9979-acec6418b2a6">Available at: <link target="https://standards.ieee.org/content/ieee-standards/en/about/contact/index.html"/>.</p></fn></p>
             </clause>
 
-            <clause><title>Laws and regulations</title>
+            <clause><fmt-title>Laws and regulations</fmt-title>
 
               <p id="_4a31df54-1604-bf8b-489a-54e8c1bd7ab9">Users of IEEE
               Standards documents should consult all applicable laws and regulations.
@@ -191,7 +191,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                 documents may not be construed as doing so.</p>
             </clause>
 
-            <clause><title>Data privacy</title>
+            <clause><fmt-title>Data privacy</fmt-title>
 
               <p id="_dca40c9c-2337-ae9b-1296-325a45d35631">Users of IEEE Standards documents
               should evaluate the standards for considerations of data privacy and data
@@ -199,7 +199,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                 with applicable laws and regulations.</p>
             </clause>
 
-            <clause><title>Copyrights</title>
+            <clause><fmt-title>Copyrights</fmt-title>
 
               <p id="_9f9a6684-5448-0b57-0966-766b30ac99d9">IEEE draft and
               approved standards are copyrighted by IEEE under US and international copyright
@@ -211,7 +211,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                 does not waive any rights in copyright to the documents.</p>
             </clause>
 
-            <clause><title>Photocopies</title>
+            <clause><fmt-title>Photocopies</fmt-title>
 
               <p id="_b70596da-132b-304b-051e-7c0e21d0a849">Subject to payment of
               the appropriate licensing fees, IEEE will grant users a limited, non-exclusive
@@ -224,7 +224,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                 Copyright Clearance Center.</p>
             </clause>
 
-            <clause><title>Updating of IEEE Standards documents</title>
+            <clause><fmt-title>Updating of IEEE Standards documents</fmt-title>
 
               <p id="_a659eee9-6f68-1262-2d2c-42b8c6b3480b">Users
               of IEEE Standards documents should be aware that these documents may be
@@ -251,12 +251,12 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
             </clause>
 
             <clause>
-              <title>Errata</title>
+              <fmt-title>Errata</fmt-title>
 
               <p id="_05a6b84f-e605-5238-ffc2-904ba0520742">Errata, if any, for all IEEE standards can be accessed on the <link target="https://standards.ieee.org/standard/index.html">IEEE SA Website</link>.<fn><p id="_7ac5e2ff-3624-9f91-8798-aca5768f7f41">Available at: <link target="https://standards.ieee.org/standard/index.html"/>.</p></fn> Search for standard number and year of approval to access the web page of the published standard. Errata links are located under the Additional Resources Details section. Errata are also available in <link target="https://ieeexplore.ieee.org/browse/standards/collection/ieee/">IEEE Xplore</link>. Users are encouraged to periodically check for errata.</p>
             </clause>
 
-            <clause><title>Patents</title>
+            <clause><fmt-title>Patents</fmt-title>
 
               <p id="_63718157-819f-a4c0-b7c8-74c1d2f0944a">IEEE Standards are developed in compliance with the <link target="https://standards.ieee.org/about/sasb/patcom/materials.html">IEEE SA Patent Policy</link>.<fn><p id="_faf141af-ee0f-4653-c729-50c21675015f">Available at: <link target="https://standards.ieee.org/about/sasb/patcom/materials.html"/>.</p></fn></p>
               <p id="_7b4497a2-91e0-efe8-0837-55d7dda3adfa">Attention is called to
@@ -284,7 +284,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                 Standards Association.</p>
             </clause>
 
-            <clause><title>IMPORTANT NOTICE</title>
+            <clause><fmt-title>IMPORTANT NOTICE</fmt-title>
 
               <p id="_ee588d90-d9cc-0b08-c42d-7b1ea7190a7e">IEEE Standards do not
               guarantee or ensure safety, security, health, or environmental protection, or
@@ -300,7 +300,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
             </clause>
           </clause>
           <clause id="boilerplate-participants">
-            <title>Participants</title>
+            <fmt-title>Participants</fmt-title>
               <p id="_6c151db1-c395-acf1-1fa2-c8db0131136b">At the time this draft Standard was completed, the WG Working Group had the following membership:</p>
               <p align="center" type="officeholder" id="_08d02fae-f1d9-e550-fbdd-4645fe7d095f"><strong>AB</strong>, <em>Chair</em></p>
               <p align="center" type="officeholder" id="_31eadeb4-3307-4629-948d-2cb3c6412966"><strong>CD</strong>, <em>Vice Chair</em></p>
@@ -352,7 +352,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       </boilerplate>
 
       <sections><clause id="_clause" inline-header="false" obligation="normative" displayorder="1">
-      <title>Clause</title>
+      <fmt-title>Clause</fmt-title>
       <p id="_2e901de4-4c14-e534-d135-862a24df22ee">Hello</p>
       </clause>
       </sections>
@@ -1206,13 +1206,13 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       <legal-statement>
 
       <clause id="boilerplate-tm" inline-header="false" obligation="normative">
-      <title>Trademarks and Disclaimers</title>
+      <fmt-title>Trademarks and Disclaimers</fmt-title>
       <p id="_2943a585-5a3a-9f8c-8335-61aa7e36237a">IEEE believes the information in this publication is accurate as of its publication date; such information is subject to change without notice. IEEE is not responsible for any inadvertent errors.</p>
       <p id="_22abb8b0-f41d-a114-18a7-6c32b1cb6505">The ideas and proposals in this specification are the respective author’s views and do not represent the views of the affiliated organization.</p>
       </clause>
 
       <clause id="boilerplate-disclaimers" inline-header="false" obligation="normative">
-      <title>Notice and Disclaimer of Liability Concerning the Use of IEEE SA Documents</title>
+      <fmt-title>Notice and Disclaimer of Liability Concerning the Use of IEEE SA Documents</fmt-title>
       <p id="_de579a5e-46f6-6692-c0e2-b5d0be40cded">This IEEE Standards Association (“IEEE SA”) publication (“Work”) is not a consensus standard document. Specifically, this document is NOT AN IEEE STANDARD. Information contained in this Work has been created by, or obtained from, sources believed to be reliable, and reviewed by members of the activity that produced this Work. IEEE and the NAME OF GROUP expressly disclaim all warranties (express, implied, and statutory) related to this Work, including, but not limited to, the warranties of: merchantability; fitness for a particular purpose; non-infringement; quality, accuracy, effectiveness, currency, or completeness of the Work or content within the Work. In addition, IEEE and the NAME OF GROUP disclaim any and all conditions relating to: results; and workmanlike effort. This document is supplied “AS IS” and “WITH ALL FAULTS.”</p>
 
       <p id="_c3569df8-1d60-fbcd-1906-839532e2b00c">Although the NAME OF GROUP members who have created this Work believe that the information and guidance given in this Work serve as an enhancement to users, all persons must rely upon their own skill and judgment when making use of it. IN NO EVENT SHALL IEEE SA OR NAME OF GROUP MEMBERS BE LIABLE FOR ANY ERRORS OR OMISSIONS OR DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO: PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS WORK, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE AND REGARDLESS OF WHETHER SUCH DAMAGE WAS FORESEEABLE.</p>
@@ -1223,7 +1223,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       </clause>
 
       <clause id="boilerplate-participants" inline-header="false" obligation="normative">
-      <title>Acknowledgements</title>
+      <fmt-title>Acknowledgements</fmt-title>
       <clause id="boilerplate-participants-blank" inline-header="false" obligation="normative">
       <p id="_dd7f13f9-b62e-c727-143c-579781e427bd">Special thanks are given to the following reviewers of this paper:</p>
 
@@ -1253,7 +1253,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       </legal-statement>
       </boilerplate>
             <sections><clause id="_clause" inline-header="false" obligation="normative" displayorder="1">
-            <title>Clause</title>
+            <fmt-title>Clause</fmt-title>
             <p id="_2e901de4-4c14-e534-d135-862a24df22ee">Hello</p>
             </clause>
             </sections>

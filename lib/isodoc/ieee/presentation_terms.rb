@@ -247,7 +247,7 @@ module IsoDoc
 
       def termnote1(elem)
         lbl = termnote_label(elem)
-        prefix_name(elem, block_delim, lower2cap(lbl), "name")
+        prefix_name(elem, { label: block_delim }, lower2cap(lbl), "name")
       end
 
       def termnote_label(elem)

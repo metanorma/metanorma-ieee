@@ -335,13 +335,15 @@ RSpec.describe IsoDoc do
         </div>
       </div>
     WORD
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
-      .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(presxml)
+      .convert("test", input, true)
+    expect(Xml::C14n.format(strip_guid(pres_output)))
+      .to be_equivalent_to Xml::C14n.format(presxml)
     expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
-      .convert("test", presxml, true))
+      .convert("test", pres_output, true))
       .at("//body").to_xml)).to be_equivalent_to Xml::C14n.format(html)
-    IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
@@ -383,7 +385,7 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-           <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
               <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause>
               <foreword id="A" displayorder="2"><title>Foreword</title>
@@ -551,15 +553,17 @@ RSpec.describe IsoDoc do
           </div>
        </div>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
-      .convert("test", input, true).gsub("&lt;", "&#x3c;"))))
+      .convert("test", input, true)
+    expect(Xml::C14n.format(strip_guid(pres_output)
+      .gsub("&lt;", "&#x3c;")))
       .to be_equivalent_to Xml::C14n.format(presxml)
     expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
-      .convert("test", presxml, true))
+      .convert("test", pres_output, true))
       .at("//body").to_xml))).to be_equivalent_to Xml::C14n.format(html)
     FileUtils.rm_rf "spec/assets/odf1.emf"
-    IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
@@ -673,12 +677,14 @@ RSpec.describe IsoDoc do
         </div>
       </body>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
-       .convert("test", input, true).gsub("&lt;", "&#x3c;"))))
+      .convert("test", input, true)
+    expect(Xml::C14n.format(strip_guid(pres_output)
+       .gsub("&lt;", "&#x3c;")))
       .to be_equivalent_to Xml::C14n.format(presxml)
     expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
-      .convert("test", presxml, true))
+      .convert("test", pres_output, true))
       .at("//body").to_xml)).to be_equivalent_to Xml::C14n.format(html)
   end
 
@@ -687,11 +693,11 @@ RSpec.describe IsoDoc do
             <iso-standard xmlns="http://riboseinc.com/isoxml" type='presentation'>
             <preface>
                 <clause type="toc" id="_" displayorder="1">
-        <title depth="1">Contents</title>
+        <fmt-title depth="1">Contents</fmt-title>
       </clause>
-            <foreword displayorder="2"><title>Foreword</title>
+            <foreword displayorder="2"><fmt-title>Foreword</fmt-title>
             <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6a" type="caution" keep-with-next="true" keep-lines-together="true">
-            <name>CAUTION</name>
+            <fmt-name>CAUTION</fmt-name>
           <p id="_e94663cc-2473-4ccc-9a72-983a74d989f2">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
         </admonition>
             <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6b" type="caution" keep-with-next="true" keep-lines-together="true" notag="true">
@@ -822,15 +828,17 @@ RSpec.describe IsoDoc do
          </div>
        </div>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
-       .convert("test", input, true).gsub("&lt;", "&#x3c;"))))
+      .convert("test", input, true)
+    expect(Xml::C14n.format(strip_guid(pres_output
+       .gsub("&lt;", "&#x3c;"))))
       .to be_equivalent_to Xml::C14n.format(presxml)
     expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
       .new({})
-      .convert("test", presxml, true))
+      .convert("test", pres_output, true))
       .at("//body").to_xml))).to be_equivalent_to Xml::C14n.format(html)
-    IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
@@ -959,14 +967,15 @@ RSpec.describe IsoDoc do
          </div>
        </div>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
-       .convert("test", input, true))))
+      .convert("test", input, true)
+    expect(Xml::C14n.format(strip_guid(pres_output)))
       .to be_equivalent_to Xml::C14n.format(presxml)
     expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
-  .convert("test", presxml, true))
+  .convert("test", pres_output, true))
   .at("//body").to_xml))).to be_equivalent_to Xml::C14n.format(html)
-    IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
