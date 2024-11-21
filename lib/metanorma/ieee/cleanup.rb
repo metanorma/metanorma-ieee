@@ -235,7 +235,9 @@ module Metanorma
       def provenance_title1(updates, merges)
         ret = ""
         u = @isodoc.i18n.boolean_conj(tm_id_extract(updates), "and")
+          .gsub(%r{</?(conn|comma|enum-comma)>}, "")
         m = @isodoc.i18n.boolean_conj(tm_id_extract(merges), "and")
+          .gsub(%r{</?(conn|comma|enum-comma)>}, "")
         u.empty? or ret += "Revision of #{u}"
         !u.empty? && !m.empty? and ret += "<br/>"
         m.empty? or ret += "Incorporates #{m}"

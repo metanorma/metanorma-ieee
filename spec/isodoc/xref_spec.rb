@@ -68,7 +68,8 @@ RSpec.describe Metanorma::Ieee do
        </iso-standard>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
-  .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(output)
+      .convert("test", input, true))))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "cross-references formulae" do
@@ -114,10 +115,10 @@ RSpec.describe Metanorma::Ieee do
          </p>
        </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .at("//xmlns:foreword").to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)k
   end
 
   it "processes figures as hierarchical assets" do
@@ -185,10 +186,10 @@ RSpec.describe Metanorma::Ieee do
         </p>
       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(okogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
       .new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
     output = <<~OUTPUT
       <foreword id='fwd' displayorder='2'><title>Foreword</title>
@@ -202,10 +203,10 @@ RSpec.describe Metanorma::Ieee do
          </p>
        </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
       .new({ hierarchicalassets: true })
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 end

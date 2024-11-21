@@ -9,9 +9,9 @@ RSpec.describe Metanorma::Ieee::Processor do
   inputxml = <<~INPUT
       <ieee-standard xmlns="http://riboseinc.com/isoxml">
       <sections>
-        <terms id="H" obligation="normative" displayorder="1"><title>Terms</title>
+        <terms id="H" obligation="normative" displayorder="1"><fmt-title>Terms</fmt-title>
           <term id="J">
-            <name>1.1.</name>
+            <fmt-name>1.1.</fmt-name>
             <preferred>Term2</preferred>
           </term>
         </terms>
