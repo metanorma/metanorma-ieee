@@ -78,6 +78,7 @@ module IsoDoc
           sequence = UUIDTools::UUID.random_create.to_s
           notes = t.xpath(ns("./termnote"))
           notes.noblank.each do |n|
+            require "debug"; binding.b
             @anchors[n["id"]] =
               anchor_struct(
                 termnote_label(n, increment_label(notes, n, c)),
@@ -104,7 +105,8 @@ module IsoDoc
         if @doctype == "whitepaper"
           title = Common::case_with_markup(@labels["annex"], "capital",
                                            @script)
-          l10n("#{title} #{num}")
+           l10n(labelled_autonum(title, num))
+        else super
         end
       end
     end

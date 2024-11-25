@@ -157,33 +157,32 @@ module IsoDoc
       end
 
       def annex_name(_annex, name, div)
-        return if name.nil?
-
-        name&.at(ns("./strong"))&.remove # supplied by CSS list numbering
+        name.nil? and return
+        name&.at(ns(".//strong"))&.remove # supplied by CSS list numbering
         div.h1 class: "Annex" do |t|
-          annex_name1(name, t)
+          #annex_name1(name, t)
+          children_parse(name, t)
           clause_parse_subtitle(name, t)
         end
       end
 
-      def annex_name1(name, out)
-        name.children.each do |c2|
-          if c2.name == "span" && c2["class"] == "obligation"
-            out.span style: "font-weight:normal;" do |s|
-              c2.children.each { |c3| parse(c3, s) }
-            end
-          else parse(c2, out)
-          end
+      def span_parse(node, out)
+        if node["class"] == "fmt-obligation"
+          node.delete("class")
+          node["style"] = "font-weight:normal;"
         end
+        super
       end
 
       def termnote_parse(node, out)
-        name = node&.at(ns("./fmt-name"))&.remove
+        name = node.at(ns("./fmt-name"))
+        para = node.at(ns("./p"))
         out.div **note_attrs(node) do |div|
           div.p do |p|
             name and termnote_label(p, name)
-            para_then_remainder(node.first_element_child, node, p, div)
+            children_parse(para, p)
           end
+          para.xpath("./following-sibling::*").each { |n| parse(n, div) }
         end
       end
 

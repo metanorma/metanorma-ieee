@@ -58,10 +58,16 @@ module IsoDoc
         @xrefs.anchor(node["target"], :type) == "clause" &&
           @xrefs.anchor(node["target"], :level) > 1 &&
           !start_of_sentence(node) and
-          linkend = linkend.sub(/^Clause /, "")
+          linkend = strip_initial_clause(linkend)
         container = @xrefs.anchor(node["target"], :container, false)
         linkend = prefix_container(container, linkend, node, node["target"])
         capitalise_xref(node, linkend, anchor_value(node["target"]))
+      end
+
+      def strip_initial_clause(linkend)
+        x = Nokogiri::XML("<a>#{linkend}</a>")
+        x.at(".//span[@class = 'fmt-element-name']")&.remove
+        to_xml(x.elements.first.children).strip
       end
 
       def eref_locality_populate(type, node, number)
@@ -218,7 +224,7 @@ module IsoDoc
       def example1(elem)
         super
         n = elem.at(ns("./fmt-name")) or return
-        n << l10n(":")
+        n << l10n("<span class='fmt-caption-delim'>:</span>")
         n.children.wrap("<em></em>")
       end
 
