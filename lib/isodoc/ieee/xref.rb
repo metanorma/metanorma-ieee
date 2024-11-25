@@ -50,15 +50,13 @@ module IsoDoc
           "#{@klass.norm_ref_xpath} | //sections/terms | " \
           "//sections/definitions | //clause[parent::sections]"
         if @hierarchical_assets
-          doc.xpath("//xmlns:preface/child::*").each do |c|
-          hierarchical_asset_names(c, "Preface")
-          end
+          hierarchical_asset_names(doc.xpath("//xmlns:preface/child::*"), "Preface")
           doc.xpath(ns(middle_sections)).each do |c|
             hierarchical_asset_names(c, @anchors[c["id"]][:label])
           end
         else
-          sequential_asset_names(doc.xpath(ns("//preface/*")))
-          sequential_asset_names(doc.xpath(ns(middle_sections)))
+          sequential_asset_names(doc.xpath(ns("//preface/* | " + middle_sections)))
+          #sequential_asset_names(doc.xpath(ns(middle_sections)))
         end
       end
 
