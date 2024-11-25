@@ -795,7 +795,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         <sections>
           <clause id="a" displayorder="1">
           <figure id="figureA-1" keep-with-next="true" keep-lines-together="true">
-        <fmt-name>Figure 1&#xA0;&#x2014; Split-it-right <em>sample</em> divider<fn reference="1"><p>X</p></fn></fmt-name>
+          <fmt-name><span class="fmt-caption-label"><span class="fmt-element-name">Figure</span> <semx element="autonum" source="figureA-1">1</semx><span class="fmt-caption-delim">—</span><semx element="name" source="_">Split-it-right <em>sample</em> divider<fn reference="1"><p>X</p></fn></semx></span></fmt-name>
         <image height="20" width="30" id="_" mimetype="image/png" alt="alttext" title="titletxt"/>
         </figure>
           </clause>
@@ -811,7 +811,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
            <p class="IEEEStdsImage" style="page-break-after:avoid;">
              <img height="20" alt="alttext" title="titletxt" width="30"/>
            </p>
-           <p class="IEEEStdsRegularFigureCaption" style="text-align:center;"> — Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref"><a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
+           <p class="IEEEStdsRegularFigureCaption" style="text-align:center;">Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref"><a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
          </div>
        </div>
     OUTPUT
@@ -828,7 +828,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
          <p class="IEEESectionHeader"/>
          <div class="MsoBodyText" style="page-break-after: avoid;page-break-inside: avoid;;text-align:center;">
            <a name="figureA-1" id="figureA-1"/>
-           <p class="FigureHeadings" style="text-align:center;"> — Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref"><a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
+           <p class="FigureHeadings" style="text-align:center;">Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref"><a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
            <img height="20" alt="alttext" title="titletxt" width="30"/>
          </div>
        </div>

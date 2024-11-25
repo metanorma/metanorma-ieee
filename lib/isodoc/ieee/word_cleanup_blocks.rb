@@ -78,23 +78,7 @@ module IsoDoc
       end
 
       def caption_cleanup(docxml)
-        table_caption(docxml)
-        figure_caption(docxml)
         example_caption(docxml)
-      end
-
-      def table_caption(docxml)
-        docxml.xpath("//p[@class = 'TableTitle']").each do |s|
-          s.children = to_xml(s.children)
-            .sub(/^#{@i18n.table}(\s+[A-Z0-9.]+)?/, "")
-        end
-      end
-
-      def figure_caption(docxml)
-        docxml.xpath("//p[@class = 'FigureTitle']").each do |s|
-          s.children = to_xml(s.children)
-            .sub(/^#{@i18n.figure}(\s+[A-Z0-9.]+)?/, "")
-        end
       end
 
       def example_caption(docxml)

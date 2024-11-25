@@ -50,8 +50,9 @@ module IsoDoc
           "#{@klass.norm_ref_xpath} | //sections/terms | " \
           "//sections/definitions | //clause[parent::sections]"
         if @hierarchical_assets
-          hierarchical_asset_names(doc.xpath("//xmlns:preface/child::*"),
-                                   "Preface")
+          doc.xpath("//xmlns:preface/child::*").each do |c|
+          hierarchical_asset_names(c, "Preface")
+          end
           doc.xpath(ns(middle_sections)).each do |c|
             hierarchical_asset_names(c, @anchors[c["id"]][:label])
           end
@@ -78,7 +79,6 @@ module IsoDoc
           sequence = UUIDTools::UUID.random_create.to_s
           notes = t.xpath(ns("./termnote"))
           notes.noblank.each do |n|
-            require "debug"; binding.b
             @anchors[n["id"]] =
               anchor_struct(
                 termnote_label(n, increment_label(notes, n, c)),

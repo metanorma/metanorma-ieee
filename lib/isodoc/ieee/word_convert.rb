@@ -131,8 +131,7 @@ module IsoDoc
       end
 
       def formula_where(dlist, out)
-        return unless dlist
-
+        dlist or return
         dlist.elements.select { |n| dt_dd? n }.each_slice(2) do |dt, dd|
           formula_where1(out, dt, dd)
         end
@@ -160,7 +159,7 @@ module IsoDoc
         name.nil? and return
         name&.at(ns(".//strong"))&.remove # supplied by CSS list numbering
         div.h1 class: "Annex" do |t|
-          #annex_name1(name, t)
+          # annex_name1(name, t)
           children_parse(name, t)
           clause_parse_subtitle(name, t)
         end
@@ -201,6 +200,27 @@ module IsoDoc
             parse(e, div) unless e.name == "fmt-title"
           end
         end
+      end
+
+      # Figure 1— remove each of these
+      def figure_name_parse(_node, div, name)
+        name.nil? and return
+        name.at(".//xmlns:semx[@element = 'autonum']/"\
+          "preceding-sibling::*[normalize-space() = '']")&.remove
+        name.xpath(ns(".//span[@class = 'fmt-element-name']  | "\
+                      ".//span[@class = 'fmt-caption-delim'] | "\
+                      ".//semx[@element = 'autonum']")).each(&:remove)
+        super
+      end
+
+      def table_title_parse(node, out)
+        name = node.at(ns("./fmt-name")) or return
+        name.at(".//xmlns:semx[@element = 'autonum']/"\
+          "preceding-sibling::*[normalize-space() = '']")&.remove
+        name.xpath(ns(".//span[@class = 'fmt-element-name']  | "\
+                      ".//span[@class = 'fmt-caption-delim'] | "\
+                      ".//semx[@element = 'autonum']")).each(&:remove)
+        super
       end
 
       include BaseConvert
