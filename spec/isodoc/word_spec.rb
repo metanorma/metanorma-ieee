@@ -976,11 +976,11 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="A">1</semx>
                       <span class="fmt-autonum-delim">.</span>
+                      </span>
                       <span class="fmt-caption-delim">
                          <tab/>
                       </span>
                       <semx element="title" source="_">This is the clause title</semx>
-                   </span>
                 </fmt-title>
                 <fmt-xref-label>
                    <span class="fmt-element-name">Clause</span>
@@ -995,11 +995,11 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                          <span class="fmt-autonum-delim">.</span>
                          <semx element="autonum" source="B">1</semx>
                          <span class="fmt-autonum-delim">.</span>
+                         </span>
                          <span class="fmt-caption-delim">
                             <tab/>
                          </span>
                          <semx element="title" source="_">This is a subclause</semx>
-                      </span>
                    </fmt-title>
                    <fmt-xref-label>
                       <span class="fmt-element-name">Clause</span>
@@ -1059,11 +1059,11 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="A">1</semx>
                       <span class="fmt-autonum-delim">.</span>
+                      </span>
                       <span class="fmt-caption-delim">
                          <tab/>
                       </span>
                       <semx element="title" source="_">This is the clause title</semx>
-                   </span>
                 </fmt-title>
                 <fmt-xref-label>
                    <span class="fmt-element-name">Clause</span>
@@ -1078,11 +1078,11 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                          <span class="fmt-autonum-delim">.</span>
                          <semx element="autonum" source="B">1</semx>
                          <span class="fmt-autonum-delim">.</span>
+                         </span>
                          <span class="fmt-caption-delim">
                             <tab/>
                          </span>
                          <semx element="title" source="_">This is a subclause</semx>
-                      </span>
                    </fmt-title>
                    <fmt-xref-label>
                       <span class="fmt-element-name">Clause</span>

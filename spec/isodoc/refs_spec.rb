@@ -265,11 +265,11 @@ RSpec.describe IsoDoc do
             <span class="fmt-caption-label">
                <semx element="autonum" source="A">2</semx>
                <span class="fmt-autonum-delim">.</span>
+               </span>
                <span class="fmt-caption-delim">
                   <tab/>
                </span>
                <semx element="title" source="_">Clause</semx>
-            </span>
          </fmt-title>
          <fmt-xref-label>
             <span class="fmt-element-name">Clause</span>
@@ -288,9 +288,7 @@ RSpec.describe IsoDoc do
              <references id="_" normative="true" obligation="informative" displayorder="2">
          <title id="_">Normative References</title>
          <fmt-title depth="1">
-            <span class="fmt-caption-label">
                <semx element="title" source="_">Normative References</semx>
-            </span>
          </fmt-title>
                <bibitem id="IETF_6281" type="standard">
                  <formattedref>Code for the representation of names of languages.</formattedref>
@@ -358,9 +356,7 @@ RSpec.describe IsoDoc do
              <references id="_" normative="false" obligation="informative" displayorder="5">
          <title id="_">Bibliography</title>
          <fmt-title depth="1">
-            <span class="fmt-caption-label">
                <semx element="title" source="_">Bibliography</semx>
-            </span>
          </fmt-title>
                <bibitem id="ref6">
                  <formattedref format="application/x-isodoc+xml">Title</formattedref>
@@ -438,9 +434,7 @@ RSpec.describe IsoDoc do
               <references id="_" normative="false" obligation="informative" displayorder="2">
                  <title id="_">Normative References</title>
                  <fmt-title depth="1">
-                    <span class="fmt-caption-label">
                        <semx element="title" source="_">Normative References</semx>
-                    </span>
                  </fmt-title>
                  <bibitem id="IETF_6281" type="standard">
                     <formattedref>“Title 1,”.</formattedref>
@@ -529,9 +523,7 @@ RSpec.describe IsoDoc do
               <references id="_" normative="true" obligation="informative" displayorder="3">
                  <title id="_">Normative references</title>
                  <fmt-title depth="1">
-                    <span class="fmt-caption-label">
                        <semx element="title" source="_">Normative references</semx>
-                    </span>
                  </fmt-title>
                  <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
                  <bibitem id="ref1">
@@ -550,9 +542,7 @@ RSpec.describe IsoDoc do
               <references id="_" normative="false" obligation="informative" displayorder="4">
                  <title id="_">Bibliography</title>
                  <fmt-title depth="1">
-                    <span class="fmt-caption-label">
                        <semx element="title" source="_">Bibliography</semx>
-                    </span>
                  </fmt-title>
                  <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
                  <bibitem id="ref3">
@@ -619,11 +609,11 @@ RSpec.describe IsoDoc do
             <span class="fmt-caption-label">
                <semx element="autonum" source="A">2</semx>
                <span class="fmt-autonum-delim">.</span>
+               </span>
                <span class="fmt-caption-delim">
                   <tab/>
                </span>
                <semx element="title" source="_">Clause</semx>
-            </span>
          </fmt-title>
          <fmt-xref-label>
             <span class="fmt-element-name">Clause</span>
