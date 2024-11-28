@@ -87,7 +87,7 @@ module IsoDoc
         if @doctype == "whitepaper"
           annex1_whitepaper(elem)
         else
-          annex1_default(elem)
+          super
         end
       end
 
@@ -103,6 +103,11 @@ module IsoDoc
         elem.add_first_child "<fmt-title>#{lbl}</fmt-title>"
       end
 
+      def annex_delim(_elem)
+      "<br/>"
+    end
+
+      # KILL
       def annex1_default(elem)
         lbl = @xrefs.anchor(elem["id"], :label)
         if t = elem.at(ns("./title"))
