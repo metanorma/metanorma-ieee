@@ -157,6 +157,13 @@ RSpec.describe IsoDoc do
                                      <fmt-xref-label>
                   <span class="fmt-element-name">Note</span>
                </fmt-xref-label>
+                              <fmt-xref-label container="A">
+                  <span class="fmt-xref-container">
+                     <semx element="foreword" source="A">Foreword</semx>
+                  </span>
+                  <span class="fmt-comma">,</span>
+                  <span class="fmt-element-name">Note</span>
+               </fmt-xref-label>
                       <p>This is a table about rice</p>
                    </note>
                 </table>
@@ -696,7 +703,7 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
              <clause type="toc" id="_" displayorder="1">
                 <fmt-title depth="1">Contents</fmt-title>
@@ -710,11 +717,11 @@ RSpec.describe IsoDoc do
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="a">1</semx>
                       <span class="fmt-autonum-delim">.</span>
-                      </span>
-                      <span class="fmt-caption-delim">
-                         <tab/>
-                      </span>
-                      <semx element="title" source="_">First</semx>
+                   </span>
+                   <span class="fmt-caption-delim">
+                      <tab/>
+                   </span>
+                   <semx element="title" source="_">First</semx>
                 </fmt-title>
                 <fmt-xref-label>
                    <span class="fmt-element-name">Clause</span>
@@ -732,6 +739,15 @@ RSpec.describe IsoDoc do
                       <span class="fmt-element-name">Note</span>
                       <semx element="autonum" source="note1">1</semx>
                    </fmt-xref-label>
+                   <fmt-xref-label container="a">
+                      <span class="fmt-xref-container">
+                         <span class="fmt-element-name">Clause</span>
+                         <semx element="autonum" source="a">1</semx>
+                      </span>
+                      <span class="fmt-comma">,</span>
+                      <span class="fmt-element-name">Note</span>
+                      <semx element="autonum" source="note1">1</semx>
+                   </fmt-xref-label>
                    <p id="_">First note.</p>
                 </note>
                 <note id="note2" autonum="2">
@@ -746,6 +762,15 @@ RSpec.describe IsoDoc do
                       <span class="fmt-element-name">Note</span>
                       <semx element="autonum" source="note2">2</semx>
                    </fmt-xref-label>
+                   <fmt-xref-label container="a">
+                      <span class="fmt-xref-container">
+                         <span class="fmt-element-name">Clause</span>
+                         <semx element="autonum" source="a">1</semx>
+                      </span>
+                      <span class="fmt-comma">,</span>
+                      <span class="fmt-element-name">Note</span>
+                      <semx element="autonum" source="note2">2</semx>
+                   </fmt-xref-label>
                    <p id="_">Second note.</p>
                 </note>
              </clause>
@@ -755,11 +780,11 @@ RSpec.describe IsoDoc do
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="b">2</semx>
                       <span class="fmt-autonum-delim">.</span>
-                      </span>
-                      <span class="fmt-caption-delim">
-                         <tab/>
-                      </span>
-                      <semx element="title" source="_">First</semx>
+                   </span>
+                   <span class="fmt-caption-delim">
+                      <tab/>
+                   </span>
+                   <semx element="title" source="_">First</semx>
                 </fmt-title>
                 <fmt-xref-label>
                    <span class="fmt-element-name">Clause</span>
@@ -773,6 +798,14 @@ RSpec.describe IsoDoc do
                       <span class="fmt-label-delim">—</span>
                    </fmt-name>
                    <fmt-xref-label>
+                      <span class="fmt-element-name">Note</span>
+                   </fmt-xref-label>
+                   <fmt-xref-label container="b">
+                      <span class="fmt-xref-container">
+                         <span class="fmt-element-name">Clause</span>
+                         <semx element="autonum" source="b">2</semx>
+                      </span>
+                      <span class="fmt-comma">,</span>
                       <span class="fmt-element-name">Note</span>
                    </fmt-xref-label>
                    <p id="_">Third note.</p>
@@ -930,6 +963,13 @@ RSpec.describe IsoDoc do
                    <fmt-xref-label>
                       <span class="fmt-element-name">Example</span>
                    </fmt-xref-label>
+                               <fmt-xref-label container="A">
+               <span class="fmt-xref-container">
+                  <semx element="foreword" source="A">Foreword</semx>
+               </span>
+               <span class="fmt-comma">,</span>
+               <span class="fmt-element-name">Example</span>
+            </fmt-xref-label>
                    <p>Hello</p>
                    <sourcecode id="X">
                       <name id="_">Sample</name>
@@ -1055,6 +1095,13 @@ RSpec.describe IsoDoc do
                       <fmt-xref-label>
                          <span class="fmt-element-name">Note</span>
                       </fmt-xref-label>
+                                     <fmt-xref-label container="A">
+                  <span class="fmt-xref-container">
+                     <semx element="foreword" source="A">Foreword</semx>
+                  </span>
+                  <span class="fmt-comma">,</span>
+                  <span class="fmt-element-name">Note</span>
+               </fmt-xref-label>
                       <p id="_">[durationUnits] is essentially a duration statement without the "P" prefix. "P" is unnecessary because between "G" and "U" duration is always expressed.</p>
                    </note>
                 </formula>
@@ -1345,6 +1392,15 @@ RSpec.describe IsoDoc do
                    <span class="fmt-element-name">Example</span>
                    <semx element="autonum" source="F">A.7</semx>
                 </fmt-xref-label>
+                         <fmt-xref-label container="A">
+            <span class="fmt-xref-container">
+               <span class="fmt-element-name">Clause</span>
+               <semx element="autonum" source="A">1</semx>
+            </span>
+            <span class="fmt-comma">,</span>
+            <span class="fmt-element-name">Example</span>
+            <semx element="autonum" source="F">A.7</semx>
+         </fmt-xref-label>
                 <p id="G">This is not generalised further.</p>
              </example>
           </quote>

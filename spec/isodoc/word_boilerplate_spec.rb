@@ -992,7 +992,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         <div class='WordSectionMain'>
           <div>
             <a name="_" id="_"/>
-            <p class="IEEEStdsLevel1Header">1.</p>
+            <p class="IEEEStdsLevel1Header">Clause</p>
             <p class='IEEEStdsParagraph'>
               <a name="_" id="_"/>
               Hello
@@ -1481,7 +1481,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
            <p class="MsoBodyText"/>
            <div>
              <a name="_" id="_"/>
-             <p class="IEEESectionHeader">1.</p>
+             <p class="IEEESectionHeader">Clause</p>
              <p class="MsoBodyText"><a name="_" id="_"/>Hello</p>
            </div>
          </div>
