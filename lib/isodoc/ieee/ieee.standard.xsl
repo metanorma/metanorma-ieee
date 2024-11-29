@@ -14924,6 +14924,20 @@
 		<xsl:copy-of select="$maths"/>
 	</xsl:template>
 
+	<xsl:template xmlns:redirect="http://xml.apache.org/xalan/redirect" match="*[local-name() = 'fmt-title']" mode="update_xml_step1">
+		<xsl:element name="title" namespace="{$namespace_full}">
+			<xsl:copy-of select="@*"/>
+			<xsl:apply-templates mode="update_xml_step1"/>
+		</xsl:element>
+	</xsl:template>
+
+	<xsl:template xmlns:redirect="http://xml.apache.org/xalan/redirect" match="*[local-name() = 'fmt-name']" mode="update_xml_step1">
+		<xsl:element name="name" namespace="{$namespace_full}">
+			<xsl:copy-of select="@*"/>
+			<xsl:apply-templates mode="update_xml_step1"/>
+		</xsl:element>
+	</xsl:template>
+
 	<!-- =========================================================================== -->
 	<!-- END STEP1: Re-order elements in 'preface', 'sections' based on @displayorder -->
 	<!-- =========================================================================== -->
