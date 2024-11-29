@@ -2,6 +2,7 @@ module IsoDoc
   module Ieee
     class PresentationXMLConvert < IsoDoc::PresentationXMLConvert
       def multidef(elem)
+       # require "debug"; binding.b
         number_multidef(elem)
         collapse_multidef(elem)
       end
@@ -35,9 +36,11 @@ module IsoDoc
         docxml.xpath(ns(".//definition/verbal-definition")).each do |v|
           v.elements.all? { |e| %w(termsource p).include?(e.name) } or next
           p = v.xpath(ns("./p"))
+          s = v.xpath(ns('./termsource'))
+          s.empty? or 
+          s = " (#{s.map { |x| to_xml(x) }.join("\n")})"
           v.children =
-            "<p>#{p.map(&:children).map { |x| to_xml(x) }.join("\n")}</p>" \
-            "#{v.xpath(ns('./termsource')).to_xml}"
+            "<p>#{p.map(&:children).map { |x| to_xml(x) }.join("\n")}#{s}</p>"
         end
         super
       end

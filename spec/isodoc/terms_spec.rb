@@ -75,7 +75,7 @@ RSpec.describe IsoDoc do
     INPUT
 
     presxml = <<~PRESXML
-       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
              <clause type="toc" id="_" displayorder="1">
                 <fmt-title depth="1">Contents</fmt-title>
@@ -89,11 +89,11 @@ RSpec.describe IsoDoc do
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="_">1</semx>
                       <span class="fmt-autonum-delim">.</span>
-                      </span>
-                      <span class="fmt-caption-delim">
-                         <tab/>
-                      </span>
-                      <semx element="title" source="_">Terms and Definitions</semx>
+                   </span>
+                   <span class="fmt-caption-delim">
+                      <tab/>
+                   </span>
+                   <semx element="title" source="_">Terms and Definitions</semx>
                 </fmt-title>
                 <fmt-xref-label>
                    <span class="fmt-element-name">Clause</span>
@@ -132,6 +132,17 @@ RSpec.describe IsoDoc do
                          <span class="fmt-element-name">Example</span>
                          <semx element="autonum" source="_">1</semx>
                       </fmt-xref-label>
+                      <fmt-xref-label container="paddy1">
+                         <span class="fmt-xref-container">
+                            <span class="fmt-element-name">Clause</span>
+                            <semx element="autonum" source="_">1</semx>
+                            <span class="fmt-autonum-delim">.</span>
+                            <semx element="autonum" source="paddy1">1</semx>
+                         </span>
+                         <span class="fmt-comma">,</span>
+                         <span class="fmt-element-name">Example</span>
+                         <semx element="autonum" source="_">1</semx>
+                      </fmt-xref-label>
                       <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
                       <ul>
                          <li>A</li>
@@ -150,6 +161,17 @@ RSpec.describe IsoDoc do
                          </em>
                       </fmt-name>
                       <fmt-xref-label>
+                         <span class="fmt-element-name">Example</span>
+                         <semx element="autonum" source="_">2</semx>
+                      </fmt-xref-label>
+                      <fmt-xref-label container="paddy1">
+                         <span class="fmt-xref-container">
+                            <span class="fmt-element-name">Clause</span>
+                            <semx element="autonum" source="_">1</semx>
+                            <span class="fmt-autonum-delim">.</span>
+                            <semx element="autonum" source="paddy1">1</semx>
+                         </span>
+                         <span class="fmt-comma">,</span>
                          <span class="fmt-element-name">Example</span>
                          <semx element="autonum" source="_">2</semx>
                       </fmt-xref-label>
@@ -205,36 +227,66 @@ RSpec.describe IsoDoc do
                       <fmt-xref-label>
                          <span class="fmt-element-name">Example</span>
                       </fmt-xref-label>
+                      <fmt-xref-label container="paddy">
+                         <span class="fmt-xref-container">
+                            <span class="fmt-element-name">Clause</span>
+                            <semx element="autonum" source="_">1</semx>
+                            <span class="fmt-autonum-delim">.</span>
+                            <semx element="autonum" source="paddy">2</semx>
+                         </span>
+                         <span class="fmt-comma">,</span>
+                         <span class="fmt-element-name">Example</span>
+                      </fmt-xref-label>
                       <ul>
                          <li>A</li>
                       </ul>
                    </termexample>
-                   <termnote id="_" keep-with-next="true" keep-lines-together="true" autonum="NOTE 1">
+                   <termnote id="_" keep-with-next="true" keep-lines-together="true" autonum="1">
                       <fmt-name>
                          <span class="fmt-caption-label">
-                            NOTE
+                            <span class="fmt-element-name">NOTE</span>
                             <semx element="autonum" source="_">1</semx>
                          </span>
                          <span class="fmt-label-delim">—</span>
                       </fmt-name>
                       <fmt-xref-label>
                          <span class="fmt-element-name">Note</span>
-                         NOTE
+                         <semx element="autonum" source="_">1</semx>
+                      </fmt-xref-label>
+                      <fmt-xref-label container="paddy">
+                         <span class="fmt-xref-container">
+                            <span class="fmt-element-name">Clause</span>
+                            <semx element="autonum" source="_">1</semx>
+                            <span class="fmt-autonum-delim">.</span>
+                            <semx element="autonum" source="paddy">2</semx>
+                         </span>
+                         <span class="fmt-comma">,</span>
+                         <span class="fmt-element-name">Note</span>
                          <semx element="autonum" source="_">1</semx>
                       </fmt-xref-label>
                       <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
                    </termnote>
-                   <termnote id="_" autonum="NOTE 2">
+                   <termnote id="_" autonum="2">
                       <fmt-name>
                          <span class="fmt-caption-label">
-                            NOTE
+                            <span class="fmt-element-name">NOTE</span>
                             <semx element="autonum" source="_">2</semx>
                          </span>
                          <span class="fmt-label-delim">—</span>
                       </fmt-name>
                       <fmt-xref-label>
                          <span class="fmt-element-name">Note</span>
-                         NOTE
+                         <semx element="autonum" source="_">2</semx>
+                      </fmt-xref-label>
+                      <fmt-xref-label container="paddy">
+                         <span class="fmt-xref-container">
+                            <span class="fmt-element-name">Clause</span>
+                            <semx element="autonum" source="_">1</semx>
+                            <span class="fmt-autonum-delim">.</span>
+                            <semx element="autonum" source="paddy">2</semx>
+                         </span>
+                         <span class="fmt-comma">,</span>
+                         <span class="fmt-element-name">Note</span>
                          <semx element="autonum" source="_">2</semx>
                       </fmt-xref-label>
                       <ul>
@@ -690,7 +742,7 @@ RSpec.describe IsoDoc do
       </term>
     INPUT
     presxml = <<~PRESXML
-       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
              <clause type="toc" id="_" displayorder="1">
                 <fmt-title depth="1">Contents</fmt-title>
@@ -704,11 +756,11 @@ RSpec.describe IsoDoc do
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="_">1</semx>
                       <span class="fmt-autonum-delim">.</span>
-                       </span>
-                      <span class="fmt-caption-delim">
-                         <tab/>
-                      </span>
-                      <semx element="title" source="_">Terms and Definitions</semx>
+                   </span>
+                   <span class="fmt-caption-delim">
+                      <tab/>
+                   </span>
+                   <semx element="title" source="_">Terms and Definitions</semx>
                 </fmt-title>
                 <fmt-xref-label>
                    <span class="fmt-element-name">Clause</span>
@@ -718,18 +770,21 @@ RSpec.describe IsoDoc do
                 <term id="paddy1">
                    <p>
                       <strong>paddy</strong>
-                      , &lt;rice&gt;: rice retaining its husk after threshing, mark 2 rice retaining its husk after threshing, mark 3
-                      <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011">
-                         <locality type="clause">
-                            <referenceFrom>3.1</referenceFrom>
-                         </locality>
-                         <span class="std_publisher">ISO </span>
-                         <span class="std_docNumber">7301</span>
-                         :
-                         <span class="std_year">2011</span>
-                         , 3.1
-                      </origin>
-                      , modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here (
+                      , &lt;rice&gt;: rice retaining its husk after threshing, mark 2 rice retaining its husk after threshing, mark 3 (
+                      <termsource status="modified">
+                         <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011">
+                            <locality type="clause">
+                               <referenceFrom>3.1</referenceFrom>
+                            </locality>
+                            <span class="std_publisher">ISO </span>
+                            <span class="std_docNumber">7301</span>
+                            :
+                            <span class="std_year">2011</span>
+                            , 3.1
+                         </origin>
+                         , modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here
+                      </termsource>
+                      ) (
                       <origin citeas="">
                          <termref base="IEV" target="xyz">t1</termref>
                       </origin>
@@ -791,7 +846,7 @@ RSpec.describe IsoDoc do
       </term>
     INPUT
     presxml = <<~PRESXML
-       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
              <clause type="toc" id="_" displayorder="1">
                 <fmt-title depth="1">Contents</fmt-title>
@@ -805,11 +860,11 @@ RSpec.describe IsoDoc do
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="_">1</semx>
                       <span class="fmt-autonum-delim">.</span>
-                       </span>
-                      <span class="fmt-caption-delim">
-                         <tab/>
-                      </span>
-                      <semx element="title" source="_">Terms and Definitions</semx>
+                   </span>
+                   <span class="fmt-caption-delim">
+                      <tab/>
+                   </span>
+                   <semx element="title" source="_">Terms and Definitions</semx>
                 </fmt-title>
                 <fmt-xref-label>
                    <span class="fmt-element-name">Clause</span>
@@ -820,13 +875,15 @@ RSpec.describe IsoDoc do
                    <p>
                       <strong>paddy</strong>
                       , &lt;rice&gt;:
-                      <p>
-                         <strong>(A)</strong>
-                          rice retaining its
-                         <xref target="paddy1">
-                            <em>husk</em>
-                         </xref>
-                         after threshing
+                      <strong>(A)</strong>
+                       rice retaining its
+                      <xref target="paddy1">
+                         <em>husk</em>
+                      </xref>
+                      after threshing
+                      <strong>(B)</strong>
+                       rice retaining its husk after threshing, mark 2 (
+                      <termsource status="modified">
                          <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011">
                             <locality type="clause">
                                <referenceFrom>3.1</referenceFrom>
@@ -838,12 +895,8 @@ RSpec.describe IsoDoc do
                             , 3.1
                          </origin>
                          , modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here
-                      </p>
-                      <p>
-                         <strong>(B)</strong>
-                          rice retaining its husk after threshing, mark 2
-                      </p>
-                      (
+                      </termsource>
+                      ) (
                       <origin citeas="">
                          <termref base="IEV" target="xyz">t1</termref>
                       </origin>
@@ -869,6 +922,17 @@ RSpec.describe IsoDoc do
                          <span class="fmt-element-name">Example</span>
                          <semx element="autonum" source="_">1</semx>
                       </fmt-xref-label>
+                      <fmt-xref-label container="paddy1">
+                         <span class="fmt-xref-container">
+                            <span class="fmt-element-name">Clause</span>
+                            <semx element="autonum" source="_">1</semx>
+                            <span class="fmt-autonum-delim">.</span>
+                            <semx element="autonum" source="paddy1">1</semx>
+                         </span>
+                         <span class="fmt-comma">,</span>
+                         <span class="fmt-element-name">Example</span>
+                         <semx element="autonum" source="_">1</semx>
+                      </fmt-xref-label>
                       <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
                       <ul>
                          <li>A</li>
@@ -887,6 +951,17 @@ RSpec.describe IsoDoc do
                          </em>
                       </fmt-name>
                       <fmt-xref-label>
+                         <span class="fmt-element-name">Example</span>
+                         <semx element="autonum" source="_">2</semx>
+                      </fmt-xref-label>
+                      <fmt-xref-label container="paddy1">
+                         <span class="fmt-xref-container">
+                            <span class="fmt-element-name">Clause</span>
+                            <semx element="autonum" source="_">1</semx>
+                            <span class="fmt-autonum-delim">.</span>
+                            <semx element="autonum" source="paddy1">1</semx>
+                         </span>
+                         <span class="fmt-comma">,</span>
                          <span class="fmt-element-name">Example</span>
                          <semx element="autonum" source="_">2</semx>
                       </fmt-xref-label>
@@ -1000,6 +1075,17 @@ RSpec.describe IsoDoc do
                          <span class="fmt-element-name">Example</span>
                          <semx element="autonum" source="_">1</semx>
                       </fmt-xref-label>
+                                     <fmt-xref-label container="paddy1">
+                  <span class="fmt-xref-container">
+                     <span class="fmt-element-name">Clause</span>
+                     <semx element="autonum" source="_">1</semx>
+                     <span class="fmt-autonum-delim">.</span>
+                     <semx element="autonum" source="paddy1">1</semx>
+                  </span>
+                  <span class="fmt-comma">,</span>
+                  <span class="fmt-element-name">Example</span>
+                  <semx element="autonum" source="_">1</semx>
+               </fmt-xref-label>
                       <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
                       <ul>
                          <li>A</li>
@@ -1021,6 +1107,17 @@ RSpec.describe IsoDoc do
                          <span class="fmt-element-name">Example</span>
                          <semx element="autonum" source="_">2</semx>
                       </fmt-xref-label>
+                                     <fmt-xref-label container="paddy1">
+                  <span class="fmt-xref-container">
+                     <span class="fmt-element-name">Clause</span>
+                     <semx element="autonum" source="_">1</semx>
+                     <span class="fmt-autonum-delim">.</span>
+                     <semx element="autonum" source="paddy1">1</semx>
+                  </span>
+                  <span class="fmt-comma">,</span>
+                  <span class="fmt-element-name">Example</span>
+                  <semx element="autonum" source="_">2</semx>
+               </fmt-xref-label>
                       <ul>
                          <li>A</li>
                       </ul>
@@ -1530,7 +1627,8 @@ RSpec.describe IsoDoc do
                       <strong>Term</strong>
                       :
                       <p>
-                         Definition
+                         Definition (
+                         <termsource status="identical" type="authoritative">
                          <origin bibitemid="ISO2191" type="inline" citeas="">
                             <localityStack>
                                <locality type="section">
@@ -1539,6 +1637,8 @@ RSpec.describe IsoDoc do
                             </localityStack>
                             , Section 1
                          </origin>
+                         </termsource>
+                         )
                       </p>
                       <table id="D" autonum="1">
                          <fmt-name>

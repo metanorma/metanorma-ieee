@@ -77,12 +77,20 @@ module IsoDoc
           sequence = UUIDTools::UUID.random_create.to_s
           notes = t.xpath(ns("./termnote"))
           notes.noblank.each do |n|
-            @anchors[n["id"]] =
+              @anchors[n["id"]] =
+              { label: termnote_label(n, increment_label(notes, n, c)), type: "termnote",
+                value: c.print, elem: @labels["termnote"],
+                container: t["id"],
+                xref: anchor_struct_xref(c.print, n, @labels["note_xref"]) }
+            .merge(sequence: sequence)
+=begin
               anchor_struct(
                 termnote_label(n, increment_label(notes, n, c)),
+                #labelled_autonum(@labels["termnote"], increment_label(notes, n, c)),
                 #"#{@labels['termnote']} #{increment_label(notes, n, c)}",
                             n, @labels["note_xref"], "termnote", { container: true })
                 .merge(sequence: sequence)
+=end
           end
         end
       end
