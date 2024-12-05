@@ -16436,7 +16436,10 @@
 
 	<!-- END: insert cover page image -->
 
-	<xsl:variable xmlns:redirect="http://xml.apache.org/xalan/redirect" name="regex_ja_spec">[\uFF08\uFF09]</xsl:variable>
+	<!-- https://github.com/metanorma/docs/blob/main/109.adoc -->
+	<!-- U+301A LEFT WHITE SQUARE BRACKET (〚) -->
+	<!-- U+301B RIGHT WHITE SQUARE BRACKET (〛) -->
+	<xsl:variable xmlns:redirect="http://xml.apache.org/xalan/redirect" name="regex_ja_spec">[\u301A\u301B]</xsl:variable>
 	<xsl:template xmlns:redirect="http://xml.apache.org/xalan/redirect" name="insertVerticalChar">
 		<xsl:param name="str"/>
 		<xsl:param name="writing-mode">lr-tb</xsl:param>
