@@ -2,12 +2,11 @@ require "spec_helper"
 
 RSpec.describe IsoDoc::Ieee do
   it "processes eref content" do
-    output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
-      .convert("test", <<~INPUT, true)
+    input = <<~INPUT
         <iso-standard xmlns="http://riboseinc.com/isoxml">
           <preface>
             <foreword>
-              <p>
+              <p id="A">
                 <eref bibitemid="IEV" citeas="IEV" type="inline">
                   <locality type="clause">
                     <referenceFrom>1-2-3</referenceFrom>
@@ -86,14 +85,8 @@ RSpec.describe IsoDoc::Ieee do
           </bibliography>
         </iso-standard>
       INPUT
-    expect(Xml::C14n.format(strip_guid(output))
-      .sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))
-      .to be_equivalent_to Xml::C14n.format(strip_guid(<<~OUTPUT))
-        <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-          <preface>
-              <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause>
-            <foreword displayorder='2'><title>Foreword</title>
-              <p>
+      presxml = <<~OUTPUT
+              <p id="A">
                <eref bibitemid="IEV" citeas="IEV" type="inline"><locality type="clause"><referenceFrom>1-2-3</referenceFrom></locality>IEV, 1-2-3</eref>
                <xref type="inline" target="ISO712"><span class="std_publisher">ISO&#xa0;</span><span class="std_docNumber">712</span></xref>
                <xref type="inline" target="ISO712">ISO 712</xref>
@@ -113,28 +106,12 @@ RSpec.describe IsoDoc::Ieee do
           <span class="std_docNumber">712</span>
         </xref>
               </p>
-            </foreword>
-          </preface>
-          <sections>
-          <p class="zzSTDTitle1" displayorder="3">??? for ???</p>
-            <references id='_' normative='true' obligation='informative' displayorder='4'>
-              <title depth='1'>
-                1.
-                <tab/>
-                Normative References
-              </title>
-              <bibitem id='ISO712' type='standard'>
-                <formattedref>Cereals and cereal products.</formattedref>
-                <title format='text/plain'>Cereals and cereal products</title>
-                <docidentifier>ISO&#xa0;712</docidentifier>
-                <docidentifier scope="biblio-tag">ISO 712</docidentifier>
-                <biblio-tag>ISO&#xa0;712, </biblio-tag>
-              </bibitem>
-            </references>
-            </sections
-          <bibliography/>
-        </iso-standard>
       OUTPUT
+    output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(output)
+      .at("//xmlns:p[@id ='A']").to_xml)))
+      .to be_equivalent_to Xml::C14n.format(strip_guid(presxml))
   end
 
   it "combines locality stacks with connectives, omitting subclauses" do
@@ -195,10 +172,10 @@ RSpec.describe IsoDoc::Ieee do
     output = <<~OUTPUT
       <itu-standard xmlns="https://www.calconnect.org/standards/itu" type="presentation">
          <p id="_">
-           <eref type="inline" bibitemid="ref1" citeas="XYZ" droploc=""><localityStack connective="from"><locality type="clause"><referenceFrom>3</referenceFrom></locality></localityStack><localityStack connective="to"><locality type="clause"><referenceFrom>5</referenceFrom></locality></localityStack>XYZ,  Clauses  3 to  5</eref>
-           <eref type="inline" bibitemid="ref1" citeas="XYZ" droploc=""><localityStack connective="from"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></localityStack><localityStack connective="to"><locality type="clause"><referenceFrom>5.1</referenceFrom></locality></localityStack>XYZ,    3.1 to  5.1</eref>
-           <eref type="inline" bibitemid="ref1" citeas="XYZ" droploc=""><localityStack connective="from"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></localityStack><localityStack connective="to"><locality type="clause"><referenceFrom>5</referenceFrom></locality></localityStack>XYZ,    3.1 to  5</eref>
-           <eref type="inline" bibitemid="ref1" citeas="XYZ"><localityStack connective="from"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></localityStack><localityStack connective="to"><locality type="table"><referenceFrom>5</referenceFrom></locality></localityStack>XYZ,  3.1 to  Table 5</eref>
+           <eref type="inline" bibitemid="ref1" citeas="XYZ" droploc=""><localityStack connective="from"><locality type="clause"><referenceFrom>3</referenceFrom></locality></localityStack><localityStack connective="to"><locality type="clause"><referenceFrom>5</referenceFrom></locality></localityStack>XYZ,  Clauses  3 <span class="fmt-conn">to</span>  5</eref>
+           <eref type="inline" bibitemid="ref1" citeas="XYZ" droploc=""><localityStack connective="from"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></localityStack><localityStack connective="to"><locality type="clause"><referenceFrom>5.1</referenceFrom></locality></localityStack>XYZ,    3.1 <span class="fmt-conn">to</span>  5.1</eref>
+           <eref type="inline" bibitemid="ref1" citeas="XYZ" droploc=""><localityStack connective="from"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></localityStack><localityStack connective="to"><locality type="clause"><referenceFrom>5</referenceFrom></locality></localityStack>XYZ,    3.1 <span class="fmt-conn">to</span>  5</eref>
+           <eref type="inline" bibitemid="ref1" citeas="XYZ"><localityStack connective="from"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></localityStack><localityStack connective="to"><locality type="table"><referenceFrom>5</referenceFrom></locality></localityStack>XYZ,  3.1 <span class="fmt-conn">to</span>  Table 5</eref>
          </p>
        </itu-standard>
     OUTPUT
@@ -210,7 +187,7 @@ RSpec.describe IsoDoc::Ieee do
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
           <preface><foreword>
-          <p>
+          <p id="A">
           <ul>
           <li>
           <concept><refterm>term</refterm>
@@ -310,8 +287,7 @@ RSpec.describe IsoDoc::Ieee do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-      <foreword displayorder='2'><title>Foreword</title>
-        <p>
+        <p id='A'>
           <ul>
             <li> </li>
             <li>term</li>
@@ -329,11 +305,10 @@ RSpec.describe IsoDoc::Ieee do
               </li>
           </ul>
         </p>
-        </foreword>
     OUTPUT
     xml = Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))
-    expect(Xml::C14n.format(xml.at("//xmlns:foreword").to_xml))
+    expect(Xml::C14n.format(xml.at("//xmlns:p[@id = 'A']").to_xml))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -341,7 +316,7 @@ RSpec.describe IsoDoc::Ieee do
     input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml" xmlns:m='http://www.w3.org/1998/Math/MathML'>
       <preface><foreword>
-      <p>
+      <p id="A">
       <stem type="MathML"><m:math>
         <m:msup> <m:mrow> <m:mo>(</m:mo> <m:mrow> <m:mi>x</m:mi> <m:mo>+</m:mo> <m:mi>y</m:mi> </m:mrow> <m:mo>)</m:mo> </m:mrow> <m:mn>2</m:mn> </m:msup>
       </m:math></stem>
@@ -351,11 +326,7 @@ RSpec.describe IsoDoc::Ieee do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <iso-standard xmlns='http://riboseinc.com/isoxml' xmlns:m='http://www.w3.org/1998/Math/MathML' type='presentation'>
-        <preface>
-            <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause>
-          <foreword displayorder='2'><title>Foreword</title>
-            <p>
+            <p id="A">
               <stem type='MathML'>
                  <m:math>
                    <m:msup>
@@ -375,16 +346,10 @@ RSpec.describe IsoDoc::Ieee do
                 <asciimath>(x + y)^(2)</asciimath>
               </stem>
             </p>
-          </foreword>
-        </preface>
-                 <sections>
-           <p class="zzSTDTitle1">??? for ???</p>
-         </sections>
-      </iso-standard>
     OUTPUT
     xml = Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new({})
       .convert("test", input, true))
-    xml.at("//xmlns:metanorma-extension").remove
+    xml = xml.at("//xmlns:p[@id = 'A']")
     expect(Xml::C14n.format(strip_guid(xml.to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end

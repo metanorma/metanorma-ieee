@@ -17,9 +17,9 @@ module IsoDoc
       def scope(node, out, num)
         out.div **attr_code(id: node["id"]) do |div|
           num = num + 1
-          clause_name(node, node&.at(ns("./title")), div, nil)
+          clause_name(node, node&.at(ns("./fmt-title")), div, nil)
           node.elements.each do |e|
-            parse(e, div) unless e.name == "title"
+            parse(e, div) unless e.name == "fmt-title"
           end
         end
         num
@@ -34,8 +34,9 @@ module IsoDoc
         super.merge(type: node["type"])
       end
 
-      def note_p_parse(node, div)
-        name = node&.at(ns("./name"))&.remove
+#TODO kill
+      def note_p_parsex(node, div)
+        name = node&.at(ns("./fmt-name"))&.remove
         div.p do |p|
           name and p.span class: "note_label" do |s|
             name.children.each { |n| parse(n, s) }
@@ -45,7 +46,8 @@ module IsoDoc
         node.element_children[1..-1].each { |n| parse(n, div) }
       end
 
-      def note_parse1(node, div)
+#TODO kill
+      def note_parse1x(node, div)
         name = node&.at(ns("./name"))&.remove
         name and div.p do |p|
           p.span class: "note_label" do |s|
@@ -61,6 +63,12 @@ module IsoDoc
         div.p class: "example-title" do |p|
           name.children.each { |n| parse(n, p) }
         end
+      end
+
+       def span_parse(node, out)
+        node["class"] == "fmt-obligation" and
+          node["class"] = "obligation"
+        super
       end
     end
   end

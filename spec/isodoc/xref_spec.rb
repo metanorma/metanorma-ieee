@@ -27,48 +27,60 @@ RSpec.describe Metanorma::Ieee do
        </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-         <preface>
-            <clause type="toc" id="_" displayorder="1">
-                <title depth="1">Contents</title>
-            </clause>
-           <foreword obligation='informative' displayorder='2'>
-             <title>Foreword</title>
-             <p id='X'>
-               <xref target='A'>Clause 1.1</xref>
-                and
-               <xref target='A'>1.1</xref>
-               . This is a preamble.
-               <xref target='B'>Clause 1</xref>
-                and
-               <xref target='B'>Clause 1</xref>
-               .
-               <xref target='A'>Clause 1.1</xref>
-                and
-               <xref target='A'>1.1</xref>
-               .
-               <eref bibitemid='IEV' citeas='IEV' type='inline'>
-                 <locality type='clause'>
+      <foreword obligation="informative" displayorder="2">
+          <title id="_">Foreword</title>
+          <fmt-title depth="1">
+                <semx element="title" source="_">Foreword</semx>
+          </fmt-title>
+          <p id="X">
+             <xref target="A">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="B">1</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="A">1</semx>
+             </xref>
+             and
+             <xref target="A">
+                <semx element="autonum" source="B">1</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="A">1</semx>
+             </xref>
+             . This is a preamble.
+             <xref target="B">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="B">1</semx>
+             </xref>
+             and
+             <xref target="B">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="B">1</semx>
+             </xref>
+             .
+             <xref target="A">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="B">1</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="A">1</semx>
+             </xref>
+             and
+             <xref target="A">
+                <semx element="autonum" source="B">1</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="A">1</semx>
+             </xref>
+             .
+             <eref bibitemid="IEV" citeas="IEV" type="inline">
+                <locality type="clause">
                    <referenceFrom>1.2</referenceFrom>
-                 </locality>
-                 IEV, 1.2
-               </eref>
-             </p>
-           </foreword>
-         </preface>
-           <sections>
-           <p class="zzSTDTitle1" displayorder="3">??? for ???</p>
-             <clause id='B' displayorder='4'>
-               <title>1.</title>
-               <clause id='A'>
-                 <title>1.1.</title>
-               </clause>
-             </clause>
-           </sections>
-       </iso-standard>
+                </locality>
+                IEV, 1.2
+             </eref>
+          </p>
+       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
-  .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(output)
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)).at("//xmlns:foreword").to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "cross-references formulae" do
@@ -105,18 +117,46 @@ RSpec.describe Metanorma::Ieee do
           </itu-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword displayorder='2'><title>Foreword</title>
-         <p>
-           <xref target='N1'>Equation (1)</xref>
-           <xref target='N2'>Inequality (2)</xref>
-           <xref target='N3'>Equation (A.1)</xref>
-           <xref target='N4'>Inequality (A.2)</xref>
-         </p>
-       </foreword>
+        <foreword displayorder="2">
+           <title id="_">Foreword</title>
+           <fmt-title depth="1">
+                 <semx element="title" source="_">Foreword</semx>
+           </fmt-title>
+           <p>
+              <xref target="N1">
+                 <span class="fmt-element-name">Equation</span>
+                 <span class="fmt-autonum-delim">(</span>
+                 <semx element="autonum" source="N1">1</semx>
+                 <span class="fmt-autonum-delim">)</span>
+              </xref>
+              <xref target="N2">
+                 <span class="fmt-element-name">Inequality</span>
+                 <span class="fmt-autonum-delim">(</span>
+                 <semx element="autonum" source="N2">2</semx>
+                 <span class="fmt-autonum-delim">)</span>
+              </xref>
+              <xref target="N3">
+                 <span class="fmt-element-name">Equation</span>
+                 <span class="fmt-autonum-delim">(</span>
+                 <semx element="autonum" source="A">A</semx>
+                 <span class="fmt-autonum-delim">.</span>
+                 <semx element="autonum" source="N3">1</semx>
+                 <span class="fmt-autonum-delim">)</span>
+              </xref>
+              <xref target="N4">
+                 <span class="fmt-element-name">Inequality</span>
+                 <span class="fmt-autonum-delim">(</span>
+                 <semx element="autonum" source="A">A</semx>
+                 <span class="fmt-autonum-delim">.</span>
+                 <semx element="autonum" source="N4">2</semx>
+                 <span class="fmt-autonum-delim">)</span>
+              </xref>
+           </p>
+        </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 
@@ -126,14 +166,44 @@ RSpec.describe Metanorma::Ieee do
             <preface>
         <foreword id="fwd">
         <p>
-        <xref target="N"/>
-        <xref target="note1"/>
-        <xref target="note2"/>
+        <xref target="N0"/>
+        <xref target="note01"/>
+        <xref target="note02"/>
+        <xref target="N1"/>
+        <xref target="note11"/>
+        <xref target="note12"/>
+        <xref target="N2"/>
+        <xref target="note21"/>
+        <xref target="note22"/>
         <xref target="AN"/>
         <xref target="Anote1"/>
         <xref target="Anote2"/>
         </p>
         </foreword>
+        <introduction id="intro">
+        <figure id="N0">
+            <figure id="note01">
+      <name>Split-it-right sample divider</name>
+      <image src="rice_images/rice_image1.png" id="_8357ede4-6d44-4672-bac4-9a85e82ab7f0" mimetype="image/png"/>
+      </figure>
+        <figure id="note02">
+      <name>Split-it-right sample divider</name>
+      <image src="rice_images/rice_image1.png" id="_8357ede4-6d44-4672-bac4-9a85e82ab7f0" mimetype="image/png"/>
+      </figure>
+      </figure>
+        </introdution>
+        <acknowledgements id="ack">
+        <figure id="N1">
+            <figure id="note11">
+      <name>Split-it-right sample divider</name>
+      <image src="rice_images/rice_image1.png" id="_8357ede4-6d44-4672-bac4-9a85e82ab7f0" mimetype="image/png"/>
+      </figure>
+        <figure id="note12">
+      <name>Split-it-right sample divider</name>
+      <image src="rice_images/rice_image1.png" id="_8357ede4-6d44-4672-bac4-9a85e82ab7f0" mimetype="image/png"/>
+      </figure>
+      </figure>
+        </acknowledgements>
         </preface>
         <sections>
         <clause id="scope" type="scope"><title>Scope</title>
@@ -141,12 +211,12 @@ RSpec.describe Metanorma::Ieee do
         <terms id="terms"/>
         <clause id="widgets"><title>Widgets</title>
         <clause id="widgets1">
-        <figure id="N">
-            <figure id="note1">
+        <figure id="N2">
+            <figure id="note21">
       <name>Split-it-right sample divider</name>
       <image src="rice_images/rice_image1.png" id="_8357ede4-6d44-4672-bac4-9a85e82ab7f0" mimetype="image/png"/>
       </figure>
-        <figure id="note2">
+        <figure id="note22">
       <name>Split-it-right sample divider</name>
       <image src="rice_images/rice_image1.png" id="_8357ede4-6d44-4672-bac4-9a85e82ab7f0" mimetype="image/png"/>
       </figure>
@@ -174,38 +244,191 @@ RSpec.describe Metanorma::Ieee do
         </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword id='fwd' displayorder='2'><title>Foreword</title>
-        <p>
-          <xref target='N'>Figure 1</xref>
-          <xref target='note1'>Figure 1-1</xref>
-          <xref target='note2'>Figure 1-2</xref>
-          <xref target='AN'>Figure A.1</xref>
-          <xref target='Anote1'>Figure A.1-1</xref>
-          <xref target='Anote2'>Figure A.1-2</xref>
-        </p>
-      </foreword>
-    OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
-      .new({})
-      .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
-      .to be_equivalent_to Xml::C14n.format(output)
-    output = <<~OUTPUT
-      <foreword id='fwd' displayorder='2'><title>Foreword</title>
-         <p>
-           <xref target='N'>Figure 3.1</xref>
-           <xref target='note1'>Figure 3.1-1</xref>
-           <xref target='note2'>Figure 3.1-2</xref>
-           <xref target='AN'>Figure A.1</xref>
-           <xref target='Anote1'>Figure A.1-1</xref>
-           <xref target='Anote2'>Figure A.1-2</xref>
-         </p>
+       <foreword id="fwd" displayorder="2">
+          <title id="_">Foreword</title>
+          <fmt-title depth="1">
+                <semx element="title" source="_">Foreword</semx>
+          </fmt-title>
+          <p>
+             <xref target="N0">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="N0">1</semx>
+             </xref>
+             <xref target="note01">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="N0">1</semx>
+                <span class="fmt-autonum-delim">-</span>
+                <semx element="autonum" source="note01">1</semx>
+             </xref>
+             <xref target="note02">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="N0">1</semx>
+                <span class="fmt-autonum-delim">-</span>
+                <semx element="autonum" source="note02">2</semx>
+             </xref>
+             <xref target="N1">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="N1">2</semx>
+             </xref>
+             <xref target="note11">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="N1">2</semx>
+                <span class="fmt-autonum-delim">-</span>
+                <semx element="autonum" source="note11">1</semx>
+             </xref>
+             <xref target="note12">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="N1">2</semx>
+                <span class="fmt-autonum-delim">-</span>
+                <semx element="autonum" source="note12">2</semx>
+             </xref>
+             <xref target="N2">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="N2">3</semx>
+             </xref>
+             <xref target="note21">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="N2">3</semx>
+                <span class="fmt-autonum-delim">-</span>
+                <semx element="autonum" source="note21">1</semx>
+             </xref>
+             <xref target="note22">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="N2">3</semx>
+                <span class="fmt-autonum-delim">-</span>
+                <semx element="autonum" source="note22">2</semx>
+             </xref>
+             <xref target="AN">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="annex1">A</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="AN">1</semx>
+             </xref>
+             <xref target="Anote1">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="annex1">A</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="AN">1</semx>
+                <span class="fmt-autonum-delim">-</span>
+                <semx element="autonum" source="Anote1">1</semx>
+             </xref>
+             <xref target="Anote2">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="annex1">A</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="AN">1</semx>
+                <span class="fmt-autonum-delim">-</span>
+                <semx element="autonum" source="Anote2">2</semx>
+             </xref>
+          </p>
        </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
+      .new({})
+      .convert("test", input, true))
+      .at("//xmlns:foreword").to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
+    output = <<~OUTPUT
+       <foreword id="fwd" displayorder="2">
+          <title id="_">Foreword</title>
+          <fmt-title depth="1">
+                <semx element="title" source="_">Foreword</semx>
+          </fmt-title>
+          <p>
+             <xref target="N0">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="intro">Preface</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="N0">1</semx>
+             </xref>
+             <xref target="note01">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="intro">Preface</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="N0">1</semx>
+                <span class="fmt-autonum-delim">-</span>
+                <semx element="autonum" source="note01">1</semx>
+             </xref>
+             <xref target="note02">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="intro">Preface</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="N0">1</semx>
+                <span class="fmt-autonum-delim">-</span>
+                <semx element="autonum" source="note02">2</semx>
+             </xref>
+             <xref target="N1">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="ack">Preface</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="N1">2</semx>
+             </xref>
+             <xref target="note11">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="ack">Preface</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="N1">2</semx>
+                <span class="fmt-autonum-delim">-</span>
+                <semx element="autonum" source="note11">1</semx>
+             </xref>
+             <xref target="note12">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="ack">Preface</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="N1">2</semx>
+                <span class="fmt-autonum-delim">-</span>
+                <semx element="autonum" source="note12">2</semx>
+             </xref>
+             <xref target="N2">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="widgets">3</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="N2">1</semx>
+             </xref>
+             <xref target="note21">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="widgets">3</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="N2">1</semx>
+                <span class="fmt-autonum-delim">-</span>
+                <semx element="autonum" source="note21">1</semx>
+             </xref>
+             <xref target="note22">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="widgets">3</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="N2">1</semx>
+                <span class="fmt-autonum-delim">-</span>
+                <semx element="autonum" source="note22">2</semx>
+             </xref>
+             <xref target="AN">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="annex1">A</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="AN">1</semx>
+             </xref>
+             <xref target="Anote1">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="annex1">A</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="AN">1</semx>
+                <span class="fmt-autonum-delim">-</span>
+                <semx element="autonum" source="Anote1">1</semx>
+             </xref>
+             <xref target="Anote2">
+                <span class="fmt-element-name">Figure</span>
+                <semx element="autonum" source="annex1">A</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="AN">1</semx>
+                <span class="fmt-autonum-delim">-</span>
+                <semx element="autonum" source="Anote2">2</semx>
+             </xref>
+          </p>
+    OUTPUT
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
       .new({ hierarchicalassets: true })
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 end

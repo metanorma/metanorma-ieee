@@ -118,7 +118,7 @@ RSpec.describe Metanorma::Ieee do
     output = output.at("//xmlns:bibdata")
     expect(Xml::C14n.format(output.to_xml))
       .to be_equivalent_to Xml::C14n.format(<<~OUTPUT)
-          <bibdata type="standard">
+      <bibdata type="standard">
          <title language="en" format="text/plain">Document title</title>
          <title type="provenance" language="en" format="application/xml">Revision of ABC<br/>Incorporates BCD and EFG</title>
          <title language="intro-en" format="text/plain">Introduction</title>

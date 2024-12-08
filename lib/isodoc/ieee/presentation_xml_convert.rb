@@ -58,10 +58,16 @@ module IsoDoc
         @xrefs.anchor(node["target"], :type) == "clause" &&
           @xrefs.anchor(node["target"], :level) > 1 &&
           !start_of_sentence(node) and
-          linkend = linkend.sub(/^Clause /, "")
+          linkend = strip_initial_clause(linkend)
         container = @xrefs.anchor(node["target"], :container, false)
         linkend = prefix_container(container, linkend, node, node["target"])
         capitalise_xref(node, linkend, anchor_value(node["target"]))
+      end
+
+      def strip_initial_clause(linkend)
+        x = Nokogiri::XML("<a>#{linkend}</a>")
+        x.at(".//span[@class = 'fmt-element-name']")&.remove
+        to_xml(x.elements.first.children).strip
       end
 
       def eref_locality_populate(type, node, number)
@@ -81,25 +87,33 @@ module IsoDoc
         if @doctype == "whitepaper"
           annex1_whitepaper(elem)
         else
-          annex1_default(elem)
+          super
         end
       end
 
       def annex1_whitepaper(elem)
         lbl = @xrefs.anchor(elem["id"], :label)
         if t = elem.at(ns("./title"))
-          t.name = "variant-title"
-          t["type"] = "sub"
+          d = t.dup
+          # TODO fmt-variant-title
+          d.name = "variant-title"
+          d["type"] = "sub"
+          t.next = d
         end
-        elem.add_first_child "<title>#{lbl}</title>"
+        elem.add_first_child "<fmt-title>#{lbl}</fmt-title>"
       end
 
+      def annex_delim(_elem)
+      "<br/>"
+    end
+
+      # KILL
       def annex1_default(elem)
         lbl = @xrefs.anchor(elem["id"], :label)
         if t = elem.at(ns("./title"))
           t.children = "<strong>#{to_xml(t.children)}</strong>"
         end
-        prefix_name(elem, "<br/>", lbl, "title")
+        prefix_name(elem, { caption: "<br/>" }, lbl, "title")
       end
 
       def amend1(elem)
@@ -214,8 +228,8 @@ module IsoDoc
 
       def example1(elem)
         super
-        n = elem.at(ns("./name")) or return
-        n << l10n(":")
+        n = elem.at(ns("./fmt-name")) or return
+        n << l10n("<span class='fmt-caption-delim'>:</span>")
         n.children.wrap("<em></em>")
       end
 

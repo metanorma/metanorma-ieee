@@ -67,9 +67,9 @@ module IsoDoc
       def abstract(clause, out)
         page_break(out)
         out.div **attr_code(id: clause["id"], class: "abstract") do |s|
-          clause_name(clause, clause.at(ns("./title")), s,
+          clause_name(clause, clause.at(ns("./fmt-title")), s,
                       { class: stylesmap[:AbstractTitle] })
-          clause.elements.each { |e| parse(e, s) unless e.name == "title" }
+          clause.elements.each { |e| parse(e, s) unless e.name == "fmt-title" }
         end
       end
 
@@ -120,8 +120,7 @@ module IsoDoc
           formula_parse1(node, div)
           formula_where(node.at(ns("./dl")), div)
           node.children.each do |n|
-            next if %w(stem dl name).include? n.name
-
+            %w(stem dl fmt-name).include? n.name and next
             parse(n, div)
           end
         end
@@ -132,8 +131,7 @@ module IsoDoc
       end
 
       def formula_where(dlist, out)
-        return unless dlist
-
+        dlist or return
         dlist.elements.select { |n| dt_dd? n }.each_slice(2) do |dt, dd|
           formula_where1(out, dt, dd)
         end
@@ -158,33 +156,32 @@ module IsoDoc
       end
 
       def annex_name(_annex, name, div)
-        return if name.nil?
-
-        name&.at(ns("./strong"))&.remove # supplied by CSS list numbering
+        name.nil? and return
+        name&.at(ns(".//strong"))&.remove # supplied by CSS list numbering
         div.h1 class: "Annex" do |t|
-          annex_name1(name, t)
+          # annex_name1(name, t)
+          children_parse(name, t)
           clause_parse_subtitle(name, t)
         end
       end
 
-      def annex_name1(name, out)
-        name.children.each do |c2|
-          if c2.name == "span" && c2["class"] == "obligation"
-            out.span style: "font-weight:normal;" do |s|
-              c2.children.each { |c3| parse(c3, s) }
-            end
-          else parse(c2, out)
-          end
+      def span_parse(node, out)
+        if node["class"] == "fmt-obligation"
+          node.delete("class")
+          node["style"] = "font-weight:normal;"
         end
+        super
       end
 
       def termnote_parse(node, out)
-        name = node&.at(ns("./name"))&.remove
+        name = node.at(ns("./fmt-name"))
+        para = node.at(ns("./p"))
         out.div **note_attrs(node) do |div|
           div.p do |p|
             name and termnote_label(p, name)
-            para_then_remainder(node.first_element_child, node, p, div)
+            children_parse(para, p)
           end
+          para.xpath("./following-sibling::*").each { |n| parse(n, div) }
         end
       end
 
@@ -197,12 +194,33 @@ module IsoDoc
       # STYLE
       def table_of_contents(clause, out)
         out.div class: "WordSectionContents" do |div|
-          clause_name(clause, clause.at(ns("./title")), div,
+          clause_name(clause, clause.at(ns("./fmt-title")), div,
                       { class: "IEEEStdsLevel1frontmatter" })
           clause.elements.each do |e|
-            parse(e, div) unless e.name == "title"
+            parse(e, div) unless e.name == "fmt-title"
           end
         end
+      end
+
+      # Figure 1— remove each of these
+      def figure_name_parse(_node, div, name)
+        name.nil? and return
+        name.at(".//xmlns:semx[@element = 'autonum']/"\
+          "preceding-sibling::*[normalize-space() = '']")&.remove
+        name.xpath(ns(".//span[@class = 'fmt-element-name']  | "\
+                      ".//span[@class = 'fmt-caption-delim'] | "\
+                      ".//semx[@element = 'autonum']")).each(&:remove)
+        super
+      end
+
+      def table_title_parse(node, out)
+        name = node.at(ns("./fmt-name")) or return
+        name.at(".//xmlns:semx[@element = 'autonum']/"\
+          "preceding-sibling::*[normalize-space() = '']")&.remove
+        name.xpath(ns(".//span[@class = 'fmt-element-name']  | "\
+                      ".//span[@class = 'fmt-caption-delim'] | "\
+                      ".//semx[@element = 'autonum']")).each(&:remove)
+        super
       end
 
       include BaseConvert

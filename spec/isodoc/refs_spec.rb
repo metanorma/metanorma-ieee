@@ -254,11 +254,27 @@ RSpec.describe IsoDoc do
 
       presxml = <<~PRESXML
         <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-               <preface> <clause type="toc" id="_" displayorder="1"> <title depth="1">Contents</title> </clause> </preface>
+               <preface> <clause type="toc" id="_" displayorder="1">
+               <fmt-title depth="1">Contents</fmt-title>
+                </clause> </preface>
                         <sections>
              <p class="zzSTDTitle1" displayorder="3">??? for ???</p>
              <clause id="A" inline-header="false" obligation="normative" displayorder="4">
-               <title depth="1">2.<tab/>Clause</title>
+         <title id="_">Clause</title>
+         <fmt-title depth="1">
+            <span class="fmt-caption-label">
+               <semx element="autonum" source="A">2</semx>
+               <span class="fmt-autonum-delim">.</span>
+               </span>
+               <span class="fmt-caption-delim">
+                  <tab/>
+               </span>
+               <semx element="title" source="_">Clause</semx>
+         </fmt-title>
+         <fmt-xref-label>
+            <span class="fmt-element-name">Clause</span>
+            <semx element="autonum" source="A">2</semx>
+         </fmt-xref-label>
                <p id="_">
                  <xref type="inline" target="ref1"><span class="std_publisher">ISO </span><span class="std_docNumber">639</span>:<span class="std_year">1967</span></xref>
                  <xref type="inline" target="ref7"><span class="std_publisher">ISO </span><span class="std_docNumber">639-2</span>:<span class="std_year">1998</span></xref>
@@ -270,7 +286,10 @@ RSpec.describe IsoDoc do
                </p>
              </clause>
              <references id="_" normative="true" obligation="informative" displayorder="2">
-               <title depth="1">Normative References</title>
+         <title id="_">Normative References</title>
+         <fmt-title depth="1">
+               <semx element="title" source="_">Normative References</semx>
+         </fmt-title>
                <bibitem id="IETF_6281" type="standard">
                  <formattedref>Code for the representation of names of languages.</formattedref>
                  <title type="title-main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
@@ -335,7 +354,10 @@ RSpec.describe IsoDoc do
            </sections>
            <bibliography>
              <references id="_" normative="false" obligation="informative" displayorder="5">
-               <title depth="1">Bibliography</title>
+         <title id="_">Bibliography</title>
+         <fmt-title depth="1">
+               <semx element="title" source="_">Bibliography</semx>
+         </fmt-title>
                <bibitem id="ref6">
                  <formattedref format="application/x-isodoc+xml">Title</formattedref>
                  <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
@@ -401,43 +423,58 @@ RSpec.describe IsoDoc do
          </iso-standard>
     INPUT
     presxml = <<~PRESXML
-      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-        <preface>
-          <clause type="toc" id="_" displayorder="1">
-            <title depth="1">Contents</title>
-          </clause>
-        </preface>
-        <sections/>
-        <bibliography>
-          <references id="_" normative="false" obligation="informative" displayorder="2">
-            <title depth="1">Normative References</title>
-            <bibitem id="IETF_6281" type="standard">
-              <formattedref>“Title 1,”.</formattedref>
-              <title>Title 1</title>
-              <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
-              <docidentifier>ABC</docidentifier>
-              <docidentifier scope="biblio-tag">ABC</docidentifier>
-              <biblio-tag>[B1]<tab/>ABC, </biblio-tag>
-            </bibitem>
-            <bibitem id="IETF_6282" type="standard">
-              <formattedref>“Title 1,”.</formattedref>
-              <title>Title 1</title>
-              <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
-              <docidentifier>DEF</docidentifier>
-              <docidentifier scope="biblio-tag">DEF</docidentifier>
-              <biblio-tag>[B2]<tab/>DEF, </biblio-tag>
-            </bibitem>
-            <bibitem id="IETF_6283" type="standard">
-              <formattedref>“Title 2,”.</formattedref>
-              <title>Title 2</title>
-              <docidentifier type="metanorma-ordinal">[B3]</docidentifier>
-              <docidentifier>GHI</docidentifier>
-              <docidentifier scope="biblio-tag">GHI</docidentifier>
-              <biblio-tag>[B3]<tab/>GHI, </biblio-tag>
-            </bibitem>
-          </references>
-        </bibliography>
-      </iso-standard>
+        <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+           <preface>
+              <clause type="toc" id="_" displayorder="1">
+                 <fmt-title depth="1">Contents</fmt-title>
+              </clause>
+           </preface>
+           <sections/>
+           <bibliography>
+              <references id="_" normative="false" obligation="informative" displayorder="2">
+                 <title id="_">Normative References</title>
+                 <fmt-title depth="1">
+                       <semx element="title" source="_">Normative References</semx>
+                 </fmt-title>
+                 <bibitem id="IETF_6281" type="standard">
+                    <formattedref>“Title 1,”.</formattedref>
+                    <title>Title 1</title>
+                    <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
+                    <docidentifier>ABC</docidentifier>
+                    <docidentifier scope="biblio-tag">ABC</docidentifier>
+                    <biblio-tag>
+                       [B1]
+                       <tab/>
+                       ABC,
+                    </biblio-tag>
+                 </bibitem>
+                 <bibitem id="IETF_6282" type="standard">
+                    <formattedref>“Title 1,”.</formattedref>
+                    <title>Title 1</title>
+                    <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
+                    <docidentifier>DEF</docidentifier>
+                    <docidentifier scope="biblio-tag">DEF</docidentifier>
+                    <biblio-tag>
+                       [B2]
+                       <tab/>
+                       DEF,
+                    </biblio-tag>
+                 </bibitem>
+                 <bibitem id="IETF_6283" type="standard">
+                    <formattedref>“Title 2,”.</formattedref>
+                    <title>Title 2</title>
+                    <docidentifier type="metanorma-ordinal">[B3]</docidentifier>
+                    <docidentifier>GHI</docidentifier>
+                    <docidentifier scope="biblio-tag">GHI</docidentifier>
+                    <biblio-tag>
+                       [B3]
+                       <tab/>
+                       GHI,
+                    </biblio-tag>
+                 </bibitem>
+              </references>
+           </bibliography>
+        </iso-standard>
     PRESXML
     out = Nokogiri::XML(
       IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
@@ -475,41 +512,50 @@ RSpec.describe IsoDoc do
       </ieee-standard>
     INPUT
     presxml = <<~PRESXML
-      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-         <preface>
-           <clause type="toc" id="_" displayorder="1">
-             <title depth="1">Contents</title>
-           </clause>
-         </preface>
-         <sections>
-           <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
-           <references id="_" normative="true" obligation="informative" displayorder="3">
-             <title depth="1">Normative references</title>
-             <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
-             <bibitem id="ref1">
-               <formattedref format="application/x-isodoc+xml">Reference 1</formattedref>
-               <biblio-tag/>
-             </bibitem>
-             <bibitem id="ref2">
-               <formattedref format="application/x-isodoc+xml">Reference 2</formattedref>
-               <docidentifier>A</docidentifier>
-               <docidentifier scope="biblio-tag">A</docidentifier>
-               <biblio-tag>A, </biblio-tag>
-             </bibitem>
-           </references>
-         </sections>
-         <bibliography>
-           <references id="_" normative="false" obligation="informative" displayorder="4">
-             <title depth="1">Bibliography</title>
-             <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
-             <bibitem id="ref3">
-               <formattedref format="application/x-isodoc+xml">Reference 2</formattedref>
-               <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
-               <biblio-tag>[B1]<tab/></biblio-tag>
-             </bibitem>
-           </references>
-         </bibliography>
-       </iso-standard>
+        <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+           <preface>
+              <clause type="toc" id="_" displayorder="1">
+                 <fmt-title depth="1">Contents</fmt-title>
+              </clause>
+           </preface>
+           <sections>
+              <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
+              <references id="_" normative="true" obligation="informative" displayorder="3">
+                 <title id="_">Normative references</title>
+                 <fmt-title depth="1">
+                       <semx element="title" source="_">Normative references</semx>
+                 </fmt-title>
+                 <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
+                 <bibitem id="ref1">
+                    <formattedref format="application/x-isodoc+xml">Reference 1</formattedref>
+                    <biblio-tag/>
+                 </bibitem>
+                 <bibitem id="ref2">
+                    <formattedref format="application/x-isodoc+xml">Reference 2</formattedref>
+                    <docidentifier>A</docidentifier>
+                    <docidentifier scope="biblio-tag">A</docidentifier>
+                    <biblio-tag>A, </biblio-tag>
+                 </bibitem>
+              </references>
+           </sections>
+           <bibliography>
+              <references id="_" normative="false" obligation="informative" displayorder="4">
+                 <title id="_">Bibliography</title>
+                 <fmt-title depth="1">
+                       <semx element="title" source="_">Bibliography</semx>
+                 </fmt-title>
+                 <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
+                 <bibitem id="ref3">
+                    <formattedref format="application/x-isodoc+xml">Reference 2</formattedref>
+                    <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
+                    <biblio-tag>
+                       [B1]
+                       <tab/>
+                    </biblio-tag>
+                 </bibitem>
+              </references>
+           </bibliography>
+        </iso-standard>
     PRESXML
     out = Nokogiri::XML(
       IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
@@ -558,26 +604,36 @@ RSpec.describe IsoDoc do
     INPUT
     presxml = <<~PRESXML
       <clause id="A" inline-header="false" obligation="normative" displayorder="4">
-          <title depth="1">
-             2.
-             <tab/>
-             Clause
-          </title>
-          <p id="_">
-             <xref type="inline" target="IETF_6281">
-                <span class="std_publisher">IETF </span>
-                <span class="std_docNumber">6281</span>
-                , 4–9
-             </xref>
-             <xref type="inline" target="IETF_6281">
-                <span class="std_publisher">IETF </span>
-                <span class="std_docNumber">6281</span>
-                , Figure 4–9
-             </xref>
-             <xref type="inline" target="Johns">Johns 2022, 4–9</xref>
-             <xref type="inline" target="Johns">Johns 2022, Figure 4–9</xref>
-          </p>
-       </clause>
+         <title id="_">Clause</title>
+         <fmt-title depth="1">
+            <span class="fmt-caption-label">
+               <semx element="autonum" source="A">2</semx>
+               <span class="fmt-autonum-delim">.</span>
+               </span>
+               <span class="fmt-caption-delim">
+                  <tab/>
+               </span>
+               <semx element="title" source="_">Clause</semx>
+         </fmt-title>
+         <fmt-xref-label>
+            <span class="fmt-element-name">Clause</span>
+            <semx element="autonum" source="A">2</semx>
+         </fmt-xref-label>
+                <p id="_">
+                   <xref type="inline" target="IETF_6281">
+                      <span class="std_publisher">IETF </span>
+                      <span class="std_docNumber">6281</span>
+                      , 4–9
+                   </xref>
+                   <xref type="inline" target="IETF_6281">
+                      <span class="std_publisher">IETF </span>
+                      <span class="std_docNumber">6281</span>
+                      , Figure 4–9
+                   </xref>
+                   <xref type="inline" target="Johns">Johns 2022, 4–9</xref>
+                   <xref type="inline" target="Johns">Johns 2022, Figure 4–9</xref>
+                </p>
+             </clause>
     PRESXML
     out = Nokogiri::XML(
       IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)

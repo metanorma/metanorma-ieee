@@ -2,6 +2,7 @@ module IsoDoc
   module Ieee
     class PresentationXMLConvert < IsoDoc::PresentationXMLConvert
       def multidef(elem)
+       # require "debug"; binding.b
         number_multidef(elem)
         collapse_multidef(elem)
       end
@@ -35,9 +36,11 @@ module IsoDoc
         docxml.xpath(ns(".//definition/verbal-definition")).each do |v|
           v.elements.all? { |e| %w(termsource p).include?(e.name) } or next
           p = v.xpath(ns("./p"))
+          s = v.xpath(ns('./termsource'))
+          s.empty? or 
+          s = " (#{s.map { |x| to_xml(x) }.join("\n")})"
           v.children =
-            "<p>#{p.map(&:children).map { |x| to_xml(x) }.join("\n")}</p>" \
-            "#{v.xpath(ns('./termsource')).to_xml}"
+            "<p>#{p.map(&:children).map { |x| to_xml(x) }.join("\n")}#{s}</p>"
         end
         super
       end
@@ -241,18 +244,14 @@ module IsoDoc
         pref << " (#{tail})"
       end
 
-      def termnote_delim(_elem)
-        "&#x2014;"
-      end
-
       def termnote1(elem)
         lbl = termnote_label(elem)
-        prefix_name(elem, block_delim, lower2cap(lbl), "name")
+        prefix_name(elem, { label: block_delim }, lower2cap(lbl), "name")
       end
 
       def termnote_label(elem)
         lbl = l10n(@xrefs.anchor(elem["id"], :label)&.strip || "???")
-        l10n "#{lbl}#{termnote_delim(elem)}"
+        l10n lbl
       end
 
       def term(docxml); end

@@ -101,7 +101,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
         <preface><introduction id="_introduction" obligation="informative" displayorder="1" id="A">
-      <title>Introduction</title><admonition>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty
+      <fmt-title>Introduction</fmt-title><admonition>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty
       </admonition>
       <p id="_7d8a8a7f-3ded-050d-1da9-978f17519335">This is an introduction</p>
       </introduction></preface>
@@ -132,7 +132,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       <iso-standard xmlns="http://riboseinc.com/isoxml">
       <bibdata><ext><doctype>standard</doctype></ext></bibdata>
         <preface><abstract id="_introduction" obligation="informative" displayorder="1" id="A">
-      <title>Introduction</title><admonition>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty
+      <fmt-title>Introduction</fmt-title><admonition>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty
       </admonition>
       <p>Text</p>
       <ul><li><p>List</p></li></ul>
@@ -628,7 +628,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         </div>
         <div>
           <a name="n2" id="n2"/>
-          <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo1;">Second<p class="IEEEStdsSingleNote" style="mso-list:l17 level1 lfo1;">Multi-para note</p></p>
+          <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo1;">Second</p><p class="IEEEStdsSingleNote" style="mso-list:l17 level1 lfo1;">Multi-para note</p>
         </div>
         <p class="TermNum">
           <a name="C" id="C"/>
@@ -636,7 +636,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         <p class="IEEEStdsParagraph"><b>Beta</b>:   </p>
         <div>
           <a name="n3" id="n3"/>
-          <p class="IEEEStdsSingleNote"><span class="note_label">NOTE—</span>Third<div class="Quote">Quotation</div></p>
+          <p class="IEEEStdsSingleNote"><span class="note_label">NOTE—</span>Third</p><div class="Quote">Quotation</div>
         </div>
         <p class="TermNum">
           <a name="D" id="D"/>
@@ -652,13 +652,14 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         </div>
       </div>
     OUTPUT
-    presxml = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
-    IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
-    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
+    expect(strip_guid(Xml::C14n.format(doc
+      .to_xml(save_with: Nokogiri::XML::Node::SaveOptions::AS_XML, indent: 0))))
       .to be_equivalent_to Xml::C14n.format(word)
   end
 
@@ -667,7 +668,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
               <iso-standard xmlns="http://riboseinc.com/isoxml" type='presentation'>
          <sections><clause id="a" displayorder="1">
           <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6a" type="caution" keep-with-next="true" keep-lines-together="true">
-          <name>CAUTION</name>
+          <fmt-name>CAUTION</fmt-name>
         <p id="_e94663cc-2473-4ccc-9a72-983a74d989f2">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
       </admonition>
           <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6b" type="caution" keep-with-next="true" keep-lines-together="true" notag="true">
@@ -714,7 +715,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
               <iso-standard xmlns="http://riboseinc.com/isoxml" type='presentation'>
          <sections><clause id="a" displayorder="1">
           <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6a" type="editorial" keep-with-next="true" keep-lines-together="true">
-          <name>EDITORIAL</name>
+          <fmt-name>EDITORIAL</fmt-name>
         <p id="_e94663cc-2473-4ccc-9a72-983a74d989f2">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
       </admonition>
           </clause></sections>
@@ -751,10 +752,10 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         <sections>
           <clause id="a" displayorder="1">
             <sourcecode lang='ruby' id='samplecode'>
-              <name>
+              <fmt-name>
                 Figure 1&#xA0;&#x2014; Ruby
                 <em>code</em>
-              </name>
+              </fmt-name>
                puts x
             </sourcecode>
             <sourcecode unnumbered='true'> Que? </sourcecode>
@@ -794,7 +795,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         <sections>
           <clause id="a" displayorder="1">
           <figure id="figureA-1" keep-with-next="true" keep-lines-together="true">
-        <name>Figure 1&#xA0;&#x2014; Split-it-right <em>sample</em> divider<fn reference="1"><p>X</p></fn></name>
+          <fmt-name><span class="fmt-caption-label"><span class="fmt-element-name">Figure</span> <semx element="autonum" source="figureA-1">1</semx><span class="fmt-caption-delim">—</span><semx element="name" source="_">Split-it-right <em>sample</em> divider<fn reference="1"><p>X</p></fn></semx></span></fmt-name>
         <image height="20" width="30" id="_" mimetype="image/png" alt="alttext" title="titletxt"/>
         </figure>
           </clause>
@@ -810,7 +811,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
            <p class="IEEEStdsImage" style="page-break-after:avoid;">
              <img height="20" alt="alttext" title="titletxt" width="30"/>
            </p>
-           <p class="IEEEStdsRegularFigureCaption" style="text-align:center;"> — Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref"><a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
+           <p class="IEEEStdsRegularFigureCaption" style="text-align:center;">Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref"><a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
          </div>
        </div>
     OUTPUT
@@ -827,7 +828,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
          <p class="IEEESectionHeader"/>
          <div class="MsoBodyText" style="page-break-after: avoid;page-break-inside: avoid;;text-align:center;">
            <a name="figureA-1" id="figureA-1"/>
-           <p class="FigureHeadings" style="text-align:center;"> — Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref"><a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
+           <p class="FigureHeadings" style="text-align:center;">Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref"><a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
            <img height="20" alt="alttext" title="titletxt" width="30"/>
          </div>
        </div>
@@ -849,10 +850,10 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         <sections>
           <clause id="a" displayorder="1">
           <table id="figureA-1" keep-with-next="true" keep-lines-together="true">
-        <name>Figure 1&#xA0;&#x2014; Split-it-right <em>sample</em> divider<fn reference="1"><p>X</p></fn></name>
+        <fmt-name>Figure 1&#xA0;&#x2014; Split-it-right <em>sample</em> divider<fn reference="1"><p>X</p></fn></fmt-name>
         <thead><tr><th>A</th></tr></thead>
         <tbody><tr><td>B</td></tr></tbody>
-        <note id="A"><p>This is a note</p></note>
+        <note id="A"><fmt-name>Note</fmt-name><p>This is a note</p></note>
         </table>
           </clause>
         </sections>
@@ -882,7 +883,10 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
              </tbody>
                    <div>
         <a name="A" id="A"/>
-        <p class="IEEEStdsParagraph">This is a note</p>
+             <p class="IEEEStdsSingleNote">
+               <span class="note_label">Note</span>
+               This is a note
+            </p>
       </div>
            </table>
          </div>
@@ -919,7 +923,10 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
              </tbody>
              <div class="Note">
                <a name="A" id="A"/>
-               <p class="Tablenotes">This is a note</p>
+               <p class="Tablenotes">
+               <span class="note_label">Note</span>
+               This is a note
+            </p>
              </div>
            </table>
          </div>
@@ -950,28 +957,60 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-        <bibdata>
-          <ext>
-            <doctype>standard</doctype>
-          </ext>
-        </bibdata>
-        <preface>
-          <clause type="toc" id="_" displayorder="1">
-            <title depth="1">Contents</title>
-          </clause>
-        </preface>
-                 <sections>
-           <p class="zzSTDTitle1" displayorder="2">Standard for ???</p>
-           <clause id="A" displayorder="3">
-             <title depth="1">1.<tab/>This is the clause title</title>
-             <p>body</p>
-             <clause id="B">
-               <title depth="2">1.1.<tab/>This is a subclause</title>
-               <p>body</p>
+       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+          <bibdata>
+             <ext>
+                <doctype>standard</doctype>
+             </ext>
+          </bibdata>
+          <preface>
+             <clause type="toc" id="_" displayorder="1">
+                <fmt-title depth="1">Contents</fmt-title>
              </clause>
-           </clause>
-         </sections>
+          </preface>
+          <sections>
+             <p class="zzSTDTitle1" displayorder="2">Standard for ???</p>
+             <clause id="A" displayorder="3">
+                <title id="_">This is the clause title</title>
+                <fmt-title depth="1">
+                   <span class="fmt-caption-label">
+                      <semx element="autonum" source="A">1</semx>
+                      <span class="fmt-autonum-delim">.</span>
+                      </span>
+                      <span class="fmt-caption-delim">
+                         <tab/>
+                      </span>
+                      <semx element="title" source="_">This is the clause title</semx>
+                </fmt-title>
+                <fmt-xref-label>
+                   <span class="fmt-element-name">Clause</span>
+                   <semx element="autonum" source="A">1</semx>
+                </fmt-xref-label>
+                <p>body</p>
+                <clause id="B">
+                   <title id="_">This is a subclause</title>
+                   <fmt-title depth="2">
+                      <span class="fmt-caption-label">
+                         <semx element="autonum" source="A">1</semx>
+                         <span class="fmt-autonum-delim">.</span>
+                         <semx element="autonum" source="B">1</semx>
+                         <span class="fmt-autonum-delim">.</span>
+                         </span>
+                         <span class="fmt-caption-delim">
+                            <tab/>
+                         </span>
+                         <semx element="title" source="_">This is a subclause</semx>
+                   </fmt-title>
+                   <fmt-xref-label>
+                      <span class="fmt-element-name">Clause</span>
+                      <semx element="autonum" source="A">1</semx>
+                      <span class="fmt-autonum-delim">.</span>
+                      <semx element="autonum" source="B">1</semx>
+                   </fmt-xref-label>
+                   <p>body</p>
+                </clause>
+             </clause>
+          </sections>
        </iso-standard>
     OUTPUT
     word = <<~OUTPUT
@@ -986,14 +1025,14 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
          </div>
        </div>
     OUTPUT
-    output = IsoDoc::Ieee::PresentationXMLConvert
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    xml = Nokogiri::XML(output)
+    xml = Nokogiri::XML(pres_output)
     xml.at("//xmlns:localized-strings")&.remove
     expect(strip_guid(Xml::C14n.format(xml.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
-    IsoDoc::Ieee::WordConvert.new({}).convert("test", output, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
@@ -1002,27 +1041,59 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
 
     presxml = <<~OUTPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-         <bibdata>
-           <ext>
-             <doctype>whitepaper</doctype>
-           </ext>
-         </bibdata>
-         <preface>
-           <clause type="toc" id="_" displayorder="1">
-             <title depth="1">Contents</title>
-           </clause>
-         </preface>
-         <sections>
-           <p class="zzSTDTitle1" displayorder="2">Whitepaper for ???</p>
-           <clause id="A" displayorder="3">
-             <title depth="1">1.<tab/>This is the clause title</title>
-             <p>body</p>
-             <clause id="B">
-               <title depth="2">1.1.<tab/>This is a subclause</title>
-               <p>body</p>
+          <bibdata>
+             <ext>
+                <doctype>whitepaper</doctype>
+             </ext>
+          </bibdata>
+          <preface>
+             <clause type="toc" id="_" displayorder="1">
+                <fmt-title depth="1">Contents</fmt-title>
              </clause>
-           </clause>
-         </sections>
+          </preface>
+          <sections>
+             <p class="zzSTDTitle1" displayorder="2">Whitepaper for ???</p>
+             <clause id="A" displayorder="3">
+                <title id="_">This is the clause title</title>
+                <fmt-title depth="1">
+                   <span class="fmt-caption-label">
+                      <semx element="autonum" source="A">1</semx>
+                      <span class="fmt-autonum-delim">.</span>
+                      </span>
+                      <span class="fmt-caption-delim">
+                         <tab/>
+                      </span>
+                      <semx element="title" source="_">This is the clause title</semx>
+                </fmt-title>
+                <fmt-xref-label>
+                   <span class="fmt-element-name">Clause</span>
+                   <semx element="autonum" source="A">1</semx>
+                </fmt-xref-label>
+                <p>body</p>
+                <clause id="B">
+                   <title id="_">This is a subclause</title>
+                   <fmt-title depth="2">
+                      <span class="fmt-caption-label">
+                         <semx element="autonum" source="A">1</semx>
+                         <span class="fmt-autonum-delim">.</span>
+                         <semx element="autonum" source="B">1</semx>
+                         <span class="fmt-autonum-delim">.</span>
+                         </span>
+                         <span class="fmt-caption-delim">
+                            <tab/>
+                         </span>
+                         <semx element="title" source="_">This is a subclause</semx>
+                   </fmt-title>
+                   <fmt-xref-label>
+                      <span class="fmt-element-name">Clause</span>
+                      <semx element="autonum" source="A">1</semx>
+                      <span class="fmt-autonum-delim">.</span>
+                      <semx element="autonum" source="B">1</semx>
+                   </fmt-xref-label>
+                   <p>body</p>
+                </clause>
+             </clause>
+          </sections>
        </iso-standard>
     OUTPUT
     word = <<~OUTPUT
@@ -1037,16 +1108,16 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
          </div>
        </div>
     OUTPUT
-    output = IsoDoc::Ieee::PresentationXMLConvert
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input.sub("<doctype>standard</doctype>",
                                  "<doctype>whitepaper</doctype>"), true)
-    xml = Nokogiri::XML(output)
+    xml = Nokogiri::XML(pres_output)
     xml.at("//xmlns:localized-strings")&.remove
     expect(strip_guid(Xml::C14n.format(xml.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
     IsoDoc::Ieee::WordConvert.new({})
-      .convert("test", output, false)
+      .convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
@@ -1066,34 +1137,6 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         </annex>
       </iso-standard>
     INPUT
-    presxml = <<~OUTPUT
-      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-        <bibdata>
-          <ext>
-            <doctype>standard</doctype>
-          </ext>
-        </bibdata>
-        <preface>
-          <clause type="toc" id="_" displayorder="1">
-            <title depth="1">Contents</title>
-          </clause>
-        </preface>
-        <annex id="A" displayorder="2">
-          <title>
-            <strong>Annex A</strong>
-            <br/>
-            <span class="obligation">(informative)</span>
-            <br/>
-            <strong>This is the annex title</strong>
-          </title>
-          <p>body</p>
-          <clause id="B">
-            <title depth="2">A.1.<tab/>This is a subclause</title>
-            <p>body</p>
-          </clause>
-        </annex>
-      </iso-standard>
-    OUTPUT
     word = <<~OUTPUT
       <div>
         <a name="A" id="A"/>
@@ -1111,43 +1154,16 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         </div>
       </div>
     OUTPUT
-    output = IsoDoc::Ieee::PresentationXMLConvert
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    xml = Nokogiri::XML(output)
-    xml.at("//xmlns:localized-strings")&.remove
-    expect(strip_guid(Xml::C14n.format(xml.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
-    IsoDoc::Ieee::WordConvert.new({}).convert("test", output, false)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
     expect(strip_guid(Xml::C14n.format(doc.to_xml)))
       .to be_equivalent_to Xml::C14n.format(word)
 
-    presxml = <<~OUTPUT
-      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-        <bibdata>
-          <ext>
-            <doctype>whitepaper</doctype>
-          </ext>
-        </bibdata>
-        <preface>
-          <clause type="toc" id="_" displayorder="1">
-            <title depth="1">Contents</title>
-          </clause>
-        </preface>
-        <annex id="A" displayorder="2">
-          <title>Annex A</title>
-          <variant-title type="sub">This is the annex title</variant-title>
-          <p>body</p>
-          <clause id="B">
-            <title depth="2">A.1.<tab/>This is a subclause</title>
-            <p>body</p>
-          </clause>
-        </annex>
-      </iso-standard>
-    OUTPUT
     word = <<~OUTPUT
       <div>
          <a name="A" id="A"/>
@@ -1170,16 +1186,12 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
          </div>
        </div>
     OUTPUT
-    output = IsoDoc::Ieee::PresentationXMLConvert
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input.sub("<doctype>standard</doctype>",
                                  "<doctype>whitepaper</doctype>"), true)
-    xml = Nokogiri::XML(output)
-    xml.at("//xmlns:localized-strings")&.remove
-    expect(strip_guid(Xml::C14n.format(xml.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
     IsoDoc::Ieee::WordConvert.new({})
-      .convert("test", output, false)
+      .convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")

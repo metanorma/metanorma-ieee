@@ -885,7 +885,7 @@ RSpec.describe Metanorma::Ieee do
                 <docidentifier type="ETSI" primary="true">ETSI GS ZSM 012 V1.1.1 (2022-12)</docidentifier>
              </bibitem>
           </references>
-       </bibliography
+       </bibliography>
       OUTPUT
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
         .at("//xmlns:bibliography")
