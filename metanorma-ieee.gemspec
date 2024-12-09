@@ -25,9 +25,10 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.required_ruby_version = Gem::Requirement.new(">= 3.1.0")
 
-  spec.add_dependency "metanorma-standoc", "~> 2.10.0"
+  spec.add_dependency "metanorma-standoc", "~> 2.10.1"
   spec.add_dependency "mnconvert", "~> 1.20"
   spec.add_dependency "pubid"
+  # spec.add_dependency "nokogiri", "~> 1.16.0"
 
   spec.add_development_dependency "debug"
   spec.add_development_dependency "equivalent-xml", "~> 0.6"

@@ -253,140 +253,174 @@ RSpec.describe IsoDoc do
       INPUT
 
       presxml = <<~PRESXML
-        <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-               <preface> <clause type="toc" id="_" displayorder="1">
-               <fmt-title depth="1">Contents</fmt-title>
-                </clause> </preface>
-                        <sections>
+       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+          <preface>
+             <clause type="toc" id="_" displayorder="1">
+                <fmt-title depth="1">Contents</fmt-title>
+             </clause>
+          </preface>
+          <sections>
              <p class="zzSTDTitle1" displayorder="3">??? for ???</p>
              <clause id="A" inline-header="false" obligation="normative" displayorder="4">
-         <title id="_">Clause</title>
-         <fmt-title depth="1">
-            <span class="fmt-caption-label">
-               <semx element="autonum" source="A">2</semx>
-               <span class="fmt-autonum-delim">.</span>
-               </span>
-               <span class="fmt-caption-delim">
-                  <tab/>
-               </span>
-               <semx element="title" source="_">Clause</semx>
-         </fmt-title>
-         <fmt-xref-label>
-            <span class="fmt-element-name">Clause</span>
-            <semx element="autonum" source="A">2</semx>
-         </fmt-xref-label>
-               <p id="_">
-                 <xref type="inline" target="ref1"><span class="std_publisher">ISO </span><span class="std_docNumber">639</span>:<span class="std_year">1967</span></xref>
-                 <xref type="inline" target="ref7"><span class="std_publisher">ISO </span><span class="std_docNumber">639-2</span>:<span class="std_year">1998</span></xref>
-                 <xref type="inline" target="ref2">Aluffi, Anderson, Hering, Mustaţă and Payne 2022a</xref>
-                 <xref type="inline" target="ref3">REF4</xref>
-                 <xref type="inline" target="ref4">ISO 639:1967 [B3]</xref>
-                 <xref type="inline" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2]</xref>
-                 <xref type="inline" target="ref6">Title REF4</xref>
-               </p>
+                <title id="_">Clause</title>
+                <fmt-title depth="1">
+                   <span class="fmt-caption-label">
+                      <semx element="autonum" source="A">2</semx>
+                      <span class="fmt-autonum-delim">.</span>
+                   </span>
+                   <span class="fmt-caption-delim">
+                      <tab/>
+                   </span>
+                   <semx element="title" source="_">Clause</semx>
+                </fmt-title>
+                <fmt-xref-label>
+                   <span class="fmt-element-name">Clause</span>
+                   <semx element="autonum" source="A">2</semx>
+                </fmt-xref-label>
+                <p id="_">
+                   <xref type="inline" target="ref1">
+                      <span class="std_publisher">ISO </span>
+                      <span class="std_docNumber">639</span>
+                      :
+                      <span class="std_year">1967</span>
+                   </xref>
+                   <xref type="inline" target="ref7">
+                      <span class="std_publisher">ISO </span>
+                      <span class="std_docNumber">639-2</span>
+                      :
+                      <span class="std_year">1998</span>
+                   </xref>
+                   <xref type="inline" target="ref2">Aluffi, Anderson, Hering, Mustaţă and Payne 2022a</xref>
+                   <xref type="inline" target="ref3">REF4</xref>
+                   <xref type="inline" target="ref4">ISO 639:1967 [B3]</xref>
+                   <xref type="inline" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2]</xref>
+                   <xref type="inline" target="ref6">Title REF4</xref>
+                </p>
              </clause>
              <references id="_" normative="true" obligation="informative" displayorder="2">
-         <title id="_">Normative References</title>
-         <fmt-title depth="1">
-               <semx element="title" source="_">Normative References</semx>
-         </fmt-title>
-               <bibitem id="IETF_6281" type="standard">
-                 <formattedref>Code for the representation of names of languages.</formattedref>
-                 <title type="title-main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
-                 <title type="main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
-                 <uri type="src">https://www.iso.org/standard/4766.html</uri>
-                 <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4766.detail.rss</uri>
-                 <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
-                 <docidentifier type="URN">URN urn:iso:std:iso:639:ed-1</docidentifier>
-                 <docidentifier scope="biblio-tag">ISO 639</docidentifier>
-                 <biblio-tag>ISO 639, </biblio-tag>
-               </bibitem>
-               <bibitem id="ref7">
-                 <formattedref>Codes for the representation of names of languages - Part 2: Alpha-3 code.</formattedref>
-                 <title type="title-main" format="text/plain" language="en" script="Latn">Codes for the representation of names of languages</title>
-                 <title type="title-part" format="text/plain" language="en" script="Latn">Part 2: Alpha-3 code</title>
-                 <title type="main" format="text/plain" language="en" script="Latn">Codes for the representation of names of languages - Part 2: Alpha-3 code</title>
-                 <title type="title-main" format="text/plain" language="fr" script="Latn">Codes pour la représentation des noms de langue</title>
-                 <title type="title-part" format="text/plain" language="fr" script="Latn">Partie 2: Code alpha-3</title>
-                 <title type="main" format="text/plain" language="fr" script="Latn">Codes pour la représentation des noms de langue - Partie 2: Code alpha-3</title>
-                 <uri type="src">https://www.iso.org/standard/4767.html</uri>
-                 <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4767.detail.rss</uri>
-                 <docidentifier type="ISO" primary="true">ISO 639-2:1998</docidentifier>
-                 <docidentifier type="iso-reference">iso-reference ISO 639-2(E)</docidentifier>
-                 <docidentifier type="URN">URN urn:iso:std:iso:639:-2:stage-95.99:ed-1</docidentifier>
-                 <docidentifier scope="biblio-tag">ISO 639-2:1998</docidentifier>
-                 <biblio-tag>ISO 639-2:1998, </biblio-tag>
-               </bibitem>
-               <bibitem id="ref3">
-                 <formattedref format="application/x-isodoc+xml">REF4</formattedref>
-                 <docidentifier>REF4</docidentifier>
-                 <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
-                 <docidentifier scope="biblio-tag">REF4</docidentifier>
-                 <docnumber>4</docnumber>
-                 <biblio-tag>[B1], REF4, </biblio-tag>
-               </bibitem>
-               <bibitem type="book" id="ref2">
-                 <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne, <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022a, DOI: https://doi.org/10.1017/9781108877831.<fn reference="_"><p>
-                  IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
-
-                </p></fn></formattedref>
-                 <title>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</title>
-                 <docidentifier type="DOI">https://doi.org/10.1017/9781108877831</docidentifier>
-                 <docidentifier type="ISBN">ISBN 9781108877831</docidentifier>
-                 <note type="Availability">
-                   <p id="_">IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
-          </p>
-                 </note>
-                 <docidentifier type="metanorma">Aluffi, Anderson, Hering, Mustaţă and Payne 2022a</docidentifier>
-                 <biblio-tag>Aluffi, Anderson, Hering, Mustaţă and Payne 2022a, </biblio-tag>
-               </bibitem>
-               <bibitem type="standard" id="ref1">
-                 <formattedref>Indiana Jones and the Last Crusade.</formattedref>
-                 <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
-                 <title type="title-main" format="text/plain">Indiana Jones and the Last Crusade</title>
-                 <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
-                 <docidentifier type="ISO">ISO 639:1967</docidentifier>
-                 <docidentifier type="metanorma-ordinal">[B3]</docidentifier>
-                 <docidentifier scope="biblio-tag">ISO 639:1967</docidentifier>
-                 <biblio-tag>[B3], ISO 639:1967, </biblio-tag>
-               </bibitem>
+                <title id="_">Normative References</title>
+                <fmt-title depth="1">
+                   <semx element="title" source="_">Normative References</semx>
+                </fmt-title>
+                <bibitem id="IETF_6281" type="standard">
+                   <formattedref>Code for the representation of names of languages.</formattedref>
+                   <title type="title-main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
+                   <title type="main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
+                   <uri type="src">https://www.iso.org/standard/4766.html</uri>
+                   <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4766.detail.rss</uri>
+                   <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
+                   <docidentifier type="URN">URN urn:iso:std:iso:639:ed-1</docidentifier>
+                   <docidentifier scope="biblio-tag">ISO 639</docidentifier>
+                   <biblio-tag>ISO 639, </biblio-tag>
+                </bibitem>
+                <bibitem id="ref7">
+                   <formattedref>Codes for the representation of names of languages - Part 2: Alpha-3 code.</formattedref>
+                   <title type="title-main" format="text/plain" language="en" script="Latn">Codes for the representation of names of languages</title>
+                   <title type="title-part" format="text/plain" language="en" script="Latn">Part 2: Alpha-3 code</title>
+                   <title type="main" format="text/plain" language="en" script="Latn">Codes for the representation of names of languages - Part 2: Alpha-3 code</title>
+                   <title type="title-main" format="text/plain" language="fr" script="Latn">Codes pour la représentation des noms de langue</title>
+                   <title type="title-part" format="text/plain" language="fr" script="Latn">Partie 2: Code alpha-3</title>
+                   <title type="main" format="text/plain" language="fr" script="Latn">Codes pour la représentation des noms de langue - Partie 2: Code alpha-3</title>
+                   <uri type="src">https://www.iso.org/standard/4767.html</uri>
+                   <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4767.detail.rss</uri>
+                   <docidentifier type="ISO" primary="true">ISO 639-2:1998</docidentifier>
+                   <docidentifier type="iso-reference">iso-reference ISO 639-2(E)</docidentifier>
+                   <docidentifier type="URN">URN urn:iso:std:iso:639:-2:stage-95.99:ed-1</docidentifier>
+                   <docidentifier scope="biblio-tag">ISO 639-2:1998</docidentifier>
+                   <biblio-tag>ISO 639-2:1998, </biblio-tag>
+                </bibitem>
+                <bibitem id="ref3">
+                   <formattedref format="application/x-isodoc+xml">REF4</formattedref>
+                   <docidentifier>REF4</docidentifier>
+                   <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
+                   <docidentifier scope="biblio-tag">REF4</docidentifier>
+                   <docnumber>4</docnumber>
+                   <biblio-tag>[B1], REF4, </biblio-tag>
+                </bibitem>
+                <bibitem type="book" id="ref2">
+                   <formattedref>
+                      Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne,
+                      <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>
+                      , first edition, Cambridge, UK: Cambridge University Press, 2022a, DOI: https://doi.org/10.1017/9781108877831.
+                      <fn reference="_">
+                         <p>
+                IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
+        
+              </p>
+                      </fn>
+                   </formattedref>
+                   <title>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</title>
+                   <docidentifier type="DOI">https://doi.org/10.1017/9781108877831</docidentifier>
+                   <docidentifier type="ISBN">ISBN 9781108877831</docidentifier>
+                   <note type="Availability">
+                      <p id="_">IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
+        </p>
+                   </note>
+                   <docidentifier type="metanorma">Aluffi, Anderson, Hering, Mustaţă and Payne 2022a</docidentifier>
+                   <biblio-tag>Aluffi, Anderson, Hering, Mustaţă and Payne 2022a, </biblio-tag>
+                </bibitem>
+                <bibitem type="standard" id="ref1">
+                   <formattedref>Indiana Jones and the Last Crusade.</formattedref>
+                   <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
+                   <title type="title-main" format="text/plain">Indiana Jones and the Last Crusade</title>
+                   <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
+                   <docidentifier type="ISO">ISO 639:1967</docidentifier>
+                   <docidentifier type="metanorma-ordinal">[B3]</docidentifier>
+                   <docidentifier scope="biblio-tag">ISO 639:1967</docidentifier>
+                   <biblio-tag>[B3], ISO 639:1967, </biblio-tag>
+                </bibitem>
              </references>
-           </sections>
-           <bibliography>
+          </sections>
+          <bibliography>
              <references id="_" normative="false" obligation="informative" displayorder="5">
-         <title id="_">Bibliography</title>
-         <fmt-title depth="1">
-               <semx element="title" source="_">Bibliography</semx>
-         </fmt-title>
-               <bibitem id="ref6">
-                 <formattedref format="application/x-isodoc+xml">Title</formattedref>
-                 <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
-                 <docidentifier>REF4</docidentifier>
-                 <docidentifier scope="biblio-tag">REF4</docidentifier>
-                 <docnumber>4</docnumber>
-                 <biblio-tag>[B1]<tab/>REF4, </biblio-tag>
-               </bibitem>
-               <bibitem type="book" id="ref5">
-                 <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne, <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022b, DOI: https://doi.org/10.1017/9781108877831.</formattedref>
-                 <title>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</title>
-                 <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
-                 <docidentifier type="DOI">https://doi.org/10.1017/9781108877831</docidentifier>
-                 <docidentifier type="ISBN">ISBN 9781108877831</docidentifier>
-                 <biblio-tag>[B2]<tab/></biblio-tag>
-               </bibitem>
-               <bibitem type="standard" id="ref4">
-                 <formattedref>Indiana Jones and the Last Crusade.</formattedref>
-                 <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
-                 <title type="title-main" format="text/plain">Indiana Jones and the Last Crusade</title>
-                 <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
-                 <docidentifier type="metanorma-ordinal">[B3]</docidentifier>
-                 <docidentifier type="ISO">ISO 639:1967</docidentifier>
-                 <docidentifier scope="biblio-tag">ISO 639:1967</docidentifier>
-                 <biblio-tag>[B3]<tab/>ISO 639:1967, </biblio-tag>
-               </bibitem>
+                <title id="_">Bibliography</title>
+                <fmt-title depth="1">
+                   <semx element="title" source="_">Bibliography</semx>
+                </fmt-title>
+                <bibitem id="ref6">
+                   <formattedref format="application/x-isodoc+xml">Title</formattedref>
+                   <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
+                   <docidentifier>REF4</docidentifier>
+                   <docidentifier scope="biblio-tag">REF4</docidentifier>
+                   <docnumber>4</docnumber>
+                   <biblio-tag>
+                      [B1]
+                      <tab/>
+                      REF4,
+                   </biblio-tag>
+                </bibitem>
+                <bibitem type="book" id="ref5">
+                   <formattedref>
+                      Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne,
+                      <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>
+                      , first edition, Cambridge, UK: Cambridge University Press, 2022b, DOI: https://doi.org/10.1017/9781108877831.
+                   </formattedref>
+                   <title>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</title>
+                   <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
+                   <docidentifier type="DOI">https://doi.org/10.1017/9781108877831</docidentifier>
+                   <docidentifier type="ISBN">ISBN 9781108877831</docidentifier>
+                   <biblio-tag>
+                      [B2]
+                      <tab/>
+                   </biblio-tag>
+                </bibitem>
+                <bibitem type="standard" id="ref4">
+                   <formattedref>Indiana Jones and the Last Crusade.</formattedref>
+                   <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
+                   <title type="title-main" format="text/plain">Indiana Jones and the Last Crusade</title>
+                   <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
+                   <docidentifier type="metanorma-ordinal">[B3]</docidentifier>
+                   <docidentifier type="ISO">ISO 639:1967</docidentifier>
+                   <docidentifier scope="biblio-tag">ISO 639:1967</docidentifier>
+                   <biblio-tag>
+                      [B3]
+                      <tab/>
+                      ISO 639:1967,
+                   </biblio-tag>
+                </bibitem>
              </references>
-           </bibliography>
-         </iso-standard>
+          </bibliography>
+       </iso-standard>
       PRESXML
       out = Nokogiri::XML(
         IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)

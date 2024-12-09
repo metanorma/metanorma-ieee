@@ -783,14 +783,6 @@ RSpec.describe Metanorma::Ieee do
                 <docidentifier type="IEC" primary="true">IEC 61131-3</docidentifier>
                 <docidentifier type="URN">urn:iec:std:iec:61131-3::::</docidentifier>
              </bibitem>
-             <bibitem id="ref7" type="standard">
-                <docidentifier type="IEEE" primary="true">IEEE 43-2013 Redline</docidentifier>
-                <docidentifier type="IEEE" scope="trademark" primary="true">IEEE 43™-2013 Redline</docidentifier>
-                <docidentifier type="ISBN">978-0-7381-9093-8</docidentifier>
-                <note type="Availability">
-                   <p id="_">IEEE publications are available from The Institute of Electrical and Electronics Engineers (http://standards.ieee.org/).</p>
-                </note>
-             </bibitem>
              <bibitem id="ref26" type="standard">
                 <docidentifier type="IEEE" primary="true">IEEE 194-1977</docidentifier>
                 <docidentifier type="IEEE" scope="trademark" primary="true">IEEE 194™-1977</docidentifier>
@@ -798,6 +790,14 @@ RSpec.describe Metanorma::Ieee do
                 <docidentifier type="DOI">10.1109/IEEESTD.1977.81098</docidentifier>
                 <note type="Availability">
                    <p id="_">IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).</p>
+                </note>
+             </bibitem>
+             <bibitem id="ref7" type="standard">
+                <docidentifier type="IEEE" primary="true">IEEE 43-2013 Redline</docidentifier>
+                <docidentifier type="IEEE" scope="trademark" primary="true">IEEE 43™-2013 Redline</docidentifier>
+                <docidentifier type="ISBN">978-0-7381-9093-8</docidentifier>
+                <note type="Availability">
+                   <p id="_">IEEE publications are available from The Institute of Electrical and Electronics Engineers (http://standards.ieee.org/).</p>
                 </note>
              </bibitem>
              <bibitem id="ref6" type="standard">
@@ -853,24 +853,23 @@ RSpec.describe Metanorma::Ieee do
                    <p id="_">ETSI publications are available the European Telecommunications Standards Institute (http://www.etsi.org).</p>
                 </note>
              </bibitem>
-             <bibitem id="ref8" type="standard">
-                <docidentifier type="NIST" primary="true">NIST FIPS 140-2 fpd</docidentifier>
+             <bibitem id="ref8">
+                <docidentifier type="NIST">FIPS 140-2</docidentifier>
                 <note type="Availability">
                    <p id="_">NIST publications are available from the National Institute of Standards and Technology (http://www.nist.gov/).</p>
                 </note>
              </bibitem>
-             <bibitem id="ref28" type="standard">
-                <docidentifier type="NIST" primary="true">NIST FIPS 140-3 2pd</docidentifier>
-             </bibitem>
-             <bibitem id="ref9" type="standard">
-                <docidentifier type="NIST" primary="true">NIST SP 800-171 fpd</docidentifier>
+             <bibitem id="ref9">
+                <docidentifier type="NIST">NIST SP 800-171</docidentifier>
                 <note type="Availability">
                    <p id="_">FIPS publications are available from the National Technical Information Service (NTIS) (http://csrc.nist.gov).</p>
                 </note>
              </bibitem>
-             <bibitem id="ref29" type="standard">
-                <docidentifier type="NIST" primary="true">NIST SP 800-30 fpd</docidentifier>
-                <docidentifier type="DOI">NIST.SP.800-30</docidentifier>
+             <bibitem id="ref28">
+                <docidentifier type="NIST">FIPS 140-3</docidentifier>
+             </bibitem>
+             <bibitem id="ref29">
+                <docidentifier type="NIST">NIST SP 800-30</docidentifier>
              </bibitem>
              <bibitem id="ref30" type="standard">
                 <docidentifier type="W3C" primary="true">W3C xml</docidentifier>
