@@ -853,23 +853,24 @@ RSpec.describe Metanorma::Ieee do
                    <p id="_">ETSI publications are available the European Telecommunications Standards Institute (http://www.etsi.org).</p>
                 </note>
              </bibitem>
-             <bibitem id="ref8">
-                <docidentifier type="NIST">FIPS 140-2</docidentifier>
+             <bibitem id="ref8" type="standard">
+                <docidentifier type="NIST" primary="true">NIST FIPS 140-2 fpd</docidentifier>
                 <note type="Availability">
                    <p id="_">NIST publications are available from the National Institute of Standards and Technology (http://www.nist.gov/).</p>
                 </note>
              </bibitem>
-             <bibitem id="ref9">
-                <docidentifier type="NIST">NIST SP 800-171</docidentifier>
+             <bibitem id="ref28" type="standard">
+                <docidentifier type="NIST" primary="true">NIST FIPS 140-3 2pd</docidentifier>
+             </bibitem>
+             <bibitem id="ref9" type="standard">
+                <docidentifier type="NIST" primary="true">NIST SP 800-171 fpd</docidentifier>
                 <note type="Availability">
                    <p id="_">FIPS publications are available from the National Technical Information Service (NTIS) (http://csrc.nist.gov).</p>
                 </note>
              </bibitem>
-             <bibitem id="ref28">
-                <docidentifier type="NIST">FIPS 140-3</docidentifier>
-             </bibitem>
-             <bibitem id="ref29">
-                <docidentifier type="NIST">NIST SP 800-30</docidentifier>
+             <bibitem id="ref29" type="standard">
+                <docidentifier type="NIST" primary="true">NIST SP 800-30 fpd</docidentifier>
+                <docidentifier type="DOI">NIST.SP.800-30</docidentifier>
              </bibitem>
              <bibitem id="ref30" type="standard">
                 <docidentifier type="W3C" primary="true">W3C xml</docidentifier>

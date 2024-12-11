@@ -41,21 +41,21 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Github-Request-Id:
-      - 65F1:30331A:1501B4:18B199:67502953
+      - F057:29BA06:D0E5B:FFFD9:675942E1
       Accept-Ranges:
       - bytes
       Date:
-      - Wed, 04 Dec 2024 10:05:13 GMT
+      - Wed, 11 Dec 2024 07:44:46 GMT
       Via:
       - 1.1 varnish
       X-Served-By:
-      - cache-mel11274-MEL
+      - cache-mel11221-MEL
       X-Cache:
       - HIT
       X-Cache-Hits:
       - '1'
       X-Timer:
-      - S1733306713.352497,VS0,VE1
+      - S1733903086.185961,VS0,VE1
       Vary:
       - Authorization,Accept-Encoding,Origin
       Access-Control-Allow-Origin:
@@ -63,11 +63,11 @@ http_interactions:
       Cross-Origin-Resource-Policy:
       - cross-origin
       X-Fastly-Request-Id:
-      - d5f13501a929b7c42e6231795edb3a1f3cfd6b84
+      - 87f9f7ba93780b8e0f54fbe7c72cd0de1047038b
       Expires:
-      - Wed, 04 Dec 2024 10:10:13 GMT
+      - Wed, 11 Dec 2024 07:49:46 GMT
       Source-Age:
-      - '5'
+      - '9'
     body:
       encoding: ASCII-8BIT
       string: "---\nschema-version: v1.2.9\nid: RFC7749\ntitle:\n- content: The \"xml2rfc\"
@@ -98,5 +98,5 @@ http_interactions:
         text/plain\nkeyword:\n- content: XML\n- content: IETF\n- content: RFC\n- content:
         Internet-Draft\n- content: Vocabulary\next:\n  schema-version: v1.0.1\n  stream:
         IAB\n"
-  recorded_at: Wed, 04 Dec 2024 10:05:13 GMT
+  recorded_at: Wed, 11 Dec 2024 07:44:46 GMT
 recorded_with: VCR 6.1.0
