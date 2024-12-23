@@ -86,12 +86,12 @@ module IsoDoc
           .render1(RelatonBib::XMLParser.from_xml(bibitem.to_xml))
       end
 
-      def bibliography_bibitem_number1(bibitem, idx)
+      def bibliography_bibitem_number1(bibitem, idx, normative)
         bibitem.xpath(ns(".//docidentifier[@type = 'metanorma' or " \
                          "@type = 'metanorma-ordinal']")).each do |mn|
           /^\[?B?\d\]?$/.match?(mn&.text) and mn.remove
         end
-        unless bibliography_bibitem_number_skip(bibitem)
+        unless bibliography_bibitem_number_skip(bibitem) || normative
           idx += 1
           docidentifier_insert_pt(bibitem).next =
             "<docidentifier type='metanorma-ordinal'>[B#{idx}]</docidentifier>"

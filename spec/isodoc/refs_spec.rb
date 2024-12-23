@@ -332,10 +332,9 @@ RSpec.describe IsoDoc do
                 <bibitem id="ref3">
                    <formattedref format="application/x-isodoc+xml">REF4</formattedref>
                    <docidentifier>REF4</docidentifier>
-                   <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
                    <docidentifier scope="biblio-tag">REF4</docidentifier>
                    <docnumber>4</docnumber>
-                   <biblio-tag>[B1], REF4, </biblio-tag>
+                   <biblio-tag>REF4, </biblio-tag>
                 </bibitem>
                 <bibitem type="book" id="ref2">
                    <formattedref>
@@ -365,9 +364,8 @@ RSpec.describe IsoDoc do
                    <title type="title-main" format="text/plain">Indiana Jones and the Last Crusade</title>
                    <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
                    <docidentifier type="ISO">ISO 639:1967</docidentifier>
-                   <docidentifier type="metanorma-ordinal">[B3]</docidentifier>
                    <docidentifier scope="biblio-tag">ISO 639:1967</docidentifier>
-                   <biblio-tag>[B3], ISO 639:1967, </biblio-tag>
+                   <biblio-tag>ISO 639:1967, </biblio-tag>
                 </bibitem>
              </references>
           </sections>
