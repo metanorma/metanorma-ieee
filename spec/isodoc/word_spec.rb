@@ -599,14 +599,14 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         <iso-standard xmlns="http://riboseinc.com/isoxml">
                 <sections>
       <terms id="A">
-      <term id="B"><preferred><expression><name>Alpha</name></expression></preferred>
+      <term id="B"><fmt-preferred><p>Alpha</p></preferred>
       <termnote id="n1"><p>First</p></termnote>
       <termnote id="n2"><p>Second</p><p>Multi-para note</p></termnote>
       </term>
-      <term id="C"><preferred><expression><name>Beta</name></expression></preferred>
+      <term id="C"><fmt-preferred><p>Beta</p></fmt-preferred>
       <termnote id="n3"><p>Third</p><quote>Quotation</quote></termnote>
       </term>
-      <term id="D"><preferred><expression><name>Gamma</name></expression></preferred>
+      <term id="D"><fmt-preferred><p>Gamma</p></fmt-preferred>
       <termnote id="n4"><p>Fourth</p></termnote>
       <termnote id="n5"><p>Fifth</p></termnote>
       </term>

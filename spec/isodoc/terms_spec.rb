@@ -101,6 +101,18 @@ RSpec.describe IsoDoc do
                 </fmt-xref-label>
                 <p>For the purposes of this document, the following terms and definitions apply.</p>
                 <term id="paddy1">
+                <preferred id="_"><expression><name>paddy</name></expression>
+      <field-of-application>in agriculture</field-of-application>
+      <usage-info>dated</usage-info>
+            <termsource status="modified" original-id="_">
+        <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></origin>
+          <modification>
+          <p original-id="_">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
+        </modification>
+      </termsource>
+      </preferred>
+      <domain>rice</domain>
+      <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></verbal-definition></definition>
                    <p>
                       <strong>paddy</strong>
                       , &lt;rice&gt;, &lt;in agriculture, dated&gt;: rice retaining its husk after threshing (
@@ -179,6 +191,22 @@ RSpec.describe IsoDoc do
                          <li>A</li>
                       </ul>
                    </termexample>
+                   <termsource status='adapted'>
+          <origin citeas=''>
+            <termref base='IEV' target='xyz'>t1</termref>
+          </origin>
+          <modification>
+            <p id='_'/>
+          </modification>
+        </termsource>
+        <termsource status='adapted'>
+          <origin citeas=''>
+            <termref base='IEV' target='xyz'/>
+          </origin>
+          <modification>
+            <p id='_'>with adjustments</p>
+          </modification>
+        </termsource>
                    <termsource status="adapted">
                       adapted from
                       <origin citeas="">
@@ -192,6 +220,13 @@ RSpec.describe IsoDoc do
                    </termsource>
                 </term>
                 <term id="paddy">
+                <preferred><expression><name>paddy</name></expression></preferred>
+      <admitted><letter-symbol><name>paddy rice</name></letter-symbol>
+      <field-of-application>in agriculture</field-of-application>
+      </admitted>
+      <admitted><expression><name>rough rice</name></expression></admitted>
+      <deprecates><expression><name>cargo rice</name></expression></deprecates>
+      <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></verbal-definition></definition>
                    <p>
                       <strong>paddy</strong>
                       : rice retaining its husk after threshing
@@ -294,6 +329,9 @@ RSpec.describe IsoDoc do
                       </ul>
                       <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
                    </termnote>
+                         <termsource status="identical">
+        <origin bibitemid="ISO7301" type="inline" droploc="true" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></origin>
+      </termsource>
                 </term>
                 <term>
                    <p>
