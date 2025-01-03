@@ -2,12 +2,18 @@ module IsoDoc
   module Ieee
     class PresentationXMLConvert < IsoDoc::PresentationXMLConvert
       def multidef(elem, defn, fmt_defn)
-        c = IsoDoc::XrefGen::Counter.new("@")
+        ctr = IsoDoc::XrefGen::Counter.new("@")
         coll = defn.each_with_object([]) do |d, m|
-          c.increment(d)
-          m << semx_fmt_dup(d).elements.first.add_first_child("<strong>(#{c.print})</strong>&#xa0;")
+          ctr.increment(d)
+          ret = semx_fmt_dup(d)
+          ret.at(ns("./verbal-definition | ./non-verbal-definition")).elements
+            .first.add_first_child("<strong>(#{ctr.print})</strong>&#xa0;")
+          m << ret
         end
-        fmt_defn << unwrap_multidef(coll)
+        #require "debug"; binding.b
+        fmt_defn << coll.map { |c| to_xml(c) }.join(" ")
+        #coll.each { |x| unwrap_definition1(x) }
+        #fmt_defn << unwrap_multidef(coll)
       end
 
       def unwrap_multidef(coll)
@@ -19,7 +25,7 @@ module IsoDoc
         end
         return "<p>#{ret.map { |x| to_xml(x) }.join}</p>"
         end
-        coll.map { |c| to_xml(c.children) }.join
+        coll.map { |c| to_xml(c.children) }.join(" ")
       end
 
 =begin
@@ -45,10 +51,19 @@ module IsoDoc
 
 =end
 
-def designation1(desgn)
-  #require 'debug'; binding.b
+def designation(docxml)
   super
 end
+
+def deprecates(desgn)
+  desgn.remove
+end
+
+    def designation_boldface(desgn)
+      #desgn["element"] == "preferred" or return
+      name = desgn.at(ns("./expression/name | ./letter-symbol/name")) or return
+      name.children = "<strong>#{name.children}</strong>"
+    end
 
       def unwrap_definition(docxml)
         docxml.xpath(ns(".//definition/verbal-definition")).each do |v|
@@ -64,29 +79,43 @@ end
 
       def unwrap_definition(_elem, fmt_defn)
         fmt_defn.xpath(ns(".//semx[@element = 'definition']")).each do |d|
+          unwrap_definition1(d)
+        end
+      end
+
+      def unwrap_definition1(d)
           %w(verbal-definition non-verbal-representation).each do |e|
             v = d.at(ns("./#{e}")) or next
             if v.elements.all? { |e| %w(termsource p).include?(e.name) }
               p = v.xpath(ns("./p"))
-              s = to_xml(v.xpath(ns('./termsource')))
-              fs = v.xpath(ns('./fmt-termsource'))
-              fs.empty? or fs = " (#{fs.map { |x| to_xml(x) }.join("\n")})"
+              s = v.xpath(ns('./termsource'))
+              s.empty? or s = " (#{s.map { |x| to_xml(x) }.join()})"
               v.children =
-                "#{p.map(&:children).map { |x| to_xml(x) }.join("\n")}#{s}#{fs}"
+                "#{p.map(&:children).map { |x| to_xml(x) }.join("\n")}#{s}"
+            else
+              s = v.xpath(ns('./termsource'))
+              unless s.empty?
+                s[0].previous = " ("
+                s[-1].next = ")"
+              end
             end
             v.replace(v.children)
           end
-        end
+      end
+
+      def related_designation1(desgn)
+        super
       end
 
       def related(docxml)
+        insert_related_type(docxml)
         admitted_to_related docxml
         term_reorder(docxml)
         docxml.xpath(ns("//term[fmt-related/semx]")).each { |f| related_term(f) }
       end
 
       # temporarily insert related/@type to fmt-related/semx, for sorting
-      def insert_related_type
+      def insert_related_type(docxml)
         docxml.xpath(ns("//fmt-related/semx")).each do |r|
           orig = semx_orig(r)
           r["type"] = orig["type"]
@@ -183,11 +212,14 @@ end
       def admitted_to_related(docxml)
         docxml.xpath(ns("//term")).each do |t|
           t.xpath(ns("./fmt-admitted/semx | ./fmt-preferred/semx")).each_with_index do |a, i|
+            orig = semx_orig(a)
             (i.zero? ||
-             a.at(ns("./abbreviation-type | ./graphical-symbol"))) and next
+             orig.at(ns("./abbreviation-type | ./graphical-symbol"))) and next
             out = t.at(ns("./fmt-related")) || t.at(ns("./definition")).before("<fmt-related/>").previous
             admitted_to_related1(a, t.at(ns("./fmt-preferred/semx")), out)
+            a.parent.name == "fmt-preferred" and a.remove
           end
+          t.at(ns("./fmt-admitted"))&.remove
         end
         #term_reorder(docxml)
       end
@@ -246,13 +278,21 @@ TERM
       end
 
       def collapse_term1(term)
+        #pref = term.xpath(ns("./fmt-preferred//semx")).each_with_index.with_object([]) do |(a, i), m|
+            #orig = semx_orig(a, term)
+#if i.zero? || orig.at(ns("./abbreviation-type | ./graphical-symbol"))
+  #m << a
+#end
+        #end
+
         ret = collapse_term_template(
-          pref: term.at(ns("./fmt-preferred//semx")),
+          pref: term.at(ns("./fmt-preferred")),
           def: term.at(ns("./fmt-definition")),
           rels: term.at(ns("./fmt-related"))&.remove,
           source: term.at(ns("./fmt-termsource"))&.remove,
         )
         term.at(ns("./fmt-preferred"))&.remove
+        term.at(ns("./fmt-admitted"))&.remove
         ins = term.at(ns("./fmt-definition")) and
           ins.children = ret
       end
@@ -270,12 +310,12 @@ TERM
       def collapse_term_related(rels)
         rels or return
         rels.xpath(ns("./p")).each do |p|
-          r = p.at(ns(".//semx[@element = 'related']"))
-          reln = "<em>#{@i18n.relatedterms[r['type']]}:</em> "
-          if pref = r.at(ns("./fmt-preferred"))
-            pref.previous = reln
-          else
-            r << "<fmt-preferred>#{reln}**RELATED TERM NOT FOUND**</fmt-preferred>"
+          #require "debug"; binding.b
+          orig = p.at(ns(".//semx[@element = 'related']"))
+          reln = "<em>#{@i18n.relatedterms[orig['type']]}:</em> "
+          p.add_first_child reln
+          p.xpath(ns(".//semx[@element = 'related']")).each do |r|
+            r.at(ns("./fmt-preferred")) or r.add_first_child "**RELATED TERM NOT FOUND**"
           end
         end
         ret = rels.xpath(ns("./p")).map { |x| to_xml(x.children).strip }.join(". ")
@@ -284,27 +324,50 @@ TERM
       end
 
       def collapse_term_template(opt)
-        defn = collapse_unwrap_definition(opt[:def])
+        defn, multiblock = collapse_unwrap_definition(opt[:def])
+        #require "debug"; binding.b
         src = nil
         opt[:source] and src = "(#{to_xml(opt[:source].remove.children).strip})"
-        t = opt[:pref] ? to_xml(opt[:pref]) : "**TERM NOT FOUND**"
+        t = collapse_term_pref(opt)
         #require "debug"; opt[:pref].nil? and binding.b
         #require "debug"; opt[:rels].empty? or binding.b
+        tail = "#{collapse_term_related(opt[:rels])} #{src}"
+        if multiblock
+          tail = tail.strip.empty? ? "" : "<p>#{tail}</p>"
         <<~TERM
-          <p>#{t}: #{defn} #{collapse_term_related(opt[:rels])} #{src}</p>
+          <p>#{t}:</p> #{defn}#{tail}
         TERM
+        else
+        <<~TERM
+          <p>#{t}: #{defn} #{tail}</p>
+        TERM
+        end
+      end
+
+      def collapse_term_pref(opt)
+        p = opt[:pref]
+        p.text.strip.empty? and return "**TERM NOT FOUND**"
+        s = p.xpath(ns(".//semx[@element = 'termsource']"))
+        unless s.empty?
+          s[0].previous = " ("
+          s[-1].next = ")"
+        end
+        p.xpath(ns(".//fmt-termsource")).each { |x| x.replace(x.children) }
+        to_xml(p.children).strip
+
       end
 
       def collapse_unwrap_definition(defn)
-        defn.nil? and return nil
-        s = defn.xpath(ns("./fmt-termsource"))
-        p = defn.at(ns("./p"))
+        #require "debug"; binding.b
+        defn.nil? and return nil, nil
+        s = defn.xpath(ns(".//fmt-termsource"))
+        p = defn.at(ns(".//p"))
         !s.empty? && p and p << s.map(&:remove).map(&:children)
           .map { |x| to_xml(x) }.join
-        if defn.elements.size == 1 && defn.elements.first.name == "p"
-          defn.elements.first.children
-        else defn.elements
-        end
+        # fmt-definition/semx/p
+        elems = defn.at(ns("./semx")) || defn
+        multiblock = elems.at(ns("./table | ./formula | ./dl | ./ol | ./ul")) || elems.xpath(ns("./p")).size > 1
+        [defn.elements, multiblock]
       end
 
       def termsource1(elem)
@@ -340,9 +403,10 @@ TERM
 
       def designation_field(desgn, name, orig)
         if desgn["element"] == "preferred"
-          f = orig.parent.xpath(ns("./../domain | ./../subject"))
-            .map { |u| to_xml(u.children) }.join(", ")
-          name << ", &#x3c;#{f}&#x3e;" unless f.empty?
+          f = orig.parent.xpath(ns("./domain | ./subject"))
+            .map { |u| to_xml(semx_fmt_dup(u)) }.join(", ")
+          #require 'debug'; binding.b
+          name << "<span class='fmt-designation-field'>, &#x3c;#{f}&#x3e;</span>" unless f.empty?
         end
         super
       end
@@ -360,16 +424,24 @@ TERM
       end
 
       def merge_second_preferred(term)
+        term.name == "fmt-admitted" and return
         pref =
-          term.at(ns("./preferred[not(abbreviation-type)][expression/name]"))
-        x = term.xpath(ns("./preferred[expression/name][abbreviation-type] | " \
+          term.parent.at(ns("./preferred[not(abbreviation-type)][expression/name]"))
+        x = term.parent.xpath(ns("./preferred[expression/name][abbreviation-type] | " \
                           "./admitted[expression/name][abbreviation-type]"))
         (pref && !x.empty?) or return
-        fmt_pref = term.at(ns(".//semx[@source = '#{pref['id']}']"))
+fmt_pref = term.parent.at(ns(".//semx[@source = '#{pref['id']}']"))
+fdf = fmt_pref.at(ns(".//span[@class = 'fmt-designation-field']"))&.text
+        out = to_xml(fmt_pref)
         tail = x.map do |p|
-          to_xml(term.at(ns(".//semx[@source = '#{p['id']}']")).remove).strip
+          #require "debug"; binding.b
+          ret = term.parent.at(ns(".//semx[@source = '#{p['id']}']")).remove
+          fdf1 = ret.at(ns(".//span[@class = 'fmt-designation-field']"))
+          fdf1 && (fdf1&.text == fdf) and fdf1.remove # repetition of domain suppressed
+          to_xml(ret).strip
         end.join(", ")
-        fmt_pref.next = " (#{tail})"
+        out += " (#{tail})"
+        term.children = out
       end
 
       def termnote1(elem)
