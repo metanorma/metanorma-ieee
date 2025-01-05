@@ -378,15 +378,10 @@ TERM
           elem.children = l10n("#{adapt}#{to_xml(elem.children).strip}")
       end
 
-      def termsource1(elem)
-      ret = [semx_fmt_dup(elem)]
-      while elem&.next_element&.name == "termsource"
-        ret << semx_fmt_dup(elem.next_element.remove)
-      end
-      s = ret.map { |x| to_xml(x) }.map(&:strip).join("; ")
+      def termsource_label(elem, sources)
       adapt = termsource_adapt(elem["status"]) and
-        s = "#{adapt}#{s}"
-      elem.replace(l10n(s))
+        s = "#{adapt}#{sources}"
+      elem.replace(l10n(sources))
     end
 
       def termsource_adapt(status)
