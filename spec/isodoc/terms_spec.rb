@@ -2656,11 +2656,6 @@ RSpec.describe IsoDoc do
                                   , n
                                </semx>
                             </fmt-preferred>
-                            <xref target="second">
-                               <semx element="autonum" source="A">1</semx>
-                               <span class="fmt-autonum-delim">.</span>
-                               <semx element="autonum" source="second">1</semx>
-                            </xref>
                          </semx>
                          ;
                          <semx element="related" source="_">
@@ -2678,11 +2673,6 @@ RSpec.describe IsoDoc do
                                   , n
                                </semx>
                             </fmt-preferred>
-                            <xref target="second">
-                               <semx element="autonum" source="A">1</semx>
-                               <span class="fmt-autonum-delim">.</span>
-                               <semx element="autonum" source="second">1</semx>
-                            </xref>
                          </semx>
                          .
                          <em>Syn:</em>
@@ -2710,11 +2700,6 @@ RSpec.describe IsoDoc do
                                   , n
                                </semx>
                             </fmt-preferred>
-                            <xref target="second">
-                               <semx element="autonum" source="A">1</semx>
-                               <span class="fmt-autonum-delim">.</span>
-                               <semx element="autonum" source="second">1</semx>
-                            </xref>
                          </semx>
                          .
                       </p>
@@ -2844,11 +2829,6 @@ RSpec.describe IsoDoc do
                           <em>Contrast:</em>
                           <semx element="related" source="_">
                              **RELATED TERM NOT FOUND**
-                             <xref target="second">
-                                <semx element="autonum" source="A">1</semx>
-                                <span class="fmt-autonum-delim">.</span>
-                                <semx element="autonum" source="second">2</semx>
-                             </xref>
                           </semx>
                           .
                           <em>See also:</em>

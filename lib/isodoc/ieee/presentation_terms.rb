@@ -126,6 +126,7 @@ end
         #require "debug"; binding.b
         #coll = term_related_reorder(term.xpath(ns("./fmt-related/semx")))
         r = term.at(ns("./fmt-related"))
+        r.xpath(ns(".//xref | .//eref | .//termref")).each(&:remove)
         coll = sort_related(r.xpath(ns("./semx")))
         r.children = term_related_collapse(coll)
       end
@@ -247,6 +248,20 @@ TERM
           <fmt-definition></fmt-definition></term>
         TERM
       end
+
+      #KILL
+      def related1(node)
+       require "debug"; binding.b
+      p, ref, orig = related1_prep(node)
+      label = @i18n.relatedterms[orig["type"]].upcase
+      if p
+        node.children =(l10n("<p><strong>#{label}:</strong> " \
+                          "<em>#{to_xml(p)}</em></p>"))
+      else
+        node.children = (l10n("<p><strong>#{label}:</strong> " \
+                          "<strong>**RELATED TERM NOT FOUND**</strong></p>"))
+      end
+    end
 
       def term_reorder(xmldoc)
         xmldoc.xpath(ns("//terms")).each { |t| term_reorder1(t) }
@@ -370,7 +385,8 @@ TERM
         [defn.elements, multiblock]
       end
 
-      def termsource1(elem)
+      # KILL
+      def termsource1xx(elem)
         while elem&.next_element&.name == "termsource"
           elem << "; #{to_xml(elem.next_element.remove.children)}"
         end
@@ -380,7 +396,7 @@ TERM
 
       def termsource_label(elem, sources)
       adapt = termsource_adapt(elem["status"]) and
-        s = "#{adapt}#{sources}"
+        sources = "#{adapt}#{sources}"
       elem.replace(l10n(sources))
     end
 
