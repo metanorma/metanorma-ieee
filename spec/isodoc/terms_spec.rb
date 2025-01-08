@@ -153,7 +153,7 @@ RSpec.describe IsoDoc do
                                     <span class="std_year">2011</span>
                                     , 3.1
                                  </origin>
-                                 , modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here
+                                 , modified — <semx element="modification" source="_">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</semx>
                               </semx>
                               ):
                               <semx element="definition" source="_">rice retaining its husk after threshing</semx>
@@ -169,7 +169,7 @@ RSpec.describe IsoDoc do
                                  <origin citeas="">
                                     <termref base="IEV" target="xyz"/>
                                  </origin>
-                                 , adapted — with adjustments
+                                 , adapted — <semx element="modification" source="_">with adjustments</semx>
                               </semx>
                               )
                            </p>
@@ -982,7 +982,7 @@ RSpec.describe IsoDoc do
                                   <span class="std_year">2011</span>
                                   , 3.1
                                </origin>
-                               , modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here
+                               , modified — <semx element="modification" source="_">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</semx>
                             </semx>
                             )
                          </semx>
@@ -1147,7 +1147,7 @@ RSpec.describe IsoDoc do
                                   <span class="std_year">2011</span>
                                   , 3.1
                                </origin>
-                               , modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here
+                               , modified — <semx element="modification" source="_">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</semx>
                             </semx>
                             )
                          </semx>
@@ -1162,7 +1162,7 @@ RSpec.describe IsoDoc do
                             <origin citeas="">
                                <termref base="IEV" target="xyz"/>
                             </origin>
-                            , modified — with adjustments
+                            , modified — <semx element="modification" source="_">with adjustments</semx>
                          </semx>
                          )
                       </p>
@@ -1363,7 +1363,7 @@ RSpec.describe IsoDoc do
                             <origin citeas="">
                                <termref base="IEV" target="xyz"/>
                             </origin>
-                            , modified — with adjustments
+                            , modified — <semx element="modification" source="_">with adjustments</semx>
                          </semx>
                          )
                       </p>
