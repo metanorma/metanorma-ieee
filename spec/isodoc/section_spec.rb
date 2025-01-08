@@ -221,12 +221,21 @@ RSpec.describe IsoDoc::Ieee do
                        <span class="fmt-autonum-delim">.</span>
                        <semx element="autonum" source="I">1</semx>
                     </fmt-xref-label>
-                    <term id="J">
-                       <p>
-                          <strong>Term2</strong>
-                          :
-                       </p>
-                    </term>
+                     <term id="J">
+                      <preferred id="_">
+                         <expression>
+                            <name>Term2</name>
+                         </expression>
+                      </preferred>
+                      <fmt-definition>
+                         <p>
+                            <semx element="preferred" source="_">
+                               <strong>Term2</strong>
+                            </semx>
+                            :
+                         </p>
+                      </fmt-definition>
+                   </term>
                  </terms>
                  <definitions id="K">
                     <title id="_">Acronyms and abbreviations</title>
