@@ -22,7 +22,7 @@ RSpec.describe Metanorma::Ieee do
       <<ISO2191,section=1>>,
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
                <sections>
            <terms id='_' obligation='normative'>
              <title>Definitions</title>
@@ -86,7 +86,7 @@ RSpec.describe Metanorma::Ieee do
              </term>
            </terms>
          </sections>
-       </ieee-standard>
+       </metanorma>
     OUTPUT
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:references | " \
@@ -136,7 +136,7 @@ RSpec.describe Metanorma::Ieee do
 
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
          <sections>
            <terms id='_' obligation='normative'>
              <title>Definitions</title>
@@ -263,7 +263,7 @@ RSpec.describe Metanorma::Ieee do
              </term>
            </terms>
          </sections>
-       </ieee-standard>
+       </metanorma>
     OUTPUT
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:references | " \
@@ -284,7 +284,7 @@ RSpec.describe Metanorma::Ieee do
       symbol:[thing1]
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
         <sections>
           <terms id='_' obligation='normative'>
             <title>Definitions</title>
@@ -329,7 +329,7 @@ RSpec.describe Metanorma::Ieee do
             </term>
           </terms>
         </sections>
-      </ieee-standard>
+      </metanorma>
     OUTPUT
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:references | " \

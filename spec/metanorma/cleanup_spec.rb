@@ -668,13 +668,13 @@ RSpec.describe Metanorma::Ieee do
       == Clause 1
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
         <sections>
           <clause id='_' inline-header='false' obligation='normative'>
             <title>Clause 1</title>
           </clause>
         </sections>
-      </ieee-standard>
+      </metanorma>
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.xpath("//xmlns:bibdata | //xmlns:metanorma-extension").each(&:remove)
@@ -710,7 +710,7 @@ RSpec.describe Metanorma::Ieee do
       * [[[ABC,DEF]]]
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
              <preface>
          <introduction id='_' obligation='informative'>
            <title>Introduction</title>
@@ -755,7 +755,7 @@ RSpec.describe Metanorma::Ieee do
            </bibitem>
          </references>
        </bibliography>
-      </ieee-standard>
+      </metanorma>
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.at("//xmlns:bibdata").remove
@@ -780,7 +780,7 @@ RSpec.describe Metanorma::Ieee do
 
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
          <sections>
            <note id='boilerplate_front' type="boilerplate">
              <p id='_'>
@@ -829,7 +829,7 @@ RSpec.describe Metanorma::Ieee do
              <title>Clause</title>
            </clause>
          </sections>
-       </ieee-standard>
+       </metanorma>
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.at("//xmlns:bibdata").remove
@@ -855,7 +855,7 @@ RSpec.describe Metanorma::Ieee do
       * [[[ABC,DEF]]]
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
          <sections> </sections>
          <annex id='_' inline-header='false' obligation='normative'>
            <title>Appendix C</title>
@@ -868,7 +868,7 @@ RSpec.describe Metanorma::Ieee do
              </bibitem>
            </references>
          </annex>
-       </ieee-standard>
+       </metanorma>
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.at("//xmlns:bibdata").remove
@@ -896,7 +896,7 @@ RSpec.describe Metanorma::Ieee do
 
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
                <sections>
            <clause id='_' type='overview' inline-header='false' obligation='normative'>
              <title>Overview</title>
@@ -917,7 +917,7 @@ RSpec.describe Metanorma::Ieee do
              <title>Overview</title>
            </clause>
          </sections>
-       </ieee-standard>
+       </metanorma>
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.at("//xmlns:bibdata").remove
@@ -950,7 +950,7 @@ RSpec.describe Metanorma::Ieee do
 
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
          <sections>
            <clause id='_' type='overview' inline-header='false' obligation='normative'>
              <title>Overview</title>
@@ -983,7 +983,7 @@ RSpec.describe Metanorma::Ieee do
              <title>Overview</title>
            </clause>
          </sections>
-       </ieee-standard>
+       </metanorma>
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.at("//xmlns:bibdata").remove
@@ -1383,7 +1383,7 @@ RSpec.describe Metanorma::Ieee do
       Text
     INPUT
     output = <<~OUTPUT
-      <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
          <preface>
            <abstract id='_'>
              <title>Abstract</title>
@@ -1424,7 +1424,7 @@ RSpec.describe Metanorma::Ieee do
              </clause>
            </clause>
          </sections>
-       </ieee-standard>
+       </metanorma>
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.xpath("//xmlns:bibdata | //xmlns:metanorma-extension").each(&:remove)

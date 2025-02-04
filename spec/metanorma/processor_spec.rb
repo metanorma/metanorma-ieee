@@ -7,7 +7,7 @@ RSpec.describe Metanorma::Ieee::Processor do
   processor = registry.find_processor(:ieee)
 
   inputxml = <<~INPUT
-      <ieee-standard xmlns="http://riboseinc.com/isoxml">
+      <metanorma xmlns="http://riboseinc.com/isoxml">
       <sections>
         <terms id="H" obligation="normative" displayorder="1"><fmt-title>Terms</fmt-title>
           <term id="J">
@@ -17,7 +17,7 @@ RSpec.describe Metanorma::Ieee::Processor do
         </terms>
         <preface/>
       </sections>
-    </ieee-standard>
+    </metanorma>
   INPUT
 
   it "registers against metanorma" do
@@ -41,7 +41,7 @@ RSpec.describe Metanorma::Ieee::Processor do
     output = <<~OUTPUT
         #{blank_hdr_gen}
         <sections/>
-      </ieee-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(processor.input_to_isodoc(input, nil))))
       .to be_equivalent_to Xml::C14n.format(output)

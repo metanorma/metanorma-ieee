@@ -180,7 +180,7 @@ RSpec.describe Metanorma::Ieee do
 
       INPUT
       output = <<~OUTPUT
-            <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
+            <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
            <sections/>
            <bibliography>
             <references id="_" normative="false" obligation="informative">
@@ -411,7 +411,7 @@ RSpec.describe Metanorma::Ieee do
               </bibitem>
             </references>
           </bibliography>
-        </ieee-standard>
+        </metanorma>
       OUTPUT
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:note | " \
@@ -467,7 +467,7 @@ RSpec.describe Metanorma::Ieee do
         * [[[ref3,IEEE 802.1D-1990]]] REF2
       INPUT
       output = <<~OUTPUT
-          <ieee-standard xmlns='https://www.metanorma.org/ns/ieee' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
+          <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
                    <preface>
             <introduction id='_' obligation='informative'>
               <title>Introduction</title>
@@ -514,7 +514,7 @@ RSpec.describe Metanorma::Ieee do
             </p>
           </annex>
           <bibliography/>
-        </ieee-standard>
+        </metanorma>
       OUTPUT
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       out.xpath("//xmlns:bibdata | //xmlns:boilerplate | " \
@@ -955,7 +955,7 @@ RSpec.describe Metanorma::Ieee do
              </bibitem>
            </references>
          </bibliography>
-      </ieee-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
