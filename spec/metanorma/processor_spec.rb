@@ -7,7 +7,7 @@ RSpec.describe Metanorma::Ieee::Processor do
   processor = registry.find_processor(:ieee)
 
   inputxml = <<~INPUT
-      <metanorma xmlns="http://riboseinc.com/isoxml">
+      <metanorma xmlns="http://riboseinc.com/isoxml" flavor="ieee">
       <sections>
         <terms id="H" obligation="normative" displayorder="1"><fmt-title>Terms</fmt-title>
           <term id="J">

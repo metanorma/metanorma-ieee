@@ -120,7 +120,7 @@ module IsoDoc
           formula_parse1(node, div)
           formula_where(node.at(ns("./dl")), div)
           node.children.each do |n|
-            %w(stem dl fmt-name).include? n.name and next
+            %w(fmt-stem dl fmt-name).include? n.name and next
             parse(n, div)
           end
         end

@@ -668,7 +668,7 @@ RSpec.describe Metanorma::Ieee do
       == Clause 1
     INPUT
     output = <<~OUTPUT
-      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
         <sections>
           <clause id='_' inline-header='false' obligation='normative'>
             <title>Clause 1</title>
@@ -710,7 +710,7 @@ RSpec.describe Metanorma::Ieee do
       * [[[ABC,DEF]]]
     INPUT
     output = <<~OUTPUT
-      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
              <preface>
          <introduction id='_' obligation='informative'>
            <title>Introduction</title>
@@ -780,7 +780,7 @@ RSpec.describe Metanorma::Ieee do
 
     INPUT
     output = <<~OUTPUT
-      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
          <sections>
            <note id='boilerplate_front' type="boilerplate">
              <p id='_'>
@@ -855,7 +855,7 @@ RSpec.describe Metanorma::Ieee do
       * [[[ABC,DEF]]]
     INPUT
     output = <<~OUTPUT
-      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
          <sections> </sections>
          <annex id='_' inline-header='false' obligation='normative'>
            <title>Appendix C</title>
@@ -896,7 +896,7 @@ RSpec.describe Metanorma::Ieee do
 
     INPUT
     output = <<~OUTPUT
-      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
                <sections>
            <clause id='_' type='overview' inline-header='false' obligation='normative'>
              <title>Overview</title>
@@ -950,7 +950,7 @@ RSpec.describe Metanorma::Ieee do
 
     INPUT
     output = <<~OUTPUT
-      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
          <sections>
            <clause id='_' type='overview' inline-header='false' obligation='normative'>
              <title>Overview</title>
@@ -1383,7 +1383,7 @@ RSpec.describe Metanorma::Ieee do
       Text
     INPUT
     output = <<~OUTPUT
-      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}'>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
          <preface>
            <abstract id='_'>
              <title>Abstract</title>
