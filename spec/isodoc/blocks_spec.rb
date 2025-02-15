@@ -906,7 +906,7 @@ RSpec.describe IsoDoc do
         <p class="page-break">
           <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
         </p>
-        <div>
+        <div id="_">
           <h1 class='ForewordTitle'>Foreword</h1>
           <div id="_" class='IEEEStdsWarning' style='page-break-after: avoid;page-break-inside: avoid;'>
             <p class='IEEEStdsWarning' style='text-align:center;'>

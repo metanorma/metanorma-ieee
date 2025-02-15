@@ -95,7 +95,7 @@ RSpec.describe IsoDoc::Ieee do
               <clause type="toc" id="_" displayorder="1">
                  <fmt-title depth="1">Contents</fmt-title>
               </clause>
-              <abstract obligation="informative" displayorder="2">
+              <abstract obligation="informative" displayorder="2" id="_">
                  <title id="_">Foreword</title>
                  <fmt-title depth="1">
                     <semx element="title" source="_">Foreword</semx>
@@ -115,7 +115,7 @@ RSpec.describe IsoDoc::Ieee do
                  </clause>
                  <p>This is patent boilerplate</p>
               </introduction>
-              <acknowledgements obligation="informative" displayorder="4">
+              <acknowledgements obligation="informative" displayorder="4" id="_">
                  <title id="_">Acknolwedgements</title>
                  <fmt-title depth="1">
                     <semx element="title" source="_">Acknolwedgements</semx>
@@ -473,7 +473,7 @@ RSpec.describe IsoDoc::Ieee do
     html = <<~OUTPUT
       #{HTML_HDR}
            <br/>
-           <div>
+           <div id="_">
              <h1 class='AbstractTitle'>Foreword</h1>
              <p id='A'>This is a preamble</p>
            </div>
@@ -486,7 +486,7 @@ RSpec.describe IsoDoc::Ieee do
              <p>This is patent boilerplate</p>
            </div>
            <br/>
-           <div class='Section3' id=''>
+           <div class='Section3' id='_'>
              <h1 class='IntroTitle'>Acknolwedgements</h1>
              <p id='A'>This is a preamble</p>
            </div>
@@ -591,7 +591,7 @@ RSpec.describe IsoDoc::Ieee do
           <p class="page-break">
             <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
           </p>
-          <div class='abstract'>
+          <div class='abstract' id="_">
             <h1 class='AbstractTitle'>Foreword</h1>
             <p id='A'>This is a preamble</p>
           </div>
@@ -608,7 +608,7 @@ RSpec.describe IsoDoc::Ieee do
           <p class="page-break">
             <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
           </p>
-          <div class='Section3' id=''>
+          <div class='Section3' id='_'>
             <h1 class='IntroTitle'>Acknolwedgements</h1>
             <p id='A'>This is a preamble</p>
           </div>
@@ -805,8 +805,19 @@ RSpec.describe IsoDoc::Ieee do
     INPUT
     presxml = <<~PRESXML
       <sections>
-         <p class="zzSTDTitle1" displayorder="2">Draft Recommended Practice for Title</p>
-         <clause displayorder="3"/>
+          <p class="zzSTDTitle1" displayorder="2">Draft Recommended Practice for Title</p>
+          <clause id="_" displayorder="3">
+             <fmt-title depth="1">
+                <span class="fmt-caption-label">
+                   <semx element="autonum" source="_">1</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                </span>
+             </fmt-title>
+             <fmt-xref-label>
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="_">1</semx>
+             </fmt-xref-label>
+          </clause>
        </sections>
     PRESXML
     html = <<~OUTPUT
@@ -816,8 +827,8 @@ RSpec.describe IsoDoc::Ieee do
            <h1 class="IntroTitle">Contents</h1>
          </div>
          <p class="zzSTDTitle1">Draft Recommended Practice for Title</p>
-         <div>
-           <h1/>
+         <div id="_">
+           <h1>1.</h1>
          </div>
        </div>
     OUTPUT

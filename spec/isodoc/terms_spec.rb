@@ -693,7 +693,7 @@ RSpec.describe IsoDoc do
                       The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.
                    </p>
                 </div>
-                <p class="TermNum" id=""/>
+                <p class="TermNum" id="_"/>
                 <p>
                    <b>paddy rice</b>
                    , &lt;in agriculture&gt;:
@@ -701,7 +701,7 @@ RSpec.describe IsoDoc do
                    <b>paddy</b>
                    .
                 </p>
-                <p class="TermNum" id=""/>
+                <p class="TermNum" id="_"/>
                 <p>
                    <b>rough rice</b>
                    :
