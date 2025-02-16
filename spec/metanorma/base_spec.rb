@@ -17,7 +17,7 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       #{@blank_hdr}
       <sections/>
-      </ieee-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -33,7 +33,7 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
         #{@blank_hdr}
         <sections/>
-      </ieee-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -672,7 +672,7 @@ RSpec.describe Metanorma::Ieee do
                <indexsect id='_' type='thematic'>
                  <title>Thematic Index</title>
                </indexsect>
-             </ieee-standard>
+             </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS)
       .sub(%r{<boilerplate>.*</boilerplate>}m, ""))))
@@ -924,7 +924,7 @@ RSpec.describe Metanorma::Ieee do
                <indexsect id='_' type='thematic'>
                  <title>Thematic Index</title>
                </indexsect>
-             </ieee-standard>
+             </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS)
       .sub(%r{<boilerplate>.*</boilerplate>}m, ""))))

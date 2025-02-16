@@ -142,7 +142,7 @@ def ieeedoc(lang)
              "Latn"
            end
   <<~"INPUT"
-             <ieee-standard xmlns="http://riboseinc.com/isoxml">
+             <metanorma xmlns="http://riboseinc.com/isoxml">
              <bibdata type="standard">
              <title language="en" format="text/plain" type="main">An ITU Standard</title>
              <title language="fr" format="text/plain" type="main">Un Standard ITU</title>
@@ -211,13 +211,13 @@ def ieeedoc(lang)
      </references>
      </clause>
      </bibliography>
-     </ieee-standard>
+     </metanorma>
   INPUT
 end
 
 BLANK_HDR = <<~"HDR".freeze
   <?xml version="1.0" encoding="UTF-8"?>
-  <ieee-standard xmlns="https://www.metanorma.org/ns/ieee" type="semantic" version="#{Metanorma::Ieee::VERSION}">
+  <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Ieee::VERSION}" flavor="ieee">
          <bibdata type="standard">
        <title language="en" format="text/plain">Document title</title>
                   <contributor>
@@ -274,7 +274,7 @@ HDR
 def blank_hdr_gen
   <<~"HDR"
     #{BLANK_HDR}
-    #{boilerplate(Nokogiri::XML("#{BLANK_HDR}</ieee-standard>"))}
+    #{boilerplate(Nokogiri::XML("#{BLANK_HDR}</metanorma>"))}
   HDR
 end
 

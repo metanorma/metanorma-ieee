@@ -41,21 +41,21 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Github-Request-Id:
-      - '09AA:1D102A:70C1C:94C5E:67A07B36'
+      - 2EA2:1BADBE:14612:1F8E2:67AFD0DB
       Accept-Ranges:
       - bytes
       Date:
-      - Mon, 03 Feb 2025 08:21:51 GMT
+      - Fri, 14 Feb 2025 23:25:37 GMT
       Via:
       - 1.1 varnish
       X-Served-By:
-      - cache-mel11241-MEL
+      - cache-mel11262-MEL
       X-Cache:
       - HIT
       X-Cache-Hits:
       - '1'
       X-Timer:
-      - S1738570912.627873,VS0,VE1
+      - S1739575537.054707,VS0,VE1
       Vary:
       - Authorization,Accept-Encoding,Origin
       Access-Control-Allow-Origin:
@@ -63,187 +63,9 @@ http_interactions:
       Cross-Origin-Resource-Policy:
       - cross-origin
       X-Fastly-Request-Id:
-      - 8508901b8a1585faf425a52d98e17473f51dead1
+      - 8b41babe3d537c75c266006001c06117341fed01
       Expires:
-      - Mon, 03 Feb 2025 08:26:51 GMT
-      Source-Age:
-      - '18'
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        ---
-        schema-version: v1.2.9
-        id: RFC7749
-        title:
-        - content: The "xml2rfc" Version 2 Vocabulary
-          format: text/plain
-          type: main
-        link:
-        - content: https://www.rfc-editor.org/info/rfc7749
-          type: src
-        type: standard
-        docid:
-        - id: RFC 7749
-          type: IETF
-          primary: true
-        - id: 10.17487/RFC7749
-          type: DOI
-        docnumber: RFC7749
-        date:
-        - type: published
-          value: 2016-02
-        contributor:
-        - person:
-            name:
-              given:
-                forename:
-                - content:
-                  language:
-                  - en
-                  script:
-                  - Latn
-                  initial: J
-                formatted_initials:
-                  content: J.
-                  language:
-                  - en
-                  script:
-                  - Latn
-              surname:
-                content: Reschke
-                language:
-                - en
-                script:
-                - Latn
-              completename:
-                content: J. Reschke
-                language:
-                - en
-                script:
-                - Latn
-          role:
-          - type: author
-        - organization:
-            name:
-            - content: RFC Publisher
-          role:
-          - type: publisher
-        - organization:
-            name:
-            - content: RFC Series
-          role:
-          - type: authorizer
-        revdate: 2016-02
-        language:
-        - en
-        script:
-        - Latn
-        abstract:
-        - content: '<p>This document defines the "xml2rfc" version 2 vocabulary: an XML-based
-            language used for writing RFCs and Internet-Drafts.</p><p>Version 2 represents
-            the state of the vocabulary (as implemented by several tools and as used by the
-            RFC Editor) around 2014.</p><p>This document obsoletes RFC 2629.</p>'
-          language:
-          - en
-          script:
-          - Latn
-          format: text/html
-        relation:
-        - type: obsoletedBy
-          bibitem:
-            id: RFC7991
-            docid:
-            - id: RFC7991
-              type: IETF
-              primary: true
-            formattedref:
-              content: RFC7991
-              format: text/plain
-        series:
-        - title:
-            content: RFC
-            format: text/plain
-          number: '7749'
-        - type: stream
-          title:
-            content: IAB
-            format: text/plain
-        keyword:
-        - content: XML
-        - content: IETF
-        - content: RFC
-        - content: Internet-Draft
-        - content: Vocabulary
-        ext:
-          schema-version: v1.0.1
-          stream: IAB
-  recorded_at: Mon, 03 Feb 2025 08:21:52 GMT
-- request:
-    method: get
-    uri: https://raw.githubusercontent.com/relaton/relaton-data-rfcs/main/data/RFC7749.yaml
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-      Host:
-      - raw.githubusercontent.com
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '1967'
-      Cache-Control:
-      - max-age=300
-      Content-Security-Policy:
-      - default-src 'none'; style-src 'unsafe-inline'; sandbox
-      Content-Type:
-      - text/plain; charset=utf-8
-      Etag:
-      - W/"c2b0c12e374df01ec62aa85b3e4d3333622176e9c34da8944c7b8d00391727de"
-      Strict-Transport-Security:
-      - max-age=31536000
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - deny
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Github-Request-Id:
-      - '09AA:1D102A:70C1C:94C5E:67A07B36'
-      Accept-Ranges:
-      - bytes
-      Date:
-      - Mon, 03 Feb 2025 08:21:53 GMT
-      Via:
-      - 1.1 varnish
-      X-Served-By:
-      - cache-mel11265-MEL
-      X-Cache:
-      - HIT
-      X-Cache-Hits:
-      - '1'
-      X-Timer:
-      - S1738570914.889591,VS0,VE1
-      Vary:
-      - Authorization,Accept-Encoding,Origin
-      Access-Control-Allow-Origin:
-      - "*"
-      Cross-Origin-Resource-Policy:
-      - cross-origin
-      X-Fastly-Request-Id:
-      - 04ec1a37037bafd1c763a58e3ae673a63f3ed703
-      Expires:
-      - Mon, 03 Feb 2025 08:26:53 GMT
+      - Fri, 14 Feb 2025 23:30:37 GMT
       Source-Age:
       - '21'
     body:
@@ -355,5 +177,183 @@ http_interactions:
         ext:
           schema-version: v1.0.1
           stream: IAB
-  recorded_at: Mon, 03 Feb 2025 08:21:54 GMT
+  recorded_at: Fri, 14 Feb 2025 23:25:37 GMT
+- request:
+    method: get
+    uri: https://raw.githubusercontent.com/relaton/relaton-data-rfcs/main/data/RFC7749.yaml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - raw.githubusercontent.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1967'
+      Cache-Control:
+      - max-age=300
+      Content-Security-Policy:
+      - default-src 'none'; style-src 'unsafe-inline'; sandbox
+      Content-Type:
+      - text/plain; charset=utf-8
+      Etag:
+      - W/"c2b0c12e374df01ec62aa85b3e4d3333622176e9c34da8944c7b8d00391727de"
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Github-Request-Id:
+      - 2EA2:1BADBE:14612:1F8E2:67AFD0DB
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Fri, 14 Feb 2025 23:25:38 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-mel11268-MEL
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1739575538.415143,VS0,VE1
+      Vary:
+      - Authorization,Accept-Encoding,Origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Cross-Origin-Resource-Policy:
+      - cross-origin
+      X-Fastly-Request-Id:
+      - 958734bc1c4ce3047566ccbea6922bf4a85d4f26
+      Expires:
+      - Fri, 14 Feb 2025 23:30:38 GMT
+      Source-Age:
+      - '23'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        ---
+        schema-version: v1.2.9
+        id: RFC7749
+        title:
+        - content: The "xml2rfc" Version 2 Vocabulary
+          format: text/plain
+          type: main
+        link:
+        - content: https://www.rfc-editor.org/info/rfc7749
+          type: src
+        type: standard
+        docid:
+        - id: RFC 7749
+          type: IETF
+          primary: true
+        - id: 10.17487/RFC7749
+          type: DOI
+        docnumber: RFC7749
+        date:
+        - type: published
+          value: 2016-02
+        contributor:
+        - person:
+            name:
+              given:
+                forename:
+                - content:
+                  language:
+                  - en
+                  script:
+                  - Latn
+                  initial: J
+                formatted_initials:
+                  content: J.
+                  language:
+                  - en
+                  script:
+                  - Latn
+              surname:
+                content: Reschke
+                language:
+                - en
+                script:
+                - Latn
+              completename:
+                content: J. Reschke
+                language:
+                - en
+                script:
+                - Latn
+          role:
+          - type: author
+        - organization:
+            name:
+            - content: RFC Publisher
+          role:
+          - type: publisher
+        - organization:
+            name:
+            - content: RFC Series
+          role:
+          - type: authorizer
+        revdate: 2016-02
+        language:
+        - en
+        script:
+        - Latn
+        abstract:
+        - content: '<p>This document defines the "xml2rfc" version 2 vocabulary: an XML-based
+            language used for writing RFCs and Internet-Drafts.</p><p>Version 2 represents
+            the state of the vocabulary (as implemented by several tools and as used by the
+            RFC Editor) around 2014.</p><p>This document obsoletes RFC 2629.</p>'
+          language:
+          - en
+          script:
+          - Latn
+          format: text/html
+        relation:
+        - type: obsoletedBy
+          bibitem:
+            id: RFC7991
+            docid:
+            - id: RFC7991
+              type: IETF
+              primary: true
+            formattedref:
+              content: RFC7991
+              format: text/plain
+        series:
+        - title:
+            content: RFC
+            format: text/plain
+          number: '7749'
+        - type: stream
+          title:
+            content: IAB
+            format: text/plain
+        keyword:
+        - content: XML
+        - content: IETF
+        - content: RFC
+        - content: Internet-Draft
+        - content: Vocabulary
+        ext:
+          schema-version: v1.0.1
+          stream: IAB
+  recorded_at: Fri, 14 Feb 2025 23:25:38 GMT
 recorded_with: VCR 6.1.0

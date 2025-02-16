@@ -278,23 +278,44 @@ RSpec.describe IsoDoc do
                    <semx element="autonum" source="A">2</semx>
                 </fmt-xref-label>
                 <p id="_">
-                   <xref type="inline" target="ref1">
-                      <span class="std_publisher">ISO </span>
-                      <span class="std_docNumber">639</span>
-                      :
-                      <span class="std_year">1967</span>
-                   </xref>
-                   <xref type="inline" target="ref7">
-                      <span class="std_publisher">ISO </span>
-                      <span class="std_docNumber">639-2</span>
-                      :
-                      <span class="std_year">1998</span>
-                   </xref>
-                   <xref type="inline" target="ref2">Aluffi, Anderson, Hering, Mustaţă and Payne 2022a</xref>
-                   <xref type="inline" target="ref3">REF4</xref>
-                   <xref type="inline" target="ref4">ISO 639:1967 [B3]</xref>
-                   <xref type="inline" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2]</xref>
-                   <xref type="inline" target="ref6">Title REF4</xref>
+                   <eref type="inline" bibitemid="ref1" citeas="ISO 639:1967" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" target="ref1">
+                         <span class="std_publisher">ISO </span>
+                         <span class="std_docNumber">639</span>
+                         :
+                         <span class="std_year">1967</span>
+                      </fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref7" citeas="ISO 639-2:1998" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" target="ref7">
+                         <span class="std_publisher">ISO </span>
+                         <span class="std_docNumber">639-2</span>
+                         :
+                         <span class="std_year">1998</span>
+                      </fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref2" citeas="Aluffi" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" target="ref2">Aluffi, Anderson, Hering, Mustaţă and Payne 2022a</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref3" citeas="REF4" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" target="ref3">REF4</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" target="ref4">ISO 639:1967 [B3]</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref5" citeas="[B2]" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2]</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref6" citeas="[B1]" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" target="ref6">Title REF4</fmt-xref>
+                   </semx>
                 </p>
              </clause>
              <references id="_" normative="true" obligation="informative" displayorder="2">
@@ -635,37 +656,77 @@ RSpec.describe IsoDoc do
          </iso-standard>
     INPUT
     presxml = <<~PRESXML
-      <clause id="A" inline-header="false" obligation="normative" displayorder="4">
-         <title id="_">Clause</title>
-         <fmt-title depth="1">
-            <span class="fmt-caption-label">
-               <semx element="autonum" source="A">2</semx>
-               <span class="fmt-autonum-delim">.</span>
-               </span>
-               <span class="fmt-caption-delim">
-                  <tab/>
-               </span>
-               <semx element="title" source="_">Clause</semx>
-         </fmt-title>
-         <fmt-xref-label>
-            <span class="fmt-element-name">Clause</span>
-            <semx element="autonum" source="A">2</semx>
-         </fmt-xref-label>
-                <p id="_">
-                   <xref type="inline" target="IETF_6281">
-                      <span class="std_publisher">IETF </span>
-                      <span class="std_docNumber">6281</span>
-                      , 4–9
-                   </xref>
-                   <xref type="inline" target="IETF_6281">
-                      <span class="std_publisher">IETF </span>
-                      <span class="std_docNumber">6281</span>
-                      , Figure 4–9
-                   </xref>
-                   <xref type="inline" target="Johns">Johns 2022, 4–9</xref>
-                   <xref type="inline" target="Johns">Johns 2022, Figure 4–9</xref>
-                </p>
-             </clause>
+        <clause id="A" inline-header="false" obligation="normative" displayorder="4">
+           <title id="_">Clause</title>
+           <fmt-title depth="1">
+              <span class="fmt-caption-label">
+                 <semx element="autonum" source="A">2</semx>
+                 <span class="fmt-autonum-delim">.</span>
+              </span>
+              <span class="fmt-caption-delim">
+                 <tab/>
+              </span>
+              <semx element="title" source="_">Clause</semx>
+           </fmt-title>
+           <fmt-xref-label>
+              <span class="fmt-element-name">Clause</span>
+              <semx element="autonum" source="A">2</semx>
+           </fmt-xref-label>
+           <p id="_">
+              <eref type="inline" bibitemid="IETF_6281" citeas="ISO 639:1967" id="_">
+                 <localityStack>
+                    <locality type="page">
+                       <referenceFrom>4</referenceFrom>
+                       <referenceTo>9</referenceTo>
+                    </locality>
+                 </localityStack>
+              </eref>
+              <semx element="eref" source="_">
+                 <fmt-xref type="inline" target="IETF_6281">
+                    <span class="std_publisher">IETF </span>
+                    <span class="std_docNumber">6281</span>
+                    , 4–9
+                 </fmt-xref>
+              </semx>
+              <eref type="inline" bibitemid="IETF_6281" citeas="ISO 639:1967" id="_">
+                 <localityStack>
+                    <locality type="figure">
+                       <referenceFrom>4</referenceFrom>
+                       <referenceTo>9</referenceTo>
+                    </locality>
+                 </localityStack>
+              </eref>
+              <semx element="eref" source="_">
+                 <fmt-xref type="inline" target="IETF_6281">
+                    <span class="std_publisher">IETF </span>
+                    <span class="std_docNumber">6281</span>
+                    , Figure 4–9
+                 </fmt-xref>
+              </semx>
+              <eref type="inline" bibitemid="Johns" citeas="ISO 639-2:1998" id="_">
+                 <localityStack>
+                    <locality type="page">
+                       <referenceFrom>4</referenceFrom>
+                       <referenceTo>9</referenceTo>
+                    </locality>
+                 </localityStack>
+              </eref>
+              <semx element="eref" source="_">
+                 <fmt-xref type="inline" target="Johns">Johns 2022, 4–9</fmt-xref>
+              </semx>
+              <eref type="inline" bibitemid="Johns" citeas="ISO 639-2:1998" id="_">
+                 <localityStack>
+                    <locality type="figure">
+                       <referenceFrom>4</referenceFrom>
+                       <referenceTo>9</referenceTo>
+                    </locality>
+                 </localityStack>
+              </eref>
+              <semx element="eref" source="_">
+                 <fmt-xref type="inline" target="Johns">Johns 2022, Figure 4–9</fmt-xref>
+              </semx>
+           </p>
+        </clause>
     PRESXML
     out = Nokogiri::XML(
       IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
