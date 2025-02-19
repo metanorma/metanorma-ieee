@@ -325,6 +325,7 @@ RSpec.describe IsoDoc do
                 </fmt-title>
                 <bibitem id="IETF_6281" type="standard">
                    <formattedref>Code for the representation of names of languages.</formattedref>
+                   <fetched/>
                    <title type="title-main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
                    <title type="main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
                    <uri type="src">https://www.iso.org/standard/4766.html</uri>
@@ -332,6 +333,89 @@ RSpec.describe IsoDoc do
                    <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
                    <docidentifier type="URN">URN urn:iso:std:iso:639:ed-1</docidentifier>
                    <docidentifier scope="biblio-tag">ISO 639</docidentifier>
+                   <docnumber>639</docnumber>
+                   <contributor>
+                      <role type="publisher"/>
+                      <organization>
+                         <name>International Organization for Standardization</name>
+                         <abbreviation>ISO</abbreviation>
+                         <uri>www.iso.org</uri>
+                      </organization>
+                   </contributor>
+                   <edition>1</edition>
+                   <language>en</language>
+                   <script>Latn</script>
+                   <status>
+                      <stage>95</stage>
+                      <substage>99</substage>
+                   </status>
+                   <copyright>
+                      <from>1988</from>
+                      <owner>
+                         <organization>
+                            <name>ISO</name>
+                         </organization>
+                      </owner>
+                   </copyright>
+                   <relation type="updates">
+                      <bibitem type="standard">
+                         <formattedref format="text/plain">ISO 639-1:2002</formattedref>
+                         <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>
+                         <date type="circulated">
+                            <on>2002-07-18</on>
+                         </date>
+                      </bibitem>
+                   </relation>
+                   <relation type="instance">
+                      <bibitem type="standard">
+                         <fetched/>
+                         <title type="title-main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
+                         <title type="main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
+                         <uri type="src">https://www.iso.org/standard/4766.html</uri>
+                         <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4766.detail.rss</uri>
+                         <docidentifier type="ISO" primary="true">ISO 639:1988</docidentifier>
+                         <docidentifier type="URN">urn:iso:std:iso:639:ed-1</docidentifier>
+                         <docnumber>639</docnumber>
+                         <date type="published">
+                            <on>1988-03</on>
+                         </date>
+                         <contributor>
+                            <role type="publisher"/>
+                            <organization>
+                               <name>International Organization for Standardization</name>
+                               <abbreviation>ISO</abbreviation>
+                               <uri>www.iso.org</uri>
+                            </organization>
+                         </contributor>
+                         <edition>1</edition>
+                         <language>en</language>
+                         <script>Latn</script>
+                         <abstract format="text/plain" language="en" script="Latn">Gives a two-letter lower-case code. The symbols were devised primarily for use in terminology, lexicography and linguistic, but they may be used for any application. It also includes guidance on the use of language symbols in some of these applications. The annex includes a classified list of languages and their symbols arranged by families.</abstract>
+                         <status>
+                            <stage>95</stage>
+                            <substage>99</substage>
+                         </status>
+                         <copyright>
+                            <from>1988</from>
+                            <owner>
+                               <organization>
+                                  <name>ISO</name>
+                               </organization>
+                            </owner>
+                         </copyright>
+                         <relation type="updates">
+                            <bibitem type="standard">
+                               <formattedref format="text/plain">ISO 639-1:2002</formattedref>
+                               <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>
+                               <date type="circulated">
+                                  <on>2002-07-18</on>
+                               </date>
+                            </bibitem>
+                         </relation>
+                         <place>Geneva</place>
+                      </bibitem>
+                   </relation>
+                   <place>Geneva</place>
                    <biblio-tag>ISO 639, </biblio-tag>
                 </bibitem>
                 <bibitem id="ref7">
@@ -348,6 +432,31 @@ RSpec.describe IsoDoc do
                    <docidentifier type="iso-reference">iso-reference ISO 639-2(E)</docidentifier>
                    <docidentifier type="URN">URN urn:iso:std:iso:639:-2:stage-95.99:ed-1</docidentifier>
                    <docidentifier scope="biblio-tag">ISO 639-2:1998</docidentifier>
+                   <docnumber>639</docnumber>
+                   <contributor>
+                      <role type="publisher"/>
+                      <organization>
+                         <name>International Organization for Standardization</name>
+                         <abbreviation>ISO</abbreviation>
+                         <uri>www.iso.org</uri>
+                      </organization>
+                   </contributor>
+                   <edition>1</edition>
+                   <language>en</language>
+                   <language>fr</language>
+                   <script>Latn</script>
+                   <status>
+                      <stage>95</stage>
+                      <substage>99</substage>
+                   </status>
+                   <copyright>
+                      <from>1998</from>
+                      <owner>
+                         <organization>
+                            <name>ISO</name>
+                         </organization>
+                      </owner>
+                   </copyright>
                    <biblio-tag>ISO 639-2:1998, </biblio-tag>
                 </bibitem>
                 <bibitem id="ref3">
@@ -372,20 +481,100 @@ RSpec.describe IsoDoc do
                    <title>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</title>
                    <docidentifier type="DOI">https://doi.org/10.1017/9781108877831</docidentifier>
                    <docidentifier type="ISBN">ISBN 9781108877831</docidentifier>
+                   <date type="published">
+                      <on>2022</on>
+                   </date>
+                   <contributor>
+                      <role type="editor"/>
+                      <person>
+                         <name>
+                            <surname>Aluffi</surname>
+                            <forename>Paolo</forename>
+                         </name>
+                      </person>
+                   </contributor>
+                   <contributor>
+                      <role type="editor"/>
+                      <person>
+                         <name>
+                            <surname>Anderson</surname>
+                            <forename>David</forename>
+                         </name>
+                      </person>
+                   </contributor>
+                   <contributor>
+                      <role type="editor"/>
+                      <person>
+                         <name>
+                            <surname>Hering</surname>
+                            <forename>Milena</forename>
+                         </name>
+                      </person>
+                   </contributor>
+                   <contributor>
+                      <role type="editor"/>
+                      <person>
+                         <name>
+                            <surname>Mustaţă</surname>
+                            <forename>Mircea</forename>
+                         </name>
+                      </person>
+                   </contributor>
+                   <contributor>
+                      <role type="editor"/>
+                      <person>
+                         <name>
+                            <surname>Payne</surname>
+                            <forename>Sam</forename>
+                         </name>
+                      </person>
+                   </contributor>
                    <note type="Availability">
                       <p id="_">IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
         </p>
                    </note>
+                   <edition>1</edition>
+                   <series>
+                      <title>London Mathematical Society Lecture Note Series</title>
+                      <number>472</number>
+                   </series>
+                   <contributor>
+                      <role type="publisher"/>
+                      <organization>
+                         <name>Cambridge University Press</name>
+                      </organization>
+                   </contributor>
+                   <place>Cambridge, UK</place>
+                   <size>
+                      <value type="volume">1</value>
+                   </size>
                    <docidentifier type="metanorma">Aluffi, Anderson, Hering, Mustaţă and Payne 2022a</docidentifier>
                    <biblio-tag>Aluffi, Anderson, Hering, Mustaţă and Payne 2022a, </biblio-tag>
                 </bibitem>
                 <bibitem type="standard" id="ref1">
                    <formattedref>Indiana Jones and the Last Crusade.</formattedref>
+                   <fetched/>
                    <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
                    <title type="title-main" format="text/plain">Indiana Jones and the Last Crusade</title>
                    <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
                    <docidentifier type="ISO">ISO 639:1967</docidentifier>
                    <docidentifier scope="biblio-tag">ISO 639:1967</docidentifier>
+                   <contributor>
+                      <role type="publisher"/>
+                      <organization>
+                         <name>International Organization for Standardization</name>
+                         <abbreviation>ISO</abbreviation>
+                      </organization>
+                   </contributor>
+                   <contributor>
+                      <role type="author"/>
+                      <person>
+                         <name>
+                            <forename>Indiana</forename>
+                            <surname>Jones</surname>
+                         </name>
+                      </person>
+                   </contributor>
                    <biblio-tag>ISO 639:1967, </biblio-tag>
                 </bibitem>
              </references>
@@ -418,6 +607,69 @@ RSpec.describe IsoDoc do
                    <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
                    <docidentifier type="DOI">https://doi.org/10.1017/9781108877831</docidentifier>
                    <docidentifier type="ISBN">ISBN 9781108877831</docidentifier>
+                   <date type="published">
+                      <on>2022</on>
+                   </date>
+                   <contributor>
+                      <role type="editor"/>
+                      <person>
+                         <name>
+                            <surname>Aluffi</surname>
+                            <forename>Paolo</forename>
+                         </name>
+                      </person>
+                   </contributor>
+                   <contributor>
+                      <role type="editor"/>
+                      <person>
+                         <name>
+                            <surname>Anderson</surname>
+                            <forename>David</forename>
+                         </name>
+                      </person>
+                   </contributor>
+                   <contributor>
+                      <role type="editor"/>
+                      <person>
+                         <name>
+                            <surname>Hering</surname>
+                            <forename>Milena</forename>
+                         </name>
+                      </person>
+                   </contributor>
+                   <contributor>
+                      <role type="editor"/>
+                      <person>
+                         <name>
+                            <surname>Mustaţă</surname>
+                            <forename>Mircea</forename>
+                         </name>
+                      </person>
+                   </contributor>
+                   <contributor>
+                      <role type="editor"/>
+                      <person>
+                         <name>
+                            <surname>Payne</surname>
+                            <forename>Sam</forename>
+                         </name>
+                      </person>
+                   </contributor>
+                   <edition>1</edition>
+                   <series>
+                      <title>London Mathematical Society Lecture Note Series</title>
+                      <number>472</number>
+                   </series>
+                   <contributor>
+                      <role type="publisher"/>
+                      <organization>
+                         <name>Cambridge University Press</name>
+                      </organization>
+                   </contributor>
+                   <place>Cambridge, UK</place>
+                   <size>
+                      <value type="volume">1</value>
+                   </size>
                    <biblio-tag>
                       [B2]
                       <tab/>
@@ -425,12 +677,29 @@ RSpec.describe IsoDoc do
                 </bibitem>
                 <bibitem type="standard" id="ref4">
                    <formattedref>Indiana Jones and the Last Crusade.</formattedref>
+                   <fetched/>
                    <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
                    <title type="title-main" format="text/plain">Indiana Jones and the Last Crusade</title>
                    <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
                    <docidentifier type="metanorma-ordinal">[B3]</docidentifier>
                    <docidentifier type="ISO">ISO 639:1967</docidentifier>
                    <docidentifier scope="biblio-tag">ISO 639:1967</docidentifier>
+                   <contributor>
+                      <role type="publisher"/>
+                      <organization>
+                         <name>International Organization for Standardization</name>
+                         <abbreviation>ISO</abbreviation>
+                      </organization>
+                   </contributor>
+                   <contributor>
+                      <role type="author"/>
+                      <person>
+                         <name>
+                            <forename>Indiana</forename>
+                            <surname>Jones</surname>
+                         </name>
+                      </person>
+                   </contributor>
                    <biblio-tag>
                       [B3]
                       <tab/>
