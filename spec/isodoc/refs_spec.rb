@@ -471,11 +471,16 @@ RSpec.describe IsoDoc do
                       Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne,
                       <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>
                       , first edition, Cambridge, UK: Cambridge University Press, 2022a, DOI: https://doi.org/10.1017/9781108877831.
-                      <fn reference="_">
+                      <fn reference="1" original-reference="_" id="_" target="_">
                          <p>
                 IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
         
               </p>
+                         <fmt-fn-label>
+                            <sup>
+                               <semx element="autonum" source="_">1</semx>
+                            </sup>
+                         </fmt-fn-label>
                       </fn>
                    </formattedref>
                    <title>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</title>
@@ -708,6 +713,23 @@ RSpec.describe IsoDoc do
                 </bibitem>
              </references>
           </bibliography>
+          <fmt-footnote-container>
+             <fmt-fn-body id="_" target="_" reference="1">
+                <semx element="fn" source="_">
+                   <p>
+                      <fmt-fn-label>
+                         <sup>
+                            <semx element="autonum" source="_">1</semx>
+                         </sup>
+                         <span class="fmt-caption-delim">
+                            <tab/>
+                         </span>
+                      </fmt-fn-label>
+                      IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
+                   </p>
+                </semx>
+             </fmt-fn-body>
+          </fmt-footnote-container>
        </iso-standard>
       PRESXML
       out = Nokogiri::XML(

@@ -787,137 +787,165 @@ RSpec.describe IsoDoc do
     INPUT
     output = <<~OUTPUT
        <ieee-standard xmlns="https://www.metanorma.org/ns/ieee" type="presentation">
-           <preface>
-              <clause type="toc" id="_" displayorder="1">
-                 <fmt-title depth="1">Contents</fmt-title>
-              </clause>
-           </preface>
-           <sections>
-              <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
-              <terms id="_" obligation="normative" displayorder="3">
-                 <title id="_">Definitions</title>
-                 <fmt-title depth="1">
-                    <span class="fmt-caption-label">
-                       <semx element="autonum" source="_">1</semx>
-                       <span class="fmt-autonum-delim">.</span>
-                    </span>
-                    <span class="fmt-caption-delim">
-                       <tab/>
-                    </span>
-                    <semx element="title" source="_">Definitions</semx>
-                 </fmt-title>
-                 <fmt-xref-label>
-                    <span class="fmt-element-name">Clause</span>
-                    <semx element="autonum" source="_">1</semx>
-                 </fmt-xref-label>
-                 <p id="_">
-                    For the purposes of this document, the following terms and definitions apply. The
-                    <em>IEEE Standards Dictionary Online</em>
-                    should be consulted for terms not defined in this clause.
-                    <fn>
-                       <p id="_">
-                          <em>IEEE Standards Dictionary Online</em>
-                          is available at:
-                          <link target="http://dictionary.ieee.org" id="_"/>
-                          <semx element="link" source="_">
-                             <fmt-link target="http://dictionary.ieee.org"/>
-                          </semx>
-                          . An IEEE Account is required for access to the dictionary, and one can be created at no charge on the dictionary sign-in page.
-                       </p>
-                    </fn>
-                 </p>
-                 <term id="term-prozac">
-                    <preferred id="_">
-                       <expression>
-                          <name>prozac</name>
-                       </expression>
-                    </preferred>
-                    <fmt-definition>
-                       <p>
-                          <semx element="preferred" source="_">
-                             <strong>prozac</strong>
-                          </semx>
-                          :
-                       </p>
-                    </fmt-definition>
-                 </term>
-                 <term id="term-x1">
-                    <preferred id="_">
-                       <letter-symbol>
-                          <name>
-                             <stem type="MathML">
-                                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                                   <msub>
-                                      <mrow>
-                                         <mi>x</mi>
-                                      </mrow>
-                                      <mrow>
-                                         <mn>1</mn>
-                                      </mrow>
-                                   </msub>
-                                </math>
-                             </stem>
-                          </name>
-                       </letter-symbol>
-                    </preferred>
-                    <fmt-definition>
-                       <p>
-                          <semx element="preferred" source="_">
-                             <strong>
-                                <stem type="MathML" id="_">
-                                   <math xmlns="http://www.w3.org/1998/Math/MathML">
-                                      <msub>
-                                         <mrow>
-                                            <mi>x</mi>
-                                         </mrow>
-                                         <mrow>
-                                            <mn>1</mn>
-                                         </mrow>
-                                      </msub>
-                                   </math>
-                                </stem>
-                                <fmt-stem type="MathML">
-                                   <semx element="stem" source="_">
-                                      <math xmlns="http://www.w3.org/1998/Math/MathML">
-                                         <mstyle mathvariant="bold">
-                                            <msub>
-                                               <mrow>
-                                                  <mi>x</mi>
-                                               </mrow>
-                                               <mrow>
-                                                  <mn>1</mn>
-                                               </mrow>
-                                            </msub>
-                                         </mstyle>
-                                      </math>
-                                      <latexmath>\\mathbf{x_{1}}</latexmath>
-                                      <asciimath>mathbf(x_(1))</asciimath>
-                                   </semx>
-                                </fmt-stem>
-                             </strong>
-                          </semx>
-                          :
-                       </p>
-                    </fmt-definition>
-                 </term>
-                 <term id="term-Xanax">
-                    <preferred id="_">
-                       <expression>
-                          <name>Xanax</name>
-                       </expression>
-                    </preferred>
-                    <fmt-definition>
-                       <p>
-                          <semx element="preferred" source="_">
-                             <strong>Xanax</strong>
-                          </semx>
-                          :
-                       </p>
-                    </fmt-definition>
-                 </term>
-              </terms>
-           </sections>
-        </ieee-standard>
+          <preface>
+             <clause type="toc" id="_" displayorder="1">
+                <fmt-title depth="1">Contents</fmt-title>
+             </clause>
+          </preface>
+          <sections>
+             <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
+             <terms id="_" obligation="normative" displayorder="3">
+                <title id="_">Definitions</title>
+                <fmt-title depth="1">
+                   <span class="fmt-caption-label">
+                      <semx element="autonum" source="_">1</semx>
+                      <span class="fmt-autonum-delim">.</span>
+                   </span>
+                   <span class="fmt-caption-delim">
+                      <tab/>
+                   </span>
+                   <semx element="title" source="_">Definitions</semx>
+                </fmt-title>
+                <fmt-xref-label>
+                   <span class="fmt-element-name">Clause</span>
+                   <semx element="autonum" source="_">1</semx>
+                </fmt-xref-label>
+                <p id="_">
+                   For the purposes of this document, the following terms and definitions apply. The
+                   <em>IEEE Standards Dictionary Online</em>
+                   should be consulted for terms not defined in this clause.
+                   <fn original-reference="" reference="1" id="_" target="_">
+                      <p original-id="_">
+                         <em>IEEE Standards Dictionary Online</em>
+                         is available at:
+                         <link target="http://dictionary.ieee.org" id="_"/>
+                         <semx element="link" source="_">
+                            <fmt-link target="http://dictionary.ieee.org"/>
+                         </semx>
+                         . An IEEE Account is required for access to the dictionary, and one can be created at no charge on the dictionary sign-in page.
+                      </p>
+                      <fmt-fn-label>
+                         <sup>
+                            <semx element="autonum" source="_">1</semx>
+                         </sup>
+                      </fmt-fn-label>
+                   </fn>
+                </p>
+                <term id="term-prozac">
+                   <preferred id="_">
+                      <expression>
+                         <name>prozac</name>
+                      </expression>
+                   </preferred>
+                   <fmt-definition>
+                      <p>
+                         <semx element="preferred" source="_">
+                            <strong>prozac</strong>
+                         </semx>
+                         :
+                      </p>
+                   </fmt-definition>
+                </term>
+                <term id="term-x1">
+                   <preferred id="_">
+                      <letter-symbol>
+                         <name>
+                            <stem type="MathML">
+                               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                  <msub>
+                                     <mrow>
+                                        <mi>x</mi>
+                                     </mrow>
+                                     <mrow>
+                                        <mn>1</mn>
+                                     </mrow>
+                                  </msub>
+                               </math>
+                            </stem>
+                         </name>
+                      </letter-symbol>
+                   </preferred>
+                   <fmt-definition>
+                      <p>
+                         <semx element="preferred" source="_">
+                            <strong>
+                               <stem type="MathML" id="_">
+                                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                     <msub>
+                                        <mrow>
+                                           <mi>x</mi>
+                                        </mrow>
+                                        <mrow>
+                                           <mn>1</mn>
+                                        </mrow>
+                                     </msub>
+                                  </math>
+                               </stem>
+                               <fmt-stem type="MathML">
+                                  <semx element="stem" source="_">
+                                     <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mstyle mathvariant="bold">
+                                           <msub>
+                                              <mrow>
+                                                 <mi>x</mi>
+                                              </mrow>
+                                              <mrow>
+                                                 <mn>1</mn>
+                                              </mrow>
+                                           </msub>
+                                        </mstyle>
+                                     </math>
+                                     <latexmath>\\mathbf{x_{1}}</latexmath>
+                                     <asciimath>mathbf(x_(1))</asciimath>
+                                  </semx>
+                               </fmt-stem>
+                            </strong>
+                         </semx>
+                         :
+                      </p>
+                   </fmt-definition>
+                </term>
+                <term id="term-Xanax">
+                   <preferred id="_">
+                      <expression>
+                         <name>Xanax</name>
+                      </expression>
+                   </preferred>
+                   <fmt-definition>
+                      <p>
+                         <semx element="preferred" source="_">
+                            <strong>Xanax</strong>
+                         </semx>
+                         :
+                      </p>
+                   </fmt-definition>
+                </term>
+             </terms>
+          </sections>
+          <fmt-footnote-container>
+             <fmt-fn-body id="_" target="_" reference="1">
+                <semx element="fn" source="_">
+                   <p id="_">
+                      <fmt-fn-label>
+                         <sup>
+                            <semx element="autonum" source="_">1</semx>
+                         </sup>
+                         <span class="fmt-caption-delim">
+                            <tab/>
+                         </span>
+                      </fmt-fn-label>
+                      <em>IEEE Standards Dictionary Online</em>
+                      is available at:
+                      <link target="http://dictionary.ieee.org" id="_"/>
+                      <semx element="link" source="_">
+                         <fmt-link target="http://dictionary.ieee.org"/>
+                      </semx>
+                      . An IEEE Account is required for access to the dictionary, and one can be created at no charge on the dictionary sign-in page.
+                   </p>
+                </semx>
+             </fmt-fn-body>
+          </fmt-footnote-container>
+       </ieee-standard>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
