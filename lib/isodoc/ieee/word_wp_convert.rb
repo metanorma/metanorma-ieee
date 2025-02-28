@@ -45,7 +45,7 @@ module IsoDoc
         section_break(body)
         body.div class: "WordSection4" do |div3|
           backcover div3
-          footnotes div3
+          footnotes docxml, div3
           comments div3
         end
       end

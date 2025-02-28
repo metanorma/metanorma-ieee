@@ -86,7 +86,7 @@ module IsoDoc
         section_break(body, continuous: true)
         body.div class: "WordSectionMain" do |div3|
           content(div3, docxml, ns(self.class::MAIN_ELEMENTS))
-          footnotes div3
+          footnotes docxml, div3
           comments div3
         end
       end
