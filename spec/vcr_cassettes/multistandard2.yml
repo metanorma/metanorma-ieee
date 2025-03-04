@@ -41,21 +41,21 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Github-Request-Id:
-      - 2EA2:1BADBE:14612:1F8E2:67AFD0DB
+      - FCC6:7701D:25E43:6E82D:67C70344
       Accept-Ranges:
       - bytes
       Date:
-      - Fri, 14 Feb 2025 23:25:37 GMT
+      - Tue, 04 Mar 2025 13:42:56 GMT
       Via:
       - 1.1 varnish
       X-Served-By:
-      - cache-mel11262-MEL
+      - cache-mel11241-MEL
       X-Cache:
       - HIT
       X-Cache-Hits:
       - '1'
       X-Timer:
-      - S1739575537.054707,VS0,VE1
+      - S1741095776.102781,VS0,VE1
       Vary:
       - Authorization,Accept-Encoding,Origin
       Access-Control-Allow-Origin:
@@ -63,9 +63,9 @@ http_interactions:
       Cross-Origin-Resource-Policy:
       - cross-origin
       X-Fastly-Request-Id:
-      - 8b41babe3d537c75c266006001c06117341fed01
+      - 3a526f3d95031a9630da09fb9ab4f0d57a8c534d
       Expires:
-      - Fri, 14 Feb 2025 23:30:37 GMT
+      - Tue, 04 Mar 2025 13:47:56 GMT
       Source-Age:
       - '21'
     body:
@@ -177,7 +177,7 @@ http_interactions:
         ext:
           schema-version: v1.0.1
           stream: IAB
-  recorded_at: Fri, 14 Feb 2025 23:25:37 GMT
+  recorded_at: Tue, 04 Mar 2025 13:42:56 GMT
 - request:
     method: get
     uri: https://raw.githubusercontent.com/relaton/relaton-data-rfcs/main/data/RFC7749.yaml
@@ -219,21 +219,21 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Github-Request-Id:
-      - 2EA2:1BADBE:14612:1F8E2:67AFD0DB
+      - FCC6:7701D:25E43:6E82D:67C70344
       Accept-Ranges:
       - bytes
       Date:
-      - Fri, 14 Feb 2025 23:25:38 GMT
+      - Tue, 04 Mar 2025 13:42:58 GMT
       Via:
       - 1.1 varnish
       X-Served-By:
-      - cache-mel11268-MEL
+      - cache-mel11235-MEL
       X-Cache:
       - HIT
       X-Cache-Hits:
       - '1'
       X-Timer:
-      - S1739575538.415143,VS0,VE1
+      - S1741095778.450305,VS0,VE1
       Vary:
       - Authorization,Accept-Encoding,Origin
       Access-Control-Allow-Origin:
@@ -241,9 +241,9 @@ http_interactions:
       Cross-Origin-Resource-Policy:
       - cross-origin
       X-Fastly-Request-Id:
-      - 958734bc1c4ce3047566ccbea6922bf4a85d4f26
+      - 8b05cfd90f53180ee9d0b1cc88312cd461483397
       Expires:
-      - Fri, 14 Feb 2025 23:30:38 GMT
+      - Tue, 04 Mar 2025 13:47:58 GMT
       Source-Age:
       - '23'
     body:
@@ -355,5 +355,5 @@ http_interactions:
         ext:
           schema-version: v1.0.1
           stream: IAB
-  recorded_at: Fri, 14 Feb 2025 23:25:38 GMT
+  recorded_at: Tue, 04 Mar 2025 13:42:58 GMT
 recorded_with: VCR 6.1.0
