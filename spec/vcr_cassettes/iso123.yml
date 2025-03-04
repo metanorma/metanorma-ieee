@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://raw.githubusercontent.com/relaton/relaton-data-iso/main/data/iso-123:2001.yaml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - raw.githubusercontent.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '3095'
+      Cache-Control:
+      - max-age=300
+      Content-Security-Policy:
+      - default-src 'none'; style-src 'unsafe-inline'; sandbox
+      Content-Type:
+      - text/plain; charset=utf-8
+      Etag:
+      - W/"a959c39e4a4f9778af45b8f5f2ccc3f03136558315356f5fcbdd57c2b735eabf"
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Github-Request-Id:
+      - 8B9C:37948F:289F5E:3B8F09:67B2E4D9
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Mon, 17 Feb 2025 07:27:25 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-mel11233-MEL
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1739777246.510849,VS0,VE327
+      Vary:
+      - Authorization,Accept-Encoding,Origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Cross-Origin-Resource-Policy:
+      - cross-origin
+      X-Fastly-Request-Id:
+      - 233b30d840e590a6bb6e68385d06f4a30cef5ad4
+      Expires:
+      - Mon, 17 Feb 2025 07:32:25 GMT
+      Source-Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        LS0tCnNjaGVtYS12ZXJzaW9uOiB2MS4yLjcKaWQ6IElTTzEyMy0yMDAxCnRpdGxlOgotIGNvbnRlbnQ6IFJ1YmJlciBsYXRleAogIGxhbmd1YWdlOgogIC0gZW4KICBzY3JpcHQ6CiAgLSBMYXRuCiAgZm9ybWF0OiB0ZXh0L3BsYWluCiAgdHlwZTogdGl0bGUtaW50cm8KLSBjb250ZW50OiBTYW1wbGluZwogIGxhbmd1YWdlOgogIC0gZW4KICBzY3JpcHQ6CiAgLSBMYXRuCiAgZm9ybWF0OiB0ZXh0L3BsYWluCiAgdHlwZTogdGl0bGUtbWFpbgotIGNvbnRlbnQ6IFJ1YmJlciBsYXRleCAtIFNhbXBsaW5nCiAgbGFuZ3VhZ2U6CiAgLSBlbgogIHNjcmlwdDoKICAtIExhdG4KICBmb3JtYXQ6IHRleHQvcGxhaW4KICB0eXBlOiBtYWluCi0gY29udGVudDogTGF0ZXggZGUgY2FvdXRjaG91YwogIGxhbmd1YWdlOgogIC0gZnIKICBzY3JpcHQ6CiAgLSBMYXRuCiAgZm9ybWF0OiB0ZXh0L3BsYWluCiAgdHlwZTogdGl0bGUtaW50cm8KLSBjb250ZW50OiDDiWNoYW50aWxsb25uYWdlCiAgbGFuZ3VhZ2U6CiAgLSBmcgogIHNjcmlwdDoKICAtIExhdG4KICBmb3JtYXQ6IHRleHQvcGxhaW4KICB0eXBlOiB0aXRsZS1tYWluCi0gY29udGVudDogTGF0ZXggZGUgY2FvdXRjaG91YyAtIMOJY2hhbnRpbGxvbm5hZ2UKICBsYW5ndWFnZToKICAtIGZyCiAgc2NyaXB0OgogIC0gTGF0bgogIGZvcm1hdDogdGV4dC9wbGFpbgogIHR5cGU6IG1haW4KbGluazoKLSBjb250ZW50OiBodHRwczovL3d3dy5pc28ub3JnL3N0YW5kYXJkLzIzMjgxLmh0bWwKICB0eXBlOiBzcmMKLSBjb250ZW50OiBodHRwczovL3d3dy5pc28ub3JnL29icC91aS9lbi8jIWlzbzpzdGQ6MjMyODE6ZW4KICB0eXBlOiBvYnAKLSBjb250ZW50OiBodHRwczovL3d3dy5pc28ub3JnL2NvbnRlbnRzL2RhdGEvc3RhbmRhcmQvMDIvMzIvMjMyODEuZGV0YWlsLnJzcwogIHR5cGU6IHJzcwp0eXBlOiBzdGFuZGFyZApkb2NpZDoKLSBpZDogSVNPIDEyMzoyMDAxCiAgdHlwZTogSVNPCiAgcHJpbWFyeTogdHJ1ZQotIGlkOiBJU08gMTIzOjIwMDEoRSkKICB0eXBlOiBpc28tcmVmZXJlbmNlCi0gaWQ6IHVybjppc286c3RkOmlzbzoxMjM6c3RhZ2UtOTAuOTMKICB0eXBlOiBVUk4KZG9jbnVtYmVyOiAnMTIzJwpkYXRlOgotIHR5cGU6IHB1Ymxpc2hlZAogIHZhbHVlOiAyMDAxLTA1CmNvbnRyaWJ1dG9yOgotIG9yZ2FuaXphdGlvbjoKICAgIG5hbWU6CiAgICAtIGNvbnRlbnQ6IEludGVybmF0aW9uYWwgT3JnYW5pemF0aW9uIGZvciBTdGFuZGFyZGl6YXRpb24KICAgIGFiYnJldmlhdGlvbjoKICAgICAgY29udGVudDogSVNPCiAgICB1cmw6IHd3dy5pc28ub3JnCiAgcm9sZToKICAtIHR5cGU6IHB1Ymxpc2hlcgplZGl0aW9uOgogIGNvbnRlbnQ6ICczJwpyZXZkYXRlOiAyMDAxLTA1Cmxhbmd1YWdlOgotIGVuCi0gZnIKc2NyaXB0OgotIExhdG4KYWJzdHJhY3Q6Ci0gY29udGVudDogfC0KICAgIFRoaXMgSW50ZXJuYXRpb25hbCBTdGFuZGFyZCBzcGVjaWZpZXMgcHJvY2VkdXJlcyBmb3Igc2FtcGxpbmcgbmF0dXJhbCBydWJiZXIgbGF0ZXggY29uY2VudHJhdGUgYW5kIGZvciBzYW1wbGluZyBzeW50aGV0aWMKICAgIHJ1YmJlciBsYXRpY2VzIGFuZCBhcnRpZmljaWFsIGxhdGljZXMuIEl0IGlzIGFsc28gc3VpdGFibGUgZm9yIHNhbXBsaW5nIHJ1YmJlciBsYXRleCBjb250YWluZWQgaW4gZHJ1bXMsIHRhbmsgY2FycyBvcgogICAgdGFua3MuIFRoZSBwcm9jZWR1cmVzIG1heSBhbHNvIGJlIHVzZWQgZm9yIHNhbXBsaW5nIHBsYXN0aWNzIGRpc3BlcnNpb25zLgogIGxhbmd1YWdlOgogIC0gZW4KICBzY3JpcHQ6CiAgLSBMYXRuCiAgZm9ybWF0OiB0ZXh0L3BsYWluCi0gY29udGVudDogfC0KICAgIExhIHByw6lzZW50ZSBOb3JtZSBpbnRlcm5hdGlvbmFsZSBzcMOpY2lmaWUgZGVzIG3DqXRob2RlcyBkJ8OpY2hhbnRpbGxvbm5hZ2UgcG91ciBkZXMgY29uY2VudHLDqXMgZGUgbGF0ZXggZGUgY2FvdXRjaG91YwogICAgbmF0dXJlbCBldCBwb3VyIMOpY2hhbnRpbGxvbm5lciBkZXMgbGF0ZXggZGUgY2FvdXRjaG91YyBzeW50aMOpdGlxdWUgZXQgZGVzIGxhdGV4IGFydGlmaWNpZWxzLiBFbGxlIHMnYXBwbGlxdWUgw6lnYWxlbWVudAogICAgw6AgbCfDqWNoYW50aWxsb25uYWdlIGRlIGxhdGV4IGRlIGNhb3V0Y2hvdWMgY29udGVudXMgZGFucyBkZXMgZsO7dHMsIGNpdGVybmVzIHJvdXRpw6hyZXMgb3UgZGUgc3RvY2thZ2UuIExlCiAgICBtb2RlIG9ww6lyYXRvaXJlIHBldXQgYXVzc2kgw6p0cmUgdXRpbGlzw6kgcG91ciBsJ8OpY2hhbnRpbGxvbm5hZ2UgZGUgZGlzcGVyc2lvbnMgZGUgcGxhc3RpcXVlcy4KICBsYW5ndWFnZToKICAtIGZyCiAgc2NyaXB0OgogIC0gTGF0bgogIGZvcm1hdDogdGV4dC9wbGFpbgpkb2NzdGF0dXM6CiAgc3RhZ2U6CiAgICB2YWx1ZTogJzkwJwogIHN1YnN0YWdlOgogICAgdmFsdWU6ICc5MycKY29weXJpZ2h0OgotIG93bmVyOgogIC0gbmFtZToKICAgIC0gY29udGVudDogSVNPCiAgZnJvbTogJzIwMDEnCnJlbGF0aW9uOgotIHR5cGU6IG9ic29sZXRlcwogIGJpYml0ZW06CiAgICBpZDogSVNPMTIzLTE5ODUKICAgIHR5cGU6IHN0YW5kYXJkCiAgICBkb2NpZDoKICAgIC0gaWQ6IElTTyAxMjM6MTk4NQogICAgICB0eXBlOiBJU08KICAgICAgcHJpbWFyeTogdHJ1ZQogICAgZm9ybWF0dGVkcmVmOgogICAgICBjb250ZW50OiBJU08gMTIzOjE5ODUKICAgICAgZm9ybWF0OiB0ZXh0L3BsYWluCnBsYWNlOgotIEdlbmV2YQpmZXRjaGVkOiAnMjAyNC0wMS0xNicKZG9jdHlwZToKICB0eXBlOiBpbnRlcm5hdGlvbmFsLXN0YW5kYXJkCmVkaXRvcmlhbGdyb3VwOgogIHRlY2huaWNhbF9jb21taXR0ZWU6CiAgLSBuYW1lOiBSYXcgbWF0ZXJpYWxzIChpbmNsdWRpbmcgbGF0ZXgpIGZvciB1c2UgaW4gdGhlIHJ1YmJlciBpbmR1c3RyeQogICAgbnVtYmVyOiA0NQogICAgdHlwZTogVEMKICAgIGlkZW50aWZpZXI6IElTTy9UQyA0NS9TQyAzCmljczoKLSBjb2RlOiA4My4wNDAuMTAKICB0ZXh0OiBMYXRleCBhbmQgcmF3IHJ1YmJlcgpzdHJ1Y3R1cmVkaWRlbnRpZmllcjoKICBwcm9qZWN0X251bWJlcjogSVNPIDEyMwogIHR5cGU6IElTTwpleHQ6CiAgc2NoZW1hLXZlcnNpb246IHYxLjAuMAo=
+  recorded_at: Mon, 17 Feb 2025 07:27:25 GMT
+recorded_with: VCR 6.1.0
