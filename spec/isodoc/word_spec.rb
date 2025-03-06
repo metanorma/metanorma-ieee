@@ -214,13 +214,13 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                  </boilerplate>
               <preface>
               <foreword displayorder="1">
-              <p>A.<fn reference="2">
+              <p>A.<fn reference="2" id="F1">
             <p id="_1e228e29-baef-4f38-b048-b05a051747e4">Formerly denoted as 15 % (m/m).</p>
           </fn></p>
-              <p>B.<fn reference="2">
+              <p>B.<fn reference="2" id="F2">
             <p id="_1e228e29-baef-4f38-b048-b05a051747e4">Formerly denoted as 15 % (m/m).</p>
           </fn></p>
-              <p>C.<fn reference="1">
+              <p>C.<fn reference="1" id="F3">
             <p id="_1e228e29-baef-4f38-b048-b05a051747e4">Hello! denoted as 15 % (m/m).</p>
           </fn></p>
               </foreword>
@@ -238,7 +238,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         </p>
         <p class='IEEEStdsParagraph'>
           A.
-          <span style='mso-bookmark:_Ref'>
+          <span style='mso-bookmark:_Ref' class="MsoFootnoteReference">
             <a class='FootnoteRef' href='#_ftn2' type='footnote' style='mso-footnote-id:ftn2' name="_" title='' id="_">
               <span class='MsoFootnoteReference'>
                 <span style='mso-special-character:footnote'/>
@@ -248,7 +248,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         </p>
         <p class='IEEEStdsParagraph'>
           C.
-          <span style='mso-bookmark:_Ref'>
+          <span style='mso-bookmark:_Ref' class="MsoFootnoteReference">
             <a class='FootnoteRef' href='#_ftn3' type='footnote' style='mso-footnote-id:ftn3' name="_" title='' id="_">
               <span class='MsoFootnoteReference'>
                 <span style='mso-special-character:footnote'/>
@@ -326,7 +326,9 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         </div>
       </div>
     OUTPUT
-    IsoDoc::Ieee::WordConvert.new({}).convert("test", input, false)
+    presxml = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[@style = 'mso-element:footnote-list']")
@@ -795,7 +797,8 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         <sections>
           <clause id="a" displayorder="1">
           <figure id="figureA-1" keep-with-next="true" keep-lines-together="true">
-          <fmt-name><span class="fmt-caption-label"><span class="fmt-element-name">Figure</span> <semx element="autonum" source="figureA-1">1</semx><span class="fmt-caption-delim">—</span><semx element="name" source="_">Split-it-right <em>sample</em> divider<fn reference="1"><p>X</p></fn></semx></span></fmt-name>
+          <name>Split-it-right <em>sample</em> divider<fn reference="1" id="F1">
+        <p>X</p></fn></name>
         <image height="20" width="30" id="_" mimetype="image/png" alt="alttext" title="titletxt"/>
         </figure>
           </clause>
@@ -803,19 +806,32 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <div>
-         <a name="a" id="a"/>
-         <p class="IEEEStdsLevel1Header"/>
-         <div class="IEEEStdsImage" style="page-break-after: avoid;page-break-inside: avoid;">
-           <a name="figureA-1" id="figureA-1"/>
-           <p class="IEEEStdsImage" style="page-break-after:avoid;">
-             <img height="20" alt="alttext" title="titletxt" width="30"/>
-           </p>
-           <p class="IEEEStdsRegularFigureCaption" style="text-align:center;">Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref"><a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
-         </div>
+       <div>
+          <a name="a" id="a"/>
+          <p class="IEEEStdsLevel1Header">1.</p>
+          <div class="IEEEStdsImage" style="page-break-after: avoid;page-break-inside: avoid;">
+             <a name="figureA-1" id="figureA-1"/>
+             <p class="IEEEStdsImage" style="page-break-after:avoid;">
+                <img height="20" alt="alttext" title="titletxt" width="30"/>
+             </p>
+             <p class="IEEEStdsRegularFigureCaption" style="text-align:center;">
+                Split-it-right
+                <i>sample</i>
+                divider
+                <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
+                   <a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_">
+                      <span class="MsoFootnoteReference">
+                         <span style="mso-special-character:footnote"/>
+                      </span>
+                   </a>
+                </span>
+             </p>
+          </div>
        </div>
     OUTPUT
-    IsoDoc::Ieee::WordConvert.new({}).convert("test", input, false)
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
@@ -823,18 +839,31 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       .to be_equivalent_to Xml::C14n.format(output)
 
     output = <<~OUTPUT
-      <div>
-         <a name="a" id="a"/>
-         <p class="IEEESectionHeader"/>
-         <div class="MsoBodyText" style="page-break-after: avoid;page-break-inside: avoid;;text-align:center;">
-           <a name="figureA-1" id="figureA-1"/>
-           <p class="FigureHeadings" style="text-align:center;">Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref"><a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
-           <img height="20" alt="alttext" title="titletxt" width="30"/>
-         </div>
+       <div>
+          <a name="a" id="a"/>
+          <p class="IEEESectionHeader">1.</p>
+          <div class="MsoBodyText" style="page-break-after: avoid;page-break-inside: avoid;;text-align:center;">
+             <a name="figureA-1" id="figureA-1"/>
+             <p class="FigureHeadings" style="text-align:center;">
+                Split-it-right
+                <i>sample</i>
+                divider
+                <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
+                   <a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_">
+                      <span class="MsoFootnoteReference">
+                         <span style="mso-special-character:footnote"/>
+                      </span>
+                   </a>
+                </span>
+             </p>
+             <img height="20" alt="alttext" title="titletxt" width="30"/>
+          </div>
        </div>
     OUTPUT
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)
     IsoDoc::Ieee::WordConvert.new({})
-      .convert("test", input.sub("<doctype>standard</doctype>",
+      .convert("test", pres_output.sub("<doctype>standard</doctype>",
                                  "<doctype>whitepaper</doctype>"), false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
@@ -850,7 +879,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         <sections>
           <clause id="a" displayorder="1">
           <table id="figureA-1" keep-with-next="true" keep-lines-together="true">
-        <fmt-name>Figure 1&#xA0;&#x2014; Split-it-right <em>sample</em> divider<fn reference="1"><p>X</p></fn></fmt-name>
+        <name>Split-it-right <em>sample</em> divider<fn reference="1" id="F1"><p>X</p></fn></name>
         <thead><tr><th>A</th></tr></thead>
         <tbody><tr><td>B</td></tr></tbody>
         <note id="A"><fmt-name>Note</fmt-name><p>This is a note</p></note>
@@ -860,39 +889,53 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <div>
-         <a name="a" id="a"/>
-         <p class="IEEEStdsLevel1Header"/>
-         <p class="IEEEStdsRegularTableCaption" style="text-align:center;">Figure 1 — Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref"><a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
-         <div align="center" class="table_container">
-           <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;page-break-after: avoid;page-break-inside: avoid;">
-             <a name="figureA-1" id="figureA-1"/>
-             <thead>
-               <tr>
-                 <th style="font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                   <p class="IEEEStdsTableColumnHead" style="page-break-after:avoid">A</p>
-                 </th>
-               </tr>
-             </thead>
-             <tbody>
-               <tr>
-                 <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                   <p class="IEEEStdsTableData-Left" style="page-break-after:auto">B</p>
-                 </td>
-               </tr>
-             </tbody>
-                   <div>
-        <a name="A" id="A"/>
-             <p class="IEEEStdsSingleNote">
-               <span class="note_label">Note</span>
-               This is a note
-            </p>
-      </div>
-           </table>
-         </div>
+       <div>
+          <a name="a" id="a"/>
+          <p class="IEEEStdsLevel1Header">1.</p>
+          <p class="IEEEStdsRegularTableCaption" style="text-align:center;">
+             Split-it-right
+             <i>sample</i>
+             divider
+             <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
+                <a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_">
+                   <span class="MsoFootnoteReference">
+                      <span style="mso-special-character:footnote"/>
+                   </span>
+                </a>
+             </span>
+          </p>
+          <div align="center" class="table_container">
+             <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;page-break-after: avoid;page-break-inside: avoid;">
+                <a name="figureA-1" id="figureA-1"/>
+                <thead>
+                   <tr>
+                      <th style="font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
+                         <p class="IEEEStdsTableColumnHead" style="page-break-after:avoid">A</p>
+                      </th>
+                   </tr>
+                </thead>
+                <tbody>
+                   <tr>
+                      <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                         <p class="IEEEStdsTableData-Left" style="page-break-after:auto">B</p>
+                      </td>
+                   </tr>
+                </tbody>
+                <div>
+                   <a name="A" id="A"/>
+                   <p class="IEEEStdsSingleNote">
+                      <span class="note_label">Note</span>
+                      This is a note
+                   </p>
+                </div>
+             </table>
+          </div>
        </div>
     OUTPUT
-    IsoDoc::Ieee::WordConvert.new({}).convert("test", input, false)
+    FileUtils.rm_f("test.doc")
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
@@ -900,40 +943,53 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       .to be_equivalent_to Xml::C14n.format(output)
 
     output = <<~OUTPUT
-      <div>
-         <a name="a" id="a"/>
-         <p class="IEEESectionHeader"/>
-         <p class="TableTitles" style="text-align:center;">Figure 1 — Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref"><a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
-         <div align="center" class="table_container">
-           <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;page-break-after: avoid;page-break-inside: avoid;">
-             <a name="figureA-1" id="figureA-1"/>
-             <thead>
-               <tr>
-                 <th style="font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                   <p class="Tablecolumnheader" style="page-break-after:avoid">A</p>
-                 </th>
-               </tr>
-             </thead>
-             <tbody>
-               <tr>
-                 <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                   <p class="Tablecelltext" style="page-break-after:auto">B</p>
-                 </td>
-               </tr>
-             </tbody>
-             <div class="Note">
-               <a name="A" id="A"/>
-               <p class="Tablenotes">
-               <span class="note_label">Note</span>
-               This is a note
-            </p>
-             </div>
-           </table>
-         </div>
+       <div>
+          <a name="a" id="a"/>
+          <p class="IEEESectionHeader">1.</p>
+          <p class="TableTitles" style="text-align:center;">
+             Split-it-right
+             <i>sample</i>
+             divider
+             <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
+                <a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_">
+                   <span class="MsoFootnoteReference">
+                      <span style="mso-special-character:footnote"/>
+                   </span>
+                </a>
+             </span>
+          </p>
+          <div align="center" class="table_container">
+             <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;page-break-after: avoid;page-break-inside: avoid;">
+                <a name="figureA-1" id="figureA-1"/>
+                <thead>
+                   <tr>
+                      <th style="font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
+                         <p class="Tablecolumnheader" style="page-break-after:avoid">A</p>
+                      </th>
+                   </tr>
+                </thead>
+                <tbody>
+                   <tr>
+                      <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                         <p class="Tablecelltext" style="page-break-after:auto">B</p>
+                      </td>
+                   </tr>
+                </tbody>
+                <div class="Note">
+                   <a name="A" id="A"/>
+                   <p class="Tablenotes">
+                      <span class="note_label">Note</span>
+                      This is a note
+                   </p>
+                </div>
+             </table>
+          </div>
        </div>
     OUTPUT
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)
     IsoDoc::Ieee::WordConvert.new({})
-      .convert("test", input.sub("<doctype>standard</doctype>",
+      .convert("test", pres_output.sub("<doctype>standard</doctype>",
                                  "<doctype>whitepaper</doctype>"), false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))

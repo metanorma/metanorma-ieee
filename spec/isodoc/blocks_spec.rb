@@ -60,7 +60,7 @@ RSpec.describe IsoDoc do
     INPUT
 
     presxml = <<~PRESXML
-      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
              <clause type="toc" id="_" displayorder="1">
                 <fmt-title depth="1">Contents</fmt-title>
@@ -93,14 +93,24 @@ RSpec.describe IsoDoc do
                          <td align="left">Arborio</td>
                          <td align="center">
                             Drago
-                            <fn reference="a">
-                               <p id="_">Parboiled rice.</p>
+                            <fn reference="a" id="_" target="_">
+                               <p original-id="_">Parboiled rice.</p>
+                               <fmt-fn-label>
+                                  <sup>
+                                     <semx element="autonum" source="_">a</semx>
+                                  </sup>
+                               </fmt-fn-label>
                             </fn>
                          </td>
                          <td align="center">
                             Balilla
-                            <fn reference="a">
+                            <fn reference="a" id="_" target="_">
                                <p id="_">Parboiled rice.</p>
+                               <fmt-fn-label>
+                                  <sup>
+                                     <semx element="autonum" source="_">a</semx>
+                                  </sup>
+                               </fmt-fn-label>
                             </fn>
                          </td>
                          <td align="center">Thaibonnet</td>
@@ -172,6 +182,23 @@ RSpec.describe IsoDoc do
                       </fmt-xref-label>
                       <p>This is a table about rice</p>
                    </note>
+                   <fmt-footnote-container>
+                      <fmt-fn-body id="_" target="_" reference="a">
+                         <semx element="fn" source="_">
+                            <p id="_">
+                               <fmt-fn-label>
+                                  <sup>
+                                     <semx element="autonum" source="_">a</semx>
+                                  </sup>
+                                  <span class="fmt-caption-delim">
+                                     <tab/>
+                                  </span>
+                               </fmt-fn-label>
+                               Parboiled rice.
+                            </p>
+                         </semx>
+                      </fmt-fn-body>
+                   </fmt-footnote-container>
                 </table>
              </foreword>
           </preface>
@@ -181,202 +208,221 @@ RSpec.describe IsoDoc do
     html = <<~"OUTPUT"
       #{HTML_HDR}
            <br/>
-           <div id="A">
-             <h1 class='ForewordTitle'>Foreword</h1>
-             <p class='TableTitle' style='text-align:center;'>Table 1&#x2014;Hello</p>
-             <table id='tableD-1' class='MsoISOTable' style='border-width:1px;border-spacing:0;' title='tool tip'>
-               <caption>
-                 <span style='display:none'>long desc</span>
-               </caption>
-               <thead>
-                 <tr>
-                   <td rowspan='2' style='text-align:left;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;' scope='col'>Description</td>
-                   <td colspan='4' style='text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;' scope='colgroup'>Rice sample</td>
-                 </tr>
-                 <tr>
-                   <td style='text-align:left;border-top:none;border-bottom:solid windowtext 1.5pt;' scope='col'>Arborio</td>
-                   <td style='text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;' scope='col'>
-                      Drago
-                     <a href='#tableD-1a' class='TableFootnoteRef'>a</a>
-                     <aside class='footnote'>
-                       <div id='fn:tableD-1a'>
-                         <span>
-                           <span id='tableD-1a' class='TableFootnoteRef'>a</span>
-                           &#xa0;
-                         </span>
-                         <p id='_'>Parboiled rice.</p>
-                       </div>
-                     </aside>
-                   </td>
-                   <td style='text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;' scope='col'>
-                      Balilla
-                     <a href='#tableD-1a' class='TableFootnoteRef'>a</a>
-                   </td>
-                   <td style='text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;' scope='col'>Thaibonnet</td>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <th style='font-weight:bold;text-align:left;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;' scope='row'>
-                     <p>Number of laboratories retained after eliminating outliers<br/>
-                     Laboratory count</p>
-                   </th>
-                   <td style='text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;'>13</td>
-                   <td style='text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;'>11</td>
-                   <td style='text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;'>13</td>
-                   <td style='text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;'>13</td>
-                 </tr>
-                 <tr>
-                   <td style='text-align:left;border-top:none;border-bottom:solid windowtext 1.5pt;'>Mean value, g/100 g</td>
-                   <td style='text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;'>81,2</td>
-                   <td style='text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;'>82,0</td>
-                   <td style='text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;'>81,8</td>
-                   <td style='text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;'>77,7</td>
-                 </tr>
-               </tbody>
-               <tfoot>
-                 <tr>
-                   <td style='text-align:left;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;'>
-                      Reproducibility limit,
-                     <span class='stem'>(#(R)#)</span>
-                      (= 2,83
-                     <span class='stem'>(#(s_R)#)</span>
-                      )
-                   </td>
-                   <td style='text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;'>2,89</td>
-                   <td style='text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;'>0,57</td>
-                   <td style='text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;'>2,26</td>
-                   <td style='text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;'>6,06</td>
-                 </tr>
-               </tfoot>
-               <div class="figdl">
-               <dl>
-                 <dt>
-                   <p>Drago</p>
-                 </dt>
-                 <dd>A type of rice</dd>
-               </dl>
-               </div>
-               <div id="B" class="Note">
-                 <p>
-                 <span class='note_label'>NOTE&#x2014;</span>This is a table about rice
-                 </p>
-               </div>
-             </table>
-           </div>
-         </div>
+             <div id="A">
+                <h1 class="ForewordTitle">Foreword</h1>
+                <p class="TableTitle" style="text-align:center;">Table 1—Hello</p>
+                <table id="tableD-1" class="MsoISOTable" style="border-width:1px;border-spacing:0;" title="tool tip">
+                   <caption>
+                      <span style="display:none">long desc</span>
+                   </caption>
+                   <thead>
+                      <tr>
+                         <td rowspan="2" style="text-align:left;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;" scope="col">Description</td>
+                         <td colspan="4" style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;" scope="colgroup">Rice sample</td>
+                      </tr>
+                      <tr>
+                         <td style="text-align:left;border-top:none;border-bottom:solid windowtext 1.5pt;" scope="col">Arborio</td>
+                         <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;" scope="col">
+                            Drago
+                            <a href="#tableD-1a" class="TableFootnoteRef">a</a>
+                         </td>
+                         <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;" scope="col">
+                            Balilla
+                            <a href="#tableD-1a" class="TableFootnoteRef">a</a>
+                         </td>
+                         <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;" scope="col">Thaibonnet</td>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr>
+                         <th style="font-weight:bold;text-align:left;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;" scope="row">
+                            <p>
+                               Number of laboratories retained after eliminating outliers
+                               <br/>
+                               Laboratory count
+                            </p>
+                         </th>
+                         <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;">13</td>
+                         <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;">11</td>
+                         <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;">13</td>
+                         <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;">13</td>
+                      </tr>
+                      <tr>
+                         <td style="text-align:left;border-top:none;border-bottom:solid windowtext 1.5pt;">Mean value, g/100 g</td>
+                         <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;">81,2</td>
+                         <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;">82,0</td>
+                         <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;">81,8</td>
+                         <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;">77,7</td>
+                      </tr>
+                   </tbody>
+                   <tfoot>
+                      <tr>
+                         <td style="text-align:left;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;">
+                            Reproducibility limit,
+                            <span class="stem">(#(R)#)</span>
+                            (= 2,83
+                            <span class="stem">(#(s_R)#)</span>
+                            )
+                         </td>
+                         <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;">2,89</td>
+                         <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;">0,57</td>
+                         <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;">2,26</td>
+                         <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;">6,06</td>
+                      </tr>
+                   </tfoot>
+                   <div class="figdl">
+                      <dl>
+                         <dt>
+                            <p>Drago</p>
+                         </dt>
+                         <dd>A type of rice</dd>
+                      </dl>
+                   </div>
+                   <div id="B" class="Note">
+                      <p>
+                         <span class="note_label">NOTE—</span>
+                         This is a table about rice
+                      </p>
+                   </div>
+                   <aside id="fn:tableD-1a" class="footnote">
+                      <p id="_">
+                         <span class="TableFootnoteRef">a</span>
+                           Parboiled rice.
+                      </p>
+                   </aside>
+                </table>
+             </div>
+          </div>
        </body>
     OUTPUT
 
     word = <<~WORD
-          <div>
-        <a name="A" id="A"/>
-        <p class="IEEEStdsLevel1Header">Foreword</p>
-        <p class="IEEEStdsRegularTableCaption" style="text-align:center;">Hello</p>
-        <div align="center" class="table_container">
-          <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;" title="tool tip" summary="long desc">
-            <a name="tableD-1" id="tableD-1"/>
-            <thead>
-              <tr>
-                <td rowspan="2" align="left" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                  <p class="IEEEStdsTableColumnHead" style="text-align: left;page-break-after:avoid">Description</p>
-                </td>
-                <td colspan="4" align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
-                  <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">Rice sample</p>
-                </td>
-              </tr>
-              <tr>
-                <td align="left" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                  <p class="IEEEStdsTableColumnHead" style="text-align: left;page-break-after:avoid">Arborio</p>
-                </td>
-                <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                  <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">
-                     Drago
-                     <a href="#tableD-1a" class="TableFootnoteRef">a</a><aside><div style="page-break-after:avoid"><a name="ftntableD-1a" id="ftntableD-1a"/><span><span class="TableFootnoteRef"><a name="tableD-1a" id="tableD-1a"/>a</span><span style="mso-tab-count:1">  </span></span><p style="page-break-after:avoid" class="IEEEStdsParagraph"><a name="_" id="_"/>Parboiled rice.</p></div></aside></p>
-                </td>
-                <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                  <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">
-                     Balilla
-                     <a href="#tableD-1a" class="TableFootnoteRef">a</a></p>
-                </td>
-                <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                  <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">Thaibonnet</p>
-                </td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th align="left" style="font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
-                  <p class="IEEEStdsTableLineHead" style="text-align: left;page-break-after:avoid">Number of laboratories retained after eliminating outliers</p>
-                  <p class="IEEEStdsTableLineSubhead" style="text-align: left;page-break-after:avoid">
-                      Laboratory count</p>
-                </th>
-                <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
-                  <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">13</p>
-                </td>
-                <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
-                  <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">11</p>
-                </td>
-                <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
-                  <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">13</p>
-                </td>
-                <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
-                  <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">13</p>
-                </td>
-              </tr>
-              <tr>
-                <td align="left" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                  <p class="IEEEStdsTableData-Left" style="text-align: left;page-break-after:auto">Mean value, g/100 g</p>
-                </td>
-                <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                  <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">81,2</p>
-                </td>
-                <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                  <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">82,0</p>
-                </td>
-                <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                  <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">81,8</p>
-                </td>
-                <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                  <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">77,7</p>
-                </td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td align="left" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                  <p class="IEEEStdsTableData-Left" style="text-align: left;page-break-after:auto">
-                     Reproducibility limit,
-                     <span class="stem">(#(R)#)</span>
-                      (= 2,83
-                      <span class="stem">(#(s_R)#)</span>
-                     )
+       <div>
+          <a name="A" id="A"/>
+          <p class="IEEEStdsLevel1Header">Foreword</p>
+          <p class="IEEEStdsRegularTableCaption" style="text-align:center;"> Hello</p>
+          <div align="center" class="table_container">
+             <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;" title="tool tip" summary="long desc">
+                <a name="tableD-1" id="tableD-1"/>
+                <thead>
+                   <tr>
+                      <td rowspan="2" align="left" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
+                         <p class="IEEEStdsTableColumnHead" style="text-align: left;page-break-after:avoid">Description</p>
+                      </td>
+                      <td colspan="4" align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
+                         <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">Rice sample</p>
+                      </td>
+                   </tr>
+                   <tr>
+                      <td align="left" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
+                         <p class="IEEEStdsTableColumnHead" style="text-align: left;page-break-after:avoid">Arborio</p>
+                      </td>
+                      <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
+                         <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">
+                            Drago
+                            <a href="#tableD-1a" class="TableFootnoteRef">a</a>
+                         </p>
+                      </td>
+                      <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
+                         <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">
+                            Balilla
+                            <a href="#tableD-1a" class="TableFootnoteRef">a</a>
+                         </p>
+                      </td>
+                      <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
+                         <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">Thaibonnet</p>
+                      </td>
+                   </tr>
+                </thead>
+                <tbody>
+                   <tr>
+                      <th align="left" style="font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
+                         <p class="IEEEStdsTableLineHead" style="text-align: left;page-break-after:avoid">Number of laboratories retained after eliminating outliers</p>
+                         <p class="IEEEStdsTableLineSubhead" style="text-align: left;page-break-after:avoid">
+             Laboratory count</p>
+                      </th>
+                      <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
+                         <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">13</p>
+                      </td>
+                      <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
+                         <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">11</p>
+                      </td>
+                      <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
+                         <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">13</p>
+                      </td>
+                      <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
+                         <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">13</p>
+                      </td>
+                   </tr>
+                   <tr>
+                      <td align="left" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                         <p class="IEEEStdsTableData-Left" style="text-align: left;page-break-after:auto">Mean value, g/100 g</p>
+                      </td>
+                      <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                         <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">81,2</p>
+                      </td>
+                      <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                         <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">82,0</p>
+                      </td>
+                      <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                         <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">81,8</p>
+                      </td>
+                      <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                         <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">77,7</p>
+                      </td>
+                   </tr>
+                </tbody>
+                <tfoot>
+                   <tr>
+                      <td align="left" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                         <p class="IEEEStdsTableData-Left" style="text-align: left;page-break-after:auto">
+                            Reproducibility limit,
+                            <span class="stem">(#(R)#)</span>
+                            (= 2,83
+                            <span class="stem">(#(s_R)#)</span>
+                            )
+                         </p>
+                      </td>
+                      <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                         <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">2,89</p>
+                      </td>
+                      <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                         <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">0,57</p>
+                      </td>
+                      <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                         <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">2,26</p>
+                      </td>
+                      <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                         <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">6,06</p>
+                      </td>
+                   </tr>
+                </tfoot>
+                <div class="figdl">
+                   <p style="text-indent: -2.0cm; margin-left: 2.0cm; tab-stops: 2.0cm;" class="IEEEStdsParagraph">
+                      Drago
+                      <span style="mso-tab-count:1">  </span>
+                      A type of rice
                    </p>
-                </td>
-                <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                  <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">2,89</p>
-                </td>
-                <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                  <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">0,57</p>
-                </td>
-                <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                  <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">2,26</p>
-                </td>
-                <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                  <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">6,06</p>
-                </td>
-              </tr>
-            </tfoot>
-            <div class="figdl">
-            <p style="text-indent: -2.0cm; margin-left: 2.0cm; tab-stops: 2.0cm;" class="IEEEStdsParagraph">Drago<span style="mso-tab-count:1">  </span>A type of rice</p>
-            </div>
-            <div>
-            <a name="B" id="B"/>
-              <p class="IEEEStdsSingleNote"><span class="note_label">NOTE—</span>This is a table about rice</p>
-            </div>
-          </table>
-        </div>
-      </div>
+                </div>
+                <div>
+                   <a name="B" id="B"/>
+                   <p class="IEEEStdsSingleNote">
+                      <span class="note_label">NOTE—</span>
+                      This is a table about rice
+                   </p>
+                </div>
+                <aside>
+                   <a name="ftntableD-1a" id="ftntableD-1a"/>
+                   <p class="IEEEStdsParagraph">
+                      <a name="_" id="_"/>
+                      <span class="TableFootnoteRef">a</span>
+                      <span style="mso-tab-count:1">  </span>
+                      Parboiled rice.
+                   </p>
+                </aside>
+             </table>
+          </div>
+       </div>
     WORD
     pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
@@ -448,31 +494,41 @@ RSpec.describe IsoDoc do
              <foreword id="A" displayorder="2">
                 <title id="_">Foreword</title>
                 <fmt-title depth="1">
-                      <semx element="title" source="_">Foreword</semx>
+                   <semx element="title" source="_">Foreword</semx>
                 </fmt-title>
                 <figure id="figureA-1" keep-with-next="true" keep-lines-together="true" autonum="1">
                    <name id="_">
                       Split-it-right
                       <em>sample</em>
                       divider
-                      <fn reference="1">
+                      <fn reference="1" original-reference="1" target="_" original-id="_">
                          <p>X</p>
+                         <fmt-fn-label>
+                            <sup>
+                               <semx element="autonum" source="_">1</semx>
+                            </sup>
+                         </fmt-fn-label>
                       </fn>
                    </name>
                    <fmt-name>
                       <span class="fmt-caption-label">
                          <span class="fmt-element-name">Figure</span>
                          <semx element="autonum" source="figureA-1">1</semx>
-                         </span>
-                         <span class="fmt-caption-delim">—</span>
-                         <semx element="name" source="_">
-                            Split-it-right
-                            <em>sample</em>
-                            divider
-                            <fn reference="1">
-                               <p>X</p>
-                            </fn>
-                         </semx>
+                      </span>
+                      <span class="fmt-caption-delim">—</span>
+                      <semx element="name" source="_">
+                         Split-it-right
+                         <em>sample</em>
+                         divider
+                         <fn reference="1" original-reference="1" id="_" target="_">
+                            <p>X</p>
+                            <fmt-fn-label>
+                               <sup>
+                                  <semx element="autonum" source="_">1</semx>
+                               </sup>
+                            </fmt-fn-label>
+                         </fn>
+                      </semx>
                    </fmt-name>
                    <fmt-xref-label>
                       <span class="fmt-element-name">Figure</span>
@@ -480,24 +536,47 @@ RSpec.describe IsoDoc do
                    </fmt-xref-label>
                    <image src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7" height="20" width="auto" id="_" mimetype="image/png"/>
                    <image src="data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjw/eG1sLXN0eWxlc2hlZXQgdHlwZT0idGV4dC94c2wiIGhyZWY9Ii4uLy4uLy4uL3hzbC9yZXNfZG9jL2ltZ2ZpbGUueHNsIj8+CjwhRE9DVFlQRSBpbWdmaWxlLmNvbnRlbnQgU1lTVEVNICIuLi8uLi8uLi9kdGQvdGV4dC5lbnQiPgo8aW1nZmlsZS5jb250ZW50IG1vZHVsZT0iZnVuZGFtZW50YWxzX29mX3Byb2R1Y3RfZGVzY3JpcHRpb25fYW5kX3N1cHBvcnQiIGZpbGU9ImFjdGlvbl9zY2hlbWFleHBnMS54bWwiPgo8aW1nIHNyYz0iYWN0aW9uX3NjaGVtYWV4cGcxLmdpZiI+CjxpbWcuYXJlYSBzaGFwZT0icmVjdCIgY29vcmRzPSIyMTAsMTg2LDM0MywyMjciIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9iYXNpY19hdHRyaWJ1dGVfc2NoZW1hL2Jhc2ljX2F0dHJpYnV0ZV9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMTAsMTAsOTYsNTEiIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9hY3Rpb25fc2NoZW1hL2FjdGlvbl9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMjEwLDI2NCwzNTgsMzA1IiBocmVmPSIuLi8uLi9yZXNvdXJjZXMvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEueG1sIiAvPgo8L2ltZz4KPC9pbWdmaWxlLmNvbnRlbnQ+Cg==" height="20" width="auto" id="_" mimetype="application/xml"/>
+                   <fn reference="a" id="_" target="_">
+                      <p original-id="_">
+                         The time
+                         <stem type="AsciiMath" id="_">t_90</stem>
+                         <fmt-stem type="AsciiMath">
+                            <semx element="stem" source="_">t_90</semx>
+                         </fmt-stem>
+                         was estimated to be 18,2 min for this example.
+                      </p>
+                      <fmt-fn-label>
+                         <sup>
+                            <semx element="autonum" source="_">a</semx>
+                         </sup>
+                      </fmt-fn-label>
+                   </fn>
                    <p keep-with-next="true">
                       <strong>Key</strong>
                    </p>
                    <dl class="formula_dl">
                       <dt>
                          <p>
-                            <sup>a</sup>
+                            <fmt-fn-label>
+                               <sup>
+                                  <semx element="autonum" source="_">a</semx>
+                               </sup>
+                            </fmt-fn-label>
                          </p>
                       </dt>
                       <dd>
-                         <p id="_">
-                            The time
-                                                 <stem type="AsciiMath" id="_">t_90</stem>
-                     <fmt-stem type="AsciiMath">
-                        <semx element="stem" source="_">t_90</semx>
-                     </fmt-stem>
-                            was estimated to be 18,2 min for this example.
-                         </p>
+                         <fmt-fn-body id="_" target="_" reference="a">
+                            <semx element="fn" source="_">
+                               <p id="_">
+                                  The time
+                                  <stem type="AsciiMath" id="_">t_90</stem>
+                                  <fmt-stem type="AsciiMath">
+                                     <semx element="stem" source="_">t_90</semx>
+                                  </fmt-stem>
+                                  was estimated to be 18,2 min for this example.
+                               </p>
+                            </semx>
+                         </fmt-fn-body>
                       </dd>
                       <dt>A</dt>
                       <dd>
@@ -525,32 +604,52 @@ RSpec.describe IsoDoc do
                 </figure>
              </foreword>
           </preface>
+          <fmt-footnote-container>
+             <fmt-fn-body id="_" target="_" reference="1">
+                <semx element="fn" source="_">
+                   <p>
+                      <fmt-fn-label>
+                         <sup>
+                            <semx element="autonum" source="_">1</semx>
+                         </sup>
+                         <span class="fmt-caption-delim">
+                            <tab/>
+                         </span>
+                      </fmt-fn-label>
+                      X
+                   </p>
+                </semx>
+             </fmt-fn-body>
+          </fmt-footnote-container>
        </iso-standard>
     OUTPUT
     html = <<~OUTPUT
       #{HTML_HDR}
                                <br/>
-                               <div id="A">
-                                 <h1 class="ForewordTitle">Foreword</h1>
-                                 <div id="figureA-1" class="figure" style='page-break-after: avoid;page-break-inside: avoid;'>
-                         <img src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7" height="20" width="auto"/>
-                         <img src='data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjw/eG1sLXN0eWxlc2hlZXQgdHlwZT0idGV4dC94c2wiIGhyZWY9Ii4uLy4uLy4uL3hzbC9yZXNfZG9jL2ltZ2ZpbGUueHNsIj8+CjwhRE9DVFlQRSBpbWdmaWxlLmNvbnRlbnQgU1lTVEVNICIuLi8uLi8uLi9kdGQvdGV4dC5lbnQiPgo8aW1nZmlsZS5jb250ZW50IG1vZHVsZT0iZnVuZGFtZW50YWxzX29mX3Byb2R1Y3RfZGVzY3JpcHRpb25fYW5kX3N1cHBvcnQiIGZpbGU9ImFjdGlvbl9zY2hlbWFleHBnMS54bWwiPgo8aW1nIHNyYz0iYWN0aW9uX3NjaGVtYWV4cGcxLmdpZiI+CjxpbWcuYXJlYSBzaGFwZT0icmVjdCIgY29vcmRzPSIyMTAsMTg2LDM0MywyMjciIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9iYXNpY19hdHRyaWJ1dGVfc2NoZW1hL2Jhc2ljX2F0dHJpYnV0ZV9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMTAsMTAsOTYsNTEiIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9hY3Rpb25fc2NoZW1hL2FjdGlvbl9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMjEwLDI2NCwzNTgsMzA1IiBocmVmPSIuLi8uLi9yZXNvdXJjZXMvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEueG1sIiAvPgo8L2ltZz4KPC9pbWdmaWxlLmNvbnRlbnQ+Cg==' height='20' width='auto'/>
-                          <p style="page-break-after: avoid;">
-                      <b>
-                         Key
-                      </b>
+             <div id="A">
+                <h1 class="ForewordTitle">Foreword</h1>
+                <div id="figureA-1" class="figure" style="page-break-after: avoid;page-break-inside: avoid;">
+                   <img src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7" height="20" width="auto"/>
+                   <img src="data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjw/eG1sLXN0eWxlc2hlZXQgdHlwZT0idGV4dC94c2wiIGhyZWY9Ii4uLy4uLy4uL3hzbC9yZXNfZG9jL2ltZ2ZpbGUueHNsIj8+CjwhRE9DVFlQRSBpbWdmaWxlLmNvbnRlbnQgU1lTVEVNICIuLi8uLi8uLi9kdGQvdGV4dC5lbnQiPgo8aW1nZmlsZS5jb250ZW50IG1vZHVsZT0iZnVuZGFtZW50YWxzX29mX3Byb2R1Y3RfZGVzY3JpcHRpb25fYW5kX3N1cHBvcnQiIGZpbGU9ImFjdGlvbl9zY2hlbWFleHBnMS54bWwiPgo8aW1nIHNyYz0iYWN0aW9uX3NjaGVtYWV4cGcxLmdpZiI+CjxpbWcuYXJlYSBzaGFwZT0icmVjdCIgY29vcmRzPSIyMTAsMTg2LDM0MywyMjciIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9iYXNpY19hdHRyaWJ1dGVfc2NoZW1hL2Jhc2ljX2F0dHJpYnV0ZV9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMTAsMTAsOTYsNTEiIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9hY3Rpb25fc2NoZW1hL2FjdGlvbl9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMjEwLDI2NCwzNTgsMzA1IiBocmVmPSIuLi8uLi9yZXNvdXJjZXMvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEueG1sIiAvPgo8L2ltZz4KPC9pbWdmaWxlLmNvbnRlbnQ+Cg==" height="20" width="auto"/>
+                   <a href="#figureA-1a" class="TableFootnoteRef">a</a>
+                   <p style="page-break-after: avoid;">
+                      <b>Key</b>
                    </p>
                    <div class="figdl">
                       <dl class="formula_dl">
                          <dt>
-                            <p><sup>a</sup></p>
+                            <p>
+                               <sup>a</sup>
+                            </p>
                          </dt>
                          <dd>
-                            <p id="_">
-                               The time
-                               <span class="stem">(#(t_90)#)</span>
-                               was estimated to be 18,2 min for this example.
-                            </p>
+                            <div id="fn:figureA-1a" class="footnote">
+                               <p id="_">
+                                  The time
+                                  <span class="stem">(#(t_90)#)</span>
+                                  was estimated to be 18,2 min for this example.
+                               </p>
+                            </div>
                          </dd>
                          <dt>
                             <p>A</p>
@@ -586,30 +685,36 @@ RSpec.describe IsoDoc do
        </body>
     OUTPUT
     word = <<~OUTPUT
-      <div>
+       <div>
           <a name="A" id="A"/>
           <p class="IEEEStdsLevel1Header">Foreword</p>
           <div class="IEEEStdsImage" style="page-break-after: avoid;page-break-inside: avoid;">
              <a name="figureA-1" id="figureA-1"/>
              <img src="_.gif" height="20" width="20"/>
              <img src="_.xml" height="20" width="0"/>
+             <a href="#figureA-1a" class="TableFootnoteRef">a</a>
              <p style="page-break-after: avoid;" class="IEEEStdsParagraph">
-                <b>
-                   Key
-                </b>
+                <b>Key</b>
              </p>
              <table class="formula_dl" style="page-break-after:avoid;">
                 <tr>
                    <td valign="top" align="left">
-                      <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph"><p class="IEEEStdsParagraph"><sup>a</sup></p></p>
+                      <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">
+                         <p class="IEEEStdsParagraph">
+                            <sup>a</sup>
+                         </p>
+                      </p>
                    </td>
                    <td valign="top">
-                      <p class="IEEEStdsParagraph">
-                         <a name="_" id="_"/>
-                         The time
-                         <span class="stem">(#(t_90)#)</span>
-                         was estimated to be 18,2 min for this example.
-                      </p>
+                      <div>
+                         <a name="ftnfigureA-1a" id="ftnfigureA-1a"/>
+                         <p class="IEEEStdsParagraph">
+                            <a name="_" id="_"/>
+                            The time
+                            <span class="stem">(#(t_90)#)</span>
+                            was estimated to be 18,2 min for this example.
+                         </p>
+                      </div>
                    </td>
                 </tr>
                 <tr>
@@ -621,11 +726,12 @@ RSpec.describe IsoDoc do
                    </td>
                 </tr>
              </table>
-             <p class="IEEEStdsRegularFigureCaption" style="text-align:center;">Split-it-right
+             <p class="IEEEStdsRegularFigureCaption" style="text-align:center;">
+                Split-it-right
                 <i>sample</i>
                 divider
-                <span style="mso-bookmark:_Ref">
-                   <a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_">
+                <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
+                   <a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_">
                       <span class="MsoFootnoteReference">
                          <span style="mso-special-character:footnote"/>
                       </span>
@@ -637,7 +743,7 @@ RSpec.describe IsoDoc do
              <a name="figure-B" id="figure-B"/>
              <pre style="page-break-after:avoid;">A 
        B</pre>
-             <p class="IEEEStdsRegularFigureCaption" style="text-align:center;"/>
+             <p class="IEEEStdsRegularFigureCaption" style="text-align:center;"> </p>
           </div>
           <div class="IEEEStdsImage">
              <a name="figure-C" id="figure-C"/>
@@ -671,22 +777,27 @@ RSpec.describe IsoDoc do
      .convert("test", input, true))
      .at("//xmlns:figure/xmlns:fmt-name").to_xml)))
       .to be_equivalent_to Xml::C14n.format(<<~OUTPUT)
-      <fmt-name>
+           <fmt-name>
           <span class="fmt-caption-label">
              <span class="fmt-element-name">Figure</span>
              <semx element="autonum" source="A">Preface</semx>
              <span class="fmt-autonum-delim">.</span>
              <semx element="autonum" source="figureA-1">1</semx>
-             </span>
-             <span class="fmt-caption-delim">—</span>
-             <semx element="name" source="_">
-                Split-it-right
-                <em>sample</em>
-                divider
-                <fn reference="1">
-                   <p>X</p>
-                </fn>
-             </semx>
+          </span>
+          <span class="fmt-caption-delim">—</span>
+          <semx element="name" source="_">
+             Split-it-right
+             <em>sample</em>
+             divider
+             <fn reference="1" original-reference="1" id="_" target="_">
+                <p>X</p>
+                <fmt-fn-label>
+                   <sup>
+                      <semx element="autonum" source="_">1</semx>
+                   </sup>
+                </fmt-fn-label>
+             </fn>
+          </semx>
        </fmt-name>
       OUTPUT
   end
