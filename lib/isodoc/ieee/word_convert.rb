@@ -202,29 +202,35 @@ module IsoDoc
         end
       end
 
-      # Figure 1— remove each of these
-      def figure_name_parse(_node, div, name)
-        name.nil? and return
-        name.at(".//xmlns:semx[@element = 'autonum']/"\
-          "preceding-sibling::*[normalize-space() = '']")&.remove
+      # "Figure 1—" remove each of these: strip elements in caption associated
+      # with autonumbering -- # but not in footnotes. The autonumber captions
+      # are provided by Word styles instead
+      def strip_caption_semx(name)
+        name.xpath(".//xmlns:semx[@element = 'autonum']/"\
+                   "preceding-sibling::*[normalize-space() = '']").each do |s|
+                     s.ancestors("fn").empty? and s.remove
+                   end
         name.xpath(ns(".//span[@class = 'fmt-element-name']  | "\
                       ".//span[@class = 'fmt-caption-delim'] | "\
-                      ".//semx[@element = 'autonum']")).each(&:remove)
+                      ".//semx[@element = 'autonum']")).each do |s|
+                        s.ancestors("fn").empty? and s.remove
+                      end
+      end
+
+      def figure_name_parse(_node, div, name)
+        name.nil? and return
+        strip_caption_semx(name)
         super
       end
 
       def table_title_parse(node, out)
         name = node.at(ns("./fmt-name")) or return
-        name.at(".//xmlns:semx[@element = 'autonum']/"\
-          "preceding-sibling::*[normalize-space() = '']")&.remove
-        name.xpath(ns(".//span[@class = 'fmt-element-name']  | "\
-                      ".//span[@class = 'fmt-caption-delim'] | "\
-                      ".//semx[@element = 'autonum']")).each(&:remove)
+        strip_caption_semx(name)
         super
       end
 
       include BaseConvert
       include Init
-    end
-  end
+end
+end
 end

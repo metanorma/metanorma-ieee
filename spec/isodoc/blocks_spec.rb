@@ -486,7 +486,7 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
              <clause type="toc" id="_" displayorder="1">
                 <fmt-title depth="1">Contents</fmt-title>
@@ -536,24 +536,47 @@ RSpec.describe IsoDoc do
                    </fmt-xref-label>
                    <image src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7" height="20" width="auto" id="_" mimetype="image/png"/>
                    <image src="data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjw/eG1sLXN0eWxlc2hlZXQgdHlwZT0idGV4dC94c2wiIGhyZWY9Ii4uLy4uLy4uL3hzbC9yZXNfZG9jL2ltZ2ZpbGUueHNsIj8+CjwhRE9DVFlQRSBpbWdmaWxlLmNvbnRlbnQgU1lTVEVNICIuLi8uLi8uLi9kdGQvdGV4dC5lbnQiPgo8aW1nZmlsZS5jb250ZW50IG1vZHVsZT0iZnVuZGFtZW50YWxzX29mX3Byb2R1Y3RfZGVzY3JpcHRpb25fYW5kX3N1cHBvcnQiIGZpbGU9ImFjdGlvbl9zY2hlbWFleHBnMS54bWwiPgo8aW1nIHNyYz0iYWN0aW9uX3NjaGVtYWV4cGcxLmdpZiI+CjxpbWcuYXJlYSBzaGFwZT0icmVjdCIgY29vcmRzPSIyMTAsMTg2LDM0MywyMjciIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9iYXNpY19hdHRyaWJ1dGVfc2NoZW1hL2Jhc2ljX2F0dHJpYnV0ZV9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMTAsMTAsOTYsNTEiIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9hY3Rpb25fc2NoZW1hL2FjdGlvbl9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMjEwLDI2NCwzNTgsMzA1IiBocmVmPSIuLi8uLi9yZXNvdXJjZXMvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEueG1sIiAvPgo8L2ltZz4KPC9pbWdmaWxlLmNvbnRlbnQ+Cg==" height="20" width="auto" id="_" mimetype="application/xml"/>
+                   <fn reference="a" id="_" target="_">
+                      <p original-id="_">
+                         The time
+                         <stem type="AsciiMath" id="_">t_90</stem>
+                         <fmt-stem type="AsciiMath">
+                            <semx element="stem" source="_">t_90</semx>
+                         </fmt-stem>
+                         was estimated to be 18,2 min for this example.
+                      </p>
+                      <fmt-fn-label>
+                         <sup>
+                            <semx element="autonum" source="_">a</semx>
+                         </sup>
+                      </fmt-fn-label>
+                   </fn>
                    <p keep-with-next="true">
                       <strong>Key</strong>
                    </p>
                    <dl class="formula_dl">
                       <dt>
                          <p>
-                            <sup>a</sup>
+                            <fmt-fn-label>
+                               <sup>
+                                  <semx element="autonum" source="_">a</semx>
+                               </sup>
+                            </fmt-fn-label>
                          </p>
                       </dt>
                       <dd>
-                         <p id="_">
-                            The time
-                            <stem type="AsciiMath" id="_">t_90</stem>
-                            <fmt-stem type="AsciiMath">
-                               <semx element="stem" source="_">t_90</semx>
-                            </fmt-stem>
-                            was estimated to be 18,2 min for this example.
-                         </p>
+                         <fmt-fn-body id="_" target="_" reference="a">
+                            <semx element="fn" source="_">
+                               <p id="_">
+                                  The time
+                                  <stem type="AsciiMath" id="_">t_90</stem>
+                                  <fmt-stem type="AsciiMath">
+                                     <semx element="stem" source="_">t_90</semx>
+                                  </fmt-stem>
+                                  was estimated to be 18,2 min for this example.
+                               </p>
+                            </semx>
+                         </fmt-fn-body>
                       </dd>
                       <dt>A</dt>
                       <dd>
@@ -603,27 +626,30 @@ RSpec.describe IsoDoc do
     html = <<~OUTPUT
       #{HTML_HDR}
                                <br/>
-                               <div id="A">
-                                 <h1 class="ForewordTitle">Foreword</h1>
-                                 <div id="figureA-1" class="figure" style='page-break-after: avoid;page-break-inside: avoid;'>
-                         <img src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7" height="20" width="auto"/>
-                         <img src='data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjw/eG1sLXN0eWxlc2hlZXQgdHlwZT0idGV4dC94c2wiIGhyZWY9Ii4uLy4uLy4uL3hzbC9yZXNfZG9jL2ltZ2ZpbGUueHNsIj8+CjwhRE9DVFlQRSBpbWdmaWxlLmNvbnRlbnQgU1lTVEVNICIuLi8uLi8uLi9kdGQvdGV4dC5lbnQiPgo8aW1nZmlsZS5jb250ZW50IG1vZHVsZT0iZnVuZGFtZW50YWxzX29mX3Byb2R1Y3RfZGVzY3JpcHRpb25fYW5kX3N1cHBvcnQiIGZpbGU9ImFjdGlvbl9zY2hlbWFleHBnMS54bWwiPgo8aW1nIHNyYz0iYWN0aW9uX3NjaGVtYWV4cGcxLmdpZiI+CjxpbWcuYXJlYSBzaGFwZT0icmVjdCIgY29vcmRzPSIyMTAsMTg2LDM0MywyMjciIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9iYXNpY19hdHRyaWJ1dGVfc2NoZW1hL2Jhc2ljX2F0dHJpYnV0ZV9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMTAsMTAsOTYsNTEiIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9hY3Rpb25fc2NoZW1hL2FjdGlvbl9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMjEwLDI2NCwzNTgsMzA1IiBocmVmPSIuLi8uLi9yZXNvdXJjZXMvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEueG1sIiAvPgo8L2ltZz4KPC9pbWdmaWxlLmNvbnRlbnQ+Cg==' height='20' width='auto'/>
-                          <p style="page-break-after: avoid;">
-                      <b>
-                         Key
-                      </b>
+             <div id="A">
+                <h1 class="ForewordTitle">Foreword</h1>
+                <div id="figureA-1" class="figure" style="page-break-after: avoid;page-break-inside: avoid;">
+                   <img src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7" height="20" width="auto"/>
+                   <img src="data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjw/eG1sLXN0eWxlc2hlZXQgdHlwZT0idGV4dC94c2wiIGhyZWY9Ii4uLy4uLy4uL3hzbC9yZXNfZG9jL2ltZ2ZpbGUueHNsIj8+CjwhRE9DVFlQRSBpbWdmaWxlLmNvbnRlbnQgU1lTVEVNICIuLi8uLi8uLi9kdGQvdGV4dC5lbnQiPgo8aW1nZmlsZS5jb250ZW50IG1vZHVsZT0iZnVuZGFtZW50YWxzX29mX3Byb2R1Y3RfZGVzY3JpcHRpb25fYW5kX3N1cHBvcnQiIGZpbGU9ImFjdGlvbl9zY2hlbWFleHBnMS54bWwiPgo8aW1nIHNyYz0iYWN0aW9uX3NjaGVtYWV4cGcxLmdpZiI+CjxpbWcuYXJlYSBzaGFwZT0icmVjdCIgY29vcmRzPSIyMTAsMTg2LDM0MywyMjciIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9iYXNpY19hdHRyaWJ1dGVfc2NoZW1hL2Jhc2ljX2F0dHJpYnV0ZV9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMTAsMTAsOTYsNTEiIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9hY3Rpb25fc2NoZW1hL2FjdGlvbl9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMjEwLDI2NCwzNTgsMzA1IiBocmVmPSIuLi8uLi9yZXNvdXJjZXMvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEueG1sIiAvPgo8L2ltZz4KPC9pbWdmaWxlLmNvbnRlbnQ+Cg==" height="20" width="auto"/>
+                   <a href="#figureA-1a" class="TableFootnoteRef">a</a>
+                   <p style="page-break-after: avoid;">
+                      <b>Key</b>
                    </p>
                    <div class="figdl">
                       <dl class="formula_dl">
                          <dt>
-                            <p><sup>a</sup></p>
+                            <p>
+                               <sup>a</sup>
+                            </p>
                          </dt>
                          <dd>
-                            <p id="_">
-                               The time
-                               <span class="stem">(#(t_90)#)</span>
-                               was estimated to be 18,2 min for this example.
-                            </p>
+                            <div id="fn:figureA-1a" class="footnote">
+                               <p id="_">
+                                  The time
+                                  <span class="stem">(#(t_90)#)</span>
+                                  was estimated to be 18,2 min for this example.
+                               </p>
+                            </div>
                          </dd>
                          <dt>
                             <p>A</p>
@@ -659,30 +685,36 @@ RSpec.describe IsoDoc do
        </body>
     OUTPUT
     word = <<~OUTPUT
-      <div>
+       <div>
           <a name="A" id="A"/>
           <p class="IEEEStdsLevel1Header">Foreword</p>
           <div class="IEEEStdsImage" style="page-break-after: avoid;page-break-inside: avoid;">
              <a name="figureA-1" id="figureA-1"/>
              <img src="_.gif" height="20" width="20"/>
              <img src="_.xml" height="20" width="0"/>
+             <a href="#figureA-1a" class="TableFootnoteRef">a</a>
              <p style="page-break-after: avoid;" class="IEEEStdsParagraph">
-                <b>
-                   Key
-                </b>
+                <b>Key</b>
              </p>
              <table class="formula_dl" style="page-break-after:avoid;">
                 <tr>
                    <td valign="top" align="left">
-                      <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph"><p class="IEEEStdsParagraph"><sup>a</sup></p></p>
+                      <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">
+                         <p class="IEEEStdsParagraph">
+                            <sup>a</sup>
+                         </p>
+                      </p>
                    </td>
                    <td valign="top">
-                      <p class="IEEEStdsParagraph">
-                         <a name="_" id="_"/>
-                         The time
-                         <span class="stem">(#(t_90)#)</span>
-                         was estimated to be 18,2 min for this example.
-                      </p>
+                      <div>
+                         <a name="ftnfigureA-1a" id="ftnfigureA-1a"/>
+                         <p class="IEEEStdsParagraph">
+                            <a name="_" id="_"/>
+                            The time
+                            <span class="stem">(#(t_90)#)</span>
+                            was estimated to be 18,2 min for this example.
+                         </p>
+                      </div>
                    </td>
                 </tr>
                 <tr>
@@ -694,11 +726,12 @@ RSpec.describe IsoDoc do
                    </td>
                 </tr>
              </table>
-             <p class="IEEEStdsRegularFigureCaption" style="text-align:center;">Split-it-right
+             <p class="IEEEStdsRegularFigureCaption" style="text-align:center;">
+                Split-it-right
                 <i>sample</i>
                 divider
-                <span style="mso-bookmark:_Ref">
-                   <a class="FootnoteRef" href="#_ftn1" type="footnote" style="mso-footnote-id:ftn1" name="_" title="" id="_">
+                <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
+                   <a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_">
                       <span class="MsoFootnoteReference">
                          <span style="mso-special-character:footnote"/>
                       </span>
@@ -710,7 +743,7 @@ RSpec.describe IsoDoc do
              <a name="figure-B" id="figure-B"/>
              <pre style="page-break-after:avoid;">A 
        B</pre>
-             <p class="IEEEStdsRegularFigureCaption" style="text-align:center;"/>
+             <p class="IEEEStdsRegularFigureCaption" style="text-align:center;"> </p>
           </div>
           <div class="IEEEStdsImage">
              <a name="figure-C" id="figure-C"/>

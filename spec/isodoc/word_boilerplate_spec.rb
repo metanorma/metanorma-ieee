@@ -458,7 +458,7 @@ Users are encouraged to periodically check for errata.</p>
                       Suggestions for changes in documents should be in the form of a proposed change of text, together with appropriate supporting comments. Since IEEE standards represent a consensus of concerned interests, it is important that any responses to comments and questions also receive the concurrence of a balance of interests. For this reason, IEEE and the members of its Societies and subcommittees of the IEEE SA Board of Governors are not able to provide an instant response to comments or questions, except in those cases where the matter has previously been addressed. For the same reason, IEEE does not respond to interpretation requests. Any person who would like to participate in evaluating comments or in revisions to an IEEE standard is welcome to join the relevant IEEE SA working group. You can indicate interest in a working group using the Interests tab in the Manage Profile Interests area of the
                       <a href="https://development.standards.ieee.org/myproject-web/public/view.html#landing">IEEE SA myProject system</a>
                       .
-                      <span style="mso-bookmark:_Ref">
+                      <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
                          <a class="FootnoteRef" href="#_ftn2" type="footnote" style="mso-footnote-id:ftn2" name="_" title="" id="_">
                             <span class="MsoFootnoteReference">
                                <span style="mso-special-character:footnote"/>
@@ -472,7 +472,7 @@ Users are encouraged to periodically check for errata.</p>
                       Comments on standards should be submitted using the
                       <a href="https://standards.ieee.org/about/contact/">Contact Us</a>
                       form.
-                      <span style="mso-bookmark:_Ref">
+                      <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
                          <a class="FootnoteRef" href="#_ftn3" type="footnote" style="mso-footnote-id:ftn3" name="_" title="" id="_">
                             <span class="MsoFootnoteReference">
                                <span style="mso-special-character:footnote"/>
@@ -531,7 +531,7 @@ Users are encouraged to periodically check for errata.</p>
                       or
                       <a href="https://standards.ieee.org/about/contact/">contact IEEE</a>
                       .
-                      <span style="mso-bookmark:_Ref">
+                      <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
                          <a class="FootnoteRef" href="#_ftn4" type="footnote" style="mso-footnote-id:ftn4" name="_" title="" id="_">
                             <span class="MsoFootnoteReference">
                                <span style="mso-special-character:footnote"/>
@@ -549,7 +549,7 @@ Users are encouraged to periodically check for errata.</p>
                       Errata, if any, for all IEEE standards can be accessed on the
                       <a href="https://standards.ieee.org/standard/index.html">IEEE SA Website</a>
                       .
-                      <span style="mso-bookmark:_Ref">
+                      <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
                          <a class="FootnoteRef" href="#_ftn5" type="footnote" style="mso-footnote-id:ftn5" name="_" title="" id="_">
                             <span class="MsoFootnoteReference">
                                <span style="mso-special-character:footnote"/>
@@ -569,7 +569,7 @@ Users are encouraged to periodically check for errata.</p>
                       IEEE standards are developed in compliance with the
                       <a href="https://standards.ieee.org/about/sasb/patcom/materials.html">IEEE SA Patent Policy</a>
                       .
-                      <span style="mso-bookmark:_Ref">
+                      <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
                          <a class="FootnoteRef" href="#_ftn6" type="footnote" style="mso-footnote-id:ftn6" name="_" title="" id="_">
                             <span class="MsoFootnoteReference">
                                <span style="mso-special-character:footnote"/>

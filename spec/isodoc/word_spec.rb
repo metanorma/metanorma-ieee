@@ -238,7 +238,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         </p>
         <p class='IEEEStdsParagraph'>
           A.
-          <span style='mso-bookmark:_Ref'>
+          <span style='mso-bookmark:_Ref' class="MsoFootnoteReference">
             <a class='FootnoteRef' href='#_ftn2' type='footnote' style='mso-footnote-id:ftn2' name="_" title='' id="_">
               <span class='MsoFootnoteReference'>
                 <span style='mso-special-character:footnote'/>
@@ -248,7 +248,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         </p>
         <p class='IEEEStdsParagraph'>
           C.
-          <span style='mso-bookmark:_Ref'>
+          <span style='mso-bookmark:_Ref' class="MsoFootnoteReference">
             <a class='FootnoteRef' href='#_ftn3' type='footnote' style='mso-footnote-id:ftn3' name="_" title='' id="_">
               <span class='MsoFootnoteReference'>
                 <span style='mso-special-character:footnote'/>
@@ -797,9 +797,8 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         <sections>
           <clause id="a" displayorder="1">
           <figure id="figureA-1" keep-with-next="true" keep-lines-together="true">
-          <fmt-name><span class="fmt-caption-label"><span class="fmt-element-name">Figure</span> <semx element="autonum" source="figureA-1">1</semx><span class="fmt-caption-delim">—</span><semx element="name" source="_">Split-it-right <em>sample</em> divider<fn reference="1" id="F1">
-        <p>X</p><fmt-fn-label><sup><semx source="F1">1</semx></sup></fmt-fn-label>
-          </fn></semx></span></fmt-name>
+          <name>Split-it-right <em>sample</em> divider<fn reference="1" id="F1">
+        <p>X</p></fn></name>
         <image height="20" width="30" id="_" mimetype="image/png" alt="alttext" title="titletxt"/>
         </figure>
           </clause>
@@ -809,7 +808,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     output = <<~OUTPUT
        <div>
           <a name="a" id="a"/>
-          <p class="IEEEStdsLevel1Header"/>
+          <p class="IEEEStdsLevel1Header">1.</p>
           <div class="IEEEStdsImage" style="page-break-after: avoid;page-break-inside: avoid;">
              <a name="figureA-1" id="figureA-1"/>
              <p class="IEEEStdsImage" style="page-break-after:avoid;">
@@ -819,16 +818,20 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                 Split-it-right
                 <i>sample</i>
                 divider
-                <span style="mso-bookmark:_Ref">
-                   <a class="FootnoteRef" href="#ftn1" type="footnote">
-                      <sup>1</sup>
+                <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
+                   <a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_">
+                      <span class="MsoFootnoteReference">
+                         <span style="mso-special-character:footnote"/>
+                      </span>
                    </a>
                 </span>
              </p>
           </div>
        </div>
     OUTPUT
-    IsoDoc::Ieee::WordConvert.new({}).convert("test", input, false)
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
@@ -838,16 +841,18 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     output = <<~OUTPUT
        <div>
           <a name="a" id="a"/>
-          <p class="IEEESectionHeader"/>
+          <p class="IEEESectionHeader">1.</p>
           <div class="MsoBodyText" style="page-break-after: avoid;page-break-inside: avoid;;text-align:center;">
              <a name="figureA-1" id="figureA-1"/>
              <p class="FigureHeadings" style="text-align:center;">
                 Split-it-right
                 <i>sample</i>
                 divider
-                <span style="mso-bookmark:_Ref">
-                   <a class="FootnoteRef" href="#ftn1" type="footnote">
-                      <sup>1</sup>
+                <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
+                   <a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_">
+                      <span class="MsoFootnoteReference">
+                         <span style="mso-special-character:footnote"/>
+                      </span>
                    </a>
                 </span>
              </p>
@@ -855,8 +860,10 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
           </div>
        </div>
     OUTPUT
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)
     IsoDoc::Ieee::WordConvert.new({})
-      .convert("test", input.sub("<doctype>standard</doctype>",
+      .convert("test", pres_output.sub("<doctype>standard</doctype>",
                                  "<doctype>whitepaper</doctype>"), false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
@@ -872,8 +879,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         <sections>
           <clause id="a" displayorder="1">
           <table id="figureA-1" keep-with-next="true" keep-lines-together="true">
-        <fmt-name>Figure 1&#xA0;&#x2014; Split-it-right <em>sample</em> divider<fn reference="1" id="F1"><p>X</p><fmt-fn-label><sup><semx source="F1">2</semx></sup></fmt-fn-label>
-          </fn></fmt-name>
+        <name>Split-it-right <em>sample</em> divider<fn reference="1" id="F1"><p>X</p></fn></name>
         <thead><tr><th>A</th></tr></thead>
         <tbody><tr><td>B</td></tr></tbody>
         <note id="A"><fmt-name>Note</fmt-name><p>This is a note</p></note>
@@ -885,14 +891,16 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     output = <<~OUTPUT
        <div>
           <a name="a" id="a"/>
-          <p class="IEEEStdsLevel1Header"/>
+          <p class="IEEEStdsLevel1Header">1.</p>
           <p class="IEEEStdsRegularTableCaption" style="text-align:center;">
-             Figure 1 — Split-it-right
+             Split-it-right
              <i>sample</i>
              divider
-             <span style="mso-bookmark:_Ref">
-                <a class="FootnoteRef" href="#ftn1" type="footnote">
-                   <sup>2</sup>
+             <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
+                <a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_">
+                   <span class="MsoFootnoteReference">
+                      <span style="mso-special-character:footnote"/>
+                   </span>
                 </a>
              </span>
           </p>
@@ -925,7 +933,9 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
        </div>
     OUTPUT
     FileUtils.rm_f("test.doc")
-    IsoDoc::Ieee::WordConvert.new({}).convert("test", input, false)
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
@@ -935,14 +945,16 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     output = <<~OUTPUT
        <div>
           <a name="a" id="a"/>
-          <p class="IEEESectionHeader"/>
+          <p class="IEEESectionHeader">1.</p>
           <p class="TableTitles" style="text-align:center;">
-             Figure 1 — Split-it-right
+             Split-it-right
              <i>sample</i>
              divider
-             <span style="mso-bookmark:_Ref">
-                <a class="FootnoteRef" href="#ftn1" type="footnote">
-                   <sup>2</sup>
+             <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
+                <a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_">
+                   <span class="MsoFootnoteReference">
+                      <span style="mso-special-character:footnote"/>
+                   </span>
                 </a>
              </span>
           </p>
@@ -974,8 +986,10 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
           </div>
        </div>
     OUTPUT
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)
     IsoDoc::Ieee::WordConvert.new({})
-      .convert("test", input.sub("<doctype>standard</doctype>",
+      .convert("test", pres_output.sub("<doctype>standard</doctype>",
                                  "<doctype>whitepaper</doctype>"), false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
