@@ -45,16 +45,23 @@ module IsoDoc
         super
       end
 
-      KEEP_BIBRENDER_XPATH =
-        "./docidentifier | ./uri | ./note | ./title | ./biblio-tag".freeze
-
       def bibrender_relaton(xml, renderings)
-        f = renderings[xml["id"]][:formattedref]
-        fn = availability_note(xml)
-        f &&= "<formattedref>#{f}#{fn}</formattedref>"
-        xml.children = "#{f}#{xml.xpath(ns(KEEP_BIBRENDER_XPATH)).to_xml}"
+        bibrender_relaton1(xml, renderings)
         author_date(xml, renderings)
         @author[xml["id"]] = renderings[xml["id"]][:author]
+      end
+
+      def bibrender_relaton1(xml, renderings)
+        f = renderings[xml["id"]][:formattedref] or return
+        fn = availability_note(xml)
+        f = "<formattedref>#{f}#{fn}</formattedref>"
+        if x = xml.at(ns("./formattedref"))
+          x.replace(f)
+        elsif xml.children.empty?
+          xml << f
+        else
+          xml.children.first.previous = f
+        end
       end
 
       def author_date(xml, renderings)
