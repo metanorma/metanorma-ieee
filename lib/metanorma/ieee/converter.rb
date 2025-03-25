@@ -20,8 +20,9 @@ module Metanorma
         @hierarchical_assets = node.attr("hierarchical-object-numbering")
       end
 
-      PREFACE_CLAUSE_NAMES = %w(abstract foreword introduction
-                                acknowledgements participants).freeze
+      PREFACE_CLAUSE_NAMES =
+        %w(abstract foreword introduction acknowledgements participants
+           metanorma-extension misc-container).freeze
 
       def sectiontype_streamline(ret)
         case ret
