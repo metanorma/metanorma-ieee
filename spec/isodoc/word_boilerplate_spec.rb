@@ -251,8 +251,6 @@ Users are encouraged to periodically check for errata.</p>
       <p id="_2e901de4-4c14-e534-d135-862a24df22ee">Hello</p>
       </clause>
       </sections>
-      <fmt-footnote-container><fmt-fn-body id="_5ec521bd-508e-4f43-b4e8-b5f923205e6b" target="_f8aedbd5-b861-4b6d-b142-56dfcdc09335" reference="1"><semx element="fn" source="_f8aedbd5-b861-4b6d-b142-56dfcdc09335"><p id="_cc20ecc3-3f10-2a4c-0424-65e5137968c6"><fmt-fn-label><sup><semx element="autonum" source="_f8aedbd5-b861-4b6d-b142-56dfcdc09335">1</semx></sup><span class="fmt-caption-delim"><tab/></span></fmt-fn-label><em>IEEE Standards Dictionary Online</em> is available at: <link target="http://dictionary.ieee.org" id="_8e92f4b4-5372-4ab1-8857-ea9b561fbd0e"/><semx element="link" source="_8e92f4b4-5372-4ab1-8857-ea9b561fbd0e"><fmt-link target="http://dictionary.ieee.org"/></semx>. An IEEE Account is required for access to the dictionary, and one can be created at no charge on the dictionary sign-in page.</p>
-</semx></fmt-fn-body></fmt-footnote-container>
       </ieee-standard>
     INPUT
     word = <<~OUTPUT
@@ -459,7 +457,7 @@ Users are encouraged to periodically check for errata.</p>
                       <a href="https://development.standards.ieee.org/myproject-web/public/view.html#landing">IEEE SA myProject system</a>
                       .
                       <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
-                         <a class="FootnoteRef" href="#_ftn2" type="footnote" style="mso-footnote-id:ftn2" name="_" title="" id="_">
+                         <a class="FootnoteRef" type="footnote" href="#_ftn2" style="mso-footnote-id:ftn2" name="_" title="" id="_">
                             <span class="MsoFootnoteReference">
                                <span style="mso-special-character:footnote"/>
                             </span>
@@ -473,7 +471,7 @@ Users are encouraged to periodically check for errata.</p>
                       <a href="https://standards.ieee.org/about/contact/">Contact Us</a>
                       form.
                       <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
-                         <a class="FootnoteRef" href="#_ftn3" type="footnote" style="mso-footnote-id:ftn3" name="_" title="" id="_">
+                         <a class="FootnoteRef" type="footnote" href="#_ftn3" style="mso-footnote-id:ftn3" name="_" title="" id="_">
                             <span class="MsoFootnoteReference">
                                <span style="mso-special-character:footnote"/>
                             </span>
@@ -532,7 +530,7 @@ Users are encouraged to periodically check for errata.</p>
                       <a href="https://standards.ieee.org/about/contact/">contact IEEE</a>
                       .
                       <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
-                         <a class="FootnoteRef" href="#_ftn4" type="footnote" style="mso-footnote-id:ftn4" name="_" title="" id="_">
+                         <a class="FootnoteRef" type="footnote" href="#_ftn4" style="mso-footnote-id:ftn4" name="_" title="" id="_">
                             <span class="MsoFootnoteReference">
                                <span style="mso-special-character:footnote"/>
                             </span>
@@ -550,7 +548,7 @@ Users are encouraged to periodically check for errata.</p>
                       <a href="https://standards.ieee.org/standard/index.html">IEEE SA Website</a>
                       .
                       <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
-                         <a class="FootnoteRef" href="#_ftn5" type="footnote" style="mso-footnote-id:ftn5" name="_" title="" id="_">
+                         <a class="FootnoteRef" type="footnote" href="#_ftn5" style="mso-footnote-id:ftn5" name="_" title="" id="_">
                             <span class="MsoFootnoteReference">
                                <span style="mso-special-character:footnote"/>
                             </span>
@@ -570,7 +568,7 @@ Users are encouraged to periodically check for errata.</p>
                       <a href="https://standards.ieee.org/about/sasb/patcom/materials.html">IEEE SA Patent Policy</a>
                       .
                       <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
-                         <a class="FootnoteRef" href="#_ftn6" type="footnote" style="mso-footnote-id:ftn6" name="_" title="" id="_">
+                         <a class="FootnoteRef" type="footnote" href="#_ftn6" style="mso-footnote-id:ftn6" name="_" title="" id="_">
                             <span class="MsoFootnoteReference">
                                <span style="mso-special-character:footnote"/>
                             </span>
@@ -749,15 +747,6 @@ Users are encouraged to periodically check for errata.</p>
                    Hello
                 </p>
              </div>
-             <aside>
-                <a name="ftn1" id="ftn1"/>
-                <p class="IEEEStdsParagraph">
-                   <a name="_" id="_"/>
-                   Available at:
-                   <a href="https://development.standards.ieee.org/myproject-web/public/view.html#landing">https://development.standards.ieee.org/myproject-web/public/view.html#landing</a>
-                   .
-                </p>
-             </aside>
           </div>
           <div style="mso-element:footnote-list">
              <div style="mso-element:footnote" id="ftn1">
@@ -822,11 +811,9 @@ Users are encouraged to periodically check for errata.</p>
                          <span style="mso-special-character:footnote"/>
                       </span>
                    </a>
-                   <i>IEEE Standards Dictionary Online</i>
-                   is available at:
-                   <a href="http://dictionary.ieee.org">http://dictionary.ieee.org</a>
-                   <a href="http://dictionary.ieee.org">http://dictionary.ieee.org</a>
-                   . An IEEE Account is required for access to the dictionary, and one can be created at no charge on the dictionary sign-in page.
+                   Available at:
+                   <a href="https://development.standards.ieee.org/myproject-web/public/view.html#landing">https://development.standards.ieee.org/myproject-web/public/view.html#landing</a>
+                   .
                 </p>
              </div>
              <div style="mso-element:footnote" id="ftn3">

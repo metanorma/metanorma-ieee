@@ -1,16 +1,18 @@
 class Html2Doc
   class Ieee < ::Html2Doc
-    def process_footnote_texts(docxml, footnotes)
+    def process_footnote_texts(docxml, footnotes, indexes)
       body = docxml.at("//body")
       list = body.add_child("<div style='mso-element:footnote-list'/>")
       footnotes.each_with_index do |f, i|
         if i.zero?
-          fn = list.first.add_child(footnote_container_nofn(docxml, i + 1))
+          fn = list.first.add_child(footnote_container_nofn(docxml, indexes[f["id"]]))
           f.parent = fn.first
+          f["id"] = ""
           footnote_div_to_p_unstyled(f)
         else
-          fn = list.first.add_child(footnote_container(docxml, i + 1))
+          fn = list.first.add_child(footnote_container(docxml, indexes[f["id"]]))
           f.parent = fn.first
+          f["id"] = ""
           footnote_div_to_p(f)
         end
       end
@@ -36,7 +38,6 @@ class Html2Doc
     end
 
     def transform_footnote_text(note)
-      note["id"] = ""
       note.xpath(".//div").each { |div| div.replace(div.children) }
       note.xpath(".//aside | .//p").each do |p|
         p.name = "p"

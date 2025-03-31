@@ -46,7 +46,7 @@ module IsoDoc
         body.div class: "WordSection4" do |div3|
           backcover div3
           footnotes docxml, div3
-          comments div3
+          comments docxml, div3
         end
       end
 

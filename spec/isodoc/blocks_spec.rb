@@ -663,7 +663,7 @@ RSpec.describe IsoDoc do
                       Figure 1—Split-it-right
                       <i>sample</i>
                       divider
-                      <a class="FootnoteRef" href="#fn:1">
+                      <a class="FootnoteRef" href="#fn:_">
                          <sup>1</sup>
                       </a>
                    </p>
@@ -678,7 +678,7 @@ RSpec.describe IsoDoc do
        B</pre>
                 </div>
              </div>
-             <aside id="fn:1" class="footnote">
+             <aside id="fn:_" class="footnote">
                 <p>X</p>
              </aside>
           </div>
