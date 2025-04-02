@@ -1694,19 +1694,19 @@ RSpec.describe IsoDoc do
                    </fmt-name>
                    <li>
                       <fmt-name>
-                         <semx element="autonum" source="">—</semx>
+                         <semx element="autonum" source="">▪</semx>
                       </fmt-name>
                       <p id="_">updated normative references;</p>
                    </li>
                    <li>
                       <fmt-name>
-                         <semx element="autonum" source="">—</semx>
+                         <semx element="autonum" source="">▪</semx>
                       </fmt-name>
                       <p id="_">deletion of 4.3.</p>
                       <ul id="_" keep-with-next="true" keep-lines-together="true">
                          <li>
                             <fmt-name>
-                               <semx element="autonum" source="">▪</semx>
+                               <semx element="autonum" source="">—</semx>
                             </fmt-name>
                             <p id="_">updated normative references;</p>
                          </li>
