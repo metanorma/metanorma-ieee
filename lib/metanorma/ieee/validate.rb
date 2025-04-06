@@ -4,10 +4,8 @@ require_relative "validate_style"
 module Metanorma
   module Ieee
     class Converter < Standoc::Converter
-      def validate(doc)
-        content_validate(doc)
-        schema_validate(formattedstr_strip(doc.dup),
-                        File.join(File.dirname(__FILE__), "ieee.rng"))
+      def schema_file
+        "ieee.rng"
       end
 
       def content_validate(doc)

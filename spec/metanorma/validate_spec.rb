@@ -227,7 +227,7 @@ RSpec.describe Metanorma::Ieee do
 
         [bibliography]
         == Normative References
-        * [[[iso123,ISO 123]]] _Standard_
+        * [[[iso123,ISO 123:1985]]] _Standard_
       INPUT
       expect(File.read("test.err.html"))
         .not_to include("Normative reference iso123 is not dated")
