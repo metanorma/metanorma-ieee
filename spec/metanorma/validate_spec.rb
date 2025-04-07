@@ -227,7 +227,7 @@ RSpec.describe Metanorma::Ieee do
 
         [bibliography]
         == Normative References
-        * [[[iso123,ISO 123]]] _Standard_
+        * [[[iso123,ISO 123:1985]]] _Standard_
       INPUT
       expect(File.read("test.err.html"))
         .not_to include("Normative reference iso123 is not dated")
@@ -367,7 +367,8 @@ RSpec.describe Metanorma::Ieee do
       === Subclause
 
     INPUT
-    expect(File.read("test.err.html")).to include("subclause is only child")
+    expect(File.read("test.err.html"))
+      .to include("subclause is only child")
   end
 
   it "Warn if more than one ordered lists in a clause" do
@@ -490,9 +491,12 @@ RSpec.describe Metanorma::Ieee do
         text
       INPUT
 
-      expect(File.read("test.err.html")).to include("Overview clause missing")
-      expect(File.read("test.err.html")).to include("Scope subclause missing")
-      expect(File.read("test.err.html")).to include("Word Usage subclause missing")
+      expect(File.read("test.err.html"))
+        .to include("Overview clause missing")
+      expect(File.read("test.err.html"))
+        .to include("Scope subclause missing")
+      expect(File.read("test.err.html"))
+        .to include("Word Usage subclause missing")
     end
 
     it "Overview clause not missing if supplied" do
@@ -506,9 +510,12 @@ RSpec.describe Metanorma::Ieee do
 
         == Overview
       INPUT
-      expect(File.read("test.err.html")).not_to include("Overview clause missing")
-      expect(File.read("test.err.html")).to include("Scope subclause missing")
-      expect(File.read("test.err.html")).to include("Word Usage subclause missing")
+      expect(File.read("test.err.html"))
+        .not_to include("Overview clause missing")
+      expect(File.read("test.err.html"))
+        .to include("Scope subclause missing")
+      expect(File.read("test.err.html"))
+        .to include("Word Usage subclause missing")
     end
 
     it "Scope and Word usage clause not missing if supplied" do
@@ -526,9 +533,12 @@ RSpec.describe Metanorma::Ieee do
 
         === Word Usage
       INPUT
-      expect(File.read("test.err.html")).not_to include("Overview clause missing")
-      expect(File.read("test.err.html")).not_to include("Scope subclause missing")
-      expect(File.read("test.err.html")).not_to include("Word Usage subclause missing")
+      expect(File.read("test.err.html"))
+        .not_to include("Overview clause missing")
+      expect(File.read("test.err.html"))
+        .not_to include("Scope subclause missing")
+      expect(File.read("test.err.html"))
+        .not_to include("Word Usage subclause missing")
     end
 
     it "Overview clause not missing in amendments" do
@@ -543,9 +553,12 @@ RSpec.describe Metanorma::Ieee do
 
         text
       INPUT
-      expect(File.read("test.err.html")).not_to include("Overview clause missing")
-      expect(File.read("test.err.html")).not_to include("Scope subclause missing")
-      expect(File.read("test.err.html")).not_to include("Word Usage subclause missing")
+      expect(File.read("test.err.html"))
+        .not_to include("Overview clause missing")
+      expect(File.read("test.err.html"))
+        .not_to include("Scope subclause missing")
+      expect(File.read("test.err.html"))
+        .not_to include("Word Usage subclause missing")
     end
   end
 
@@ -743,7 +756,8 @@ RSpec.describe Metanorma::Ieee do
 
         text
       INPUT
-      expect(File.read("test.err.html")).to include("Normative references missing")
+      expect(File.read("test.err.html"))
+        .to include("Normative references missing")
     end
 
     it "Normative references not missing if supplied" do
@@ -790,7 +804,8 @@ RSpec.describe Metanorma::Ieee do
 
         text
       INPUT
-      expect(File.read("test.err.html")).to include("Definitions missing")
+      expect(File.read("test.err.html"))
+        .to include("Definitions missing")
     end
 
     it "Terms & definitions not missing if supplied" do
@@ -805,7 +820,8 @@ RSpec.describe Metanorma::Ieee do
         == Terms and definitions
         === Term 1
       INPUT
-      expect(File.read("test.err.html")).not_to include("Definitions missing")
+      expect(File.read("test.err.html"))
+        .not_to include("Definitions missing")
     end
 
     it "Terms & definitions not missing in amendment" do
@@ -819,7 +835,8 @@ RSpec.describe Metanorma::Ieee do
 
         text
       INPUT
-      expect(File.read("test.err.html")).not_to include("Definitions missing")
+      expect(File.read("test.err.html"))
+        .not_to include("Definitions missing")
     end
   end
 
@@ -1010,7 +1027,8 @@ RSpec.describe Metanorma::Ieee do
         == Clause
         8,1
       INPUT
-      expect(File.read("test.err.html")).to include("possible decimal comma")
+      expect(File.read("test.err.html"))
+        .to include("possible decimal comma")
     end
 
     it "Style warning if leading decimal point without zero" do
@@ -1020,7 +1038,8 @@ RSpec.describe Metanorma::Ieee do
         == Clause
         Number: .1
       INPUT
-      expect(File.read("test.err.html")).to include("decimal without initial zero")
+      expect(File.read("test.err.html"))
+        .to include("decimal without initial zero")
     end
 
     it "Style warning if percent sign without space" do
@@ -1030,7 +1049,8 @@ RSpec.describe Metanorma::Ieee do
         == Clause
         9%
       INPUT
-      expect(File.read("test.err.html")).to include("no space before percent sign")
+      expect(File.read("test.err.html"))
+        .to include("no space before percent sign")
     end
 
     it "Style warning if no space between number and unit" do
@@ -1040,7 +1060,8 @@ RSpec.describe Metanorma::Ieee do
         == Clause
         7km
       INPUT
-      expect(File.read("test.err.html")).to include("no space between number and SI unit")
+      expect(File.read("test.err.html"))
+        .to include("no space between number and SI unit")
     end
 
     it "Style warning if no unit on both unit and tolerance" do
@@ -1050,7 +1071,8 @@ RSpec.describe Metanorma::Ieee do
         == Clause
         7 ± 2 km
       INPUT
-      expect(File.read("test.err.html")).to include("unit is needed on both value and tolerance")
+      expect(File.read("test.err.html"))
+        .to include("unit is needed on both value and tolerance")
     end
 
     it "Style warning if 5-digit numeral in table" do
@@ -1066,7 +1088,8 @@ RSpec.describe Metanorma::Ieee do
         |===
 
       INPUT
-      expect(File.read("test.err.html")).not_to include("number in table not broken up in threes")
+      expect(File.read("test.err.html"))
+        .not_to include("number in table not broken up in threes")
 
       Asciidoctor.convert(<<~"INPUT", *OPTIONS)
         #{VALIDATING_BLANK_HDR}
@@ -1076,7 +1099,8 @@ RSpec.describe Metanorma::Ieee do
         | 98765 | 0
         |===
       INPUT
-      expect(File.read("test.err.html")).to include("number in table not broken up in threes")
+      expect(File.read("test.err.html"))
+        .to include("number in table not broken up in threes")
 
       Asciidoctor.convert(<<~"INPUT", *OPTIONS)
         #{VALIDATING_BLANK_HDR}
@@ -1086,7 +1110,8 @@ RSpec.describe Metanorma::Ieee do
         | 10.98765 | 0
         |===
       INPUT
-      expect(File.read("test.err.html")).to include("number in table not broken up in threes")
+      expect(File.read("test.err.html"))
+        .to include("number in table not broken up in threes")
     end
 
     it "Style warning if 4-digit numeral in table column with 5-digit numerals" do
@@ -1100,7 +1125,8 @@ RSpec.describe Metanorma::Ieee do
         |===
 
       INPUT
-      expect(File.read("test.err.html")).not_to include(" is a 4-digit number in a table column with numbers broken up in threes")
+      expect(File.read("test.err.html"))
+        .not_to include(" is a 4-digit number in a table column with numbers broken up in threes")
 
       Asciidoctor.convert(<<~"INPUT", *OPTIONS)
         #{VALIDATING_BLANK_HDR}
@@ -1112,7 +1138,8 @@ RSpec.describe Metanorma::Ieee do
         |===
 
       INPUT
-      expect(File.read("test.err.html")).to include(" is a 4-digit number in a table column with numbers broken up in threes")
+      expect(File.read("test.err.html"))
+        .to include(" is a 4-digit number in a table column with numbers broken up in threes")
 
       Asciidoctor.convert(<<~"INPUT", *OPTIONS)
         #{VALIDATING_BLANK_HDR}
@@ -1124,7 +1151,8 @@ RSpec.describe Metanorma::Ieee do
         |===
 
       INPUT
-      expect(File.read("test.err.html")).to include(" is a 4-digit number in a table column with numbers broken up in threes")
+      expect(File.read("test.err.html"))
+        .to include(" is a 4-digit number in a table column with numbers broken up in threes")
     end
   end
 
@@ -1266,6 +1294,20 @@ RSpec.describe Metanorma::Ieee do
         .not_to include("Error: Term reference to <code>que</code> missing:")
       expect(File.read("test.err.html"))
         .not_to include("Symbol reference in <code>symbol​[que1]</code> missing:")
+    end
+
+    it "validates document against Metanorma XML schema" do
+      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+        = A
+        X
+        :docfile: test.adoc
+        :no-pdf:
+
+        [align=mid-air]
+        Para
+      INPUT
+      expect(File.read("test.err.html"))
+        .to include('value of attribute "align" is invalid; must be equal to')
     end
   end
 end
