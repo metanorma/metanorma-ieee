@@ -50,13 +50,14 @@ module IsoDoc
           "#{@klass.norm_ref_xpath} | //sections/terms | " \
           "//sections/definitions | //clause[parent::sections]"
         if @hierarchical_assets
-          hierarchical_asset_names(doc.xpath("//xmlns:preface/child::*"), "Preface")
+          hierarchical_asset_names(doc.xpath("//xmlns:preface/child::*"),
+                                   "Preface")
           doc.xpath(ns(middle_sections)).each do |c|
             hierarchical_asset_names(c, @anchors[c["id"]][:label])
           end
         else
-          sequential_asset_names(doc.xpath(ns("//preface/* | " + middle_sections)))
-          #sequential_asset_names(doc.xpath(ns(middle_sections)))
+          sequential_asset_names(doc.xpath(ns("//preface/* | #{middle_sections}")))
+          # sequential_asset_names(doc.xpath(ns(middle_sections)))
         end
       end
 
@@ -77,20 +78,12 @@ module IsoDoc
           sequence = UUIDTools::UUID.random_create.to_s
           notes = t.xpath(ns("./termnote"))
           notes.noblank.each do |n|
-              @anchors[n["id"]] =
-              { label: termnote_label(n, increment_label(notes, n, c)), type: "termnote",
+            @anchors[n["id"]] =
+              { label: termnote_label(n, increment_label(notes, n, c)),
                 value: c.print, elem: @labels["termnote"],
-                container: t["id"],
+                container: t["id"], type: "termnote",
                 xref: anchor_struct_xref(c.print, n, @labels["note_xref"]) }
-            .merge(sequence: sequence)
-=begin
-              anchor_struct(
-                termnote_label(n, increment_label(notes, n, c)),
-                #labelled_autonum(@labels["termnote"], increment_label(notes, n, c)),
-                #"#{@labels['termnote']} #{increment_label(notes, n, c)}",
-                            n, @labels["note_xref"], "termnote", { container: true })
                 .merge(sequence: sequence)
-=end
           end
         end
       end
@@ -111,7 +104,7 @@ module IsoDoc
         if @doctype == "whitepaper"
           title = Common::case_with_markup(@labels["annex"], "capital",
                                            @script)
-           l10n(labelled_autonum(title, num))
+          l10n(labelled_autonum(title, num))
         else super
         end
       end

@@ -1,6 +1,7 @@
 require_relative "init"
 require_relative "presentation_bibdata"
 require_relative "presentation_terms"
+require_relative "presentation_concepts"
 require_relative "presentation_ref"
 require "isodoc"
 
@@ -35,7 +36,7 @@ module IsoDoc
       end
 
       def subclause?(target, type, from)
-        (from&.match?(/\./) && type == "clause") ||
+        (from&.include?(".") && type == "clause") ||
           target&.gsub(/<[^<>]+>/, "")&.match?(/^IEV$|^IEC 60050-/)
       end
 
@@ -104,16 +105,7 @@ module IsoDoc
       end
 
       def annex_delim(_elem)
-      "<br/>"
-    end
-
-      # KILL
-      def annex1_default(elem)
-        lbl = @xrefs.anchor(elem["id"], :label)
-        if t = elem.at(ns("./title"))
-          t.children = "<strong>#{to_xml(t.children)}</strong>"
-        end
-        prefix_name(elem, { caption: "<br/>" }, lbl, "title")
+        "<br/>"
       end
 
       def amend1(elem)
@@ -184,12 +176,23 @@ module IsoDoc
         end
       end
 
+      # overrides IsoDoc:: XrefGen::OlTypeProvider: we trigger
+      # @xrefs.list_anchor_names after this is called, with elem["type"] set
       def ol_depth_rotate(node, idx)
         depth = node.ancestors("ol").size + idx
         type = :alphabet
         type = :arabic if [2, 5, 8].include? depth
         type = :roman if [3, 6, 9].include? depth
         type
+      end
+
+      def ul_label_list(_elem)
+        if @doctype == "whitepaper" ||
+            %w(icap industry-connection-report).include?(@subdoctype)
+          %w(&#x25aa; &#x2014;)
+        else
+          %w(&#x2013;)
+        end
       end
 
       def middle_title(docxml)
