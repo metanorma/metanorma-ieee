@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   <include href="biblio-standoc.rng">
     <define name="DocumentType">
       <choice>
@@ -46,38 +46,35 @@
     </define>
     <define name="BibDataExtensionType">
       <optional>
-        <attribute name="schema-version"/>
+        <ref name="trialuse">
+          <a:documentation>Document published for a limited period of time.  Can apply to any of the document types
+A Trial-Use standard is only described in the text of the introduction, it is not prominently displayed nor is it fielded data.
+https://standards.ieee.org/about/policies/opman/sect5/</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="doctype"/>
+        <ref name="standard_status">
+          <a:documentation>Status of standard: Inactive, Active, Superseded</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="docsubtype"/>
-      </optional>
-      <ref name="flavor"/>
-      <optional>
-        <ref name="trialuse"/>
+        <ref name="standard_modified">
+          <a:documentation>Modification status of standard: Draft, Withdrawn, Superseded, Approved, Reserved, Redline</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="editorialgroup"/>
-      </optional>
-      <zeroOrMore>
-        <ref name="ics"/>
-      </zeroOrMore>
-      <optional>
-        <ref name="standard_status"/>
+        <ref name="pubstatus">
+          <a:documentation>Publication status of standard: Active, Inactive</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="standard_modified"/>
-      </optional>
-      <optional>
-        <ref name="pubstatus"/>
-      </optional>
-      <optional>
+        <!-- On-Hold status of standard: Hold, Publish -->
         <ref name="holdstatus"/>
       </optional>
       <optional>
-        <ref name="program"/>
+        <ref name="program">
+          <a:documentation>Program under which a white paper was authored</a:documentation>
+        </ref>
       </optional>
     </define>
   </include>
