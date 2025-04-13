@@ -140,7 +140,6 @@ module Metanorma
 
       def metadata_ext(node, xml)
         super
-        structured_id(node, xml)
         s = node.attr("trial-use") and xml.trial_use s
         program(node, xml)
       end

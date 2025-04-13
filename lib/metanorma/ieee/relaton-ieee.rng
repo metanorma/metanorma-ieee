@@ -44,7 +44,7 @@
         <value>erratum</value>
       </choice>
     </define>
-    <define name="BibDataExtensionType">
+    <define name="BibDataExtensionType" combine="interleave">
       <optional>
         <ref name="trialuse">
           <a:documentation>Document published for a limited period of time.  Can apply to any of the document types
