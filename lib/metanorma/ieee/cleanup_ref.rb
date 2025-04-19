@@ -31,23 +31,25 @@ module Metanorma
 
       # Alphabetic by rendering: author surname or designation, followed by title
       def sort_biblio_key(bib)
-        name = designator_or_name(bib)
+        name, docid = designator_or_name(bib)
         title = bib.at("./title[@type = 'main']")&.text ||
           bib.at("./title")&.text || bib.at("./formattedref")&.text
         title.gsub!(/[[:punct:]]/, "")
-        @c.decode("#{name} #{title}").strip.downcase
+        @c.decode("#{name} #{title} #{docid}").strip.downcase
       end
 
       def designator_or_name(bib)
-        case bib["type"]
-        when "standard", "techreport" then designator_docid(bib)
-        else
-          bib1 = bib.dup
-          bib1.add_namespace(nil, self.class::XML_NAMESPACE)
-          n = @i.creatornames(bib1)
-          n.nil? && bib["type"].nil? and n = designator_docid(bib)
-          n
-        end
+        id = designator_docid(bib)
+        ret = case bib["type"]
+              when "standard", "techreport" then id
+              else
+                bib1 = bib.dup
+                bib1.add_namespace(nil, self.class::XML_NAMESPACE)
+                n = @i.creatornames(bib1)
+                n.nil? && bib["type"].nil? and n = id
+                n
+              end
+        [ret, id]
       end
 
       def designator_docid(bib)
@@ -66,7 +68,7 @@ module Metanorma
       def normref_no_ordinals(xmldoc)
         xmldoc.xpath("//references[@normative = 'true']/bibitem/" \
                     "docidentifier[@type = 'metanorma']").each do |d|
-                      /^\[?\d+\]?$/.match?(d.text) and d.remove
+          /^\[?\d+\]?$/.match?(d.text) and d.remove
         end
       end
 
@@ -221,7 +223,7 @@ module Metanorma
         ret = xmldoc.xpath(BIBITEM_NO_AVAIL).detect do |b|
           has_itu_t = /^ITU-T/.match?(b.at("./docidentifier[@type = 'ITU']")&.text)
           bib_pubs(b).include?("International Telecommunication Union") &&
-            (!has_itu_t && !itu_t) || (has_itu_t && itu_t)
+            !has_itu_t && !itu_t || (has_itu_t && itu_t)
         end
         insert_availability_note(ret, note)
       end

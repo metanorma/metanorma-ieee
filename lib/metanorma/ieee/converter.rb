@@ -33,7 +33,7 @@ module Metanorma
         end
       end
 
-      def clause_parse(attrs, xml, node)
+      def clause_attrs_preprocess(attrs, node)
         case node.title
         when "Purpose" then attrs[:type] = "purpose"
         when "Overview" then attrs[:type] = "overview"
