@@ -773,13 +773,13 @@ RSpec.describe Metanorma::Ieee do
              <title>Normative references</title>
              <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
              <bibitem id="ref31">
-                <docidentifier type="ETSI" primary="true">ETSI GS ZSM 012 V1.1.1 (2022-12)</docidentifier>
+                <docidentifier type="ETSI" primary="true">ETSI GS NFV 002 V1.2.1 (2014-12)</docidentifier>
                 <note type="Availability">
                    <p id="_">ETSI publications are available the European Telecommunications Standards Institute (http://www.etsi.org).</p>
                 </note>
              </bibitem>
              <bibitem id="ref11">
-                <docidentifier type="ETSI" primary="true">ETSI GS NFV 002 V1.2.1 (2014-12)</docidentifier>
+                <docidentifier type="ETSI" primary="true">ETSI GS ZSM 012 V1.1.1 (2022-12)</docidentifier>
              </bibitem>
              <bibitem id="ref23" type="standard">
                 <docidentifier type="IEC" primary="true">IEC 60050</docidentifier>
