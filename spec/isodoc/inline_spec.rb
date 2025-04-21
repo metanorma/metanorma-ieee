@@ -503,7 +503,7 @@ RSpec.describe IsoDoc::Ieee do
                 </fmt-name>
                 <concept id="_">
                    <refterm>term</refterm>
-                   <xref target="clause1" original-id="_"/>
+                   <xref target="clause1" id="_"/>
                 </concept>
                 <fmt-concept>
                    <semx element="concept" source="_"/>
@@ -516,7 +516,7 @@ RSpec.describe IsoDoc::Ieee do
                 <concept id="_">
                    <refterm>term</refterm>
                    <renderterm>term</renderterm>
-                   <xref target="clause1" original-id="_"/>
+                   <xref target="clause1" id="_"/>
                 </concept>
                 <fmt-concept>
                    <semx element="concept" source="_">term</semx>
@@ -529,7 +529,7 @@ RSpec.describe IsoDoc::Ieee do
                 <concept id="_">
                    <refterm>term</refterm>
                    <renderterm>w[o]rd</renderterm>
-                   <xref target="clause1" original-id="_">Clause #1</xref>
+                   <xref target="clause1" id="_">Clause #1</xref>
                 </concept>
                 <fmt-concept>
                    <semx element="concept" source="_">w[o]rd</semx>
@@ -542,7 +542,7 @@ RSpec.describe IsoDoc::Ieee do
                 <concept id="_">
                    <refterm>term</refterm>
                    <renderterm>term</renderterm>
-                   <eref bibitemid="ISO712" type="inline" citeas="ISO 712" original-id="_"/>
+                   <eref bibitemid="ISO712" type="inline" citeas="ISO 712" id="_"/>
                 </concept>
                 <fmt-concept>
                    <semx element="concept" source="_">term</semx>
@@ -555,7 +555,7 @@ RSpec.describe IsoDoc::Ieee do
                 <concept id="_">
                    <refterm>term</refterm>
                    <renderterm>word</renderterm>
-                   <eref bibitemid="ISO712" type="inline" citeas="ISO 712" original-id="_">The Aforementioned Citation</eref>
+                   <eref bibitemid="ISO712" type="inline" citeas="ISO 712" id="_">The Aforementioned Citation</eref>
                 </concept>
                 <fmt-concept>
                    <semx element="concept" source="_">word</semx>
@@ -568,7 +568,7 @@ RSpec.describe IsoDoc::Ieee do
                 <concept id="_">
                    <refterm>term</refterm>
                    <renderterm>word</renderterm>
-                   <eref bibitemid="ISO712" type="inline" citeas="ISO 712" original-id="_">
+                   <eref bibitemid="ISO712" type="inline" citeas="ISO 712" id="_">
                       <locality type="clause">
                          <referenceFrom>3.1</referenceFrom>
                       </locality>
@@ -588,7 +588,7 @@ RSpec.describe IsoDoc::Ieee do
                 <concept id="_">
                    <refterm>term</refterm>
                    <renderterm>word</renderterm>
-                   <eref bibitemid="ISO712" type="inline" citeas="ISO 712" original-id="_">
+                   <eref bibitemid="ISO712" type="inline" citeas="ISO 712" id="_">
                       <localityStack connective="and">
                          <locality type="clause">
                             <referenceFrom>3.1</referenceFrom>
@@ -612,7 +612,7 @@ RSpec.describe IsoDoc::Ieee do
                 <concept id="_">
                    <refterm>term</refterm>
                    <renderterm>word</renderterm>
-                   <eref bibitemid="ISO712" type="inline" citeas="ISO 712" original-id="_">
+                   <eref bibitemid="ISO712" type="inline" citeas="ISO 712" id="_">
                       <localityStack connective="and">
                          <locality type="clause">
                             <referenceFrom>3.1</referenceFrom>
@@ -681,7 +681,7 @@ RSpec.describe IsoDoc::Ieee do
                 </fmt-concept>
              </li>
           </ul>
-       </p
+       </p>
     OUTPUT
     xml = Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))
