@@ -6381,6 +6381,7 @@
 	<!-- table/name-->
 	<xsl:template match="*[local-name()='table']/*[local-name() = 'name']">
 		<xsl:param name="continued"/>
+		<xsl:param name="cols-count"/>
 		<xsl:if test="normalize-space() != ''">
 
 					<fo:inline role="SKIP">
@@ -6964,7 +6965,8 @@
 
 			<!-- if there isn't 'thead' and there is a table's title -->
 			<xsl:if test="not(ancestor::*[local-name()='table']/*[local-name()='thead']) and ancestor::*[local-name()='table']/*[local-name()='name']">
-				<fo:table-header role="Caption">
+				<fo:table-header>
+
 					<xsl:call-template name="table-header-title">
 						<xsl:with-param name="cols-count" select="$cols-count"/>
 					</xsl:call-template>
@@ -10947,6 +10949,7 @@
 	</xsl:template>
 
 	<!-- SOURCE: ... -->
+	<!-- figure/source -->
 	<xsl:template match="*[local-name() = 'figure']/*[local-name() = 'source']" priority="2">
 
 				<xsl:call-template name="termsource"/>
@@ -12179,6 +12182,7 @@
 	<xsl:template match="title" mode="bookmark"/>
 	<xsl:template match="text()" mode="bookmark"/>
 
+	<!-- figure/name -->
 	<xsl:template match="*[local-name() = 'figure']/*[local-name() = 'name'] |         *[local-name() = 'image']/*[local-name() = 'name']">
 		<xsl:if test="normalize-space() != ''">
 			<fo:block xsl:use-attribute-sets="figure-name-style">
