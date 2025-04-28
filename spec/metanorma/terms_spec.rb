@@ -52,7 +52,7 @@ RSpec.describe Metanorma::Ieee do
                    <p id='_'>X</p>
                  </verbal-definition>
                </definition>
-               <termsource status='adapted' type='authoritative'>
+               <source status='adapted' type='authoritative'>
                  <origin bibitemid='ISO2191' type='inline' citeas=''>
                    <localityStack>
                      <locality type='section'>
@@ -60,7 +60,7 @@ RSpec.describe Metanorma::Ieee do
                      </locality>
                    </localityStack>
                  </origin>
-               </termsource>
+               </source>
              </term>
              <term id='term-Term2'>
                <preferred>
@@ -73,7 +73,7 @@ RSpec.describe Metanorma::Ieee do
                    <p id='_'>X</p>
                  </verbal-definition>
                </definition>
-               <termsource status='modified' type='authoritative'>
+               <source status='modified' type='authoritative'>
                  <origin bibitemid='ISO2191' type='inline' citeas=''>
                    <localityStack>
                      <locality type='section'>
@@ -82,7 +82,7 @@ RSpec.describe Metanorma::Ieee do
                    </localityStack>
                  </origin>
                  <modification/>
-               </termsource>
+               </source>
              </term>
            </terms>
          </sections>

@@ -2,7 +2,7 @@ module Metanorma
   module Ieee
     class Converter < Standoc::Converter
       ASSETS_TO_STYLE =
-        "//termsource | //formula | //termnote | " \
+        "//term//source | //formula | //termnote | " \
         "//p[not(ancestor::boilerplate)] | //li[not(p)] | //dt | " \
         "//dd[not(p)] | //td[not(p)][not(ancestor::boilerplate)] | " \
         "//th[not(p)][not(ancestor::boilerplate)] | //example".freeze
