@@ -34,14 +34,14 @@ module IsoDoc
       def unwrap_definition1(d)
         %w(verbal-definition non-verbal-representation).each do |e|
           v = d.at(ns("./#{e}")) or next
-          if v.elements.all? { |n| %w(termsource p).include?(n.name) }
+          if v.elements.all? { |n| %w(source p).include?(n.name) }
             p = v.xpath(ns("./p"))
-            s = v.xpath(ns("./termsource"))
+            s = v.xpath(ns("./source"))
             s.empty? or s = " (#{s.map { |x| to_xml(x) }.join})"
             v.children =
               "#{p.map(&:children).map { |x| to_xml(x) }.join("\n")}#{s}"
           else
-            s = v.xpath(ns("./termsource"))
+            s = v.xpath(ns("./source"))
             unless s.empty?
               s[0].previous = " ("
               s[-1].next = ")"
@@ -117,7 +117,7 @@ module IsoDoc
       def collapse_term_pref(opt)
         p = opt[:pref]
         p.text.strip.empty? and return "**TERM NOT FOUND**"
-        s = p.xpath(ns(".//semx[@element = 'termsource']"))
+        s = p.xpath(ns(".//semx[@element = 'source']"))
         unless s.empty?
           s[0].previous = " ("
           s[-1].next = ")"

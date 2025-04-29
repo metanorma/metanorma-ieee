@@ -10,12 +10,12 @@ RSpec.describe IsoDoc do
       <term id="paddy1"><preferred><expression><name>paddy</name></expression>
       <field-of-application>in agriculture</field-of-application>
       <usage-info>dated</usage-info>
-            <termsource status="modified">
+            <source status="modified">
         <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></origin>
           <modification>
           <p id="_e73a417d-ad39-417d-a4c8-20e4e2529489">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
         </modification>
-      </termsource>
+      </source>
       </preferred>
       <domain>rice</domain>
       <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></verbal-definition></definition>
@@ -30,22 +30,22 @@ RSpec.describe IsoDoc do
         <li>A</li>
         </ul>
       </termexample>
-      <termsource status='adapted'>
+      <source status='adapted'>
           <origin citeas=''>
             <termref base='IEV' target='xyz'>t1</termref>
           </origin>
           <modification>
             <p id='_'/>
           </modification>
-        </termsource>
-        <termsource status='adapted'>
+        </source>
+        <source status='adapted'>
           <origin citeas=''>
             <termref base='IEV' target='xyz'/>
           </origin>
           <modification>
             <p id='_'>with adjustments</p>
           </modification>
-        </termsource>
+        </source>
       </term>
       <term id="paddy"><preferred><expression><name>paddy</name></expression></preferred>
       <admitted><letter-symbol><name>paddy rice</name></letter-symbol>
@@ -66,9 +66,9 @@ RSpec.describe IsoDoc do
       <ul><li>A</li></ul>
         <p id="_19830f33-e46c-42cc-94ca-a5ef101132d5">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
       </termnote>
-      <termsource status="identical">
+      <source status="identical">
         <origin bibitemid="ISO7301" type="inline" droploc="true" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></origin>
-      </termsource></term>
+      </source></term>
       </terms>
       </sections>
       </iso-standard>
@@ -107,7 +107,7 @@ RSpec.describe IsoDoc do
                       </expression>
                       <field-of-application id="_">in agriculture</field-of-application>
                       <usage-info id="_">dated</usage-info>
-                      <termsource status="modified" original-id="_">
+                      <source status="modified" original-id="_">
                          <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011">
                             <locality type="clause">
                                <referenceFrom>3.1</referenceFrom>
@@ -116,7 +116,7 @@ RSpec.describe IsoDoc do
                          <modification id="_">
                             <p original-id="_">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
                          </modification>
-                      </termsource>
+                      </source>
                    </preferred>
                    <domain id="_">rice</domain>
                    <definition id="_">
@@ -142,7 +142,7 @@ RSpec.describe IsoDoc do
                             </span>
                          </semx>
                          (
-                         <semx element="termsource" source="_">
+                         <semx  element="source" source="_">
                             <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011" id="_">
                                <locality type="clause">
                                   <referenceFrom>3.1</referenceFrom>
@@ -166,7 +166,7 @@ RSpec.describe IsoDoc do
                          ):
                          <semx element="definition" source="_">rice retaining its husk after threshing</semx>
                          (adapted from
-                         <semx element="termsource" source="_">
+                         <semx  element="source" source="_">
                             <origin citeas="" id="_">
                                <termref base="IEV" target="xyz">t1</termref>
                             </origin>
@@ -178,7 +178,7 @@ RSpec.describe IsoDoc do
                             , adapted
                          </semx>
                          ;
-                         <semx element="termsource" source="_">
+                         <semx  element="source" source="_">
                             <origin citeas="" id="_">
                                <termref base="IEV" target="xyz"/>
                             </origin>
@@ -266,22 +266,22 @@ RSpec.describe IsoDoc do
                          </li>
                       </ul>
                    </termexample>
-                   <termsource status="adapted" id="_">
+                   <source status="adapted" id="_">
                       <origin citeas="">
                          <termref base="IEV" target="xyz">t1</termref>
                       </origin>
                       <modification id="_">
                          <p original-id="_"/>
                       </modification>
-                   </termsource>
-                   <termsource status="adapted" id="_">
+                   </source>
+                   <source status="adapted" id="_">
                       <origin citeas="">
                          <termref base="IEV" target="xyz"/>
                       </origin>
                       <modification id="_">
                          <p original-id="_">with adjustments</p>
                       </modification>
-                   </termsource>
+                   </source>
                 </term>
                 <term id="paddy">
                    <preferred id="_">
@@ -339,7 +339,7 @@ RSpec.describe IsoDoc do
                             </fmt-preferred>
                          </semx>
                          . (
-                         <semx element="termsource" source="_">
+                         <semx  element="source" source="_">
                             <origin bibitemid="ISO7301" type="inline" droploc="true" citeas="ISO 7301:2011" id="_">
                                <locality type="clause">
                                   <referenceFrom>3.1</referenceFrom>
@@ -452,13 +452,13 @@ RSpec.describe IsoDoc do
                       </ul>
                       <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
                    </termnote>
-                   <termsource status="identical" id="_">
+                   <source status="identical" id="_">
                       <origin bibitemid="ISO7301" type="inline" droploc="true" citeas="ISO 7301:2011">
                          <locality type="clause">
                             <referenceFrom>3.1</referenceFrom>
                          </locality>
                       </origin>
-                   </termsource>
+                   </source>
                 </term>
                 <term>
                    <fmt-definition>
@@ -983,19 +983,19 @@ RSpec.describe IsoDoc do
       <domain>rice</domain>
       <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747e">rice retaining its husk after threshing, mark 2</p>
       <p>rice retaining its husk after threshing, mark 3</p>
-      <termsource status="modified">
+      <source status="modified">
         <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></origin>
           <modification>
           <p id="_e73a417d-ad39-417d-a4c8-20e4e2529489">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
         </modification>
-      </termsource>
+      </source>
       </verbal-definition>
       </definition>
-      <termsource status='identical'>
+      <source status='identical'>
           <origin citeas=''>
             <termref base='IEV' target='xyz'>t1</termref>
           </origin>
-        </termsource>
+        </source>
       </term>
     INPUT
     presxml = <<~PRESXML
@@ -1035,7 +1035,7 @@ RSpec.describe IsoDoc do
                        <verbal-definition>
                           <p original-id="_">rice retaining its husk after threshing, mark 2</p>
                           <p>rice retaining its husk after threshing, mark 3</p>
-                          <termsource status="modified" original-id="_">
+                          <source status="modified" original-id="_">
                              <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011">
                                 <locality type="clause">
                                    <referenceFrom>3.1</referenceFrom>
@@ -1044,7 +1044,7 @@ RSpec.describe IsoDoc do
                              <modification id="_">
                                 <p original-id="_">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
                              </modification>
-                          </termsource>
+                          </source>
                        </verbal-definition>
                     </definition>
                     <fmt-definition>
@@ -1060,7 +1060,7 @@ RSpec.describe IsoDoc do
                           :
                           <semx element="definition" source="_">
                              rice retaining its husk after threshing, mark 2 rice retaining its husk after threshing, mark 3 (
-                             <semx element="termsource" source="_">
+                             <semx  element="source" source="_">
                                 <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011" id="_">
                                    <locality type="clause">
                                       <referenceFrom>3.1</referenceFrom>
@@ -1084,7 +1084,7 @@ RSpec.describe IsoDoc do
                              )
                           </semx>
                           (
-                          <semx element="termsource" source="_">
+                          <semx  element="source" source="_">
                              <origin citeas="" id="_">
                                 <termref base="IEV" target="xyz">t1</termref>
                              </origin>
@@ -1097,11 +1097,11 @@ RSpec.describe IsoDoc do
                           )
                        </p>
                     </fmt-definition>
-                    <termsource status="identical" id="_">
+                    <source status="identical" id="_">
                        <origin citeas="">
                           <termref base="IEV" target="xyz">t1</termref>
                        </origin>
-                    </termsource>
+                    </source>
                  </term>
               </terms>
            </sections>
@@ -1123,12 +1123,12 @@ RSpec.describe IsoDoc do
       <domain>rice</domain>
       <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its <xref target="paddy1"><em>husk</em></xref> after threshing</p></verbal-definition></definition>
       <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747e">rice retaining its husk after threshing, mark 2</p>
-      <termsource status="modified">
+      <source status="modified">
         <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></origin>
           <modification>
           <p id="_e73a417d-ad39-417d-a4c8-20e4e2529489">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
         </modification>
-      </termsource>
+      </source>
       </verbal-definition>
       </definition>
       <termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f892"  keep-with-next="true" keep-lines-together="true">
@@ -1142,19 +1142,19 @@ RSpec.describe IsoDoc do
         <li>A</li>
         </ul>
       </termexample>
-      <termsource status='identical'>
+      <source status='identical'>
           <origin citeas=''>
             <termref base='IEV' target='xyz'>t1</termref>
           </origin>
-        </termsource>
-        <termsource status='modified'>
+        </source>
+        <source status='modified'>
           <origin citeas=''>
             <termref base='IEV' target='xyz'/>
           </origin>
           <modification>
             <p id='_'>with adjustments</p>
           </modification>
-        </termsource>
+        </source>
       </term>
     INPUT
     presxml = <<~PRESXML
@@ -1204,7 +1204,7 @@ RSpec.describe IsoDoc do
                    <definition id="_">
                       <verbal-definition>
                          <p original-id="_">rice retaining its husk after threshing, mark 2</p>
-                         <termsource status="modified" original-id="_">
+                         <source status="modified" original-id="_">
                             <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011">
                                <locality type="clause">
                                   <referenceFrom>3.1</referenceFrom>
@@ -1213,7 +1213,7 @@ RSpec.describe IsoDoc do
                             <modification id="_">
                                <p original-id="_">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
                             </modification>
-                         </termsource>
+                         </source>
                       </verbal-definition>
                    </definition>
                    <fmt-definition>
@@ -1243,7 +1243,7 @@ RSpec.describe IsoDoc do
                          <semx element="definition" source="_">
                             <strong>(B)</strong>
                              rice retaining its husk after threshing, mark 2 (
-                            <semx element="termsource" source="_">
+                            <semx  element="source" source="_">
                                <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011" id="_">
                                   <locality type="clause">
                                      <referenceFrom>3.1</referenceFrom>
@@ -1267,7 +1267,7 @@ RSpec.describe IsoDoc do
                             )
                          </semx>
                          (
-                         <semx element="termsource" source="_">
+                         <semx  element="source" source="_">
                             <origin citeas="" id="_">
                                <termref base="IEV" target="xyz">t1</termref>
                             </origin>
@@ -1278,7 +1278,7 @@ RSpec.describe IsoDoc do
                             </semx>
                          </semx>
                          ;
-                         <semx element="termsource" source="_">
+                         <semx  element="source" source="_">
                             <origin citeas="" id="_">
                                <termref base="IEV" target="xyz"/>
                             </origin>
@@ -1366,19 +1366,19 @@ RSpec.describe IsoDoc do
                          </li>
                       </ul>
                    </termexample>
-                   <termsource status="identical" id="_">
+                   <source status="identical" id="_">
                       <origin citeas="">
                          <termref base="IEV" target="xyz">t1</termref>
                       </origin>
-                   </termsource>
-                   <termsource status="modified" id="_">
+                   </source>
+                   <source status="modified" id="_">
                       <origin citeas="">
                          <termref base="IEV" target="xyz"/>
                       </origin>
                       <modification id="_">
                          <p original-id="_">with adjustments</p>
                       </modification>
-                   </termsource>
+                   </source>
                 </term>
              </terms>
           </sections>
@@ -1411,19 +1411,19 @@ RSpec.describe IsoDoc do
         <li>A</li>
         </ul>
       </termexample>
-      <termsource status='identical'>
+      <source status='identical'>
           <origin citeas=''>
             <termref base='IEV' target='xyz'>t1</termref>
           </origin>
-        </termsource>
-        <termsource status='modified'>
+        </source>
+        <source status='modified'>
           <origin citeas=''>
             <termref base='IEV' target='xyz'/>
           </origin>
           <modification>
             <p id='_'>with adjustments</p>
           </modification>
-        </termsource>
+        </source>
       </term>
     INPUT
     presxml = <<~PRESXML
@@ -1489,7 +1489,7 @@ RSpec.describe IsoDoc do
                              rice retaining its husk after threshing, mark 2
                          </semx>
                          (
-                         <semx element="termsource" source="_">
+                         <semx  element="source" source="_">
                             <origin citeas="" id="_">
                                <termref base="IEV" target="xyz">t1</termref>
                             </origin>
@@ -1500,7 +1500,7 @@ RSpec.describe IsoDoc do
                             </semx>
                          </semx>
                          ;
-                         <semx element="termsource" source="_">
+                         <semx  element="source" source="_">
                             <origin citeas="" id="_">
                                <termref base="IEV" target="xyz"/>
                             </origin>
@@ -1588,19 +1588,19 @@ RSpec.describe IsoDoc do
                          </li>
                       </ul>
                    </termexample>
-                   <termsource status="identical" id="_">
+                   <source status="identical" id="_">
                       <origin citeas="">
                          <termref base="IEV" target="xyz">t1</termref>
                       </origin>
-                   </termsource>
-                   <termsource status="modified" id="_">
+                   </source>
+                   <source status="modified" id="_">
                       <origin citeas="">
                          <termref base="IEV" target="xyz"/>
                       </origin>
                       <modification id="_">
                          <p original-id="_">with adjustments</p>
                       </modification>
-                   </termsource>
+                   </source>
                 </term>
              </terms>
           </sections>
@@ -2343,7 +2343,7 @@ RSpec.describe IsoDoc do
                 <definition>
                   <verbal-definition>
                     <p id='C'>Definition</p>
-                    <termsource status='identical' type='authoritative'>
+                    <source status='identical' type='authoritative'>
                       <origin bibitemid='ISO2191' type='inline' citeas=''>
                         <localityStack>
                           <locality type='section'>
@@ -2351,7 +2351,7 @@ RSpec.describe IsoDoc do
                           </locality>
                         </localityStack>
                       </origin>
-                    </termsource>
+                    </source>
                   </verbal-definition>
                   <non-verbal-representation>
                     <table id='D'>
@@ -2370,7 +2370,7 @@ RSpec.describe IsoDoc do
                     </table>
                   </non-verbal-representation>
                 </definition>
-                <termsource status='identical' type='authoritative'>
+                <source status='identical' type='authoritative'>
                   <origin bibitemid='ISO2191' type='inline' citeas=''>
                     <localityStack>
                       <locality type='section'>
@@ -2378,7 +2378,7 @@ RSpec.describe IsoDoc do
                       </locality>
                     </localityStack>
                   </origin>
-                </termsource>
+                </source>
               </term>
               <term id='term-term-2'>
                 <preferred>
@@ -2400,7 +2400,7 @@ RSpec.describe IsoDoc do
                         </math>
                       </stem>
                     </formula>
-                    <termsource status='identical' type='authoritative'>
+                    <source status='identical' type='authoritative'>
                       <origin bibitemid='ISO2191' type='inline' citeas=''>
                         <localityStack>
                           <locality type='section'>
@@ -2408,7 +2408,7 @@ RSpec.describe IsoDoc do
                           </locality>
                         </localityStack>
                       </origin>
-                    </termsource>
+                    </source>
                   </non-verbal-representation>
                 </definition>
               </term>
@@ -2462,7 +2462,7 @@ RSpec.describe IsoDoc do
                                 </math>
                              </stem>
                           </formula>
-                          <termsource status="identical" type="authoritative" original-id="_">
+                          <source status="identical" type="authoritative" original-id="_">
                              <origin bibitemid="ISO2191" type="inline" citeas="">
                                 <localityStack>
                                    <locality type="section">
@@ -2470,7 +2470,7 @@ RSpec.describe IsoDoc do
                                    </locality>
                                 </localityStack>
                              </origin>
-                          </termsource>
+                          </source>
                        </non-verbal-representation>
                     </definition>
                     <fmt-definition>
@@ -2528,7 +2528,7 @@ RSpec.describe IsoDoc do
                              </fmt-stem>
                           </formula>
                           (
-                          <semx element="termsource" source="_">
+                          <semx  element="source" source="_">
                              <origin bibitemid="ISO2191" type="inline" citeas="" id="_">
                                 <localityStack>
                                    <locality type="section">
@@ -2560,7 +2560,7 @@ RSpec.describe IsoDoc do
                     <definition id="_">
                        <verbal-definition>
                           <p original-id="C">Definition</p>
-                          <termsource status="identical" type="authoritative" original-id="_">
+                          <source status="identical" type="authoritative" original-id="_">
                              <origin bibitemid="ISO2191" type="inline" citeas="">
                                 <localityStack>
                                    <locality type="section">
@@ -2568,7 +2568,7 @@ RSpec.describe IsoDoc do
                                    </locality>
                                 </localityStack>
                              </origin>
-                          </termsource>
+                          </source>
                        </verbal-definition>
                        <non-verbal-representation>
                           <table autonum="1" original-id="D">
@@ -2596,7 +2596,7 @@ RSpec.describe IsoDoc do
                        </p>
                        <semx element="definition" source="_">
                           Definition (
-                          <semx element="termsource" source="_">
+                          <semx  element="source" source="_">
                              <origin bibitemid="ISO2191" type="inline" citeas="" id="_">
                                 <localityStack>
                                    <locality type="section">
@@ -2643,7 +2643,7 @@ RSpec.describe IsoDoc do
                        </semx>
                        <p>
                           (
-                          <semx element="termsource" source="_">
+                          <semx  element="source" source="_">
                              <origin bibitemid="ISO2191" type="inline" citeas="" id="_">
                                 <localityStack>
                                    <locality type="section">
@@ -2665,7 +2665,7 @@ RSpec.describe IsoDoc do
                           )
                        </p>
                     </fmt-definition>
-                    <termsource status="identical" type="authoritative" id="_">
+                    <source status="identical" type="authoritative" id="_">
                        <origin bibitemid="ISO2191" type="inline" citeas="">
                           <localityStack>
                              <locality type="section">
@@ -2673,7 +2673,7 @@ RSpec.describe IsoDoc do
                              </locality>
                           </localityStack>
                        </origin>
-                    </termsource>
+                    </source>
                  </term>
               </terms>
            </sections>
