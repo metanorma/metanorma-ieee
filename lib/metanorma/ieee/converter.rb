@@ -34,12 +34,12 @@ module Metanorma
       end
 
       def clause_attrs_preprocess(attrs, node)
-        case node.title
-        when "Purpose" then attrs[:type] = "purpose"
-        when "Overview" then attrs[:type] = "overview"
-        when "Scope" then attrs[:type] = "scope"
-        when "Word Usage" then attrs[:type] = "word-usage"
-        when "Participants" then attrs[:type] = "participants"
+        case node.title.downcase
+        when "purpose" then attrs[:type] = "purpose"
+        when "overview" then attrs[:type] = "overview"
+        when "scope" then attrs[:type] = "scope"
+        when "word usage" then attrs[:type] = "word-usage"
+        when "participants" then attrs[:type] = "participants"
         end
         super
       end

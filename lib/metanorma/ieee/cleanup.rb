@@ -30,7 +30,7 @@ module Metanorma
       end
 
       def initial_note(xml)
-        n = xml.at("//boilerplate//note[@id = 'boilerplate_front']")
+        n = xml.at("//boilerplate//note[@anchor = 'boilerplate_front']")
         s = xml.at("//sections")
         (n && s) or return
         s.children.empty? and s << " "
@@ -39,7 +39,7 @@ module Metanorma
 
       def word_usage(xml)
         @document_scheme == "ieee-sa-2021" or return
-        n = xml.at("//boilerplate//clause[@id = 'boilerplate_word_usage']")
+        n = xml.at("//boilerplate//clause[@anchor = 'boilerplate_word_usage']")
           &.remove
         s = xml.at("//clause[@type = 'overview']")
         (n && s) or return
@@ -155,13 +155,13 @@ module Metanorma
           populate_participants(xml, k.to_s, v)
         end
         p = xml.at(".//p[@type = 'emeritus_sign']")
-        ul = xml.at("//clause[@id = 'boilerplate-participants-sb']//ul")
+        ul = xml.at("//clause[@anchor = 'boilerplate-participants-sb']//ul")
         p && ul and ul.next = p
         xml.at("//sections//clause[@type = 'participants']")&.remove
       end
 
       def populate_participants(xml, target, subtitle)
-        t = xml.at("//clause[@id = '#{target}']/membership") or return
+        t = xml.at("//clause[@anchor = '#{target}']/membership") or return
         s = xml.xpath("//clause[@type = 'participants']/clause").detect do |x|
           n = x.at("./title") and n.text.strip.downcase == subtitle
         end

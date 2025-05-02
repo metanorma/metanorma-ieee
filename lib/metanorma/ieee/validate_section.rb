@@ -99,12 +99,8 @@ module Metanorma
       # Style manual 13.1
       def onlychild_clause_validate(root)
         root.xpath(Standoc::Utils::SUBCLAUSE_XPATH).each do |c|
-          next unless c.xpath("../clause").size == 1
-
-          title = c.at("./title")
-          location = c["id"] || "#{c.text[0..60]}..."
-          location += ":#{title.text}" if c["id"] && !title.nil?
-          @log.add("Style", nil, "#{location}: subclause is only child")
+          c.xpath("../clause").size == 1 or next
+          @log.add("Style", c, "subclause is only child")
         end
       end
 
