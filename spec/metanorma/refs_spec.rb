@@ -516,7 +516,6 @@ RSpec.describe Metanorma::Ieee do
           <bibliography/>
         </metanorma>
       OUTPUT
-      mock_preserve_idrefs
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       out.xpath("//xmlns:bibdata | //xmlns:boilerplate | " \
                 "//xmlns:references | //xmlns:metanorma-extension | " \
@@ -578,7 +577,6 @@ RSpec.describe Metanorma::Ieee do
           </p>
         </clause>
       OUTPUT
-      mock_preserve_idrefs
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
         .at("//xmlns:clause[@anchor = 'A']")
       expect(Xml::C14n.format(strip_guid(out.to_xml)))
@@ -959,7 +957,6 @@ RSpec.describe Metanorma::Ieee do
          </bibliography>
       </metanorma>
     OUTPUT
-    mock_preserve_idrefs
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
   end

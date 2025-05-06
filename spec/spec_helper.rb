@@ -95,12 +95,6 @@ def strip_guid(xml)
     .gsub(%r{ schema-version="[^"]+"}, "")
 end
 
-def mock_preserve_idrefs
-  allow_any_instance_of(Metanorma::Standoc::Cleanup)
-    .to receive(:contenthash_id_update_idrefs) do |_instance, doc, *_args|
-    end
-end
-
 ASCIIDOC_BLANK_HDR = <<~HDR.freeze
   = Document title
   Author

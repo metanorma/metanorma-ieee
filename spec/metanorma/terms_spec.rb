@@ -275,7 +275,6 @@ RSpec.describe Metanorma::Ieee do
            </sections>
         </metanorma>
     OUTPUT
-    mock_preserve_idrefs
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:references | " \
               "//xmlns:metanorma-extension").remove

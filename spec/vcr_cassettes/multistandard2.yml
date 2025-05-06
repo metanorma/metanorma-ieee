@@ -41,21 +41,21 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Github-Request-Id:
-      - 53CA:370EBB:542FB:E6227:6814DF04
+      - 5EAC:349355:15C8D:33B1A:6819EA8E
       Accept-Ranges:
       - bytes
       Date:
-      - Fri, 02 May 2025 15:05:02 GMT
+      - Tue, 06 May 2025 10:55:36 GMT
       Via:
       - 1.1 varnish
       X-Served-By:
-      - cache-mel11241-MEL
+      - cache-mel11220-MEL
       X-Cache:
       - HIT
       X-Cache-Hits:
       - '1'
       X-Timer:
-      - S1746198302.026614,VS0,VE1
+      - S1746528936.317004,VS0,VE1
       Vary:
       - Authorization,Accept-Encoding,Origin
       Access-Control-Allow-Origin:
@@ -63,11 +63,11 @@ http_interactions:
       Cross-Origin-Resource-Policy:
       - cross-origin
       X-Fastly-Request-Id:
-      - 99029c01690b30c93f6da843e03beb80021bba31
+      - 55da93b90683e6f3e81cecb5d98d3e78d94d1b67
       Expires:
-      - Fri, 02 May 2025 15:10:02 GMT
+      - Tue, 06 May 2025 11:00:36 GMT
       Source-Age:
-      - '22'
+      - '26'
     body:
       encoding: ASCII-8BIT
       string: |
@@ -177,7 +177,7 @@ http_interactions:
         ext:
           schema-version: v1.0.1
           stream: IAB
-  recorded_at: Fri, 02 May 2025 15:05:02 GMT
+  recorded_at: Tue, 06 May 2025 10:55:36 GMT
 - request:
     method: get
     uri: https://raw.githubusercontent.com/relaton/relaton-data-rfcs/main/data/RFC7749.yaml
@@ -219,21 +219,21 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Github-Request-Id:
-      - 53CA:370EBB:542FB:E6227:6814DF04
+      - 5EAC:349355:15C8D:33B1A:6819EA8E
       Accept-Ranges:
       - bytes
       Date:
-      - Fri, 02 May 2025 15:05:04 GMT
+      - Tue, 06 May 2025 10:55:39 GMT
       Via:
       - 1.1 varnish
       X-Served-By:
-      - cache-mel11244-MEL
+      - cache-mel11258-MEL
       X-Cache:
       - HIT
       X-Cache-Hits:
       - '1'
       X-Timer:
-      - S1746198304.355185,VS0,VE1
+      - S1746528940.625857,VS0,VE1
       Vary:
       - Authorization,Accept-Encoding,Origin
       Access-Control-Allow-Origin:
@@ -241,11 +241,11 @@ http_interactions:
       Cross-Origin-Resource-Policy:
       - cross-origin
       X-Fastly-Request-Id:
-      - 62cd2f310e5d5f0d224a11c9a2999622c9670c48
+      - 1cddccc2dae68db82336c2f68374acd2ba3af214
       Expires:
-      - Fri, 02 May 2025 15:10:04 GMT
+      - Tue, 06 May 2025 11:00:39 GMT
       Source-Age:
-      - '24'
+      - '29'
     body:
       encoding: ASCII-8BIT
       string: |
@@ -355,5 +355,5 @@ http_interactions:
         ext:
           schema-version: v1.0.1
           stream: IAB
-  recorded_at: Fri, 02 May 2025 15:05:04 GMT
+  recorded_at: Tue, 06 May 2025 10:55:40 GMT
 recorded_with: VCR 6.1.0
