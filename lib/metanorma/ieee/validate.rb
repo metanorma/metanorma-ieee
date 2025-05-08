@@ -77,7 +77,7 @@ module Metanorma
         root.xpath("//references[@normative = 'true']/bibitem").each do |b|
           b.at(".//date") or
             @log.add("Style", b,
-                     "Normative reference #{b&.at('./@id')&.text} is not dated.")
+                     "Normative reference #{b.at('./@anchor')&.text} is not dated.")
         end
       end
 

@@ -91,7 +91,7 @@ module Metanorma
         ieee = xmldoc.xpath("//references/bibitem")
           .each_with_object({}) do |b, m|
           bib_pubs(b).include?(IEEE) and
-            m[b["id"]] = b.at("./docidentifier[@scope = 'trademark']")&.text
+            m[b["anchor"]] = b.at("./docidentifier[@scope = 'trademark']")&.text
         end
         trademark_ieee_erefs1(xmldoc, "//preface//eref", ieee)
         trademark_ieee_erefs1(xmldoc, "//sections//eref | //annex//eref", ieee)

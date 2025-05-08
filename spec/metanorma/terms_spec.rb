@@ -24,7 +24,7 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
                <sections>
-           <terms id='_' obligation='normative'>
+           <terms id='_' anchor="_terms_and_definitions" obligation='normative'>
              <title>Definitions</title>
              <p id='_'>
                For the purposes of this document, the following terms and definitions
@@ -41,7 +41,7 @@ RSpec.describe Metanorma::Ieee do
                  </p>
                </fn>
              </p>
-             <term id='term-Term1'>
+             <term id="_" anchor="term-Term1">
                <preferred>
                  <expression>
                    <name>Term1</name>
@@ -62,7 +62,7 @@ RSpec.describe Metanorma::Ieee do
                  </origin>
                </source>
              </term>
-             <term id='term-Term2'>
+             <term id="_" anchor="term-Term2">
                <preferred>
                  <expression>
                    <name>Term2</name>
@@ -138,7 +138,7 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
            <sections>
-              <terms id="_" obligation="normative">
+              <terms id="_" anchor="_definitions" obligation="normative">
                  <title>Definitions</title>
                  <p id="_">
                     For the purposes of this document, the following terms and definitions apply. The
@@ -153,7 +153,7 @@ RSpec.describe Metanorma::Ieee do
                        </p>
                     </fn>
                  </p>
-                 <term id="term-widget">
+                 <term id="_" anchor="term-widget">
                     <preferred>
                        <expression>
                           <name>widget</name>
@@ -236,35 +236,35 @@ RSpec.describe Metanorma::Ieee do
                        </verbal-definition>
                     </definition>
                  </term>
-                 <term id="term-thing">
+                 <term id="_" anchor="term-thing">
                     <preferred>
                        <expression>
                           <name>thing</name>
                        </expression>
                     </preferred>
                  </term>
-                 <term id="term-thingummy">
+                 <term id="_" anchor="term-thingummy">
                     <preferred>
                        <expression>
                           <name>thingummy</name>
                        </expression>
                     </preferred>
                  </term>
-                 <term id="term-thingummijig">
+                 <term id="_" anchor="term-thingummijig">
                     <preferred>
                        <expression>
                           <name>thingummijig</name>
                        </expression>
                     </preferred>
                  </term>
-                 <term id="term-doovywhack">
+                 <term id="_" anchor="term-doovywhack">
                     <preferred>
                        <expression>
                           <name>doovywhack</name>
                        </expression>
                     </preferred>
                  </term>
-                 <term id="term-whatsit">
+                 <term id="_" anchor="term-whatsit">
                     <preferred>
                        <expression>
                           <name>whatsit</name>
@@ -296,7 +296,7 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
         <sections>
-          <terms id='_' obligation='normative'>
+          <terms id='_' anchor="_definitions" obligation='normative'>
             <title>Definitions</title>
             <p id='_'>
               For the purposes of this document, the following terms and definitions
@@ -313,7 +313,7 @@ RSpec.describe Metanorma::Ieee do
                 </p>
               </fn>
             </p>
-            <term id='term-widget'>
+            <term id="_" anchor="term-widget">
               <preferred>
                 <expression>
                   <name>widget</name>

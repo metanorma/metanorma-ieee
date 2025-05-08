@@ -23,7 +23,7 @@ RSpec.describe Metanorma::Ieee do
            <boilerplate>
          <copyright-statement>
            <clause id="_" inline-header="false" obligation="normative">
-             <p id="copyright" align="left">Copyright © #{Date.today.year} by The Institute of Electrical and Electronics Engineers, Inc.<br/>
+             <p id="_" anchor="copyright" align="left">Copyright © #{Date.today.year} by The Institute of Electrical and Electronics Engineers, Inc.<br/>
        Three Park Avenue<br/>
        New York, New York 10016-5997, USA</p>
              <p id="_">All rights reserved.</p>
@@ -38,9 +38,9 @@ RSpec.describe Metanorma::Ieee do
            </clause>
          </license-statement>
          <legal-statement>
-           <clause id="boilerplate-disclaimers" inline-header="false" obligation="normative">
+           <clause id="_" anchor="boilerplate-disclaimers" inline-header="false" obligation="normative">
              <title>Important Notices and Disclaimers Concerning IEEE Standards Documents</title>
-             <p id="_">IEEE Standards
+             <p id="_" anchor="_DV_M4">IEEE Standards
        documents are made available for use subject to important notices and legal
        disclaimers. These notices and disclaimers, or a reference to this page (<link target="https://standards.ieee.org/ipr/disclaimers.html"/>),
        appear in all IEEE standards and may be found under the heading “Important Notices
@@ -190,9 +190,9 @@ RSpec.describe Metanorma::Ieee do
                <p id="_">Technologies, application of technologies, and recommended procedures in various industries evolve over time. The IEEE standards development process allows participants to review developments in industries, technologies, and practices, and to determine what, if any, updates should be made to the IEEE standard. During this evolution, the technologies and recommendations in IEEE standards may be implemented in ways not foreseen during the standard’s development. IEEE standards development activities consider research and information presented to the standards development group in developing any safety recommendations. Other information about safety practices, changes in technology or technology implementation, or impact by peripheral systems also may be pertinent to safety considerations during implementation of the standard. Implementers and users of IEEE Standards documents are responsible for determining and complying with all appropriate safety, security, environmental, health, data privacy, and interference protection practices and all applicable laws and regulations.</p>
              </clause>
            </clause>
-           <clause id="boilerplate-participants" type="participants" inline-header="false" obligation="normative">
+           <clause id="_" anchor="boilerplate-participants" type="participants" inline-header="false" obligation="normative">
              <title>Participants</title>
-             <clause id="boilerplate-participants-wg" inline-header="false" obligation="normative">
+             <clause id="_" anchor="boilerplate-participants-wg" inline-header="false" obligation="normative">
                <p id="_">At the time this draft Recommended Practice was completed, the  had the following membership:</p>
                <ul id="_">
                  <li>
@@ -329,7 +329,7 @@ RSpec.describe Metanorma::Ieee do
                  </li>
                </ul>
              </clause>
-             <clause id="boilerplate-participants-bg" inline-header="false" obligation="normative">
+             <clause id="_" anchor="boilerplate-participants-bg" inline-header="false" obligation="normative">
                <p id="_">The following members of the   Standards Association balloting group voted on this Recommended Practice. Balloters may have voted for approval, disapproval, or abstention.</p>
                <ul id="_">
                  <li>
@@ -442,7 +442,7 @@ RSpec.describe Metanorma::Ieee do
                  </li>
                </ul>
              </clause>
-             <clause id="boilerplate-participants-sb" inline-header="false" obligation="normative">
+             <clause id="_" anchor="boilerplate-participants-sb" inline-header="false" obligation="normative">
                <p id="_">When the IEEE SA Standards Board approved this Recommended Practice on 01 Jan 1000, it had the following membership:</p>
                <ul id="_">
                  <li>
@@ -619,17 +619,17 @@ RSpec.describe Metanorma::Ieee do
              <p id="_">IEEE is a registered trademark in the U.S. Patent &amp; Trademark Office, owned by The Institute of Electrical and Electronics Engineers, Incorporated.</p>
            </clause>
            <clause id="_" inline-header="false" obligation="normative">
-             <table id="_" unnumbered="true">
+             <table id="_" anchor="_isbn_pdf_print" unnumbered="true">
                <tbody>
                  <tr>
-                   <td valign="top" align="left">PDF:</td>
-                   <td valign="top" align="left">ISBN 978-0-XXXX-XXXX-X</td>
-                   <td valign="top" align="left">STDXXXXX</td>
+                   <td id="_" valign="top" align="left">PDF:</td>
+                   <td id="_" valign="top" align="left">ISBN 978-0-XXXX-XXXX-X</td>
+                   <td id="_" valign="top" align="left">STDXXXXX</td>
                  </tr>
                  <tr>
-                   <td valign="top" align="left">Print:</td>
-                   <td valign="top" align="left">ISBN 978-0-XXXX-XXXX-X</td>
-                   <td valign="top" align="left">STDPDXXXXX</td>
+                   <td id="_" valign="top" align="left">Print:</td>
+                   <td id="_" valign="top" align="left">ISBN 978-0-XXXX-XXXX-X</td>
+                   <td id="_" valign="top" align="left">STDPDXXXXX</td>
                  </tr>
                </tbody>
              </table>
@@ -670,7 +670,7 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
         <sections>
-          <clause id='_' inline-header='false' obligation='normative'>
+          <clause id='_' anchor="_clause_1" inline-header='false' obligation='normative'>
             <title>Clause 1</title>
           </clause>
         </sections>
@@ -712,7 +712,7 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
              <preface>
-         <introduction id='_' obligation='informative'>
+         <introduction id='_' anchor="_introduction" obligation='informative'>
            <title>Introduction</title>
            <admonition>This introduction is not part of P10000/D1.2,
               Draft Recommended Practice for Widgets
@@ -721,9 +721,9 @@ RSpec.describe Metanorma::Ieee do
          </introduction>
        </preface>
          <sections> </sections>
-         <annex id='_' inline-header='false' obligation='normative'>
+         <annex id='_' anchor="_appendix_c" inline-header='false' obligation='normative'>
            <title>Appendix C</title>
-           <references id='_' normative='false' obligation='informative'>
+           <references id='_' anchor="_bibliography" normative='false' obligation='informative'>
              <title>Bibliography</title>
              <p id='_'>
                Bibliographical references are resources that provide additional or
@@ -731,7 +731,7 @@ RSpec.describe Metanorma::Ieee do
                this standard. Reference to these resources is made for informational
                use only.
              </p>
-             <bibitem id='ABC'>
+             <bibitem id="_" anchor="ABC">
              <formattedref format="application/x-isodoc+xml">[NO INFORMATION AVAILABLE]</formattedref>
                <docidentifier>DEF</docidentifier>
                <docidentifier type='metanorma-ordinal'>[B1]</docidentifier>
@@ -739,7 +739,7 @@ RSpec.describe Metanorma::Ieee do
            </references>
          </annex>
        <bibliography>
-         <references id='_' normative='true' obligation='informative'>
+         <references id='_' anchor="_normative_references" normative='true' obligation='informative'>
            <title>Normative references</title>
            <p id='_'>
              The following referenced documents are indispensable for the application
@@ -749,7 +749,7 @@ RSpec.describe Metanorma::Ieee do
              applies. For undated references, the latest edition of the referenced
              document (including any amendments or corrigenda) applies.
            </p>
-           <bibitem id='GHI'>
+           <bibitem id="_" anchor="GHI">
            <formattedref format="application/x-isodoc+xml">[NO INFORMATION AVAILABLE]</formattedref>
              <docidentifier>JKL</docidentifier>
            </bibitem>
@@ -782,7 +782,7 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
          <sections>
-           <note id='boilerplate_front' type="boilerplate">
+           <note id="_" anchor="boilerplate_front" type="boilerplate">
              <p id='_'>
                The editing instructions contained in this amendment define how to merge
                the material contained therein into the existing base standard and its
@@ -825,7 +825,7 @@ RSpec.describe Metanorma::Ieee do
                base standard.
              </p>
            </note>
-           <clause id='_' inline-header='false' obligation='normative'>
+           <clause id='_' anchor="_clause" inline-header='false' obligation='normative'>
              <title>Clause</title>
            </clause>
          </sections>
@@ -857,12 +857,12 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
          <sections> </sections>
-         <annex id='_' inline-header='false' obligation='normative'>
+         <annex id='_' anchor="_appendix_c" inline-header='false' obligation='normative'>
            <title>Appendix C</title>
-           <references id='_' normative='false' obligation='informative'>
+           <references id='_' anchor="_bibliography" normative='false' obligation='informative'>
              <title>Bibliography</title>
              <p id='_'>This is boilerplate</p>
-             <bibitem id='ABC'>
+             <bibitem id="_" anchor="ABC">
              <formattedref format="application/x-isodoc+xml">[NO INFORMATION AVAILABLE]</formattedref>
                <docidentifier>DEF</docidentifier><docidentifier type='metanorma-ordinal'>[B1]</docidentifier>
              </bibitem>
@@ -898,22 +898,22 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
                <sections>
-           <clause id='_' type='overview' inline-header='false' obligation='normative'>
+           <clause id='_' anchor="_overview" type='overview' inline-header='false' obligation='normative'>
              <title>Overview</title>
-             <clause id='_' type='scope' inline-header='false' obligation='normative'>
+             <clause id='_' anchor="_scope"  type='scope' inline-header='false' obligation='normative'>
                <title>Scope</title>
              </clause>
-             <clause id='_' type='purpose' inline-header='false' obligation='normative'>
+             <clause id='_' anchor="_purpose" type='purpose' inline-header='false' obligation='normative'>
                <title>Purpose</title>
              </clause>
            </clause>
-           <clause id='_' inline-header='false' obligation='normative'>
+           <clause id='_' anchor="_scope_2" inline-header='false' obligation='normative'>
              <title>Scope</title>
            </clause>
-           <clause id='_' inline-header='false' obligation='normative'>
+           <clause id='_' anchor="_purpose_2" inline-header='false' obligation='normative'>
              <title>Purpose</title>
            </clause>
-           <clause id='_' inline-header='false' obligation='normative'>
+           <clause id='_' anchor="_overview_2" inline-header='false' obligation='normative'>
              <title>Overview</title>
            </clause>
          </sections>
@@ -923,7 +923,7 @@ RSpec.describe Metanorma::Ieee do
     ret.at("//xmlns:bibdata").remove
     ret.at("//xmlns:boilerplate").remove
     ret.at("//xmlns:metanorma-extension").remove
-    ret.at("//xmlns:clause[@id = 'boilerplate_word_usage']")&.remove
+    ret.at("//xmlns:clause[@anchor = 'boilerplate_word_usage']")&.remove
     expect(Xml::C14n.format(strip_guid(ret.to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
@@ -952,7 +952,7 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
          <sections>
-           <clause id='_' type='overview' inline-header='false' obligation='normative'>
+           <clause id='_'  anchor="_overview" type='overview' inline-header='false' obligation='normative'>
              <title>Overview</title>
              <note id='_'>
                <p id='_'>
@@ -963,23 +963,23 @@ RSpec.describe Metanorma::Ieee do
                  </fn>
                </p>
              </note>
-             <clause id='_' type='scope' inline-header='false' obligation='normative'>
+             <clause id='_' anchor="_scope" type='scope' inline-header='false' obligation='normative'>
                <title>Scope</title>
              </clause>
-             <clause id='_' type='purpose' inline-header='false' obligation='normative'>
+             <clause id='_' anchor="_purpose" type='purpose' inline-header='false' obligation='normative'>
                <title>Purpose</title>
              </clause>
            </clause>
-           <clause id='_' inline-header='false' obligation='normative'>
+           <clause id='_' anchor="_scope_2" inline-header='false' obligation='normative'>
              <title>Scope</title>
              <note id='_'>
                <p id='_'>Second note</p>
              </note>
            </clause>
-           <clause id='_' inline-header='false' obligation='normative'>
+           <clause id='_' anchor="_purpose_2" inline-header='false' obligation='normative'>
              <title>Purpose</title>
            </clause>
-           <clause id='_' inline-header='false' obligation='normative'>
+           <clause id='_' anchor="_overview_2" inline-header='false' obligation='normative'>
              <title>Overview</title>
            </clause>
          </sections>
@@ -989,7 +989,7 @@ RSpec.describe Metanorma::Ieee do
     ret.at("//xmlns:bibdata").remove
     ret.at("//xmlns:boilerplate").remove
     ret.at("//xmlns:metanorma-extension").remove
-    ret.at("//xmlns:clause[@id = 'boilerplate_word_usage']")&.remove
+    ret.at("//xmlns:clause[@anchor = 'boilerplate_word_usage']")&.remove
     expect(Xml::C14n.format(strip_guid(ret.to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
@@ -1101,9 +1101,9 @@ RSpec.describe Metanorma::Ieee do
 
     INPUT
     output = <<~OUTPUT
-           <clause id="boilerplate-participants" type="participants" inline-header="false" obligation="normative">
+           <clause id="_" anchor="boilerplate-participants" type="participants" inline-header="false" obligation="normative">
          <title>Participants</title>
-         <clause id="boilerplate-participants-wg" inline-header="false" obligation="normative">
+         <clause id="_" anchor="boilerplate-participants-wg" inline-header="false" obligation="normative">
            <p id="_">At the time this draft Standard was completed, the  had the following membership:</p>
            <ul id="_">
              <li>
@@ -1160,7 +1160,7 @@ RSpec.describe Metanorma::Ieee do
            </ul>
            <p id="_">This is an additional clause.</p>
          </clause>
-         <clause id="boilerplate-participants-bg" inline-header="false" obligation="normative">
+         <clause id="_" anchor="boilerplate-participants-bg" inline-header="false" obligation="normative">
            <p id="_">The following members of the   Standards Association balloting group voted on this Standard. Balloters may have voted for approval, disapproval, or abstention.</p>
            <ul id="_">
              <li>
@@ -1220,7 +1220,7 @@ RSpec.describe Metanorma::Ieee do
              </li>
            </ul>
          </clause>
-         <clause id="boilerplate-participants-sb" inline-header="false" obligation="normative">
+         <clause id="_" anchor="boilerplate-participants-sb" inline-header="false" obligation="normative">
            <p id="_">When the IEEE SA Standards Board approved this Standard on &lt;Date Approved&gt;, it had the following membership:</p>
            <ul id="_">
              <li>
@@ -1335,7 +1335,7 @@ RSpec.describe Metanorma::Ieee do
        </clause>
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
-      .at("//xmlns:clause[@id = 'boilerplate-participants']")
+      .at("//xmlns:clause[@anchor = 'boilerplate-participants']")
     expect(Xml::C14n.format(strip_guid(ret.to_xml)))
       .to be_equivalent_to(Xml::C14n.format(output))
   end
@@ -1384,47 +1384,44 @@ RSpec.describe Metanorma::Ieee do
     INPUT
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
-         <preface>
-           <abstract id='_'>
-             <title>Abstract</title>
-             <p id='_'>Text</p>
-           </abstract>
-           <foreword id='_' obligation='informative'>
-             <title>Foreword</title>
-             <p id='_'>Text</p>
-           </foreword>
-           <introduction id='_' obligation='informative'>
-             <title>Introduction</title>
-             <admonition>
-               This introduction is not part of P10000/D1.2, Draft Recommended Practice
-               for Widgets
-             </admonition>
-             <clause id='_' inline-header='false' obligation='informative'>
-               <title>Introduction Subsection</title>
-             </clause>
-           </introduction>
-           <clause id='_' inline-header='false' obligation='informative'>
-             <title>Dedication</title>
-           </clause>
-           <acknowledgements id='_' obligation='informative'>
-             <title>Acknowledgements</title>
-           </acknowledgements>
-         </preface>
-         <sections>
-           <clause id='_' type='overview' inline-header='false' obligation='normative'>
-             <title>Overview</title>
-             <p id='_'>Text</p>
-             <clause id='_' type='scope' inline-header='false' obligation='normative'>
-               <title>Scope</title>
-               <p id='_'>Text</p>
-             </clause>
-             <clause id='_' type='purpose' inline-header='false' obligation='normative'>
-               <title>Purpose</title>
-               <p id='_'>Text</p>
-             </clause>
-           </clause>
-         </sections>
-       </metanorma>
+                 <preface>
+              <abstract id="_" anchor="_abstract">
+                 <title>Abstract</title>
+                 <p id="_">Text</p>
+              </abstract>
+              <foreword id="_" obligation="informative">
+                 <title>Foreword</title>
+                 <p id="_">Text</p>
+              </foreword>
+              <introduction id="_" anchor="_introduction" obligation="informative">
+                 <title>Introduction</title>
+                 <admonition>This introduction is not part of P10000/D1.2, Draft Recommended Practice for Widgets</admonition>
+                 <clause id="_" anchor="_introduction_subsection" inline-header="false" obligation="informative">
+                    <title>Introduction Subsection</title>
+                 </clause>
+              </introduction>
+              <clause id="_" anchor="_dedication" inline-header="false" obligation="informative">
+                 <title>Dedication</title>
+              </clause>
+              <acknowledgements id="_" anchor="_acknowledgements" obligation="informative">
+                 <title>Acknowledgements</title>
+              </acknowledgements>
+           </preface>
+           <sections>
+              <clause id="_" anchor="_overview" type="overview" inline-header="false" obligation="normative">
+                 <title>Overview</title>
+                 <p id="_">Text</p>
+                 <clause id="_" anchor="_scope" type="scope" inline-header="false" obligation="normative">
+                    <title>Scope</title>
+                    <p id="_">Text</p>
+                 </clause>
+                 <clause id="_" anchor="_purpose" type="purpose" inline-header="false" obligation="normative">
+                    <title>Purpose</title>
+                    <p id="_">Text</p>
+                 </clause>
+              </clause>
+           </sections>
+        </metanorma>
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.xpath("//xmlns:bibdata | //xmlns:metanorma-extension").each(&:remove)

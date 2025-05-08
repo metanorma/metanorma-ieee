@@ -74,6 +74,7 @@ end
 
 def strip_guid(xml)
   xml.gsub(%r{ id=['"]_[^"']+['"]}, ' id="_"')
+    .gsub(%r{ semx-id="[^"]+"}, "")
     .gsub(%r{ original-id=['"]_[^"']+['"]}, ' original-id="_"')
     .gsub(%r{ target=['"]_[^"']+['"]}, ' target="_"')
     .gsub(%r{ source=['"]_[^"']+['"]}, ' source="_"')
@@ -89,6 +90,7 @@ def strip_guid(xml)
     .gsub(%r[ src="([^/]+)/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\.], ' src="\\1/_.')
     .gsub(%r[ src='([^/]+)/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\.], " src='\\1/_.")
     .gsub(%r[ reference=['"][0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}.], ' reference="_"')
+    .gsub(%r[ bibitemid=['"]_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}.], ' bibitemid="_"')
     .gsub(%r[mso-bookmark:_Ref\d+], "mso-bookmark:_Ref")
     .gsub(%r{<fetched>[^<]+</fetched>}, "<fetched/>")
     .gsub(%r{ schema-version="[^"]+"}, "")
@@ -131,7 +133,7 @@ def boilerplate(xmldoc)
                         File.read(file, encoding: "utf-8")
                         .gsub(/<\/?membership>/, ""), xmldoc
                       ))
-  ret.at("//clause[@id='boilerplate_word_usage']")&.remove
+  ret.at("//clause[@anchor='boilerplate_word_usage']")&.remove
   ret.xpath("//passthrough").each(&:remove)
   strip_guid(ret.root.to_xml(encoding: "UTF-8", indent: 2,
                              save_with: Nokogiri::XML::Node::SaveOptions::AS_XML))

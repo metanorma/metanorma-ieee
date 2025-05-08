@@ -68,9 +68,9 @@ RSpec.describe Metanorma::Ieee do
 
       INPUT
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
-      expect(out.xpath("//xmlns:references/xmlns:bibitem/@id")
-        .map(&:value)).to be_equivalent_to ["ref2", "ref1", "ref4", "ref5",
-                                            "ref3"]
+      expect(out.xpath("//xmlns:references/xmlns:bibitem/@anchor")
+        .map(&:value))
+        .to be_equivalent_to ["ref2", "ref1", "ref4", "ref5", "ref3"]
     end
   end
 
@@ -135,9 +135,9 @@ RSpec.describe Metanorma::Ieee do
 
       INPUT
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
-      expect(out.xpath("//xmlns:references/xmlns:bibitem/@id")
-        .map(&:value)).to be_equivalent_to ["ref2", "ref1", "ref4", "ref5",
-                                            "ref3"]
+      expect(out.xpath("//xmlns:references/xmlns:bibitem/@anchor")
+        .map(&:value))
+        .to be_equivalent_to ["ref2", "ref1", "ref4", "ref5", "ref3"]
     end
   end
 
@@ -183,10 +183,10 @@ RSpec.describe Metanorma::Ieee do
             <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
            <sections/>
            <bibliography>
-            <references id="_" normative="false" obligation="informative">
+            <references id="_" anchor="_bibliography" normative="false" obligation="informative">
               <title>Bibliography</title>
               <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
-              <bibitem id="ref2" type="standard">
+              <bibitem id="_" anchor="ref2" type="standard">
                 <title type="main" format="text/plain">The “xml2rfc” Version 2 Vocabulary</title>
                 <uri type="src">https://www.rfc-editor.org/info/rfc7749</uri>
                 <docidentifier type="IETF" primary="true">RFC 7749</docidentifier>
@@ -242,7 +242,7 @@ RSpec.describe Metanorma::Ieee do
                 <keyword>Internet-Draft</keyword>
                 <keyword>Vocabulary</keyword>
               </bibitem>
-              <bibitem id="ref1" type="standard">
+              <bibitem id="_" anchor="ref1" type="standard">
                 <title type="title-main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
                 <title type="main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
                 <uri type="src">https://www.iso.org/standard/74575.html</uri>
@@ -381,7 +381,7 @@ RSpec.describe Metanorma::Ieee do
                 </relation>
                 <place>Geneva</place>
               </bibitem>
-              <bibitem type="book" id="ref4">
+              <bibitem type="book" id="_" anchor="ref4">
                 <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
                 <title type="title-main" format="text/plain">Indiana Jones and the Last Crusade</title>
                 <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
@@ -403,7 +403,7 @@ RSpec.describe Metanorma::Ieee do
                   </person>
                 </contributor>
               </bibitem>
-              <bibitem id="ref3">
+              <bibitem id="_" anchor="ref3">
                 <formattedref format="application/x-isodoc+xml">REF4</formattedref>
                 <docidentifier>REF4</docidentifier>
                 <docidentifier type="metanorma-ordinal">[B4]</docidentifier>
@@ -469,7 +469,7 @@ RSpec.describe Metanorma::Ieee do
       output = <<~OUTPUT
           <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
                    <preface>
-            <introduction id='_' obligation='informative'>
+            <introduction id='_' anchor="_introduction" obligation='informative'>
               <title>Introduction</title>
               <admonition>This introduction is not part of P, Standard for Document title </admonition>
               <p id='_'>
@@ -484,9 +484,9 @@ RSpec.describe Metanorma::Ieee do
             </introduction>
           </preface>
           <sections>
-            <clause id='_' type='overview' inline-header='false' obligation='normative'>
+            <clause id='_' anchor="_overview" type='overview' inline-header='false' obligation='normative'>
               <title>Overview</title>
-              <clause id='_' type='scope' inline-header='false' obligation='normative'>
+              <clause id='_' anchor="_scope" type='scope' inline-header='false' obligation='normative'>
                 <title>Scope</title>
                 <p id='_'>
                   <eref type='inline' bibitemid='ref1' citeas='IEEE 1619™-2007'/>
@@ -500,14 +500,14 @@ RSpec.describe Metanorma::Ieee do
                 </p>
               </clause>
             </clause>
-            <clause id='_' inline-header='false' obligation='normative'>
+            <clause id='_' anchor="_clause" inline-header='false' obligation='normative'>
               <title>Clause</title>
               <p id='_'>
                 <eref type='inline' bibitemid='ref1' citeas='IEEE&#xa0;1619-2007'/>
               </p>
             </clause>
           </sections>
-          <annex id='_' inline-header='false' obligation='normative'>
+          <annex id='_' anchor="_annex" inline-header='false' obligation='normative'>
             <title>Annex</title>
             <p id='_'>
               <eref type='inline' bibitemid='ref1' citeas='IEEE&#xa0;1619-2007'/>
@@ -519,7 +519,7 @@ RSpec.describe Metanorma::Ieee do
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       out.xpath("//xmlns:bibdata | //xmlns:boilerplate | " \
                 "//xmlns:references | //xmlns:metanorma-extension | " \
-                "//xmlns:clause[@id = 'boilerplate_word_usage']")
+                "//xmlns:clause[@anchor = 'boilerplate_word_usage']")
         .remove
       expect(Xml::C14n.format(strip_guid(out.to_xml)))
         .to be_equivalent_to Xml::C14n.format(output)
@@ -564,7 +564,7 @@ RSpec.describe Metanorma::Ieee do
 
       INPUT
       output = <<~OUTPUT
-         <clause id='A' inline-header='false' obligation='normative'>
+         <clause id="_" anchor="A" inline-header='false' obligation='normative'>
           <title>Clause</title>
           <p id='_'>
             <eref type='inline' bibitemid='ref1' citeas='ISO&#xa0;639:1967'/>
@@ -578,7 +578,7 @@ RSpec.describe Metanorma::Ieee do
         </clause>
       OUTPUT
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
-        .at("//xmlns:clause[@id = 'A']")
+        .at("//xmlns:clause[@anchor = 'A']")
       expect(Xml::C14n.format(strip_guid(out.to_xml)))
         .to be_equivalent_to Xml::C14n.format(output)
     end
@@ -606,10 +606,10 @@ RSpec.describe Metanorma::Ieee do
       INPUT
       output = <<~OUTPUT
          <bibliography>
-          <references id="_" normative="true" obligation="informative">
+          <references id="_" anchor="_normative_references" normative="true" obligation="informative">
             <title>Normative references</title>
             <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
-            <bibitem id="ref1" type="standard">
+            <bibitem id="_" anchor="ref1" type="standard">
               <fetched/>
               <title type="main" format="text/plain">IEEE Standard on Pulse Measurement and Analysis by Objective Techniques</title>
               <uri type="src">https://ieeexplore.ieee.org/document/29013</uri>
@@ -662,10 +662,10 @@ RSpec.describe Metanorma::Ieee do
               <keyword>Measurement standards</keyword>
             </bibitem>
           </references>
-          <references id="_" normative="false" obligation="informative">
+          <references id="_" anchor="_bibliography" normative="false" obligation="informative">
             <title>Bibliography</title>
             <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
-            <bibitem id="ref4" type="standard">
+            <bibitem id="_" anchor="ref4" type="standard">
               <fetched/>
               <title type="main" format="text/plain">IEEE Standard Pulse Terms and Definitions</title>
               <uri type="src">https://ieeexplore.ieee.org/document/29015</uri>
@@ -769,30 +769,30 @@ RSpec.describe Metanorma::Ieee do
       INPUT
       output = <<~OUTPUT
        <bibliography>
-          <references id="_" normative="true" obligation="informative">
+          <references id="_" anchor="_normative_references" normative="true" obligation="informative">
              <title>Normative references</title>
              <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
-             <bibitem id="ref11">
+             <bibitem id="_" anchor="ref11">
                 <docidentifier type="ETSI" primary="true">ETSI GS NFV 002 V1.2.1 (2014-12)</docidentifier>
                 <note type="Availability">
                    <p id="_">ETSI publications are available the European Telecommunications Standards Institute (http://www.etsi.org).</p>
                 </note>
              </bibitem>
-             <bibitem id="ref31">
+             <bibitem id="_" anchor="ref31">
                 <docidentifier type="ETSI" primary="true">ETSI GS ZSM 012 V1.1.1 (2022-12)</docidentifier>
              </bibitem>
-             <bibitem id="ref23" type="standard">
+             <bibitem id="_" anchor="ref23" type="standard">
                 <docidentifier type="IEC" primary="true">IEC 60050</docidentifier>
                 <docidentifier type="URN">urn:iec:std:iec:60050::::</docidentifier>
                 <note type="Availability">
                    <p id="_">IEC publications are available from the International Electrotechnical Commission (http://www.iec.ch/). IEC publications are also available in the United States from the American National Standards Institute (http://www.ansi.org/).</p>
                 </note>
              </bibitem>
-             <bibitem id="ref3" type="standard">
+             <bibitem id="_" anchor="ref3" type="standard">
                 <docidentifier type="IEC" primary="true">IEC 61131-3</docidentifier>
                 <docidentifier type="URN">urn:iec:std:iec:61131-3::::</docidentifier>
              </bibitem>
-             <bibitem id="ref26" type="standard">
+             <bibitem id="_" anchor="ref26" type="standard">
                 <docidentifier type="IEEE" primary="true">IEEE 194-1977</docidentifier>
                 <docidentifier type="IEEE" scope="trademark" primary="true">IEEE 194™-1977</docidentifier>
                 <docidentifier type="ISBN">0-7381-4350-2</docidentifier>
@@ -801,7 +801,7 @@ RSpec.describe Metanorma::Ieee do
                    <p id="_">IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).</p>
                 </note>
              </bibitem>
-             <bibitem id="ref7" type="standard">
+             <bibitem id="_" anchor="ref7" type="standard">
                 <docidentifier type="IEEE" primary="true">IEEE 43-2013 Redline</docidentifier>
                 <docidentifier type="IEEE" scope="trademark" primary="true">IEEE 43™-2013 Redline</docidentifier>
                 <docidentifier type="ISBN">978-0-7381-9093-8</docidentifier>
@@ -809,13 +809,13 @@ RSpec.describe Metanorma::Ieee do
                    <p id="_">IEEE publications are available from The Institute of Electrical and Electronics Engineers (http://standards.ieee.org/).</p>
                 </note>
              </bibitem>
-             <bibitem id="ref6" type="standard">
+             <bibitem id="_" anchor="ref6" type="standard">
                 <docidentifier type="IEEE" primary="true">IEEE 81-1983</docidentifier>
                 <docidentifier type="IEEE" scope="trademark" primary="true">IEEE 81™-1983</docidentifier>
                 <docidentifier type="ISBN">978-0-7381-0660-1</docidentifier>
                 <docidentifier type="DOI">10.1109/IEEESTD.1983.82378</docidentifier>
              </bibitem>
-             <bibitem id="ref21" type="standard">
+             <bibitem id="_" anchor="ref21" type="standard">
                 <docidentifier type="ISO" primary="true">ISO/IEC 2382</docidentifier>
                 <docidentifier type="iso-reference">ISO/IEC 2382(E)</docidentifier>
                 <docidentifier type="URN">urn:iso:std:iso-iec:2382:stage-90.93</docidentifier>
@@ -823,12 +823,12 @@ RSpec.describe Metanorma::Ieee do
                    <p id="_">ISO/IEC documents are available from the International Organization for Standardization (https://www.iso.org/). ISO/IEC publications are also available in the United States from Global Engineering Documents (https://global.ihs.com/). Electronic copies are available in the United States from the American National Standards Institute (https://www.ansi.org/)</p>
                 </note>
              </bibitem>
-             <bibitem id="ref1" type="standard">
+             <bibitem id="_" anchor="ref1" type="standard">
                 <docidentifier type="ISO" primary="true">ISO/IEC 27001</docidentifier>
                 <docidentifier type="iso-reference">ISO/IEC 27001(E)</docidentifier>
                 <docidentifier type="URN">urn:iso:std:iso-iec:27001:stage-60.60</docidentifier>
              </bibitem>
-             <bibitem id="ref2" type="standard">
+             <bibitem id="_" anchor="ref2" type="standard">
                 <docidentifier type="ISO" primary="true">ISO 10642</docidentifier>
                 <docidentifier type="iso-reference">ISO 10642(E)</docidentifier>
                 <docidentifier type="URN">urn:iso:std:iso:10642:stage-90.92</docidentifier>
@@ -836,52 +836,52 @@ RSpec.describe Metanorma::Ieee do
                    <p id="_">ISO publications are available from the ISO Central Secretariat (http://www.iso.org/). ISO publications are also available in the United States from the American National Standards Institute (http://www.ansi.org/).</p>
                 </note>
              </bibitem>
-             <bibitem id="ref22" type="standard">
+             <bibitem id="_" anchor="ref22" type="standard">
                 <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
                 <docidentifier type="iso-reference">ISO 639(E)</docidentifier>
                 <docidentifier type="URN">urn:iso:std:iso:639:stage-60.60</docidentifier>
              </bibitem>
-             <bibitem id="ref25" type="standard">
+             <bibitem id="_" anchor="ref25" type="standard">
                 <docidentifier type="ITU" primary="true">ITU-R P.838-3</docidentifier>
              </bibitem>
-             <bibitem id="ref5" type="standard">
+             <bibitem id="_" anchor="ref5" type="standard">
                 <docidentifier type="ITU" primary="true">ITU-R P.839-4</docidentifier>
              </bibitem>
-             <bibitem id="ref4" type="standard">
+             <bibitem id="_" anchor="ref4" type="standard">
                 <docidentifier type="ITU" primary="true">ITU-T G.984.2 (08/2019)</docidentifier>
                 <note type="Availability">
                    <p id="_">ITU-T publications are available from the International Telecommunications Union (http://www.itu.int/).</p>
                 </note>
              </bibitem>
-             <bibitem id="ref24" type="standard">
+             <bibitem id="_" anchor="ref24" type="standard">
                 <docidentifier type="ITU" primary="true">ITU-T K.20 (11/2022)</docidentifier>
              </bibitem>
-             <bibitem id="ref8" type="standard">
+             <bibitem id="_" anchor="ref8" type="standard">
                 <docidentifier type="NIST" primary="true">NIST FIPS 140-2 fpd</docidentifier>
                 <note type="Availability">
                    <p id="_">NIST publications are available from the National Institute of Standards and Technology (http://www.nist.gov/).</p>
                 </note>
              </bibitem>
-             <bibitem id="ref28" type="standard">
+             <bibitem id="_" anchor="ref28" type="standard">
                 <docidentifier type="NIST" primary="true">NIST FIPS 140-3 2pd</docidentifier>
              </bibitem>
-             <bibitem id="ref9" type="standard">
+             <bibitem id="_" anchor="ref9" type="standard">
                 <docidentifier type="NIST" primary="true">NIST SP 800-171 fpd</docidentifier>
                 <note type="Availability">
                    <p id="_">FIPS publications are available from the National Technical Information Service (NTIS) (http://csrc.nist.gov).</p>
                 </note>
              </bibitem>
-             <bibitem id="ref29" type="standard">
+             <bibitem id="_" anchor="ref29" type="standard">
                 <docidentifier type="NIST" primary="true">NIST SP 800-30 fpd</docidentifier>
                 <docidentifier type="DOI">NIST.SP.800-30</docidentifier>
              </bibitem>
-             <bibitem id="ref30" type="standard">
+             <bibitem id="_" anchor="ref30" type="standard">
                 <docidentifier type="W3C" primary="true">W3C xml</docidentifier>
                 <note type="Availability">
                    <p id="_">W3C recommendations are available from the World Wide Web Consortium (https://www.w3.org).</p>
                 </note>
              </bibitem>
-             <bibitem id="ref10" type="standard">
+             <bibitem id="_" anchor="ref10" type="standard">
                 <docidentifier type="W3C" primary="true">W3C xptr</docidentifier>
              </bibitem>
           </references>
@@ -925,7 +925,7 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
         #{blank_hdr_gen}
          <sections>
-           <clause id="_" inline-header="false" obligation="normative">
+           <clause id="_" anchor="_clause" inline-header="false" obligation="normative">
              <title>Clause</title>
              <p id="_">
                <eref type="inline" bibitemid="ref1" citeas="ref1"/>
@@ -935,21 +935,21 @@ RSpec.describe Metanorma::Ieee do
            </clause>
          </sections>
          <bibliography>
-           <references id="_" normative="true" obligation="informative">
+           <references id="_" anchor="_normative_references" normative="true" obligation="informative">
              <title>Normative references</title>
              <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
-             <bibitem id="ref1">
+             <bibitem id="_" anchor="ref1">
                <formattedref format="application/x-isodoc+xml">Reference 1</formattedref>
              </bibitem>
-             <bibitem id="ref2">
+             <bibitem id="_" anchor="ref2">
                <formattedref format="application/x-isodoc+xml">Reference 2</formattedref>
                <docidentifier>A</docidentifier>
              </bibitem>
            </references>
-           <references id="_" normative="false" obligation="informative">
+           <references id="_" anchor="_bibliography" normative="false" obligation="informative">
              <title>Bibliography</title>
              <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
-             <bibitem id="ref3">
+             <bibitem id="_" anchor="ref3">
                <formattedref format="application/x-isodoc+xml">Reference 2</formattedref>
                <docidentifier type="metanorma">[B1]</docidentifier>
              </bibitem>
