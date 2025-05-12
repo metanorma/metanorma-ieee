@@ -834,7 +834,7 @@ RSpec.describe IsoDoc do
                    For the purposes of this document, the following terms and definitions apply. The
                    <em>IEEE Standards Dictionary Online</em>
                    should be consulted for terms not defined in this clause.
-                   <fn original-reference="" reference="1" id="_" target="_">
+                   <fn id="_" original-reference="" reference="1" target="_">
                       <p original-id="_">
                          <em>IEEE Standards Dictionary Online</em>
                          is available at:
@@ -845,9 +845,11 @@ RSpec.describe IsoDoc do
                          . An IEEE Account is required for access to the dictionary, and one can be created at no charge on the dictionary sign-in page.
                       </p>
                       <fmt-fn-label>
-                         <sup>
-                            <semx element="autonum" source="_">1</semx>
-                         </sup>
+                         <span class="fmt-caption-label">
+                            <sup>
+                               <semx element="autonum" source="_">1</semx>
+                            </sup>
+                         </span>
                       </fmt-fn-label>
                    </fn>
                 </p>
@@ -947,9 +949,11 @@ RSpec.describe IsoDoc do
                 <semx element="fn" source="_">
                    <p id="_">
                       <fmt-fn-label>
-                         <sup>
-                            <semx element="autonum" source="_">1</semx>
-                         </sup>
+                         <span class="fmt-caption-label">
+                            <sup>
+                               <semx element="autonum" source="_">1</semx>
+                            </sup>
+                         </span>
                          <span class="fmt-caption-delim">
                             <tab/>
                          </span>

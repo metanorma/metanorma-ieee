@@ -367,12 +367,14 @@ RSpec.describe IsoDoc do
                    </extent>
                    <biblio-tag>
                       ISO 16634:-- (all parts)
-                      <fn reference="1" original-reference="_" id="_" target="_">
+                      <fn id="_" reference="1" original-reference="_" target="_">
                          <p>Under preparation. (Stage at the time of publication ISO/DIS 16634)</p>
                          <fmt-fn-label>
-                            <sup>
-                               <semx element="autonum" source="_">1</semx>
-                            </sup>
+                            <span class="fmt-caption-label">
+                               <sup>
+                                  <semx element="autonum" source="_">1</semx>
+                               </sup>
+                            </span>
                          </fmt-fn-label>
                       </fn>
                       ,
@@ -526,15 +528,17 @@ RSpec.describe IsoDoc do
                       Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne,
                       <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>
                       , first edition, Cambridge, UK: Cambridge University Press, 2022a, DOI: https://doi.org/10.1017/9781108877831.
-                      <fn reference="2" original-reference="_" id="_" target="_">
+                      <fn id="_" reference="2" original-reference="_" target="_">
                          <p>
                 IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
         
               </p>
                          <fmt-fn-label>
-                            <sup>
-                               <semx element="autonum" source="_">2</semx>
-                            </sup>
+                            <span class="fmt-caption-label">
+                               <sup>
+                                  <semx element="autonum" source="_">2</semx>
+                               </sup>
+                            </span>
                          </fmt-fn-label>
                       </fn>
                    </formattedref>
@@ -773,9 +777,11 @@ RSpec.describe IsoDoc do
                 <semx element="fn" source="_">
                    <p>
                       <fmt-fn-label>
-                         <sup>
-                            <semx element="autonum" source="_">1</semx>
-                         </sup>
+                         <span class="fmt-caption-label">
+                            <sup>
+                               <semx element="autonum" source="_">1</semx>
+                            </sup>
+                         </span>
                          <span class="fmt-caption-delim">
                             <tab/>
                          </span>
@@ -788,9 +794,11 @@ RSpec.describe IsoDoc do
                 <semx element="fn" source="_">
                    <p>
                       <fmt-fn-label>
-                         <sup>
-                            <semx element="autonum" source="_">2</semx>
-                         </sup>
+                         <span class="fmt-caption-label">
+                            <sup>
+                               <semx element="autonum" source="_">2</semx>
+                            </sup>
+                         </span>
                          <span class="fmt-caption-delim">
                             <tab/>
                          </span>
