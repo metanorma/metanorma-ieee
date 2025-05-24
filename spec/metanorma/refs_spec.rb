@@ -183,7 +183,7 @@ RSpec.describe Metanorma::Ieee do
             <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
            <sections/>
            <bibliography>
-            <references id="_" anchor="_bibliography" normative="false" obligation="informative">
+            <references id="_" normative="false" obligation="informative">
               <title>Bibliography</title>
               <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
               <bibitem id="_" anchor="ref2" type="standard">
@@ -469,7 +469,7 @@ RSpec.describe Metanorma::Ieee do
       output = <<~OUTPUT
           <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
                    <preface>
-            <introduction id='_' anchor="_introduction" obligation='informative'>
+            <introduction id='_' obligation='informative'>
               <title>Introduction</title>
               <admonition>This introduction is not part of P, Standard for Document title </admonition>
               <p id='_'>
@@ -484,9 +484,9 @@ RSpec.describe Metanorma::Ieee do
             </introduction>
           </preface>
           <sections>
-            <clause id='_' anchor="_overview" type='overview' inline-header='false' obligation='normative'>
+            <clause id='_' type='overview' inline-header='false' obligation='normative'>
               <title>Overview</title>
-              <clause id='_' anchor="_scope" type='scope' inline-header='false' obligation='normative'>
+              <clause id='_' type='scope' inline-header='false' obligation='normative'>
                 <title>Scope</title>
                 <p id='_'>
                   <eref type='inline' bibitemid='ref1' citeas='IEEE 1619™-2007'/>
@@ -500,14 +500,14 @@ RSpec.describe Metanorma::Ieee do
                 </p>
               </clause>
             </clause>
-            <clause id='_' anchor="_clause" inline-header='false' obligation='normative'>
+            <clause id='_' inline-header='false' obligation='normative'>
               <title>Clause</title>
               <p id='_'>
                 <eref type='inline' bibitemid='ref1' citeas='IEEE&#xa0;1619-2007'/>
               </p>
             </clause>
           </sections>
-          <annex id='_' anchor="_annex" inline-header='false' obligation='normative'>
+          <annex id='_' inline-header='false' obligation='normative'>
             <title>Annex</title>
             <p id='_'>
               <eref type='inline' bibitemid='ref1' citeas='IEEE&#xa0;1619-2007'/>
@@ -606,7 +606,7 @@ RSpec.describe Metanorma::Ieee do
       INPUT
       output = <<~OUTPUT
          <bibliography>
-          <references id="_" anchor="_normative_references" normative="true" obligation="informative">
+          <references id="_" normative="true" obligation="informative">
             <title>Normative references</title>
             <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
             <bibitem id="_" anchor="ref1" type="standard">
@@ -662,7 +662,7 @@ RSpec.describe Metanorma::Ieee do
               <keyword>Measurement standards</keyword>
             </bibitem>
           </references>
-          <references id="_" anchor="_bibliography" normative="false" obligation="informative">
+          <references id="_" normative="false" obligation="informative">
             <title>Bibliography</title>
             <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
             <bibitem id="_" anchor="ref4" type="standard">
@@ -769,7 +769,7 @@ RSpec.describe Metanorma::Ieee do
       INPUT
       output = <<~OUTPUT
        <bibliography>
-          <references id="_" anchor="_normative_references" normative="true" obligation="informative">
+          <references id="_" normative="true" obligation="informative">
              <title>Normative references</title>
              <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
              <bibitem id="_" anchor="ref11">
@@ -925,7 +925,7 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
         #{blank_hdr_gen}
          <sections>
-           <clause id="_" anchor="_clause" inline-header="false" obligation="normative">
+           <clause id="_" inline-header="false" obligation="normative">
              <title>Clause</title>
              <p id="_">
                <eref type="inline" bibitemid="ref1" citeas="ref1"/>
@@ -935,7 +935,7 @@ RSpec.describe Metanorma::Ieee do
            </clause>
          </sections>
          <bibliography>
-           <references id="_" anchor="_normative_references" normative="true" obligation="informative">
+           <references id="_" normative="true" obligation="informative">
              <title>Normative references</title>
              <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
              <bibitem id="_" anchor="ref1">
@@ -946,7 +946,7 @@ RSpec.describe Metanorma::Ieee do
                <docidentifier>A</docidentifier>
              </bibitem>
            </references>
-           <references id="_" anchor="_bibliography" normative="false" obligation="informative">
+           <references id="_" normative="false" obligation="informative">
              <title>Bibliography</title>
              <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
              <bibitem id="_" anchor="ref3">

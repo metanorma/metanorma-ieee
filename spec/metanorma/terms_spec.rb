@@ -24,7 +24,7 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
                <sections>
-           <terms id='_' anchor="_terms_and_definitions" obligation='normative'>
+           <terms id='_' obligation='normative'>
              <title>Definitions</title>
              <p id='_'>
                For the purposes of this document, the following terms and definitions
@@ -138,7 +138,7 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
            <sections>
-              <terms id="_" anchor="_definitions" obligation="normative">
+              <terms id="_" obligation="normative">
                  <title>Definitions</title>
                  <p id="_">
                     For the purposes of this document, the following terms and definitions apply. The
@@ -296,7 +296,7 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
         <sections>
-          <terms id='_' anchor="_definitions" obligation='normative'>
+          <terms id='_' obligation='normative'>
             <title>Definitions</title>
             <p id='_'>
               For the purposes of this document, the following terms and definitions

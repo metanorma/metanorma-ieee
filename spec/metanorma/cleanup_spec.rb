@@ -670,7 +670,7 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
         <sections>
-          <clause id='_' anchor="_clause_1" inline-header='false' obligation='normative'>
+          <clause id='_' inline-header='false' obligation='normative'>
             <title>Clause 1</title>
           </clause>
         </sections>
@@ -712,7 +712,7 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
              <preface>
-         <introduction id='_' anchor="_introduction" obligation='informative'>
+         <introduction id='_' obligation='informative'>
            <title>Introduction</title>
            <admonition>This introduction is not part of P10000/D1.2,
               Draft Recommended Practice for Widgets
@@ -721,9 +721,9 @@ RSpec.describe Metanorma::Ieee do
          </introduction>
        </preface>
          <sections> </sections>
-         <annex id='_' anchor="_appendix_c" inline-header='false' obligation='normative'>
+         <annex id='_' inline-header='false' obligation='normative'>
            <title>Appendix C</title>
-           <references id='_' anchor="_bibliography" normative='false' obligation='informative'>
+           <references id='_' normative='false' obligation='informative'>
              <title>Bibliography</title>
              <p id='_'>
                Bibliographical references are resources that provide additional or
@@ -739,7 +739,7 @@ RSpec.describe Metanorma::Ieee do
            </references>
          </annex>
        <bibliography>
-         <references id='_' anchor="_normative_references" normative='true' obligation='informative'>
+         <references id='_' normative='true' obligation='informative'>
            <title>Normative references</title>
            <p id='_'>
              The following referenced documents are indispensable for the application
@@ -825,7 +825,7 @@ RSpec.describe Metanorma::Ieee do
                base standard.
              </p>
            </note>
-           <clause id='_' anchor="_clause" inline-header='false' obligation='normative'>
+           <clause id='_' inline-header='false' obligation='normative'>
              <title>Clause</title>
            </clause>
          </sections>
@@ -857,9 +857,9 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
          <sections> </sections>
-         <annex id='_' anchor="_appendix_c" inline-header='false' obligation='normative'>
+         <annex id='_' inline-header='false' obligation='normative'>
            <title>Appendix C</title>
-           <references id='_' anchor="_bibliography" normative='false' obligation='informative'>
+           <references id='_' normative='false' obligation='informative'>
              <title>Bibliography</title>
              <p id='_'>This is boilerplate</p>
              <bibitem id="_" anchor="ABC">
@@ -898,22 +898,22 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
                <sections>
-           <clause id='_' anchor="_overview" type='overview' inline-header='false' obligation='normative'>
+           <clause id='_' type='overview' inline-header='false' obligation='normative'>
              <title>Overview</title>
-             <clause id='_' anchor="_scope"  type='scope' inline-header='false' obligation='normative'>
+             <clause id='_'  type='scope' inline-header='false' obligation='normative'>
                <title>Scope</title>
              </clause>
-             <clause id='_' anchor="_purpose" type='purpose' inline-header='false' obligation='normative'>
+             <clause id='_' type='purpose' inline-header='false' obligation='normative'>
                <title>Purpose</title>
              </clause>
            </clause>
-           <clause id='_' anchor="_scope_2" inline-header='false' obligation='normative'>
+           <clause id='_' inline-header='false' obligation='normative'>
              <title>Scope</title>
            </clause>
-           <clause id='_' anchor="_purpose_2" inline-header='false' obligation='normative'>
+           <clause id='_' inline-header='false' obligation='normative'>
              <title>Purpose</title>
            </clause>
-           <clause id='_' anchor="_overview_2" inline-header='false' obligation='normative'>
+           <clause id='_' inline-header='false' obligation='normative'>
              <title>Overview</title>
            </clause>
          </sections>
@@ -952,7 +952,7 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
          <sections>
-           <clause id='_'  anchor="_overview" type='overview' inline-header='false' obligation='normative'>
+           <clause id='_'  type='overview' inline-header='false' obligation='normative'>
              <title>Overview</title>
              <note id='_'>
                <p id='_'>
@@ -963,23 +963,23 @@ RSpec.describe Metanorma::Ieee do
                  </fn>
                </p>
              </note>
-             <clause id='_' anchor="_scope" type='scope' inline-header='false' obligation='normative'>
+             <clause id='_' type='scope' inline-header='false' obligation='normative'>
                <title>Scope</title>
              </clause>
-             <clause id='_' anchor="_purpose" type='purpose' inline-header='false' obligation='normative'>
+             <clause id='_' type='purpose' inline-header='false' obligation='normative'>
                <title>Purpose</title>
              </clause>
            </clause>
-           <clause id='_' anchor="_scope_2" inline-header='false' obligation='normative'>
+           <clause id='_' inline-header='false' obligation='normative'>
              <title>Scope</title>
              <note id='_'>
                <p id='_'>Second note</p>
              </note>
            </clause>
-           <clause id='_' anchor="_purpose_2" inline-header='false' obligation='normative'>
+           <clause id='_' inline-header='false' obligation='normative'>
              <title>Purpose</title>
            </clause>
-           <clause id='_' anchor="_overview_2" inline-header='false' obligation='normative'>
+           <clause id='_' inline-header='false' obligation='normative'>
              <title>Overview</title>
            </clause>
          </sections>
@@ -1385,7 +1385,7 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
                  <preface>
-              <abstract id="_" anchor="_abstract">
+              <abstract id="_">
                  <title>Abstract</title>
                  <p id="_">Text</p>
               </abstract>
@@ -1393,29 +1393,29 @@ RSpec.describe Metanorma::Ieee do
                  <title>Foreword</title>
                  <p id="_">Text</p>
               </foreword>
-              <introduction id="_" anchor="_introduction" obligation="informative">
+              <introduction id="_" obligation="informative">
                  <title>Introduction</title>
                  <admonition>This introduction is not part of P10000/D1.2, Draft Recommended Practice for Widgets</admonition>
-                 <clause id="_" anchor="_introduction_subsection" inline-header="false" obligation="informative">
+                 <clause id="_" inline-header="false" obligation="informative">
                     <title>Introduction Subsection</title>
                  </clause>
               </introduction>
-              <clause id="_" anchor="_dedication" inline-header="false" obligation="informative">
+              <clause id="_" inline-header="false" obligation="informative">
                  <title>Dedication</title>
               </clause>
-              <acknowledgements id="_" anchor="_acknowledgements" obligation="informative">
+              <acknowledgements id="_" obligation="informative">
                  <title>Acknowledgements</title>
               </acknowledgements>
            </preface>
            <sections>
-              <clause id="_" anchor="_overview" type="overview" inline-header="false" obligation="normative">
+              <clause id="_" type="overview" inline-header="false" obligation="normative">
                  <title>Overview</title>
                  <p id="_">Text</p>
-                 <clause id="_" anchor="_scope" type="scope" inline-header="false" obligation="normative">
+                 <clause id="_" type="scope" inline-header="false" obligation="normative">
                     <title>Scope</title>
                     <p id="_">Text</p>
                  </clause>
-                 <clause id="_" anchor="_purpose" type="purpose" inline-header="false" obligation="normative">
+                 <clause id="_" type="purpose" inline-header="false" obligation="normative">
                     <title>Purpose</title>
                     <p id="_">Text</p>
                  </clause>
