@@ -39,14 +39,14 @@ RSpec.describe Metanorma::Ieee do
          </license-statement>
          <legal-statement>
            <clause id="_" anchor="boilerplate-disclaimers" inline-header="false" obligation="normative">
-             <title>Important Notices and Disclaimers Concerning IEEE Standards Documents</title>
+             <title id="_">Important Notices and Disclaimers Concerning IEEE Standards Documents</title>
              <p id="_" anchor="_DV_M4">IEEE Standards
        documents are made available for use subject to important notices and legal
        disclaimers. These notices and disclaimers, or a reference to this page (<link target="https://standards.ieee.org/ipr/disclaimers.html"/>),
        appear in all IEEE standards and may be found under the heading “Important Notices
        and Disclaimers Concerning IEEE Standards Documents.”</p>
              <clause id="_" inline-header="false" obligation="normative">
-               <title>Notice and Disclaimer of Liability Concerning the Use of IEEE Standards Documents</title>
+               <title id="_">Notice and Disclaimer of Liability Concerning the Use of IEEE Standards Documents</title>
                <p id="_">IEEE Standards documents are developed within IEEE Societies and subcommittees of IEEE Standards Association (IEEE SA) Board of Governors. IEEE develops its standards through an accredited consensus development process, which brings together volunteers representing varied viewpoints and interests to achieve the final product. IEEE standards are documents developed by volunteers with scientific, academic, and industry-based expertise in technical working groups. Volunteers involved in technical working groups are not necessarily members of IEEE or IEEE SA and participate without compensation from IEEE. While IEEE administers the process and establishes rules to promote fairness in the consensus development process, IEEE does not independently evaluate, test, or verify the accuracy of any of the information or the soundness of any judgments contained in its standards.</p>
                <p id="_">IEEE makes no warranties or representations concerning its standards, and expressly disclaims all warranties, express or implied, concerning all standards, including but not limited to the warranties of merchantability, fitness for a particular purpose and non-infringement IEEE Standards documents do not guarantee safety, security, health, or environmental protection, or compliance with law, or guarantee against interference with or from other devices or networks. In addition, IEEE does not warrant or represent that the use of the material contained in its standards is free from patent infringement. IEEE Standards documents are supplied “AS IS” and “WITH ALL FAULTS.”</p>
                <p id="_">Use of an IEEE standard is wholly voluntary. The existence of an IEEE standard does not imply that there are no other ways to produce, test, measure, purchase, market, or provide other goods and services related to the scope of the IEEE standard. Furthermore, the viewpoint expressed at the time a standard is approved and issued is subject to change brought about through developments in the state of the art and comments received from users of the standard.</p>
@@ -62,19 +62,19 @@ RSpec.describe Metanorma::Ieee do
        DAMAGE WAS FORESEEABLE.</p>
              </clause>
              <clause id="_" inline-header="false" obligation="normative">
-               <title>Translations</title>
+               <title id="_">Translations</title>
                <p id="_">The IEEE consensus balloting process involves the review of documents in English only. In the event that an IEEE standard is translated, only the English language version published by IEEE is the approved IEEE standard.</p>
              </clause>
              <clause id="_" inline-header="false" obligation="normative">
-               <title>Use by artificial intelligence systems</title>
+               <title id="_">Use by artificial intelligence systems</title>
                <p id="_">In no event shall material in any IEEE Standards documents be used for the purpose of creating, training, enhancing, developing, maintaining, or contributing to any artificial intelligence systems without the express, written consent of IEEE SA in advance. “Artificial intelligence” refers to any software, application, or other system that uses artificial intelligence, machine learning, or similar technologies, to analyze, train, process, or generate content. Requests for consent can be submitted using the Contact Us form.</p>
              </clause>
              <clause id="_" inline-header="false" obligation="normative">
-               <title>Official statements</title>
+               <title id="_">Official statements</title>
                <p id="_">A statement, written or oral, that is not processed in accordance with the IEEE SA Standards Board Operations Manual is not, and shall not be considered or inferred to be, the official position of IEEE or any of its committees and shall not be considered to be, or be relied upon as, a formal position of IEEE or IEEE SA. At lectures, symposia, seminars, or educational courses, an individual presenting information on IEEE standards shall make it clear that the presenter’s views should be considered the personal views of that individual rather than the formal position of IEEE, IEEE SA, the Standards Committee, or the Working Group. Statements made by volunteers may not represent the formal position of their employer(s) or affiliation(s). News releases about IEEE standards issued by entities other than IEEE SA should be considered the view of the entity issuing the release rather than the formal position of IEEE or IEEE SA.</p>
              </clause>
              <clause id="_" inline-header="false" obligation="normative">
-               <title>Comments on standards</title>
+               <title id="_">Comments on standards</title>
                <p id="_">Comments for revision of IEEE
        Standards documents are welcome from any interested party, regardless of membership
        affiliation with IEEE or IEEE SA. However, <strong>IEEE does not provide interpretations, consulting information, or advice pertaining to IEEE Standards documents</strong>.</p>
@@ -88,12 +88,12 @@ RSpec.describe Metanorma::Ieee do
        person who would like to participate in evaluating comments or in revisions to
        an IEEE standard is welcome to join the relevant IEEE SA working group. You can
        indicate interest in a working group using the Interests tab in the Manage
-       Profile &amp; Interests area of the <link target="https://development.standards.ieee.org/myproject-web/public/view.html#landing">IEEE SA myProject system</link>.<fn reference="_boilerplate_1"><p id="_">Available at: <link target="https://development.standards.ieee.org/myproject-web/public/view.html#landing"/>.</p></fn>
+       Profile &amp; Interests area of the <link target="https://development.standards.ieee.org/myproject-web/public/view.html#landing">IEEE SA myProject system</link>.<fn id="_" reference="_boilerplate_1"><p id="_">Available at: <link target="https://development.standards.ieee.org/myproject-web/public/view.html#landing"/>.</p></fn>
        An IEEE Account is needed to access the application.</p>
-               <p id="_">Comments on standards should be submitted using the <link target="https://standards.ieee.org/about/contact/">Contact Us</link> form.<fn reference="_boilerplate_2"><p id="_">Available at: <link target="https://standards.ieee.org/about/contact/"/>.</p></fn></p>
+               <p id="_">Comments on standards should be submitted using the <link target="https://standards.ieee.org/about/contact/">Contact Us</link> form.<fn id="_" reference="_boilerplate_2"><p id="_">Available at: <link target="https://standards.ieee.org/about/contact/"/>.</p></fn></p>
              </clause>
              <clause id="_" inline-header="false" obligation="normative">
-               <title>Laws and regulations</title>
+               <title id="_">Laws and regulations</title>
                <p id="_">Users of IEEE
        Standards documents should consult all applicable laws and regulations.
        Compliance with the provisions of any IEEE Standards document does not
@@ -104,18 +104,18 @@ RSpec.describe Metanorma::Ieee do
        documents may not be construed as doing so.</p>
              </clause>
              <clause id="_" inline-header="false" obligation="normative">
-               <title>Data privacy</title>
+               <title id="_">Data privacy</title>
                <p id="_">Users of IEEE Standards documents
        should evaluate the standards for considerations of data privacy and data
        ownership in the context of assessing and using the standards in compliance
        with applicable laws and regulations.</p>
              </clause>
              <clause id="_" inline-header="false" obligation="normative">
-               <title>Copyrights</title>
+               <title id="_">Copyrights</title>
                <p id="_">IEEE draft and approved standards are copyrighted by IEEE under U.S. and international copyright laws. They are made available by IEEE and are adopted for a wide variety of both public and private uses. These include both use by reference, in laws and regulations, and use in private self-regulation, standardization, and the promotion of engineering practices and methods. By making these documents available for use and adoption by public authorities and private users, neither IEEE nor its licensors waive any rights in copyright to the documents.</p>
              </clause>
              <clause id="_" inline-header="false" obligation="normative">
-               <title>Photocopies</title>
+               <title id="_">Photocopies</title>
                <p id="_">Subject to payment of the
        appropriate licensing fees, IEEE will grant users a limited, non-exclusive
        license to photocopy portions of any individual standard for company or
@@ -127,7 +127,7 @@ RSpec.describe Metanorma::Ieee do
        Copyright Clearance Center.</p>
              </clause>
              <clause id="_" inline-header="false" obligation="normative">
-               <title>Updating of IEEE Standards documents</title>
+               <title id="_">Updating of IEEE Standards documents</title>
                <p id="_">Users
        of IEEE Standards documents should be aware that these documents may be
        superseded at any time by the issuance of new editions or may be amended from
@@ -145,22 +145,22 @@ RSpec.describe Metanorma::Ieee do
        order to determine whether a given document is the current edition and whether
        it has been amended through the issuance of amendments, corrigenda, or errata,
        visit <link target="https://ieeexplore.ieee.org/browse/standards/collection/ieee/">IEEE Xplore</link>
-       or <link target="https://standards.ieee.org/about/contact/">contact IEEE</link>.<fn reference="_boilerplate_3"><p id="_">Available at <link target="https://ieeexplore.ieee.org/browse/standards/collection/ieee"/>.</p></fn>
+       or <link target="https://standards.ieee.org/about/contact/">contact IEEE</link>.<fn id="_" reference="_boilerplate_3"><p id="_">Available at <link target="https://ieeexplore.ieee.org/browse/standards/collection/ieee"/>.</p></fn>
        For more information about the IEEE SA or IEEE’s standards development process,
        visit the IEEE SA Website.</p>
              </clause>
              <clause id="_" inline-header="false" obligation="normative">
-               <title>Errata</title>
+               <title id="_">Errata</title>
                <p id="_">Errata, if any, for all IEEE standards can be accessed on the
-       <link target="https://standards.ieee.org/standard/index.html">IEEE SA Website</link>.<fn reference="_boilerplate_4"><p id="_">Available at: <link target="https://standards.ieee.org/standard/index.html"/>.</p></fn>
+       <link target="https://standards.ieee.org/standard/index.html">IEEE SA Website</link>.<fn id="_" reference="_boilerplate_4"><p id="_">Available at: <link target="https://standards.ieee.org/standard/index.html"/>.</p></fn>
        Search for standard number and year of approval to access the web page of the
        published standard. Errata links are located under the Additional Resources Details section.
        Errata are also available in <link target="https://ieeexplore.ieee.org/browse/standards/collection/ieee/">IEEE Xplore</link>.
        Users are encouraged to periodically check for errata.</p>
              </clause>
              <clause id="_" inline-header="false" obligation="normative">
-               <title>Patents</title>
-               <p id="_">IEEE standards are developed in compliance with the <link target="https://standards.ieee.org/about/sasb/patcom/materials.html">IEEE SA Patent Policy</link>.<fn reference="_boilerplate_5"><p id="_">Available at: <link target="https://standards.ieee.org/about/sasb/patcom/materials.html"/>.</p></fn></p>
+               <title id="_">Patents</title>
+               <p id="_">IEEE standards are developed in compliance with the <link target="https://standards.ieee.org/about/sasb/patcom/materials.html">IEEE SA Patent Policy</link>.<fn id="_" reference="_boilerplate_5"><p id="_">Available at: <link target="https://standards.ieee.org/about/sasb/patcom/materials.html"/>.</p></fn></p>
                <p id="_">Attention is called to
        the possibility that implementation of this standard may require use of subject
        matter covered by patent rights. By publication of this standard, no position
@@ -186,143 +186,143 @@ RSpec.describe Metanorma::Ieee do
        Standards Association.</p>
              </clause>
              <clause id="_" inline-header="false" obligation="normative">
-               <title>IMPORTANT NOTICE</title>
+               <title id="_">IMPORTANT NOTICE</title>
                <p id="_">Technologies, application of technologies, and recommended procedures in various industries evolve over time. The IEEE standards development process allows participants to review developments in industries, technologies, and practices, and to determine what, if any, updates should be made to the IEEE standard. During this evolution, the technologies and recommendations in IEEE standards may be implemented in ways not foreseen during the standard’s development. IEEE standards development activities consider research and information presented to the standards development group in developing any safety recommendations. Other information about safety practices, changes in technology or technology implementation, or impact by peripheral systems also may be pertinent to safety considerations during implementation of the standard. Implementers and users of IEEE Standards documents are responsible for determining and complying with all appropriate safety, security, environmental, health, data privacy, and interference protection practices and all applicable laws and regulations.</p>
              </clause>
            </clause>
            <clause id="_" anchor="boilerplate-participants" type="participants" inline-header="false" obligation="normative">
-             <title>Participants</title>
+             <title id="_">Participants</title>
              <clause id="_" anchor="boilerplate-participants-wg" inline-header="false" obligation="normative">
                <p id="_">At the time this draft Recommended Practice was completed, the  had the following membership:</p>
                <ul id="_">
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">&lt;Chair Name&gt;</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Chair</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">&lt;Vice-chair Name&gt;</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Vice Chair</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Participant1</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Participant2</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Participant3</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Participant4</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Participant5</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Participant6</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Participant7</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Participant8</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Participant9</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
@@ -332,110 +332,110 @@ RSpec.describe Metanorma::Ieee do
              <clause id="_" anchor="boilerplate-participants-bg" inline-header="false" obligation="normative">
                <p id="_">The following members of the   Standards Association balloting group voted on this Recommended Practice. Balloters may have voted for approval, disapproval, or abstention.</p>
                <ul id="_">
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Balloter1</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Balloter2</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Balloter3</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Balloter4</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Balloter5</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Balloter6</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Balloter7</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Balloter8</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Balloter9</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
@@ -445,158 +445,158 @@ RSpec.describe Metanorma::Ieee do
              <clause id="_" anchor="boilerplate-participants-sb" inline-header="false" obligation="normative">
                <p id="_">When the IEEE SA Standards Board approved this Recommended Practice on 01 Jan 1000, it had the following membership:</p>
                <ul id="_">
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">&lt;Name&gt;</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Chair</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">&lt;Name&gt;</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Vice Chair</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">&lt;Name&gt;</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Past Chair</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">&lt;Name&gt;</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Secretary</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">SBMember1</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">SBMember2</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">SBMember3</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">SBMember4</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">SBMember5</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">SBMember6</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">SBMember7</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">SBMember8</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
                  </li>
-                 <li>
+                 <li id="_">
                    <dl id="_">
                      <dt>name</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">SBMember9</p>
                      </dd>
                      <dt>role</dt>
-                     <dd>
+                     <dd id="_">
                        <p id="_">Member</p>
                      </dd>
                    </dl>
@@ -621,12 +621,12 @@ RSpec.describe Metanorma::Ieee do
            <clause id="_" inline-header="false" obligation="normative">
              <table id="_" anchor="_isbn_pdf_print" unnumbered="true">
                <tbody>
-                 <tr>
+                 <tr id="_">
                    <td id="_" valign="top" align="left">PDF:</td>
                    <td id="_" valign="top" align="left">ISBN 978-0-XXXX-XXXX-X</td>
                    <td id="_" valign="top" align="left">STDXXXXX</td>
                  </tr>
-                 <tr>
+                 <tr id="_">
                    <td id="_" valign="top" align="left">Print:</td>
                    <td id="_" valign="top" align="left">ISBN 978-0-XXXX-XXXX-X</td>
                    <td id="_" valign="top" align="left">STDPDXXXXX</td>
@@ -671,7 +671,7 @@ RSpec.describe Metanorma::Ieee do
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
         <sections>
           <clause id='_' inline-header='false' obligation='normative'>
-            <title>Clause 1</title>
+            <title id="_">Clause 1</title>
           </clause>
         </sections>
       </metanorma>
@@ -713,8 +713,8 @@ RSpec.describe Metanorma::Ieee do
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
              <preface>
          <introduction id='_' obligation='informative'>
-           <title>Introduction</title>
-           <admonition>This introduction is not part of P10000/D1.2,
+           <title id="_">Introduction</title>
+           <admonition id="_">This introduction is not part of P10000/D1.2,
               Draft Recommended Practice for Widgets
             </admonition>
            <p id='_'>This is the introduction.</p>
@@ -722,9 +722,9 @@ RSpec.describe Metanorma::Ieee do
        </preface>
          <sections> </sections>
          <annex id='_' inline-header='false' obligation='normative'>
-           <title>Appendix C</title>
+           <title id="_">Appendix C</title>
            <references id='_' normative='false' obligation='informative'>
-             <title>Bibliography</title>
+             <title id="_">Bibliography</title>
              <p id='_'>
                Bibliographical references are resources that provide additional or
                helpful material but do not need to be understood or used to implement
@@ -740,7 +740,7 @@ RSpec.describe Metanorma::Ieee do
          </annex>
        <bibliography>
          <references id='_' normative='true' obligation='informative'>
-           <title>Normative references</title>
+           <title id="_">Normative references</title>
            <p id='_'>
              The following referenced documents are indispensable for the application
              of this document (i.e., they must be understood and used, so each
@@ -826,7 +826,7 @@ RSpec.describe Metanorma::Ieee do
              </p>
            </note>
            <clause id='_' inline-header='false' obligation='normative'>
-             <title>Clause</title>
+             <title id="_">Clause</title>
            </clause>
          </sections>
        </metanorma>
@@ -858,9 +858,9 @@ RSpec.describe Metanorma::Ieee do
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
          <sections> </sections>
          <annex id='_' inline-header='false' obligation='normative'>
-           <title>Appendix C</title>
+           <title id="_">Appendix C</title>
            <references id='_' normative='false' obligation='informative'>
-             <title>Bibliography</title>
+             <title id="_">Bibliography</title>
              <p id='_'>This is boilerplate</p>
              <bibitem id="_" anchor="ABC">
              <formattedref format="application/x-isodoc+xml">[NO INFORMATION AVAILABLE]</formattedref>
@@ -899,22 +899,22 @@ RSpec.describe Metanorma::Ieee do
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
                <sections>
            <clause id='_' type='overview' inline-header='false' obligation='normative'>
-             <title>Overview</title>
+             <title id="_">Overview</title>
              <clause id='_'  type='scope' inline-header='false' obligation='normative'>
-               <title>Scope</title>
+               <title id="_">Scope</title>
              </clause>
              <clause id='_' type='purpose' inline-header='false' obligation='normative'>
-               <title>Purpose</title>
+               <title id="_">Purpose</title>
              </clause>
            </clause>
            <clause id='_' inline-header='false' obligation='normative'>
-             <title>Scope</title>
+             <title id="_">Scope</title>
            </clause>
            <clause id='_' inline-header='false' obligation='normative'>
-             <title>Purpose</title>
+             <title id="_">Purpose</title>
            </clause>
            <clause id='_' inline-header='false' obligation='normative'>
-             <title>Overview</title>
+             <title id="_">Overview</title>
            </clause>
          </sections>
        </metanorma>
@@ -953,34 +953,34 @@ RSpec.describe Metanorma::Ieee do
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
          <sections>
            <clause id='_'  type='overview' inline-header='false' obligation='normative'>
-             <title>Overview</title>
+             <title id="_">Overview</title>
              <note id='_'>
                <p id='_'>
                  First note
-                 <fn reference='1'>
+                 <fn id="_" reference='1'>
                    <p id='_'>Notes to text, tables, and figures are for information only and do
                     not contain requirements needed to implement the standard.</p>
                  </fn>
                </p>
              </note>
              <clause id='_' type='scope' inline-header='false' obligation='normative'>
-               <title>Scope</title>
+               <title id="_">Scope</title>
              </clause>
              <clause id='_' type='purpose' inline-header='false' obligation='normative'>
-               <title>Purpose</title>
+               <title id="_">Purpose</title>
              </clause>
            </clause>
            <clause id='_' inline-header='false' obligation='normative'>
-             <title>Scope</title>
+             <title id="_">Scope</title>
              <note id='_'>
                <p id='_'>Second note</p>
              </note>
            </clause>
            <clause id='_' inline-header='false' obligation='normative'>
-             <title>Purpose</title>
+             <title id="_">Purpose</title>
            </clause>
            <clause id='_' inline-header='false' obligation='normative'>
-             <title>Overview</title>
+             <title id="_">Overview</title>
            </clause>
          </sections>
        </metanorma>
@@ -1008,19 +1008,19 @@ RSpec.describe Metanorma::Ieee do
       <sections>
         <p id='_'>
           Hello!
-          <fn reference='1'>
+          <fn id="_" reference='1'>
             <p id='_'>Footnote text</p>
           </fn>
         </p>
         <p id='_'>
           Hello.
-          <fn reference='2'>
+          <fn id="_" reference='2'>
             <p id='_'>This is a repeated footnote</p>
           </fn>
         </p>
         <p id='_'>
           Repetition.
-          <fn reference='3'>
+          <fn id="_" reference='3'>
             <p id='_'>See Footnote 2.</p>
           </fn>
         </p>
@@ -1102,57 +1102,57 @@ RSpec.describe Metanorma::Ieee do
     INPUT
     output = <<~OUTPUT
            <clause id="_" anchor="boilerplate-participants" type="participants" inline-header="false" obligation="normative">
-         <title>Participants</title>
+         <title id="_">Participants</title>
          <clause id="_" anchor="boilerplate-participants-wg" inline-header="false" obligation="normative">
            <p id="_">At the time this draft Standard was completed, the  had the following membership:</p>
            <ul id="_">
-             <li>
+             <li id="_">
                <dl id="_">
                  <dt>name</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">
                      <span class="surname">Socrates</span>
                      <span class="forename">Adalbert</span>
                    </p>
                  </dd>
                  <dt>role</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">Chair</p>
                  </dd>
                </dl>
              </li>
-             <li>
+             <li id="_">
                <dl id="_">
                  <dt>name</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">Plato</p>
                  </dd>
                  <dt>role</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">Technical editor</p>
                  </dd>
                </dl>
              </li>
-             <li>
+             <li id="_">
                <dl id="_">
                  <dt>name</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">Aristotle</p>
                  </dd>
                  <dt>role</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">Member</p>
                  </dd>
                </dl>
              </li>
-             <li>
+             <li id="_">
                <dl id="_">
                  <dt>name</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">Anaximander</p>
                  </dd>
                  <dt>role</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">member</p>
                  </dd>
                </dl>
@@ -1163,26 +1163,26 @@ RSpec.describe Metanorma::Ieee do
          <clause id="_" anchor="boilerplate-participants-bg" inline-header="false" obligation="normative">
            <p id="_">The following members of the   Standards Association balloting group voted on this Standard. Balloters may have voted for approval, disapproval, or abstention.</p>
            <ul id="_">
-             <li>
+             <li id="_">
                <dl id="_">
                  <dt>name</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">Athanasius of Alexandria</p>
                  </dd>
                  <dt>role</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">member</p>
                  </dd>
                </dl>
              </li>
-             <li>
+             <li id="_">
                <dl id="_">
                  <dt>name</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_"><span class="forename">Basil</span> of <span class="surname">Caesarea</span></p>
                  </dd>
                  <dt>role</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">member</p>
                  </dd>
                </dl>
@@ -1190,30 +1190,30 @@ RSpec.describe Metanorma::Ieee do
            </ul>
            <p id="_">And this is another list</p>
            <ul id="_">
-             <li>
+             <li id="_">
                <dl id="_">
                  <dt>company</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">
                      <span class="organization">Microsoft</span>
                    </p>
                  </dd>
                  <dt>role</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">member</p>
                  </dd>
                </dl>
              </li>
-             <li>
+             <li id="_">
                <dl id="_">
                  <dt>company</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">
                      <span class="organization">Alphabet</span>
                    </p>
                  </dd>
                  <dt>role</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">Member</p>
                  </dd>
                </dl>
@@ -1223,50 +1223,50 @@ RSpec.describe Metanorma::Ieee do
          <clause id="_" anchor="boilerplate-participants-sb" inline-header="false" obligation="normative">
            <p id="_">When the IEEE SA Standards Board approved this Standard on &lt;Date Approved&gt;, it had the following membership:</p>
            <ul id="_">
-             <li>
+             <li id="_">
                <dl id="_">
                  <dt>name</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">Aeschylus</p>
                  </dd>
                  <dt>role</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">Chair</p>
                  </dd>
                </dl>
              </li>
-             <li>
+             <li id="_">
                <dl id="_">
                  <dt>name</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">Sophocles</p>
                  </dd>
                  <dt>role</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">Technical editor</p>
                  </dd>
                </dl>
              </li>
-             <li>
+             <li id="_">
                <dl id="_">
                  <dt>name</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">Euripides</p>
                  </dd>
                  <dt>role</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">member</p>
                  </dd>
                </dl>
              </li>
-             <li>
+             <li id="_">
                <dl id="_">
                  <dt>name</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">Aristophanes</p>
                  </dd>
                  <dt>role</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">member</p>
                  </dd>
                </dl>
@@ -1275,30 +1275,30 @@ RSpec.describe Metanorma::Ieee do
            <p id="_" type="emeritus_sign"><span class="cite_fn">*</span>Member Emeritus</p>
            <p id="_">This is an additional clause.</p>
            <ul id="_">
-             <li>
+             <li id="_">
                <dl id="_">
                  <dt>company</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">
                      <span class="organization">Waldorf-Astoria</span>
                    </p>
                  </dd>
                  <dt>role</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">member</p>
                  </dd>
                </dl>
              </li>
-             <li>
+             <li id="_">
                <dl id="_">
                  <dt>company</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">
                      <span class="organization">Ritz</span>
                    </p>
                  </dd>
                  <dt>role</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">Member</p>
                  </dd>
                </dl>
@@ -1306,26 +1306,26 @@ RSpec.describe Metanorma::Ieee do
            </ul>
            <p id="_">And again:</p>
            <ul id="_">
-             <li>
+             <li id="_">
                <dl id="_">
                  <dt>name</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">name1</p>
                  </dd>
                  <dt>role</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">member</p>
                  </dd>
                </dl>
              </li>
-             <li>
+             <li id="_">
                <dl id="_">
                  <dt>name</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">name2</p>
                  </dd>
                  <dt>role</dt>
-                 <dd>
+                 <dd id="_">
                    <p id="_">member</p>
                  </dd>
                </dl>
@@ -1386,37 +1386,37 @@ RSpec.describe Metanorma::Ieee do
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
                  <preface>
               <abstract id="_">
-                 <title>Abstract</title>
+                 <title id="_">Abstract</title>
                  <p id="_">Text</p>
               </abstract>
               <foreword id="_" obligation="informative">
-                 <title>Foreword</title>
+                 <title id="_">Foreword</title>
                  <p id="_">Text</p>
               </foreword>
               <introduction id="_" obligation="informative">
-                 <title>Introduction</title>
-                 <admonition>This introduction is not part of P10000/D1.2, Draft Recommended Practice for Widgets</admonition>
+                 <title id="_">Introduction</title>
+                 <admonition id="_">This introduction is not part of P10000/D1.2, Draft Recommended Practice for Widgets</admonition>
                  <clause id="_" inline-header="false" obligation="informative">
-                    <title>Introduction Subsection</title>
+                    <title id="_">Introduction Subsection</title>
                  </clause>
               </introduction>
               <clause id="_" inline-header="false" obligation="informative">
-                 <title>Dedication</title>
+                 <title id="_">Dedication</title>
               </clause>
               <acknowledgements id="_" obligation="informative">
-                 <title>Acknowledgements</title>
+                 <title id="_">Acknowledgements</title>
               </acknowledgements>
            </preface>
            <sections>
               <clause id="_" type="overview" inline-header="false" obligation="normative">
-                 <title>Overview</title>
+                 <title id="_">Overview</title>
                  <p id="_">Text</p>
                  <clause id="_" type="scope" inline-header="false" obligation="normative">
-                    <title>Scope</title>
+                    <title id="_">Scope</title>
                     <p id="_">Text</p>
                  </clause>
                  <clause id="_" type="purpose" inline-header="false" obligation="normative">
-                    <title>Purpose</title>
+                    <title id="_">Purpose</title>
                     <p id="_">Text</p>
                  </clause>
               </clause>

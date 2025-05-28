@@ -530,41 +530,41 @@ RSpec.describe Metanorma::Ieee do
             #{@blank_hdr.sub(%r{</script>}, '</script><abstract><p>Text</p></abstract>').sub(%r{<boilerplate>.*</boilerplate>}m, '')}
           <preface>
              <abstract id="_">
-                <title>Abstract</title>
+                <title id="_">Abstract</title>
                 <p id="_">Text</p>
              </abstract>
              <foreword id="_" obligation="informative">
-                <title>Foreword</title>
+                <title id="_">Foreword</title>
                 <p id="_">Text</p>
              </foreword>
              <introduction id="_" obligation="informative">
-                <title>Introduction</title>
-                <admonition>This introduction is not part of P, Standard for Document title</admonition>
+                <title id="_">Introduction</title>
+                <admonition id="_">This introduction is not part of P, Standard for Document title</admonition>
                 <clause id="_" inline-header="false" obligation="informative">
-                   <title>Introduction Subsection</title>
+                   <title id="_">Introduction Subsection</title>
                 </clause>
              </introduction>
              <clause id="_" inline-header="false" obligation="informative">
-                <title>Dedication</title>
+                <title id="_">Dedication</title>
              </clause>
              <acknowledgements id="_" obligation="informative">
-                <title>Acknowledgements</title>
+                <title id="_">Acknowledgements</title>
              </acknowledgements>
           </preface>
           <sections>
              <clause id="_" type="overview" inline-header="false" obligation="normative">
-                <title>Overview</title>
+                <title id="_">Overview</title>
                 <p id="_">Text</p>
                 <clause id="_" type="scope" inline-header="false" obligation="normative">
-                   <title>Scope</title>
+                   <title id="_">Scope</title>
                    <p id="_">Text</p>
                 </clause>
                 <clause id="_" type="purpose" inline-header="false" obligation="normative">
-                   <title>Purpose</title>
+                   <title id="_">Purpose</title>
                    <p id="_">Text</p>
                 </clause>
                 <clause id="_" anchor="boilerplate_word_usage" inline-header="false" obligation="normative">
-                   <title>Word usage</title>
+                   <title id="_">Word usage</title>
                    <p id="_">
                       The word
                       <em>shall</em>
@@ -573,7 +573,7 @@ RSpec.describe Metanorma::Ieee do
                       equals
                       <em>is required to</em>
                       ).
-                      <fn reference="6">
+                      <fn id="_" reference="6">
                          <p id="_">
                             The use of the word
                             <em>must</em>
@@ -582,7 +582,7 @@ RSpec.describe Metanorma::Ieee do
                             is used only to describe unavoidable situations.
                          </p>
                       </fn>
-                      <fn reference="7">
+                      <fn id="_" reference="7">
                          <p id="_">
                             The use of
                             <em>will</em>
@@ -622,7 +622,7 @@ RSpec.describe Metanorma::Ieee do
                 </clause>
              </clause>
              <terms id="_" obligation="normative">
-                <title>Definitions</title>
+                <title id="_">Definitions</title>
                 <p id="_">Boilerplate text</p>
                 <term id="_" anchor="term-Term1">
                    <preferred>
@@ -633,23 +633,23 @@ RSpec.describe Metanorma::Ieee do
                 </term>
              </terms>
              <clause id="_" obligation="normative" type="terms">
-                <title>Definitions, acronyms and abbreviations</title>
+                <title id="_">Definitions, acronyms and abbreviations</title>
                 <clause id="_" inline-header="false" obligation="normative">
-                   <title>Introduction</title>
+                   <title id="_">Introduction</title>
                    <clause id="_" inline-header="false" obligation="normative">
-                      <title>Intro 1</title>
+                      <title id="_">Intro 1</title>
                    </clause>
                 </clause>
                 <terms id="_" obligation="normative">
-                   <title>Intro 2</title>
+                   <title id="_">Intro 2</title>
                    <clause id="_" inline-header="false" obligation="normative">
-                      <title>Intro 3</title>
+                      <title id="_">Intro 3</title>
                    </clause>
                 </terms>
                 <clause id="_" obligation="normative" type="terms">
-                   <title>Intro 4</title>
+                   <title id="_">Intro 4</title>
                    <terms id="_" obligation="normative">
-                      <title>Intro 5</title>
+                      <title id="_">Intro 5</title>
                       <term id="_" anchor="term-Term1-1">
                          <preferred>
                             <expression>
@@ -660,7 +660,7 @@ RSpec.describe Metanorma::Ieee do
                    </terms>
                 </clause>
                 <terms id="_" obligation="normative">
-                   <title>Normal Terms</title>
+                   <title id="_">Normal Terms</title>
                    <term id="_" anchor="term-Term2">
                       <preferred>
                          <expression>
@@ -670,56 +670,56 @@ RSpec.describe Metanorma::Ieee do
                    </term>
                 </terms>
                 <definitions id="_" obligation="normative">
-                   <title>Acronyms and abbreviations</title>
+                   <title id="_">Acronyms and abbreviations</title>
                    <clause id="_" inline-header="false" obligation="normative">
-                      <title>General</title>
+                      <title id="_">General</title>
                    </clause>
                    <definitions id="_" type="symbols" obligation="normative">
-                      <title>Acronyms and abbreviations</title>
+                      <title id="_">Acronyms and abbreviations</title>
                    </definitions>
                 </definitions>
              </clause>
              <definitions id="_" type="abbreviated_terms" obligation="normative">
-                <title>Acronyms and abbreviations</title>
+                <title id="_">Acronyms and abbreviations</title>
              </definitions>
              <clause id="_" inline-header="false" obligation="normative">
-                <title>Clause 4</title>
+                <title id="_">Clause 4</title>
                 <clause id="_" inline-header="false" obligation="normative">
-                   <title>Introduction</title>
+                   <title id="_">Introduction</title>
                 </clause>
                 <clause id="_" inline-header="false" obligation="normative">
-                   <title>Clause 4.2</title>
+                   <title id="_">Clause 4.2</title>
                 </clause>
              </clause>
              <terms id="_" obligation="normative">
-                <title>Terms and Definitions</title>
+                <title id="_">Terms and Definitions</title>
              </terms>
           </sections>
           <annex id="_" inline-header="false" obligation="normative">
-             <title>Annex</title>
+             <title id="_">Annex</title>
              <clause id="_" inline-header="false" obligation="normative">
-                <title>Annex A.1</title>
+                <title id="_">Annex A.1</title>
              </clause>
           </annex>
           <annex id="_" obligation="" language="" script="">
-             <title>Bibliography</title>
+             <title id="_">Bibliography</title>
              <references id="_" normative="false" obligation="informative">
-                <title>Bibliography</title>
+                <title id="_">Bibliography</title>
                 <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
              </references>
           </annex>
           <bibliography>
              <references id="_" normative="true" obligation="informative">
-                <title>Normative references</title>
+                <title id="_">Normative references</title>
                 <p id="_">There are no normative references in this document.</p>
              </references>
           </bibliography>
           <indexsect id="_">
-             <title>Index</title>
+             <title id="_">Index</title>
              <p id="_">This is an index</p>
           </indexsect>
           <indexsect id="_" type="thematic">
-             <title>Thematic Index</title>
+             <title id="_">Thematic Index</title>
           </indexsect>
        </metanorma>
     OUTPUT
@@ -838,42 +838,42 @@ RSpec.describe Metanorma::Ieee do
             #{@blank_hdr.sub('<doctype>standard</doctype>', ' <doctype>whitepaper</doctype>').sub(%r{</script>}, '</script><abstract><p>Text</p></abstract>').sub(%r{<boilerplate>.*</boilerplate>}m, '')}
           <preface>
              <abstract id="_">
-                <title>Abstract</title>
+                <title id="_">Abstract</title>
                 <p id="_">Text</p>
              </abstract>
              <foreword id="_" obligation="informative">
-                <title>Foreword</title>
+                <title id="_">Foreword</title>
                 <p id="_">Text</p>
              </foreword>
              <introduction id="_" obligation="informative">
-                <title>Introduction</title>
-                <admonition>This introduction is not part of P, Whitepaper for Document title</admonition>
+                <title id="_">Introduction</title>
+                <admonition id="_">This introduction is not part of P, Whitepaper for Document title</admonition>
                 <clause id="_" inline-header="false" obligation="informative">
-                   <title>Introduction Subsection</title>
+                   <title id="_">Introduction Subsection</title>
                 </clause>
              </introduction>
              <clause id="_" inline-header="false" obligation="informative">
-                <title>Dedication</title>
+                <title id="_">Dedication</title>
              </clause>
              <acknowledgements id="_" obligation="informative">
-                <title>Acknowledgements</title>
+                <title id="_">Acknowledgements</title>
              </acknowledgements>
           </preface>
           <sections>
              <clause id="_" type="overview" inline-header="false" obligation="normative">
-                <title>Overview</title>
+                <title id="_">Overview</title>
                 <p id="_">Text</p>
                 <clause id="_" type="scope" inline-header="false" obligation="normative">
-                   <title>Scope</title>
+                   <title id="_">Scope</title>
                    <p id="_">Text</p>
                 </clause>
                 <clause id="_" type="purpose" inline-header="false" obligation="normative">
-                   <title>Purpose</title>
+                   <title id="_">Purpose</title>
                    <p id="_">Text</p>
                 </clause>
              </clause>
              <terms id="_" obligation="normative">
-                <title>Definitions</title>
+                <title id="_">Definitions</title>
                 <p id="_">Boilerplate text</p>
                 <term id="_" anchor="term-Term1">
                    <preferred>
@@ -884,23 +884,23 @@ RSpec.describe Metanorma::Ieee do
                 </term>
              </terms>
              <clause id="_" obligation="normative" type="terms">
-                <title>Definitions, acronyms and abbreviations</title>
+                <title id="_">Definitions, acronyms and abbreviations</title>
                 <clause id="_" inline-header="false" obligation="normative">
-                   <title>Introduction</title>
+                   <title id="_">Introduction</title>
                    <clause id="_" inline-header="false" obligation="normative">
-                      <title>Intro 1</title>
+                      <title id="_">Intro 1</title>
                    </clause>
                 </clause>
                 <terms id="_" obligation="normative">
-                   <title>Intro 2</title>
+                   <title id="_">Intro 2</title>
                    <clause id="_" inline-header="false" obligation="normative">
-                      <title>Intro 3</title>
+                      <title id="_">Intro 3</title>
                    </clause>
                 </terms>
                 <clause id="_" obligation="normative" type="terms">
-                   <title>Intro 4</title>
+                   <title id="_">Intro 4</title>
                    <terms id="_" obligation="normative">
-                      <title>Intro 5</title>
+                      <title id="_">Intro 5</title>
                       <term id="_" anchor="term-Term1-1">
                          <preferred>
                             <expression>
@@ -911,7 +911,7 @@ RSpec.describe Metanorma::Ieee do
                    </terms>
                 </clause>
                 <terms id="_" obligation="normative">
-                   <title>Normal Terms</title>
+                   <title id="_">Normal Terms</title>
                    <term id="_" anchor="term-Term2">
                       <preferred>
                          <expression>
@@ -921,56 +921,56 @@ RSpec.describe Metanorma::Ieee do
                    </term>
                 </terms>
                 <definitions id="_" obligation="normative">
-                   <title>Acronyms and abbreviations</title>
+                   <title id="_">Acronyms and abbreviations</title>
                    <clause id="_" inline-header="false" obligation="normative">
-                      <title>General</title>
+                      <title id="_">General</title>
                    </clause>
                    <definitions id="_" type="symbols" obligation="normative">
-                      <title>Acronyms and abbreviations</title>
+                      <title id="_">Acronyms and abbreviations</title>
                    </definitions>
                 </definitions>
              </clause>
              <definitions id="_" type="abbreviated_terms" obligation="normative">
-                <title>Acronyms and abbreviations</title>
+                <title id="_">Acronyms and abbreviations</title>
              </definitions>
              <clause id="_" inline-header="false" obligation="normative">
-                <title>Clause 4</title>
+                <title id="_">Clause 4</title>
                 <clause id="_" inline-header="false" obligation="normative">
-                   <title>Introduction</title>
+                   <title id="_">Introduction</title>
                 </clause>
                 <clause id="_" inline-header="false" obligation="normative">
-                   <title>Clause 4.2</title>
+                   <title id="_">Clause 4.2</title>
                 </clause>
              </clause>
              <terms id="_" obligation="normative">
-                <title>Terms and Definitions</title>
+                <title id="_">Terms and Definitions</title>
              </terms>
           </sections>
           <annex id="_" inline-header="false" obligation="normative">
-             <title>Annex</title>
+             <title id="_">Annex</title>
              <clause id="_" inline-header="false" obligation="normative">
-                <title>Annex A.1</title>
+                <title id="_">Annex A.1</title>
              </clause>
           </annex>
           <annex id="_" obligation="" language="" script="">
-             <title>Bibliography</title>
+             <title id="_">Bibliography</title>
              <references id="_" normative="false" obligation="informative">
-                <title>Bibliography</title>
+                <title id="_">Bibliography</title>
                 <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
              </references>
           </annex>
           <bibliography>
              <references id="_" normative="true" obligation="informative">
-                <title>References</title>
+                <title id="_">References</title>
                 <p id="_">There are no normative references in this document.</p>
              </references>
           </bibliography>
           <indexsect id="_">
-             <title>Index</title>
+             <title id="_">Index</title>
              <p id="_">This is an index</p>
           </indexsect>
           <indexsect id="_" type="thematic">
-             <title>Thematic Index</title>
+             <title id="_">Thematic Index</title>
           </indexsect>
        </metanorma>
     OUTPUT

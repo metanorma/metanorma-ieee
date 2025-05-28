@@ -63,7 +63,7 @@ module IsoDoc
       def termcontainers(docxml)
         super
         docxml.xpath(ns("//term[not(./fmt-definition)]")).each do |t|
-          t << "<fmt-definition></fmt-definition>"
+          t << "<fmt-definition #{add_id_text}></fmt-definition>"
         end
       end
 
@@ -73,12 +73,11 @@ module IsoDoc
 
       def collapse_term1(term)
         ret = collapse_term_template(
-          pref: term.at(ns("./fmt-preferred")),
+          pref: term.at(ns("./fmt-preferred"))&.remove,
           def: term.at(ns("./fmt-definition")),
           rels: term.at(ns("./fmt-related"))&.remove,
           source: term.at(ns("./fmt-termsource"))&.remove,
         )
-        term.at(ns("./fmt-preferred"))&.remove
         term.at(ns("./fmt-admitted"))&.remove
         ins = term.at(ns("./fmt-definition")) and
           ins.children = ret
@@ -86,14 +85,7 @@ module IsoDoc
 
       def collapse_term_related(rels)
         rels or return
-        rels.xpath(ns("./p")).each do |p|
-          orig = p.at(ns(".//semx[@element = 'related']"))
-          reln = "<em>#{@i18n.relatedterms[orig['type']]}:</em> "
-          p.add_first_child reln
-          p.xpath(ns(".//semx[@element = 'related']")).each do |r|
-            r.at(ns("./fmt-preferred")) or r.add_first_child "**RELATED TERM NOT FOUND**"
-          end
-        end
+        collapse_term_related1(rels)
         ret = rels.xpath(ns("./p")).map do |x|
           to_xml(x.children).strip
         end.join(". ")
@@ -101,9 +93,20 @@ module IsoDoc
         ret
       end
 
+      def collapse_term_related1(rels)
+        rels.xpath(ns("./p")).each do |p|
+          orig = p.at(ns(".//semx[@element = 'related']"))
+          reln = "<em>#{@i18n.relatedterms[orig['type']]}:</em> "
+          p.add_first_child reln
+          p.xpath(ns(".//semx[@element = 'related']")).each do |r|
+            r.at(ns("./fmt-preferred")) or
+              r.add_first_child "**RELATED TERM NOT FOUND**"
+          end
+        end
+      end
+
       def collapse_term_template(opt)
         defn, multiblock = collapse_unwrap_definition(opt[:def])
-        #src = nil
         opt[:source] and src = "(#{to_xml(opt[:source].remove.children).strip})"
         t = collapse_term_pref(opt)
         tail = "#{collapse_term_related(opt[:rels])} #{src}"

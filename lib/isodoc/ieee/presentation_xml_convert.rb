@@ -171,9 +171,6 @@ module IsoDoc
 
       def ol_numbering1(elem, idx)
         elem["type"] = ol_depth_rotate(elem, idx).to_s
-        elem.xpath(ns("./li")).each do |li|
-          li["id"] ||= "_#{UUIDTools::UUID.random_create}"
-        end
       end
 
       # overrides IsoDoc:: XrefGen::OlTypeProvider: we trigger

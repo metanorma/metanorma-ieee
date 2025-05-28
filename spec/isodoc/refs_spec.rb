@@ -275,14 +275,14 @@ RSpec.describe IsoDoc do
        <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
              <clause type="toc" id="_" displayorder="1">
-                <fmt-title depth="1">Contents</fmt-title>
+                <fmt-title id="_" depth="1">Contents</fmt-title>
              </clause>
           </preface>
           <sections>
              <p class="zzSTDTitle1" displayorder="3">??? for ???</p>
              <clause id="A" inline-header="false" obligation="normative" displayorder="4">
                 <title id="_">Clause</title>
-                <fmt-title depth="1">
+                <fmt-title id="_" depth="1">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="A">2</semx>
                       <span class="fmt-autonum-delim">.</span>
@@ -343,7 +343,7 @@ RSpec.describe IsoDoc do
              </clause>
              <references id="_" normative="true" obligation="informative" displayorder="2">
                 <title id="_">Normative References</title>
-                <fmt-title depth="1">
+                <fmt-title id="_" depth="1">
                    <semx element="title" source="_">Normative References</semx>
                 </fmt-title>
                 <bibitem id="ISO16634" type="standard">
@@ -646,7 +646,7 @@ RSpec.describe IsoDoc do
           <bibliography>
              <references id="_" normative="false" obligation="informative" displayorder="5">
                 <title id="_">Bibliography</title>
-                <fmt-title depth="1">
+                <fmt-title id="_" depth="1">
                    <semx element="title" source="_">Bibliography</semx>
                 </fmt-title>
                 <bibitem id="ref6">
@@ -848,14 +848,14 @@ RSpec.describe IsoDoc do
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
          <preface>
             <clause type="toc" id="_" displayorder="1">
-               <fmt-title depth="1">Contents</fmt-title>
+               <fmt-title id="_" depth="1">Contents</fmt-title>
             </clause>
          </preface>
          <sections/>
          <bibliography>
             <references id="_" normative="false" obligation="informative" displayorder="2">
                <title id="_">Normative References</title>
-               <fmt-title depth="1">
+               <fmt-title id="_" depth="1">
                      <semx element="title" source="_">Normative References</semx>
                </fmt-title>
                <bibitem id="IETF_6281" type="standard">
@@ -937,14 +937,14 @@ RSpec.describe IsoDoc do
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
          <preface>
             <clause type="toc" id="_" displayorder="1">
-               <fmt-title depth="1">Contents</fmt-title>
+               <fmt-title id="_" depth="1">Contents</fmt-title>
             </clause>
          </preface>
          <sections>
             <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
             <references id="_" normative="true" obligation="informative" displayorder="3">
                <title id="_">Normative references</title>
-               <fmt-title depth="1">
+               <fmt-title id="_" depth="1">
                      <semx element="title" source="_">Normative references</semx>
                </fmt-title>
                <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
@@ -963,7 +963,7 @@ RSpec.describe IsoDoc do
          <bibliography>
             <references id="_" normative="false" obligation="informative" displayorder="4">
                <title id="_">Bibliography</title>
-               <fmt-title depth="1">
+               <fmt-title id="_" depth="1">
                      <semx element="title" source="_">Bibliography</semx>
                </fmt-title>
                <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
@@ -1027,7 +1027,7 @@ RSpec.describe IsoDoc do
     presxml = <<~PRESXML
       <clause id="A" inline-header="false" obligation="normative" displayorder="4">
          <title id="_">Clause</title>
-         <fmt-title depth="1">
+         <fmt-title id="_" depth="1">
             <span class="fmt-caption-label">
                <semx element="autonum" source="A">2</semx>
                <span class="fmt-autonum-delim">.</span>

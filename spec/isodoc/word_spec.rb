@@ -101,7 +101,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
         <preface><introduction id="_introduction" obligation="informative" displayorder="1" id="A">
-      <fmt-title>Introduction</fmt-title><admonition>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty
+      <fmt-title id="_">Introduction</fmt-title><admonition>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty
       </admonition>
       <p id="_7d8a8a7f-3ded-050d-1da9-978f17519335">This is an introduction</p>
       </introduction></preface>
@@ -132,7 +132,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       <iso-standard xmlns="http://riboseinc.com/isoxml">
       <bibdata><ext><doctype>standard</doctype></ext></bibdata>
         <preface><abstract id="_introduction" obligation="informative" displayorder="1" id="A">
-      <fmt-title>Introduction</fmt-title><admonition>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty
+      <fmt-title id="_">Introduction</fmt-title><admonition>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty
       </admonition>
       <p>Text</p>
       <ul><li><p>List</p></li></ul>
@@ -396,396 +396,422 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
             </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-          <bibdata>
-             <ext>
-                <doctype>standard</doctype>
-             </ext>
-             <preface>
-                <clause type="toc" id="_" displayorder="1">
-                   <fmt-title depth="1">Contents</fmt-title>
-                </clause>
-             </preface>
-             <sections>
-                <p class="zzSTDTitle1" displayorder="2">Standard for ???</p>
-                <clause id="A" displayorder="3">
-                   <fmt-title depth="1">
-                      <span class="fmt-caption-label">
-                         <semx element="autonum" source="A">1</semx>
-                         <span class="fmt-autonum-delim">.</span>
-                      </span>
-                   </fmt-title>
-                   <fmt-xref-label>
-                      <span class="fmt-element-name">Clause</span>
-                      <semx element="autonum" source="A">1</semx>
-                   </fmt-xref-label>
-                   <p>
-                      <ol type="alphabet" id="B">
-                         <li id="_">
-                            <fmt-name>
-                               <semx element="autonum" source="_">a</semx>
-                               <span class="fmt-label-delim">)</span>
-                            </fmt-name>
-                            <p>A</p>
-                         </li>
-                         <li id="_">
-                            <fmt-name>
-                               <semx element="autonum" source="_">b</semx>
-                               <span class="fmt-label-delim">)</span>
-                            </fmt-name>
-                            <p>B</p>
-                         </li>
-                         <li id="_">
-                            <fmt-name>
-                               <semx element="autonum" source="_">c</semx>
-                               <span class="fmt-label-delim">)</span>
-                            </fmt-name>
-                            <ol type="arabic" id="C">
-                               <li id="_">
-                                  <fmt-name>
-                                     <semx element="autonum" source="_">1</semx>
-                                     <span class="fmt-label-delim">)</span>
-                                  </fmt-name>
-                                  C
-                               </li>
-                               <li id="_">
-                                  <fmt-name>
-                                     <semx element="autonum" source="_">2</semx>
-                                     <span class="fmt-label-delim">)</span>
-                                  </fmt-name>
-                                  D
-                               </li>
-                               <li id="_">
-                                  <fmt-name>
-                                     <semx element="autonum" source="_">3</semx>
-                                     <span class="fmt-label-delim">)</span>
-                                  </fmt-name>
-                                  <ol type="alphabet" id="D">
-                                     <li id="_">
-                                        <fmt-name>
-                                           <semx element="autonum" source="_">a</semx>
-                                           <span class="fmt-label-delim">)</span>
-                                        </fmt-name>
-                                        E
-                                     </li>
-                                     <li id="_">
-                                        <fmt-name>
-                                           <semx element="autonum" source="_">b</semx>
-                                           <span class="fmt-label-delim">)</span>
-                                        </fmt-name>
-                                        F
-                                     </li>
-                                     <li id="_">
-                                        <fmt-name>
-                                           <semx element="autonum" source="_">c</semx>
-                                           <span class="fmt-label-delim">)</span>
-                                        </fmt-name>
-                                        <ol type="roman" id="E">
-                                           <li id="_">
-                                              <fmt-name>
-                                                 <semx element="autonum" source="_">i</semx>
-                                                 <span class="fmt-label-delim">)</span>
-                                              </fmt-name>
-                                              G
-                                           </li>
-                                           <li id="_">
-                                              <fmt-name>
-                                                 <semx element="autonum" source="_">ii</semx>
-                                                 <span class="fmt-label-delim">)</span>
-                                              </fmt-name>
-                                              H
-                                           </li>
-                                           <li id="_">
-                                              <fmt-name>
-                                                 <semx element="autonum" source="_">iii</semx>
-                                                 <span class="fmt-label-delim">)</span>
-                                              </fmt-name>
-                                              <ol type="arabic" id="F">
-                                                 <li id="_">
-                                                    <fmt-name>
-                                                       <semx element="autonum" source="_">1</semx>
-                                                       <span class="fmt-label-delim">)</span>
-                                                    </fmt-name>
-                                                    I
-                                                 </li>
-                                                 <li id="_">
-                                                    <fmt-name>
-                                                       <semx element="autonum" source="_">2</semx>
-                                                       <span class="fmt-label-delim">)</span>
-                                                    </fmt-name>
-                                                    J
-                                                 </li>
-                                                 <li id="_">
-                                                    <fmt-name>
-                                                       <semx element="autonum" source="_">3</semx>
-                                                       <span class="fmt-label-delim">)</span>
-                                                    </fmt-name>
-                                                    <ol type="alphabet" id="G">
-                                                       <li id="_">
-                                                          <fmt-name>
-                                                             <semx element="autonum" source="_">a</semx>
-                                                             <span class="fmt-label-delim">)</span>
-                                                          </fmt-name>
-                                                          K
-                                                       </li>
-                                                       <li id="_">
-                                                          <fmt-name>
-                                                             <semx element="autonum" source="_">b</semx>
-                                                             <span class="fmt-label-delim">)</span>
-                                                          </fmt-name>
-                                                          L
-                                                       </li>
-                                                       <li id="_">
-                                                          <fmt-name>
-                                                             <semx element="autonum" source="_">c</semx>
-                                                             <span class="fmt-label-delim">)</span>
-                                                          </fmt-name>
-                                                          M
-                                                       </li>
-                                                    </ol>
-                                                 </li>
-                                                 <li id="_">
-                                                    <fmt-name>
-                                                       <semx element="autonum" source="_">4</semx>
-                                                       <span class="fmt-label-delim">)</span>
-                                                    </fmt-name>
-                                                    N
-                                                 </li>
-                                              </ol>
-                                           </li>
-                                           <li id="_">
-                                              <fmt-name>
-                                                 <semx element="autonum" source="_">iv</semx>
-                                                 <span class="fmt-label-delim">)</span>
-                                              </fmt-name>
-                                              O
-                                           </li>
-                                        </ol>
-                                     </li>
-                                     <li id="_">
-                                        <fmt-name>
-                                           <semx element="autonum" source="_">d</semx>
-                                           <span class="fmt-label-delim">)</span>
-                                        </fmt-name>
-                                        P
-                                     </li>
-                                  </ol>
-                               </li>
-                               <li id="_">
-                                  <fmt-name>
-                                     <semx element="autonum" source="_">4</semx>
-                                     <span class="fmt-label-delim">)</span>
-                                  </fmt-name>
-                                  Q
-                               </li>
-                            </ol>
-                         </li>
-                         <li id="_">
-                            <fmt-name>
-                               <semx element="autonum" source="_">d</semx>
-                               <span class="fmt-label-delim">)</span>
-                            </fmt-name>
-                            R
-                         </li>
-                      </ol>
-                      <ul id="B1">
-                         <li>
-                            <fmt-name>
-                               <semx element="autonum" source="">–</semx>
-                            </fmt-name>
-                            <p>A</p>
-                         </li>
-                         <li>
-                            <fmt-name>
-                               <semx element="autonum" source="">–</semx>
-                            </fmt-name>
-                            <p>B</p>
-                         </li>
-                         <li>
-                            <fmt-name>
-                               <semx element="autonum" source="">–</semx>
-                            </fmt-name>
-                            <p>B1</p>
-                            <ul id="C1">
-                               <li>
-                                  <fmt-name>
-                                     <semx element="autonum" source="">–</semx>
-                                  </fmt-name>
-                                  C
-                               </li>
-                               <li>
-                                  <fmt-name>
-                                     <semx element="autonum" source="">–</semx>
-                                  </fmt-name>
-                                  D
-                               </li>
-                               <li>
-                                  <fmt-name>
-                                     <semx element="autonum" source="">–</semx>
-                                  </fmt-name>
-                                  <ul id="D1">
-                                     <li>
-                                        <fmt-name>
-                                           <semx element="autonum" source="">–</semx>
-                                        </fmt-name>
-                                        E
-                                     </li>
-                                     <li>
-                                        <fmt-name>
-                                           <semx element="autonum" source="">–</semx>
-                                        </fmt-name>
-                                        F
-                                     </li>
-                                  </ul>
-                               </li>
-                               <li>
-                                  <fmt-name>
-                                     <semx element="autonum" source="">–</semx>
-                                  </fmt-name>
-                                  Q
-                               </li>
-                            </ul>
-                         </li>
-                         <li>
-                            <fmt-name>
-                               <semx element="autonum" source="">–</semx>
-                            </fmt-name>
-                            R
-                         </li>
-                      </ul>
-                   </p>
-                </clause>
-             </sections>
-          </bibdata>
-       </iso-standard>
+         <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+           <bibdata>
+              <ext>
+                 <doctype>standard</doctype>
+              </ext>
+              <preface>
+                 <clause type="toc" id="_" displayorder="1">
+                    <fmt-title depth="1" id="_">Contents</fmt-title>
+                 </clause>
+              </preface>
+              <sections>
+                 <p class="zzSTDTitle1" displayorder="2">Standard for ???</p>
+                 <clause id="A" displayorder="3">
+                    <fmt-title depth="1" id="_">
+                       <span class="fmt-caption-label">
+                          <semx element="autonum" source="A">1</semx>
+                          <span class="fmt-autonum-delim">.</span>
+                       </span>
+                    </fmt-title>
+                    <fmt-xref-label>
+                       <span class="fmt-element-name">Clause</span>
+                       <semx element="autonum" source="A">1</semx>
+                    </fmt-xref-label>
+                    <p>
+                       <ol type="alphabet" id="B">
+                          <li id="_">
+                             <fmt-name id="_">
+                                <semx element="autonum" source="_">a</semx>
+                                <span class="fmt-label-delim">)</span>
+                             </fmt-name>
+                             <p>A</p>
+                          </li>
+                          <li id="_">
+                             <fmt-name id="_">
+                                <semx element="autonum" source="_">b</semx>
+                                <span class="fmt-label-delim">)</span>
+                             </fmt-name>
+                             <p>B</p>
+                          </li>
+                          <li id="_">
+                             <fmt-name id="_">
+                                <semx element="autonum" source="_">c</semx>
+                                <span class="fmt-label-delim">)</span>
+                             </fmt-name>
+                             <ol type="arabic" id="C">
+                                <li id="_">
+                                   <fmt-name id="_">
+                                      <semx element="autonum" source="_">1</semx>
+                                      <span class="fmt-label-delim">)</span>
+                                   </fmt-name>
+                                   C
+                                </li>
+                                <li id="_">
+                                   <fmt-name id="_">
+                                      <semx element="autonum" source="_">2</semx>
+                                      <span class="fmt-label-delim">)</span>
+                                   </fmt-name>
+                                   D
+                                </li>
+                                <li id="_">
+                                   <fmt-name id="_">
+                                      <semx element="autonum" source="_">3</semx>
+                                      <span class="fmt-label-delim">)</span>
+                                   </fmt-name>
+                                   <ol type="alphabet" id="D">
+                                      <li id="_">
+                                         <fmt-name id="_">
+                                            <semx element="autonum" source="_">a</semx>
+                                            <span class="fmt-label-delim">)</span>
+                                         </fmt-name>
+                                         E
+                                      </li>
+                                      <li id="_">
+                                         <fmt-name id="_">
+                                            <semx element="autonum" source="_">b</semx>
+                                            <span class="fmt-label-delim">)</span>
+                                         </fmt-name>
+                                         F
+                                      </li>
+                                      <li id="_">
+                                         <fmt-name id="_">
+                                            <semx element="autonum" source="_">c</semx>
+                                            <span class="fmt-label-delim">)</span>
+                                         </fmt-name>
+                                         <ol type="roman" id="E">
+                                            <li id="_">
+                                               <fmt-name id="_">
+                                                  <semx element="autonum" source="_">i</semx>
+                                                  <span class="fmt-label-delim">)</span>
+                                               </fmt-name>
+                                               G
+                                            </li>
+                                            <li id="_">
+                                               <fmt-name id="_">
+                                                  <semx element="autonum" source="_">ii</semx>
+                                                  <span class="fmt-label-delim">)</span>
+                                               </fmt-name>
+                                               H
+                                            </li>
+                                            <li id="_">
+                                               <fmt-name id="_">
+                                                  <semx element="autonum" source="_">iii</semx>
+                                                  <span class="fmt-label-delim">)</span>
+                                               </fmt-name>
+                                               <ol type="arabic" id="F">
+                                                  <li id="_">
+                                                     <fmt-name id="_">
+                                                        <semx element="autonum" source="_">1</semx>
+                                                        <span class="fmt-label-delim">)</span>
+                                                     </fmt-name>
+                                                     I
+                                                  </li>
+                                                  <li id="_">
+                                                     <fmt-name id="_">
+                                                        <semx element="autonum" source="_">2</semx>
+                                                        <span class="fmt-label-delim">)</span>
+                                                     </fmt-name>
+                                                     J
+                                                  </li>
+                                                  <li id="_">
+                                                     <fmt-name id="_">
+                                                        <semx element="autonum" source="_">3</semx>
+                                                        <span class="fmt-label-delim">)</span>
+                                                     </fmt-name>
+                                                     <ol type="alphabet" id="G">
+                                                        <li id="_">
+                                                           <fmt-name id="_">
+                                                              <semx element="autonum" source="_">a</semx>
+                                                              <span class="fmt-label-delim">)</span>
+                                                           </fmt-name>
+                                                           K
+                                                        </li>
+                                                        <li id="_">
+                                                           <fmt-name id="_">
+                                                              <semx element="autonum" source="_">b</semx>
+                                                              <span class="fmt-label-delim">)</span>
+                                                           </fmt-name>
+                                                           L
+                                                        </li>
+                                                        <li id="_">
+                                                           <fmt-name id="_">
+                                                              <semx element="autonum" source="_">c</semx>
+                                                              <span class="fmt-label-delim">)</span>
+                                                           </fmt-name>
+                                                           M
+                                                        </li>
+                                                     </ol>
+                                                  </li>
+                                                  <li id="_">
+                                                     <fmt-name id="_">
+                                                        <semx element="autonum" source="_">4</semx>
+                                                        <span class="fmt-label-delim">)</span>
+                                                     </fmt-name>
+                                                     N
+                                                  </li>
+                                               </ol>
+                                            </li>
+                                            <li id="_">
+                                               <fmt-name id="_">
+                                                  <semx element="autonum" source="_">iv</semx>
+                                                  <span class="fmt-label-delim">)</span>
+                                               </fmt-name>
+                                               O
+                                            </li>
+                                         </ol>
+                                      </li>
+                                      <li id="_">
+                                         <fmt-name id="_">
+                                            <semx element="autonum" source="_">d</semx>
+                                            <span class="fmt-label-delim">)</span>
+                                         </fmt-name>
+                                         P
+                                      </li>
+                                   </ol>
+                                </li>
+                                <li id="_">
+                                   <fmt-name id="_">
+                                      <semx element="autonum" source="_">4</semx>
+                                      <span class="fmt-label-delim">)</span>
+                                   </fmt-name>
+                                   Q
+                                </li>
+                             </ol>
+                          </li>
+                          <li id="_">
+                             <fmt-name id="_">
+                                <semx element="autonum" source="_">d</semx>
+                                <span class="fmt-label-delim">)</span>
+                             </fmt-name>
+                             R
+                          </li>
+                       </ol>
+                       <ul id="B1">
+                          <li id="_">
+                             <fmt-name id="_">
+                                <semx element="autonum" source="_">–</semx>
+                             </fmt-name>
+                             <p>A</p>
+                          </li>
+                          <li id="_">
+                             <fmt-name id="_">
+                                <semx element="autonum" source="_">–</semx>
+                             </fmt-name>
+                             <p>B</p>
+                          </li>
+                          <li id="_">
+                             <fmt-name id="_">
+                                <semx element="autonum" source="_">–</semx>
+                             </fmt-name>
+                             <p>B1</p>
+                             <ul id="C1">
+                                <li id="_">
+                                   <fmt-name id="_">
+                                      <semx element="autonum" source="_">–</semx>
+                                   </fmt-name>
+                                   C
+                                </li>
+                                <li id="_">
+                                   <fmt-name id="_">
+                                      <semx element="autonum" source="_">–</semx>
+                                   </fmt-name>
+                                   D
+                                </li>
+                                <li id="_">
+                                   <fmt-name id="_">
+                                      <semx element="autonum" source="_">–</semx>
+                                   </fmt-name>
+                                   <ul id="D1">
+                                      <li id="_">
+                                         <fmt-name id="_">
+                                            <semx element="autonum" source="_">–</semx>
+                                         </fmt-name>
+                                         E
+                                      </li>
+                                      <li id="_">
+                                         <fmt-name id="_">
+                                            <semx element="autonum" source="_">–</semx>
+                                         </fmt-name>
+                                         F
+                                      </li>
+                                   </ul>
+                                </li>
+                                <li id="_">
+                                   <fmt-name id="_">
+                                      <semx element="autonum" source="_">–</semx>
+                                   </fmt-name>
+                                   Q
+                                </li>
+                             </ul>
+                          </li>
+                          <li id="_">
+                             <fmt-name id="_">
+                                <semx element="autonum" source="_">–</semx>
+                             </fmt-name>
+                             R
+                          </li>
+                       </ul>
+                    </p>
+                 </clause>
+              </sections>
+           </bibdata>
+        </iso-standard>
     OUTPUT
     word = <<~OUTPUT
-       <div>
-          <a name="A" id="A"/>
-          <p class="IEEEStdsLevel1Header">1.</p>
-          <p class="IEEEStdsParagraph">
-             <div class="ol_wrap">
-                <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpFirst">
-                   <a name="_" id="_"/>
-                   A
-                </p>
-                <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpMiddle">
-                   <a name="_" id="_"/>
-                   B
-                </p>
-                <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpMiddle">
-                   <a name="_" id="_"/>
-                   <div class="ol_wrap">
-                      <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpFirst">
-                         <a name="_" id="_"/>
-                         C
-                      </p>
-                      <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpMiddle">
-                         <a name="_" id="_"/>
-                         D
-                      </p>
-                      <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpMiddle">
-                         <a name="_" id="_"/>
-                         <div class="ol_wrap">
-                            <p style="mso-list:l16 level4 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpFirst">
-                               <a name="_" id="_"/>
-                               E
-                            </p>
-                            <p style="mso-list:l16 level4 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpMiddle">
-                               <a name="_" id="_"/>
-                               F
-                            </p>
-                            <p style="mso-list:l16 level4 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpMiddle">
-                               <a name="_" id="_"/>
-                               <div class="ol_wrap">
-                                  <p style="mso-list:l16 level6 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpFirst">
-                                     <a name="_" id="_"/>
-                                     G
-                                  </p>
-                                  <p style="mso-list:l16 level6 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpMiddle">
-                                     <a name="_" id="_"/>
-                                     H
-                                  </p>
-                                  <p style="mso-list:l16 level6 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpMiddle">
-                                     <a name="_" id="_"/>
-                                     <div class="ol_wrap">
-                                        <p style="mso-list:l16 level5 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpFirst">
-                                           <a name="_" id="_"/>
-                                           I
-                                        </p>
-                                        <p style="mso-list:l16 level5 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpMiddle">
-                                           <a name="_" id="_"/>
-                                           J
-                                        </p>
-                                        <p style="mso-list:l16 level5 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpMiddle">
-                                           <a name="_" id="_"/>
-                                           <div class="ol_wrap">
-                                              <p style="mso-list:l16 level7 lfo2-6;text-indent:-0.79cm; margin-left:4.960000000000001cm;" class="IEEEStdsNumberedListLevel6CxSpFirst">
-                                                 <a name="_" id="_"/>
-                                                 K
-                                              </p>
-                                              <p style="mso-list:l16 level7 lfo2-6;text-indent:-0.79cm; margin-left:4.960000000000001cm;" class="IEEEStdsNumberedListLevel6CxSpMiddle">
-                                                 <a name="_" id="_"/>
-                                                 L
-                                              </p>
-                                              <p style="mso-list:l16 level7 lfo2-6;text-indent:-0.79cm; margin-left:4.960000000000001cm;" class="IEEEStdsNumberedListLevel6CxSpLast">
-                                                 <a name="_" id="_"/>
-                                                 M
-                                              </p>
-                                           </div>
-                                        </p>
-                                        <p style="mso-list:l16 level5 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpLast">
-                                           <a name="_" id="_"/>
-                                           N
-                                        </p>
-                                     </div>
-                                  </p>
-                                  <p style="mso-list:l16 level6 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpLast">
-                                     <a name="_" id="_"/>
-                                     O
-                                  </p>
-                               </div>
-                            </p>
-                            <p style="mso-list:l16 level4 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpLast">
-                               <a name="_" id="_"/>
-                               P
-                            </p>
-                         </div>
-                      </p>
-                      <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpLast">
-                         <a name="_" id="_"/>
-                         Q
-                      </p>
-                   </div>
-                </p>
-                <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpLast">
-                   <a name="_" id="_"/>
-                   R
-                </p>
-             </div>
-             <div class="ul_wrap">
-                <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpFirst">A</p>
-                <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpMiddle">B</p>
-                <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpMiddle">
-                   B1
-                   <div class="ListContLevel1">
-                      <div class="ul_wrap">
-                         <p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2">C</p>
-                         <p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2">D</p>
-                         <p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2">
-                            <div class="ul_wrap">
-                               <p style="mso-list:l21 level2 lfo1-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsUnorderedListLevel2">E</p>
-                               <p style="mso-list:l21 level2 lfo1-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsUnorderedListLevel2">F</p>
-                            </div>
-                         </p>
-                         <p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2">Q</p>
-                      </div>
-                   </div>
-                </p>
-                <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpLast">R</p>
-             </div>
-          </p>
-       </div>
+         <div>
+           <a name="A" id="A"/>
+           <p class="IEEEStdsLevel1Header">1.</p>
+           <p class="IEEEStdsParagraph">
+              <div class="ol_wrap">
+                 <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpFirst">
+                    <a name="_" id="_"/>
+                    A
+                 </p>
+                 <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpMiddle">
+                    <a name="_" id="_"/>
+                    B
+                 </p>
+                 <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpMiddle">
+                    <a name="_" id="_"/>
+                    <div class="ol_wrap">
+                       <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpFirst">
+                          <a name="_" id="_"/>
+                          C
+                       </p>
+                       <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpMiddle">
+                          <a name="_" id="_"/>
+                          D
+                       </p>
+                       <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpMiddle">
+                          <a name="_" id="_"/>
+                          <div class="ol_wrap">
+                             <p style="mso-list:l16 level4 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpFirst">
+                                <a name="_" id="_"/>
+                                E
+                             </p>
+                             <p style="mso-list:l16 level4 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpMiddle">
+                                <a name="_" id="_"/>
+                                F
+                             </p>
+                             <p style="mso-list:l16 level4 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpMiddle">
+                                <a name="_" id="_"/>
+                                <div class="ol_wrap">
+                                   <p style="mso-list:l16 level6 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpFirst">
+                                      <a name="_" id="_"/>
+                                      G
+                                   </p>
+                                   <p style="mso-list:l16 level6 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpMiddle">
+                                      <a name="_" id="_"/>
+                                      H
+                                   </p>
+                                   <p style="mso-list:l16 level6 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpMiddle">
+                                      <a name="_" id="_"/>
+                                      <div class="ol_wrap">
+                                         <p style="mso-list:l16 level5 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpFirst">
+                                            <a name="_" id="_"/>
+                                            I
+                                         </p>
+                                         <p style="mso-list:l16 level5 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpMiddle">
+                                            <a name="_" id="_"/>
+                                            J
+                                         </p>
+                                         <p style="mso-list:l16 level5 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpMiddle">
+                                            <a name="_" id="_"/>
+                                            <div class="ol_wrap">
+                                               <p style="mso-list:l16 level7 lfo2-6;text-indent:-0.79cm; margin-left:4.960000000000001cm;" class="IEEEStdsNumberedListLevel6CxSpFirst">
+                                                  <a name="_" id="_"/>
+                                                  K
+                                               </p>
+                                               <p style="mso-list:l16 level7 lfo2-6;text-indent:-0.79cm; margin-left:4.960000000000001cm;" class="IEEEStdsNumberedListLevel6CxSpMiddle">
+                                                  <a name="_" id="_"/>
+                                                  L
+                                               </p>
+                                               <p style="mso-list:l16 level7 lfo2-6;text-indent:-0.79cm; margin-left:4.960000000000001cm;" class="IEEEStdsNumberedListLevel6CxSpLast">
+                                                  <a name="_" id="_"/>
+                                                  M
+                                               </p>
+                                            </div>
+                                         </p>
+                                         <p style="mso-list:l16 level5 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpLast">
+                                            <a name="_" id="_"/>
+                                            N
+                                         </p>
+                                      </div>
+                                   </p>
+                                   <p style="mso-list:l16 level6 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpLast">
+                                      <a name="_" id="_"/>
+                                      O
+                                   </p>
+                                </div>
+                             </p>
+                             <p style="mso-list:l16 level4 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpLast">
+                                <a name="_" id="_"/>
+                                P
+                             </p>
+                          </div>
+                       </p>
+                       <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpLast">
+                          <a name="_" id="_"/>
+                          Q
+                       </p>
+                    </div>
+                 </p>
+                 <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpLast">
+                    <a name="_" id="_"/>
+                    R
+                 </p>
+              </div>
+              <div class="ul_wrap">
+                 <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpFirst">
+                    <a name="_" id="_"/>
+                    A
+                 </p>
+                 <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpMiddle">
+                    <a name="_" id="_"/>
+                    B
+                 </p>
+                 <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpMiddle">
+                    <a name="_" id="_"/>
+                    B1
+                    <div class="ListContLevel1">
+                       <div class="ul_wrap">
+                          <p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2">
+                             <a name="_" id="_"/>
+                             C
+                          </p>
+                          <p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2">
+                             <a name="_" id="_"/>
+                             D
+                          </p>
+                          <p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2">
+                             <a name="_" id="_"/>
+                             <div class="ul_wrap">
+                                <p style="mso-list:l21 level2 lfo1-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsUnorderedListLevel2">
+                                   <a name="_" id="_"/>
+                                   E
+                                </p>
+                                <p style="mso-list:l21 level2 lfo1-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsUnorderedListLevel2">
+                                   <a name="_" id="_"/>
+                                   F
+                                </p>
+                             </div>
+                          </p>
+                          <p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2">
+                             <a name="_" id="_"/>
+                             Q
+                          </p>
+                       </div>
+                    </div>
+                 </p>
+                 <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpLast">
+                    <a name="_" id="_"/>
+                    R
+                 </p>
+              </div>
+           </p>
+        </div>
     OUTPUT
     pres_output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
@@ -800,132 +826,158 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       .to be_equivalent_to Xml::C14n.format(word)
 
     word = <<~OUTPUT
-       <div>
-          <a name="A" id="A"/>
-          <p class="IEEESectionHeader">1.</p>
-          <p class="MsoBodyText">
-             <div class="ol_wrap">
-                <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpFirst">
-                   <a name="_" id="_"/>
-                   A
-                </p>
-                <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpMiddle">
-                   <a name="_" id="_"/>
-                   B
-                </p>
-                <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpMiddle">
-                   <a name="_" id="_"/>
-                   <div class="ol_wrap">
-                      <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpFirst">
-                         <a name="_" id="_"/>
-                         C
-                      </p>
-                      <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpMiddle">
-                         <a name="_" id="_"/>
-                         D
-                      </p>
-                      <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpMiddle">
-                         <a name="_" id="_"/>
-                         <div class="ol_wrap">
-                            <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpFirst">
-                               <a name="_" id="_"/>
-                               E
-                            </p>
-                            <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpMiddle">
-                               <a name="_" id="_"/>
-                               F
-                            </p>
-                            <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpMiddle">
-                               <a name="_" id="_"/>
-                               <div class="ol_wrap">
-                                  <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpFirst">
-                                     <a name="_" id="_"/>
-                                     G
-                                  </p>
-                                  <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpMiddle">
-                                     <a name="_" id="_"/>
-                                     H
-                                  </p>
-                                  <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpMiddle">
-                                     <a name="_" id="_"/>
-                                     <div class="ol_wrap">
-                                        <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpFirst">
-                                           <a name="_" id="_"/>
-                                           I
-                                        </p>
-                                        <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpMiddle">
-                                           <a name="_" id="_"/>
-                                           J
-                                        </p>
-                                        <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpMiddle">
-                                           <a name="_" id="_"/>
-                                           <div class="ol_wrap">
-                                              <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpFirst">
-                                                 <a name="_" id="_"/>
-                                                 K
-                                              </p>
-                                              <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpMiddle">
-                                                 <a name="_" id="_"/>
-                                                 L
-                                              </p>
-                                              <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpLast">
-                                                 <a name="_" id="_"/>
-                                                 M
-                                              </p>
-                                           </div>
-                                        </p>
-                                        <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpLast">
-                                           <a name="_" id="_"/>
-                                           N
-                                        </p>
-                                     </div>
-                                  </p>
-                                  <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpLast">
-                                     <a name="_" id="_"/>
-                                     O
-                                  </p>
-                               </div>
-                            </p>
-                            <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpLast">
-                               <a name="_" id="_"/>
-                               P
-                            </p>
-                         </div>
-                      </p>
-                      <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpLast">
-                         <a name="_" id="_"/>
-                         Q
-                      </p>
-                   </div>
-                </p>
-                <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpLast">
-                   <a name="_" id="_"/>
-                   R
-                </p>
-             </div>
-             <div class="ul_wrap">
-                <p style="mso-list:l23 level1 lfo1;" class="BulletedList">A</p>
-                <p style="mso-list:l23 level1 lfo1;" class="BulletedList">B</p>
-                <p style="mso-list:l23 level1 lfo1;" class="BulletedList">
-                   B1
-                   <div class="ListContLevel1">
-                      <div class="ul_wrap">
-                         <p style="mso-list:l23 level2 lfo1;" class="BulletedList">C</p>
-                         <p style="mso-list:l23 level2 lfo1;" class="BulletedList">D</p>
-                         <p style="mso-list:l23 level2 lfo1;" class="BulletedList">
-                            <div class="ul_wrap">
-                               <p style="mso-list:l23 level3 lfo1;" class="BulletedList">E</p>
-                               <p style="mso-list:l23 level3 lfo1;" class="BulletedList">F</p>
-                            </div>
-                         </p>
-                         <p style="mso-list:l23 level2 lfo1;" class="BulletedList">Q</p>
-                      </div>
-                   </div>
-                </p>
-                <p style="mso-list:l23 level1 lfo1;" class="BulletedList">R</p>
-             </div>
-          </p>
-       </div>
+         <div>
+           <a name="A" id="A"/>
+           <p class="IEEESectionHeader">1.</p>
+           <p class="MsoBodyText">
+              <div class="ol_wrap">
+                 <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpFirst">
+                    <a name="_" id="_"/>
+                    A
+                 </p>
+                 <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpMiddle">
+                    <a name="_" id="_"/>
+                    B
+                 </p>
+                 <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpMiddle">
+                    <a name="_" id="_"/>
+                    <div class="ol_wrap">
+                       <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpFirst">
+                          <a name="_" id="_"/>
+                          C
+                       </p>
+                       <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpMiddle">
+                          <a name="_" id="_"/>
+                          D
+                       </p>
+                       <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpMiddle">
+                          <a name="_" id="_"/>
+                          <div class="ol_wrap">
+                             <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpFirst">
+                                <a name="_" id="_"/>
+                                E
+                             </p>
+                             <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpMiddle">
+                                <a name="_" id="_"/>
+                                F
+                             </p>
+                             <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpMiddle">
+                                <a name="_" id="_"/>
+                                <div class="ol_wrap">
+                                   <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpFirst">
+                                      <a name="_" id="_"/>
+                                      G
+                                   </p>
+                                   <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpMiddle">
+                                      <a name="_" id="_"/>
+                                      H
+                                   </p>
+                                   <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpMiddle">
+                                      <a name="_" id="_"/>
+                                      <div class="ol_wrap">
+                                         <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpFirst">
+                                            <a name="_" id="_"/>
+                                            I
+                                         </p>
+                                         <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpMiddle">
+                                            <a name="_" id="_"/>
+                                            J
+                                         </p>
+                                         <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpMiddle">
+                                            <a name="_" id="_"/>
+                                            <div class="ol_wrap">
+                                               <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpFirst">
+                                                  <a name="_" id="_"/>
+                                                  K
+                                               </p>
+                                               <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpMiddle">
+                                                  <a name="_" id="_"/>
+                                                  L
+                                               </p>
+                                               <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpLast">
+                                                  <a name="_" id="_"/>
+                                                  M
+                                               </p>
+                                            </div>
+                                         </p>
+                                         <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpLast">
+                                            <a name="_" id="_"/>
+                                            N
+                                         </p>
+                                      </div>
+                                   </p>
+                                   <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpLast">
+                                      <a name="_" id="_"/>
+                                      O
+                                   </p>
+                                </div>
+                             </p>
+                             <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpLast">
+                                <a name="_" id="_"/>
+                                P
+                             </p>
+                          </div>
+                       </p>
+                       <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpLast">
+                          <a name="_" id="_"/>
+                          Q
+                       </p>
+                    </div>
+                 </p>
+                 <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpLast">
+                    <a name="_" id="_"/>
+                    R
+                 </p>
+              </div>
+              <div class="ul_wrap">
+                 <p style="mso-list:l23 level1 lfo1;" class="BulletedList">
+                    <a name="_" id="_"/>
+                    A
+                 </p>
+                 <p style="mso-list:l23 level1 lfo1;" class="BulletedList">
+                    <a name="_" id="_"/>
+                    B
+                 </p>
+                 <p style="mso-list:l23 level1 lfo1;" class="BulletedList">
+                    <a name="_" id="_"/>
+                    B1
+                    <div class="ListContLevel1">
+                       <div class="ul_wrap">
+                          <p style="mso-list:l23 level2 lfo1;" class="BulletedList">
+                             <a name="_" id="_"/>
+                             C
+                          </p>
+                          <p style="mso-list:l23 level2 lfo1;" class="BulletedList">
+                             <a name="_" id="_"/>
+                             D
+                          </p>
+                          <p style="mso-list:l23 level2 lfo1;" class="BulletedList">
+                             <a name="_" id="_"/>
+                             <div class="ul_wrap">
+                                <p style="mso-list:l23 level3 lfo1;" class="BulletedList">
+                                   <a name="_" id="_"/>
+                                   E
+                                </p>
+                                <p style="mso-list:l23 level3 lfo1;" class="BulletedList">
+                                   <a name="_" id="_"/>
+                                   F
+                                </p>
+                             </div>
+                          </p>
+                          <p style="mso-list:l23 level2 lfo1;" class="BulletedList">
+                             <a name="_" id="_"/>
+                             Q
+                          </p>
+                       </div>
+                    </div>
+                 </p>
+                 <p style="mso-list:l23 level1 lfo1;" class="BulletedList">
+                    <a name="_" id="_"/>
+                    R
+                 </p>
+              </div>
+           </p>
+        </div>
     OUTPUT
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output
     .sub("<doctype>standard</doctype>", "<doctype>whitepaper</doctype>"), false)
@@ -1087,7 +1139,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
               <iso-standard xmlns="http://riboseinc.com/isoxml" type='presentation'>
          <sections><clause id="a" displayorder="1">
           <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6a" type="caution" keep-with-next="true" keep-lines-together="true">
-          <fmt-name>CAUTION</fmt-name>
+          <fmt-name id="_">CAUTION</fmt-name>
         <p id="_e94663cc-2473-4ccc-9a72-983a74d989f2">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
       </admonition>
           <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6b" type="caution" keep-with-next="true" keep-lines-together="true" notag="true">
@@ -1134,7 +1186,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
               <iso-standard xmlns="http://riboseinc.com/isoxml" type='presentation'>
          <sections><clause id="a" displayorder="1">
           <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6a" type="editorial" keep-with-next="true" keep-lines-together="true">
-          <fmt-name>EDITORIAL</fmt-name>
+          <fmt-name id="_">EDITORIAL</fmt-name>
         <p id="_e94663cc-2473-4ccc-9a72-983a74d989f2">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
       </admonition>
           </clause></sections>
@@ -1171,7 +1223,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         <sections>
           <clause id="a" displayorder="1">
             <sourcecode lang='ruby' id='samplecode'>
-              <fmt-name>
+              <fmt-name id="_">
                 Figure 1&#xA0;&#x2014; Ruby
                 <em>code</em>
               </fmt-name>
@@ -1299,7 +1351,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         <name>Split-it-right <em>sample</em> divider<fn reference="1" id="F1"><p>X</p></fn></name>
         <thead><tr><th>A</th></tr></thead>
         <tbody><tr><td>B</td></tr></tbody>
-        <note id="A"><fmt-name>Note</fmt-name><p>This is a note</p></note>
+        <note id="A"><fmt-name id="_">Note</fmt-name><p>This is a note</p></note>
         </table>
           </clause>
         </sections>
@@ -1438,14 +1490,14 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
           </bibdata>
           <preface>
              <clause type="toc" id="_" displayorder="1">
-                <fmt-title depth="1">Contents</fmt-title>
+                <fmt-title id="_" depth="1">Contents</fmt-title>
              </clause>
           </preface>
           <sections>
              <p class="zzSTDTitle1" displayorder="2">Standard for ???</p>
              <clause id="A" displayorder="3">
                 <title id="_">This is the clause title</title>
-                <fmt-title depth="1">
+                <fmt-title id="_" depth="1">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="A">1</semx>
                       <span class="fmt-autonum-delim">.</span>
@@ -1462,7 +1514,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                 <p>body</p>
                 <clause id="B">
                    <title id="_">This is a subclause</title>
-                   <fmt-title depth="2">
+                   <fmt-title id="_" depth="2">
                       <span class="fmt-caption-label">
                          <semx element="autonum" source="A">1</semx>
                          <span class="fmt-autonum-delim">.</span>
@@ -1521,14 +1573,14 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
           </bibdata>
           <preface>
              <clause type="toc" id="_" displayorder="1">
-                <fmt-title depth="1">Contents</fmt-title>
+                <fmt-title id="_" depth="1">Contents</fmt-title>
              </clause>
           </preface>
           <sections>
              <p class="zzSTDTitle1" displayorder="2">Whitepaper for ???</p>
              <clause id="A" displayorder="3">
                 <title id="_">This is the clause title</title>
-                <fmt-title depth="1">
+                <fmt-title id="_" depth="1">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="A">1</semx>
                       <span class="fmt-autonum-delim">.</span>
@@ -1545,7 +1597,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                 <p>body</p>
                 <clause id="B">
                    <title id="_">This is a subclause</title>
-                   <fmt-title depth="2">
+                   <fmt-title id="_" depth="2">
                       <span class="fmt-caption-label">
                          <semx element="autonum" source="A">1</semx>
                          <span class="fmt-autonum-delim">.</span>
