@@ -195,7 +195,7 @@ Users are encouraged to periodically check for errata.</p>
 </clause>
 
           <clause id="boilerplate-participants">
-            <fmt-title>Participants</fmt-title>
+            <fmt-title id="_">Participants</fmt-title>
               <p id="_6c151db1-c395-acf1-1fa2-c8db0131136b">At the time this draft Standard was completed, the WG Working Group had the following membership:</p>
               <p align="center" type="officeholder" id="_08d02fae-f1d9-e550-fbdd-4645fe7d095f"><strong>AB</strong>, <em>Chair</em></p>
               <p align="center" type="officeholder" id="_31eadeb4-3307-4629-948d-2cb3c6412966"><strong>CD</strong>, <em>Vice Chair</em></p>
@@ -247,7 +247,7 @@ Users are encouraged to periodically check for errata.</p>
       </boilerplate>
 
       <sections><clause id="_clause" inline-header="false" obligation="normative" displayorder="1">
-      <fmt-title>Clause</fmt-title>
+      <fmt-title id="_">Clause</fmt-title>
       <p id="_2e901de4-4c14-e534-d135-862a24df22ee">Hello</p>
       </clause>
       </sections>
@@ -949,13 +949,13 @@ Users are encouraged to periodically check for errata.</p>
       <legal-statement>
 
       <clause id="boilerplate-tm" inline-header="false" obligation="normative">
-      <fmt-title>Trademarks and Disclaimers</fmt-title>
+      <fmt-title id="_">Trademarks and Disclaimers</fmt-title>
       <p id="_2943a585-5a3a-9f8c-8335-61aa7e36237a">IEEE believes the information in this publication is accurate as of its publication date; such information is subject to change without notice. IEEE is not responsible for any inadvertent errors.</p>
       <p id="_22abb8b0-f41d-a114-18a7-6c32b1cb6505">The ideas and proposals in this specification are the respective author’s views and do not represent the views of the affiliated organization.</p>
       </clause>
 
       <clause id="boilerplate-disclaimers" inline-header="false" obligation="normative">
-      <fmt-title>Notice and Disclaimer of Liability Concerning the Use of IEEE SA Documents</fmt-title>
+      <fmt-title id="_">Notice and Disclaimer of Liability Concerning the Use of IEEE SA Documents</fmt-title>
       <p id="_de579a5e-46f6-6692-c0e2-b5d0be40cded">This IEEE Standards Association (“IEEE SA”) publication (“Work”) is not a consensus standard document. Specifically, this document is NOT AN IEEE STANDARD. Information contained in this Work has been created by, or obtained from, sources believed to be reliable, and reviewed by members of the activity that produced this Work. IEEE and the NAME OF GROUP expressly disclaim all warranties (express, implied, and statutory) related to this Work, including, but not limited to, the warranties of: merchantability; fitness for a particular purpose; non-infringement; quality, accuracy, effectiveness, currency, or completeness of the Work or content within the Work. In addition, IEEE and the NAME OF GROUP disclaim any and all conditions relating to: results; and workmanlike effort. This document is supplied “AS IS” and “WITH ALL FAULTS.”</p>
 
       <p id="_c3569df8-1d60-fbcd-1906-839532e2b00c">Although the NAME OF GROUP members who have created this Work believe that the information and guidance given in this Work serve as an enhancement to users, all persons must rely upon their own skill and judgment when making use of it. IN NO EVENT SHALL IEEE SA OR NAME OF GROUP MEMBERS BE LIABLE FOR ANY ERRORS OR OMISSIONS OR DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO: PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS WORK, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE AND REGARDLESS OF WHETHER SUCH DAMAGE WAS FORESEEABLE.</p>
@@ -966,7 +966,7 @@ Users are encouraged to periodically check for errata.</p>
       </clause>
 
       <clause id="boilerplate-participants" inline-header="false" obligation="normative">
-      <fmt-title>Acknowledgements</fmt-title>
+      <fmt-title id="_">Acknowledgements</fmt-title>
       <clause id="boilerplate-participants-blank" inline-header="false" obligation="normative">
       <p id="_dd7f13f9-b62e-c727-143c-579781e427bd">Special thanks are given to the following reviewers of this paper:</p>
 
@@ -996,7 +996,7 @@ Users are encouraged to periodically check for errata.</p>
       </legal-statement>
       </boilerplate>
             <sections><clause id="_clause" inline-header="false" obligation="normative" displayorder="1">
-            <fmt-title>Clause</fmt-title>
+            <fmt-title id="_">Clause</fmt-title>
             <p id="_2e901de4-4c14-e534-d135-862a24df22ee">Hello</p>
             </clause>
             </sections>

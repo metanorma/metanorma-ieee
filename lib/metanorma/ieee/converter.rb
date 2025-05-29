@@ -9,9 +9,6 @@ require_relative "validate"
 module Metanorma
   module Ieee
     class Converter < Standoc::Converter
-      XML_ROOT_TAG = "ieee-standard".freeze
-      XML_NAMESPACE = "https://www.metanorma.org/ns/ieee".freeze
-
       register_for "ieee"
 
       def init(node)

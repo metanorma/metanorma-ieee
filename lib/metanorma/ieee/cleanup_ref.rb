@@ -44,7 +44,7 @@ module Metanorma
               when "standard", "techreport" then id
               else
                 bib1 = bib.dup
-                bib1.add_namespace(nil, self.class::XML_NAMESPACE)
+                bib1.add_namespace(nil, xml_namespace)
                 n = @i.creatornames(bib1)
                 n.nil? && bib["type"].nil? and n = id
                 n

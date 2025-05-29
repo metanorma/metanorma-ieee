@@ -135,6 +135,7 @@ def boilerplate(xmldoc)
                       ))
   ret.at("//clause[@anchor='boilerplate_word_usage']")&.remove
   ret.xpath("//passthrough").each(&:remove)
+  ret.xpath("//li").each { |x| x["id"] = "_" }
   strip_guid(ret.root.to_xml(encoding: "UTF-8", indent: 2,
                              save_with: Nokogiri::XML::Node::SaveOptions::AS_XML))
 end

@@ -25,13 +25,13 @@ RSpec.describe Metanorma::Ieee do
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
                <sections>
            <terms id='_' obligation='normative'>
-             <title>Definitions</title>
+             <title id="_">Definitions</title>
              <p id='_'>
                For the purposes of this document, the following terms and definitions
                apply. The
                <em>IEEE Standards Dictionary Online</em>
                 should be consulted for terms not defined in this clause.
-               <fn reference='1'>
+               <fn id="_" reference='1'>
                  <p id='_'>
                    <em>IEEE Standards Dictionary Online</em>
                     is available at:
@@ -47,8 +47,8 @@ RSpec.describe Metanorma::Ieee do
                    <name>Term1</name>
                  </expression>
                </preferred>
-               <definition>
-                 <verbal-definition>
+               <definition id="_">
+                 <verbal-definition id="_">
                    <p id='_'>X</p>
                  </verbal-definition>
                </definition>
@@ -68,8 +68,8 @@ RSpec.describe Metanorma::Ieee do
                    <name>Term2</name>
                  </expression>
                </preferred>
-               <definition>
-                 <verbal-definition>
+               <definition id="_">
+                 <verbal-definition id="_">
                    <p id='_'>X</p>
                  </verbal-definition>
                </definition>
@@ -139,12 +139,12 @@ RSpec.describe Metanorma::Ieee do
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
            <sections>
               <terms id="_" obligation="normative">
-                 <title>Definitions</title>
+                 <title id="_">Definitions</title>
                  <p id="_">
                     For the purposes of this document, the following terms and definitions apply. The
                     <em>IEEE Standards Dictionary Online</em>
                     should be consulted for terms not defined in this clause.
-                    <fn reference="1">
+                    <fn id="_" reference="1">
                        <p id="_">
                           <em>IEEE Standards Dictionary Online</em>
                           is available at:
@@ -225,13 +225,13 @@ RSpec.describe Metanorma::Ieee do
                        </xref>
                     </related>
                     // Metanorma term for synonym
-                    <definition>
-                       <verbal-definition>
+                    <definition id="_">
+                       <verbal-definition id="_">
                           <p id="_">device performing an unspecified function.</p>
                        </verbal-definition>
                     </definition>
-                    <definition>
-                       <verbal-definition>
+                    <definition id="_">
+                       <verbal-definition id="_">
                           <p id="_">general metasyntactic variable.</p>
                        </verbal-definition>
                     </definition>
@@ -297,13 +297,13 @@ RSpec.describe Metanorma::Ieee do
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
         <sections>
           <terms id='_' obligation='normative'>
-            <title>Definitions</title>
+            <title id="_">Definitions</title>
             <p id='_'>
               For the purposes of this document, the following terms and definitions
               apply. The
               <em>IEEE Standards Dictionary Online</em>
                should be consulted for terms not defined in this clause.
-              <fn reference='1'>
+              <fn id="_" reference='1'>
                 <p id='_'>
                   <em>IEEE Standards Dictionary Online</em>
                    is available at:
@@ -322,8 +322,8 @@ RSpec.describe Metanorma::Ieee do
               <related type='contrast'>
               <refterm>thing</refterm>
                </related>
-                      <definition>
-          <verbal-definition>
+                      <definition id="_">
+          <verbal-definition id="_">
             <p id='_'>
               <concept>
                 <strong>

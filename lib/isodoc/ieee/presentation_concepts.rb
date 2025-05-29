@@ -103,7 +103,7 @@ module IsoDoc
           <semx element='related' source='#{adm['source']}' type='equivalent'><fmt-preferred>#{to_xml(adm)}</p></semx></fmt-preferred>
         TERM
         out.parent.next = <<~TERM
-          <term><fmt-preferred>#{to_xml(adm)}</fmt-preferred>
+          <term #{add_id_text}><fmt-preferred>#{to_xml(adm)}</fmt-preferred>
           <fmt-related>
             <semx element="related" source="#{pref['source']}" type="see"><fmt-preferred>#{to_xml(pref)}</fmt-preferred></semx>
           </fmt-related>

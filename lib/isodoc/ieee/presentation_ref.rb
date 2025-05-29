@@ -82,15 +82,15 @@ module IsoDoc
         true
       end
 
-      def creatornames(bibitem)
+      def creatornames(bib)
         ::Relaton::Render::Ieee::General
           .new(language: @lang, i18nhash: @i18n.get,
-               # template: { (bibitem["type"] || "misc").to_sym =>
+               # template: { (bib["type"] || "misc").to_sym =>
                # "{{ creatornames }}" },
                template: "{{ creatornames }}",
-               extenttemplate: { (bibitem["type"] || "misc").to_sym => "{{page}}" },
-               sizetemplate: { (bibitem["type"] || "misc").to_sym => "{{data}}" })
-          .render1(RelatonBib::XMLParser.from_xml(bibitem.to_xml))
+               extenttemplate: { (bib["type"] || "misc").to_sym => "{{page}}" },
+               sizetemplate: { (bib["type"] || "misc").to_sym => "{{data}}" })
+          .render1(RelatonBib::XMLParser.from_xml(bib.to_xml))
       end
 
       def bibliography_bibitem_number1(bibitem, idx, normative)
@@ -119,7 +119,8 @@ module IsoDoc
       def availability_note(bib)
         note = bib.at(ns("./note[@type = 'Availability']")) or return ""
         id = UUIDTools::UUID.random_create.to_s
-        "<fn id='_#{id}' reference='#{id}'><p>#{note.content}</p></fn>"
+        @new_ids[id] = nil
+        "<fn id='#{id}' reference='#{id}'><p>#{note.content}</p></fn>"
       end
 
       def omit_docid_prefix(prefix)
@@ -128,8 +129,7 @@ module IsoDoc
       end
 
       def bracket_if_num(num)
-        return nil if num.nil?
-
+        num.nil? and return nil
         num = num.text.sub(/^\[/, "").sub(/\]$/, "")
         return "[#{num}]" if /^B?\d+$/.match?(num)
 

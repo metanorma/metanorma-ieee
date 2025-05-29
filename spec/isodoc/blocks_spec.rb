@@ -63,16 +63,16 @@ RSpec.describe IsoDoc do
        <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
              <clause type="toc" id="_" displayorder="1">
-                <fmt-title depth="1">Contents</fmt-title>
+                <fmt-title id="_" depth="1">Contents</fmt-title>
              </clause>
              <foreword id="A" displayorder="2">
                 <title id="_">Foreword</title>
-                <fmt-title depth="1">
+                <fmt-title id="_" depth="1">
                    <semx element="title" source="_">Foreword</semx>
                 </fmt-title>
                 <table id="tableD-1" alt="tool tip" summary="long desc" autonum="1">
                    <name id="_">Hello</name>
-                   <fmt-name>
+                   <fmt-name id="_">
                       <span class="fmt-caption-label">
                          <span class="fmt-element-name">Table</span>
                          <semx element="autonum" source="tableD-1">1</semx>
@@ -168,7 +168,7 @@ RSpec.describe IsoDoc do
                       <dd>A type of rice</dd>
                    </dl>
                    <note id="B" autonum="">
-                      <fmt-name>
+                      <fmt-name id="_">
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">NOTE</span>
                          </span>
@@ -451,7 +451,7 @@ RSpec.describe IsoDoc do
       .convert("test", input, true))
       .at("//xmlns:table/xmlns:fmt-name").to_xml)))
       .to be_equivalent_to <<~OUTPUT
-        <fmt-name>
+        <fmt-name id="_">
            <span class="fmt-caption-label">
               <span class="fmt-element-name">Table</span>
               <semx element="autonum" source="A">Preface</semx>
@@ -495,11 +495,11 @@ RSpec.describe IsoDoc do
        <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
              <clause type="toc" id="_" displayorder="1">
-                <fmt-title depth="1">Contents</fmt-title>
+                <fmt-title id="_" depth="1">Contents</fmt-title>
              </clause>
              <foreword id="A" displayorder="2">
                 <title id="_">Foreword</title>
-                <fmt-title depth="1">
+                <fmt-title id="_" depth="1">
                    <semx element="title" source="_">Foreword</semx>
                 </fmt-title>
                 <figure id="figureA-1" keep-with-next="true" keep-lines-together="true" autonum="1">
@@ -518,7 +518,7 @@ RSpec.describe IsoDoc do
                          </fmt-fn-label>
                       </fn>
                    </name>
-                   <fmt-name>
+                   <fmt-name id="_">
                       <span class="fmt-caption-label">
                          <span class="fmt-element-name">Figure</span>
                          <semx element="autonum" source="figureA-1">1</semx>
@@ -599,7 +599,7 @@ RSpec.describe IsoDoc do
                    </dl>
                 </figure>
                 <figure id="figure-B" autonum="2">
-                   <fmt-name>
+                   <fmt-name id="_">
                       <span class="fmt-caption-label">
                          <span class="fmt-element-name">Figure</span>
                          <semx element="autonum" source="figure-B">2</semx>
@@ -790,7 +790,7 @@ RSpec.describe IsoDoc do
       .to be_equivalent_to Xml::C14n.format(word)
 
     output = <<~OUTPUT
-           <fmt-name>
+           <fmt-name id="_">
           <span class="fmt-caption-label">
              <span class="fmt-element-name">Figure</span>
              <semx element="autonum" source="A">Preface</semx>
@@ -846,14 +846,14 @@ OUTPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
              <clause type="toc" id="_" displayorder="1">
-                <fmt-title depth="1">Contents</fmt-title>
+                <fmt-title id="_" depth="1">Contents</fmt-title>
              </clause>
           </preface>
           <sections>
              <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
              <clause id="a" displayorder="3">
                 <title id="_">First</title>
-                <fmt-title depth="1">
+                <fmt-title id="_" depth="1">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="a">1</semx>
                       <span class="fmt-autonum-delim">.</span>
@@ -868,7 +868,7 @@ OUTPUT
                    <semx element="autonum" source="a">1</semx>
                 </fmt-xref-label>
                 <note id="note1" autonum="1">
-                   <fmt-name>
+                   <fmt-name id="_">
                       <span class="fmt-caption-label">
                          <span class="fmt-element-name">NOTE</span>
                          <semx element="autonum" source="note1">1</semx>
@@ -891,7 +891,7 @@ OUTPUT
                    <p id="_">First note.</p>
                 </note>
                 <note id="note2" autonum="2">
-                   <fmt-name>
+                   <fmt-name id="_">
                       <span class="fmt-caption-label">
                          <span class="fmt-element-name">NOTE</span>
                          <semx element="autonum" source="note2">2</semx>
@@ -916,7 +916,7 @@ OUTPUT
              </clause>
              <clause id="b" displayorder="4">
                 <title id="_">First</title>
-                <fmt-title depth="1">
+                <fmt-title id="_" depth="1">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="b">2</semx>
                       <span class="fmt-autonum-delim">.</span>
@@ -931,7 +931,7 @@ OUTPUT
                    <semx element="autonum" source="b">2</semx>
                 </fmt-xref-label>
                 <note id="note3" autonum="">
-                   <fmt-name>
+                   <fmt-name id="_">
                       <span class="fmt-caption-label">
                          <span class="fmt-element-name">NOTE</span>
                       </span>
@@ -1000,11 +1000,11 @@ OUTPUT
             <iso-standard xmlns="http://riboseinc.com/isoxml" type='presentation'>
             <preface>
                 <clause type="toc" id="_" displayorder="1">
-        <fmt-title depth="1">Contents</fmt-title>
+        <fmt-title id="_" depth="1">Contents</fmt-title>
       </clause>
-            <foreword displayorder="2"><fmt-title>Foreword</fmt-title>
+            <foreword displayorder="2"><fmt-title id="_">Foreword</fmt-title>
             <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6a" type="caution" keep-with-next="true" keep-lines-together="true">
-            <fmt-name>CAUTION</fmt-name>
+            <fmt-name id="_">CAUTION</fmt-name>
           <p id="_e94663cc-2473-4ccc-9a72-983a74d989f2">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
         </admonition>
             <admonition id="_70234f78-64e5-4dfc-8b6f-f3f037348b6b" type="caution" keep-with-next="true" keep-lines-together="true" notag="true">
@@ -1037,7 +1037,7 @@ OUTPUT
         <p class="page-break">
           <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
         </p>
-        <div id="_">
+        <div>
           <h1 class='ForewordTitle'>Foreword</h1>
           <div id="_" class='IEEEStdsWarning' style='page-break-after: avoid;page-break-inside: avoid;'>
             <p class='IEEEStdsWarning' style='text-align:center;'>
@@ -1082,15 +1082,15 @@ OUTPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
          <preface>
             <clause type="toc" id="_" displayorder="1">
-               <fmt-title depth="1">Contents</fmt-title>
+               <fmt-title id="_" depth="1">Contents</fmt-title>
             </clause>
             <foreword id="A" displayorder="2">
                <title id="_">Foreword</title>
-               <fmt-title depth="1">
+               <fmt-title id="_" depth="1">
                      <semx element="title" source="_">Foreword</semx>
                </fmt-title>
                <example id="samplecode" keep-with-next="true" keep-lines-together="true" autonum="">
-                  <fmt-name>
+                  <fmt-name id="_">
                      <em>
                         <span class="fmt-caption-label">
                            <span class="fmt-element-name">Example</span>
@@ -1113,10 +1113,10 @@ OUTPUT
                   <p>Hello</p>
                   <sourcecode id="X">
                      <name id="_">Sample</name>
-                     <fmt-name>
+                     <fmt-name id="_">
                            <semx element="name" source="_">Sample</semx>
                      </fmt-name>
-                                    <fmt-sourcecode>
+                                    <fmt-sourcecode id="_">
 
        </fmt-sourcecode>
                   </sourcecode>
@@ -1211,11 +1211,11 @@ OUTPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
          <preface>
             <clause type="toc" id="_" displayorder="1">
-               <fmt-title depth="1">Contents</fmt-title>
+               <fmt-title id="_" depth="1">Contents</fmt-title>
             </clause>
             <foreword id="A" displayorder="2">
                <title id="_">Foreword</title>
-               <fmt-title depth="1">
+               <fmt-title id="_" depth="1">
                   <semx element="title" source="_">Foreword</semx>
                </fmt-title>
                <formula id="_" unnumbered="true" keep-with-next="true" keep-lines-together="true">
@@ -1235,7 +1235,7 @@ OUTPUT
                      </dd>
                   </dl>
                   <note id="_" autonum="">
-                     <fmt-name>
+                     <fmt-name id="_">
                         <span class="fmt-caption-label">
                            <span class="fmt-element-name">NOTE</span>
                         </span>
@@ -1255,7 +1255,7 @@ OUTPUT
                   </note>
                </formula>
                <formula id="_" autonum="1">
-                  <fmt-name>
+                  <fmt-name id="_">
                      <span class="fmt-caption-label">
                         <span class="fmt-autonum-delim">(</span>
                         1
@@ -1447,7 +1447,7 @@ OUTPUT
     presxml = <<~OUTPUT
       <clause id="A" inline-header="false" obligation="normative" displayorder="3">
          <title id="_">Change Clause</title>
-         <fmt-title depth="1">
+         <fmt-title id="_" depth="1">
             <span class="fmt-caption-label">
                <semx element="autonum" source="A">1</semx>
                <span class="fmt-autonum-delim">.</span>
@@ -1536,7 +1536,7 @@ OUTPUT
             <quote id="D">
                <table id="E" number="2" autonum="2">
                   <name id="_">Edges of triangle and quadrilateral cells</name>
-                  <fmt-name>
+                  <fmt-name id="_">
                      <span class="fmt-caption-label">
                         <span class="fmt-element-name">Table</span>
                         <semx element="autonum" source="E">2</semx>
@@ -1587,12 +1587,12 @@ OUTPUT
                </table>
                <figure id="H" unnumbered="true">
                   <name id="_">Figure</name>
-                  <fmt-name>
+                  <fmt-name id="_">
                      <semx element="name" source="_">Figure</semx>
                   </fmt-name>
                </figure>
                <example id="F" number="A.7" autonum="A.7">
-                  <fmt-name>
+                  <fmt-name id="_">
                      <em>
                         <span class="fmt-caption-label">
                            <span class="fmt-element-name">Example</span>
@@ -1633,8 +1633,8 @@ OUTPUT
     input = <<~INPUT
      <iso-standard xmlns="http://riboseinc.com/isoxml">
           <preface>
-          <clause type="toc" id="_" displayorder="1"> <fmt-title depth="1">Table of contents</fmt-title> </clause>
-          <foreword displayorder="2" id="fwd"><fmt-title>Foreword</fmt-title>
+          <clause type="toc" id="_" displayorder="1"> <fmt-title id="_" depth="1">Table of contents</fmt-title> </clause>
+          <foreword displayorder="2" id="fwd"><fmt-title id="_">Foreword</fmt-title>
           <ul id="_61961034-0fb1-436b-b281-828857a59ddb"  keep-with-next="true" keep-lines-together="true">
           <name>Caption</name>
         <li>
@@ -1667,39 +1667,39 @@ OUTPUT
           <preface>
              <foreword displayorder="1" id="fwd">
                 <title id="_">Foreword</title>
-                <fmt-title depth="1">Foreword</fmt-title>
+                <fmt-title id="_" depth="1">Foreword</fmt-title>
                 <ul id="_" keep-with-next="true" keep-lines-together="true">
                    <name id="_">Caption</name>
-                   <fmt-name>
+                   <fmt-name id="_">
                       <semx element="name" source="_">Caption</semx>
                    </fmt-name>
-                   <li>
-                      <fmt-name>
-                         <semx element="autonum" source="">–</semx>
+                   <li id="_">
+                      <fmt-name id="_">
+                         <semx element="autonum" source="_">–</semx>
                       </fmt-name>
                       <p id="_">Level 1</p>
                    </li>
-                   <li>
-                      <fmt-name>
-                         <semx element="autonum" source="">–</semx>
+                   <li id="_">
+                      <fmt-name id="_">
+                         <semx element="autonum" source="_">–</semx>
                       </fmt-name>
                       <p id="_">deletion of 4.3.</p>
                       <ul id="_" keep-with-next="true" keep-lines-together="true">
-                         <li>
-                            <fmt-name>
-                               <semx element="autonum" source="">–</semx>
+                         <li id="_">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="_">–</semx>
                             </fmt-name>
                             <p id="_">Level 2</p>
                             <ul id="_" keep-with-next="true" keep-lines-together="true">
-                               <li>
-                                  <fmt-name>
-                                     <semx element="autonum" source="">–</semx>
+                               <li id="_">
+                                  <fmt-name id="_">
+                                     <semx element="autonum" source="_">–</semx>
                                   </fmt-name>
                                   <p id="_">Level 3</p>
                                   <ul id="_" keep-with-next="true" keep-lines-together="true">
-                                     <li>
-                                        <fmt-name>
-                                           <semx element="autonum" source="">–</semx>
+                                     <li id="_">
+                                        <fmt-name id="_">
+                                           <semx element="autonum" source="_">–</semx>
                                         </fmt-name>
                                         <p id="_">Level 4</p>
                                      </li>
@@ -1712,7 +1712,7 @@ OUTPUT
                 </ul>
              </foreword>
              <clause type="toc" id="_" displayorder="2">
-                <fmt-title depth="1">Table of contents</fmt-title>
+                <fmt-title id="_" depth="1">Table of contents</fmt-title>
              </clause>
           </preface>
        </iso-standard>
@@ -1732,39 +1732,39 @@ OUTPUT
           <preface>
              <foreword displayorder="1" id="fwd">
                 <title id="_">Foreword</title>
-                <fmt-title depth="1">Foreword</fmt-title>
+                <fmt-title id="_" depth="1">Foreword</fmt-title>
                 <ul id="_" keep-with-next="true" keep-lines-together="true">
                    <name id="_">Caption</name>
-                   <fmt-name>
+                   <fmt-name id="_">
                       <semx element="name" source="_">Caption</semx>
                    </fmt-name>
-                   <li>
-                      <fmt-name>
-                         <semx element="autonum" source="">▪</semx>
+                   <li id="_">
+                      <fmt-name id="_">
+                         <semx element="autonum" source="_">▪</semx>
                       </fmt-name>
                       <p id="_">Level 1</p>
                    </li>
-                   <li>
-                      <fmt-name>
-                         <semx element="autonum" source="">▪</semx>
+                   <li id="_">
+                      <fmt-name id="_">
+                         <semx element="autonum" source="_">▪</semx>
                       </fmt-name>
                       <p id="_">deletion of 4.3.</p>
                       <ul id="_" keep-with-next="true" keep-lines-together="true">
-                         <li>
-                            <fmt-name>
-                               <semx element="autonum" source="">—</semx>
+                         <li id="_">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="_">—</semx>
                             </fmt-name>
                             <p id="_">Level 2</p>
                             <ul id="_" keep-with-next="true" keep-lines-together="true">
-                               <li>
-                                  <fmt-name>
-                                     <semx element="autonum" source="">▪</semx>
+                               <li id="_">
+                                  <fmt-name id="_">
+                                     <semx element="autonum" source="_">▪</semx>
                                   </fmt-name>
                                   <p id="_">Level 3</p>
                                   <ul id="_" keep-with-next="true" keep-lines-together="true">
-                                     <li>
-                                        <fmt-name>
-                                           <semx element="autonum" source="">—</semx>
+                                     <li id="_">
+                                        <fmt-name id="_">
+                                           <semx element="autonum" source="_">—</semx>
                                         </fmt-name>
                                         <p id="_">Level 4</p>
                                      </li>
@@ -1777,7 +1777,7 @@ OUTPUT
                 </ul>
              </foreword>
              <clause type="toc" id="_" displayorder="2">
-                <fmt-title depth="1">Table of contents</fmt-title>
+                <fmt-title id="_" depth="1">Table of contents</fmt-title>
              </clause>
           </preface>
        </iso-standard>
@@ -1835,17 +1835,17 @@ OUTPUT
        <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
              <clause type="toc" id="_" displayorder="1">
-                <fmt-title depth="1">Contents</fmt-title>
+                <fmt-title id="_" depth="1">Contents</fmt-title>
              </clause>
              <foreword id="_" displayorder="2">
                 <title id="_">Foreword</title>
-                <fmt-title depth="1">
+                <fmt-title id="_" depth="1">
                    <semx element="title" source="_">Foreword</semx>
                 </fmt-title>
                 <ol id="_" type="alphabet" keep-with-next="true" keep-lines-together="true">
                    <name>Caption</name>
                    <li id="_">
-                      <fmt-name>
+                      <fmt-name id="_">
                          <semx element="autonum" source="_">a</semx>
                          <span class="fmt-label-delim">)</span>
                       </fmt-name>
@@ -1854,35 +1854,35 @@ OUTPUT
                 </ol>
                 <ol id="A" type="alphabet">
                    <li id="_">
-                      <fmt-name>
+                      <fmt-name id="_">
                          <semx element="autonum" source="_">a</semx>
                          <span class="fmt-label-delim">)</span>
                       </fmt-name>
                       <p id="_">Level 1</p>
                    </li>
                    <li id="_">
-                      <fmt-name>
+                      <fmt-name id="_">
                          <semx element="autonum" source="_">b</semx>
                          <span class="fmt-label-delim">)</span>
                       </fmt-name>
                       <p id="_">Level 1</p>
                       <ol type="roman">
                          <li id="_">
-                            <fmt-name>
+                            <fmt-name id="_">
                                <semx element="autonum" source="_">i</semx>
                                <span class="fmt-label-delim">)</span>
                             </fmt-name>
                             <p id="_">Level 2</p>
                             <ol type="arabic">
                                <li id="_">
-                                  <fmt-name>
+                                  <fmt-name id="_">
                                      <semx element="autonum" source="_">1</semx>
                                      <span class="fmt-label-delim">)</span>
                                   </fmt-name>
                                   <p id="_">Level 3</p>
                                   <ol type="alphabet">
                                      <li id="_">
-                                        <fmt-name>
+                                        <fmt-name id="_">
                                            <semx element="autonum" source="_">a</semx>
                                            <span class="fmt-label-delim">)</span>
                                         </fmt-name>
