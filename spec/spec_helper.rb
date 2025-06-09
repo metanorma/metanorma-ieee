@@ -117,7 +117,10 @@ HDR
 def boilerplate_read(file, xmldoc)
   conv = Metanorma::Ieee::Converter.new(:ieee, {})
   conv.init(Asciidoctor::Document.new([]))
-  x = conv.boilerplate_isodoc(xmldoc).populate_template(file, nil)
+  file.gsub!(/(?<!\{)(\{\{[^{}]+\}\})(?!\})/, "pass:[\\1]")
+  isodoc = conv.boilerplate_isodoc(xmldoc)
+  conv.boilerplate_isodoc_values(isodoc)
+  x = isodoc.populate_template(file, nil)
   ret = conv.boilerplate_file_restructure(x)
   conv.footnote_boilerplate_renumber(ret)
   ret.to_xml(encoding: "UTF-8", indent: 2,
@@ -136,8 +139,12 @@ def boilerplate(xmldoc)
   ret.at("//clause[@anchor='boilerplate_word_usage']")&.remove
   ret.xpath("//passthrough").each(&:remove)
   ret.xpath("//li").each { |x| x["id"] = "_" }
-  strip_guid(ret.root.to_xml(encoding: "UTF-8", indent: 2,
+  ret = strip_guid(ret.root.to_xml(encoding: "UTF-8", indent: 2,
                              save_with: Nokogiri::XML::Node::SaveOptions::AS_XML))
+    .gsub("&amp;lt;", "&lt;")
+    .gsub("&amp;gt;", "&gt;")
+    .gsub("&lt;Date Approved&gt;", "&lt;‌Date Approved&gt;‌")
+  ret
 end
 
 def ieeedoc(lang)

@@ -623,12 +623,12 @@ RSpec.describe Metanorma::Ieee do
                <tbody>
                  <tr id="_">
                    <td id="_" valign="top" align="left">PDF:</td>
-                   <td id="_" valign="top" align="left">ISBN 978-0-XXXX-XXXX-X</td>
+                   <td id="_" valign="top" align="left">ISBN 978-‌0-‌XXXX-‌XXXX-‌X</td>
                    <td id="_" valign="top" align="left">STDXXXXX</td>
                  </tr>
                  <tr id="_">
                    <td id="_" valign="top" align="left">Print:</td>
-                   <td id="_" valign="top" align="left">ISBN 978-0-XXXX-XXXX-X</td>
+                   <td id="_" valign="top" align="left">ISBN 978-‌0-‌XXXX-‌XXXX-‌X</td>
                    <td id="_" valign="top" align="left">STDPDXXXXX</td>
                  </tr>
                </tbody>
@@ -1221,7 +1221,7 @@ RSpec.describe Metanorma::Ieee do
            </ul>
          </clause>
          <clause id="_" anchor="boilerplate-participants-sb" inline-header="false" obligation="normative">
-           <p id="_">When the IEEE SA Standards Board approved this Standard on &lt;Date Approved&gt;, it had the following membership:</p>
+           <p id="_">When the IEEE SA Standards Board approved this Standard on &lt;‌Date Approved&gt;‌, it had the following membership:</p>
            <ul id="_">
              <li id="_">
                <dl id="_">
