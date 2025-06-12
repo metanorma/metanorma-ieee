@@ -1,15 +1,3 @@
-require "vcr"
-
-VCR.configure do |config|
-  config.cassette_library_dir = "spec/vcr_cassettes"
-  config.hook_into :webmock
-  config.default_cassette_options = {
-    clean_outdated_http_interactions: true,
-    re_record_interval: 1512000,
-    record: :once,
-  }
-end
-
 require "simplecov"
 SimpleCov.start do
   add_filter "/spec/"
@@ -38,6 +26,7 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
+=begin
   config.around do |example|
     Dir.mktmpdir("rspec-") do |dir|
       ["spec/assets/", "spec/examples/", "spec/fixtures/"].each do |assets|
@@ -48,6 +37,7 @@ RSpec.configure do |config|
       Dir.chdir(dir) { example.run }
     end
   end
+=end
 end
 
 OPTIONS = [backend: :ieee, header_footer: true].freeze
@@ -114,12 +104,22 @@ VALIDATING_BLANK_HDR = <<~HDR.freeze
 
 HDR
 
+LOCAL_CACHED_ISOBIB_BLANK_HDR = <<~HDR.freeze
+  = Document title
+  Author
+  :docfile: test.adoc
+  :nodoc:
+  :novalid:
+  :local-cache-only: spec/relatondb
+
+HDR
+
 def boilerplate_read(file, xmldoc)
   conv = Metanorma::Ieee::Converter.new(:ieee, {})
   conv.init(Asciidoctor::Document.new([]))
   file.gsub!(/(?<!\{)(\{\{[^{}]+\}\})(?!\})/, "pass:[\\1]")
   isodoc = conv.boilerplate_isodoc(xmldoc)
-  conv.boilerplate_isodoc_values(isodoc)
+  #conv.boilerplate_isodoc_values(isodoc)
   x = isodoc.populate_template(file, nil)
   ret = conv.boilerplate_file_restructure(x)
   conv.footnote_boilerplate_renumber(ret)
@@ -143,7 +143,7 @@ def boilerplate(xmldoc)
                              save_with: Nokogiri::XML::Node::SaveOptions::AS_XML))
     .gsub("&amp;lt;", "&lt;")
     .gsub("&amp;gt;", "&gt;")
-    .gsub("&lt;Date Approved&gt;", "&lt;‌Date Approved&gt;‌")
+    #.gsub("&lt;Date Approved&gt;", "&lt;‌Date Approved&gt;‌")
   ret
 end
 
