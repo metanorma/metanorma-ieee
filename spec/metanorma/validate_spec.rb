@@ -2,11 +2,6 @@ require "spec_helper"
 require "relaton_iso"
 
 RSpec.describe Metanorma::Ieee do
-  before do
-    allow_any_instance_of(Relaton::Index::FileIO)
-      .to receive(:check_file).and_return(nil)
-  end
-
   before(:all) do
     FileUtils.rm_f "test.err.html"
   end
@@ -215,12 +210,8 @@ RSpec.describe Metanorma::Ieee do
     expect(File.read("test.err.html"))
       .to include("Normative reference iso123 is not dated")
 
-    VCR.use_cassette "iso123" do
       Asciidoctor.convert(<<~INPUT, *OPTIONS)
-        = Document title
-        Author
-        :docfile: test.adoc
-        :nodoc:
+        #{VALIDATING_BLANK_HDR}
 
         == Scope
         <<iso123,clause=1>>
@@ -231,7 +222,6 @@ RSpec.describe Metanorma::Ieee do
       INPUT
       expect(File.read("test.err.html"))
         .not_to include("Normative reference iso123 is not dated")
-    end
   end
 
   it "warns that undated reference has locality" do

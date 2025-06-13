@@ -2,24 +2,14 @@ require "spec_helper"
 require "relaton_iso"
 
 RSpec.describe Metanorma::Ieee do
-  before do
-    allow_any_instance_of(Relaton::Index::FileIO)
-      .to receive(:check_file).and_return(nil)
-  end
-
   it "sorts normative references" do
-    VCR.use_cassette "multistandard" do
       input = <<~INPUT
-        = Document title
-        Author
-        :docfile: test.adoc
-        :nodoc:
-        :no-isobib-cache:
+        #{LOCAL_CACHED_ISOBIB_BLANK_HDR}
 
         [bibliography]
         == Normative References
 
-        * [[[ref1,ISO 639:1967]]] REF5
+        * [[[ref1,ISO 639:2023]]] REF5
         * [[[ref2,RFC 7749]]] REF7
         * [[[ref3,REF4]]] REF4
 
@@ -71,22 +61,16 @@ RSpec.describe Metanorma::Ieee do
       expect(out.xpath("//xmlns:references/xmlns:bibitem/@anchor")
         .map(&:value))
         .to be_equivalent_to ["ref2", "ref1", "ref4", "ref5", "ref3"]
-    end
   end
 
   it "sorts bibliography" do
-    VCR.use_cassette "multistandard0" do
       input = <<~INPUT
-        = Document title
-        Author
-        :docfile: test.adoc
-        :nodoc:
-        :no-isobib-cache:
+        #{LOCAL_CACHED_ISOBIB_BLANK_HDR}
 
         [bibliography]
         == Bibliography
 
-        * [[[ref1,ISO 639:1967]]] REF5
+        * [[[ref1,ISO 639:2023]]] REF5
         * [[[ref2,RFC 7749]]] REF7
         * [[[ref3,REF4]]] REF4
 
@@ -138,22 +122,16 @@ RSpec.describe Metanorma::Ieee do
       expect(out.xpath("//xmlns:references/xmlns:bibitem/@anchor")
         .map(&:value))
         .to be_equivalent_to ["ref2", "ref1", "ref4", "ref5", "ref3"]
-    end
   end
 
   it "numbers bibliography" do
-    VCR.use_cassette "multistandard1", match_requests_on: %i[method uri body] do
       input = <<~INPUT
-        = Document title
-        Author
-        :docfile: test.adoc
-        :nodoc:
-        :no-isobib-cache:
+        #{LOCAL_CACHED_ISOBIB_BLANK_HDR}
 
         [bibliography]
         == Bibliography
 
-        * [[[ref1,ISO 639]]] REF5
+        * [[[ref1,ISO 639:2023]]] REF5
         * [[[ref2,RFC 7749]]] REF7
         * [[[ref3,REF4]]] REF4
 
@@ -182,253 +160,183 @@ RSpec.describe Metanorma::Ieee do
       output = <<~OUTPUT
             <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
            <sections/>
-           <bibliography>
-            <references id="_" normative="false" obligation="informative">
-              <title id="_">Bibliography</title>
-              <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
-              <bibitem id="_" anchor="ref2" type="standard">
-                <title type="main" format="text/plain">The “xml2rfc” Version 2 Vocabulary</title>
-                <uri type="src">https://www.rfc-editor.org/info/rfc7749</uri>
-                <docidentifier type="IETF" primary="true">RFC 7749</docidentifier>
-                <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
-                <docidentifier type="DOI">10.17487/RFC7749</docidentifier>
-                <docnumber>RFC7749</docnumber>
-                <date type="published">
-                  <on>2016-02</on>
-                </date>
-                <contributor>
-                  <role type="author"/>
-                  <person>
-                    <name>
-                      <completename language="en" script="Latn">J. Reschke</completename>
-                    </name>
-                  </person>
-                </contributor>
-                <contributor>
-                  <role type="publisher"/>
-                  <organization>
-                    <name>RFC Publisher</name>
-                  </organization>
-                </contributor>
-                <contributor>
-                  <role type="authorizer"/>
-                  <organization>
-                    <name>RFC Series</name>
-                  </organization>
-                </contributor>
-                <language>en</language>
-                <script>Latn</script>
-                <abstract format="text/html" language="en" script="Latn">
-                  <p id="_">This document defines the “xml2rfc” version 2 vocabulary: an XML-based language used for writing RFCs and Internet-Drafts.</p>
-                  <p id="_">Version 2 represents the state of the vocabulary (as implemented by several tools and as used by the RFC Editor) around 2014.</p>
-                  <p id="_">This document obsoletes RFC 2629.</p>
-                </abstract>
-                <relation type="obsoletedBy">
-                  <bibitem>
-                    <formattedref format="text/plain">RFC7991</formattedref>
-                    <docidentifier type="IETF" primary="true">RFC7991</docidentifier>
-                  </bibitem>
-                </relation>
-                <series>
-                  <title format="text/plain">RFC</title>
-                  <number>7749</number>
-                </series>
-                <series type="stream">
-                  <title format="text/plain">IAB</title>
-                </series>
-                <keyword>XML</keyword>
-                <keyword>IETF</keyword>
-                <keyword>RFC</keyword>
-                <keyword>Internet-Draft</keyword>
-                <keyword>Vocabulary</keyword>
-              </bibitem>
-              <bibitem id="_" anchor="ref1" type="standard">
-                <title type="title-main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
-                <title type="main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
-                <uri type="src">https://www.iso.org/standard/74575.html</uri>
-                <uri type="obp">https://www.iso.org/obp/ui/en/#!iso:std:74575:en</uri>
-                <uri type="rss">https://www.iso.org/contents/data/standard/07/45/74575.detail.rss</uri>
-                <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
-                <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
-                <docidentifier type="iso-reference">ISO 639(E)</docidentifier>
-                <docidentifier type="URN">urn:iso:std:iso:639:stage-60.60</docidentifier>
-                <docnumber>639</docnumber>
-                <contributor>
-                  <role type="publisher"/>
-                  <organization>
-                    <name>International Organization for Standardization</name>
-                    <abbreviation>ISO</abbreviation>
-                    <uri>www.iso.org</uri>
-                  </organization>
-                </contributor>
-                <edition>2</edition>
-                <language>en</language>
-                <language>fr</language>
-                <script>Latn</script>
-                <status>
-                  <stage>60</stage>
-                  <substage>60</substage>
-                </status>
-                <copyright>
-                  <from>2023</from>
-                  <owner>
-                    <organization>
-                      <name>ISO</name>
-                    </organization>
-                  </owner>
-                </copyright>
-                <relation type="obsoletes">
-                  <bibitem type="standard">
-                    <formattedref format="text/plain">ISO 639-1:2002</formattedref>
-                    <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>
-                  </bibitem>
-                </relation>
-                <relation type="obsoletes">
-                  <bibitem type="standard">
-                    <formattedref format="text/plain">ISO 639-2:1998</formattedref>
-                    <docidentifier type="ISO" primary="true">ISO 639-2:1998</docidentifier>
-                  </bibitem>
-                </relation>
-                <relation type="obsoletes">
-                  <bibitem type="standard">
-                    <formattedref format="text/plain">ISO 639-3:2007</formattedref>
-                    <docidentifier type="ISO" primary="true">ISO 639-3:2007</docidentifier>
-                  </bibitem>
-                </relation>
-                <relation type="obsoletes">
-                  <bibitem type="standard">
-                    <formattedref format="text/plain">ISO 639-4:2010</formattedref>
-                    <docidentifier type="ISO" primary="true">ISO 639-4:2010</docidentifier>
-                  </bibitem>
-                </relation>
-                <relation type="obsoletes">
-                  <bibitem type="standard">
-                    <formattedref format="text/plain">ISO 639-5:2008</formattedref>
-                    <docidentifier type="ISO" primary="true">ISO 639-5:2008</docidentifier>
-                  </bibitem>
-                </relation>
-                <relation type="instanceOf">
-                  <bibitem type="standard">
-                    <title type="title-main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
-                    <title type="main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
-                    <uri type="src">https://www.iso.org/standard/74575.html</uri>
-                    <uri type="obp">https://www.iso.org/obp/ui/en/#!iso:std:74575:en</uri>
-                    <uri type="rss">https://www.iso.org/contents/data/standard/07/45/74575.detail.rss</uri>
-                    <docidentifier type="ISO" primary="true">ISO 639:2023</docidentifier>
-                    <docidentifier type="iso-reference">ISO 639:2023(E)</docidentifier>
-                    <docidentifier type="URN">urn:iso:std:iso:639:stage-60.60</docidentifier>
-                    <docnumber>639</docnumber>
-                    <date type="published">
-                      <on>2023-11</on>
-                    </date>
-                    <contributor>
+          <bibliography>
+             <references id="_" normative="false" obligation="informative">
+                <title id="_">Bibliography</title>
+                <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
+                <bibitem id="_" type="standard" anchor="ref2">
+                   <title type="main" format="text/plain">The “xml2rfc” Version 2 Vocabulary</title>
+                   <uri type="src">https://www.rfc-editor.org/info/rfc7749</uri>
+                   <docidentifier type="IETF" primary="true">RFC 7749</docidentifier>
+                   <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
+                   <docidentifier type="DOI">10.17487/RFC7749</docidentifier>
+                   <docnumber>RFC7749</docnumber>
+                   <date type="published">
+                      <on>2016-02</on>
+                   </date>
+                   <contributor>
+                      <role type="author"/>
+                      <person>
+                         <name>
+                            <completename language="en" script="Latn">J. Reschke</completename>
+                         </name>
+                      </person>
+                   </contributor>
+                   <contributor>
                       <role type="publisher"/>
                       <organization>
-                        <name>International Organization for Standardization</name>
-                        <abbreviation>ISO</abbreviation>
-                        <uri>www.iso.org</uri>
+                         <name>RFC Publisher</name>
                       </organization>
-                    </contributor>
-                    <edition>2</edition>
-                    <language>en</language>
-                    <language>fr</language>
-                    <script>Latn</script>
-                    <abstract format="text/plain" language="en" script="Latn">This document specifies the ISO 639 language code and establishes the harmonized terminology and general principles of language coding. It provides rules for the selection, formation, presentation and use of language identifiers as well as language reference names. It also gives provisions (i.e. principles, rules and guidelines) for the selection, formation and presentation of language names in English and French. Furthermore, it introduces provisions for the adoption of standardized language code elements using language names other than English or French. NOTE            English, French and Russian are the official ISO languages. In addition, this document gives guidance on the use of language identifiers and describes their possible combination with identifiers of other codes. Specifically excluded from the ISO 639 language code are reconstructed languages or formal languages, such as computer programming languages and markup languages. The ISO 639 language code is maintained by the ISO 639 Maintenance Agency (ISO 639/MA) (see Annex B).</abstract>
-                    <status>
+                   </contributor>
+                   <contributor>
+                      <role type="authorizer"/>
+                      <organization>
+                         <name>RFC Series</name>
+                      </organization>
+                   </contributor>
+                   <language>en</language>
+                   <script>Latn</script>
+                   <abstract format="text/html" language="en" script="Latn">
+                      <p id="_">This document defines the “xml2rfc” version 2 vocabulary: an XML-based language used for writing RFCs and Internet-Drafts.</p>
+                      <p id="_">Version 2 represents the state of the vocabulary (as implemented by several tools and as used by the RFC Editor) around 2014.</p>
+                      <p id="_">This document obsoletes RFC 2629.</p>
+                   </abstract>
+                   <relation type="obsoletedBy">
+                      <bibitem>
+                         <formattedref format="text/plain">RFC7991</formattedref>
+                         <docidentifier type="IETF" primary="true">RFC7991</docidentifier>
+                      </bibitem>
+                   </relation>
+                   <series>
+                      <title format="text/plain">RFC</title>
+                      <number>7749</number>
+                   </series>
+                   <series type="stream">
+                      <title format="text/plain">IAB</title>
+                   </series>
+                   <keyword>XML</keyword>
+                   <keyword>IETF</keyword>
+                   <keyword>RFC</keyword>
+                   <keyword>Internet-Draft</keyword>
+                   <keyword>Vocabulary</keyword>
+                </bibitem>
+                <bibitem id="_" type="standard" anchor="ref1">
+                   <title type="title-main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
+                   <title type="main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
+                   <uri type="src">https://www.iso.org/standard/74575.html</uri>
+                   <uri type="obp">https://www.iso.org/obp/ui/en/#!iso:std:74575:en</uri>
+                   <uri type="rss">https://www.iso.org/contents/data/standard/07/45/74575.detail.rss</uri>
+                   <docidentifier type="ISO" primary="true">ISO 639:2023</docidentifier>
+                   <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
+                   <docidentifier type="iso-reference">ISO 639:2023(E)</docidentifier>
+                   <docidentifier type="URN">urn:iso:std:iso:639:stage-60.60</docidentifier>
+                   <docnumber>639</docnumber>
+                   <date type="published">
+                      <on>2023-11</on>
+                   </date>
+                   <contributor>
+                      <role type="publisher"/>
+                      <organization>
+                         <name>International Organization for Standardization</name>
+                         <abbreviation>ISO</abbreviation>
+                         <uri>www.iso.org</uri>
+                      </organization>
+                   </contributor>
+                   <edition>2</edition>
+                   <language>en</language>
+                   <language>fr</language>
+                   <script>Latn</script>
+                   <abstract format="text/plain" language="en" script="Latn">This document specifies the ISO 639 language code and establishes the harmonized terminology and general principles of language coding. It provides rules for the selection, formation, presentation and use of language identifiers as well as language reference names. It also gives provisions (i.e. principles, rules and guidelines) for the selection, formation and presentation of language names in English and French. Furthermore, it introduces provisions for the adoption of standardized language code elements using language names other than English or French.
+       NOTE            English, French and Russian are the official ISO languages.
+       In addition, this document gives guidance on the use of language identifiers and describes their possible combination with identifiers of other codes.
+       Specifically excluded from the ISO 639 language code are reconstructed languages or formal languages, such as computer programming languages and markup languages.
+       The ISO 639 language code is maintained by the ISO 639 Maintenance Agency (ISO 639/MA) (see Annex B).</abstract>
+                   <status>
                       <stage>60</stage>
                       <substage>60</substage>
-                    </status>
-                    <copyright>
+                   </status>
+                   <copyright>
                       <from>2023</from>
                       <owner>
-                        <organization>
-                          <name>ISO</name>
-                        </organization>
+                         <organization>
+                            <name>ISO</name>
+                         </organization>
                       </owner>
-                    </copyright>
-                    <relation type="obsoletes">
+                   </copyright>
+                   <relation type="obsoletes">
                       <bibitem type="standard">
-                        <formattedref format="text/plain">ISO 639-1:2002</formattedref>
-                        <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>
+                         <formattedref format="text/plain">ISO 639-1:2002</formattedref>
+                         <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>
                       </bibitem>
-                    </relation>
-                    <relation type="obsoletes">
+                   </relation>
+                   <relation type="obsoletes">
                       <bibitem type="standard">
-                        <formattedref format="text/plain">ISO 639-2:1998</formattedref>
-                        <docidentifier type="ISO" primary="true">ISO 639-2:1998</docidentifier>
+                         <formattedref format="text/plain">ISO 639-2:1998</formattedref>
+                         <docidentifier type="ISO" primary="true">ISO 639-2:1998</docidentifier>
                       </bibitem>
-                    </relation>
-                    <relation type="obsoletes">
+                   </relation>
+                   <relation type="obsoletes">
                       <bibitem type="standard">
-                        <formattedref format="text/plain">ISO 639-3:2007</formattedref>
-                        <docidentifier type="ISO" primary="true">ISO 639-3:2007</docidentifier>
+                         <formattedref format="text/plain">ISO 639-3:2007</formattedref>
+                         <docidentifier type="ISO" primary="true">ISO 639-3:2007</docidentifier>
                       </bibitem>
-                    </relation>
-                    <relation type="obsoletes">
+                   </relation>
+                   <relation type="obsoletes">
                       <bibitem type="standard">
-                        <formattedref format="text/plain">ISO 639-4:2010</formattedref>
-                        <docidentifier type="ISO" primary="true">ISO 639-4:2010</docidentifier>
+                         <formattedref format="text/plain">ISO 639-4:2010</formattedref>
+                         <docidentifier type="ISO" primary="true">ISO 639-4:2010</docidentifier>
                       </bibitem>
-                    </relation>
-                    <relation type="obsoletes">
+                   </relation>
+                   <relation type="obsoletes">
                       <bibitem type="standard">
-                        <formattedref format="text/plain">ISO 639-5:2008</formattedref>
-                        <docidentifier type="ISO" primary="true">ISO 639-5:2008</docidentifier>
+                         <formattedref format="text/plain">ISO 639-5:2008</formattedref>
+                         <docidentifier type="ISO" primary="true">ISO 639-5:2008</docidentifier>
                       </bibitem>
-                    </relation>
-                    <place>Geneva</place>
-                  </bibitem>
-                </relation>
-                <place>Geneva</place>
-              </bibitem>
-              <bibitem type="book" id="_" anchor="ref4">
-                <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
-                <title type="title-main" format="text/plain">Indiana Jones and the Last Crusade</title>
-                <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
-                <docidentifier type="metanorma-ordinal">[B3]</docidentifier>
-                <contributor>
-                  <role type="publisher"/>
-                  <organization>
-                    <name>International Organization for Standardization</name>
-                    <abbreviation>ISO</abbreviation>
-                  </organization>
-                </contributor>
-                <contributor>
-                  <role type="author"/>
-                  <person>
-                    <name>
-                      <forename>Indiana</forename>
-                      <surname>Jones</surname>
-                    </name>
-                  </person>
-                </contributor>
-              </bibitem>
-              <bibitem id="_" anchor="ref3">
-                <formattedref format="application/x-isodoc+xml">REF4</formattedref>
-                <docidentifier>REF4</docidentifier>
-                <docidentifier type="metanorma-ordinal">[B4]</docidentifier>
-                <docnumber>4</docnumber>
-              </bibitem>
-            </references>
+                   </relation>
+                   <place>Geneva</place>
+                </bibitem>
+                <bibitem type="book" anchor="ref4" id="_">
+                   <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
+                   <title type="title-main" format="text/plain">Indiana Jones and the Last Crusade</title>
+                   <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
+                   <docidentifier type="metanorma-ordinal">[B3]</docidentifier>
+                   <contributor>
+                      <role type="publisher"/>
+                      <organization>
+                         <name>International Organization for Standardization</name>
+                         <abbreviation>ISO</abbreviation>
+                      </organization>
+                   </contributor>
+                   <contributor>
+                      <role type="author"/>
+                      <person>
+                         <name>
+                            <forename>Indiana</forename>
+                            <surname>Jones</surname>
+                         </name>
+                      </person>
+                   </contributor>
+                </bibitem>
+                <bibitem anchor="ref3" id="_">
+                   <formattedref format="application/x-isodoc+xml">REF4</formattedref>
+                   <docidentifier>REF4</docidentifier>
+                   <docidentifier type="metanorma-ordinal">[B4]</docidentifier>
+                   <docnumber>4</docnumber>
+                </bibitem>
+             </references>
           </bibliography>
-        </metanorma>
+       </metanorma>
       OUTPUT
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:note | " \
                 "//xmlns:metanorma-extension | //xmlns:fetched").remove
       expect(Xml::C14n.format(strip_guid(out.to_xml)))
         .to be_equivalent_to Xml::C14n.format(output)
-    end
   end
 
   it "inserts trademarks against IEEE citations" do
-    VCR.use_cassette "ieee-multi" do
       input = <<~INPUT
-        = Document title
-        Author
-        :docfile: test.adoc
-        :nodoc:
-        :no-isobib-cache:
+        #{LOCAL_CACHED_ISOBIB_BLANK_HDR}
 
         == Introduction
 
@@ -462,7 +370,7 @@ RSpec.describe Metanorma::Ieee do
         [bibliography]
         == Normative References
 
-        * [[[ref2,ISO 639:1967]]] REF5
+        * [[[ref2,ISO 639:2023]]] REF5
         * [[[ref1,IEEE Std 1619-2007]]] REF1
         * [[[ref3,IEEE 802.1D-1990]]] REF2
       INPUT
@@ -476,7 +384,7 @@ RSpec.describe Metanorma::Ieee do
                 <eref type='inline' bibitemid='ref1' citeas='IEEE 1619™-2007'/>
               </p>
               <p id='_'>
-                <eref type='inline' bibitemid='ref2' citeas='ISO&#xa0;639:1967'/>
+                <eref type='inline' bibitemid='ref2' citeas='ISO&#xa0;639:2023'/>
               </p>
               <p id='_'>
                 <eref type='inline' bibitemid='ref1' citeas='IEEE&#xa0;1619-2007'/>
@@ -493,7 +401,7 @@ RSpec.describe Metanorma::Ieee do
                 </p>
               <p id='_'><eref type='inline' bibitemid='ref3' citeas='IEEE 802.1D®-1990'/></p>
                 <p id='_'>
-                  <eref type='inline' bibitemid='ref2' citeas='ISO&#xa0;639:1967'/>
+                  <eref type='inline' bibitemid='ref2' citeas='ISO&#xa0;639:2023'/>
                 </p>
                 <p id='_'>
                   <eref type='inline' bibitemid='ref1' citeas='IEEE&#xa0;1619-2007'/>
@@ -523,18 +431,11 @@ RSpec.describe Metanorma::Ieee do
         .remove
       expect(Xml::C14n.format(strip_guid(out.to_xml)))
         .to be_equivalent_to Xml::C14n.format(output)
-    end
   end
 
   it "cites references" do
-    VCR.use_cassette "multistandard2",
-                     match_requests_on: %i[method uri body] do
       input = <<~INPUT
-        = Document title
-        Author
-        :docfile: test.adoc
-        :nodoc:
-        :no-isobib-cache:
+        #{LOCAL_CACHED_ISOBIB_BLANK_HDR}
 
         [[A]]
         == Clause
@@ -550,14 +451,14 @@ RSpec.describe Metanorma::Ieee do
         [bibliography]
         == Normative References
 
-        * [[[ref1,ISO 639:1967]]] REF5
+        * [[[ref1,ISO 639:2023]]] REF5
         * [[[ref2,RFC 7749]]] REF7
         * [[[ref3,REF4]]] REF4
 
         [bibliography]
         == Bibliography
 
-        * [[[ref4,ISO 639:1967]]] REF5
+        * [[[ref4,ISO 639:2023]]] REF5
         * [[[ref5,RFC 7749]]] REF7
         * [[[ref6,3]]] REF4
         * [[[ref7,ARBITRARY_ID]]] REF9
@@ -567,10 +468,10 @@ RSpec.describe Metanorma::Ieee do
          <clause id="_" anchor="A" inline-header='false' obligation='normative'>
           <title id="_">Clause</title>
           <p id='_'>
-            <eref type='inline' bibitemid='ref1' citeas='ISO&#xa0;639:1967'/>
+            <eref type='inline' bibitemid='ref1' citeas='ISO&#xa0;639:2023'/>
             <eref type='inline' bibitemid='ref2' citeas='IETF&#xa0;RFC&#xa0;7749'/>
             <eref type='inline' bibitemid='ref3' citeas='REF4'/>
-            <eref type='inline' bibitemid='ref4' citeas='ISO&#xa0;639:1967'/>
+            <eref type='inline' bibitemid='ref4' citeas='ISO&#xa0;639:2023'/>
             <eref type='inline' bibitemid='ref5' citeas='IETF&#xa0;RFC&#xa0;7749'/>
             <eref type='inline' bibitemid='ref6' citeas='[B3]'/>
             <eref type='inline' bibitemid='ref7' citeas='[B4]'/>
@@ -581,18 +482,11 @@ RSpec.describe Metanorma::Ieee do
         .at("//xmlns:clause[@anchor = 'A']")
       expect(Xml::C14n.format(strip_guid(out.to_xml)))
         .to be_equivalent_to Xml::C14n.format(output)
-    end
   end
 
   it "footnotes withdrawn IEEE references" do
-    VCR.use_cassette "withdrawn-ieee",
-                     match_requests_on: %i[method uri body] do
       input = <<~INPUT
-        = Document title
-        Author
-        :docfile: test.adoc
-        :nodoc:
-        :no-isobib-cache:
+        #{LOCAL_CACHED_ISOBIB_BLANK_HDR}
 
         [bibliography]
         == Normative References
@@ -729,18 +623,11 @@ RSpec.describe Metanorma::Ieee do
       out.xpath("//xmlns:abstract").each(&:remove)
       expect(Xml::C14n.format(strip_guid(out.to_xml)))
         .to be_equivalent_to Xml::C14n.format(output)
-    end
   end
 
   it "footnotes availability of references" do
-    VCR.use_cassette "availability",
-                     match_requests_on: %i[method uri body] do
       input = <<~INPUT
-        = Document title
-        Author
-        :docfile: test.adoc
-        :nodoc:
-        :no-isobib-cache:
+        #{LOCAL_CACHED_ISOBIB_BLANK_HDR}
 
         [bibliography]
         == Normative References
@@ -893,7 +780,6 @@ RSpec.describe Metanorma::Ieee do
         .each(&:remove)
       expect(Xml::C14n.format(strip_guid(out.to_xml)))
         .to be_equivalent_to Xml::C14n.format(output)
-    end
   end
 
   it "removes ordinals from Normative references" do

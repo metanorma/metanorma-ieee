@@ -2,7 +2,6 @@ require "spec_helper"
 
 RSpec.describe IsoDoc do
   it "processes biblio citations" do
-    VCR.use_cassette "isodoc" do
       input = <<~INPUT
                   <iso-standard xmlns="http://riboseinc.com/isoxml">
                   <sections>
@@ -816,7 +815,6 @@ RSpec.describe IsoDoc do
       )
       expect(Xml::C14n.format(strip_guid(out.to_xml)))
         .to be_equivalent_to Xml::C14n.format(presxml)
-    end
   end
 
   it "re-sorts biblio citations" do
