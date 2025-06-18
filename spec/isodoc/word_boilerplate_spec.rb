@@ -596,32 +596,36 @@ Users are encouraged to periodically check for errata.</p>
                 </div>
              </div>
           </div>
-          <span lang="EN-US" style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
-             <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
-          </span>
-          <div>
-             <a name="boilerplate-participants" id="boilerplate-participants"/>
-             <p class="IEEEStdsLevel1frontmatter">Participants</p>
-             <p class="IEEEStdsParagraph">
-                <a name="_" id="_"/>
-                At the time this draft Standard was completed, the WG Working Group had the following membership:
-             </p>
-             <p style="text-align:center;" align="center" class="IEEEStdsNamesCtrCxSpFirst">
-                <a name="_" id="_"/>
-                <b>AB</b>
-                ,
-                <i>Chair</i>
-             </p>
-             <p style="text-align:center;" align="center" class="IEEEStdsNamesCtrCxSpLast">
-                <a name="_" id="_"/>
-                <b>CD</b>
-                ,
-                <i>Vice Chair</i>
-             </p>
+          <b style="mso-bidi-font-weight:normal">
+             <span lang="EN-US" style="font-size:12.0pt; mso-bidi-font-size:10.0pt;font-family:&quot;Arial&quot;,sans-serif;mso-fareast-font-family: &quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+                <br clear="all" style="page-break-before:always;mso-break-type:section-break"/>
+             </span>
+          </b>
+          <div class="WordSection4">
+             <div>
+                <a name="boilerplate-participants" id="boilerplate-participants"/>
+                <p class="IEEEStdsLevel1frontmatter">Participants</p>
+                <p class="IEEEStdsParagraph">
+                   <a name="_" id="_"/>
+                   At the time this draft Standard was completed, the WG Working Group had the following membership:
+                </p>
+                <p style="text-align:center;" align="center" class="IEEEStdsNamesCtrCxSpFirst">
+                   <a name="_" id="_"/>
+                   <b>AB</b>
+                   ,
+                   <i>Chair</i>
+                </p>
+                <p style="text-align:center;" align="center" class="IEEEStdsNamesCtrCxSpLast">
+                   <a name="_" id="_"/>
+                   <b>CD</b>
+                   ,
+                   <i>Vice Chair</i>
+                </p>
+             </div>
           </div>
           <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
              <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
-             <div class="WordSection4">
+             <div class="WordSection5">
                 <p class="IEEEStdsNamesList">
                    <a name="_" id="_"/>
                    E, F, Jr.
@@ -637,7 +641,7 @@ Users are encouraged to periodically check for errata.</p>
              </div>
              <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
                 <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
-                <div class="WordSection5">
+                <div class="WordSection6">
                    <p class="IEEEStdsParagraph"> </p>
                    <p class="IEEEStdsParagraph">
                       <a name="_" id="_"/>
@@ -646,7 +650,7 @@ Users are encouraged to periodically check for errata.</p>
                 </div>
                 <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
                    <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
-                   <div class="WordSection6">
+                   <div class="WordSection7">
                       <p class="IEEEStdsNamesList">
                          <a name="_" id="_"/>
                          KL
@@ -658,7 +662,7 @@ Users are encouraged to periodically check for errata.</p>
                    </div>
                    <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
                       <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
-                      <div class="WordSection7">
+                      <div class="WordSection8">
                          <p class="IEEEStdsParagraph"> </p>
                          <p class="IEEEStdsParagraph">
                             <a name="_" id="_"/>
@@ -691,7 +695,7 @@ Users are encouraged to periodically check for errata.</p>
                       </div>
                       <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
                          <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
-                         <div class="WordSection8">
+                         <div class="WordSection9">
                             <p class="IEEEStdsNamesList">
                                <a name="_" id="_"/>
                                KL
@@ -703,7 +707,7 @@ Users are encouraged to periodically check for errata.</p>
                          </div>
                          <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
                             <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
-                            <div class="WordSection9">
+                            <div class="WordSection10">
                                <p class="IEEEStdsParaMemEmeritus">
                                   <a name="_" id="_"/>
                                   *Member Emeritus
