@@ -155,7 +155,7 @@ module Metanorma
           i.agency "IEEE"
           i.class_ doctype(node)
           a = node.attr("edition") and i.edition a
-          a = node.attr("draft") and i.version a
+          a = metadata_version_value(node) and i.version a
           a = node.attr("amendment-number") and i.amendment a
           a = node.attr("corrigendum-number") and i.corrigendum a
           a = node.attr("copyright-year") and i.year a
