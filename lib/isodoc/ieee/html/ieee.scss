@@ -2546,7 +2546,6 @@ div.WordSection2
 	mso-line-numbers-count-by:1;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
 	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
-	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
 @page WordSection3P
@@ -2557,7 +2556,6 @@ div.WordSection2
 	mso-line-numbers-count-by:1;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
 	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
-	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
 @page WordSection3L
@@ -2568,54 +2566,47 @@ div.WordSection2
 	mso-line-numbers-count-by:1;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1l;
 	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1l;
-	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3l;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1l;
 	mso-paper-source:0;}
 div.WordSection3
 	{page:WordSection3;
 	mso-footnote-numbering-restart:each-section;}
 @page WordSection4
-	{size:612.0pt 792.0pt;
-	margin:72.0pt 90.0pt 72.0pt 90.0pt;
-	mso-header-margin:36.0pt;
-	mso-footer-margin:36.0pt;
-	mso-line-numbers-count-by:1;
+        {size:612.0pt 792.0pt;
+        margin:72.0pt 90.0pt 72.0pt 90.0pt;
+        mso-header-margin:36.0pt;
+        mso-footer-margin:36.0pt;
+        mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
-	mso-columns:3 even 36.0pt;
-	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
+        mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
-	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
-	mso-paper-source:0;}
-@page WordSection4L
-	{size:792.0pt 612.0pt;
-	margin:72.0pt 90.0pt 72.0pt 90.0pt;
-	mso-header-margin:36.0pt;
-	mso-footer-margin:36.0pt;
-	mso-line-numbers-count-by:1;
-	mso-page-numbers:roman-lower;
-	mso-columns:3 even 36.0pt;
-	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1l;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1l;
-	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3l;
-	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1l;
-	mso-paper-source:0;}
+        mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
+        mso-paper-source:0;}
 @page WordSection4P
-	{size:612.0pt 792.0pt;
-	margin:72.0pt 90.0pt 72.0pt 90.0pt;
-	mso-header-margin:36.0pt;
-	mso-footer-margin:36.0pt;
-	mso-line-numbers-count-by:1;
+        {size:612.0pt 792.0pt;
+        margin:72.0pt 90.0pt 72.0pt 90.0pt;
+        mso-header-margin:36.0pt;
+        mso-footer-margin:36.0pt;
+        mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
-	mso-columns:3 even 36.0pt;
-	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
+        mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
-	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
-	mso-paper-source:0;}
+        mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
+        mso-paper-source:0;}
+@page WordSection4L
+        {size:792.0pt 612.0pt;
+        margin:72.0pt 90.0pt 72.0pt 90.0pt;
+        mso-header-margin:36.0pt;
+        mso-footer-margin:36.0pt;
+        mso-line-numbers-count-by:1;
+	mso-page-numbers:roman-lower;
+        mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1l;
+	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
+        mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1l;
+        mso-paper-source:0;}
 div.WordSection4
-	{page:WordSection4;
-	mso-footnote-numbering-restart:each-section;}
+        {page:WordSection4;
+        mso-footnote-numbering-restart:each-section;}
 @page WordSection5
 	{size:612.0pt 792.0pt;
 	margin:72.0pt 90.0pt 72.0pt 90.0pt;
@@ -2623,8 +2614,8 @@ div.WordSection4
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
+	mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
@@ -2635,8 +2626,8 @@ div.WordSection4
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
+	mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1l;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1l;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3l;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1l;
 	mso-paper-source:0;}
@@ -2647,8 +2638,8 @@ div.WordSection4
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
+	mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
@@ -2662,9 +2653,7 @@ div.WordSection5
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
-	mso-columns:{% if balloting_group_type == "entity" %}2{% else %}3{% endif %} even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
@@ -2675,9 +2664,7 @@ div.WordSection5
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
-	mso-columns:{% if balloting_group_type == "entity" %}2{% else %}3{% endif %} even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1l;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1l;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3l;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1l;
 	mso-paper-source:0;}
@@ -2688,9 +2675,7 @@ div.WordSection5
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
-	mso-columns:{% if balloting_group_type == "entity" %}2{% else %}3{% endif %} even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
@@ -2704,8 +2689,8 @@ div.WordSection6
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
+	mso-columns:{% if balloting_group_type == "entity" %}2{% else %}3{% endif %} even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
@@ -2716,8 +2701,8 @@ div.WordSection6
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
+	mso-columns:{% if balloting_group_type == "entity" %}2{% else %}3{% endif %} even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1l;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1l;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3l;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1l;
 	mso-paper-source:0;}
@@ -2728,8 +2713,8 @@ div.WordSection6
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
+	mso-columns:{% if balloting_group_type == "entity" %}2{% else %}3{% endif %} even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
@@ -2743,9 +2728,7 @@ div.WordSection7
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
-        mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
@@ -2756,9 +2739,7 @@ div.WordSection7
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
-        mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1l;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1l;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3l;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1l;
 	mso-paper-source:0;}
@@ -2769,9 +2750,7 @@ div.WordSection7
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
-	mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
@@ -2785,8 +2764,8 @@ div.WordSection8
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
+        mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
@@ -2797,8 +2776,8 @@ div.WordSection8
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
+        mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1l;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1l;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3l;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1l;
 	mso-paper-source:0;}
@@ -2809,8 +2788,8 @@ div.WordSection8
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
+	mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
@@ -2824,9 +2803,7 @@ div.WordSection9
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
-        mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
@@ -2837,9 +2814,7 @@ div.WordSection9
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
-        mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1l;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1l;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3l;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1l;
 	mso-paper-source:0;}
@@ -2850,9 +2825,7 @@ div.WordSection9
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
-	mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
@@ -2866,8 +2839,8 @@ div.WordSection10
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
+        mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
@@ -2878,8 +2851,8 @@ div.WordSection10
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
+        mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1l;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1l;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3l;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1l;
 	mso-paper-source:0;}
@@ -2890,8 +2863,8 @@ div.WordSection10
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
+	mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
@@ -2905,9 +2878,7 @@ div.WordSection11
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
-        mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
@@ -2918,9 +2889,7 @@ div.WordSection11
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
-        mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1l;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1l;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3l;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1l;
 	mso-paper-source:0;}
@@ -2931,9 +2900,7 @@ div.WordSection11
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
-	mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
@@ -2947,8 +2914,8 @@ div.WordSection12
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
+        mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
@@ -2959,8 +2926,8 @@ div.WordSection12
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
+        mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1l;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1l;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3l;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1l;
 	mso-paper-source:0;}
@@ -2971,13 +2938,13 @@ div.WordSection12
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
+	mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
 div.WordSection13
-	{page:WordSection13;
+	{page:WordSection14;
 	mso-footnote-numbering-restart:each-section;}
 @page WordSection14
 	{size:612.0pt 792.0pt;
@@ -2986,9 +2953,7 @@ div.WordSection13
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
-        mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
@@ -2999,9 +2964,7 @@ div.WordSection13
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
-        mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1l;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1l;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3l;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1l;
 	mso-paper-source:0;}
@@ -3012,53 +2975,51 @@ div.WordSection13
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
-	mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
 div.WordSection14
 	{page:WordSection14;
 	mso-footnote-numbering-restart:each-section;}
-@page WordSection9
+@page WordSection15
 	{size:612.0pt 792.0pt;
 	margin:72.0pt 90.0pt 72.0pt 90.0pt;
 	mso-header-margin:36.0pt;
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
+        mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
-@page WordSection9L
+@page WordSection15L
 	{size:792.0pt 612.0pt;
 	margin:72.0pt 90.0pt 72.0pt 90.0pt;
 	mso-header-margin:36.0pt;
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
+        mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1l;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1l;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3l;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1l;
 	mso-paper-source:0;}
-@page WordSection9P
+@page WordSection15P
 	{size:612.0pt 792.0pt;
 	margin:72.0pt 90.0pt 72.0pt 90.0pt;
 	mso-header-margin:36.0pt;
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
+	mso-columns:3 even 36.0pt;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
-div.WordSection9
-	{page:WordSection9;
+div.WordSection15
+	{page:WordSection15;
 	mso-footnote-numbering-restart:each-section;}
 
 @page WordSectionIntro
@@ -3067,9 +3028,9 @@ div.WordSection9
 	mso-header-margin:36.0pt;
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
+	mso-page-numbers:roman-lower;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
-	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f8;
+	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
 @page WordSectionIntroL
@@ -3078,9 +3039,9 @@ div.WordSection9
 	mso-header-margin:36.0pt;
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
+	mso-page-numbers:roman-lower;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1l;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1l;
-	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f8;
+	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1l;
 	mso-paper-source:0;}
 @page WordSectionIntroP
@@ -3089,9 +3050,9 @@ div.WordSection9
 	mso-header-margin:36.0pt;
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
+	mso-page-numbers:roman-lower;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
-	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f8;
+	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
 div.WordSectionIntro
@@ -3103,9 +3064,9 @@ div.WordSectionIntro
 	mso-header-margin:36.0pt;
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
+	mso-page-numbers:roman-lower;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
-	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f8;
+	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
 @page WordSectionContentsL
@@ -3114,9 +3075,9 @@ div.WordSectionIntro
 	mso-header-margin:36.0pt;
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
+	mso-page-numbers:roman-lower;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1l;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1l;
-	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f8;
+	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1l;
 	mso-paper-source:0;}
 @page WordSectionContentsP
@@ -3125,9 +3086,9 @@ div.WordSectionIntro
 	mso-header-margin:36.0pt;
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
+	mso-page-numbers:roman-lower;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
-	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f8;
+	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
 div.WordSectionContents
@@ -3139,9 +3100,9 @@ div.WordSectionContents
 	mso-header-margin:36.0pt;
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
+        mso-page-numbers:1;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
-	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f8;
+	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
 @page WordSectionMiddleTitleL
@@ -3150,9 +3111,9 @@ div.WordSectionContents
 	mso-header-margin:36.0pt;
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
+        mso-page-numbers:1;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1l;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1l;
-	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f8;
+	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1l;
 	mso-paper-source:0;}
 @page WordSectionMiddleTitleP
@@ -3161,9 +3122,9 @@ div.WordSectionContents
 	mso-header-margin:36.0pt;
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
+        mso-page-numbers:1;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
-	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f8;
+	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
 div.WordSectionMiddleTitle
@@ -3176,8 +3137,7 @@ div.WordSectionMiddleTitle
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
-	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f8;
+	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
 @page WordSectionMainL
@@ -3187,8 +3147,7 @@ div.WordSectionMiddleTitle
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1l;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1l;
-	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f8;
+	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1l;
 	mso-paper-source:0;}
 @page WordSectionMainP
@@ -3198,8 +3157,7 @@ div.WordSectionMiddleTitle
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
-	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f8;
+	mso-footer:url("file:///C:/Doc/FILENAME_files/header.html") f3;
 	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
 	mso-paper-source:0;}
 div.WordSectionMain

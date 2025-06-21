@@ -1327,112 +1327,176 @@ RSpec.describe IsoDoc::Ieee do
        </div>
     OUTPUT
     word = <<~OUTPUT
-      <body lang="EN-US" link="blue" vlink="#954F72" xml:lang="EN-US">
-         <p class="IEEEStdsParagraph">
-           <br clear="all" class="section"/>
-         </p>
-         <span lang="EN-US" style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;,serif; mso-fareast-font-family:&quot;Times New Roman&quot;;color:white;mso-ansi-language:EN-US; mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
-           <br clear="all" style="page-break-before:always;mso-break-type:section-break"/>
-         </span>
-         <!-- points to feedback statement as footnote -->
-         <div class="WordSection3">
-           <div>
-             <a name="boilerplate-disclaimers-destination" id="boilerplate-disclaimers-destination"/>
-           </div>
-         </div>
-         <span lang="EN-US" style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
-           <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
-         </span>
-         <div type="participants">
-           <a name="boilerplate-participants" id="boilerplate-participants"/>
-           <p class="IEEEStdsLevel1frontmatter">Participants</p>
-           <p class="IEEEStdsParagraph"><a name="_" id="_"/>At the time this draft Standard was completed, the  had the following membership:</p>
-           <p style="text-align:center;" align="center" class="IEEEStdsNamesCtrCxSpFirst"><b><span class="au_surname">Socrates</span><span class="au_fname">Adalbert</span></b>, <i><span class="au_role">Chair</span></i></p>
-           <p style="text-align:center;" align="center" class="IEEEStdsNamesCtrCxSpLast"><b>Plato</b>, <i><span class="au_role">Technical editor</span></i></p>
-         </div>
-         <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
-           <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
-           <div class="WordSection4">
-             <p class="IEEEStdsNamesList">Aristotle</p>
-             <p class="IEEEStdsNamesList">Anaximander</p>
-           </div>
-           <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+       <body lang="EN-US" link="blue" vlink="#954F72" xml:lang="EN-US">
+          <p class="IEEEStdsParagraph">
+             <br clear="all" class="section"/>
+          </p>
+          <span lang="EN-US" style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;,serif; mso-fareast-font-family:&quot;Times New Roman&quot;;color:white;mso-ansi-language:EN-US; mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+             <br clear="all" style="page-break-before:always;mso-break-type:section-break"/>
+          </span>
+          <div class="WordSection3">
+             <div>
+                <a name="boilerplate-disclaimers-destination" id="boilerplate-disclaimers-destination"/>
+             </div>
+          </div>
+          <b style="mso-bidi-font-weight:normal">
+             <span lang="EN-US" style="font-size:12.0pt; mso-bidi-font-size:10.0pt;font-family:&quot;Arial&quot;,sans-serif;mso-fareast-font-family: &quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+                <br clear="all" style="page-break-before:always;mso-break-type:section-break"/>
+             </span>
+          </b>
+          <div class="WordSection4">
+             <div type="participants">
+                <a name="boilerplate-participants" id="boilerplate-participants"/>
+                <p class="IEEEStdsLevel1frontmatter">Participants</p>
+                <p class="IEEEStdsParagraph">
+                   <a name="_" id="_"/>
+                   At the time this draft Standard was completed, the had the following membership:
+                </p>
+                <p style="text-align:center;" align="center" class="IEEEStdsNamesCtrCxSpFirst">
+                   <b>
+                      <span class="au_surname">Socrates</span>
+                      <span class="au_fname">Adalbert</span>
+                   </b>
+                   ,
+                   <i>
+                      <span class="au_role">Chair</span>
+                   </i>
+                </p>
+                <p style="text-align:center;" align="center" class="IEEEStdsNamesCtrCxSpLast">
+                   <b>Plato</b>
+                   ,
+                   <i>
+                      <span class="au_role">Technical editor</span>
+                   </i>
+                </p>
+             </div>
+          </div>
+          <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
              <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
              <div class="WordSection5">
-               <p class="IEEEStdsParagraph"> </p>
-               <p class="IEEEStdsParagraph"><a name="_" id="_"/>This is an additional clause.</p>
-               <p class="IEEEStdsParagraph"><a name="_" id="_"/>The following members of the   Standards Association balloting group voted on this Standard. Balloters may have voted for approval, disapproval, or abstention.</p>
+                <p class="IEEEStdsNamesList">Aristotle</p>
+                <p class="IEEEStdsNamesList">Anaximander</p>
              </div>
              <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
-               <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
-               <div class="WordSection6">
-                 <p class="IEEEStdsNamesList">Athanasius of Alexandria</p>
-                 <p class="IEEEStdsNamesList"><span class="au_fname">Basil</span> of <span class="au_surname">Caesarea</span></p>
-               </div>
-               <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
-                 <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
-                 <div class="WordSection7">
+                <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+                <div class="WordSection6">
                    <p class="IEEEStdsParagraph"> </p>
-                   <p class="IEEEStdsParagraph"><a name="_" id="_"/>And this is another list</p>
-                   <p class="IEEEStdsNamesList">
-                     <span class="organization">Microsoft</span>
+                   <p class="IEEEStdsParagraph">
+                      <a name="_" id="_"/>
+                      This is an additional clause.
                    </p>
-                   <p class="IEEEStdsNamesList">
-                     <span class="organization">Alphabet</span>
+                   <p class="IEEEStdsParagraph">
+                      <a name="_" id="_"/>
+                      The following members of the Standards Association balloting group voted on this Standard. Balloters may have voted for approval, disapproval, or abstention.
                    </p>
-                   <p class="IEEEStdsParagraph"><a name="_" id="_"/>When the IEEE SA Standards Board approved this Standard on Date Approved, it had the following membership:</p>
-                   <p style="text-align:center;" align="center" class="IEEEStdsNamesCtrCxSpFirst"><b>Aeschylus</b>, <i><span class="au_role">Chair</span></i></p>
-                   <p style="text-align:center;" align="center" class="IEEEStdsNamesCtrCxSpLast"><b>Sophocles</b>, <i><span class="au_role">Technical editor</span></i></p>
-                 </div>
-                 <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+                </div>
+                <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
                    <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
-                   <div class="WordSection8">
-                     <p class="IEEEStdsNamesList">Euripides</p>
-                     <p class="IEEEStdsNamesList">Aristophanes<span class="cite_fn">*</span></p>
+                   <div class="WordSection7">
+                      <p class="IEEEStdsNamesList">Athanasius of Alexandria</p>
+                      <p class="IEEEStdsNamesList">
+                         <span class="au_fname">Basil</span>
+                         of
+                         <span class="au_surname">Caesarea</span>
+                      </p>
                    </div>
                    <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
-                     <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
-                     <div class="WordSection9">
-                       <p class="IEEEStdsParagraph"> </p>
-                       <p class="IEEEStdsParaMemEmeritus"><a name="_" id="_"/><span class="cite_fn">*</span>Member Emeritus</p>
-                       <p class="IEEEStdsParagraph"><a name="_" id="_"/>This is an additional clause.</p>
-                       <p class="IEEEStdsNamesList">
-                         <span class="organization">Waldorf-Astoria</span>
-                       </p>
-                       <p class="IEEEStdsNamesList">
-                         <span class="organization">Ritz</span>
-                       </p>
-                       <p class="IEEEStdsParagraph"><a name="_" id="_"/>And again:</p>
-                     </div>
-                     <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
-                       <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
-                       <div class="WordSection10">
-                         <p class="IEEEStdsNamesList">name1</p>
-                         <p class="IEEEStdsNamesList">name2</p>
-                       </div>
-                     </span>
+                      <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+                      <div class="WordSection8">
+                         <p class="IEEEStdsParagraph"> </p>
+                         <p class="IEEEStdsParagraph">
+                            <a name="_" id="_"/>
+                            And this is another list
+                         </p>
+                         <p class="IEEEStdsNamesList">
+                            <span class="organization">Microsoft</span>
+                         </p>
+                         <p class="IEEEStdsNamesList">
+                            <span class="organization">Alphabet</span>
+                         </p>
+                         <p class="IEEEStdsParagraph">
+                            <a name="_" id="_"/>
+                            When the IEEE SA Standards Board approved this Standard on Date Approved, it had the following membership:
+                         </p>
+                         <p style="text-align:center;" align="center" class="IEEEStdsNamesCtrCxSpFirst">
+                            <b>Aeschylus</b>
+                            ,
+                            <i>
+                               <span class="au_role">Chair</span>
+                            </i>
+                         </p>
+                         <p style="text-align:center;" align="center" class="IEEEStdsNamesCtrCxSpLast">
+                            <b>Sophocles</b>
+                            ,
+                            <i>
+                               <span class="au_role">Technical editor</span>
+                            </i>
+                         </p>
+                      </div>
+                      <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+                         <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+                         <div class="WordSection9">
+                            <p class="IEEEStdsNamesList">Euripides</p>
+                            <p class="IEEEStdsNamesList">
+                               Aristophanes
+                               <span class="cite_fn">*</span>
+                            </p>
+                         </div>
+                         <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+                            <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+                            <div class="WordSection10">
+                               <p class="IEEEStdsParagraph"> </p>
+                               <p class="IEEEStdsParaMemEmeritus">
+                                  <a name="_" id="_"/>
+                                  <span class="cite_fn">*</span>
+                                  Member Emeritus
+                               </p>
+                               <p class="IEEEStdsParagraph">
+                                  <a name="_" id="_"/>
+                                  This is an additional clause.
+                               </p>
+                               <p class="IEEEStdsNamesList">
+                                  <span class="organization">Waldorf-Astoria</span>
+                               </p>
+                               <p class="IEEEStdsNamesList">
+                                  <span class="organization">Ritz</span>
+                               </p>
+                               <p class="IEEEStdsParagraph">
+                                  <a name="_" id="_"/>
+                                  And again:
+                               </p>
+                            </div>
+                            <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+                               <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+                               <div class="WordSection11">
+                                  <p class="IEEEStdsNamesList">name1</p>
+                                  <p class="IEEEStdsNamesList">name2</p>
+                               </div>
+                            </span>
+                         </span>
+                      </span>
                    </span>
-                 </span>
-               </span>
+                </span>
              </span>
-           </span>
-         </span>
-         <b style="mso-bidi-font-weight:normal">
-           <span lang="EN-US" style="font-size:12.0pt; mso-bidi-font-size:10.0pt;font-family:&quot;Arial&quot;,sans-serif;mso-fareast-font-family: &quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
-             <br clear="all" style="page-break-before:always;mso-break-type:section-break"/>
-           </span>
-         </b>
-         <div class="authority">
-           <div class="boilerplate-legal"/>
-         </div>
-         <p class="IEEEStdsParagraph"> </p>
-         <p class="IEEEStdsParagraph">
-           <br clear="all" class="section"/>
-         </p>
-         <p class="IEEEStdsParagraph">
-           <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
-         </p>
-         <div style="mso-element:footnote-list"/>
+          </span>
+          <b style="mso-bidi-font-weight:normal">
+             <span lang="EN-US" style="font-size:12.0pt; mso-bidi-font-size:10.0pt;font-family:&quot;Arial&quot;,sans-serif;mso-fareast-font-family: &quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+                <br clear="all" style="page-break-before:always;mso-break-type:section-break"/>
+             </span>
+          </b>
+          <div class="authority">
+             <div class="boilerplate-legal">
+            
+               </div>
+          </div>
+          <p class="IEEEStdsParagraph"> </p>
+          <p class="IEEEStdsParagraph">
+             <br clear="all" class="section"/>
+          </p>
+          <p class="IEEEStdsParagraph">
+             <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+          </p>
+          <div style="mso-element:footnote-list"/>
        </body>
     OUTPUT
     FileUtils.rm_rf "test.html"
