@@ -124,7 +124,7 @@ RSpec.describe IsoDoc::Ieee do
               </acknowledgements>
            </preface>
            <sections>
-              <p class="zzSTDTitle1" displayorder="5">??? for ???</p>
+              <p class="zzSTDTitle1" displayorder="5"/>
               <clause id="D" obligation="normative" type="overview" displayorder="6">
                  <title id="_">Overview</title>
                  <fmt-title id="_" depth="1">
@@ -490,7 +490,7 @@ RSpec.describe IsoDoc::Ieee do
              <h1 class='IntroTitle'>Acknolwedgements</h1>
              <p id='A'>This is a preamble</p>
            </div>
-           <p class="zzSTDTitle1">??? for ???</p>
+           <p class="zzSTDTitle1"/>
            <div id='D'>
              <h1>1.&#xa0; Overview</h1>
              <p id='E'>Text</p>
@@ -618,7 +618,7 @@ RSpec.describe IsoDoc::Ieee do
           <br clear='all' class='section'/>
         </p>
         <div class='WordSectionMiddleTitle'>
-          <p class='IEEEStdsTitle' style='margin-left:0cm;margin-top:70.0pt'>??? for ???</p>
+          <p class='IEEEStdsTitle' style='margin-left:0cm;margin-top:70.0pt'/>
         </div>
         <p class="section-break">
           <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>

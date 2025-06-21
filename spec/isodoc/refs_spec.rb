@@ -278,7 +278,7 @@ RSpec.describe IsoDoc do
              </clause>
           </preface>
           <sections>
-             <p class="zzSTDTitle1" displayorder="3">??? for ???</p>
+             <p class="zzSTDTitle1" displayorder="3"/>
              <clause id="A" inline-header="false" obligation="normative" displayorder="4">
                 <title id="_">Clause</title>
                 <fmt-title id="_" depth="1">
@@ -939,7 +939,7 @@ RSpec.describe IsoDoc do
             </clause>
          </preface>
          <sections>
-            <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
+            <p class="zzSTDTitle1" displayorder="2"/>
             <references id="_" normative="true" obligation="informative" displayorder="3">
                <title id="_">Normative references</title>
                <fmt-title id="_" depth="1">

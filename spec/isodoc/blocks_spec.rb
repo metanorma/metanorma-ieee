@@ -850,7 +850,7 @@ OUTPUT
              </clause>
           </preface>
           <sections>
-             <p class="zzSTDTitle1" displayorder="2">??? for ???</p>
+             <p class="zzSTDTitle1" displayorder="2"/>
              <clause id="a" displayorder="3">
                 <title id="_">First</title>
                 <fmt-title id="_" depth="1">
@@ -956,7 +956,7 @@ OUTPUT
     OUTPUT
     html = <<~"OUTPUT"
       #{HTML_HDR}
-          <p class="zzSTDTitle1">??? for ???</p>
+          <p class="zzSTDTitle1"/>
           <div id='a'>
             <h1>1.&#xa0; First </h1>
             <div id='note1' class='Note'>
