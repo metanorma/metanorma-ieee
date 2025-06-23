@@ -1,0 +1,814 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2025-06-12</fetched>
+  <title type="title-main" format="text/plain" language="en" script="Latn">Gigabit-capable Passive Optical Networks (G-PON): Physical Media Dependent (PMD) layer specification</title>
+  <title type="main" format="text/plain" language="en" script="Latn">Gigabit-capable Passive Optical Networks (G-PON): Physical Media Dependent (PMD) layer specification</title>
+  <uri type="src">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14000&amp;lang=en</uri>
+  <uri type="obp">https://www.itu.int/rec/dologin_pub.asp?lang=e&amp;id=T-REC-G.984.2-201908-I!!PDF-E&amp;type=items</uri>
+  <docidentifier type="ITU" primary="true">ITU-T G.984.2 (08/2019)</docidentifier>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>International Telecommunication Union</name>
+      <abbreviation>ITU</abbreviation>
+      <uri>www.itu.int</uri>
+    </organization>
+  </contributor>
+  <edition>2</edition>
+  <language>en</language>
+  <script>Latn</script>
+  <status>
+    <stage>Published</stage>
+  </status>
+  <copyright>
+    <from>2019</from>
+    <owner>
+      <organization>
+        <name>International Telecommunication Union</name>
+        <abbreviation>ITU</abbreviation>
+        <uri>www.itu.int</uri>
+      </organization>
+    </owner>
+  </copyright>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 4 (12/1972)</formattedref>
+      <docidentifier type="ITU">G Suppl. 4 (12/1972)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 5 (10/1984)</formattedref>
+      <docidentifier type="ITU">G Suppl. 5 (10/1984)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 7 (12/1972)</formattedref>
+      <docidentifier type="ITU">G Suppl. 7 (12/1972)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 8 (12/1972)</formattedref>
+      <docidentifier type="ITU">G Suppl. 8 (12/1972)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 17 (10/1984)</formattedref>
+      <docidentifier type="ITU">G Suppl. 17 (10/1984)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 19 (10/1984)</formattedref>
+      <docidentifier type="ITU">G Suppl. 19 (10/1984)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 22 (10/1984)</formattedref>
+      <docidentifier type="ITU">G Suppl. 22 (10/1984)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 26 (10/1984)</formattedref>
+      <docidentifier type="ITU">G Suppl. 26 (10/1984)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 27 (10/1984)</formattedref>
+      <docidentifier type="ITU">G Suppl. 27 (10/1984)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 28 (10/1984)</formattedref>
+      <docidentifier type="ITU">G Suppl. 28 (10/1984)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 32 (11/1988)</formattedref>
+      <docidentifier type="ITU">G Suppl. 32 (11/1988)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 34 (11/1988)</formattedref>
+      <docidentifier type="ITU">G Suppl. 34 (11/1988)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 35 (11/1988)</formattedref>
+      <docidentifier type="ITU">G Suppl. 35 (11/1988)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 36 (11/1988)</formattedref>
+      <docidentifier type="ITU">G Suppl. 36 (11/1988)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 39 (03/2025)</formattedref>
+      <docidentifier type="ITU">G Suppl. 39 (03/2025)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 40 (07/2024)</formattedref>
+      <docidentifier type="ITU">G Suppl. 40 (07/2024)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 41 (07/2024)</formattedref>
+      <docidentifier type="ITU">G Suppl. 41 (07/2024)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 42 (10/2018)</formattedref>
+      <docidentifier type="ITU">G Suppl. 42 (10/2018)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 43 (02/2011)</formattedref>
+      <docidentifier type="ITU">G Suppl. 43 (02/2011)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 44 (06/2007)</formattedref>
+      <docidentifier type="ITU">G Suppl. 44 (06/2007)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 45 (09/2022)</formattedref>
+      <docidentifier type="ITU">G Suppl. 45 (09/2022)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 46 (05/2009)</formattedref>
+      <docidentifier type="ITU">G Suppl. 46 (05/2009)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 47 (03/2025)</formattedref>
+      <docidentifier type="ITU">G Suppl. 47 (03/2025)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 48 (06/2010)</formattedref>
+      <docidentifier type="ITU">G Suppl. 48 (06/2010)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 49 (09/2020)</formattedref>
+      <docidentifier type="ITU">G Suppl. 49 (09/2020)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 50 (09/2011)</formattedref>
+      <docidentifier type="ITU">G Suppl. 50 (09/2011)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 51 (06/2017)</formattedref>
+      <docidentifier type="ITU">G Suppl. 51 (06/2017)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 52 (09/2012)</formattedref>
+      <docidentifier type="ITU">G Suppl. 52 (09/2012)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 53 (12/2014)</formattedref>
+      <docidentifier type="ITU">G Suppl. 53 (12/2014)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 54 (07/2015)</formattedref>
+      <docidentifier type="ITU">G Suppl. 54 (07/2015)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 55 (12/2023)</formattedref>
+      <docidentifier type="ITU">G Suppl. 55 (12/2023)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 56 (02/2016)</formattedref>
+      <docidentifier type="ITU">G Suppl. 56 (02/2016)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 57 (07/2015)</formattedref>
+      <docidentifier type="ITU">G Suppl. 57 (07/2015)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 58 (07/2024)</formattedref>
+      <docidentifier type="ITU">G Suppl. 58 (07/2024)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 59 (02/2018)</formattedref>
+      <docidentifier type="ITU">G Suppl. 59 (02/2018)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 60 (09/2016)</formattedref>
+      <docidentifier type="ITU">G Suppl. 60 (09/2016)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 62 (02/2018)</formattedref>
+      <docidentifier type="ITU">G Suppl. 62 (02/2018)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 64 (02/2018)</formattedref>
+      <docidentifier type="ITU">G Suppl. 64 (02/2018)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 65 (10/2018)</formattedref>
+      <docidentifier type="ITU">G Suppl. 65 (10/2018)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 66 (09/2020)</formattedref>
+      <docidentifier type="ITU">G Suppl. 66 (09/2020)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 67 (07/2019)</formattedref>
+      <docidentifier type="ITU">G Suppl. 67 (07/2019)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 68 (12/2023)</formattedref>
+      <docidentifier type="ITU">G Suppl. 68 (12/2023)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 69 (09/2020)</formattedref>
+      <docidentifier type="ITU">G Suppl. 69 (09/2020)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 70 (09/2020)</formattedref>
+      <docidentifier type="ITU">G Suppl. 70 (09/2020)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 71 (12/2023)</formattedref>
+      <docidentifier type="ITU">G Suppl. 71 (12/2023)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 72 (03/2025)</formattedref>
+      <docidentifier type="ITU">G Suppl. 72 (03/2025)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 73 (10/2021)</formattedref>
+      <docidentifier type="ITU">G Suppl. 73 (10/2021)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 74 (12/2021)</formattedref>
+      <docidentifier type="ITU">G Suppl. 74 (12/2021)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 75 (12/2021)</formattedref>
+      <docidentifier type="ITU">G Suppl. 75 (12/2021)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 76 (12/2021)</formattedref>
+      <docidentifier type="ITU">G Suppl. 76 (12/2021)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 77 (06/2022)</formattedref>
+      <docidentifier type="ITU">G Suppl. 77 (06/2022)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 78 (09/2022)</formattedref>
+      <docidentifier type="ITU">G Suppl. 78 (09/2022)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 79 (12/2023)</formattedref>
+      <docidentifier type="ITU">G Suppl. 79 (12/2023)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 80 (07/2024)</formattedref>
+      <docidentifier type="ITU">G Suppl. 80 (07/2024)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 81 (07/2024)</formattedref>
+      <docidentifier type="ITU">G Suppl. 81 (07/2024)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 82 (07/2024)</formattedref>
+      <docidentifier type="ITU">G Suppl. 82 (07/2024)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 83 (07/2024)</formattedref>
+      <docidentifier type="ITU">G Suppl. 83 (07/2024)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 84 (03/2025)</formattedref>
+      <docidentifier type="ITU">G Suppl. 84 (03/2025)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 85 (03/2025)</formattedref>
+      <docidentifier type="ITU">G Suppl. 85 (03/2025)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 86 (03/2025)</formattedref>
+      <docidentifier type="ITU">G Suppl. 86 (03/2025)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">G Suppl. 87 (03/2025)</formattedref>
+      <docidentifier type="ITU">G Suppl. 87 (03/2025)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="instanceOf">
+    <bibitem type="standard">
+      <fetched>2025-06-12</fetched>
+      <title type="title-main" format="text/plain" language="en" script="Latn">Gigabit-capable Passive Optical Networks (G-PON): Physical Media Dependent (PMD) layer specification</title>
+      <title type="main" format="text/plain" language="en" script="Latn">Gigabit-capable Passive Optical Networks (G-PON): Physical Media Dependent (PMD) layer specification</title>
+      <uri type="src">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14000&amp;lang=en</uri>
+      <uri type="obp">https://www.itu.int/rec/dologin_pub.asp?lang=e&amp;id=T-REC-G.984.2-201908-I!!PDF-E&amp;type=items</uri>
+      <docidentifier type="ITU" primary="true">ITU-T G.984.2 (08/2019)</docidentifier>
+      <date type="published">
+        <on>2019-08-29</on>
+      </date>
+      <contributor>
+        <role type="publisher"/>
+        <organization>
+          <name>International Telecommunication Union</name>
+          <abbreviation>ITU</abbreviation>
+          <uri>www.itu.int</uri>
+        </organization>
+      </contributor>
+      <edition>2</edition>
+      <language>en</language>
+      <script>Latn</script>
+      <abstract format="text/plain" language="en" script="Latn">Recommendation ITU-T G.984.2 describes a flexible optical fibre access network capable of supporting the bandwidth requirements of business and residential services, and covers systems with nominal line rates of 1244.160 Mbit/s and 2488.320 Mbit/s in the downstream direction and 155.520Mbit/s, 622.080 Mbit/s, 1244.160 Mbit/s and 2488.320 Mbit/s in the upstream direction. Both symmetrical and asymmetrical (upstream/downstream) gigabit-capable passive optical network (GPON) systems are described. This Recommendation proposes the physical layer requirements and specifications for the physical media dependent (PMD) layer. The transmission convergence (TC) layer and ranging protocol for GPON systems are described in Recommendation ITU-T G.984.3. This Recommendation describes a system that represents an evolutionary development from the system described in ITU-T G.983.1. To the greatest extent possible, this Recommendation maintains the requirements of ITU-T G.983.1 to ensure maximal continuity with existing systems and optical fibre infrastructure. In addition, it describes several enhanced optical budgets (B+, C+, and D) to extend that capability. The necessary parameters are defined to support optical layer supervision.</abstract>
+      <status>
+        <stage>Published</stage>
+      </status>
+      <copyright>
+        <from>2019</from>
+        <owner>
+          <organization>
+            <name>International Telecommunication Union</name>
+            <abbreviation>ITU</abbreviation>
+            <uri>www.itu.int</uri>
+          </organization>
+        </owner>
+      </copyright>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 4 (12/1972)</formattedref>
+          <docidentifier type="ITU">G Suppl. 4 (12/1972)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 5 (10/1984)</formattedref>
+          <docidentifier type="ITU">G Suppl. 5 (10/1984)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 7 (12/1972)</formattedref>
+          <docidentifier type="ITU">G Suppl. 7 (12/1972)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 8 (12/1972)</formattedref>
+          <docidentifier type="ITU">G Suppl. 8 (12/1972)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 17 (10/1984)</formattedref>
+          <docidentifier type="ITU">G Suppl. 17 (10/1984)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 19 (10/1984)</formattedref>
+          <docidentifier type="ITU">G Suppl. 19 (10/1984)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 22 (10/1984)</formattedref>
+          <docidentifier type="ITU">G Suppl. 22 (10/1984)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 26 (10/1984)</formattedref>
+          <docidentifier type="ITU">G Suppl. 26 (10/1984)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 27 (10/1984)</formattedref>
+          <docidentifier type="ITU">G Suppl. 27 (10/1984)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 28 (10/1984)</formattedref>
+          <docidentifier type="ITU">G Suppl. 28 (10/1984)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 32 (11/1988)</formattedref>
+          <docidentifier type="ITU">G Suppl. 32 (11/1988)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 34 (11/1988)</formattedref>
+          <docidentifier type="ITU">G Suppl. 34 (11/1988)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 35 (11/1988)</formattedref>
+          <docidentifier type="ITU">G Suppl. 35 (11/1988)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 36 (11/1988)</formattedref>
+          <docidentifier type="ITU">G Suppl. 36 (11/1988)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 39 (03/2025)</formattedref>
+          <docidentifier type="ITU">G Suppl. 39 (03/2025)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 40 (07/2024)</formattedref>
+          <docidentifier type="ITU">G Suppl. 40 (07/2024)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 41 (07/2024)</formattedref>
+          <docidentifier type="ITU">G Suppl. 41 (07/2024)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 42 (10/2018)</formattedref>
+          <docidentifier type="ITU">G Suppl. 42 (10/2018)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 43 (02/2011)</formattedref>
+          <docidentifier type="ITU">G Suppl. 43 (02/2011)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 44 (06/2007)</formattedref>
+          <docidentifier type="ITU">G Suppl. 44 (06/2007)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 45 (09/2022)</formattedref>
+          <docidentifier type="ITU">G Suppl. 45 (09/2022)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 46 (05/2009)</formattedref>
+          <docidentifier type="ITU">G Suppl. 46 (05/2009)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 47 (03/2025)</formattedref>
+          <docidentifier type="ITU">G Suppl. 47 (03/2025)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 48 (06/2010)</formattedref>
+          <docidentifier type="ITU">G Suppl. 48 (06/2010)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 49 (09/2020)</formattedref>
+          <docidentifier type="ITU">G Suppl. 49 (09/2020)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 50 (09/2011)</formattedref>
+          <docidentifier type="ITU">G Suppl. 50 (09/2011)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 51 (06/2017)</formattedref>
+          <docidentifier type="ITU">G Suppl. 51 (06/2017)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 52 (09/2012)</formattedref>
+          <docidentifier type="ITU">G Suppl. 52 (09/2012)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 53 (12/2014)</formattedref>
+          <docidentifier type="ITU">G Suppl. 53 (12/2014)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 54 (07/2015)</formattedref>
+          <docidentifier type="ITU">G Suppl. 54 (07/2015)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 55 (12/2023)</formattedref>
+          <docidentifier type="ITU">G Suppl. 55 (12/2023)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 56 (02/2016)</formattedref>
+          <docidentifier type="ITU">G Suppl. 56 (02/2016)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 57 (07/2015)</formattedref>
+          <docidentifier type="ITU">G Suppl. 57 (07/2015)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 58 (07/2024)</formattedref>
+          <docidentifier type="ITU">G Suppl. 58 (07/2024)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 59 (02/2018)</formattedref>
+          <docidentifier type="ITU">G Suppl. 59 (02/2018)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 60 (09/2016)</formattedref>
+          <docidentifier type="ITU">G Suppl. 60 (09/2016)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 62 (02/2018)</formattedref>
+          <docidentifier type="ITU">G Suppl. 62 (02/2018)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 64 (02/2018)</formattedref>
+          <docidentifier type="ITU">G Suppl. 64 (02/2018)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 65 (10/2018)</formattedref>
+          <docidentifier type="ITU">G Suppl. 65 (10/2018)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 66 (09/2020)</formattedref>
+          <docidentifier type="ITU">G Suppl. 66 (09/2020)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 67 (07/2019)</formattedref>
+          <docidentifier type="ITU">G Suppl. 67 (07/2019)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 68 (12/2023)</formattedref>
+          <docidentifier type="ITU">G Suppl. 68 (12/2023)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 69 (09/2020)</formattedref>
+          <docidentifier type="ITU">G Suppl. 69 (09/2020)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 70 (09/2020)</formattedref>
+          <docidentifier type="ITU">G Suppl. 70 (09/2020)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 71 (12/2023)</formattedref>
+          <docidentifier type="ITU">G Suppl. 71 (12/2023)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 72 (03/2025)</formattedref>
+          <docidentifier type="ITU">G Suppl. 72 (03/2025)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 73 (10/2021)</formattedref>
+          <docidentifier type="ITU">G Suppl. 73 (10/2021)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 74 (12/2021)</formattedref>
+          <docidentifier type="ITU">G Suppl. 74 (12/2021)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 75 (12/2021)</formattedref>
+          <docidentifier type="ITU">G Suppl. 75 (12/2021)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 76 (12/2021)</formattedref>
+          <docidentifier type="ITU">G Suppl. 76 (12/2021)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 77 (06/2022)</formattedref>
+          <docidentifier type="ITU">G Suppl. 77 (06/2022)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 78 (09/2022)</formattedref>
+          <docidentifier type="ITU">G Suppl. 78 (09/2022)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 79 (12/2023)</formattedref>
+          <docidentifier type="ITU">G Suppl. 79 (12/2023)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 80 (07/2024)</formattedref>
+          <docidentifier type="ITU">G Suppl. 80 (07/2024)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 81 (07/2024)</formattedref>
+          <docidentifier type="ITU">G Suppl. 81 (07/2024)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 82 (07/2024)</formattedref>
+          <docidentifier type="ITU">G Suppl. 82 (07/2024)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 83 (07/2024)</formattedref>
+          <docidentifier type="ITU">G Suppl. 83 (07/2024)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 84 (03/2025)</formattedref>
+          <docidentifier type="ITU">G Suppl. 84 (03/2025)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 85 (03/2025)</formattedref>
+          <docidentifier type="ITU">G Suppl. 85 (03/2025)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 86 (03/2025)</formattedref>
+          <docidentifier type="ITU">G Suppl. 86 (03/2025)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">G Suppl. 87 (03/2025)</formattedref>
+          <docidentifier type="ITU">G Suppl. 87 (03/2025)</docidentifier>
+        </bibitem>
+      </relation>
+      <place>Geneva</place>
+    </bibitem>
+  </relation>
+  <place>Geneva</place>
+  <ext schema-version="v1.0.0">
+    <doctype>recommendation</doctype>
+    <editorialgroup>
+      <bureau>T</bureau>
+      <group type="study-group">
+        <name>ITU-T Study Group 15</name>
+        <acronym>SG</acronym>
+      </group>
+    </editorialgroup>
+  </ext>
+</bibdata>

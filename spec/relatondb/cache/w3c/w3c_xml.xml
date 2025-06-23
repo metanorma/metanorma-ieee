@@ -1,0 +1,48 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2025-06-12</fetched>
+  <title format="text/plain">Extensible Markup Language (XML) 1.0 (Fifth Edition)</title>
+  <uri type="src">http://www.w3.org/TR/xml</uri>
+  <docidentifier type="W3C" primary="true">W3C xml</docidentifier>
+  <docnumber>xml</docnumber>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>World Wide Web Consortium</name>
+      <abbreviation>W3C</abbreviation>
+      <uri>https://www.w3.org/</uri>
+    </organization>
+  </contributor>
+  <language>en</language>
+  <script>Latn</script>
+  <status>
+    <stage>Proposed Edited Recommendation</stage>
+  </status>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain">W3C PER-xml-20060614</formattedref>
+      <uri type="src">http://www.w3.org/TR/2006/PER-xml-20060614</uri>
+      <docidentifier type="W3C" primary="true">W3C PER-xml-20060614</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain">W3C REC-xml-20060816</formattedref>
+      <uri type="src">http://www.w3.org/TR/2006/REC-xml-20060816</uri>
+      <docidentifier type="W3C" primary="true">W3C REC-xml-20060816</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="instanceOf">
+    <bibitem>
+      <formattedref format="text/plain">W3C PER-xml-20080205</formattedref>
+      <uri type="src">http://www.w3.org/TR/2008/PER-xml-20080205</uri>
+      <docidentifier type="W3C" primary="true">W3C PER-xml-20080205</docidentifier>
+    </bibitem>
+  </relation>
+  <series>
+    <title format="text/plain">W3C PER</title>
+    <number>xml</number>
+  </series>
+  <ext schema-version="v1.0.0">
+    <doctype>technicalReport</doctype>
+  </ext>
+</bibdata>

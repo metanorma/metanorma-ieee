@@ -1,0 +1,75 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2025-06-12</fetched>
+  <title type="main" format="text/plain">IEEE Standard for Cryptographic Protection of Data on Block-Oriented Storage Devices</title>
+  <uri type="src">https://ieeexplore.ieee.org/document/4493450</uri>
+  <docidentifier type="IEEE" primary="true">IEEE 1619-2007</docidentifier>
+  <docidentifier type="IEEE" scope="trademark" primary="true">IEEE 1619™-2007</docidentifier>
+  <docidentifier type="ISBN">978-1-5044-5523-7</docidentifier>
+  <docidentifier type="DOI">10.1109/IEEESTD.2008.4493450</docidentifier>
+  <docnumber>IEEE 1619-2007</docnumber>
+  <date type="created">
+    <on>2008</on>
+  </date>
+  <date type="published">
+    <on>2019-02-07</on>
+  </date>
+  <date type="issued">
+    <on>2007-12-05</on>
+  </date>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Institute of Electrical and Electronics Engineers</name>
+      <abbreviation>IEEE</abbreviation>
+      <uri>http://www.ieee.org</uri>
+      <address>
+        <city>New York</city>
+        <country>USA</country>
+      </address>
+    </organization>
+  </contributor>
+  <language>en</language>
+  <script>Latn</script>
+  <abstract format="text/plain" language="en" script="Latn">This standard specifies cryptographic transform and key archival methods for protection of data in sector-level storage devices.</abstract>
+  <copyright>
+    <from>2008</from>
+    <owner>
+      <organization>
+        <name>Institute of Electrical and Electronics Engineers</name>
+        <abbreviation>IEEE</abbreviation>
+        <uri>http://www.ieee.org</uri>
+      </organization>
+    </owner>
+  </copyright>
+  <relation type="obsoletedBy">
+    <bibitem>
+      <formattedref format="text/plain">IEEE 1619-2018</formattedref>
+      <docidentifier type="IEEE" primary="true">IEEE 1619-2018</docidentifier>
+    </bibitem>
+  </relation>
+  <keyword>IEEE Standards</keyword>
+  <keyword>Cryptography</keyword>
+  <keyword>Trademarks</keyword>
+  <keyword>Patents</keyword>
+  <keyword>Warranties</keyword>
+  <keyword>1619-2007</keyword>
+  <keyword>data-at-rest security</keyword>
+  <keyword>encryption</keyword>
+  <keyword>key management</keyword>
+  <keyword>security</keyword>
+  <keyword>storage</keyword>
+  <keyword>XTS</keyword>
+  <ext schema-version="v1.0.1">
+    <doctype>standard</doctype>
+    <editorialgroup>
+      <committee>Storage Systems of the IEEE Computer Society</committee>
+    </editorialgroup>
+    <ics>
+      <code>35.040</code>
+      <text>Character sets and information coding</text>
+    </ics>
+    <standard_status>Superseded</standard_status>
+    <pubstatus>Active</pubstatus>
+    <holdstatus>Publish</holdstatus>
+  </ext>
+</bibdata>

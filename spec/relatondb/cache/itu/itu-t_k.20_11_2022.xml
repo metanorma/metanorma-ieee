@@ -1,0 +1,214 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2025-06-12</fetched>
+  <title type="title-main" format="text/plain" language="en" script="Latn">Resistibility of telecommunication equipment installed in a telecommunication centre to overvoltages and overcurrents</title>
+  <title type="main" format="text/plain" language="en" script="Latn">Resistibility of telecommunication equipment installed in a telecommunication centre to overvoltages and overcurrents</title>
+  <uri type="src">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=15177&amp;lang=en</uri>
+  <uri type="obp">https://www.itu.int/rec/dologin_pub.asp?lang=e&amp;id=T-REC-K.20-202211-I!!PDF-E&amp;type=items</uri>
+  <docidentifier type="ITU" primary="true">ITU-T K.20 (11/2022)</docidentifier>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>International Telecommunication Union</name>
+      <abbreviation>ITU</abbreviation>
+      <uri>www.itu.int</uri>
+    </organization>
+  </contributor>
+  <edition>18</edition>
+  <language>en</language>
+  <script>Latn</script>
+  <status>
+    <stage>Published</stage>
+  </status>
+  <copyright>
+    <from>2022</from>
+    <owner>
+      <organization>
+        <name>International Telecommunication Union</name>
+        <abbreviation>ITU</abbreviation>
+        <uri>www.itu.int</uri>
+      </organization>
+    </owner>
+  </copyright>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 3 (10/2015)</formattedref>
+      <docidentifier type="ITU">K Suppl. 3 (10/2015)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 8 (11/2017)</formattedref>
+      <docidentifier type="ITU">K Suppl. 8 (11/2017)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 9 (05/2019)</formattedref>
+      <docidentifier type="ITU">K Suppl. 9 (05/2019)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 10 (11/2017)</formattedref>
+      <docidentifier type="ITU">K Suppl. 10 (11/2017)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 13 (12/2021)</formattedref>
+      <docidentifier type="ITU">K Suppl. 13 (12/2021)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 14 (09/2019)</formattedref>
+      <docidentifier type="ITU">K Suppl. 14 (09/2019)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 15 (09/2018)</formattedref>
+      <docidentifier type="ITU">K Suppl. 15 (09/2018)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 16 (10/2022)</formattedref>
+      <docidentifier type="ITU">K Suppl. 16 (10/2022)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 19 (09/2019)</formattedref>
+      <docidentifier type="ITU">K Suppl. 19 (09/2019)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 24 (07/2022)</formattedref>
+      <docidentifier type="ITU">K Suppl. 24 (07/2022)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="complementOf">
+    <bibitem type="standard">
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 29 (07/2022)</formattedref>
+      <docidentifier type="ITU">K Suppl. 29 (07/2022)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="instanceOf">
+    <bibitem type="standard">
+      <fetched>2025-06-12</fetched>
+      <title type="title-main" format="text/plain" language="en" script="Latn">Resistibility of telecommunication equipment installed in a telecommunication centre to overvoltages and overcurrents</title>
+      <title type="main" format="text/plain" language="en" script="Latn">Resistibility of telecommunication equipment installed in a telecommunication centre to overvoltages and overcurrents</title>
+      <uri type="src">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=15177&amp;lang=en</uri>
+      <uri type="obp">https://www.itu.int/rec/dologin_pub.asp?lang=e&amp;id=T-REC-K.20-202211-I!!PDF-E&amp;type=items</uri>
+      <docidentifier type="ITU" primary="true">ITU-T K.20 (11/2022)</docidentifier>
+      <date type="published">
+        <on>2022-11-29</on>
+      </date>
+      <contributor>
+        <role type="publisher"/>
+        <organization>
+          <name>International Telecommunication Union</name>
+          <abbreviation>ITU</abbreviation>
+          <uri>www.itu.int</uri>
+        </organization>
+      </contributor>
+      <edition>18</edition>
+      <language>en</language>
+      <script>Latn</script>
+      <abstract format="text/plain" language="en" script="Latn">Recommendation ITU-T K.20 specifies resistibility requirements and test procedures for telecommunication equipment that is attached to or installed within a telecommunication centre.Overvoltages and overcurrents covered by Recommendation ITU-T K.20 include surges due to lightning on or near the line plant, short‑term induction from adjacent alternating current (AC) power lines or railway systems, earth potential rise due to power faults, direct contact between telecommunication lines and power lines, and electrostatic discharges (ESDs). The sources for overvoltages in internal lines, between equipment or racks, are mainly inductive coupling caused by lightning currents being conducted in nearby lightning strikes or lightning currents being conducted in nearby conductors.Major changes compared with Recommendation ITU-T K.20 (2017) include:</abstract>
+      <status>
+        <stage>Published</stage>
+      </status>
+      <copyright>
+        <from>2022</from>
+        <owner>
+          <organization>
+            <name>International Telecommunication Union</name>
+            <abbreviation>ITU</abbreviation>
+            <uri>www.itu.int</uri>
+          </organization>
+        </owner>
+      </copyright>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 3 (10/2015)</formattedref>
+          <docidentifier type="ITU">K Suppl. 3 (10/2015)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 8 (11/2017)</formattedref>
+          <docidentifier type="ITU">K Suppl. 8 (11/2017)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 9 (05/2019)</formattedref>
+          <docidentifier type="ITU">K Suppl. 9 (05/2019)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 10 (11/2017)</formattedref>
+          <docidentifier type="ITU">K Suppl. 10 (11/2017)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 13 (12/2021)</formattedref>
+          <docidentifier type="ITU">K Suppl. 13 (12/2021)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 14 (09/2019)</formattedref>
+          <docidentifier type="ITU">K Suppl. 14 (09/2019)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 15 (09/2018)</formattedref>
+          <docidentifier type="ITU">K Suppl. 15 (09/2018)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 16 (10/2022)</formattedref>
+          <docidentifier type="ITU">K Suppl. 16 (10/2022)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 19 (09/2019)</formattedref>
+          <docidentifier type="ITU">K Suppl. 19 (09/2019)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 24 (07/2022)</formattedref>
+          <docidentifier type="ITU">K Suppl. 24 (07/2022)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="complementOf">
+        <bibitem type="standard">
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 29 (07/2022)</formattedref>
+          <docidentifier type="ITU">K Suppl. 29 (07/2022)</docidentifier>
+        </bibitem>
+      </relation>
+      <place>Geneva</place>
+    </bibitem>
+  </relation>
+  <place>Geneva</place>
+  <ext schema-version="v1.0.0">
+    <doctype>recommendation</doctype>
+    <editorialgroup>
+      <bureau>T</bureau>
+      <group type="study-group">
+        <name>ITU-T Study Group 5</name>
+        <acronym>SG</acronym>
+      </group>
+    </editorialgroup>
+  </ext>
+</bibdata>

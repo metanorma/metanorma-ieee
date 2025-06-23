@@ -1,0 +1,144 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2025-06-12</fetched>
+  <title type="title-intro" format="text/plain" language="en" script="Latn">Fasteners</title>
+  <title type="title-main" format="text/plain" language="en" script="Latn">Hexagon socket countersunk head screws with reduced loadability</title>
+  <title type="main" format="text/plain" language="en" script="Latn">Fasteners - Hexagon socket countersunk head screws with reduced loadability</title>
+  <title type="title-intro" format="text/plain" language="fr" script="Latn">Fixations</title>
+  <title type="title-main" format="text/plain" language="fr" script="Latn">Vis à tête fraisée à six pans creux à capacité de charge réduite</title>
+  <title type="main" format="text/plain" language="fr" script="Latn">Fixations - Vis à tête fraisée à six pans creux à capacité de charge réduite</title>
+  <uri type="src">https://www.iso.org/standard/72578.html</uri>
+  <uri type="obp">https://www.iso.org/obp/ui/en/#!iso:std:72578:en</uri>
+  <uri type="rss">https://www.iso.org/contents/data/standard/07/25/72578.detail.rss</uri>
+  <docidentifier type="ISO" primary="true">ISO 10642</docidentifier>
+  <docidentifier type="iso-reference">ISO 10642(E)</docidentifier>
+  <docidentifier type="URN">urn:iso:std:iso:10642:stage-90.92</docidentifier>
+  <docnumber>10642</docnumber>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
+      <uri>www.iso.org</uri>
+    </organization>
+  </contributor>
+  <edition>3</edition>
+  <language>en</language>
+  <language>fr</language>
+  <script>Latn</script>
+  <status>
+    <stage>90</stage>
+    <substage>92</substage>
+  </status>
+  <copyright>
+    <from>2019</from>
+    <owner>
+      <organization>
+        <name>ISO</name>
+      </organization>
+    </owner>
+  </copyright>
+  <relation type="obsoletes">
+    <bibitem type="standard">
+      <formattedref format="text/plain">ISO 10642:2004</formattedref>
+      <docidentifier type="ISO" primary="true">ISO 10642:2004</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="obsoletes">
+    <bibitem type="standard">
+      <formattedref format="text/plain">ISO 10642:2004/Amd 1:2012</formattedref>
+      <docidentifier type="ISO" primary="true">ISO 10642:2004/Amd 1:2012</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="obsoletes">
+    <bibitem type="standard">
+      <formattedref format="text/plain">ISO/DIS 10642</formattedref>
+      <docidentifier type="ISO" primary="true">ISO/DIS 10642</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="instanceOf">
+    <bibitem type="standard">
+      <fetched>2025-06-12</fetched>
+      <title type="title-intro" format="text/plain" language="en" script="Latn">Fasteners</title>
+      <title type="title-main" format="text/plain" language="en" script="Latn">Hexagon socket countersunk head screws with reduced loadability</title>
+      <title type="main" format="text/plain" language="en" script="Latn">Fasteners - Hexagon socket countersunk head screws with reduced loadability</title>
+      <title type="title-intro" format="text/plain" language="fr" script="Latn">Fixations</title>
+      <title type="title-main" format="text/plain" language="fr" script="Latn">Vis à tête fraisée à six pans creux à capacité de charge réduite</title>
+      <title type="main" format="text/plain" language="fr" script="Latn">Fixations - Vis à tête fraisée à six pans creux à capacité de charge réduite</title>
+      <uri type="src">https://www.iso.org/standard/72578.html</uri>
+      <uri type="obp">https://www.iso.org/obp/ui/en/#!iso:std:72578:en</uri>
+      <uri type="rss">https://www.iso.org/contents/data/standard/07/25/72578.detail.rss</uri>
+      <docidentifier type="ISO" primary="true">ISO 10642:2019</docidentifier>
+      <docidentifier type="iso-reference">ISO 10642:2019(E)</docidentifier>
+      <docidentifier type="URN">urn:iso:std:iso:10642:stage-90.92</docidentifier>
+      <docnumber>10642</docnumber>
+      <date type="published">
+        <on>2019-09</on>
+      </date>
+      <contributor>
+        <role type="publisher"/>
+        <organization>
+          <name>International Organization for Standardization</name>
+          <abbreviation>ISO</abbreviation>
+          <uri>www.iso.org</uri>
+        </organization>
+      </contributor>
+      <edition>3</edition>
+      <language>en</language>
+      <language>fr</language>
+      <script>Latn</script>
+      <abstract format="text/plain" language="en" script="Latn">This document specifies the characteristics of hexagon socket countersunk head screws with reduced loadability due to head design, in steel and stainless steel, with metric coarse pitch threads M2 to M20, and with product grade A.
+NOTE 1    Other dimensional options are given in ISO 888, ISO 965-1 and ISO 4753.
+NOTE 2    The reduced loadability (related to the countersunk head dimensions in combination with penetration of the hexagon socket specified in this document) implies a limitation of ultimate tensile load; see Table 5.
+NOTE 3    Particular attention is needed to ensure alignment of the countersunk head with the bearing surface of the countersink in the assembly.</abstract>
+      <abstract format="text/plain" language="fr" script="Latn">Le présent document spécifie les caractéristiques des vis à tête fraisée à six pans creux à capacité de charge réduite du fait de la conception de la tête, en acier et en acier inoxydable, à filetage métrique à pas gros de M2 à M20, et de grade A.
+NOTE 1    D'autres options de dimensions sont données dans l'ISO 888, l'ISO 965-1 et l'ISO 4753.
+NOTE 2    La capacité de charge réduite (du fait des dimensions de la tête fraisée combinées avec la pénétration de l'empreinte six pans creux spécifiée dans le présent document) implique une limitation de la charge minimale de rupture à la traction; voir Tableau 5.
+NOTE 3    Une attention toute particulière est nécessaire pour assurer l'alignement de la tête fraisée avec la fraisure de la surface d'appui au niveau de l'assemblage.</abstract>
+      <status>
+        <stage>90</stage>
+        <substage>92</substage>
+      </status>
+      <copyright>
+        <from>2019</from>
+        <owner>
+          <organization>
+            <name>ISO</name>
+          </organization>
+        </owner>
+      </copyright>
+      <relation type="obsoletes">
+        <bibitem type="standard">
+          <formattedref format="text/plain">ISO 10642:2004</formattedref>
+          <docidentifier type="ISO" primary="true">ISO 10642:2004</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="obsoletes">
+        <bibitem type="standard">
+          <formattedref format="text/plain">ISO 10642:2004/Amd 1:2012</formattedref>
+          <docidentifier type="ISO" primary="true">ISO 10642:2004/Amd 1:2012</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="obsoletes">
+        <bibitem type="standard">
+          <formattedref format="text/plain">ISO/DIS 10642</formattedref>
+          <docidentifier type="ISO" primary="true">ISO/DIS 10642</docidentifier>
+        </bibitem>
+      </relation>
+      <place>Geneva</place>
+    </bibitem>
+  </relation>
+  <place>Geneva</place>
+  <ext schema-version="v1.0.3">
+    <doctype>international-standard</doctype>
+    <editorialgroup>
+      <technical-committee number="2" type="TC" identifier="ISO/TC 2/SC 11">Fasteners with metric external thread</technical-committee>
+    </editorialgroup>
+    <ics>
+      <code>21.060.10</code>
+      <text>Bolts, screws, studs</text>
+    </ics>
+    <structuredidentifier type="ISO">
+      <project-number>72578</project-number>
+    </structuredidentifier>
+  </ext>
+</bibdata>

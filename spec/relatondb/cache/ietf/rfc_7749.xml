@@ -1,0 +1,59 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2025-06-12</fetched>
+  <title type="main" format="text/plain">The "xml2rfc" Version 2 Vocabulary</title>
+  <uri type="src">https://www.rfc-editor.org/info/rfc7749</uri>
+  <docidentifier type="IETF" primary="true">RFC 7749</docidentifier>
+  <docidentifier type="DOI">10.17487/RFC7749</docidentifier>
+  <docnumber>RFC7749</docnumber>
+  <date type="published">
+    <on>2016-02</on>
+  </date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <completename language="en" script="Latn">J. Reschke</completename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>RFC Publisher</name>
+    </organization>
+  </contributor>
+  <contributor>
+    <role type="authorizer"/>
+    <organization>
+      <name>RFC Series</name>
+    </organization>
+  </contributor>
+  <language>en</language>
+  <script>Latn</script>
+  <abstract format="text/html" language="en" script="Latn">
+    <p>This document defines the "xml2rfc" version 2 vocabulary: an XML-based language used for writing RFCs and Internet-Drafts.</p>
+    <p>Version 2 represents the state of the vocabulary (as implemented by several tools and as used by the RFC Editor) around 2014.</p>
+    <p>This document obsoletes RFC 2629.</p>
+  </abstract>
+  <relation type="obsoletedBy">
+    <bibitem>
+      <formattedref format="text/plain">RFC7991</formattedref>
+      <docidentifier type="IETF" primary="true">RFC7991</docidentifier>
+    </bibitem>
+  </relation>
+  <series>
+    <title format="text/plain">RFC</title>
+    <number>7749</number>
+  </series>
+  <series type="stream">
+    <title format="text/plain">IAB</title>
+  </series>
+  <keyword>XML</keyword>
+  <keyword>IETF</keyword>
+  <keyword>RFC</keyword>
+  <keyword>Internet-Draft</keyword>
+  <keyword>Vocabulary</keyword>
+  <ext schema-version="v1.0.1">
+    <stream>IAB</stream>
+  </ext>
+</bibdata>

@@ -1,0 +1,34 @@
+<bibdata schema-version="v1.2.9">
+  <fetched>2025-06-21</fetched>
+  <title format="text/plain" language="en" script="Latn">&lt;empty&gt;</title>
+  <uri type="src">http://webapp.etsi.org/workprogram/Report_WorkItem.asp?WKI_ID=62010</uri>
+  <uri type="pdf">http://www.etsi.org/deliver/etsi_gs/ZSM/001_099/012/01.01.01_60/gs_ZSM012v010101p.pdf</uri>
+  <docidentifier type="ETSI" primary="true">ETSI GS ZSM 012 V1.1.1 (2022-12)</docidentifier>
+  <docnumber>ETSI GS ZSM 012 V1.1.1 (2022-12)</docnumber>
+  <date type="published">
+    <on>2022-12</on>
+  </date>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name language="en" script="Latn">European Telecommunications Standards Institute</name>
+      <abbreviation language="en" script="Latn">ETSI</abbreviation>
+    </organization>
+  </contributor>
+  <version>
+    <draft>1.1.1</draft>
+  </version>
+  <language>en</language>
+  <script>Latn</script>
+  <abstract format="text/plain" language="en" script="Latn">The work item will specify extensions and new capabilities (so-called "AI enablers") for the ZSM framework reference architecture providing support for the automation of management functionalities and operations based on Artificial Intelligence (AI), applicable end-to-end and per management domain. The set of AI-enabling capabilities will be specified as management services, complementing the existing management services defined in ETSI GS ZSM 002 V1.1.1. The focus will be on AI-related areas such as data (including data handling and analytics), action, interoperation, governance and execution environment. Furthermore, the use and integration in the ZSM framework of externally provided AI-based capabilities will be taken into account. 
+The work item will consider AI-related scenarios defined in ETSI GS ZSM 001 V1.1.1, as well as new scenarios, in order to derive AI-specific requirements. The work item will also document deployment aspects of the above scenarios to validate the applicability of the AI enablers. Related work from standard development organizations, open source projects and other sources will be considered and re-used, where applicable, in the development of the specifications.</abstract>
+  <keyword>artificial intelligence</keyword>
+  <keyword>automation</keyword>
+  <keyword>NETWORK</keyword>
+  <ext schema-version="v0.0.3">
+    <doctype abbreviation="GS">Group Specification</doctype>
+    <editorialgroup>
+      <technical-committee>Zero-touch network and Service Management</technical-committee>
+    </editorialgroup>
+  </ext>
+</bibdata>

@@ -1,0 +1,59 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2025-06-12</fetched>
+  <title format="text/plain" language="en" script="Latn">Security Requirements for Cryptographic Modules</title>
+  <uri type="src">https://csrc.nist.gov/pubs/fips/140-2/final</uri>
+  <docidentifier type="NIST" primary="true">NIST FIPS 140-2 fpd</docidentifier>
+  <date type="published">
+    <on>2001-05</on>
+  </date>
+  <date type="obsoleted">
+    <on>2001-10</on>
+  </date>
+  <contributor>
+    <role type="author"/>
+    <organization>
+      <name>National Institute of Standards and Technology</name>
+    </organization>
+  </contributor>
+  <edition>Revision 2</edition>
+  <language>en</language>
+  <script>Latn</script>
+  <status>
+    <stage>final</stage>
+    <substage>withdrawn</substage>
+    <iteration>final</iteration>
+  </status>
+  <copyright>
+    <from>2001</from>
+    <owner>
+      <organization>
+        <name>National Institute of Standards and Technology</name>
+        <abbreviation>NIST</abbreviation>
+        <uri>www.nist.gov</uri>
+      </organization>
+    </owner>
+  </copyright>
+  <relation type="obsoletes">
+    <description format="text/plain" language="en" script="Latn">supersedes</description>
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">NIST FIPS 140-2 fpd</formattedref>
+      <uri type="src">https://csrc.nist.gov/pubs/fips/140-1/upd1/final</uri>
+      <docidentifier type="NIST" primary="true">NIST FIPS 140-2 fpd</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="updates">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">NIST FIPS 140-2 fpd</formattedref>
+      <uri type="src">https://csrc.nist.gov/pubs/fips/140-2/upd1/final</uri>
+      <docidentifier type="NIST" primary="true">NIST FIPS 140-2 fpd</docidentifier>
+    </bibitem>
+  </relation>
+  <place>Gaithersburg, MD</place>
+  <keyword>computer security</keyword>
+  <keyword>cryptographic module</keyword>
+  <keyword>FIPS 140-2</keyword>
+  <keyword>validation</keyword>
+  <ext schema-version="v1.0.0">
+    <doctype>standard</doctype>
+  </ext>
+</bibdata>

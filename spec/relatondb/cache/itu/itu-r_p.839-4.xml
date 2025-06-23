@@ -1,0 +1,27 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2025-06-12</fetched>
+  <title type="main" format="text/plain" language="en" script="Latn">Rain height model for prediction methods</title>
+  <uri type="src">https://extranet.itu.int/brdocsearch/_layouts/15/DocSetHome.aspx?id=/brdocsearch/R-REC/R-REC-P/R-REC-P.839/R-REC-P.839-4-201309-I</uri>
+  <docidentifier type="ITU" primary="true">ITU-R P.839-4</docidentifier>
+  <language>en</language>
+  <script>Latn</script>
+  <relation type="instanceOf">
+    <bibitem type="standard">
+      <fetched>2025-06-12</fetched>
+      <title type="main" format="text/plain" language="en" script="Latn">Rain height model for prediction methods</title>
+      <uri type="src">https://extranet.itu.int/brdocsearch/_layouts/15/DocSetHome.aspx?id=/brdocsearch/R-REC/R-REC-P/R-REC-P.839/R-REC-P.839-4-201309-I</uri>
+      <docidentifier type="ITU" primary="true">ITU-R P.839-4</docidentifier>
+      <date type="confirmed">
+        <on>2013-09-30</on>
+      </date>
+      <date type="published">
+        <on>2013</on>
+      </date>
+      <language>en</language>
+      <script>Latn</script>
+    </bibitem>
+  </relation>
+  <ext schema-version="v1.0.0">
+    <doctype>recommendation</doctype>
+  </ext>
+</bibdata>

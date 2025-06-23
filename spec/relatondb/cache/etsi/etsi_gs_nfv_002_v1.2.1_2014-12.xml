@@ -1,0 +1,32 @@
+<bibdata schema-version="v1.2.9">
+  <fetched>2025-06-21</fetched>
+  <title format="text/plain" language="en" script="Latn">&lt;empty&gt;</title>
+  <uri type="src">http://webapp.etsi.org/workprogram/Report_WorkItem.asp?WKI_ID=43827</uri>
+  <uri type="pdf">http://www.etsi.org/deliver/etsi_gs/NFV/001_099/002/01.02.01_60/gs_NFV002v010201p.pdf</uri>
+  <docidentifier type="ETSI" primary="true">ETSI GS NFV 002 V1.2.1 (2014-12)</docidentifier>
+  <docnumber>ETSI GS NFV 002 V1.2.1 (2014-12)</docnumber>
+  <date type="published">
+    <on>2014-12</on>
+  </date>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name language="en" script="Latn">European Telecommunications Standards Institute</name>
+      <abbreviation language="en" script="Latn">ETSI</abbreviation>
+    </organization>
+  </contributor>
+  <version>
+    <draft>1.2.1</draft>
+  </version>
+  <language>en</language>
+  <script>Latn</script>
+  <abstract format="text/plain" language="en" script="Latn">The document describes the high-level architectural framework and design philosophy of VNFs, and of the supporting platform and infrastructure. The work to realize in the revision of the Architectural Framework aims at developing the basic principles of the existing framework and implementing any current missing description that will help improve the understanding of the NFV architecture within and outside the NFV ISG context.</abstract>
+  <keyword>ARCHITECTURE</keyword>
+  <keyword>NFV</keyword>
+  <ext schema-version="v0.0.3">
+    <doctype abbreviation="GS">Group Specification</doctype>
+    <editorialgroup>
+      <technical-committee>Network Functions Virtualisation</technical-committee>
+    </editorialgroup>
+  </ext>
+</bibdata>

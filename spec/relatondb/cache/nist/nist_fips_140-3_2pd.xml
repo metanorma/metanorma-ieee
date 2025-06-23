@@ -1,0 +1,51 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2025-06-12</fetched>
+  <title format="text/plain" language="en" script="Latn">Security Requirements for Cryptographic Modules</title>
+  <uri type="src">https://csrc.nist.gov/pubs/fips/140-3/2pd</uri>
+  <docidentifier type="NIST" primary="true">NIST FIPS 140-3 2pd</docidentifier>
+  <date type="published">
+    <on>2009-12</on>
+  </date>
+  <date type="obsoleted">
+    <on>2019-03</on>
+  </date>
+  <contributor>
+    <role type="author"/>
+    <organization>
+      <name>National Institute of Standards and Technology</name>
+    </organization>
+  </contributor>
+  <edition>Revision 3</edition>
+  <language>en</language>
+  <script>Latn</script>
+  <status>
+    <stage>draft-public</stage>
+    <substage>withdrawn</substage>
+    <iteration>2</iteration>
+  </status>
+  <copyright>
+    <from>2009</from>
+    <owner>
+      <organization>
+        <name>National Institute of Standards and Technology</name>
+        <abbreviation>NIST</abbreviation>
+        <uri>www.nist.gov</uri>
+      </organization>
+    </owner>
+  </copyright>
+  <place>Gaithersburg, MD</place>
+  <keyword>computer security</keyword>
+  <keyword>telecommunication security</keyword>
+  <keyword>physical security</keyword>
+  <keyword>software security</keyword>
+  <keyword>cryptography</keyword>
+  <keyword>cryptographic modules</keyword>
+  <keyword>Federal Information Processing Standard (FIPS).</keyword>
+  <ext schema-version="v1.0.0">
+    <doctype>standard</doctype>
+    <commentperiod>
+      <from>2009-12-11</from>
+      <to>2010-03-11</to>
+    </commentperiod>
+  </ext>
+</bibdata>

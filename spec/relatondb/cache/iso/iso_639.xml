@@ -1,0 +1,166 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2025-06-12</fetched>
+  <title type="title-main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
+  <title type="main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
+  <title type="title-main" format="text/plain" language="fr" script="Latn">Code pour les langues individuelles et les groupes de langues</title>
+  <title type="main" format="text/plain" language="fr" script="Latn">Code pour les langues individuelles et les groupes de langues</title>
+  <uri type="src">https://www.iso.org/standard/74575.html</uri>
+  <uri type="obp">https://www.iso.org/obp/ui/en/#!iso:std:74575:en</uri>
+  <uri type="rss">https://www.iso.org/contents/data/standard/07/45/74575.detail.rss</uri>
+  <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
+  <docidentifier type="iso-reference">ISO 639(E)</docidentifier>
+  <docidentifier type="URN">urn:iso:std:iso:639:stage-60.60</docidentifier>
+  <docnumber>639</docnumber>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
+      <uri>www.iso.org</uri>
+    </organization>
+  </contributor>
+  <edition>2</edition>
+  <language>en</language>
+  <language>fr</language>
+  <script>Latn</script>
+  <status>
+    <stage>60</stage>
+    <substage>60</substage>
+  </status>
+  <copyright>
+    <from>2023</from>
+    <owner>
+      <organization>
+        <name>ISO</name>
+      </organization>
+    </owner>
+  </copyright>
+  <relation type="obsoletes">
+    <bibitem type="standard">
+      <formattedref format="text/plain">ISO 639-1:2002</formattedref>
+      <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="obsoletes">
+    <bibitem type="standard">
+      <formattedref format="text/plain">ISO 639-2:1998</formattedref>
+      <docidentifier type="ISO" primary="true">ISO 639-2:1998</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="obsoletes">
+    <bibitem type="standard">
+      <formattedref format="text/plain">ISO 639-3:2007</formattedref>
+      <docidentifier type="ISO" primary="true">ISO 639-3:2007</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="obsoletes">
+    <bibitem type="standard">
+      <formattedref format="text/plain">ISO 639-4:2010</formattedref>
+      <docidentifier type="ISO" primary="true">ISO 639-4:2010</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="obsoletes">
+    <bibitem type="standard">
+      <formattedref format="text/plain">ISO 639-5:2008</formattedref>
+      <docidentifier type="ISO" primary="true">ISO 639-5:2008</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="instanceOf">
+    <bibitem type="standard">
+      <fetched>2025-06-12</fetched>
+      <title type="title-main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
+      <title type="main" format="text/plain" language="en" script="Latn">Code for individual languages and language groups</title>
+      <title type="title-main" format="text/plain" language="fr" script="Latn">Code pour les langues individuelles et les groupes de langues</title>
+      <title type="main" format="text/plain" language="fr" script="Latn">Code pour les langues individuelles et les groupes de langues</title>
+      <uri type="src">https://www.iso.org/standard/74575.html</uri>
+      <uri type="obp">https://www.iso.org/obp/ui/en/#!iso:std:74575:en</uri>
+      <uri type="rss">https://www.iso.org/contents/data/standard/07/45/74575.detail.rss</uri>
+      <docidentifier type="ISO" primary="true">ISO 639:2023</docidentifier>
+      <docidentifier type="iso-reference">ISO 639:2023(E)</docidentifier>
+      <docidentifier type="URN">urn:iso:std:iso:639:stage-60.60</docidentifier>
+      <docnumber>639</docnumber>
+      <date type="published">
+        <on>2023-11</on>
+      </date>
+      <contributor>
+        <role type="publisher"/>
+        <organization>
+          <name>International Organization for Standardization</name>
+          <abbreviation>ISO</abbreviation>
+          <uri>www.iso.org</uri>
+        </organization>
+      </contributor>
+      <edition>2</edition>
+      <language>en</language>
+      <language>fr</language>
+      <script>Latn</script>
+      <abstract format="text/plain" language="en" script="Latn">This document specifies the ISO 639 language code and establishes the harmonized terminology and general principles of language coding. It provides rules for the selection, formation, presentation and use of language identifiers as well as language reference names. It also gives provisions (i.e. principles, rules and guidelines) for the selection, formation and presentation of language names in English and French. Furthermore, it introduces provisions for the adoption of standardized language code elements using language names other than English or French.
+NOTE            English, French and Russian are the official ISO languages.
+In addition, this document gives guidance on the use of language identifiers and describes their possible combination with identifiers of other codes.
+Specifically excluded from the ISO 639 language code are reconstructed languages or formal languages, such as computer programming languages and markup languages.
+The ISO 639 language code is maintained by the ISO 639 Maintenance Agency (ISO 639/MA) (see Annex B).</abstract>
+      <abstract format="text/plain" language="fr" script="Latn">This document specifies the ISO 639 language code and establishes the harmonized terminology and general principles of language coding. It provides rules for the selection, formation, presentation and use of language identifiers as well as language reference names. It also gives provisions (i.e. principles, rules and guidelines) for the selection, formation and presentation of language names in English and French. Furthermore, it introduces provisions for the adoption of standardized language code elements using language names other than English or French.
+NOTE            English, French and Russian are the official ISO languages.
+In addition, this document gives guidance on the use of language identifiers and describes their possible combination with identifiers of other codes.
+Specifically excluded from the ISO 639 language code are reconstructed languages or formal languages, such as computer programming languages and markup languages.
+The ISO 639 language code is maintained by the ISO 639 Maintenance Agency (ISO 639/MA) (see Annex B).</abstract>
+      <status>
+        <stage>60</stage>
+        <substage>60</substage>
+      </status>
+      <copyright>
+        <from>2023</from>
+        <owner>
+          <organization>
+            <name>ISO</name>
+          </organization>
+        </owner>
+      </copyright>
+      <relation type="obsoletes">
+        <bibitem type="standard">
+          <formattedref format="text/plain">ISO 639-1:2002</formattedref>
+          <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="obsoletes">
+        <bibitem type="standard">
+          <formattedref format="text/plain">ISO 639-2:1998</formattedref>
+          <docidentifier type="ISO" primary="true">ISO 639-2:1998</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="obsoletes">
+        <bibitem type="standard">
+          <formattedref format="text/plain">ISO 639-3:2007</formattedref>
+          <docidentifier type="ISO" primary="true">ISO 639-3:2007</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="obsoletes">
+        <bibitem type="standard">
+          <formattedref format="text/plain">ISO 639-4:2010</formattedref>
+          <docidentifier type="ISO" primary="true">ISO 639-4:2010</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="obsoletes">
+        <bibitem type="standard">
+          <formattedref format="text/plain">ISO 639-5:2008</formattedref>
+          <docidentifier type="ISO" primary="true">ISO 639-5:2008</docidentifier>
+        </bibitem>
+      </relation>
+      <place>Geneva</place>
+    </bibitem>
+  </relation>
+  <place>Geneva</place>
+  <ext schema-version="v1.0.3">
+    <doctype>international-standard</doctype>
+    <editorialgroup>
+      <technical-committee number="37" type="TC" identifier="ISO/TC 37/SC 2">Terminology workflow and language coding</technical-committee>
+    </editorialgroup>
+    <ics>
+      <code>01.140.20</code>
+      <text>Information sciences</text>
+    </ics>
+    <structuredidentifier type="ISO">
+      <project-number>74575</project-number>
+    </structuredidentifier>
+  </ext>
+</bibdata>

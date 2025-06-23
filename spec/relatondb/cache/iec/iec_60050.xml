@@ -1,0 +1,97 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2025-06-12</fetched>
+  <title type="title-intro" format="text/plain" language="en" script="Latn">International Electrotechnical Vocabulary (IEV)</title>
+  <title type="title-main" format="text/plain" language="en" script="Latn">Index</title>
+  <title type="main" format="text/plain" language="en" script="Latn">International Electrotechnical Vocabulary (IEV) - Index</title>
+  <title type="title-intro" format="text/plain" language="fr" script="Latn">Vocabulaire Electrotechnique International (IEV)</title>
+  <title type="title-main" format="text/plain" language="fr" script="Latn">Index</title>
+  <title type="main" format="text/plain" language="fr" script="Latn">Vocabulaire Electrotechnique International (IEV) - Index</title>
+  <uri type="src">https://webstore.iec.ch/publication/12502</uri>
+  <docidentifier type="IEC" primary="true">IEC 60050</docidentifier>
+  <docidentifier type="URN">urn:iec:std:iec:60050::::</docidentifier>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>International Electrotechnical Commission</name>
+      <abbreviation>IEC</abbreviation>
+      <uri>www.iec.ch</uri>
+    </organization>
+  </contributor>
+  <edition>3</edition>
+  <language>en</language>
+  <language>fr</language>
+  <script>Latn</script>
+  <status>
+    <stage>REVISED</stage>
+  </status>
+  <copyright>
+    <from>1975</from>
+    <owner>
+      <organization>
+        <name>International Electrotechnical Commission</name>
+        <abbreviation>IEC</abbreviation>
+        <uri>www.iec.ch</uri>
+      </organization>
+    </owner>
+  </copyright>
+  <relation type="instanceOf">
+    <bibitem type="standard">
+      <fetched>2025-06-12</fetched>
+      <title type="title-intro" format="text/plain" language="en" script="Latn">International Electrotechnical Vocabulary (IEV)</title>
+      <title type="title-main" format="text/plain" language="en" script="Latn">Index</title>
+      <title type="main" format="text/plain" language="en" script="Latn">International Electrotechnical Vocabulary (IEV) - Index</title>
+      <title type="title-intro" format="text/plain" language="fr" script="Latn">Vocabulaire Electrotechnique International (IEV)</title>
+      <title type="title-main" format="text/plain" language="fr" script="Latn">Index</title>
+      <title type="main" format="text/plain" language="fr" script="Latn">Vocabulaire Electrotechnique International (IEV) - Index</title>
+      <uri type="src">https://webstore.iec.ch/publication/12502</uri>
+      <docidentifier type="IEC" primary="true">IEC 60050:1975</docidentifier>
+      <docidentifier type="URN">urn:iec:std:iec:60050:1975-01:::</docidentifier>
+      <date type="published">
+        <on>1975-01-01</on>
+      </date>
+      <date type="stable-until">
+        <on>2016-11-19</on>
+      </date>
+      <date type="obsoleted">
+        <on>2016-11-19</on>
+      </date>
+      <contributor>
+        <role type="publisher"/>
+        <organization>
+          <name>International Electrotechnical Commission</name>
+          <abbreviation>IEC</abbreviation>
+          <uri>www.iec.ch</uri>
+        </organization>
+      </contributor>
+      <edition>3</edition>
+      <language>en</language>
+      <language>fr</language>
+      <script>Latn</script>
+      <status>
+        <stage>REVISED</stage>
+      </status>
+      <copyright>
+        <from>1975</from>
+        <owner>
+          <organization>
+            <name>International Electrotechnical Commission</name>
+            <abbreviation>IEC</abbreviation>
+            <uri>www.iec.ch</uri>
+          </organization>
+        </owner>
+      </copyright>
+      <place>Geneva</place>
+    </bibitem>
+  </relation>
+  <place>Geneva</place>
+  <ext schema-version="v1.0.0">
+    <doctype>international-standard</doctype>
+    <editorialgroup>
+      <technical-committee number="1" type="technicalCommittee">TC 1</technical-committee>
+    </editorialgroup>
+    <structuredidentifier type="IEC">
+      <project-number>1000001181</project-number>
+    </structuredidentifier>
+    <price-code>iec:M</price-code>
+  </ext>
+</bibdata>

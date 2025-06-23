@@ -1,0 +1,34 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2025-06-12</fetched>
+  <title format="text/plain">XML Pointer Language (XPointer)</title>
+  <uri type="src">https://www.w3.org/TR/xptr/</uri>
+  <docidentifier type="W3C" primary="true">W3C xptr</docidentifier>
+  <docnumber>xptr</docnumber>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>World Wide Web Consortium</name>
+      <abbreviation>W3C</abbreviation>
+      <uri>https://www.w3.org/</uri>
+    </organization>
+  </contributor>
+  <language>en</language>
+  <script>Latn</script>
+  <status>
+    <stage>Working Draft</stage>
+  </status>
+  <relation type="instanceOf">
+    <bibitem>
+      <formattedref format="text/plain">W3C WD-xptr-20020816</formattedref>
+      <uri type="src">https://www.w3.org/TR/2002/WD-xptr-20020816/</uri>
+      <docidentifier type="W3C" primary="true">W3C WD-xptr-20020816</docidentifier>
+    </bibitem>
+  </relation>
+  <series>
+    <title format="text/plain">W3C WD</title>
+    <number>xptr</number>
+  </series>
+  <ext schema-version="v1.0.0">
+    <doctype>technicalReport</doctype>
+  </ext>
+</bibdata>
