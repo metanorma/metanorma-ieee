@@ -118,10 +118,11 @@ module IsoDoc
       def formula_parse(node, out)
         out.div **formula_attrs(node) do |div|
           formula_parse1(node, div)
-          formula_where(node.at(ns("./dl")), div)
           node.children.each do |n|
-            %w(fmt-stem dl fmt-name).include? n.name and next
-            parse(n, div)
+            %w(fmt-stem fmt-name).include? n.name and next
+            if n.name == "dl" then formula_where(n, div)
+            else parse(n, div)
+            end
           end
         end
       end
@@ -231,6 +232,6 @@ module IsoDoc
 
       include BaseConvert
       include Init
-end
-end
+    end
+  end
 end
