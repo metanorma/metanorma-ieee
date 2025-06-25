@@ -143,11 +143,6 @@ module IsoDoc
         warn "Failure to convert MathML to LaTeX\n#{node.parent.to_xml}\n#{e}"
       end
 
-      def formula_where(dlist)
-        dlist or return
-        dlist["class"] = "formula_dl"
-      end
-
       def ol(docxml)
         ol_numbering(docxml)
         @xrefs.list_anchor_names(docxml.xpath(ns(@xrefs.sections_xpath)))

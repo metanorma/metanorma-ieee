@@ -1223,6 +1223,7 @@ OUTPUT
                   <fmt-stem type="AsciiMath">
                      <semx element="stem" source="_">r = 1 %</semx>
                   </fmt-stem>
+                  <p keep-with-next="true">where</p>
                   <dl id="_" class="formula_dl">
                      <dt>
                         <stem type="AsciiMath" id="_">r</stem>
@@ -1288,6 +1289,7 @@ OUTPUT
                   <span class='stem'>(#(r = 1 %)#)</span>
                 </p>
               </div>
+              <p style="page-break-after: avoid;">where</p>
               <div class="figdl">
               <dl id="_" class='formula_dl'>
                 <dt>
@@ -1331,6 +1333,7 @@ OUTPUT
                <span style="mso-tab-count:1">  </span>
              </p>
            </div>
+           <p style="page-break-after: avoid;" class="IEEEStdsParagraph">where</p>
            <p class="IEEEStdsEquationVariableList"><span class="stem">(#(r)#)</span><span style="mso-tab-count:1">  </span>is the repeatability limit.</p>
            <div>
              <a name="_" id="_"/>
