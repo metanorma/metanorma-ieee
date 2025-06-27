@@ -91,7 +91,7 @@ module IsoDoc
         docxml.xpath("//p[@class = 'Sourcecode']").each do |para|
           br_elements = para.xpath(".//br")
           br_elements.empty? and next
-          split_paragraph_at_breaks(para).reverse.each do |new_para|
+          split_para_at_breaks(para).reverse.each do |new_para|
             para.add_next_sibling(new_para)
           end
           para.remove
@@ -168,7 +168,7 @@ module IsoDoc
       def process_node_for_sourcecode_breaks(node, current, result_paras)
         if node.name == "br"
           # Found a break - finish current para and start a new one
-          result_paras << current_para if para_has_content?(current)
+          result_paras << current if para_has_content?(current)
           current = create_new_para(node.document.at("//p[@class='Sourcecode']"))
         elsif node.xpath(".//br").any?
           current = process_element_with_breaks(node, current, result_paras)
