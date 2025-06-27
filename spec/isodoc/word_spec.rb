@@ -1229,27 +1229,39 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
               </fmt-name>
                puts x
             </sourcecode>
-            <sourcecode unnumbered='true'> Que? </sourcecode>
+            <sourcecode unnumbered='true'><span class="n">Que?<br/>  tal</span></sourcecode>
           </clause>
         </sections>
       </iso-standard>
     INPUT
     output = <<~OUTPUT
       <div>
-        <a name='a' id='a'/>
-        <p class='IEEEStdsLevel1Header'/>
-        <p class='IEEEStdsComputerCode' style='page-break-after:avoid;'>
-          <a name='samplecode' id='samplecode'/>
-        </p>
-        <p class='IEEEStdsComputerCode'>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </p>
-        <p class='IEEEStdsComputerCode'>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; puts x</p>
-        <p class='IEEEStdsComputerCode'>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </p>
-        <p class='SourceTitle' style='text-align:center;'>
-           Figure 1&#xa0;&#x2014; Ruby
-          <i>code</i>
-        </p>
-        <p class='IEEEStdsComputerCode'> Que? </p>
-      </div>
+          <a name="a" id="a"/>
+          <p class="IEEEStdsLevel1Header"/>
+          <p class="IEEEStdsComputerCode" style="page-break-after:avoid;">
+             <a name="samplecode" id="samplecode"/>
+                    
+          </p>
+          <p class="IEEEStdsComputerCode" style="page-break-after:avoid;">
+             <a name="samplecode" id="samplecode"/>
+                      puts x
+          </p>
+          <p class="IEEEStdsComputerCode" style="page-break-after:avoid;">
+             <a name="samplecode" id="samplecode"/>
+                  
+          </p>
+          <p class="SourceTitle" style="text-align:center;">
+             Figure 1 — Ruby
+             <i>code</i>
+          </p>
+          <p class="IEEEStdsComputerCode">
+             <span class="n">Que?</span>
+          </p>
+          <p class="IEEEStdsComputerCode" style="page-break-after:avoid;">
+             <a name="samplecode" id="samplecode"/>
+             <span class="n">  tal</span>
+          </p>
+       </div>
     OUTPUT
     IsoDoc::Ieee::WordConvert.new({}).convert("test", input, false)
     expect(File.exist?("test.doc")).to be true
