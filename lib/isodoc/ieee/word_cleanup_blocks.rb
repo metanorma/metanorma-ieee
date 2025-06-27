@@ -88,8 +88,13 @@ module IsoDoc
       end
 
       def sourcecode_cleanup(docxml)
-        docxml.xpath("//p[@class = 'Sourcecode']").each do |s|
-          s.replace(to_xml(s).gsub(%r{<br/>}, "</p><p class='Sourcecode'>"))
+        docxml.xpath("//p[@class = 'Sourcecode']").each do |para|
+          br_elements = para.xpath(".//br")
+          br_elements.empty? and next
+          split_para_at_breaks(para).reverse.each do |new_para|
+            para.add_next_sibling(new_para)
+          end
+          para.remove
         end
       end
 
@@ -134,6 +139,91 @@ module IsoDoc
             p["style"] += "mso-list:l17 level1 lfo#{seq};"
           end
         end
+      end
+
+      private
+
+      def split_para_at_breaks(para)
+        result_paras = []
+        current_para = create_new_para(para)
+        # Process each child node of the para
+        para.children.each do |node|
+          current_para =
+            process_node_for_sourcecode_breaks(node, current_para, result_paras)
+        end
+        # Add the final para if it has content
+        result_paras << current_para if para_has_content?(current_para)
+        result_paras
+      end
+
+      def create_new_para(original_para)
+        new_para = Nokogiri::XML::Node.new("p", original_para.document)
+        # Copy all attributes from original para
+        original_para.attributes.each do |name, attr|
+          new_para[name] = attr.value
+        end
+        new_para
+      end
+
+      def process_node_for_sourcecode_breaks(node, current, result_paras)
+        if node.name == "br"
+          # Found a break - finish current para and start a new one
+          result_paras << current if para_has_content?(current)
+          current = create_new_para(node.document.at("//p[@class='Sourcecode']"))
+        elsif node.xpath(".//br").any?
+          current = process_element_with_breaks(node, current, result_paras)
+        else
+          current.add_child(node.dup)
+        end
+        current
+      end
+
+      def process_element_with_breaks(node, curr_para, result_paras)
+        # Create element structure for current para
+        curr_elem = node.dup
+        curr_elem.children.remove
+
+        node.children.each do |child|
+          if child.name == "br"
+            # Close current element and finish para
+            element_has_content?(curr_elem) and
+              curr_para.add_child(curr_elem.dup)
+            para_has_content?(curr_para) and result_paras << curr_para
+            # Start new para and reopen element structure
+            curr_para = create_new_para(node.document.at("//p[@class='Sourcecode']"))
+            curr_elem = node.dup
+            curr_elem.children.remove
+          elsif child.xpath(".//br").any?
+            # Add child to current element
+            temp_para = create_new_para(node.document.at("//p[@class='Sourcecode']"))
+            temp_para = process_element_with_breaks(child, temp_para, result_paras)
+            # If new paras were created, we need to handle the split
+            if result_paras.any? && result_paras.last != curr_para
+              # A split occurred, add current element to current para and update
+              curr_para.add_child(curr_elem.dup) if element_has_content?(curr_elem)
+              curr_para = temp_para
+              curr_elem = node.dup
+              curr_elem.children.remove
+            else
+              # No split, add the processed child
+              curr_elem.add_child(child.dup)
+            end
+          # Recursively handle nested breaks
+          else
+            curr_elem.add_child(child.dup)
+          end
+        end
+        # Add final element if it has content
+        curr_para.add_child(curr_elem.dup) if element_has_content?(curr_elem)
+        curr_para
+      end
+
+      def para_has_content?(para)
+        para.children.any? && !para.content.strip.empty?
+      end
+
+      def element_has_content?(element)
+        element.children.any?
       end
     end
   end
