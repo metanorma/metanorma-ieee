@@ -114,7 +114,7 @@ module Metanorma
 
       def metadata_status(node, xml)
         status = node.attr("status") || node.attr("docstage") ||
-          (node.attr("draft") ? "draft" : "approved")
+          (node.attr("version") || node.attr("draft") ? "draft" : "approved")
         xml.status do |s|
           s.stage status
         end
