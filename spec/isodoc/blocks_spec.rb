@@ -1155,11 +1155,14 @@ OUTPUT
              <i>Example</i><i>:</i>
            </p>
            <p class='IEEEStdsParagraph'>Hello</p>
-           <p class='IEEEStdsComputerCode' style='page-break-after:avoid;'>
-             <a name='X' id='X'/>
-           </p>
-           <p class='IEEEStdsComputerCode'>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </p>
-           <p class='IEEEStdsComputerCode'>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0; </p>
+             <p class="IEEEStdsComputerCode" style="page-break-after:avoid;">
+                <a name="X" id="X"/>
+                         
+             </p>
+             <p class="IEEEStdsComputerCode" style="page-break-after:avoid;">
+                <a name="X" id="X"/>
+                       
+             </p>
            <p class='SourceTitle' style='text-align:center;'>Sample</p>
          </div>
        </div>
