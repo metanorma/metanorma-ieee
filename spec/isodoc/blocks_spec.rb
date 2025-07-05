@@ -712,7 +712,7 @@ RSpec.describe IsoDoc do
             <p style="page-break-after: avoid;" class="IEEEStdsParagraph">
                <b>Key</b>
             </p>
-            <table class="formula_dl" style="page-break-after:avoid;">
+            <table align="left" class="formula_dl" style="page-break-after:avoid;">
                <tr>
                   <td valign="top" align="left">
                      <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">
