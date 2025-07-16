@@ -26,18 +26,16 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-=begin
-  config.around do |example|
-    Dir.mktmpdir("rspec-") do |dir|
-      ["spec/assets/", "spec/examples/", "spec/fixtures/"].each do |assets|
-        tmp_assets = File.join(dir, assets)
-        FileUtils.mkdir_p tmp_assets
-        FileUtils.cp_r Dir.glob("#{assets}*"), tmp_assets
-      end
-      Dir.chdir(dir) { example.run }
-    end
-  end
-=end
+  #   config.around do |example|
+  #     Dir.mktmpdir("rspec-") do |dir|
+  #       ["spec/assets/", "spec/examples/", "spec/fixtures/"].each do |assets|
+  #         tmp_assets = File.join(dir, assets)
+  #         FileUtils.mkdir_p tmp_assets
+  #         FileUtils.cp_r Dir.glob("#{assets}*"), tmp_assets
+  #       end
+  #       Dir.chdir(dir) { example.run }
+  #     end
+  #   end
 end
 
 OPTIONS = [backend: :ieee, header_footer: true].freeze
@@ -119,7 +117,7 @@ def boilerplate_read(file, xmldoc)
   conv.init(Asciidoctor::Document.new([]))
   file.gsub!(/(?<!\{)(\{\{[^{}]+\}\})(?!\})/, "pass:[\\1]")
   isodoc = conv.boilerplate_isodoc(xmldoc)
-  #conv.boilerplate_isodoc_values(isodoc)
+  # conv.boilerplate_isodoc_values(isodoc)
   x = isodoc.populate_template(file, nil)
   ret = conv.boilerplate_file_restructure(x)
   conv.footnote_boilerplate_renumber(ret)
@@ -139,12 +137,11 @@ def boilerplate(xmldoc)
   ret.at("//clause[@anchor='boilerplate_word_usage']")&.remove
   ret.xpath("//passthrough").each(&:remove)
   ret.xpath("//li").each { |x| x["id"] = "_" }
-  ret = strip_guid(ret.root.to_xml(encoding: "UTF-8", indent: 2,
+  strip_guid(ret.root.to_xml(encoding: "UTF-8", indent: 2,
                              save_with: Nokogiri::XML::Node::SaveOptions::AS_XML))
     .gsub("&amp;lt;", "&lt;")
     .gsub("&amp;gt;", "&gt;")
-    #.gsub("&lt;Date Approved&gt;", "&lt;‌Date Approved&gt;‌")
-  ret
+  # .gsub("&lt;Date Approved&gt;", "&lt;‌Date Approved&gt;‌")
 end
 
 def ieeedoc(lang)

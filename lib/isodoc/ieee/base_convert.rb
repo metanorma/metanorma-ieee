@@ -34,29 +34,6 @@ module IsoDoc
         super.merge(type: node["type"])
       end
 
-#TODO kill
-      def note_p_parsex(node, div)
-        name = node&.at(ns("./fmt-name"))&.remove
-        div.p do |p|
-          name and p.span class: "note_label" do |s|
-            name.children.each { |n| parse(n, s) }
-          end
-          node.first_element_child.children.each { |n| parse(n, p) }
-        end
-        node.element_children[1..-1].each { |n| parse(n, div) }
-      end
-
-#TODO kill
-      def note_parse1x(node, div)
-        name = node&.at(ns("./name"))&.remove
-        name and div.p do |p|
-          p.span class: "note_label" do |s|
-            name.children.each { |n| parse(n, s) }
-          end
-        end
-        node.children.each { |n| parse(n, div) }
-      end
-
       def example_label(_node, div, name)
         return if name.nil?
 
@@ -65,7 +42,7 @@ module IsoDoc
         end
       end
 
-       def span_parse(node, out)
+      def span_parse(node, out)
         node["class"] == "fmt-obligation" and
           node["class"] = "obligation"
         super

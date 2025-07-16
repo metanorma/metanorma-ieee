@@ -38,15 +38,13 @@ module IsoDoc
         ret = [[coll[0]]]
         coll[1..-1].each do |r|
           if ret[-1][0]["type"] != r["type"]
-            ret << [r]
-            next
+            ret << [r] and next
           end
+
           ret[-1] << r
         end
         ret.map do |x|
-          x.map do |y|
-            to_xml(y)
-          end.join("; ")
+          x.map { |y| to_xml(y) }.join("; ")
         end.map { |x| "<p>#{x}</p>" }.join("\n")
       end
 
@@ -86,11 +84,13 @@ module IsoDoc
 
       def admitted_to_related(docxml)
         docxml.xpath(ns("//term")).each do |t|
-          t.xpath(ns("./fmt-admitted/semx | ./fmt-preferred/semx")).each_with_index do |a, i|
+          t.xpath(ns("./fmt-admitted/semx | ./fmt-preferred/semx"))
+            .each_with_index do |a, i|
             orig = semx_orig(a)
             (i.zero? ||
              orig.at(ns("./abbreviation-type | ./graphical-symbol"))) and next
-            out = t.at(ns("./fmt-related")) || t.at(ns("./definition")).before("<fmt-related/>").previous
+            out = t.at(ns("./fmt-related")) || t.at(ns("./definition"))
+              .before("<fmt-related/>").previous
             admitted_to_related1(a, t.at(ns("./fmt-preferred/semx")), out)
             a.parent.name == "fmt-preferred" and a.remove
           end
@@ -133,7 +133,8 @@ module IsoDoc
         if desgn["element"] == "preferred"
           f = orig.parent.xpath(ns("./domain | ./subject"))
             .map { |u| to_xml(semx_fmt_dup(u)) }.join(", ")
-          name << "<span class='fmt-designation-field'>, &#x3c;#{f}&#x3e;</span>" unless f.empty?
+          f.empty? or
+            name << "<span class='fmt-designation-field'>, &#x3c;#{f}&#x3e;</span>"
         end
         super
       end
