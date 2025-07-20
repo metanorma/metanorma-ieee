@@ -127,7 +127,15 @@
 			<!-- IEEE cover page -->
 
 			<!-- IEEE standard cover page -->
-			<fo:simple-page-master master-name="cover-and-back-page-standard" page-width="{$pageWidth}mm" page-height="{$pageHeight}mm">
+			<fo:simple-page-master master-name="cover-page" page-width="{$pageWidth}mm" page-height="{$pageHeight}mm">
+				<fo:region-body margin-top="62mm" margin-bottom="25mm" margin-left="21.2mm" margin-right="25mm"/>
+				<fo:region-before region-name="header" extent="62mm" precedence="true"/>
+				<fo:region-after region-name="footer" extent="25mm"/>
+				<fo:region-start region-name="left-region" extent="21.2mm"/>
+				<fo:region-end region-name="right-region" extent="25mm"/>
+			</fo:simple-page-master>
+			<!-- IEEE standard back page -->
+			<fo:simple-page-master master-name="back-page" page-width="{$pageWidth}mm" page-height="{$pageHeight}mm">
 				<fo:region-body margin-top="62mm" margin-bottom="25mm" margin-left="21.2mm" margin-right="25mm"/>
 				<fo:region-before region-name="header" extent="62mm" precedence="true"/>
 				<fo:region-after region-name="footer" extent="25mm"/>
@@ -256,7 +264,7 @@
 			<!-- ======================= -->
 
 			<!-- Index pages -->
-			<fo:simple-page-master master-name="page-index" page-width="{$pageWidth}mm" page-height="{$pageHeight}mm">
+			<fo:simple-page-master master-name="index" page-width="{$pageWidth}mm" page-height="{$pageHeight}mm">
 				<fo:region-body margin-top="{$marginTop}mm" margin-bottom="{$marginBottom}mm" margin-left="{$marginLeftRight1}mm" margin-right="{$marginLeftRight2}mm" column-count="2" column-gap="10mm"/>
 				<fo:region-before region-name="header" extent="{$marginTop}mm"/>
 				<fo:region-after region-name="footer" extent="{$marginBottom}mm"/>
@@ -903,7 +911,7 @@
 								<xsl:attribute name="initial-page-number">1</xsl:attribute>
 							</xsl:if> -->
 							<xsl:if test=".//mn:indexsect">
-								<xsl:attribute name="master-reference">page-index</xsl:attribute>
+								<xsl:attribute name="master-reference">index</xsl:attribute>
 							</xsl:if>
 
 							<xsl:call-template name="insertFootnoteSeparator"/>
@@ -3339,7 +3347,7 @@
 		<xsl:param name="cutoff_date"/>
 		<xsl:param name="expiration_date"/>
 
-		<fo:page-sequence master-reference="cover-and-back-page-standard" force-page-count="no-force">
+		<fo:page-sequence master-reference="cover-page" force-page-count="no-force">
 
 			<fo:static-content flow-name="header" role="artifact">
 				<fo:block-container position="absolute" left="14mm" top="17.8mm">
@@ -3666,7 +3674,7 @@
 	</xsl:template> <!-- END: back-page -->
 
 	<xsl:template name="insertBackPage_Standard">
-		<fo:page-sequence master-reference="cover-and-back-page-standard" force-page-count="no-force">
+		<fo:page-sequence master-reference="back-page" force-page-count="no-force">
 
 			<fo:static-content flow-name="header" role="artifact">
 				<fo:block-container position="absolute" left="14mm" top="17.8mm">
@@ -10960,7 +10968,10 @@
 
 		<xsl:call-template name="setNamedDestination"/>
 
-		<fo:block-container id="{@id}" xsl:use-attribute-sets="note-style" role="SKIP">
+		<fo:block-container xsl:use-attribute-sets="note-style" role="SKIP">
+			<xsl:if test="not(parent::mn:references)">
+				<xsl:copy-of select="@id"/>
+			</xsl:if>
 
 			<xsl:call-template name="setBlockSpanAll"/>
 
@@ -13756,16 +13767,6 @@
 							<xsl:call-template name="processBibitem">
 								<xsl:with-param name="biblio_tag_part">last</xsl:with-param>
 							</xsl:call-template>
-							<xsl:if test="self::mn:note">
-								<xsl:variable name="note_node">
-									<xsl:copy> <!-- skip @id -->
-										<xsl:copy-of select="node()"/>
-									</xsl:copy>
-								</xsl:variable>
-								<xsl:for-each select="xalan:nodeset($note_node)/*">
-									<xsl:call-template name="note"/>
-								</xsl:for-each>
-							</xsl:if>
 						</fo:block>
 					</fo:list-item-body>
 				</fo:list-item>
@@ -13788,7 +13789,25 @@
 		</xsl:apply-templates>
 		<xsl:apply-templates select="mn:formattedref"/>
 		<!-- end bibitem processing -->
+
+		<xsl:call-template name="processBibliographyNote"/>
 	</xsl:template> <!-- processBibitem (bibitem) -->
+
+	<xsl:template name="processBibliographyNote">
+		<xsl:if test="self::mn:note">
+			<xsl:variable name="note_node">
+				<xsl:element name="{local-name(..)}" namespace="{$namespace_full}"> <!-- save parent context node for determining styles -->
+					<xsl:copy> <!-- skip @id -->
+						<xsl:copy-of select="node()"/>
+					</xsl:copy>
+				</xsl:element>
+			</xsl:variable>
+			<!-- <xsl:for-each select="xalan:nodeset($note_node)//mn:note">
+				<xsl:call-template name="note"/>
+			</xsl:for-each> -->
+			<xsl:call-template name="note"/>
+		</xsl:if>
+	</xsl:template>
 
 	<xsl:template match="mn:title" mode="title">
 		<fo:inline><xsl:apply-templates/></fo:inline>
@@ -14334,6 +14353,48 @@
 	<!-- =================== -->
 	<!-- End Form's elements processing -->
 	<!-- =================== -->
+
+	<xsl:attribute-set name="toc-style">
+	</xsl:attribute-set>
+
+	<xsl:template name="refine_toc-style">
+	</xsl:template>
+
+	<xsl:attribute-set name="toc-title-style">
+	</xsl:attribute-set>
+
+	<xsl:attribute-set name="toc-title-page-style">
+	</xsl:attribute-set> <!-- toc-title-page-style -->
+
+	<xsl:attribute-set name="toc-item-block-style">
+	</xsl:attribute-set>
+
+	<xsl:template name="refine_toc-item-block-style">
+	</xsl:template>
+
+	<xsl:attribute-set name="toc-item-style">
+		<xsl:attribute name="role">TOCI</xsl:attribute>
+	</xsl:attribute-set> <!-- END: toc-item-style -->
+
+	<xsl:template name="refine_toc-item-style">
+	</xsl:template> <!-- END: refine_toc-item-style -->
+
+	<xsl:attribute-set name="toc-leader-style">
+	</xsl:attribute-set> <!-- END: toc-leader-style -->
+
+	<xsl:attribute-set name="toc-pagenumber-style">
+	</xsl:attribute-set>
+
+	<!-- List of Figures, Tables -->
+	<xsl:attribute-set name="toc-listof-title-style">
+	</xsl:attribute-set>
+
+	<xsl:attribute-set name="toc-listof-item-block-style">
+	</xsl:attribute-set>
+
+	<xsl:attribute-set name="toc-listof-item-style">
+		<xsl:attribute name="role">TOCI</xsl:attribute>
+	</xsl:attribute-set>
 
 	<xsl:template name="processPrefaceSectionsDefault_Contents">
 		<xsl:variable name="nodes_preface_">
