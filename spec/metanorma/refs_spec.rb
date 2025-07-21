@@ -668,18 +668,18 @@ RSpec.describe Metanorma::Ieee do
              <bibitem id="_" anchor="ref31">
                 <docidentifier type="ETSI" primary="true">ETSI GS ZSM 012 V1.1.1 (2022-12)</docidentifier>
              </bibitem>
-             <bibitem id="_" anchor="ref23" type="standard">
+             <bibitem id="_" type="standard" anchor="ref23">
                 <docidentifier type="IEC" primary="true">IEC 60050</docidentifier>
                 <docidentifier type="URN">urn:iec:std:iec:60050::::</docidentifier>
                 <note type="Availability">
                    <p id="_">IEC publications are available from the International Electrotechnical Commission (http://www.iec.ch/). IEC publications are also available in the United States from the American National Standards Institute (http://www.ansi.org/).</p>
                 </note>
              </bibitem>
-             <bibitem id="_" anchor="ref3" type="standard">
+             <bibitem id="_" type="standard" anchor="ref3">
                 <docidentifier type="IEC" primary="true">IEC 61131-3</docidentifier>
                 <docidentifier type="URN">urn:iec:std:iec:61131-3::::</docidentifier>
              </bibitem>
-             <bibitem id="_" anchor="ref26" type="standard">
+             <bibitem id="_" type="standard" anchor="ref26">
                 <docidentifier type="IEEE" primary="true">IEEE 194-1977</docidentifier>
                 <docidentifier type="IEEE" scope="trademark" primary="true">IEEE 194™-1977</docidentifier>
                 <docidentifier type="ISBN">0-7381-4350-2</docidentifier>
@@ -688,7 +688,7 @@ RSpec.describe Metanorma::Ieee do
                    <p id="_">IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).</p>
                 </note>
              </bibitem>
-             <bibitem id="_" anchor="ref7" type="standard">
+             <bibitem id="_" type="standard" anchor="ref7">
                 <docidentifier type="IEEE" primary="true">IEEE 43-2013 Redline</docidentifier>
                 <docidentifier type="IEEE" scope="trademark" primary="true">IEEE 43™-2013 Redline</docidentifier>
                 <docidentifier type="ISBN">978-0-7381-9093-8</docidentifier>
@@ -696,13 +696,13 @@ RSpec.describe Metanorma::Ieee do
                    <p id="_">IEEE publications are available from The Institute of Electrical and Electronics Engineers (http://standards.ieee.org/).</p>
                 </note>
              </bibitem>
-             <bibitem id="_" anchor="ref6" type="standard">
+             <bibitem id="_" type="standard" anchor="ref6">
                 <docidentifier type="IEEE" primary="true">IEEE 81-1983</docidentifier>
                 <docidentifier type="IEEE" scope="trademark" primary="true">IEEE 81™-1983</docidentifier>
                 <docidentifier type="ISBN">978-0-7381-0660-1</docidentifier>
                 <docidentifier type="DOI">10.1109/IEEESTD.1983.82378</docidentifier>
              </bibitem>
-             <bibitem id="_" anchor="ref21" type="standard">
+             <bibitem id="_" type="standard" anchor="ref21">
                 <docidentifier type="ISO" primary="true">ISO/IEC 2382</docidentifier>
                 <docidentifier type="iso-reference">ISO/IEC 2382(E)</docidentifier>
                 <docidentifier type="URN">urn:iso:std:iso-iec:2382:stage-90.93</docidentifier>
@@ -710,12 +710,12 @@ RSpec.describe Metanorma::Ieee do
                    <p id="_">ISO/IEC documents are available from the International Organization for Standardization (https://www.iso.org/). ISO/IEC publications are also available in the United States from Global Engineering Documents (https://global.ihs.com/). Electronic copies are available in the United States from the American National Standards Institute (https://www.ansi.org/)</p>
                 </note>
              </bibitem>
-             <bibitem id="_" anchor="ref1" type="standard">
+             <bibitem id="_" type="standard" anchor="ref1">
                 <docidentifier type="ISO" primary="true">ISO/IEC 27001</docidentifier>
                 <docidentifier type="iso-reference">ISO/IEC 27001(E)</docidentifier>
                 <docidentifier type="URN">urn:iso:std:iso-iec:27001:stage-60.60</docidentifier>
              </bibitem>
-             <bibitem id="_" anchor="ref2" type="standard">
+             <bibitem id="_" type="standard" anchor="ref2">
                 <docidentifier type="ISO" primary="true">ISO 10642</docidentifier>
                 <docidentifier type="iso-reference">ISO 10642(E)</docidentifier>
                 <docidentifier type="URN">urn:iso:std:iso:10642:stage-90.92</docidentifier>
@@ -723,53 +723,53 @@ RSpec.describe Metanorma::Ieee do
                    <p id="_">ISO publications are available from the ISO Central Secretariat (http://www.iso.org/). ISO publications are also available in the United States from the American National Standards Institute (http://www.ansi.org/).</p>
                 </note>
              </bibitem>
-             <bibitem id="_" anchor="ref22" type="standard">
+             <bibitem id="_" type="standard" anchor="ref22">
                 <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
                 <docidentifier type="iso-reference">ISO 639(E)</docidentifier>
                 <docidentifier type="URN">urn:iso:std:iso:639:stage-60.60</docidentifier>
              </bibitem>
-             <bibitem id="_" anchor="ref25" type="standard">
+             <bibitem id="_" type="standard" anchor="ref25">
                 <docidentifier type="ITU" primary="true">ITU-R P.838-3</docidentifier>
              </bibitem>
-             <bibitem id="_" anchor="ref5" type="standard">
+             <bibitem id="_" type="standard" anchor="ref5">
                 <docidentifier type="ITU" primary="true">ITU-R P.839-4</docidentifier>
              </bibitem>
-             <bibitem id="_" anchor="ref4" type="standard">
+             <bibitem id="_" type="standard" anchor="ref4">
                 <docidentifier type="ITU" primary="true">ITU-T G.984.2 (08/2019)</docidentifier>
                 <note type="Availability">
                    <p id="_">ITU-T publications are available from the International Telecommunications Union (http://www.itu.int/).</p>
                 </note>
              </bibitem>
-             <bibitem id="_" anchor="ref24" type="standard">
+             <bibitem id="_" type="standard" anchor="ref24">
                 <docidentifier type="ITU" primary="true">ITU-T K.20 (11/2022)</docidentifier>
              </bibitem>
-             <bibitem id="_" anchor="ref8" type="standard">
+             <bibitem id="_" type="standard" anchor="ref8">
                 <docidentifier type="NIST" primary="true">NIST FIPS 140-2 fpd</docidentifier>
                 <note type="Availability">
                    <p id="_">NIST publications are available from the National Institute of Standards and Technology (http://www.nist.gov/).</p>
                 </note>
              </bibitem>
-             <bibitem id="_" anchor="ref28" type="standard">
+             <bibitem id="_" type="standard" anchor="ref28">
                 <docidentifier type="NIST" primary="true">NIST FIPS 140-3 2pd</docidentifier>
              </bibitem>
-             <bibitem id="_" anchor="ref9" type="standard">
+             <bibitem id="_" type="standard" anchor="ref9">
                 <docidentifier type="NIST" primary="true">NIST SP 800-171 fpd</docidentifier>
                 <note type="Availability">
                    <p id="_">FIPS publications are available from the National Technical Information Service (NTIS) (http://csrc.nist.gov).</p>
                 </note>
              </bibitem>
-             <bibitem id="_" anchor="ref29" type="standard">
+             <bibitem id="_" type="standard" anchor="ref29">
                 <docidentifier type="NIST" primary="true">NIST SP 800-30 fpd</docidentifier>
                 <docidentifier type="DOI">NIST.SP.800-30</docidentifier>
              </bibitem>
-             <bibitem id="_" anchor="ref30" type="standard">
+             <bibitem anchor="ref10" id="_">
+                <docidentifier type="W3C">W3C XPTR</docidentifier>
+             </bibitem>
+             <bibitem id="_" type="standard" anchor="ref30">
                 <docidentifier type="W3C" primary="true">W3C xml</docidentifier>
                 <note type="Availability">
                    <p id="_">W3C recommendations are available from the World Wide Web Consortium (https://www.w3.org).</p>
                 </note>
-             </bibitem>
-             <bibitem id="_" anchor="ref10" type="standard">
-                <docidentifier type="W3C" primary="true">W3C xptr</docidentifier>
              </bibitem>
           </references>
        </bibliography>
