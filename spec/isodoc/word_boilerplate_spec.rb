@@ -882,8 +882,8 @@ Users are encouraged to periodically check for errata.</p>
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:body")
     doc.at("//xmlns:div[@class = 'WordSectionContents']")&.remove
-    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(word)
+    expect(strip_guid(Canon.format_xml(doc.to_xml)))
+      .to be_equivalent_to Canon.format_xml(word)
   end
 
   it "processes boilerplate, whitepaper" do
@@ -1354,7 +1354,7 @@ Users are encouraged to periodically check for errata.</p>
     doc.xpath("//xmlns:p[@class = 'MsoToc1']").each(&:remove)
     doc.xpath("//v:shape | //v:shapetype | //v:rect | //v:line | //v:group",
               "v" => "urn:schemas-microsoft-com:vml").each(&:remove)
-    expect(strip_guid(Xml::C14n.format(doc.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(word)
+    expect(strip_guid(Canon.format_xml(doc.to_xml)))
+      .to be_equivalent_to Canon.format_xml(word)
   end
 end

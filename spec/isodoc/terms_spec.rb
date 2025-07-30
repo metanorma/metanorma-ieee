@@ -737,14 +737,14 @@ RSpec.describe IsoDoc do
     pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(Xml::C14n.format(strip_guid(pres_output)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
-    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(Canon.format_xml(strip_guid(pres_output)))
+      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml))).to be_equivalent_to Xml::C14n.format(html)
-    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Ieee::WordConvert.new({})
+      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(html)
+    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::WordConvert.new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml))).to be_equivalent_to Xml::C14n.format(word)
+      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(word)
   end
 
   it "sorts terms" do
@@ -972,10 +972,10 @@ RSpec.describe IsoDoc do
           </fmt-footnote-container>
        </ieee-standard>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
         .convert("test", input, true))))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .to be_equivalent_to Canon.format_xml(output)
   end
 
   it "processes IsoXML term with multiple paragraph definitions" do
@@ -1112,10 +1112,10 @@ RSpec.describe IsoDoc do
           </sections>
        </iso-standard>
     PRESXML
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes IsoXML term with multiple definitions" do
@@ -1389,10 +1389,10 @@ RSpec.describe IsoDoc do
           </sections>
        </iso-standard>
     PRESXML
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+      .to be_equivalent_to Canon.format_xml(presxml)
 
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
@@ -1611,10 +1611,10 @@ RSpec.describe IsoDoc do
           </sections>
        </iso-standard>
     PRESXML
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes IsoXML term with multiple preferred or preferred and admitted terms" do
@@ -2061,10 +2061,10 @@ RSpec.describe IsoDoc do
           </sections>
        </iso-standard>
     PRESXML
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes IsoXML term with grammatical information" do
@@ -2220,10 +2220,10 @@ RSpec.describe IsoDoc do
           </sections>
        </iso-standard>
     PRESXML
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes IsoXML term with empty or graphical designations" do
@@ -2326,10 +2326,10 @@ RSpec.describe IsoDoc do
           </sections>
        </iso-standard>
     PRESXML
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes IsoXML term with nonverbal definitions" do
@@ -2684,10 +2684,10 @@ RSpec.describe IsoDoc do
            </sections>
         </iso-standard>
     PRESXML
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes related terms and admitted terms" do
@@ -2953,10 +2953,10 @@ RSpec.describe IsoDoc do
            </sections>
         </iso-standard>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
        .new(presxml_options)
        .convert("test", input, true))))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .to be_equivalent_to Canon.format_xml(output)
   end
 
   it "processes missing related terms" do
@@ -3054,9 +3054,9 @@ RSpec.describe IsoDoc do
            </sections>
         </iso-standard>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
         .new(presxml_options)
         .convert("test", input, true))))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .to be_equivalent_to Canon.format_xml(output)
   end
 end

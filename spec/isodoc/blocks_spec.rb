@@ -433,20 +433,20 @@ RSpec.describe IsoDoc do
     pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(Xml::C14n.format(strip_guid(pres_output)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
-    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(Canon.format_xml(strip_guid(pres_output)))
+      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml))).to be_equivalent_to Xml::C14n.format(html)
+      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(html)
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
-    expect(strip_guid(Xml::C14n.format(doc.to_xml
+    expect(strip_guid(Canon.format_xml(doc.to_xml
       .gsub("<m:", "<").gsub("</m:", "</"))))
-      .to be_equivalent_to Xml::C14n.format(word)
+      .to be_equivalent_to Canon.format_xml(word)
 
-    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
+    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
       .new({ hierarchicalassets: true })
       .convert("test", input, true))
       .at("//xmlns:table/xmlns:fmt-name").to_xml)))
@@ -771,23 +771,23 @@ RSpec.describe IsoDoc do
     pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(Xml::C14n.format(strip_guid(pres_output)
+    expect(Canon.format_xml(strip_guid(pres_output)
       .gsub("&lt;", "&#x3c;")))
-      .to be_equivalent_to Xml::C14n.format(presxml)
-    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
+      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml))).to be_equivalent_to Xml::C14n.format(html)
+      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(html)
     FileUtils.rm_rf "spec/assets/odf1.emf"
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
-    expect(strip_guid(Xml::C14n.format(doc.to_xml
+    expect(strip_guid(Canon.format_xml(doc.to_xml
       .gsub("<m:", "<").gsub("</m:", "</")
       .gsub(/['"][^'".]+\.(gif|xml)['"]/, "'_.\\1'")
       .gsub("epub:", "")
       .gsub(/mso-bookmark:_Ref\d+/, "mso-bookmark:_Ref"))))
-      .to be_equivalent_to Xml::C14n.format(word)
+      .to be_equivalent_to Canon.format_xml(word)
 
     output = <<~OUTPUT
            <fmt-name id="_">
@@ -815,11 +815,11 @@ RSpec.describe IsoDoc do
           </semx>
        </fmt-name>
 OUTPUT
-    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
+    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
      .new({ hierarchicalassets: true })
      .convert("test", input, true))
      .at("//xmlns:figure/xmlns:fmt-name").to_xml)))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .to be_equivalent_to Canon.format_xml(output)
   end
 
   it "processes sequences of notes" do
@@ -987,12 +987,12 @@ OUTPUT
     pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(Xml::C14n.format(strip_guid(pres_output)
+    expect(Canon.format_xml(strip_guid(pres_output)
        .gsub("&lt;", "&#x3c;")))
-      .to be_equivalent_to Xml::C14n.format(presxml)
-    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
+      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml))).to be_equivalent_to Xml::C14n.format(html)
+      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(html)
   end
 
   it "processes admonitions" do
@@ -1052,15 +1052,15 @@ OUTPUT
         <p>&#xa0;</p>
       </div>
     OUTPUT
-    expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
+    expect(strip_guid(Canon.format_xml(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
       .new({})
       .convert("test", presxml, true))
-      .at("//body").to_xml))).to be_equivalent_to Xml::C14n.format(html)
-    expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::WordConvert
+      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(html)
+    expect(strip_guid(Canon.format_xml(Nokogiri::XML(IsoDoc::Ieee::WordConvert
       .new({})
       .convert("test", presxml, true))
                 .at("//div[@class = 'WordSection2']").to_xml)))
-      .to be_equivalent_to Xml::C14n.format(word)
+      .to be_equivalent_to Canon.format_xml(word)
   end
 
   it "processes examples" do
@@ -1170,20 +1170,20 @@ OUTPUT
     pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(Xml::C14n.format(strip_guid(pres_output
+    expect(Canon.format_xml(strip_guid(pres_output
        .gsub("&lt;", "&#x3c;"))))
-      .to be_equivalent_to Xml::C14n.format(presxml)
-    expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
+      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(Canon.format_xml(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
       .new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml))).to be_equivalent_to Xml::C14n.format(html)
+      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(html)
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
-    expect(strip_guid(Xml::C14n.format(doc.to_xml
+    expect(strip_guid(Canon.format_xml(doc.to_xml
       .gsub("<m:", "<").gsub("</m:", "</"))))
-      .to be_equivalent_to Xml::C14n.format(word)
+      .to be_equivalent_to Canon.format_xml(word)
   end
 
   it "process formulae" do
@@ -1354,18 +1354,18 @@ OUTPUT
     pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(Xml::C14n.format(strip_guid(pres_output)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
-    expect(strip_guid(Xml::C14n.format(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(Canon.format_xml(strip_guid(pres_output)))
+      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(Canon.format_xml(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
   .convert("test", pres_output, true))
-  .at("//body").to_xml))).to be_equivalent_to Xml::C14n.format(html)
+  .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(html)
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
-    expect(strip_guid(Xml::C14n.format(doc.to_xml
+    expect(strip_guid(Canon.format_xml(doc.to_xml
       .gsub("<m:", "<").gsub("</m:", "</"))))
-      .to be_equivalent_to Xml::C14n.format(word)
+      .to be_equivalent_to Canon.format_xml(word)
   end
 
   it "processes amend blocks" do
@@ -1628,11 +1628,11 @@ OUTPUT
          </semx>
       </clause>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(
+    expect(Canon.format_xml(strip_guid(Nokogiri::XML(
       IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true),
     ).at("//xmlns:clause[@id = 'A']").to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes unordered lists" do
@@ -1725,9 +1725,9 @@ OUTPUT
     INPUT
     pres_output = IsoDoc::Ieee::PresentationXMLConvert.new({})
       .convert("test", input, true)
-    expect(Xml::C14n.format(strip_guid(pres_output
+    expect(Canon.format_xml(strip_guid(pres_output
       .sub(%r{<metanorma-extension>.*</metanorma-extension>}m, ""))))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+      .to be_equivalent_to Canon.format_xml(presxml)
     presxml = <<~INPUT
        <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <bibdata>
@@ -1792,10 +1792,10 @@ OUTPUT
                       "<bibdata><ext><doctype>whitepaper</doctype></ext></bibdata><preface>")
     pres_output = IsoDoc::Ieee::PresentationXMLConvert.new({})
       .convert("test", input, true)
-    expect(Xml::C14n.format(strip_guid(pres_output
+    expect(Canon.format_xml(strip_guid(pres_output
                                        .sub(%r{<localized-strings>.*</localized-strings>}m, "")
       .sub(%r{<metanorma-extension>.*</metanorma-extension>}m, ""))))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes ordered lists" do
@@ -1907,8 +1907,8 @@ OUTPUT
     INPUT
     pres_output = IsoDoc::Ieee::PresentationXMLConvert.new({})
       .convert("test", input, true)
-    expect(Xml::C14n.format(strip_guid(pres_output
+    expect(Canon.format_xml(strip_guid(pres_output
       .sub(%r{<metanorma-extension>.*</metanorma-extension>}m, ""))))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 end

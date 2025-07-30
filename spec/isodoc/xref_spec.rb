@@ -103,9 +103,9 @@ RSpec.describe Metanorma::Ieee do
            </p>
         </foreword>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)).at("//xmlns:foreword").to_xml)))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .to be_equivalent_to Canon.format_xml(output)
   end
 
   it "cross-references formulae" do
@@ -191,10 +191,10 @@ RSpec.describe Metanorma::Ieee do
            </p>
         </foreword>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml)))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .to be_equivalent_to Canon.format_xml(output)
   end
 
   it "processes figures as hierarchical assets" do
@@ -396,11 +396,11 @@ RSpec.describe Metanorma::Ieee do
            </p>
         </foreword>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
+    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
       .new({})
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml)))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .to be_equivalent_to Canon.format_xml(output)
     output = <<~OUTPUT
         <foreword id="fwd" displayorder="2">
            <title id="_">Foreword</title>
@@ -535,10 +535,10 @@ RSpec.describe Metanorma::Ieee do
            </p>
         </foreword>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
+    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
       .new({ hierarchicalassets: true })
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml)))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .to be_equivalent_to Canon.format_xml(output)
   end
 end

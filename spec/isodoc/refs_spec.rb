@@ -813,8 +813,8 @@ RSpec.describe IsoDoc do
         IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
         .convert("test", input, true),
       )
-      expect(Xml::C14n.format(strip_guid(out.to_xml)))
-        .to be_equivalent_to Xml::C14n.format(presxml)
+      expect(Canon.format_xml(strip_guid(out.to_xml)))
+        .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "re-sorts biblio citations" do
@@ -900,8 +900,8 @@ RSpec.describe IsoDoc do
       IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true),
     )
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "renders reference without identifier" do
@@ -981,8 +981,8 @@ RSpec.describe IsoDoc do
       IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true),
     )
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "removes page locality" do
@@ -1100,7 +1100,7 @@ RSpec.describe IsoDoc do
       .convert("test", input, true),
     )
     out = out.at("//xmlns:clause[@id = 'A']")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 end
