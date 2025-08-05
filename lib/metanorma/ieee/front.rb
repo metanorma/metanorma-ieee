@@ -26,6 +26,41 @@ module Metanorma
         true
       end
 
+       def metadata_committee_types(node)
+        %w(society balloting-group working-group committee)
+       end
+
+       def committee_contributors(node, xml, agency, opt)
+         metadata_committee_prep(node) or return
+         super
+       end
+
+       def org_attrs_add_committees(node, ret, opts, opts_orig)
+        opts_orig[:groups]&.each_with_index do |g, i|
+          i.zero? and next
+          opts = committee_contrib_org_prep(node, g, nil, opts_orig)
+          ret << org_attrs_parse_core(node, opts)
+        end
+        contributors_committees_nest1(ret)
+        #require "debug"; binding.b if ret.size > 1
+        #ret
+      end
+
+       def contributors_committees_nest1(committees)
+        committees.empty? and return committees
+        committees = committees.map(&:reverse).reverse.flatten
+        committees.each_with_index do |m, i|
+          i.zero? and next
+          m[:subdiv] = committees[i-1]
+        end
+        committees[-1].nil? and return []
+        [committees[-1]]
+      end
+
+       def committee_contrib_org_prep(node, type, agency, _opts)
+         super.merge(role: "authorizer")
+       end
+
       def metadata_other_id(node, xml)
         a = node.attr("isbn-pdf") and
           xml.docidentifier a, type: "ISBN", scope: "PDF"

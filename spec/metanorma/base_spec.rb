@@ -155,6 +155,33 @@ RSpec.describe Metanorma::Ieee do
              <abbreviation>IEEE</abbreviation>
            </organization>
          </contributor>
+   <contributor>
+      <role type="authorizer">
+         <description>Society</description>
+      </role>
+      <organization>
+         <name>Institute of Electrical and Electronic Engineers</name>
+         <subdivision type="Society">
+            <name>SECRETARIAT</name>
+         </subdivision>
+         <subdivision type="Balloting group" subtype="entity">
+            <name>SC</name>
+         </subdivision>
+         <subdivision type="Working group">
+            <name>WG</name>
+         </subdivision>
+         <subdivision type="Working group">
+            <name>WG1</name>
+         </subdivision>
+         <subdivision type="Committee">
+            <name>TC</name>
+         </subdivision>
+         <subdivision type="Committee">
+            <name>TC1</name>
+         </subdivision>
+         <abbreviation>IEEE</abbreviation>
+      </organization>
+   </contributor>
          <contributor>
            <role type="publisher"/>
            <organization>
@@ -263,6 +290,21 @@ RSpec.describe Metanorma::Ieee do
                <abbreviation>IEEE</abbreviation>
              </organization>
            </contributor>
+      <contributor>
+          <role type="authorizer">
+         <description>Society</description>
+      </role>
+      <organization>
+         <name>Institute of Electrical and Electronic Engineers</name>
+         <subdivision type="Society">
+            <name>SECRETARIAT</name>
+         </subdivision>
+         <subdivision type="Balloting group" subtype="individual">
+            <name>BG</name>
+         </subdivision>
+         <abbreviation>IEEE</abbreviation>
+      </organization>
+      </contributor>
         <contributor>
           <role type="publisher"/>
           <organization>
