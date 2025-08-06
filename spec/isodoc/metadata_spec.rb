@@ -261,6 +261,11 @@ RSpec.describe Metanorma::Ieee do
       <program>HIJ</program>
            </ext>
          </bibdata>
+         <metanorma-extension>
+         <semantic-metadata>
+         <stage-published>false</stage-published>
+         </semantic-metadata>
+         </metanorma-extension>
          <preface/><sections/>
          <annex obligation="informative"/>
          </ieee-standard>
@@ -596,6 +601,11 @@ RSpec.describe Metanorma::Ieee do
       <program>HIJ</program>
            </ext>
          </bibdata>
+         <metanorma-extension>
+         <semantic-metadata>
+         <stage-published>false</stage-published>
+         </semantic-metadata>
+         </metanorma-extension>
          <preface/><sections/>
          <annex obligation="informative"/>
          </ieee-standard>
@@ -811,6 +821,11 @@ RSpec.describe Metanorma::Ieee do
           </editorialgroup>
         </ext>
       </bibdata>
+         <metanorma-extension>
+         <semantic-metadata>
+         <stage-published>false</stage-published>
+         </semantic-metadata>
+         </metanorma-extension>
       <preface/><sections/>
       <annex obligation="informative"/>
       </ieee-standard>
