@@ -157,7 +157,7 @@ RSpec.describe Metanorma::Ieee do
          </contributor>
    <contributor>
       <role type="authorizer">
-         <description>Society</description>
+         <description>committee</description>
       </role>
       <organization>
          <name>Institute of Electrical and Electronic Engineers</name>
@@ -292,7 +292,7 @@ RSpec.describe Metanorma::Ieee do
            </contributor>
       <contributor>
           <role type="authorizer">
-         <description>Society</description>
+         <description>committee</description>
       </role>
       <organization>
          <name>Institute of Electrical and Electronic Engineers</name>

@@ -39,11 +39,11 @@ module Metanorma
         opts_orig[:groups]&.each_with_index do |g, i|
           i.zero? and next
           opts = committee_contrib_org_prep(node, g, nil, opts_orig)
-          ret << org_attrs_parse_core(node, opts)
+          ret << org_attrs_parse_core(node, opts).map do |x|
+            x.merge(subdivtype: opts[:subdivtype])
+          end
         end
         contributors_committees_nest1(ret)
-        #require "debug"; binding.b if ret.size > 1
-        #ret
       end
 
        def contributors_committees_nest1(committees)
