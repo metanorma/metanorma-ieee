@@ -64,28 +64,30 @@ module IsoDoc
       end
 
       def society(xml)
-        society = xml.at(ns("//bibdata/ext/editorialgroup/" \
-                            "society"))&.text || "&lt;Society&gt;"
+        society = xml.at(ns("//bibdata/contributor[role/@type = 'authorizer']/" \
+        "organization/subdivision[@type='Society']/name"))&.text ||
+          "&lt;Society&gt;"
         set(:society, society)
       end
 
       def tc(xml)
-        tc = xml.at(ns("//bibdata/ext/editorialgroup/" \
-                       "committee"))&.text || "&lt;Committee Name&gt;"
+        tc = xml.at(ns("//bibdata/contributor[role/@type = 'authorizer']/" \
+          "organization/subdivision[@type='Committee']/name"))&.text ||
+          "&lt;Committee Name&gt;"
         set(:technical_committee, tc)
       end
 
       def wg(xml)
-        wg = xml.at(ns("//bibdata/ext/editorialgroup/" \
-                       "working-group")) or return nil
+        wg = xml.at(ns("//bibdata/contributor[role/@type = 'authorizer']/" \
+         "organization/subdivision[@type='Working group']/name")) or return nil
         set(:working_group, wg.text)
       end
 
       def bg(xml)
-        bg = xml.at(ns("//bibdata/ext/editorialgroup/" \
-                       "balloting-group")) or return nil
+        bg = xml.at(ns("//bibdata/contributor[role/@type = 'authorizer']/" \
+         "organization/subdivision[@type='Balloting group']/name")) or return nil
         set(:balloting_group, bg.text)
-        set(:balloting_group_type, bg["type"])
+        set(:balloting_group_type, bg.parent["subtype"])
       end
 
       def otherid(isoxml, _out)
