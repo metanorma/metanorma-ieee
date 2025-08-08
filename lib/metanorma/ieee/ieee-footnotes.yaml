@@ -5,24 +5,21 @@ ieee: |
 
 iec: |
   IEC publications are available from the International Electrotechnical
-  Commission (http://www.iec.ch/). IEC publications are also available in
-  the United States from the American National Standards Institute
-  (http://www.ansi.org/).
+  Commission (https://www.iec.ch) and the American National Standards Institute
+  (https://www.ansi.org/).
 
 cispr: |
   CISPR documents are available from the International Electrotechnical
-  Commission (http://www.iec.ch/). CISPR documents are also available in
-  the United States from the American National Standards Institute
-  (http://www.ansi.org)
+  Commission (https://www.iec.ch/) and the American National Standards Institute
+  (https://www.ansi.org/).
 
 ietf: |
   IETF documents (e.g., RFCs) are available from the Internet Engineering Task Force (http://www.ietf.org/).
 
 iso: |
-  ISO publications are available from the ISO Central Secretariat
-  (http://www.iso.org/). ISO publications are also available in the United
-  States from the American National Standards Institute
-  (http://www.ansi.org/).
+  ISO publications are available from the International Organization for
+  Standardization (https://www.iso.org/) and the American National Standards
+  Institute (https://www.ansi.org/).
 
 iso-iec: |
   ISO/IEC documents are available from the International Organization for
