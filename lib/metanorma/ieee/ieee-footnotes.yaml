@@ -14,7 +14,8 @@ cispr: |
   (https://www.ansi.org/).
 
 ietf: |
-  IETF documents (e.g., RFCs) are available from the Internet Engineering Task Force (http://www.ietf.org/).
+  IETF documents (e.g., RFCs) are available from the Internet Engineering Task
+  Force (http://www.ietf.org/).
 
 iso: |
   ISO publications are available from the International Organization for
@@ -71,4 +72,6 @@ oasis: |
   Project Web site (http://www.3gpp.org).
 
 ieee-withdrawn: |
-  % has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
+  % has been withdrawn; however, copies can be obtained from Global Engineering,
+  15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181
+  (http://global.ihs.com/).
