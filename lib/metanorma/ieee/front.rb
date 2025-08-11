@@ -121,7 +121,7 @@ module Metanorma
       end
 
       def datetypes
-        super + %w{feedback-ended}
+        super + %w{feedback-ended ieee-sasb-approved}
       end
 
       def metadata_subdoctype(node, xml)
