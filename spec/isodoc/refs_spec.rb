@@ -143,6 +143,9 @@ RSpec.describe IsoDoc do
                  <p id="_">IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
          </p>
                </note>
+               <note type="Availability">
+                 <p id="_">This is a second availability note</p>
+               </note>
                 <edition>1</edition>
                 <series>
                 <title>London Mathematical Society Lecture Note Series</title>
@@ -281,7 +284,7 @@ RSpec.describe IsoDoc do
              <p class="zzSTDTitle1" displayorder="3"/>
              <clause id="A" inline-header="false" obligation="normative" displayorder="4">
                 <title id="_">Clause</title>
-                <fmt-title id="_" depth="1">
+                <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="A">2</semx>
                       <span class="fmt-autonum-delim">.</span>
@@ -342,7 +345,7 @@ RSpec.describe IsoDoc do
              </clause>
              <references id="_" normative="true" obligation="informative" displayorder="2">
                 <title id="_">Normative References</title>
-                <fmt-title id="_" depth="1">
+                <fmt-title depth="1" id="_">
                    <semx element="title" source="_">Normative References</semx>
                 </fmt-title>
                 <bibitem id="ISO16634" type="standard">
@@ -540,6 +543,18 @@ RSpec.describe IsoDoc do
                             </span>
                          </fmt-fn-label>
                       </fn>
+                      <fn id="_" reference="3" original-reference="_" target="_">
+                         <p>
+                This is a second availability note
+              </p>
+                         <fmt-fn-label>
+                            <span class="fmt-caption-label">
+                               <sup>
+                                  <semx element="autonum" source="_">3</semx>
+                               </sup>
+                            </span>
+                         </fmt-fn-label>
+                      </fn>
                    </formattedref>
                    <title>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</title>
                    <docidentifier type="DOI">https://doi.org/10.1017/9781108877831</docidentifier>
@@ -596,6 +611,9 @@ RSpec.describe IsoDoc do
                       <p id="_">IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
         </p>
                    </note>
+                   <note type="Availability">
+                      <p id="_">This is a second availability note</p>
+                   </note>
                    <edition>1</edition>
                    <series>
                       <title>London Mathematical Society Lecture Note Series</title>
@@ -645,7 +663,7 @@ RSpec.describe IsoDoc do
           <bibliography>
              <references id="_" normative="false" obligation="informative" displayorder="5">
                 <title id="_">Bibliography</title>
-                <fmt-title id="_" depth="1">
+                <fmt-title depth="1" id="_">
                    <semx element="title" source="_">Bibliography</semx>
                 </fmt-title>
                 <bibitem id="ref6">
@@ -803,6 +821,23 @@ RSpec.describe IsoDoc do
                          </span>
                       </fmt-fn-label>
                       IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
+                   </p>
+                </semx>
+             </fmt-fn-body>
+             <fmt-fn-body id="_" target="_" reference="3">
+                <semx element="fn" source="_">
+                   <p>
+                      <fmt-fn-label>
+                         <span class="fmt-caption-label">
+                            <sup>
+                               <semx element="autonum" source="_">3</semx>
+                            </sup>
+                         </span>
+                         <span class="fmt-caption-delim">
+                            <tab/>
+                         </span>
+                      </fmt-fn-label>
+                      This is a second availability note
                    </p>
                 </semx>
              </fmt-fn-body>

@@ -672,7 +672,7 @@ RSpec.describe Metanorma::Ieee do
                 <docidentifier type="IEC" primary="true">IEC 60050</docidentifier>
                 <docidentifier type="URN">urn:iec:std:iec:60050::::</docidentifier>
                 <note type="Availability">
-                   <p id="_">IEC publications are available from the International Electrotechnical Commission (http://www.iec.ch/). IEC publications are also available in the United States from the American National Standards Institute (http://www.ansi.org/).</p>
+                   <p id="_">IEC publications are available from the International Electrotechnical Commission (https://www.iec.ch) and the American National Standards Institute (https://www.ansi.org/).</p>
                 </note>
              </bibitem>
              <bibitem id="_" type="standard" anchor="ref3">
@@ -692,6 +692,9 @@ RSpec.describe Metanorma::Ieee do
                 <docidentifier type="IEEE" primary="true">IEEE 43-2013 Redline</docidentifier>
                 <docidentifier type="IEEE" scope="trademark" primary="true">IEEE 43™-2013 Redline</docidentifier>
                 <docidentifier type="ISBN">978-0-7381-9093-8</docidentifier>
+                <note type="Availability">
+                   <p id="_">The IEEE standards or products referred to in this clause are trademarks owned by The Institute of Electrical and Electronics Engineers, Incorporated.</p>
+                </note>
                 <note type="Availability">
                    <p id="_">IEEE publications are available from The Institute of Electrical and Electronics Engineers (http://standards.ieee.org/).</p>
                 </note>
@@ -720,7 +723,7 @@ RSpec.describe Metanorma::Ieee do
                 <docidentifier type="iso-reference">ISO 10642(E)</docidentifier>
                 <docidentifier type="URN">urn:iso:std:iso:10642:stage-90.92</docidentifier>
                 <note type="Availability">
-                   <p id="_">ISO publications are available from the ISO Central Secretariat (http://www.iso.org/). ISO publications are also available in the United States from the American National Standards Institute (http://www.ansi.org/).</p>
+                   <p id="_">ISO publications are available from the International Organization for Standardization (https://www.iso.org/) and the American National Standards Institute (https://www.ansi.org/).</p>
                 </note>
              </bibitem>
              <bibitem id="_" type="standard" anchor="ref22">
