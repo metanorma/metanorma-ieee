@@ -15,7 +15,8 @@ RSpec.describe Metanorma::Ieee do
       :draft: 1.2
       :docnumber: 10000
       :doctype: recommended-practice
-      :issued-date: 1000-01-01
+      :ieee-sasb-approved-date: 1000-01-01
+      :issued-date: 1001-02-02
 
       == Clause 1
     INPUT
@@ -613,7 +614,7 @@ RSpec.describe Metanorma::Ieee do
            </clause>
            <clause id="_" inline-header="false" obligation="normative">
              <p id="_">Copyright © #{Date.today.year} by The Institute of Electrical and Electronics Engineers, Inc.</p>
-             <p id="_">All rights reserved. Published 01 Jan 1000. Printed in the United States of America.</p>
+             <p id="_">All rights reserved. Published 02 Feb 1001. Printed in the United States of America.</p>
            </clause>
            <clause id="_" inline-header="false" obligation="normative">
              <p id="_">IEEE is a registered trademark in the U.S. Patent &amp; Trademark Office, owned by The Institute of Electrical and Electronics Engineers, Incorporated.</p>
