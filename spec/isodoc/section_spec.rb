@@ -1288,8 +1288,8 @@ RSpec.describe IsoDoc::Ieee do
          <h1 class="IntroTitle"><a class="anchor" href="#boilerplate-participants"/><a class="header" href="#boilerplate-participants">Participants</a></h1>
          <div id="boilerplate-participants-wg">
            <p id="_">At the time this draft Standard was completed, the  had the following membership:</p>
-           <p style="text-align:center;"><b><span class="surname">Socrates</span><span class="forename">Adalbert</span></b>, <i><span class="au_role">Chair</span></i></p>
-           <p style="text-align:center;"><b>Plato</b>, <i><span class="au_role">Technical editor</span></i></p>
+           <p style="text-align:center;" class="officeholder"><b><span class="surname">Socrates</span><span class="forename">Adalbert</span></b>, <i><span class="au_role">Chair</span></i></p>
+           <p style="text-align:center;" class="officeholder"><b>Plato</b>, <i><span class="au_role">Technical editor</span></i></p>
            <p>Aristotle</p>
            <p>Anaximander</p>
            <p id="_">This is an additional clause.</p>
@@ -1308,8 +1308,8 @@ RSpec.describe IsoDoc::Ieee do
          </div>
          <div id="boilerplate-participants-sb">
            <p id="_">When the IEEE SA Standards Board approved this Standard on &lt;Date Approved&gt;, it had the following membership:</p>
-           <p style="text-align:center;"><b>Aeschylus</b>, <i><span class="au_role">Chair</span></i></p>
-           <p style="text-align:center;"><b>Sophocles</b>, <i><span class="au_role">Technical editor</span></i></p>
+           <p style="text-align:center;" class="officeholder"><b>Aeschylus</b>, <i><span class="au_role">Chair</span></i></p>
+           <p style="text-align:center;" class="officeholder"><b>Sophocles</b>, <i><span class="au_role">Technical editor</span></i></p>
            <p>Euripides</p>
            <p>Aristophanes<span class="cite_fn">*</span></p>
            <p id="_"><span class="cite_fn">*</span>Member Emeritus</p>
