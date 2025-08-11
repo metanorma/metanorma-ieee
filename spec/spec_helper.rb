@@ -134,6 +134,7 @@ def boilerplate(xmldoc)
                         File.read(file, encoding: "utf-8")
                         .gsub(/<\/?membership>/, ""), xmldoc
                       ))
+  ret.at("//p[@type='emeritus_sign']")&.remove
   ret.at("//clause[@anchor='boilerplate_word_usage']")&.remove
   ret.xpath("//passthrough").each(&:remove)
   ret.xpath("//li").each { |x| x["id"] = "_" }
