@@ -117,10 +117,12 @@ module IsoDoc
       end
 
       def availability_note(bib)
-        note = bib.at(ns("./note[@type = 'Availability']")) or return ""
-        id = UUIDTools::UUID.random_create.to_s
-        @new_ids[id] = nil
-        "<fn id='#{id}' reference='#{id}'><p>#{note.content}</p></fn>"
+        notes = bib.xpath(ns("./note[@type = 'Availability']"))
+        notes.map do |note|
+          id = UUIDTools::UUID.random_create.to_s
+          @new_ids[id] = nil
+          "<fn id='#{id}' reference='#{id}'><p>#{note.content}</p></fn>"
+        end.join
       end
 
       def omit_docid_prefix(prefix)

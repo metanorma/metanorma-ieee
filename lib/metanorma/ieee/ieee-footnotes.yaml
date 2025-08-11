@@ -1,7 +1,8 @@
 ---
-ieee: |
-  IEEE publications are available from The Institute of Electrical and
-  Electronics Engineers (http://standards.ieee.org/).
+ieee:
+  - The IEEE standards or products referred to in this clause are trademarks owned by The Institute of Electrical and Electronics Engineers, Incorporated.
+  - IEEE publications are available from The Institute of Electrical and
+    Electronics Engineers (http://standards.ieee.org/).
 
 iec: |
   IEC publications are available from the International Electrotechnical
