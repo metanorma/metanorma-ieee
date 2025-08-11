@@ -239,12 +239,20 @@ module Metanorma
 
       def insert_availability_note(bib, msg)
         bib or return
-        note = %(<note type="Availability"><p>#{msg}</p></note>)
+        Array(msg).each do |msg1|
+          note = %(<note type="Availability"><p>#{msg1}</p></note>)
+          if b = insert_availability_note_ins(bib)
+            b.next = note
+          end
+        end
+      end
+
+      def insert_availability_note_ins(bib)
         if b = bib.at("./language | ./script | ./abstract | ./status")
-          b.previous = note
-        else b = bib.at("./contributor") || bib.at("./date") ||
+          b.previous
+        else bib.at("./contributor") || bib.at("./date") ||
           bib.at("./docnumber") || bib.at("./docidentifier") ||
-          bib.at("./title") and b.next = note
+          bib.at("./title")
         end
       end
     end
