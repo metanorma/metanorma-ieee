@@ -55,10 +55,20 @@ module Metanorma
         PARTICIPANT_BOILERPLATE_LOCATIONS.each do |k, v|
           populate_participants(xml, k.to_s, v)
         end
-        p = xml.at(".//p[@type = 'emeritus_sign']")
-        ul = xml.at("//clause[@anchor = 'boilerplate-participants-sb']//ul")
-        p && ul and ul.next = p
+        emeritus_sign(xml)
         xml.at("//sections//clause[@type = 'participants']")&.remove
+      end
+
+      def emeritus_sign(xml)
+        p = xml.at(".//p[@type = 'emeritus_sign']") or return
+        ul = xml.at("//clause[@anchor = 'boilerplate-participants-sb']//ul") or
+          return
+        has_asterisk = ul.xpath(".//p")&.any? do |li|
+          li.text.strip.end_with?("*")
+        end
+        if has_asterisk then ul.next = p
+        else p.remove
+        end
       end
 
       def populate_participants(xml, target, subtitle)
@@ -98,9 +108,10 @@ module Metanorma
           dl.children = ret.keys.map do |k|
             "<dt>#{k}</dt><dd #{add_id_text}><p>#{ret[k]}</p></dd>"
           end.join
-        else list.children =
-         "<dl><dt>name</dt><dd #{add_id_text}><p>#{curr.children.to_xml}" \
-         "</p></dd><dt>role</dt><dd #{add_id_text}><p>member</p></dd></dl>"
+        else list.children = <<~XML
+          <dl><dt>name</dt><dd #{add_id_text}><p>#{curr.children.to_xml}
+          </p></dd><dt>role</dt><dd #{add_id_text}><p>member</p></dd></dl>
+        XML
         end
       end
 

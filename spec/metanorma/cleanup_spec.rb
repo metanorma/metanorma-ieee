@@ -603,7 +603,6 @@ RSpec.describe Metanorma::Ieee do
                    </dl>
                  </li>
                </ul>
-               <p id="_" type="emeritus_sign"><span class="cite_fn">*</span>Member Emeritus</p>
              </clause>
            </clause>
          </legal-statement>
@@ -1085,7 +1084,7 @@ RSpec.describe Metanorma::Ieee do
       role::: Technical editor
       item::
       name::: Euripides
-      item:: Aristophanes
+      item:: Aristophanes*
 
       This is an additional clause.
 
@@ -1264,7 +1263,7 @@ RSpec.describe Metanorma::Ieee do
                <dl id="_">
                  <dt>name</dt>
                  <dd id="_">
-                   <p id="_">Aristophanes</p>
+                   <p id="_">Aristophanes*</p>
                  </dd>
                  <dt>role</dt>
                  <dd id="_">
