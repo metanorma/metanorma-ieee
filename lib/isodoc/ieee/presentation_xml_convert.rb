@@ -228,6 +228,16 @@ module IsoDoc
         n.children.wrap("<em></em>")
       end
 
+      # before processing, move license termnotes to fn at end of term,
+      # so they aren't numbered as termnotes
+      def conversions(docxml)
+        docxml.xpath(ns("//termnote[@type='license']")).each do |n|
+          n.name = "fn"
+          n.parent << n
+        end
+        super
+      end
+
       include Init
     end
   end

@@ -18,8 +18,15 @@ RSpec.describe Metanorma::Ieee do
 
       X
 
+      [NOTE]
+      This is a note
+
+      [NOTE,type=license]
+      This is not a note but a license statement associated with the source
+
       [.source]
       <<ISO2191,section=1>>,
+
     INPUT
     output = <<~OUTPUT
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
@@ -73,6 +80,12 @@ RSpec.describe Metanorma::Ieee do
                    <p id='_'>X</p>
                  </verbal-definition>
                </definition>
+               <termnote id="_">
+               <p id="_">This is a note</p>
+            </termnote>
+            <termnote id="_" type="license">
+               <p id="_">This is not a note but a license statement associated with the source</p>
+            </termnote>
                <source status='modified' type='authoritative'>
                  <origin bibitemid='ISO2191' type='inline' citeas=''>
                    <localityStack>
