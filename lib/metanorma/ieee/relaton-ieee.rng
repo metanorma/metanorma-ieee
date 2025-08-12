@@ -121,7 +121,12 @@ https://standards.ieee.org/about/policies/opman/sect5/</a:documentation>
     </element>
   </define>
   <define name="BibliographicDateType" combine="choice">
-    <value>feedback-ended</value>
+    <choice>
+      <value>feedback-ended</value>
+      <a:documentation>Date on which feedback on the document must be received by</a:documentation>
+      <value>ieee-sasb-approved</value>
+      <a:documentation>Date that the document was approved by the IEEE SA Standards Body</a:documentation>
+    </choice>
   </define>
   <define name="trialuse">
     <element name="trial-use">

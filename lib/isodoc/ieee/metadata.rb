@@ -6,7 +6,7 @@ module IsoDoc
     class Metadata < IsoDoc::Metadata
       def initialize(lang, script, i18n, fonts_options = {})
         super
-        @metadata[:issueddate] = "&lt;Date Approved&gt;"
+        @metadata[:ieee_sasb_approveddate] = "&lt;Date Approved&gt;"
         logos
       end
 

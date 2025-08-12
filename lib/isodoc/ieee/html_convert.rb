@@ -41,7 +41,10 @@ module IsoDoc
       end
 
       def para_type_strip(html)
-        html.xpath("//p[@type]").each { |p| p.delete("type") }
+        html.xpath("//p[@type]").each do |p|
+          p["type"] == "officeholder" and p["class"] = "officeholder"
+          p.delete("type")
+        end
         html
       end
 

@@ -31,6 +31,8 @@ RSpec.describe Metanorma::Ieee do
            <date type='issued' format="ddMMMyyyy">01 Jul 2018</date>
            <date type='feedback-ended'>2018-08-01</date>
            <date type='feedback-ended' format="ddMMMyyyy">01 Aug 2018</date>
+           <date type="ieee-sasb-approved"><on>1004-12-01</on></date>
+           <date type="ieee-sasb-approved" format="ddMMMyyyy"><on>01 Dec 1004</on></date>
                                <contributor>
                 <role type='editor'>Working Group Chair</role>
                 <person>
@@ -279,6 +281,7 @@ RSpec.describe Metanorma::Ieee do
           edition: "2",
           feedback_endeddate: "01 Aug 2018",
           full_doctitle: "Draft Recommended Practice for Main Title<br/>in multiple lines",
+          ieee_sasb_approveddate: "01 Dec 1004",
           implementeddate: "XXX",
           isbn_pdf: "GHI",
           isbn_print: "JKL",
@@ -593,6 +596,7 @@ RSpec.describe Metanorma::Ieee do
           edition: "2",
           feedback_endeddate: "01 Aug 2018",
           full_doctitle: "Draft Whitepaper for Main Title<br/>in multiple lines",
+          ieee_sasb_approveddate: "&lt;Date Approved&gt;",
           implementeddate: "XXX",
           isbn_pdf: "GHI",
           isbn_print: "JKL",
@@ -668,6 +672,7 @@ RSpec.describe Metanorma::Ieee do
           edition: "2",
           feedback_endeddate: "01 Aug 2018",
           full_doctitle: "Draft Whitepaper for Main Title<br/>in multiple lines",
+          ieee_sasb_approveddate: "&lt;Date Approved&gt;",
           implementeddate: "XXX",
           isbn_pdf: "GHI",
           isbn_print: "JKL",
@@ -803,10 +808,11 @@ RSpec.describe Metanorma::Ieee do
           draftinfo: " (draft 3.4, 2000-01-01)",
           edition: "2",
           full_doctitle: "Draft Recommended Practice for Main Title<br/>in multiple lines",
+          ieee_sasb_approveddate: "&lt;Date Approved&gt;",
           implementeddate: "XXX",
           isbn_pdf: "978-0-XXXX-XXXX-X",
           isbn_print: "978-0-XXXX-XXXX-X",
-          issueddate: "&lt;Date Approved&gt;",
+          issueddate: "XXX",
           iteration: "3",
           keywords: ["word2", "word1"],
           lang: "en",

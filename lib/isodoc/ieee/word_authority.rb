@@ -114,7 +114,7 @@ module IsoDoc
           "<div class='WordSection'>#{para}#{d}</div>"
         end.join(SECTIONBREAK)
         div.document.at("//div[@class = 'WordSectionIntro']")
-          .previous_element.previous = SECTIONBREAK + out
+          .previous_element.previous = SECTIONBREAK + out + SECTIONBREAK
       end
 
       def feedback_table(docxml)
