@@ -203,16 +203,16 @@ module IsoDoc
         end
       end
 
-      # "Figure 1—" remove each of these: strip elements in caption associated
+      # "Figure 1" remove each of these: strip elements in caption associated
       # with autonumbering -- # but not in footnotes. The autonumber captions
-      # are provided by Word styles instead
+      # are provided by Word styles instead.
+      # Retain the em-dash delimiting caption
       def strip_caption_semx(name)
         name.xpath(".//xmlns:semx[@element = 'autonum']/"\
                    "preceding-sibling::*[normalize-space() = '']").each do |s|
                      s.ancestors("fn").empty? and s.remove
                    end
         name.xpath(ns(".//span[@class = 'fmt-element-name']  | "\
-                      ".//span[@class = 'fmt-caption-delim'] | "\
                       ".//semx[@element = 'autonum']")).each do |s|
                         s.ancestors("fn").empty? and s.remove
                       end
