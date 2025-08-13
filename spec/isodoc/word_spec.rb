@@ -1296,7 +1296,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                 <img height="20" alt="alttext" title="titletxt" width="30"/>
              </p>
              <p class="IEEEStdsRegularFigureCaption" style="text-align:center;">
-                Split-it-right
+                —Split-it-right
                 <i>sample</i>
                 divider
                 <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
@@ -1326,7 +1326,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
           <div class="MsoBodyText" style="page-break-after: avoid;page-break-inside: avoid;;text-align:center;">
              <a name="figureA-1" id="figureA-1"/>
              <p class="FigureHeadings" style="text-align:center;">
-                Split-it-right
+                —Split-it-right
                 <i>sample</i>
                 divider
                 <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
@@ -1374,7 +1374,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
           <a name="a" id="a"/>
           <p class="IEEEStdsLevel1Header">1.</p>
           <p class="IEEEStdsRegularTableCaption" style="text-align:center;">
-             Split-it-right
+             —Split-it-right
              <i>sample</i>
              divider
              <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
@@ -1428,7 +1428,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
           <a name="a" id="a"/>
           <p class="IEEESectionHeader">1.</p>
           <p class="TableTitles" style="text-align:center;">
-             Split-it-right
+             —Split-it-right
              <i>sample</i>
              divider
              <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
