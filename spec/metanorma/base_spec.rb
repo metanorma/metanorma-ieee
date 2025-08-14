@@ -235,14 +235,6 @@ RSpec.describe Metanorma::Ieee do
            <subdoctype>amendment</subdoctype>
            <flavor>ieee</flavor>
            <trial-use>true</trial-use>
-           <editorialgroup>
-             <society>SECRETARIAT</society>
-             <balloting-group type="entity">SC</balloting-group>
-             <working-group>WG</working-group>
-             <working-group>WG1</working-group>
-             <committee>TC</committee>
-             <committee>TC1</committee>
-           </editorialgroup>
            <ics>
              <code>01.040.11</code>
              <text>Health care technology (Vocabularies)</text>
@@ -337,10 +329,6 @@ RSpec.describe Metanorma::Ieee do
           <doctype>standard</doctype>
           <subdoctype>document</subdoctype>
            <flavor>ieee</flavor>
-          <editorialgroup>
-            <society>SECRETARIAT</society>
-            <balloting-group type="individual">BG</balloting-group>
-          </editorialgroup>
           <structuredidentifier>
             <docnumber>1000</docnumber>
             <agency>IEEE</agency>
@@ -455,9 +443,6 @@ RSpec.describe Metanorma::Ieee do
            <doctype>whitepaper</doctype>
            <subdoctype>industry-connection-report</subdoctype>
            <flavor>ieee</flavor>
-           <editorialgroup>
-             <working-group>IEEE SA Industry Connections activity</working-group>
-           </editorialgroup>
          </ext>
        </bibdata>
     OUTPUT
