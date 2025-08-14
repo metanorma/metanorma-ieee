@@ -51,7 +51,35 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       <name><completename>KL</completename></name>
       </person></contributor><contributor><role type="editor">Standards Board Member</role><person>
       <name><completename>MN</completename></name>
-      </person></contributor><contributor><role type="publisher"/><organization>
+      </person></contributor>
+      <contributor>
+      <role type="authorizer">
+         <description>committee</description>
+      </role>
+      <organization>
+         <name>Institute of Electrical and Electronic Engineers</name>
+         <subdivision type="Society">
+            <name>Society</name>
+         </subdivision>
+         <subdivision type="Balloting group" subtype="entity">
+            <name>BG</name>
+         </subdivision>
+         <subdivision type="Working group">
+            <name>WG</name>
+         </subdivision>
+         <subdivision type="Working group">
+            <name>WG1</name>
+         </subdivision>
+         <subdivision type="Committee">
+            <name>Tech Committee</name>
+         </subdivision>
+         <subdivision type="Committee">
+            <name>TC1</name>
+         </subdivision>
+         <abbreviation>IEEE</abbreviation>
+      </organization>
+   </contributor>
+      <contributor><role type="publisher"/><organization>
       <name>Institute of Electrical and Electronic Engineers</name>
       <abbreviation>IEEE</abbreviation></organization></contributor><edition>2</edition><version><revision-date>2000-01-01</revision-date><draft>0.3.4</draft></version><language>en</language><script>Latn</script><status><stage>20</stage><substage>20</substage><iteration>3</iteration></status><copyright><from>2000</from><owner><organization>
       <name>Institute of Electrical and Electronic Engineers</name>
@@ -270,13 +298,13 @@ Users are encouraged to periodically check for errata.</p>
                 </span>
              </p>
              <p class="IEEEStdsTitleParaSansBold">
-                <span lang="EN-US" xml:lang="EN-US">TC</span>
+                <span lang="EN-US" xml:lang="EN-US">Tech Committee</span>
              </p>
              <p class="IEEEStdsTitleParaSans">
                 <span lang="EN-US" xml:lang="EN-US">of the</span>
              </p>
              <p class="IEEEStdsTitleParaSansBold">
-                <span lang="EN-US" xml:lang="EN-US">IEEE SECRETARIAT</span>
+                <span lang="EN-US" xml:lang="EN-US">IEEE Society</span>
              </p>
              <p class="IEEEStdsTitleParaSans">
                 <span lang="EN-US" xml:lang="EN-US">

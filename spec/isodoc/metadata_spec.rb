@@ -164,6 +164,33 @@ RSpec.describe Metanorma::Ieee do
                   <abbreviation>IEEE</abbreviation>
                 </organization>
               </contributor>
+                 <contributor>
+      <role type="authorizer">
+         <description>Society</description>
+      </role>
+      <organization>
+         <name>Institute of Electrical and Electronic Engineers</name>
+         <subdivision type="Society">
+            <name>Society</name>
+         </subdivision>
+         <subdivision type="Balloting group" subtype="entity">
+            <name>BG</name>
+         </subdivision>
+         <subdivision type="Working group">
+            <name>WG</name>
+         </subdivision>
+         <subdivision type="Working group">
+            <name>WG1</name>
+         </subdivision>
+         <subdivision type="Committee">
+            <name>Tech Committee</name>
+         </subdivision>
+         <subdivision type="Committee">
+            <name>TC1</name>
+         </subdivision>
+         <abbreviation>IEEE</abbreviation>
+      </organization>
+   </contributor>
            <edition>2</edition>
          <version>
            <revision-date>2000-01-01</revision-date>
@@ -478,6 +505,33 @@ RSpec.describe Metanorma::Ieee do
                   <abbreviation>IEEE</abbreviation>
                 </organization>
               </contributor>
+                              <contributor>
+      <role type="authorizer">
+         <description>Society</description>
+      </role>
+      <organization>
+         <name>Institute of Electrical and Electronic Engineers</name>
+         <subdivision type="Society">
+            <name>Society</name>
+         </subdivision>
+         <subdivision type="Balloting group" subtype="entity">
+            <name>BG</name>
+         </subdivision>
+         <subdivision type="Working group">
+            <name>WG</name>
+         </subdivision>
+         <subdivision type="Working group">
+            <name>WG1</name>
+         </subdivision>
+         <subdivision type="Committee">
+            <name>Tech Committee</name>
+         </subdivision>
+         <subdivision type="Committee">
+            <name>TC1</name>
+         </subdivision>
+         <abbreviation>IEEE</abbreviation>
+      </organization>
+   </contributor>
            <edition>2</edition>
          <version>
            <revision-date>2000-01-01</revision-date>
@@ -789,8 +843,6 @@ RSpec.describe Metanorma::Ieee do
           accesseddate: "XXX",
           adapteddate: "XXX",
           announceddate: "XXX",
-          balloting_group: "BG",
-          balloting_group_type: "individual",
           circulateddate: "XXX",
           confirmeddate: "XXX",
           copieddate: "XXX",
@@ -822,21 +874,20 @@ RSpec.describe Metanorma::Ieee do
           revdate: "2000-01-01",
           revdate_monthyear: "January 2000",
           script: "Latn",
-          society: "Society",
+          society: "&lt;Society&gt;",
           stable_untildate: "XXX",
           stage: "Final Draft",
           stage_display: "Final Draft",
           stageabbr: "FD",
           stdid_pdf: "STDXXXXX",
           stdid_print: "STDPDXXXXX",
-          technical_committee: "Tech Committee",
+          technical_committee: "&lt;Committee Name&gt;",
           transmitteddate: "XXX",
           unchangeddate: "XXX",
           unpublished: true,
           updateddate: "XXX",
           vote_endeddate: "XXX",
           vote_starteddate: "XXX",
-          working_group: "WG",
           wp_image001_emz: File.join(logoloc, "wp_image001.emz"),
           wp_image003_emz: File.join(logoloc, "wp_image003.emz"),
           wp_image007_emz: File.join(logoloc, "wp_image007.emz"),
