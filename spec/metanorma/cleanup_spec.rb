@@ -15,7 +15,8 @@ RSpec.describe Metanorma::Ieee do
       :draft: 1.2
       :docnumber: 10000
       :doctype: recommended-practice
-      :issued-date: 1000-01-01
+      :ieee-sasb-approved-date: 1000-01-01
+      :issued-date: 1001-02-02
 
       == Clause 1
     INPUT
@@ -602,7 +603,6 @@ RSpec.describe Metanorma::Ieee do
                    </dl>
                  </li>
                </ul>
-               <p id="_" type="emeritus_sign"><span class="cite_fn">*</span>Member Emeritus</p>
              </clause>
            </clause>
          </legal-statement>
@@ -613,7 +613,7 @@ RSpec.describe Metanorma::Ieee do
            </clause>
            <clause id="_" inline-header="false" obligation="normative">
              <p id="_">Copyright © #{Date.today.year} by The Institute of Electrical and Electronics Engineers, Inc.</p>
-             <p id="_">All rights reserved. Published 01 Jan 1000. Printed in the United States of America.</p>
+             <p id="_">All rights reserved. Published 02 Feb 1001. Printed in the United States of America.</p>
            </clause>
            <clause id="_" inline-header="false" obligation="normative">
              <p id="_">IEEE is a registered trademark in the U.S. Patent &amp; Trademark Office, owned by The Institute of Electrical and Electronics Engineers, Incorporated.</p>
@@ -1084,7 +1084,7 @@ RSpec.describe Metanorma::Ieee do
       role::: Technical editor
       item::
       name::: Euripides
-      item:: Aristophanes
+      item:: Aristophanes*
 
       This is an additional clause.
 
@@ -1263,7 +1263,7 @@ RSpec.describe Metanorma::Ieee do
                <dl id="_">
                  <dt>name</dt>
                  <dd id="_">
-                   <p id="_">Aristophanes</p>
+                   <p id="_">Aristophanes*</p>
                  </dd>
                  <dt>role</dt>
                  <dd id="_">

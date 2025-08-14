@@ -90,6 +90,7 @@ RSpec.describe Metanorma::Ieee do
       :issued-date: 1001-12-01
       :obsoleted-date: 1002-12-01
       :feedback-ended-date: 1003-12-01
+      :ieee-sasb-approved-date: 1004-12-01
       :wg-chair: span:surname[A] span:forename[B]
       :wg-vicechair: CD
       :wg-secretary: CD1
@@ -148,6 +149,9 @@ RSpec.describe Metanorma::Ieee do
          <date type="feedback-ended">
            <on>1003-12-01</on>
          </date>
+         <date type="ieee-sasb-approved">
+          <on>1004-12-01</on>
+          </date>
          <contributor>
            <role type="author"/>
            <organization>

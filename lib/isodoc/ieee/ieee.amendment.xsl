@@ -418,9 +418,11 @@
 						</xsl:choose>
 					</xsl:variable>
 
-					<xsl:variable name="society" select="/mn:metanorma/mn:bibdata/mn:ext/mn:editorialgroup/mn:society"/>
+					<!-- <xsl:variable name="society" select="/mn:metanorma/mn:bibdata/mn:ext/mn:editorialgroup/mn:society"/>  -->
+					<xsl:variable name="society" select="/mn:metanorma/mn:bibdata/mn:contributor[mn:role[@type = 'authorizer']/mn:description = 'committee']/mn:organization/mn:subdivision[@type = 'Society']/mn:name"/>
 
-					<xsl:variable name="committee" select="/mn:metanorma/mn:bibdata/mn:ext/mn:editorialgroup/mn:committee"/>
+					<!-- <xsl:variable name="committee" select="/mn:metanorma/mn:bibdata/mn:ext/mn:editorialgroup/mn:committee"/> -->
+					<xsl:variable name="committee" select="/mn:metanorma/mn:bibdata/mn:contributor[mn:role[@type = 'authorizer']/mn:description = 'committee']/mn:organization/mn:subdivision[@type = 'Committee']/mn:name"/>
 
 					<xsl:variable name="approved_by">IEEE SA Standards Board</xsl:variable>
 					<xsl:variable name="approved_date">
@@ -1535,8 +1537,10 @@
 
 				<xsl:variable name="officemembers_count" select="count($officemembers/officemember)"/>
 
-				<xsl:variable name="mod" select="$officemembers_count mod 3"/>
-				<xsl:variable name="floor" select="floor($officemembers_count div 3)"/>
+				<xsl:variable name="cols">3</xsl:variable>
+
+				<xsl:variable name="mod" select="$officemembers_count mod $cols"/>
+				<xsl:variable name="floor" select="floor($officemembers_count div $cols)"/>
 
 				<xsl:variable name="max">
 					<xsl:choose>
@@ -1545,10 +1549,40 @@
 					</xsl:choose>
 				</xsl:variable>
 
-				<!-- <fo:block>officemembers_count=<xsl:value-of select="$officemembers_count"/></fo:block>
-				<fo:block>mod=<xsl:value-of select="$mod"/></fo:block>
+				<!-- <fo:block>DEBUG officemembers_count=<xsl:value-of select="$officemembers_count"/></fo:block> -->
+				<!-- <fo:block>mod=<xsl:value-of select="$mod"/></fo:block>
 				<fo:block>floor=<xsl:value-of select="$floor"/></fo:block>
 				<fo:block>max=<xsl:value-of select="$max"/></fo:block> -->
+
+				<!-- From https://github.com/metanorma/metanorma-ieee/issues/533#issuecomment-3178212854:
+				Algorithm:
+					3 cases: 0 extra, all balanced; 1 extra, place in middle, 2 extra, place on both sides.
+
+					The number of rows in each column is "ceil(names/cols)".
+					The number of extras is calculated as "names mod cols"
+					In the 1 extra case, place an additional line break after the "floor(names/cols)"-th item.
+					In the 2 extra case, place an additional line break after the "ceil(names/cols) + floor(names/cols)"-th item
+				-->
+
+				<xsl:variable name="number_in_each_column" select="ceiling($officemembers_count div $cols)"/>
+				<!-- <fo:block>DEBUG number_in_each_column=<xsl:value-of select="$number_in_each_column"/></fo:block> -->
+				<xsl:variable name="number_extras" select="$officemembers_count mod $cols"/>
+				<!-- <fo:block>DEBUG number_extras=<xsl:value-of select="$number_extras"/></fo:block> -->
+
+				<xsl:variable name="officemembers_updated_">
+					<xsl:for-each select="$officemembers/officemember">
+						<xsl:copy-of select="."/>
+						<xsl:choose>
+							<xsl:when test="$number_extras = 1 and position() = $floor">
+								<officemember/>
+							</xsl:when>
+							<xsl:when test="$number_extras = 2 and position() = ($number_in_each_column + $floor)">
+								<officemember/>
+							</xsl:when>
+						</xsl:choose>
+					</xsl:for-each>
+				</xsl:variable>
+				<xsl:variable name="officemembers_updated" select="xalan:nodeset($officemembers_updated_)"/>
 
 				<fo:block font-size="9pt">
 					<fo:block> </fo:block>
@@ -1557,7 +1591,7 @@
 						<fo:table-column column-width="proportional-column-width(55)"/>
 						<fo:table-column column-width="proportional-column-width(42)"/>
 						<fo:table-body>
-							<xsl:for-each select="$officemembers/officemember[position() &lt;= $max]">
+							<xsl:for-each select="$officemembers_updated/officemember[position() &lt;= $number_in_each_column]"> <!-- $max -->
 								<fo:table-row>
 									<fo:table-cell padding-right="3mm">
 										<fo:block>
@@ -1566,12 +1600,12 @@
 									</fo:table-cell>
 									<fo:table-cell padding-right="3mm">
 										<fo:block>
-											<xsl:apply-templates select="following-sibling::*[number($max)]/node()"/>
+											<xsl:apply-templates select="following-sibling::*[number($number_in_each_column)]/node()"/> <!-- $max -->
 										</fo:block>
 									</fo:table-cell>
 									<fo:table-cell>
 										<fo:block>
-											<xsl:apply-templates select="following-sibling::*[number($max) * 2]/node()"/>
+											<xsl:apply-templates select="following-sibling::*[number($number_in_each_column) * 2]/node()"/> <!-- $max -->
 										</fo:block>
 									</fo:table-cell>
 								</fo:table-row>
@@ -1621,9 +1655,7 @@
 
 				<xsl:variable name="attributes_">
 					<attributes>
-						<xsl:if test="@align = 'center' and ancestor::mn:clause[@id = 'boilerplate-participants' or normalize-space(mn:fmt-title) = 'Participants'] and following-sibling::*[1][self::mn:p and @align = 'center']">
-							<xsl:attribute name="space-after">0</xsl:attribute>
-						</xsl:if>
+
 						<xsl:call-template name="setTextAlignment">
 							<xsl:with-param name="default">justify</xsl:with-param>
 						</xsl:call-template>
@@ -1639,6 +1671,11 @@
 							<xsl:attribute name="font-family">Times New Roman</xsl:attribute>
 							<xsl:attribute name="space-after">6pt</xsl:attribute>
 						</xsl:if>
+
+						<xsl:if test="@align = 'center' and ancestor::mn:clause[@id = 'boilerplate-participants' or normalize-space(mn:fmt-title) = 'Participants'] and following-sibling::*[1][self::mn:p and @align = 'center']">
+							<xsl:attribute name="space-after">0</xsl:attribute>
+						</xsl:if>
+
 					</attributes>
 				</xsl:variable>
 
@@ -1649,7 +1686,7 @@
 					<xsl:for-each select="$attributes/attributes/@*">
 						<xsl:attribute name="{local-name()}"><xsl:value-of select="."/></xsl:attribute>
 					</xsl:for-each>
-
+					<!-- <fo:block>debug current_template=<xsl:value-of select="$current_template"/></fo:block> -->
 					<xsl:apply-templates/>
 				</fo:block>
 			</xsl:otherwise>
@@ -5489,13 +5526,22 @@
 	<xsl:attribute-set name="copyright-statement-style">
 	</xsl:attribute-set> <!-- copyright-statement-style -->
 
+	<xsl:template name="refine_copyright-statement-style">
+	</xsl:template>
+
 	<xsl:attribute-set name="copyright-statement-title-style">
 	</xsl:attribute-set> <!-- copyright-statement-title-style -->
+
+	<xsl:template name="refine_copyright-statement-title-style">
+	</xsl:template>
 
 	<xsl:attribute-set name="copyright-statement-p-style">
 	</xsl:attribute-set> <!-- copyright-statement-p-style -->
 
-		<xsl:attribute-set name="license-statement-style">
+	<xsl:template name="refine_copyright-statement-p-style">
+	</xsl:template>
+
+	<xsl:attribute-set name="license-statement-style">
 	</xsl:attribute-set> <!-- license-statement-style -->
 
 	<xsl:attribute-set name="license-statement-title-style">
@@ -5532,6 +5578,8 @@
 	<!-- ================================= -->
 	<xsl:template match="mn:copyright-statement">
 		<fo:block xsl:use-attribute-sets="copyright-statement-style" role="SKIP">
+			<xsl:call-template name="refine_copyright-statement-style"/>
+
 			<xsl:apply-templates/>
 		</fo:block>
 	</xsl:template> <!-- copyright-statement -->
@@ -6640,7 +6688,7 @@
 						</xsl:otherwise>
 					</xsl:choose>
 				</xsl:variable>
-				<xsl:if test="$key = 'font-family' or $key = 'font-size' or $key = 'color' or $key = 'baseline-shift'">
+				<xsl:if test="$key = 'font-family' or           $key = 'font-size' or          $key = 'color' or          $key = 'baseline-shift' or          $key = 'line-height'          ">
 					<style name="{$key}"><xsl:value-of select="$value"/></style>
 				</xsl:if>
 				<xsl:if test="$key = 'text-indent'">
@@ -14257,12 +14305,30 @@
 				<!-- skip here, see the template 'fmt-review-start' -->
 			</xsl:when>
 			<xsl:otherwise>
-				<!-- <fo:inline id="{@id}" font-size="1pt"/> -->
-				<fo:inline id="{@id}" font-size="1pt"><xsl:if test="preceding-sibling::node()[self::mn:fmt-annotation-start][@source = $bookmark_id] and        following-sibling::node()[self::mn:fmt-annotation-end][@source = $bookmark_id]"><xsl:attribute name="line-height">0.1</xsl:attribute></xsl:if><xsl:value-of select="$hair_space"/></fo:inline>
-				<!-- we need to add zero-width space, otherwise this fo:inline is missing in IF xml -->
-				<xsl:if test="not(following-sibling::node()[normalize-space() != ''])"><fo:inline font-size="1pt"> </fo:inline></xsl:if>
+				<xsl:choose>
+					<xsl:when test="parent::mn:example or parent::mn:termexample or parent::mn:note or parent::mn:termnote">
+						<fo:block font-size="1pt" line-height="0.1">
+							<xsl:call-template name="fo_inline_bookmark">
+								<xsl:with-param name="bookmark_id" select="$bookmark_id"/>
+							</xsl:call-template>
+						</fo:block>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:call-template name="fo_inline_bookmark">
+							<xsl:with-param name="bookmark_id" select="$bookmark_id"/>
+						</xsl:call-template>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template name="fo_inline_bookmark">
+		<xsl:param name="bookmark_id"/>
+		<!-- <fo:inline id="{@id}" font-size="1pt"/> -->
+		<fo:inline id="{@id}" font-size="1pt"><xsl:if test="preceding-sibling::node()[self::mn:fmt-annotation-start][@source = $bookmark_id] and      following-sibling::node()[self::mn:fmt-annotation-end][@source = $bookmark_id]"><xsl:attribute name="line-height">0.1</xsl:attribute></xsl:if><xsl:value-of select="$hair_space"/></fo:inline>
+		<!-- we need to add zero-width space, otherwise this fo:inline is missing in IF xml -->
+		<xsl:if test="not(following-sibling::node()[normalize-space() != ''])"><fo:inline font-size="1pt"> </fo:inline></xsl:if>
 	</xsl:template>
 	<!-- =================== -->
 	<!-- End of Index processing -->
@@ -16149,6 +16215,8 @@
 
 	<xsl:template match="mn:svgmap"/>
 
+	<xsl:template match="mn:name[following-sibling::*[1][self::mn:fmt-name]]"/>
+
 	<!-- for correct rendering combining chars, added in mode="update_xml_step2" -->
 	<xsl:template match="*[local-name() = 'lang_none']">
 		<fo:inline xml:lang="none"><xsl:value-of select="."/></fo:inline>
@@ -16434,7 +16502,8 @@
 						<xsl:for-each select="(//mn:metanorma)[1]/mn:bibdata">
 							<rdf:Seq>
 								<rdf:li>
-									<xsl:value-of select="mn:ext/mn:editorialgroup/mn:committee"/>
+									<!-- <xsl:value-of select="mn:ext/mn:editorialgroup/mn:committee"/> -->
+									<xsl:value-of select="mn:contributor[mn:role[@type = 'authorizer']/mn:description = 'committee']/mn:organization/mn:subdivision[@type = 'Committee']/mn:name"/>
 								</rdf:li>
 							</rdf:Seq>
 
@@ -16919,6 +16988,13 @@
 			<xsl:with-param name="default" select="$text_align_default"/>
 		</xsl:call-template>
 		<xsl:call-template name="setKeepAttributes"/>
+		<xsl:if test="node()[1][self::mn:span][contains(@style, 'line-height')]">
+			<xsl:variable name="styles">
+				<xsl:apply-templates select="*[1]"/>
+			</xsl:variable>
+			<!-- move attribute line-height from inline to block -->
+			<xsl:attribute name="line-height"><xsl:value-of select="xalan:nodeset($styles)//*/@line-height"/></xsl:attribute>
+		</xsl:if>
 	</xsl:template>
 
 	<xsl:template name="setKeepAttributes">
@@ -16944,32 +17020,39 @@
 		<fo:block-container absolute-position="fixed" left="0mm" top="0mm" font-size="0" id="__internal_layout__coverpage{$suffix}_{$name}_{$number}_{generate-id()}">
 			<fo:block>
 				<xsl:for-each select="/mn:metanorma/mn:metanorma-extension/mn:presentation-metadata[mn:name = $name][1]/mn:value/mn:image[$num]">
-					<xsl:choose>
-						<xsl:when test="*[local-name() = 'svg'] or java:endsWith(java:java.lang.String.new(@src), '.svg')">
-							<fo:instream-foreign-object fox:alt-text="Image Front">
-								<xsl:attribute name="content-height"><xsl:value-of select="$pageHeight"/>mm</xsl:attribute>
-								<xsl:call-template name="getSVG"/>
-							</fo:instream-foreign-object>
-						</xsl:when>
-						<xsl:when test="starts-with(@src, 'data:application/pdf;base64')">
-							<fo:external-graphic src="{@src}" fox:alt-text="Image Front"/>
-						</xsl:when>
-						<xsl:otherwise> <!-- bitmap image -->
-							<xsl:variable name="coverimage_src" select="normalize-space(@src)"/>
-							<xsl:if test="$coverimage_src != ''">
-								<xsl:variable name="coverpage">
-									<xsl:call-template name="getImageURL">
-										<xsl:with-param name="src" select="$coverimage_src"/>
-									</xsl:call-template>
-								</xsl:variable>
-								<!-- <xsl:variable name="coverpage" select="concat('url(file:',$basepath, 'coverpage1.png', ')')"/> --> <!-- for DEBUG -->
-								<fo:external-graphic src="{$coverpage}" width="{$pageWidth}mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Front"/>
-							</xsl:if>
-						</xsl:otherwise>
-					</xsl:choose>
+
+					<xsl:call-template name="insertPageImage"/>
+
 				</xsl:for-each>
 			</fo:block>
 		</fo:block-container>
+	</xsl:template>
+
+	<xsl:template name="insertPageImage">
+		<xsl:param name="svg_content_height" select="$pageHeight"/>
+		<xsl:param name="bitmap_width" select="$pageWidth"/>
+		<xsl:choose>
+			<xsl:when test="*[local-name() = 'svg'] or java:endsWith(java:java.lang.String.new(@src), '.svg')">
+				<fo:instream-foreign-object fox:alt-text="Image Front">
+					<xsl:attribute name="content-height"><xsl:value-of select="$svg_content_height"/>mm</xsl:attribute>
+					<xsl:call-template name="getSVG"/>
+				</fo:instream-foreign-object>
+			</xsl:when>
+			<xsl:when test="starts-with(@src, 'data:application/pdf;base64')">
+				<fo:external-graphic src="{@src}" fox:alt-text="Image Front"/>
+			</xsl:when>
+			<xsl:otherwise> <!-- bitmap image -->
+				<xsl:variable name="coverimage_src" select="normalize-space(@src)"/>
+				<xsl:if test="$coverimage_src != ''">
+					<xsl:variable name="coverpage">
+						<xsl:call-template name="getImageURL">
+							<xsl:with-param name="src" select="$coverimage_src"/>
+						</xsl:call-template>
+					</xsl:variable>
+					<fo:external-graphic src="{$coverpage}" width="{$bitmap_width}mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Front"/>
+				</xsl:if>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template name="getImageURL">
@@ -17397,6 +17480,14 @@
 				<xsl:otherwise>_</xsl:otherwise>
 			</xsl:choose>
 		</xsl:attribute>
+	</xsl:template>
+
+	<xsl:template name="getCharByCodePoint">
+		<xsl:param name="codepoint"/>
+		<xsl:param name="radix">16</xsl:param>
+		<xsl:variable name="codepointInt" select="java:java.lang.Integer.parseInt($codepoint,$radix)"/>
+		<xsl:variable name="chars" select="java:java.lang.Character.toChars($codepointInt)"/>
+		<xsl:value-of select="java:java.lang.String.new($chars)"/>
 	</xsl:template>
 
 	<xsl:template name="substring-after-last">

@@ -717,6 +717,17 @@ div.zzHelp {
   text-align: left;
 }
 
+/* Boilerplate */
+
+p.officeholder {
+    margin: 0px;
+}
+
+/* Target the first p.officeholder in a series - when it's NOT preceded by another p.officeholder */
+p.officeholder:not(p.officeholder + p.officeholder) {
+    margin-bottom: 0px;
+}
+
 /* Collapse TOC */
 
                 .collapse-group {

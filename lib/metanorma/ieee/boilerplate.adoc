@@ -275,7 +275,7 @@ role::: Member
 [[boilerplate-participants-sb]]
 ==== {blank}
 
-When the IEEE SA Standards Board approved this {{ doctype }} on {{ issueddate }}, it had the following membership:
+When the IEEE SA Standards Board approved this {{ doctype }} on {{ ieee_sasb_approveddate }}, it had the following membership:
 
 ++++
 <membership>

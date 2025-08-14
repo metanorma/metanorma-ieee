@@ -306,7 +306,7 @@ RSpec.describe IsoDoc do
       <div>
          <a name="A" id="A"/>
          <p class="IEEEStdsLevel1Header">Foreword</p>
-         <p class="IEEEStdsRegularTableCaption" style="text-align:center;"> Hello</p>
+         <p class="IEEEStdsRegularTableCaption" style="text-align:center;"> —Hello</p>
          <div align="center" class="table_container">
             <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;" title="tool tip" summary="long desc">
                <a name="tableD-1" id="tableD-1"/>
@@ -743,7 +743,7 @@ RSpec.describe IsoDoc do
                </tr>
             </table>
             <p class="IEEEStdsRegularFigureCaption" style="text-align:center;">
-               Split-it-right
+               —Split-it-right
                <i>sample</i>
                divider
                <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">

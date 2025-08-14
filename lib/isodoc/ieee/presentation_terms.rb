@@ -31,6 +31,13 @@ module IsoDoc
         end
       end
 
+      def wrap_nodeset_in_parens(xpath)
+        unless xpath.empty?
+          xpath[0].previous = " ("
+          xpath[-1].next = ")"
+        end
+      end
+
       def unwrap_definition1(d)
         %w(verbal-definition non-verbal-representation).each do |e|
           v = d.at(ns("./#{e}")) or next
@@ -41,11 +48,7 @@ module IsoDoc
             v.children =
               "#{p.map(&:children).map { |x| to_xml(x) }.join("\n")}#{s}"
           else
-            s = v.xpath(ns("./source"))
-            unless s.empty?
-              s[0].previous = " ("
-              s[-1].next = ")"
-            end
+            wrap_nodeset_in_parens(v.xpath(ns("./source")))
           end
           v.replace(v.children)
         end
@@ -77,6 +80,7 @@ module IsoDoc
           def: term.at(ns("./fmt-definition")),
           rels: term.at(ns("./fmt-related"))&.remove,
           source: term.at(ns("./fmt-termsource"))&.remove,
+          fns: term.xpath(ns("./fn")).map(&:remove),
         )
         term.at(ns("./fmt-admitted"))&.remove
         ins = term.at(ns("./fmt-definition")) and
@@ -96,8 +100,7 @@ module IsoDoc
       def collapse_term_related1(rels)
         rels.xpath(ns("./p")).each do |p|
           orig = p.at(ns(".//semx[@element = 'related']"))
-          reln = "<em>#{@i18n.relatedterms[orig['type']]}:</em> "
-          p.add_first_child reln
+          p.add_first_child "<em>#{@i18n.relatedterms[orig['type']]}:</em> "
           p.xpath(ns(".//semx[@element = 'related']")).each do |r|
             r.at(ns("./fmt-preferred")) or
               r.add_first_child "**RELATED TERM NOT FOUND**"
@@ -107,9 +110,8 @@ module IsoDoc
 
       def collapse_term_template(opt)
         defn, multiblock = collapse_unwrap_definition(opt[:def])
-        opt[:source] and src = "(#{to_xml(opt[:source].remove.children).strip})"
         t = collapse_term_pref(opt)
-        tail = "#{collapse_term_related(opt[:rels])} #{src}"
+        tail = collapse_term_template_tail(opt)
         if multiblock
           tail = tail.strip.empty? ? "" : "<p>#{tail}</p>"
           "<p>#{t}:</p> #{defn}#{tail}"
@@ -117,14 +119,16 @@ module IsoDoc
         end
       end
 
+      def collapse_term_template_tail(opt)
+        opt[:source] and src = "(#{to_xml(opt[:source].children).strip})"
+        opt[:fns].empty? or fn = opt[:fns].map(&:to_xml).join
+        "#{collapse_term_related(opt[:rels])} #{src}#{fn}"
+      end
+
       def collapse_term_pref(opt)
         p = opt[:pref]
         p.text.strip.empty? and return "**TERM NOT FOUND**"
-        s = p.xpath(ns(".//semx[@element = 'source']"))
-        unless s.empty?
-          s[0].previous = " ("
-          s[-1].next = ")"
-        end
+        wrap_nodeset_in_parens(p.xpath(ns(".//semx[@element = 'source']")))
         p.xpath(ns(".//fmt-termsource")).each { |x| x.replace(x.children) }
         to_xml(p.children).strip
       end
