@@ -21,22 +21,6 @@
         </choice>
       </element>
     </define>
-    <define name="editorialgroup">
-      <element name="editorialgroup">
-        <optional>
-          <ref name="society"/>
-        </optional>
-        <optional>
-          <ref name="balloting-group"/>
-        </optional>
-        <optional>
-          <ref name="working-group"/>
-        </optional>
-        <oneOrMore>
-          <ref name="committee"/>
-        </oneOrMore>
-      </element>
-    </define>
     <define name="DocumentSubtype">
       <choice>
         <value>amendment</value>
@@ -131,32 +115,6 @@ https://standards.ieee.org/about/policies/opman/sect5/</a:documentation>
   <define name="trialuse">
     <element name="trial-use">
       <data type="boolean"/>
-    </element>
-  </define>
-  <define name="balloting-group">
-    <element name="balloting-group">
-      <attribute name="type">
-        <choice>
-          <value>individual</value>
-          <value>entity</value>
-        </choice>
-      </attribute>
-      <text/>
-    </element>
-  </define>
-  <define name="working-group">
-    <element name="working-group">
-      <text/>
-    </element>
-  </define>
-  <define name="committee">
-    <element name="committee">
-      <text/>
-    </element>
-  </define>
-  <define name="society">
-    <element name="society">
-      <text/>
     </element>
   </define>
 </grammar>

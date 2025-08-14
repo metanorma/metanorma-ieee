@@ -4,16 +4,6 @@ require "pubid-ieee"
 module Metanorma
   module Ieee
     class Converter < Standoc::Converter
-      def metadata_committee(node, xml)
-        metadata_committee_prep(node) or return
-        xml.editorialgroup do |a|
-          committee_component("society", node, a)
-          committee_component("balloting-group", node, a)
-          committee_component("working-group", node, a)
-          committee_component("committee", node, a)
-        end
-      end
-
       def metadata_committee_prep(node)
         node.attr("doctype") == "whitepaper" &&
           node.attr("docsubtype") == "industry-connection-report" and
@@ -26,16 +16,16 @@ module Metanorma
         true
       end
 
-       def metadata_committee_types(node)
+      def metadata_committee_types(_node)
         %w(society balloting-group working-group committee)
-       end
+      end
 
-       def committee_contributors(node, xml, agency, opt)
-         metadata_committee_prep(node) or return
-         super
-       end
+      def committee_contributors(node, xml, agency, opt)
+        metadata_committee_prep(node) or return
+        super
+      end
 
-       def org_attrs_add_committees(node, ret, opts, opts_orig)
+      def org_attrs_add_committees(node, ret, opts, opts_orig)
         opts_orig[:groups]&.each_with_index do |g, i|
           i.zero? and next
           opts = committee_contrib_org_prep(node, g, nil, opts_orig)
@@ -46,20 +36,20 @@ module Metanorma
         contributors_committees_nest1(ret)
       end
 
-       def contributors_committees_nest1(committees)
+      def contributors_committees_nest1(committees)
         committees.empty? and return committees
         committees = committees.map(&:reverse).reverse.flatten
         committees.each_with_index do |m, i|
           i.zero? and next
-          m[:subdiv] = committees[i-1]
+          m[:subdiv] = committees[i - 1]
         end
         committees[-1].nil? and return []
         [committees[-1]]
       end
 
-       def committee_contrib_org_prep(node, type, agency, _opts)
-         super.merge(role: "authorizer")
-       end
+      def committee_contrib_org_prep(node, type, agency, _opts)
+        super.merge(role: "authorizer")
+      end
 
       def metadata_other_id(node, xml)
         a = node.attr("isbn-pdf") and
