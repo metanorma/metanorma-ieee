@@ -132,10 +132,11 @@ module IsoDoc
 
       def bracket_if_num(num)
         num.nil? and return nil
-        num = num.text.sub(/^\[/, "").sub(/\]$/, "")
-        return "[#{num}]" if /^B?\d+$/.match?(num)
-
-        num
+        ret = num.dup
+        ret.xpath(ns(".//fn")).each(&:remove)
+        ret = ret.text.strip.sub(/^\[/, "").sub(/\]$/, "")
+        /^B?\d+$/.match?(ret) and return "[#{ret}]"
+        ret
       end
     end
   end
