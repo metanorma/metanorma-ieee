@@ -1432,13 +1432,17 @@
 	</xsl:template>
 
 	<xsl:template match="mn:boilerplate/mn:copyright-statement//mn:p" priority="2">
-		<fo:block margin-top="6pt" margin-bottom="6pt" text-align="justify">
+		<fo:block xsl:use-attribute-sets="copyright-statement-p-style">
+			<xsl:call-template name="refine_copyright-statement-p-style"/>
+
 			<xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
 
 	<xsl:template match="mn:boilerplate/mn:license-statement//mn:p" priority="2">
-		<fo:block margin-top="6pt" margin-bottom="6pt" text-align="justify">
+		<fo:block xsl:use-attribute-sets="license-statement-p-style">
+			<xsl:call-template name="refine_license-statement-p-style"/>
+
 			<xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
@@ -5539,6 +5543,10 @@
 	</xsl:attribute-set> <!-- copyright-statement-p-style -->
 
 	<xsl:template name="refine_copyright-statement-p-style">
+		<xsl:attribute name="margin-top">6pt</xsl:attribute>
+		<xsl:attribute name="margin-bottom">6pt</xsl:attribute>
+		<xsl:attribute name="text-align">justify</xsl:attribute>
+
 	</xsl:template>
 
 	<xsl:attribute-set name="license-statement-style">
@@ -5549,7 +5557,14 @@
 	</xsl:attribute-set> <!-- license-statement-title-style -->
 
 	<xsl:attribute-set name="license-statement-p-style">
+		<xsl:attribute name="margin-top">6pt</xsl:attribute>
+		<xsl:attribute name="margin-bottom">6pt</xsl:attribute>
+		<xsl:attribute name="text-align">justify</xsl:attribute>
 	</xsl:attribute-set> <!-- license-statement-p-style -->
+
+	<xsl:template name="refine_license-statement-p-style">
+
+	</xsl:template>
 
 	<xsl:attribute-set name="legal-statement-style">
 	</xsl:attribute-set> <!-- legal-statement-style -->
