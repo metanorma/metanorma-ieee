@@ -23,6 +23,7 @@ term_def_boilerplate: |
 norm_with_refs_pref: The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.
 biblio_pref: Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only. 
 note_inform_fn: Notes to text, tables, and figures are for information only and do not contain requirements needed to implement the standard.
+biblio_ref_inform_fn: The numbers in brackets correspond to those of the bibliography in Annex B.
 relatedterms:
   deprecates: Deprecates
   supersedes: Supersedes
