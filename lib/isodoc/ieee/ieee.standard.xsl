@@ -7403,6 +7403,9 @@
 	</xsl:attribute-set> <!-- termexample-style -->
 
 	<xsl:template name="refine_termexample-style">
+		<xsl:if test="preceding-sibling::*[1][self::mn:termnote]">
+			<xsl:attribute name="margin-top">6pt</xsl:attribute>
+		</xsl:if>
 	</xsl:template> <!-- refine_termexample-style -->
 
 	<xsl:attribute-set name="termexample-name-style">
@@ -7455,7 +7458,12 @@
 			<xsl:call-template name="setBlockSpanAll"/>
 
 			<xsl:apply-templates select="mn:fmt-name"/>
-			<xsl:apply-templates select="node()[not(self::mn:fmt-name)]"/>
+			<fo:block-container margin-left="11mm">
+				<fo:block-container margin-left="0mm">
+					<xsl:apply-templates select="node()[not(self::mn:fmt-name)]"/>
+				</fo:block-container>
+			</fo:block-container>
+
 		</fo:block>
 	</xsl:template>
 
@@ -7475,9 +7483,8 @@
 		<xsl:choose>
 			<xsl:when test="contains($element, 'block')">
 				<fo:block xsl:use-attribute-sets="example-p-style">
-					<xsl:if test="not(preceding-sibling::mn:p)">
-						<xsl:attribute name="margin-top">6pt</xsl:attribute>
-					</xsl:if>
+
+					<xsl:call-template name="refine_example-p-style"/>
 
 					<xsl:apply-templates/>
 				</fo:block>
@@ -11008,12 +11015,18 @@
 
 	<xsl:attribute-set name="termnote-style">
 		<xsl:attribute name="font-size">9pt</xsl:attribute>
-		<xsl:attribute name="margin-top">12pt</xsl:attribute>
-		<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
+		<xsl:attribute name="margin-top">6pt</xsl:attribute>
+		<xsl:attribute name="margin-bottom">6pt</xsl:attribute>
 		<xsl:attribute name="text-align">justify</xsl:attribute>
 	</xsl:attribute-set>
 
 	<xsl:template name="refine_termnote-style">
+		<xsl:if test="preceding-sibling::*[1][self::mn:fmt-definition]">
+			<xsl:attribute name="margin-top">12pt</xsl:attribute>
+		</xsl:if>
+		<xsl:if test="not(following-sibling::*)">
+			<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
+		</xsl:if>
 	</xsl:template> <!-- refine_termnote-style -->
 
 	<xsl:attribute-set name="termnote-name-style">
