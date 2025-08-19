@@ -274,10 +274,10 @@ RSpec.describe IsoDoc do
       INPUT
 
       presxml = <<~PRESXML
-       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
              <clause type="toc" id="_" displayorder="1">
-                <fmt-title id="_" depth="1">Contents</fmt-title>
+                <fmt-title depth="1" id="_">Contents</fmt-title>
              </clause>
           </preface>
           <sections>
@@ -333,20 +333,20 @@ RSpec.describe IsoDoc do
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" target="ref4">ISO 639:1967 [B3]</fmt-xref>
                    </semx>
+                   <fn reference="4" original-reference="_" id="_" target="_">
+                      <p>The numbers in brackets correspond to those of the bibliography in Annex B.</p>
+                      <fmt-fn-label>
+                         <span class="fmt-caption-label">
+                            <sup>
+                               <semx element="autonum" source="_">4</semx>
+                            </sup>
+                         </span>
+                      </fmt-fn-label>
+                   </fn>
                    <eref type="inline" bibitemid="ref5" citeas="[B2]" id="_"/>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2]</fmt-xref>
                    </semx>
-                   <fn reference="4" original-reference="_" id="_" target="_">
-               The numbers in brackets correspond to those of the bibliography in Annex B.
-               <fmt-fn-label>
-                  <span class="fmt-caption-label">
-                     <sup>
-                        <semx element="autonum" source="_">4</semx>
-                     </sup>
-                  </span>
-               </fmt-fn-label>
-            </fn>
                    <eref type="inline" bibitemid="ref6" citeas="[B1]" id="_"/>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" target="ref6">Title REF4</fmt-xref>
@@ -852,21 +852,22 @@ RSpec.describe IsoDoc do
                 </semx>
              </fmt-fn-body>
              <fmt-fn-body id="_" target="" reference="4">
-         <semx element="fn" source="_">
-            <p>
-               <fmt-fn-label>
-                  <span class="fmt-caption-label">
-                     <sup>
-                        <semx element="autonum" source="_">4</semx>
-                     </sup>
-                  </span>
-                  <span class="fmt-caption-delim">
-                     <tab/>
-                  </span>
-               </fmt-fn-label>
-            </p>
-            The numbers in brackets correspond to those of the bibliography in Annex B.
-         </semx>
+                <semx element="fn" source="_">
+                   <p>
+                      <fmt-fn-label>
+                         <span class="fmt-caption-label">
+                            <sup>
+                               <semx element="autonum" source="_">4</semx>
+                            </sup>
+                         </span>
+                         <span class="fmt-caption-delim">
+                            <tab/>
+                         </span>
+                      </fmt-fn-label>
+                      The numbers in brackets correspond to those of the bibliography in Annex B.
+                   </p>
+                </semx>
+             </fmt-fn-body>
           </fmt-footnote-container>
        </iso-standard>
       PRESXML

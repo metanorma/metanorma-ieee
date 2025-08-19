@@ -203,9 +203,12 @@ module IsoDoc
       end
 
       def first_biblio_eref_fn(docxml)
-        docxml.xpath("//*[@citeas]").each do |e|
-          %r{\[B\d+\]}.match?(e["citeas"]) or next
-          e.next = "<fn reference='#{UUIDTools::UUID.random_create}'>#{@i18n.biblio_ref_inform_fn}</fn>"
+        @bibanchors ||= biblio_ids_titles(docxml)
+        docxml.xpath("//*[@citeas]").each do |node|
+          @bibanchors[node["bibitemid"]] or next
+          node.next = <<~XML
+            <fn reference='#{UUIDTools::UUID.random_create}'><p>#{@i18n.biblio_ref_inform_fn}</p></fn>
+          XML
           break
         end
       end
