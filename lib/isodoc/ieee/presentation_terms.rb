@@ -178,7 +178,7 @@ module IsoDoc
         elem["reference"] = "_termnote_license_#{idx}"
         elem.parent << elem
         prev = elem.children[-1] # space at end of term?
-        prev.text? && prev.text.strip.empty? and prev.remove
+        prev.text? and prev.replace(prev.text.rstrip)
       end
     end
   end

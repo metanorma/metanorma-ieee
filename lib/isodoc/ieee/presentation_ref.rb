@@ -207,11 +207,41 @@ module IsoDoc
         docxml.xpath("//*[@citeas]").each do |node|
           @bibanchors[node["bibitemid"]] or next
           node.children.empty? or next
-          node.next = <<~XML
-            <fn reference='#{UUIDTools::UUID.random_create}'><p>#{@i18n.biblio_ref_inform_fn}</p></fn>
-          XML
+          insert_biblio_footnote(node, docxml)
           break
         end
+      end
+
+      private
+
+      def insert_biblio_footnote(node, docxml)
+        n = node.next_sibling
+        # Check if the next sibling is a text node that starts with punctuation
+        if n&.text? && (match = n.content.match(/^([.,;:])(?=\s|$)/))
+          insert_biblio_footnote_with_punctuation1(n, match, docxml)
+        else # Default behavior: insert footnote immediately after the node
+          node.next = biblio_ref_inform_fn
+        end
+      end
+
+      # If so, split the text at the punctuation
+      # and replace the text node with punctuation + footnote + remaining text
+      def insert_biblio_footnote_with_punctuation1(node, match, docxml)
+        punct = match[0]
+        remaining_text = node.content[punct.length..-1]
+        node.content = punct
+        node.add_next_sibling(biblio_ref_inform_fn)
+        remaining_text && !remaining_text.empty? and
+          node.next_sibling
+            .add_next_sibling(Nokogiri::XML::Text.new(
+                                remaining_text, docxml
+                              ))
+      end
+
+      def biblio_ref_inform_fn
+        <<~XML
+          <fn reference='#{UUIDTools::UUID.random_create}'><p>#{@i18n.biblio_ref_inform_fn}</p></fn>
+        XML
       end
     end
   end

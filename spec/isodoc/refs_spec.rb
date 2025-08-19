@@ -1002,6 +1002,100 @@ RSpec.describe IsoDoc do
       .to be_equivalent_to Canon.format_xml(presxml)
   end
 
+  it "avoids punctuation when placing bibliography bracket information footnote after first occurence of [B...]" do
+    input = <<~INPUT
+            <iso-standard xmlns="http://riboseinc.com/isoxml">
+            <sections>
+            <clause id='A' inline-header='false' obligation='normative'>
+            <title>Clause</title>
+            <p id='_'>
+              <eref type='inline' bibitemid='ISO16635' citeas='REF4'/>.
+            </p>
+          </clause>
+        </sections>
+        <bibliography>
+             <references id='_' normative='true' obligation='informative'>
+               <title>Normative references</title>
+      <bibitem id="ISO16634" type="standard">
+        <title format="text/plain" language="x">Cereals, pulses, milled cereal products, xxxx, oilseeds and animal feeding stuffs</title>
+        <title format="text/plain" language="en">Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</title>
+        <docidentifier type="ISO">ISO 16634:--</docidentifier>
+        <date type="published">
+          <on>--</on>
+        </date>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>ISO</name>
+          </organization>
+        </contributor>
+      </bibitem>
+      </references>
+      <references id='_' normative='false' obligation='informative'>
+               <title>Bibliography</title>
+      <bibitem id="ISO16635" type="standard">
+        <title format="text/plain" language="x">Cereals, pulses, milled cereal products, xxxx, oilseeds and animal feeding stuffs</title>
+        <title format="text/plain" language="en">Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</title>
+        <docidentifier type="ISO">ISO 16635:--</docidentifier>
+        <date type="published">
+          <on>--</on>
+        </date>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>ISO</name>
+          </organization>
+        </contributor>
+      </bibitem>
+      </references>
+      </iso-standard>
+    INPUT
+    presxml = <<~PRESXML
+      <clause id="A" inline-header="false" obligation="normative" displayorder="4">
+          <title id="_">Clause</title>
+          <fmt-title depth="1" id="_">
+             <span class="fmt-caption-label">
+                <semx element="autonum" source="A">2</semx>
+                <span class="fmt-autonum-delim">.</span>
+             </span>
+             <span class="fmt-caption-delim">
+                <tab/>
+             </span>
+             <semx element="title" source="_">Clause</semx>
+          </fmt-title>
+          <fmt-xref-label>
+             <span class="fmt-element-name">Clause</span>
+             <semx element="autonum" source="A">2</semx>
+          </fmt-xref-label>
+          <p id="_">
+             <eref type="inline" bibitemid="ISO16635" citeas="REF4" id="_"/>
+             <semx element="eref" source="_">
+                <fmt-xref type="inline" target="ISO16635">ISO 16635:-- [B1]</fmt-xref>
+             </semx>
+             .
+             <fn reference="1" original-reference="_" id="_" target="_">
+                <p>The numbers in brackets correspond to those of the bibliography in Annex B.</p>
+                <fmt-fn-label>
+                   <span class="fmt-caption-label">
+                      <sup>
+                         <semx element="autonum" source="_">1</semx>
+                      </sup>
+                   </span>
+                </fmt-fn-label>
+             </fn>
+          </p>
+       </clause>
+    PRESXML
+    out = Nokogiri::XML(
+      IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true),
+    )
+    out = out.at("//xmlns:clause[@id = 'A']")
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
+  end
+
+
   it "re-sorts biblio citations" do
     input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
