@@ -138,6 +138,77 @@ module IsoDoc
         /^B?\d+$/.match?(ret) and return "[#{ret}]"
         ret
       end
+
+      def eref_localities_conflated(refs, target, node)
+        droploc = node["droploc"]
+        node["droploc"] = true
+        ret = resolve_eref_connectives(eref_locality_stacks(refs, target,
+                                                            node))
+        node["droploc"] = droploc
+        p = prefix_clause(target, refs.first.at(ns("./locality")))
+        eref_localities1({ target: target, number: "pl",
+                           type: p,
+                           from: l10n(ret[1..-1].join), node: node,
+                           lang: @lang })
+      end
+
+      def prefix_clause(target, loc)
+        loc["type"] == "clause" or return loc["type"]
+        if subclause?(target, loc["type"],
+                      loc&.at(ns("./referenceFrom"))&.text)
+          ""
+        else "clause"
+        end
+      end
+
+      def subclause?(target, type, from)
+        (from&.include?(".") && type == "clause") ||
+          target&.gsub(/<[^<>]+>/, "")&.match?(/^IEV$|^IEC 60050-/)
+      end
+
+      def eref_localities1(opt)
+        opt[:type] == "anchor" and return nil
+        opt[:type].downcase!
+        opt[:lang] == "zh" and return l10n(eref_localities1_zh(opt))
+        ret = ""
+        opt[:node]["droploc"] != "true" &&
+          !subclause?(opt[:target], opt[:type], opt[:from]) and
+          ret = eref_locality_populate(opt[:type], opt[:node], opt[:number])
+        ret += " #{opt[:from]}" if opt[:from]
+        ret += "&#x2013;#{opt[:upto]}" if opt[:upto]
+        ret += ")" if opt[:type] == "list"
+        l10n(ret)
+      end
+
+      def anchor_linkend1(node)
+        linkend = @xrefs.anchor(node["target"], :xref)
+        @xrefs.anchor(node["target"], :type) == "clause" &&
+          @xrefs.anchor(node["target"], :level) > 1 &&
+          !start_of_sentence(node) and
+          linkend = strip_initial_clause(linkend)
+        container = @xrefs.anchor(node["target"], :container, false)
+        linkend = prefix_container(container, linkend, node, node["target"])
+        capitalise_xref(node, linkend, anchor_value(node["target"]))
+      end
+
+      def strip_initial_clause(linkend)
+        x = Nokogiri::XML("<a>#{linkend}</a>")
+        x.at(".//span[@class = 'fmt-element-name']")&.remove
+        to_xml(x.elements.first.children).strip
+      end
+
+      def eref_locality_populate(type, node, number)
+        type == "page" and return ""
+        super
+      end
+
+      def first_biblio_eref_fn(docxml)
+        docxml.xpath("//*[@citeas]").each do |e|
+          %r{\[B\d+\]}.match?(e["citeas"]) or next
+          e.next = "<fn reference='#{UUIDTools::UUID.random_create}'>#{@i18n.biblio_ref_inform_fn}</fn>"
+          break
+        end
+      end
     end
   end
 end

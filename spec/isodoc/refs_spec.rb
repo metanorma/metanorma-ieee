@@ -337,6 +337,16 @@ RSpec.describe IsoDoc do
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2]</fmt-xref>
                    </semx>
+                   <fn reference="4" original-reference="_" id="_" target="_">
+               The numbers in brackets correspond to those of the bibliography in Annex B.
+               <fmt-fn-label>
+                  <span class="fmt-caption-label">
+                     <sup>
+                        <semx element="autonum" source="_">4</semx>
+                     </sup>
+                  </span>
+               </fmt-fn-label>
+            </fn>
                    <eref type="inline" bibitemid="ref6" citeas="[B1]" id="_"/>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" target="ref6">Title REF4</fmt-xref>
@@ -841,6 +851,22 @@ RSpec.describe IsoDoc do
                    </p>
                 </semx>
              </fmt-fn-body>
+             <fmt-fn-body id="_" target="" reference="4">
+         <semx element="fn" source="_">
+            <p>
+               <fmt-fn-label>
+                  <span class="fmt-caption-label">
+                     <sup>
+                        <semx element="autonum" source="_">4</semx>
+                     </sup>
+                  </span>
+                  <span class="fmt-caption-delim">
+                     <tab/>
+                  </span>
+               </fmt-fn-label>
+            </p>
+            The numbers in brackets correspond to those of the bibliography in Annex B.
+         </semx>
           </fmt-footnote-container>
        </iso-standard>
       PRESXML
