@@ -81,7 +81,11 @@ RSpec.describe Metanorma::Ieee do
                  </verbal-definition>
                </definition>
                <termnote id="_">
-               <p id="_">This is a note</p>
+               <p id="_">This is a note
+                  <fn reference="1" id="_">
+                     <p id="_">Notes to text, tables, and figures are for information only and do not contain requirements needed to implement the standard.</p>
+                  </fn>
+               </p>
             </termnote>
             <termnote id="_" type="license">
                <p id="_">This is not a note but a license statement associated with the source</p>
