@@ -231,9 +231,9 @@ module IsoDoc
       # before processing, move license termnotes to fn at end of term,
       # so they aren't numbered as termnotes
       def conversions(docxml)
-        docxml.xpath(ns("//termnote[@type='license']")).each do |n|
-          n.name = "fn"
-          n.parent << n
+        docxml.xpath(ns("//termnote[@type='license']"))
+          .each_with_index do |n, i|
+          license_termnote(n, i)
         end
         super
       end

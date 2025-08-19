@@ -45,13 +45,13 @@ module Metanorma
 
       def note_cleanup(xmldoc)
         super
-        n = xmldoc.at("//preface//note[not(@type = 'boilerplate')]" \
-                      "[not(./ancestor::abstract)] | " \
-                      "//sections//note[not(@type = 'boilerplate')] | " \
-                      "//annex//note[not(@type = 'boilerplate')]") or
-          return
+        type = "[not(@type = 'boilerplate' or @type = 'Availability' or " \
+          "@type = 'license')]"
+        n = xmldoc.at("//preface//note#{type}[not(./ancestor::abstract)] | " \
+                      "//sections//note#{type} | //termnote#{type} | " \
+                      "//annex//note#{type}") or return
         ins = n.at("./p[last()]")
-        ins << "<fn reference='_boilerplate_cleanup1'>" \
+        ins << "<fn reference='_note_cleanup1'>" \
                "<p>#{@i18n.note_inform_fn}</p></fn>"
         add_id(ins.last_element_child)
       end

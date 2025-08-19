@@ -1388,4 +1388,390 @@ Users are encouraged to periodically check for errata.</p>
     expect(strip_guid(Canon.format_xml(doc.to_xml)))
       .to be_equivalent_to Canon.format_xml(word)
   end
+
+  it "balances participant columns" do
+    input = <<~INPUT
+      <iso-standard xmlns="http://riboseinc.com/isoxml">
+      <boilerplate>
+              <legal-statement>
+           <clause id="boilerplate-participants" type="participants" inline-header="false" obligation="normative">
+         <title>Participants</title>
+         <clause id="boilerplate-participants-wg" inline-header="false" obligation="normative">
+           <p id="_">At the time this draft Standard was completed, the  had the following membership:</p>
+           <ul id="_">
+             <li>
+               <dl id="_">
+                 <dt>name</dt>
+                 <dd>
+                   <p id="_">
+                     <span class="surname">Socrates</span>
+                     <span class="forename">Adalbert</span>
+                   </p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>
+                   <p id="_">Chair</p>
+                 </dd>
+               </dl>
+             </li>
+             <li>
+               <dl id="_">
+                 <dt>name</dt>
+                 <dd>
+                   <p id="_">Aristotle</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>
+                   <p id="_">member</p>
+                 </dd>
+               </dl>
+             </li>
+             <li>
+               <dl id="_">
+                 <dt>name</dt>
+                 <dd>
+                   <p id="_">Anaximander</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>
+                   <p id="_">member</p>
+                 </dd>
+               </dl>
+             </li>
+             <li>
+               <dl id="_">
+                 <dt>name</dt>
+                 <dd>
+                   <p id="_">Athanasius of Alexandria</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>
+                   <p id="_">member</p>
+                 </dd>
+               </dl>
+             </li>
+             <li>
+               <dl id="_">
+                 <dt>name</dt>
+                 <dd>
+                   <p id="_"><span class="forename">Basil</span> of <span class="surname">Caesarea</span></p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>
+                   <p id="_">member</p>
+                 </dd>
+               </dl>
+             </li>
+           </ul>
+           <p id="_">And this is another list</p>
+           <ul id="_">
+             <li>
+               <dl id="_">
+                 <dt>name</dt>
+                 <dd>
+                   <p id="_">
+                     <span class="organization">Microsoft</span>
+                   </p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>
+                   <p id="_">member</p>
+                 </dd>
+               </dl>
+             </li>
+             <li>
+               <dl id="_">
+                 <dt>name</dt>
+                 <dd>
+                   <p id="_">
+                     <span class="organization">Alphabet</span>
+                   </p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>
+                   <p id="_">member</p>
+                 </dd>
+               </dl>
+             </li>
+             <li>
+               <dl id="_">
+                 <dt>name</dt>
+                 <dd>
+                   <p id="_">Aeschylus</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>
+                   <p id="_">member</p>
+                 </dd>
+               </dl>
+             </li>
+             <li>
+               <dl id="_">
+                 <dt>name</dt>
+                 <dd>
+                   <p id="_">Sophocles</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>
+                   <p id="_">member</p>
+                 </dd>
+               </dl>
+             </li>
+             <li>
+               <dl id="_">
+                 <dt>name</dt>
+                 <dd>
+                   <p id="_">Euripides</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>
+                   <p id="_">member</p>
+                 </dd>
+               </dl>
+             </li>
+           </ul>
+           <p id="_">This is an additional clause.</p>
+           <ul id="_">
+             <li>
+               <dl id="_">
+                 <dt>name</dt>
+                 <dd>
+                   <p id="_">Aristophanes</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>
+                   <p id="_">member</p>
+                 </dd>
+               </dl>
+             </li>
+             <li>
+               <dl id="_">
+                 <dt>name</dt>
+                 <dd>
+                   <p id="_">
+                     <span class="organization">Waldorf-Astoria</span>
+                   </p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>
+                   <p id="_">member</p>
+                 </dd>
+               </dl>
+             </li>
+             <li>
+               <dl id="_">
+                 <dt>name</dt>
+                 <dd>
+                   <p id="_">
+                     <span class="organization">Ritz</span>
+                   </p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>
+                   <p id="_">Member</p>
+                 </dd>
+               </dl>
+             </li>
+           </ul>
+           <p id="_">And again:</p>
+           <ul id="_">
+             <li>
+               <dl id="_">
+                 <dt>name</dt>
+                 <dd>
+                   <p id="_">name1</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>
+                   <p id="_">member</p>
+                 </dd>
+               </dl>
+             </li>
+             <li>
+               <dl id="_">
+                 <dt>name</dt>
+                 <dd>
+                   <p id="_">name2</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>
+                   <p id="_">member</p>
+                 </dd>
+               </dl>
+             </li>
+             <li>
+               <dl id="_">
+                 <dt>name</dt>
+                 <dd>
+                   <p id="_">name3</p>
+                 </dd>
+                 <dt>role</dt>
+                 <dd>
+                   <p id="_">member</p>
+                 </dd>
+               </dl>
+             </li>
+           </ul>
+         </clause>
+       </clause>
+              </legal-statement>
+      </boilerplate>
+         </iso-standard>
+    INPUT
+    word = <<~OUTPUT
+      <body lang="EN-US" link="blue" vlink="#954F72" xml:lang="EN-US">
+          <p class="IEEEStdsParagraph">
+             <br clear="all" class="section"/>
+          </p>
+          <span lang="EN-US" style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;,serif; mso-fareast-font-family:&quot;Times New Roman&quot;;color:white;mso-ansi-language:EN-US; mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+             <br clear="all" style="page-break-before:always;mso-break-type:section-break"/>
+          </span>
+          <div class="WordSection3">
+             <div>
+                <a name="boilerplate-disclaimers-destination" id="boilerplate-disclaimers-destination"/>
+             </div>
+          </div>
+          <b style="mso-bidi-font-weight:normal">
+             <span lang="EN-US" style="font-size:12.0pt; mso-bidi-font-size:10.0pt;font-family:&quot;Arial&quot;,sans-serif;mso-fareast-font-family: &quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+                <br clear="all" style="page-break-before:always;mso-break-type:section-break"/>
+             </span>
+          </b>
+          <div class="WordSection4">
+             <div type="participants">
+                <a name="boilerplate-participants" id="boilerplate-participants"/>
+                <p class="IEEEStdsLevel1frontmatter">Participants</p>
+                <p class="IEEEStdsParagraph">
+                   <a name="_" id="_"/>
+                   At the time this draft Standard was completed, the had the following membership:
+                </p>
+                <p style="text-align:center;" align="center" class="IEEEStdsNamesCtrCxSpFirst">
+                   <b>
+                      <span class="au_surname">Socrates</span>
+                      <span class="au_fname">Adalbert</span>
+                   </b>
+                   ,
+                   <i>
+                      <span class="au_role">Chair</span>
+                   </i>
+                </p>
+             </div>
+          </div>
+          <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+             <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+             <div class="WordSection5">
+                <p class="IEEEStdsNamesList">Aristotle</p>
+                <p class="IEEEStdsNamesList"> </p>
+                <p class="IEEEStdsNamesList">Anaximander</p>
+                <p class="IEEEStdsNamesList">Athanasius of Alexandria</p>
+                <p class="IEEEStdsNamesList">
+                   <span class="au_fname">Basil</span>
+                   of
+                   <span class="au_surname">Caesarea</span>
+                </p>
+             </div>
+             <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+                <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+                <div class="WordSection6">
+                   <p class="IEEEStdsParagraph"> </p>
+                   <p class="IEEEStdsParagraph">
+                      <a name="_" id="_"/>
+                      And this is another list
+                   </p>
+                </div>
+                <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+                   <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+                   <div class="WordSection7">
+                      <p class="IEEEStdsNamesList">
+                         <span class="organization">Microsoft</span>
+                      </p>
+                      <p class="IEEEStdsNamesList">
+                         <span class="organization">Alphabet</span>
+                      </p>
+                      <p class="IEEEStdsNamesList">Aeschylus</p>
+                      <p class="IEEEStdsNamesList"> </p>
+                      <p class="IEEEStdsNamesList">Sophocles</p>
+                      <p class="IEEEStdsNamesList">Euripides</p>
+                   </div>
+                   <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+                      <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+                      <div class="WordSection8">
+                         <p class="IEEEStdsParagraph"> </p>
+                         <p class="IEEEStdsParagraph">
+                            <a name="_" id="_"/>
+                            This is an additional clause.
+                         </p>
+                      </div>
+                      <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+                         <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+                         <div class="WordSection9">
+                            <p class="IEEEStdsNamesList">Aristophanes</p>
+                            <p class="IEEEStdsNamesList">
+                               <span class="organization">Waldorf-Astoria</span>
+                            </p>
+                            <p class="IEEEStdsNamesList">
+                               <span class="organization">Ritz</span>
+                            </p>
+                         </div>
+                         <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+                            <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+                            <div class="WordSection10">
+                               <p class="IEEEStdsParagraph"> </p>
+                               <p class="IEEEStdsParagraph">
+                                  <a name="_" id="_"/>
+                                  And again:
+                               </p>
+                            </div>
+                            <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+                               <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+                               <div class="WordSection11">
+                                  <p class="IEEEStdsNamesList">name1</p>
+                                  <p class="IEEEStdsNamesList">name2</p>
+                                  <p class="IEEEStdsNamesList">name3</p>
+                               </div>
+                               <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+                                  <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+                               </span>
+                            </span>
+                         </span>
+                      </span>
+                   </span>
+                </span>
+             </span>
+          </span>
+          <b style="mso-bidi-font-weight:normal">
+             <span lang="EN-US" style="font-size:12.0pt; mso-bidi-font-size:10.0pt;font-family:&quot;Arial&quot;,sans-serif;mso-fareast-font-family: &quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
+                <br clear="all" style="page-break-before:always;mso-break-type:section-break"/>
+             </span>
+          </b>
+          <div class="authority">
+             <div class="boilerplate-legal">
+            
+               </div>
+          </div>
+          <p class="IEEEStdsParagraph"> </p>
+          <p class="IEEEStdsParagraph">
+             <br clear="all" class="section"/>
+          </p>
+          <p class="IEEEStdsParagraph">
+             <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+          </p>
+          <div style="mso-element:footnote-list"/>
+       </body>
+    OUTPUT
+    FileUtils.rm_rf "test.html"
+    FileUtils.rm_rf "test.doc"
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert
+      .new(presxml_options)
+      .convert("test", input, true)
+    IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
+    expect(File.exist?("test.doc")).to be true
+    doc = Nokogiri::XML(word2xml("test.doc")).at("//xmlns:body")
+    doc.at("//xmlns:div[@class = 'WordSection1']")&.remove
+    doc.at("//xmlns:div[@class = 'WordSection2']")&.remove
+    doc.at("//xmlns:div[@class = 'WordSectionContents']")&.remove
+    doc.at("//xmlns:div[@class = 'WordSectionMiddleTitle']")&.remove
+    doc.at("//xmlns:div[@class = 'WordSectionMain']")&.remove
+    expect(strip_guid(Canon.format_xml(doc.to_xml)))
+      .to be_equivalent_to Canon.format_xml(word)
+  end
 end

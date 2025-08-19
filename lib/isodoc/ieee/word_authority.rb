@@ -98,13 +98,35 @@ module IsoDoc
       end
 
       def three_column_officemembers_split(div)
-        prev = false
         div.xpath(".//div").each { |d| d.replace(d.children) }
+        ret = three_column_officemembers_split_main(false, div)
+        ret = three_column_officemembers_split_balance(ret)
+        ret.map do |r|
+          r.map { |r1| to_xml(r1) }
+        end.map(&:join)
+      end
+
+      def three_column_officemembers_split_main(prev, div)
         div.elements.each_with_object([[]]) do |e, m|
           member = e.name == "p" && e["type"] == "officemember"
-          (prev == member and m[-1] << to_xml(e)) or m << [to_xml(e)]
+          (prev == member and m[-1] << e) or m << [e]
+          # (prev == member and m[-1] << to_xml(e)) or m << [to_xml(e)]
           prev = member
-        end.map(&:join)
+        end
+      end
+
+      def three_column_officemembers_split_balance(ret)
+        blank = Nokogiri::XML("<p class='IEEEStdsNamesList'>&#xa0;</p>").root
+        ret.each do |r|
+          s = r.size
+          r[0].name == "p" && r[0]["type"] == "officemember" && s > 3 or next
+          extras = s % 3
+          #require "debug"; binding.b
+          extras == 1 and r.insert((s / 3).floor, blank.dup)
+          extras == 2 and
+            r.insert((s / 3).ceil + (s / 3).floor + 1, blank.dup)
+        end
+        ret
       end
 
       def three_column_officemembers_render(div, ret)
