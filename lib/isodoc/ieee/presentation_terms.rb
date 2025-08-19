@@ -121,8 +121,8 @@ module IsoDoc
 
       def collapse_term_template_tail(opt)
         opt[:source] and src = "(#{to_xml(opt[:source].children).strip})"
-        opt[:fns].empty? or fn = opt[:fns].map(&:to_xml).join
-        "#{collapse_term_related(opt[:rels])} #{src}#{fn}"
+        opt[:fns].empty? or fn = opt[:fns].map{ |f| to_xml(f) }.join
+        "#{collapse_term_related(opt[:rels])} #{src}#{fn}".strip
       end
 
       def collapse_term_pref(opt)
@@ -177,8 +177,6 @@ module IsoDoc
         elem.name = "fn"
         elem["reference"] = "_termnote_license_#{idx}"
         elem.parent << elem
-        prev = elem.children[-1] # space at end of term?
-        prev.text? and prev.replace(prev.text.rstrip)
       end
     end
   end
