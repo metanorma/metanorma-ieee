@@ -604,7 +604,7 @@ RSpec.describe Metanorma::Ieee do
                       equals
                       <em>is required to</em>
                       ).
-                      <fn id="_" reference="6">
+                      <fn id="_" reference="__6">
                          <p id="_">
                             The use of the word
                             <em>must</em>
@@ -613,7 +613,7 @@ RSpec.describe Metanorma::Ieee do
                             is used only to describe unavoidable situations.
                          </p>
                       </fn>
-                      <fn id="_" reference="7">
+                      <fn id="_" reference="__7">
                          <p id="_">
                             The use of
                             <em>will</em>
