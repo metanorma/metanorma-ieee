@@ -172,6 +172,14 @@ module IsoDoc
       end
 
       def term(docxml); end
+
+      def license_termnote(elem, idx)
+        elem.name = "fn"
+        elem["reference"] = "_termnote_license_#{idx}"
+        elem.parent << elem
+        prev = elem.children[-1] # space at end of term?
+        prev.text? && prev.text.strip.empty? and prev.remove
+      end
     end
   end
 end

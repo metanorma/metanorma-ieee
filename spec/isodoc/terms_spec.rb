@@ -2060,7 +2060,7 @@ RSpec.describe IsoDoc do
                             </semx>
                          </semx>
                          )
-                         <fn id="N2" type="license" original-reference="" reference="1" target="_">
+                         <fn id="N2" type="license" reference="1" original-reference="_" target="_">
                             <p original-id="_">This is not a note but a license statement associated with the source</p>
                             <fmt-fn-label>
                                <span class="fmt-caption-label">
