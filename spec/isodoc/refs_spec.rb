@@ -15,6 +15,8 @@ RSpec.describe IsoDoc do
                   <eref type='inline' bibitemid='ref3' citeas='REF4'/>
                   <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967'/>
                   <eref type='inline' bibitemid='ref5' citeas='[B2]'/>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]' style='title'/>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]' style='author'/>
                   <eref type='inline' bibitemid='ref6' citeas='[B1]'/>
                 </p>
               </clause>
@@ -347,6 +349,14 @@ RSpec.describe IsoDoc do
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2]</fmt-xref>
                    </semx>
+                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="title" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="title" target="ref5">Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday [B2]</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="author" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="author" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2]</fmt-xref>
+                   </semx>
                    <eref type="inline" bibitemid="ref6" citeas="[B1]" id="_"/>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" target="ref6">Title REF4</fmt-xref>
@@ -543,7 +553,7 @@ RSpec.describe IsoDoc do
                       <fn id="_" reference="2" original-reference="_" target="_">
                          <p>
                 IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
-      #{'  '}
+        
               </p>
                          <fmt-fn-label>
                             <span class="fmt-caption-label">

@@ -15,8 +15,10 @@ module IsoDoc
       def biblio_anchor_linkend(node, bib)
         if %w(techreport standard).include?(bib[:type])
           [node["citeas"], bib[:ord]].compact.join(" ")
-        elsif bib[:author]
-          "#{bib[:author]} " + node["citeas"]
+        elsif node["style"] == "title"
+          "#{bib[:title]} #{node['citeas']}"
+        elsif bib[:author] # default, also if node["style"] == "title"
+          "#{bib[:author]} #{node['citeas']}"
         else
           node["citeas"]
         end
