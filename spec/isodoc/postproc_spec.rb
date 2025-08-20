@@ -143,7 +143,7 @@ RSpec.describe IsoDoc::Ieee do
       .to be_equivalent_to Canon.format_xml(doc)
   end
 
-  it "moves introduction in Word" do
+  it "moves introductory material in Word" do
     mock_populate_template
     input = <<~INPUT
       <html>
@@ -157,6 +157,11 @@ RSpec.describe IsoDoc::Ieee do
       <h1 class="IntroTitle">Introduction</h1>
       <div class="Admonition">Introduction Admonition</div>
       <p>Introduction text</p>
+      <h1 class="IntroTitle">Introduction 2</h1>
+      </div>
+      <div id="y">
+      <h1 class="IntroTitle">Acknowledgements</h1>
+      <p>As given</p>
       </div>
       <hr/>
       <div id="introduction-destination"/>
@@ -166,18 +171,23 @@ RSpec.describe IsoDoc::Ieee do
     INPUT
     doc = <<~OUTPUT
       <html>
-        <head/>
-        <body>
-          <div class='main-section'>
-            <hr/>
-            <div id='x'>
-              <p class='IEEEStdsLevel1Header'>Introduction</p>
-              <div class='Admonition'>Introduction Admonition</div>
-              <p class='IEEEStdsParagraph'>Introduction text</p>
-            </div>
-          </div>
-        </body>
-      </html>
+          <head/>
+          <body>
+             <div class="main-section">
+                <hr/>
+                <div id="x">
+                   <p class="IEEEStdsLevel1Header">Introduction</p>
+                   <div class="Admonition">Introduction Admonition</div>
+                   <p class="IEEEStdsParagraph">Introduction text</p>
+                   <p class="IEEEStdsLevel1Header">Introduction 2</p>
+                </div>
+                <div id="y">
+                   <p class="IEEEStdsLevel1Header">Acknowledgements</p>
+                   <p class="IEEEStdsParagraph">As given</p>
+                </div>
+             </div>
+          </body>
+       </html>
     OUTPUT
     expect(Canon.format_xml(IsoDoc::Ieee::WordConvert
       .new(wordcoverpage: nil,

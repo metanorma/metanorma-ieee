@@ -70,12 +70,11 @@ module IsoDoc
         if hdr.at("./ancestor::div[@class = 'Annex']")
           hdr.delete("class")
           hdr["style"] = "mso-list:l13 level#{idx} lfo33;"
-        elsif hdr.at("./ancestor::div[@class = 'Section3' or @class = 'WordSectionContents']")
-          hdr.name = "p"
-          hdr["class"] = stylesmap["level#{idx}frontmatter".to_sym]
         else
           hdr.name = "p"
-          hdr["class"] = stylesmap["level#{idx}header".to_sym]
+          front = hdr.at("./ancestor::div[@class = 'Section3' or @class = 'WordSectionContents']")
+          type = front ? "frontmatter" : "header"
+          hdr["class"] = stylesmap["level#{idx}#{type}".to_sym]
         end
       end
 
@@ -162,6 +161,72 @@ module IsoDoc
         source = docxml.at("//div[@class = 'WordSectionContents']") and
           source << toc
         intro
+      end
+
+      def abstract_cleanup(docxml)
+        dest = docxml.at("div[@id = 'abstract-destination']") or return
+        if f = docxml.at("//div[@class = 'abstract']")
+          f.previous_element.remove
+          abstract_cleanup1(f, dest)
+          abstract_header(dest)
+          f.remove
+        elsif f = docxml.at("//div[@type = 'scope']")
+          abstract_cleanup1(f, dest)
+          abstract_header(dest)
+        end
+      end
+
+      def abstract_cleanup1(source, dest)
+        source.elements.reject { |e| %w(h1 h2).include?(e.name) }.each do |e|
+          e1 = e.dup
+          e1.xpath("self::p | .//p").each do |p|
+            p["class"] = stylesmap[:abstract]
+            p["style"] ||= ""
+            p["style"] = "font-family: 'Arial', sans-serif;#{p['style']}"
+          end
+          dest and dest << e1
+        end
+      end
+
+      def abstract_header(dest)
+        dest.elements.first.add_first_child <<~XML
+          <span class='IEEEStdsAbstractHeader'><span lang='EN-US'>Abstract:</span></span>
+        XML
+      end
+
+      def introduction_cleanup(docxml)
+        dest = docxml.at("div[@id = 'introduction-destination']") or return
+        unless i = docxml.at("//h1[@class = 'IntroTitle']")&.parent
+          dest.parent.remove
+          return
+        end
+        introduction_cleanup1(i, dest)
+      end
+
+      def introduction_cleanup1(intro, dest)
+        introduction_to_frontispiece(intro, dest)
+        introduction_para_style(intro.document)
+      end
+
+      def introduction_to_frontispiece(intro, dest)
+        docxml = intro.document
+        intro.previous_element.remove
+        introcontent = docxml.xpath("//h1[@class = 'IntroTitle']")
+          .map(&:parent).uniq.map(&:remove)
+        introcontent.each do |node|
+          dest.add_previous_sibling(node)
+        end
+        dest.remove
+      end
+
+      def introduction_para_style(docxml)
+        docxml.xpath("//h1[@class = 'IntroTitle']").each do |i|
+          i.next_element or next
+          if i.next_element.name == "div" &&
+              i.next_element["class"] == stylesmap[:intro]
+            i.next_element.name = "p"
+          end
+        end
       end
     end
   end

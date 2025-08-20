@@ -121,10 +121,9 @@ module IsoDoc
           s = r.size
           r[0].name == "p" && r[0]["type"] == "officemember" && s > 3 or next
           extras = s % 3
-          #require "debug"; binding.b
-          extras == 1 and r.insert((s / 3).floor, blank.dup)
+          extras == 1 and r.insert((s / 3).floor, blank)
           extras == 2 and
-            r.insert((s / 3).ceil + (s / 3).floor + 1, blank.dup)
+            r.insert((s / 3).ceil + (s / 3).floor + 1, blank)
         end
         ret
       end
@@ -196,57 +195,6 @@ module IsoDoc
             h.name = "p"
             h["class"] = "level#{i}frontmatter"
           end
-        end
-      end
-
-      def abstract_cleanup(docxml)
-        dest = docxml.at("div[@id = 'abstract-destination']") or return
-        if f = docxml.at("//div[@class = 'abstract']")
-          f.previous_element.remove
-          abstract_cleanup1(f, dest)
-          abstract_header(dest)
-          f.remove
-        elsif f = docxml.at("//div[@type = 'scope']")
-          abstract_cleanup1(f, dest)
-          abstract_header(dest)
-        end
-      end
-
-      def abstract_cleanup1(source, dest)
-        source.elements.reject { |e| %w(h1 h2).include?(e.name) }.each do |e|
-          e1 = e.dup
-          e1.xpath("self::p | .//p").each do |p|
-            p["class"] = stylesmap[:abstract]
-            p["style"] ||= ""
-            p["style"] = "font-family: 'Arial', sans-serif;#{p['style']}"
-          end
-          dest and dest << e1
-        end
-      end
-
-      def abstract_header(dest)
-        dest.elements.first.add_first_child <<~XML
-          <span class='IEEEStdsAbstractHeader'><span lang='EN-US'>Abstract:</span></span>
-        XML
-      end
-
-      def introduction_cleanup(docxml)
-        dest = docxml.at("div[@id = 'introduction-destination']") or return
-        unless i = docxml.at("//h1[@class = 'IntroTitle']")&.parent
-          dest.parent.remove
-          return
-        end
-        introduction_cleanup1(i, dest)
-      end
-
-      def introduction_cleanup1(intro, dest)
-        docxml = intro.document
-        intro.previous_element.remove
-        dest.replace(intro.remove)
-        i = docxml.at("//h1[@class = 'IntroTitle']")
-        if i.next_element.name == "div" &&
-            i.next_element["class"] == stylesmap[:intro]
-          i.next_element.name = "p"
         end
       end
     end
