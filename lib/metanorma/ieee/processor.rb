@@ -26,6 +26,7 @@ module Metanorma
           "Source Han Sans" => nil,
           "Source Han Sans Normal" => nil,
           "STIX Two Math" => nil,
+          "Montserrat ExtraBold" => nil,
         }
       end
 
