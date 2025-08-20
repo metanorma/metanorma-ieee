@@ -18,6 +18,7 @@ RSpec.describe IsoDoc do
                   <eref type='inline' bibitemid='ref5' citeas='[B2]' style='title'/>
                   <eref type='inline' bibitemid='ref5' citeas='[B2]' style='author'/>
                   <eref type='inline' bibitemid='ref6' citeas='[B1]'/>
+                  <eref type='inline' bibitemid='ref8' citeas='[B4]'/>
                 </p>
               </clause>
             </sections>
@@ -269,6 +270,11 @@ RSpec.describe IsoDoc do
                        </person>
                      </contributor>
                    </bibitem>
+                   <bibitem id='ref8' type="standard">
+                   <title>OpenXR</title>
+                     <docidentifier type='metanorma'>[B4]</docidentifier>
+                     <docnumber>4</docnumber>
+                   </bibitem>
                  </references>
                </bibliography>
              </ieee-standard>
@@ -276,7 +282,7 @@ RSpec.describe IsoDoc do
     INPUT
 
     presxml = <<~PRESXML
-      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
              <clause type="toc" id="_" displayorder="1">
                 <fmt-title depth="1" id="_">Contents</fmt-title>
@@ -360,6 +366,10 @@ RSpec.describe IsoDoc do
                    <eref type="inline" bibitemid="ref6" citeas="[B1]" id="_"/>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" target="ref6">Title REF4</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref8" citeas="[B4]" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" target="ref8">[B4]</fmt-xref>
                    </semx>
                 </p>
              </clause>
@@ -805,6 +815,16 @@ RSpec.describe IsoDoc do
                       [B3]
                       <tab/>
                       ISO 639:1967,
+                   </biblio-tag>
+                </bibitem>
+                <bibitem id="ref8" type="standard">
+                   <formattedref>“OpenXR,”.</formattedref>
+                   <title>OpenXR</title>
+                   <docidentifier type="metanorma-ordinal">[B4]</docidentifier>
+                   <docnumber>4</docnumber>
+                   <biblio-tag>
+                      [B4]
+                      <tab/>
                    </biblio-tag>
                 </bibitem>
              </references>

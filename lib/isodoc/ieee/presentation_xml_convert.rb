@@ -3,6 +3,7 @@ require_relative "presentation_bibdata"
 require_relative "presentation_terms"
 require_relative "presentation_concepts"
 require_relative "presentation_ref"
+require_relative "presentation_bibitem"
 require "isodoc"
 
 module IsoDoc
