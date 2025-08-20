@@ -1,4 +1,5 @@
 require_relative "cleanup_ref"
+require_relative "cleanup_ref_fn"
 require_relative "cleanup_boilerplate"
 require_relative "term_lookup_cleanup"
 
