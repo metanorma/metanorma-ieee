@@ -116,6 +116,8 @@
 
 	<xsl:variable name="line-height">1.8</xsl:variable>
 
+	<xsl:variable name="page_break_between_sections" select="normalize-space(/mn:metanorma/mn:metanorma-extension/mn:presentation-metadata/mn:page-break-between-sections)"/>
+
 	<xsl:template name="layout-master-set">
 		<fo:layout-master-set>
 
@@ -242,16 +244,21 @@
 			<!-- ======================= -->
 			<!-- Standard document pages -->
 			<!-- ======================= -->
-			<fo:simple-page-master master-name="document-standard-first" page-width="{$pageWidth}mm" page-height="{$pageHeight}mm">
+			<fo:simple-page-master master-name="document-standard-first-page" page-width="{$pageWidth}mm" page-height="{$pageHeight}mm">
 				<fo:region-body margin-top="{$marginTop}mm" margin-bottom="{$marginBottom}mm" margin-left="{$marginLeftRight1}mm" margin-right="{$marginLeftRight2}mm"/>
 				<fo:region-before region-name="header_empty" extent="{$marginTop}mm"/>
 				<fo:region-after region-name="footer" extent="{$marginBottom}mm"/>
 				<fo:region-start region-name="left-region" extent="{$marginLeftRight1}mm"/>
 				<fo:region-end region-name="right-region" extent="{$marginLeftRight2}mm"/>
 			</fo:simple-page-master>
+			<fo:page-sequence-master master-name="document-standard-first">
+				<fo:repeatable-page-master-alternatives>
+					<fo:conditional-page-master-reference page-position="first" master-reference="document-standard-first-page"/>
+					<fo:conditional-page-master-reference page-position="any" master-reference="document-draft"/>
+				</fo:repeatable-page-master-alternatives>
+			</fo:page-sequence-master>
 			<fo:page-sequence-master master-name="document-standard">
 				<fo:repeatable-page-master-alternatives>
-					<fo:conditional-page-master-reference page-position="first" master-reference="document-standard-first"/>
 					<fo:conditional-page-master-reference page-position="any" master-reference="document-draft"/>
 				</fo:repeatable-page-master-alternatives>
 			</fo:page-sequence-master>
@@ -518,7 +525,7 @@
 							</xsl:otherwise>
 						</xsl:choose> -->
 
-						<fo:block font-size="18pt">
+						<fo:block font-size="23pt"> <!-- 18pt -->
 							<xsl:value-of select="$title_prefix"/>
 							<xsl:copy-of select="$title_intro"/>
 						</fo:block>
@@ -584,14 +591,14 @@
 										<fo:block font-size="9pt"><xsl:value-of select="$history_text"/></fo:block>
 									</fo:block>
 
-									<fo:block-container width="150mm">
+									<fo:block-container width="135mm">
 										<fo:block font-weight="bold" space-before="13mm">
 											<xsl:copy-of select="$title_standard_coverpage"/>
 										</fo:block>
 									</fo:block-container>
 
 									<fo:block font-size="10pt" space-before="9mm" space-after="4pt">Developed by the</fo:block>
-									<fo:block font-size="11pt" font-weight="bold">
+									<fo:block font-size="11pt" font-weight="bold" margin-top="4mm">
 										<!-- Example: LAN/MAN Standards Committee -->
 										<xsl:value-of select="$committee"/>
 										<xsl:value-of select="$linebreak"/>
@@ -604,7 +611,7 @@
 
 									<fo:block font-size="10pt" space-before="8mm" space-after="4pt">Approved <xsl:value-of select="$approved_date"/></fo:block>
 									<!-- Example: IEEE SA Standards Board -->
-									<fo:block font-size="11pt" font-weight="bold"><xsl:value-of select="$approved_by"/></fo:block>
+									<fo:block font-size="11pt" font-weight="bold" margin-top="4mm"><xsl:value-of select="$approved_by"/></fo:block>
 
 									<fo:block break-after="page"/>
 
@@ -852,14 +859,23 @@
 							</xsl:when> <!-- $current_template = 'whitepaper' or $current_template = 'icap-whitepaper' or $current_template = 'industry-connection-report' -->
 
 							<xsl:when test="$current_template = 'standard'">
-								<xsl:for-each select="/*/mn:sections/*[not(contains(@class, 'zzSTDTitle'))]"> <!-- each section starts with a new page -->
-									<item>
-										<xsl:if test="position() = 1">
-											<xsl:copy-of select="ancestor::mn:sections/*[contains(@class, 'zzSTDTitle')]"/> <!-- put title on the 1st page -->
-										</xsl:if>
-										<xsl:apply-templates select="." mode="flatxml"/>
-									</item>
-								</xsl:for-each>
+								<xsl:choose>
+									<xsl:when test="$page_break_between_sections = 'true'">
+										<xsl:for-each select="/*/mn:sections/*[not(contains(@class, 'zzSTDTitle'))]"> <!-- each section starts with a new page -->
+											<item>
+												<xsl:if test="position() = 1">
+													<xsl:copy-of select="ancestor::mn:sections/*[contains(@class, 'zzSTDTitle')]"/> <!-- put title on the 1st page -->
+												</xsl:if>
+												<xsl:apply-templates select="." mode="flatxml"/>
+											</item>
+										</xsl:for-each>
+									</xsl:when>
+									<xsl:otherwise>
+										<item>
+											<xsl:apply-templates select="/*/mn:sections/*" mode="flatxml"/>
+										</item>
+									</xsl:otherwise>
+								</xsl:choose>
 							</xsl:when> <!-- $current_template = 'standard' -->
 
 							<xsl:otherwise>
@@ -932,7 +948,7 @@
 							</xsl:if>
 
 							<xsl:if test="$current_template = 'standard'">
-								<xsl:attribute name="master-reference">document-standard</xsl:attribute>
+								<xsl:attribute name="master-reference">document-standard<xsl:if test="position() = 1">-first</xsl:if></xsl:attribute>
 								<xsl:if test="@orientation = 'landscape'">
 									<xsl:attribute name="master-reference">document-standard<xsl:value-of select="@orientation"/></xsl:attribute>
 								</xsl:if>
@@ -13352,6 +13368,8 @@
 	</xsl:attribute-set>
 
 	<xsl:template name="refine_fn-reference-style">
+		<!-- https://github.com/metanorma/metanorma-ieee/issues/595 -->
+		<xsl:if test="preceding-sibling::node()[normalize-space() != ''][1][self::mn:fn]">,</xsl:if>
 	</xsl:template> <!-- refine_fn-reference-style -->
 
 	<xsl:attribute-set name="fn-style">
@@ -13456,9 +13474,12 @@
 					<xsl:copy-of select="."/>
 				</xsl:for-each>
 
-				<xsl:if test="following-sibling::node()[normalize-space() != ''][1][self::mn:fn]">
+				<!-- https://github.com/metanorma/metanorma-ieee/issues/595 -->
+				<!-- <xsl:if test="following-sibling::node()[normalize-space() != ''][1][self::mn:fn]">
 					<xsl:attribute name="padding-right">0.5mm</xsl:attribute>
-				</xsl:if>
+				</xsl:if> -->
+
+				<xsl:if test="preceding-sibling::node()[normalize-space() != ''][1][self::mn:fn]">,</xsl:if>
 
 				<xsl:call-template name="insert_basic_link">
 					<xsl:with-param name="element">
