@@ -113,6 +113,7 @@ module IsoDoc
           admonition: "IEEEStdsWarning",
           abstract: "IEEEStdsAbstractBody",
           AbstractTitle: "AbstractTitle",
+          TOCTitle: "IEEEStdsLevel1frontmatter",
           level1frontmatter: "IEEEStdsLevel1frontmatter",
           level2frontmatter: "IEEEStdsLevel2frontmatter",
           level3frontmatter: "IEEEStdsLevel3frontmatter",
