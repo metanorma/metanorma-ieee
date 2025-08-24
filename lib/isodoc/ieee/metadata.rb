@@ -54,6 +54,20 @@ module IsoDoc
         wg(xml)
         bg(xml)
         program(xml)
+        coverpage_stmt(xml)
+      end
+
+      def agency(xml)
+        super
+        logos = xml.xpath(ns("//bibdata/contributor[xmlns:role/@type = 'author']/" \
+                   "organization/logo/image/@src"))
+        set(:corporate_author_logos, logos.map { |l| to_datauri(l.value) })
+        set(:corporate_author_logo_attrs, contrib_logo_attrs(xml, "author"))
+      end
+
+      def coverpage_stmt(xml)
+        p = xml.at(ns("//presentation-metadata/coverpage-statement")) and
+          set(:coverpage_statement, p.children.to_xml)
       end
 
       def program(xml)
