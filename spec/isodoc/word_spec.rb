@@ -396,268 +396,268 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
             </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-         <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-           <bibdata>
-              <ext>
-                 <doctype>standard</doctype>
-              </ext>
-              <preface>
-                 <clause type="toc" id="_" displayorder="1">
-                    <fmt-title depth="1" id="_">Contents</fmt-title>
-                 </clause>
-              </preface>
-              <sections>
-                 <p class="zzSTDTitle1" displayorder="2">Standard for ???</p>
-                 <clause id="A" displayorder="3">
-                    <fmt-title depth="1" id="_">
-                       <span class="fmt-caption-label">
-                          <semx element="autonum" source="A">1</semx>
-                          <span class="fmt-autonum-delim">.</span>
-                       </span>
-                    </fmt-title>
-                    <fmt-xref-label>
-                       <span class="fmt-element-name">Clause</span>
-                       <semx element="autonum" source="A">1</semx>
-                    </fmt-xref-label>
-                    <p>
-                       <ol type="alphabet" id="B">
-                          <li id="_">
-                             <fmt-name id="_">
-                                <semx element="autonum" source="_">a</semx>
-                                <span class="fmt-label-delim">)</span>
-                             </fmt-name>
-                             <p>A</p>
-                          </li>
-                          <li id="_">
-                             <fmt-name id="_">
-                                <semx element="autonum" source="_">b</semx>
-                                <span class="fmt-label-delim">)</span>
-                             </fmt-name>
-                             <p>B</p>
-                          </li>
-                          <li id="_">
-                             <fmt-name id="_">
-                                <semx element="autonum" source="_">c</semx>
-                                <span class="fmt-label-delim">)</span>
-                             </fmt-name>
-                             <ol type="arabic" id="C">
-                                <li id="_">
-                                   <fmt-name id="_">
-                                      <semx element="autonum" source="_">1</semx>
-                                      <span class="fmt-label-delim">)</span>
-                                   </fmt-name>
-                                   C
-                                </li>
-                                <li id="_">
-                                   <fmt-name id="_">
-                                      <semx element="autonum" source="_">2</semx>
-                                      <span class="fmt-label-delim">)</span>
-                                   </fmt-name>
-                                   D
-                                </li>
-                                <li id="_">
-                                   <fmt-name id="_">
-                                      <semx element="autonum" source="_">3</semx>
-                                      <span class="fmt-label-delim">)</span>
-                                   </fmt-name>
-                                   <ol type="alphabet" id="D">
-                                      <li id="_">
-                                         <fmt-name id="_">
-                                            <semx element="autonum" source="_">a</semx>
-                                            <span class="fmt-label-delim">)</span>
-                                         </fmt-name>
-                                         E
-                                      </li>
-                                      <li id="_">
-                                         <fmt-name id="_">
-                                            <semx element="autonum" source="_">b</semx>
-                                            <span class="fmt-label-delim">)</span>
-                                         </fmt-name>
-                                         F
-                                      </li>
-                                      <li id="_">
-                                         <fmt-name id="_">
-                                            <semx element="autonum" source="_">c</semx>
-                                            <span class="fmt-label-delim">)</span>
-                                         </fmt-name>
-                                         <ol type="roman" id="E">
-                                            <li id="_">
-                                               <fmt-name id="_">
-                                                  <semx element="autonum" source="_">i</semx>
-                                                  <span class="fmt-label-delim">)</span>
-                                               </fmt-name>
-                                               G
-                                            </li>
-                                            <li id="_">
-                                               <fmt-name id="_">
-                                                  <semx element="autonum" source="_">ii</semx>
-                                                  <span class="fmt-label-delim">)</span>
-                                               </fmt-name>
-                                               H
-                                            </li>
-                                            <li id="_">
-                                               <fmt-name id="_">
-                                                  <semx element="autonum" source="_">iii</semx>
-                                                  <span class="fmt-label-delim">)</span>
-                                               </fmt-name>
-                                               <ol type="arabic" id="F">
-                                                  <li id="_">
-                                                     <fmt-name id="_">
-                                                        <semx element="autonum" source="_">1</semx>
-                                                        <span class="fmt-label-delim">)</span>
-                                                     </fmt-name>
-                                                     I
-                                                  </li>
-                                                  <li id="_">
-                                                     <fmt-name id="_">
-                                                        <semx element="autonum" source="_">2</semx>
-                                                        <span class="fmt-label-delim">)</span>
-                                                     </fmt-name>
-                                                     J
-                                                  </li>
-                                                  <li id="_">
-                                                     <fmt-name id="_">
-                                                        <semx element="autonum" source="_">3</semx>
-                                                        <span class="fmt-label-delim">)</span>
-                                                     </fmt-name>
-                                                     <ol type="alphabet" id="G">
-                                                        <li id="_">
-                                                           <fmt-name id="_">
-                                                              <semx element="autonum" source="_">a</semx>
-                                                              <span class="fmt-label-delim">)</span>
-                                                           </fmt-name>
-                                                           K
-                                                        </li>
-                                                        <li id="_">
-                                                           <fmt-name id="_">
-                                                              <semx element="autonum" source="_">b</semx>
-                                                              <span class="fmt-label-delim">)</span>
-                                                           </fmt-name>
-                                                           L
-                                                        </li>
-                                                        <li id="_">
-                                                           <fmt-name id="_">
-                                                              <semx element="autonum" source="_">c</semx>
-                                                              <span class="fmt-label-delim">)</span>
-                                                           </fmt-name>
-                                                           M
-                                                        </li>
-                                                     </ol>
-                                                  </li>
-                                                  <li id="_">
-                                                     <fmt-name id="_">
-                                                        <semx element="autonum" source="_">4</semx>
-                                                        <span class="fmt-label-delim">)</span>
-                                                     </fmt-name>
-                                                     N
-                                                  </li>
-                                               </ol>
-                                            </li>
-                                            <li id="_">
-                                               <fmt-name id="_">
-                                                  <semx element="autonum" source="_">iv</semx>
-                                                  <span class="fmt-label-delim">)</span>
-                                               </fmt-name>
-                                               O
-                                            </li>
-                                         </ol>
-                                      </li>
-                                      <li id="_">
-                                         <fmt-name id="_">
-                                            <semx element="autonum" source="_">d</semx>
-                                            <span class="fmt-label-delim">)</span>
-                                         </fmt-name>
-                                         P
-                                      </li>
-                                   </ol>
-                                </li>
-                                <li id="_">
-                                   <fmt-name id="_">
-                                      <semx element="autonum" source="_">4</semx>
-                                      <span class="fmt-label-delim">)</span>
-                                   </fmt-name>
-                                   Q
-                                </li>
-                             </ol>
-                          </li>
-                          <li id="_">
-                             <fmt-name id="_">
-                                <semx element="autonum" source="_">d</semx>
-                                <span class="fmt-label-delim">)</span>
-                             </fmt-name>
-                             R
-                          </li>
-                       </ol>
-                       <ul id="B1">
-                          <li id="_">
-                             <fmt-name id="_">
-                                <semx element="autonum" source="_">–</semx>
-                             </fmt-name>
-                             <p>A</p>
-                          </li>
-                          <li id="_">
-                             <fmt-name id="_">
-                                <semx element="autonum" source="_">–</semx>
-                             </fmt-name>
-                             <p>B</p>
-                          </li>
-                          <li id="_">
-                             <fmt-name id="_">
-                                <semx element="autonum" source="_">–</semx>
-                             </fmt-name>
-                             <p>B1</p>
-                             <ul id="C1">
-                                <li id="_">
-                                   <fmt-name id="_">
-                                      <semx element="autonum" source="_">–</semx>
-                                   </fmt-name>
-                                   C
-                                </li>
-                                <li id="_">
-                                   <fmt-name id="_">
-                                      <semx element="autonum" source="_">–</semx>
-                                   </fmt-name>
-                                   D
-                                </li>
-                                <li id="_">
-                                   <fmt-name id="_">
-                                      <semx element="autonum" source="_">–</semx>
-                                   </fmt-name>
-                                   <ul id="D1">
-                                      <li id="_">
-                                         <fmt-name id="_">
-                                            <semx element="autonum" source="_">–</semx>
-                                         </fmt-name>
-                                         E
-                                      </li>
-                                      <li id="_">
-                                         <fmt-name id="_">
-                                            <semx element="autonum" source="_">–</semx>
-                                         </fmt-name>
-                                         F
-                                      </li>
-                                   </ul>
-                                </li>
-                                <li id="_">
-                                   <fmt-name id="_">
-                                      <semx element="autonum" source="_">–</semx>
-                                   </fmt-name>
-                                   Q
-                                </li>
-                             </ul>
-                          </li>
-                          <li id="_">
-                             <fmt-name id="_">
-                                <semx element="autonum" source="_">–</semx>
-                             </fmt-name>
-                             R
-                          </li>
-                       </ul>
-                    </p>
-                 </clause>
-              </sections>
-           </bibdata>
-        </iso-standard>
+       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+          <bibdata>
+             <ext>
+                <doctype>standard</doctype>
+             </ext>
+             <preface>
+                <clause type="toc" id="_" displayorder="1">
+                   <fmt-title depth="1" id="_">Contents</fmt-title>
+                </clause>
+             </preface>
+             <sections>
+                <p class="zzSTDTitle1" displayorder="2">Standard for ???</p>
+                <clause id="A" displayorder="3">
+                   <fmt-title depth="1" id="_">
+                      <span class="fmt-caption-label">
+                         <semx element="autonum" source="A">1</semx>
+                         <span class="fmt-autonum-delim">.</span>
+                      </span>
+                   </fmt-title>
+                   <fmt-xref-label>
+                      <span class="fmt-element-name">Clause</span>
+                      <semx element="autonum" source="A">1</semx>
+                   </fmt-xref-label>
+                   <p>
+                      <ol type="alphabet" id="B">
+                         <li id="_">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="_">a</semx>
+                               <span class="fmt-label-delim">)</span>
+                            </fmt-name>
+                            <p>A</p>
+                         </li>
+                         <li id="_">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="_">b</semx>
+                               <span class="fmt-label-delim">)</span>
+                            </fmt-name>
+                            <p>B</p>
+                         </li>
+                         <li id="_">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="_">c</semx>
+                               <span class="fmt-label-delim">)</span>
+                            </fmt-name>
+                            <ol type="arabic" id="C">
+                               <li id="_">
+                                  <fmt-name id="_">
+                                     <semx element="autonum" source="_">1</semx>
+                                     <span class="fmt-label-delim">)</span>
+                                  </fmt-name>
+                                  C
+                               </li>
+                               <li id="_">
+                                  <fmt-name id="_">
+                                     <semx element="autonum" source="_">2</semx>
+                                     <span class="fmt-label-delim">)</span>
+                                  </fmt-name>
+                                  D
+                               </li>
+                               <li id="_">
+                                  <fmt-name id="_">
+                                     <semx element="autonum" source="_">3</semx>
+                                     <span class="fmt-label-delim">)</span>
+                                  </fmt-name>
+                                  <ol type="alphabet" id="D">
+                                     <li id="_">
+                                        <fmt-name id="_">
+                                           <semx element="autonum" source="_">a</semx>
+                                           <span class="fmt-label-delim">)</span>
+                                        </fmt-name>
+                                        E
+                                     </li>
+                                     <li id="_">
+                                        <fmt-name id="_">
+                                           <semx element="autonum" source="_">b</semx>
+                                           <span class="fmt-label-delim">)</span>
+                                        </fmt-name>
+                                        F
+                                     </li>
+                                     <li id="_">
+                                        <fmt-name id="_">
+                                           <semx element="autonum" source="_">c</semx>
+                                           <span class="fmt-label-delim">)</span>
+                                        </fmt-name>
+                                        <ol type="roman" id="E">
+                                           <li id="_">
+                                              <fmt-name id="_">
+                                                 <semx element="autonum" source="_">i</semx>
+                                                 <span class="fmt-label-delim">)</span>
+                                              </fmt-name>
+                                              G
+                                           </li>
+                                           <li id="_">
+                                              <fmt-name id="_">
+                                                 <semx element="autonum" source="_">ii</semx>
+                                                 <span class="fmt-label-delim">)</span>
+                                              </fmt-name>
+                                              H
+                                           </li>
+                                           <li id="_">
+                                              <fmt-name id="_">
+                                                 <semx element="autonum" source="_">iii</semx>
+                                                 <span class="fmt-label-delim">)</span>
+                                              </fmt-name>
+                                              <ol type="arabic" id="F">
+                                                 <li id="_">
+                                                    <fmt-name id="_">
+                                                       <semx element="autonum" source="_">1</semx>
+                                                       <span class="fmt-label-delim">)</span>
+                                                    </fmt-name>
+                                                    I
+                                                 </li>
+                                                 <li id="_">
+                                                    <fmt-name id="_">
+                                                       <semx element="autonum" source="_">2</semx>
+                                                       <span class="fmt-label-delim">)</span>
+                                                    </fmt-name>
+                                                    J
+                                                 </li>
+                                                 <li id="_">
+                                                    <fmt-name id="_">
+                                                       <semx element="autonum" source="_">3</semx>
+                                                       <span class="fmt-label-delim">)</span>
+                                                    </fmt-name>
+                                                    <ol type="alphabet" id="G">
+                                                       <li id="_">
+                                                          <fmt-name id="_">
+                                                             <semx element="autonum" source="_">a</semx>
+                                                             <span class="fmt-label-delim">)</span>
+                                                          </fmt-name>
+                                                          K
+                                                       </li>
+                                                       <li id="_">
+                                                          <fmt-name id="_">
+                                                             <semx element="autonum" source="_">b</semx>
+                                                             <span class="fmt-label-delim">)</span>
+                                                          </fmt-name>
+                                                          L
+                                                       </li>
+                                                       <li id="_">
+                                                          <fmt-name id="_">
+                                                             <semx element="autonum" source="_">c</semx>
+                                                             <span class="fmt-label-delim">)</span>
+                                                          </fmt-name>
+                                                          M
+                                                       </li>
+                                                    </ol>
+                                                 </li>
+                                                 <li id="_">
+                                                    <fmt-name id="_">
+                                                       <semx element="autonum" source="_">4</semx>
+                                                       <span class="fmt-label-delim">)</span>
+                                                    </fmt-name>
+                                                    N
+                                                 </li>
+                                              </ol>
+                                           </li>
+                                           <li id="_">
+                                              <fmt-name id="_">
+                                                 <semx element="autonum" source="_">iv</semx>
+                                                 <span class="fmt-label-delim">)</span>
+                                              </fmt-name>
+                                              O
+                                           </li>
+                                        </ol>
+                                     </li>
+                                     <li id="_">
+                                        <fmt-name id="_">
+                                           <semx element="autonum" source="_">d</semx>
+                                           <span class="fmt-label-delim">)</span>
+                                        </fmt-name>
+                                        P
+                                     </li>
+                                  </ol>
+                               </li>
+                               <li id="_">
+                                  <fmt-name id="_">
+                                     <semx element="autonum" source="_">4</semx>
+                                     <span class="fmt-label-delim">)</span>
+                                  </fmt-name>
+                                  Q
+                               </li>
+                            </ol>
+                         </li>
+                         <li id="_">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="_">d</semx>
+                               <span class="fmt-label-delim">)</span>
+                            </fmt-name>
+                            R
+                         </li>
+                      </ol>
+                      <ul id="B1">
+                         <li id="_">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="_">—</semx>
+                            </fmt-name>
+                            <p>A</p>
+                         </li>
+                         <li id="_">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="_">—</semx>
+                            </fmt-name>
+                            <p>B</p>
+                         </li>
+                         <li id="_">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="_">—</semx>
+                            </fmt-name>
+                            <p>B1</p>
+                            <ul id="C1">
+                               <li id="_">
+                                  <fmt-name id="_">
+                                     <semx element="autonum" source="_">—</semx>
+                                  </fmt-name>
+                                  C
+                               </li>
+                               <li id="_">
+                                  <fmt-name id="_">
+                                     <semx element="autonum" source="_">—</semx>
+                                  </fmt-name>
+                                  D
+                               </li>
+                               <li id="_">
+                                  <fmt-name id="_">
+                                     <semx element="autonum" source="_">—</semx>
+                                  </fmt-name>
+                                  <ul id="D1">
+                                     <li id="_">
+                                        <fmt-name id="_">
+                                           <semx element="autonum" source="_">—</semx>
+                                        </fmt-name>
+                                        E
+                                     </li>
+                                     <li id="_">
+                                        <fmt-name id="_">
+                                           <semx element="autonum" source="_">—</semx>
+                                        </fmt-name>
+                                        F
+                                     </li>
+                                  </ul>
+                               </li>
+                               <li id="_">
+                                  <fmt-name id="_">
+                                     <semx element="autonum" source="_">—</semx>
+                                  </fmt-name>
+                                  Q
+                               </li>
+                            </ul>
+                         </li>
+                         <li id="_">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="_">—</semx>
+                            </fmt-name>
+                            R
+                         </li>
+                      </ul>
+                   </p>
+                </clause>
+             </sections>
+          </bibdata>
+       </iso-standard>
     OUTPUT
     word = <<~OUTPUT
          <div>

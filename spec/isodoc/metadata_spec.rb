@@ -157,6 +157,14 @@ RSpec.describe Metanorma::Ieee do
                   </name>
                 </person>
               </contributor>
+              <contributor><role type="author"/><organization>
+                <name>Institute of Electrical and Electronic Engineers</name>
+                <logo><image src="2.png"/></logo>
+                </organization></contributor>
+              <contributor><role type="author"/><organization>
+                <name>Spatial Web Foundation</name>
+                <logo><image src="1.png"/></logo>
+                </organization></contributor>
               <contributor>
                 <role type='publisher'/>
                 <organization>
@@ -267,6 +275,7 @@ RSpec.describe Metanorma::Ieee do
          <semantic-metadata>
          <stage-published>false</stage-published>
          </semantic-metadata>
+          <presentation-metadata><coverpage-statement>IEEE SA Industry Affiliate Network (IAN) base specification contributed by the Spatial Web Foundation</coverpage-statement></presentation-metadata>
          </metanorma-extension>
          <preface/><sections/>
          <annex obligation="informative"/>
@@ -291,8 +300,10 @@ RSpec.describe Metanorma::Ieee do
           circulateddate: "XXX",
           confirmeddate: "XXX",
           copieddate: "XXX",
+          corporate_author_logos: ["2.png", "1.png"],
           corr: "C1",
           correcteddate: "XXX",
+          coverpage_statement: "IEEE SA Industry Affiliate Network (IAN) base specification contributed by the Spatial Web Foundation",
           createddate: "XXX",
           docnumber: "ABC",
           docnumeric: "1000",

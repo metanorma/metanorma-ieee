@@ -25,6 +25,11 @@
 
 <p class="IEEEStdsTitleParaSansBold"><span lang="EN-US">IEEE SA Standards Board</span></p>
 
+{% if coverpage_statement %}
+<p class="IEEEStdsTitleParaSans"><span lang="EN-US"><o:p>&#xa0;</o:p></span></p>
+<p class="IEEEStdsTitleParaSans">{{ coverpage_statement }}</p>
+{% endif %}
+
 
 {% if trial_use %}
 <div>

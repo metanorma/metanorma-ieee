@@ -100,6 +100,7 @@ module Metanorma
         xml = Nokogiri::XML(x.to_xml)
         i = isodoc(@lang, @script, @locale)
         i.bibdata_i18n(xml.at("//xmlns:bibdata"))
+        i.localdir = @localdir
         i.info(xml, nil)
         i
       end

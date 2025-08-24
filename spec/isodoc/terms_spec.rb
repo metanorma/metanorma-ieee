@@ -75,7 +75,7 @@ RSpec.describe IsoDoc do
     INPUT
 
     presxml = <<~PRESXML
-      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
              <clause type="toc" id="_" displayorder="1">
                 <fmt-title depth="1" id="_">Contents</fmt-title>
@@ -224,7 +224,7 @@ RSpec.describe IsoDoc do
                       <ul>
                          <li id="_">
                             <fmt-name id="_">
-                               <semx element="autonum" source="_">–</semx>
+                               <semx element="autonum" source="_">—</semx>
                             </fmt-name>
                             A
                          </li>
@@ -260,7 +260,7 @@ RSpec.describe IsoDoc do
                       <ul>
                          <li id="_">
                             <fmt-name id="_">
-                               <semx element="autonum" source="_">–</semx>
+                               <semx element="autonum" source="_">—</semx>
                             </fmt-name>
                             A
                          </li>
@@ -388,7 +388,7 @@ RSpec.describe IsoDoc do
                       <ul>
                          <li id="_">
                             <fmt-name id="_">
-                               <semx element="autonum" source="_">–</semx>
+                               <semx element="autonum" source="_">—</semx>
                             </fmt-name>
                             A
                          </li>
@@ -445,7 +445,7 @@ RSpec.describe IsoDoc do
                       <ul>
                          <li id="_">
                             <fmt-name id="_">
-                               <semx element="autonum" source="_">–</semx>
+                               <semx element="autonum" source="_">—</semx>
                             </fmt-name>
                             A
                          </li>
@@ -506,7 +506,6 @@ RSpec.describe IsoDoc do
              </terms>
           </sections>
        </iso-standard>
-
     PRESXML
 
     html = <<~"OUTPUT"

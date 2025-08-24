@@ -16,6 +16,19 @@
   <p><b>{{ technical_committee }}</b></p>
 <p>of the</p>
 <p><b>IEEE {{ society }}</b></p>
+{% if coverpage_statement %}
+<table style="border: none;" width="100%"><tr><td style="border: none;vertical-align: middle;padding: 0px !important;">
+<p style="text-align: left;">{{ coverpage_statement }}</p>
+    </td>
+{% if corporate_author_logos %}
+<td style="border: none;vertical-align: middle;">
+{% for i in corporate_author_logos %}
+<img src='{{i}}'/>
+{% endfor %}
+</td>
+{% endif %}
+  </tr></table>
+{% endif %}
 <p>Approved {{ issueddate }}</p>
 <p>IEEE SA Standards Board</p>
 </div>

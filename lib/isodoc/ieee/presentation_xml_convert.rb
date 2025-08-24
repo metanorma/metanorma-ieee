@@ -121,7 +121,7 @@ module IsoDoc
             %w(icap industry-connection-report).include?(@subdoctype)
           %w(&#x25aa; &#x2014;)
         else
-          %w(&#x2013;)
+          %w(&#x2014;)
         end
       end
 

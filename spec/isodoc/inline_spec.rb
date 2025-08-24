@@ -499,7 +499,7 @@ RSpec.describe IsoDoc::Ieee do
           <ul>
              <li id="_">
                 <fmt-name id="_">
-                   <semx element="autonum" source="_">–</semx>
+                   <semx element="autonum" source="_">—</semx>
                 </fmt-name>
                 <concept id="_">
                    <refterm>term</refterm>
@@ -511,7 +511,7 @@ RSpec.describe IsoDoc::Ieee do
              </li>
              <li id="_">
                 <fmt-name id="_">
-                   <semx element="autonum" source="_">–</semx>
+                   <semx element="autonum" source="_">—</semx>
                 </fmt-name>
                 <concept id="_">
                    <refterm>term</refterm>
@@ -524,7 +524,7 @@ RSpec.describe IsoDoc::Ieee do
              </li>
              <li id="_">
                 <fmt-name id="_">
-                   <semx element="autonum" source="_">–</semx>
+                   <semx element="autonum" source="_">—</semx>
                 </fmt-name>
                 <concept id="_">
                    <refterm>term</refterm>
@@ -537,7 +537,7 @@ RSpec.describe IsoDoc::Ieee do
              </li>
              <li id="_">
                 <fmt-name id="_">
-                   <semx element="autonum" source="_">–</semx>
+                   <semx element="autonum" source="_">—</semx>
                 </fmt-name>
                 <concept id="_">
                    <refterm>term</refterm>
@@ -550,7 +550,7 @@ RSpec.describe IsoDoc::Ieee do
              </li>
              <li id="_">
                 <fmt-name id="_">
-                   <semx element="autonum" source="_">–</semx>
+                   <semx element="autonum" source="_">—</semx>
                 </fmt-name>
                 <concept id="_">
                    <refterm>term</refterm>
@@ -563,7 +563,7 @@ RSpec.describe IsoDoc::Ieee do
              </li>
              <li id="_">
                 <fmt-name id="_">
-                   <semx element="autonum" source="_">–</semx>
+                   <semx element="autonum" source="_">—</semx>
                 </fmt-name>
                 <concept id="_">
                    <refterm>term</refterm>
@@ -583,7 +583,7 @@ RSpec.describe IsoDoc::Ieee do
              </li>
              <li id="_">
                 <fmt-name id="_">
-                   <semx element="autonum" source="_">–</semx>
+                   <semx element="autonum" source="_">—</semx>
                 </fmt-name>
                 <concept id="_">
                    <refterm>term</refterm>
@@ -607,7 +607,7 @@ RSpec.describe IsoDoc::Ieee do
              </li>
              <li id="_">
                 <fmt-name id="_">
-                   <semx element="autonum" source="_">–</semx>
+                   <semx element="autonum" source="_">—</semx>
                 </fmt-name>
                 <concept id="_">
                    <refterm>term</refterm>
@@ -632,7 +632,7 @@ RSpec.describe IsoDoc::Ieee do
              </li>
              <li id="_">
                 <fmt-name id="_">
-                   <semx element="autonum" source="_">–</semx>
+                   <semx element="autonum" source="_">—</semx>
                 </fmt-name>
                 <concept id="_">
                    <refterm>term</refterm>
@@ -643,7 +643,7 @@ RSpec.describe IsoDoc::Ieee do
              </li>
              <li id="_">
                 <fmt-name id="_">
-                   <semx element="autonum" source="_">–</semx>
+                   <semx element="autonum" source="_">—</semx>
                 </fmt-name>
                 <concept id="_">
                    <refterm>term</refterm>
@@ -656,7 +656,7 @@ RSpec.describe IsoDoc::Ieee do
              </li>
              <li id="_">
                 <fmt-name id="_">
-                   <semx element="autonum" source="_">–</semx>
+                   <semx element="autonum" source="_">—</semx>
                 </fmt-name>
                 <concept id="_">
                    <refterm>term</refterm>
@@ -669,7 +669,7 @@ RSpec.describe IsoDoc::Ieee do
              </li>
              <li id="_">
                 <fmt-name id="_">
-                   <semx element="autonum" source="_">–</semx>
+                   <semx element="autonum" source="_">—</semx>
                 </fmt-name>
                 <concept id="_">
                    <strong>error!</strong>

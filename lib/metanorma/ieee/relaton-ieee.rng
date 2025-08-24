@@ -26,6 +26,10 @@
         <value>amendment</value>
         <value>corrigendum</value>
         <value>erratum</value>
+        <value>icap</value>
+        <value>document</value>
+        <value>industry-connections-report</value>
+        <value>industry-affiliate-network</value>
       </choice>
     </define>
   </include>
