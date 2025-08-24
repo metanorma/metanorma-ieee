@@ -534,7 +534,7 @@
 						</xsl:choose> -->
 
 						<fo:block font-size="23pt"> <!-- 18pt -->
-							<xsl:value-of select="$title_prefix"/>
+							<!-- <xsl:value-of select="$title_prefix"/> -->
 							<xsl:copy-of select="$title_intro"/>
 						</fo:block>
 
@@ -1138,7 +1138,7 @@
 									<xsl:text>™/D</xsl:text>
 									<xsl:value-of select="$draft_number"/>
 									<xsl:value-of select="$linebreak"/>
-									<xsl:copy-of select="$title_prefix"/>
+									<!-- <xsl:copy-of select="$title_prefix"/> -->
 									<xsl:copy-of select="$title"/>
 
 									<!-- <xsl:copy-of select="$draft_title_part"/> -->
@@ -3185,7 +3185,7 @@
 					<xsl:value-of select="$document_id"/>
 				</fo:block>
 				<fo:block>
-					<xsl:copy-of select="$title_prefix"/>
+					<!-- <xsl:copy-of select="$title_prefix"/> -->
 					<xsl:copy-of select="$title"/>
 				</fo:block>
 
@@ -3495,7 +3495,7 @@
 
 			<fo:static-content flow-name="right-region" role="artifact">
 				<fo:block-container font-family="Montserrat ExtraBold" font-weight="normal" reference-orientation="90" font-size="45.9pt" text-align="right">
-					<fo:block margin-right="-4mm" margin-top="-2mm">
+					<fo:block margin-right="-4mm" margin-top="0mm">
 						<fo:instream-foreign-object content-width="2.5mm" content-height="11.9mm" scaling="non-uniform" fox:alt-text="Image Box">
 							<xsl:call-template name="insertImageBoxSVG">
 								<xsl:with-param name="color">rgb(38,172,226)</xsl:with-param>
@@ -3533,7 +3533,7 @@
 					</xsl:choose> -->
 
 					<fo:block font-size="22pt">
-						<xsl:value-of select="$title_prefix"/>
+						<!-- <xsl:value-of select="$title_prefix"/> -->
 						<xsl:copy-of select="$title_intro"/>
 					</fo:block>
 
@@ -3551,6 +3551,44 @@
 					<fo:block font-size="12pt" space-before="13mm">Developed by the</fo:block>
 					<!-- LAN/MAN Standards Committee -->
 					<fo:block font-size="12pt"><xsl:value-of select="$committee"/></fo:block>
+
+					<xsl:variable name="coverpage_statement" select="normalize-space(/mn:metanorma/mn:metanorma-extension/mn:presentation-metadata/mn:coverpage-statement)"/>
+					<xsl:if test="$coverpage_statement != '' or /mn:metanorma/mn:bibdata/mn:contributor[mn:role[@type = 'author']]/mn:organization/mn:logo">
+						<fo:block font-size="12pt">
+							<fo:block> </fo:block>
+							<fo:table width="168mm" table-layout="fixed">
+								<fo:table-column column-width="100mm"/>
+								<fo:table-column column-width="68mm"/>
+								<fo:table-body>
+									<fo:table-row>
+										<fo:table-cell>
+											<fo:block><xsl:value-of select="$coverpage_statement"/></fo:block>
+										</fo:table-cell>
+										<fo:table-cell text-align="center">
+											<fo:block>
+												<xsl:for-each select="/mn:metanorma/mn:bibdata/mn:contributor[mn:role[@type = 'author']]/mn:organization">
+													<fo:block>
+														<xsl:variable name="logo_image">
+															<xsl:for-each select="mn:logo/mn:image"> <!-- set context to logo/image -->
+																<xsl:element name="logo" namespace="{$namespace_full}">
+																	<xsl:element name="image" namespace="{$namespace_full}">
+																		<xsl:copy-of select="@*"/>
+																		<xsl:attribute name="width">32mm</xsl:attribute>
+																		<xsl:copy-of select="node()"/>
+																	</xsl:element>
+																</xsl:element>
+															</xsl:for-each>
+														</xsl:variable>
+														<xsl:apply-templates select="xalan:nodeset($logo_image)//mn:logo/mn:image"/>
+													</fo:block>
+												</xsl:for-each>
+											</fo:block>
+										</fo:table-cell>
+									</fo:table-row>
+								</fo:table-body>
+							</fo:table>
+						</fo:block>
+					</xsl:if>
 
 					<xsl:if test="normalize-space($cutoff_date) != ''">
 						<fo:block> </fo:block>
