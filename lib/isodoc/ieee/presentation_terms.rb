@@ -31,11 +31,21 @@ module IsoDoc
         end
       end
 
-      def wrap_nodeset_in_parens(xpath)
-        unless xpath.empty?
-          xpath[0].previous = " ("
-          xpath[-1].next = ")"
-        end
+      def wrap_termsource_in_parens(xpath)
+        xpath.empty? and return xpath
+        opening_paren = Nokogiri::XML::Node.new("span", xpath[0].document)
+        opening_paren["class"] = "fmt-termsource-delim"
+        opening_paren.content = "("
+        xpath[0].add_previous_sibling(opening_paren)
+        closing_paren = Nokogiri::XML::Node.new("span", xpath[-1].document)
+        closing_paren["class"] = "fmt-termsource-delim"
+        closing_paren.content = ")"
+        xpath[-1].add_next_sibling(closing_paren)
+        # Return expanded nodeset including parentheses
+        parent = xpath[0].parent
+        start_index = parent.children.index(opening_paren)
+        end_index = parent.children.index(closing_paren)
+        parent.children[start_index..end_index]
       end
 
       def unwrap_definition1(d)
@@ -44,11 +54,11 @@ module IsoDoc
           if v.elements.all? { |n| %w(source p).include?(n.name) }
             p = v.xpath(ns("./p"))
             s = v.xpath(ns("./source"))
-            s.empty? or s = " (#{s.map { |x| to_xml(x) }.join})"
+            s = wrap_termsource_in_parens(s) unless s.empty?
             v.children =
-              "#{p.map(&:children).map { |x| to_xml(x) }.join("\n")}#{s}"
+              "#{p.map(&:children).map { |x| to_xml(x) }.join("\n")}#{s.map { |x| to_xml(x) }.join}"
           else
-            wrap_nodeset_in_parens(v.xpath(ns("./source")))
+            wrap_termsource_in_parens(v.xpath(ns("./source")))
           end
           v.replace(v.children)
         end
@@ -120,7 +130,11 @@ module IsoDoc
       end
 
       def collapse_term_template_tail(opt)
-        opt[:source] and src = "(#{to_xml(opt[:source].children).strip})"
+        if opt[:source]
+          # For this context, we need to use the old string-based approach
+          # since the source element has been removed from its parent
+          src = "<span class='fmt-termsource-delim'>(</span>#{to_xml(opt[:source].children).strip}<span class='fmt-termsource-delim'>)</span>"
+        end
         opt[:fns].empty? or fn = opt[:fns].map{ |f| to_xml(f) }.join
         "#{collapse_term_related(opt[:rels])} #{src}#{fn}".strip
       end
@@ -128,7 +142,7 @@ module IsoDoc
       def collapse_term_pref(opt)
         p = opt[:pref]
         p.text.strip.empty? and return "**TERM NOT FOUND**"
-        wrap_nodeset_in_parens(p.xpath(ns(".//semx[@element = 'source']")))
+        wrap_termsource_in_parens(p.xpath(ns(".//semx[@element = 'source']")))
         p.xpath(ns(".//fmt-termsource")).each { |x| x.replace(x.children) }
         to_xml(p.children).strip
       end
