@@ -612,8 +612,8 @@ RSpec.describe Metanorma::Ieee do
        3 Park Avenue, New York, NY 10016-5997, USA</p>
            </clause>
            <clause id="_" inline-header="false" obligation="normative">
-             <p id="_">Copyright © #{Date.today.year} by The Institute of Electrical and Electronics Engineers, Inc.</p>
-             <p id="_">All rights reserved. Published 02 Feb 1001. Printed in the United States of America.</p>
+             <p id="_">Copyright © #{Date.today.year} by The Institute of Electrical and Electronics Engineers, Inc.<br/>
+             All rights reserved. Published 02 Feb 1001. Printed in the United States of America.</p>
            </clause>
            <clause id="_" inline-header="false" obligation="normative">
              <p id="_">IEEE is a registered trademark in the U.S. Patent &amp; Trademark Office, owned by The Institute of Electrical and Electronics Engineers, Incorporated.</p>
