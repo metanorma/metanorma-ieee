@@ -56,7 +56,11 @@ module IsoDoc
             s = v.xpath(ns("./source"))
             s = wrap_termsource_in_parens(s) unless s.empty?
             v.children =
-              "#{p.map(&:children).map { |x| to_xml(x) }.join("\n")}#{s.map { |x| to_xml(x) }.join}"
+              "#{p.map(&:children).map do |x|
+                to_xml(x)
+              end.join("\n")}#{s.map do |x|
+                               to_xml(x)
+                             end.join}"
           else
             wrap_termsource_in_parens(v.xpath(ns("./source")))
           end
@@ -135,7 +139,7 @@ module IsoDoc
           # since the source element has been removed from its parent
           src = "<span class='fmt-termsource-delim'>(</span>#{to_xml(opt[:source].children).strip}<span class='fmt-termsource-delim'>)</span>"
         end
-        opt[:fns].empty? or fn = opt[:fns].map{ |f| to_xml(f) }.join
+        opt[:fns].empty? or fn = opt[:fns].map { |f| to_xml(f) }.join
         "#{collapse_term_related(opt[:rels])} #{src}#{fn}".strip
       end
 
@@ -191,6 +195,22 @@ module IsoDoc
         elem.name = "fn"
         elem["reference"] = "_termnote_license_#{idx}"
         elem.parent << elem
+      end
+
+      def termsource_brackets(docxml)
+        docxml.xpath(ns("//term//semx[@element = 'source']")).each do |s|
+          text = termsource_text_content(s)
+          text&.include?("(") && text.include?(")") or next
+          prevbr = s.at("./preceding-sibling::xmlns:span[@class='fmt-termsource-delim']")
+          nextbr = s.at("./following-sibling::xmlns:span[@class='fmt-termsource-delim']")
+          prevbr.children = "["
+          nextbr.children = "]"
+        end
+      end
+
+      def termsource_text_content(span)
+        span.dup.xpath(ns(".//localityStack | .//locality")).each(&:remove)
+          .text
       end
     end
   end

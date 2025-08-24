@@ -67,7 +67,7 @@ RSpec.describe IsoDoc do
         <p id="_19830f33-e46c-42cc-94ca-a5ef101132d5">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
       </termnote>
       <source status="identical">
-        <origin bibitemid="ISO7301" type="inline" droploc="true" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></origin>
+        <origin bibitemid="ISO7301" type="inline" droploc="true" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3(1)</referenceFrom></locality></origin>
       </source></term>
       </terms>
       </sections>
@@ -141,7 +141,7 @@ RSpec.describe IsoDoc do
                                &gt;
                             </span>
                          </semx>
-                          <span class="fmt-termsource-delim">(</span>
+                         <span class="fmt-termsource-delim">(</span>
                          <semx element="source" source="_">
                             <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011" id="_">
                                <locality type="clause">
@@ -163,9 +163,11 @@ RSpec.describe IsoDoc do
                             , modified —
                             <semx element="modification" source="_">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</semx>
                          </semx>
-                          <span class="fmt-termsource-delim">)</span>:
+                         <span class="fmt-termsource-delim">)</span>
+                         :
                          <semx element="definition" source="_">rice retaining its husk after threshing</semx>
-                          <span class="fmt-termsource-delim">(</span>adapted from
+                         <span class="fmt-termsource-delim">(</span>
+                         adapted from
                          <semx element="source" source="_">
                             <origin citeas="" id="_">
                                <termref base="IEV" target="xyz">t1</termref>
@@ -190,7 +192,7 @@ RSpec.describe IsoDoc do
                             , adapted —
                             <semx element="modification" source="_">with adjustments</semx>
                          </semx>
-                          <span class="fmt-termsource-delim">)</span>
+                         <span class="fmt-termsource-delim">)</span>
                       </p>
                    </fmt-definition>
                    <termexample id="_" keep-with-next="true" keep-lines-together="true" autonum="1">
@@ -338,27 +340,28 @@ RSpec.describe IsoDoc do
                                </semx>
                             </fmt-preferred>
                          </semx>
-                         .  <span class="fmt-termsource-delim">(</span>
+                         .
+                         <span class="fmt-termsource-delim">[</span>
                          <semx element="source" source="_">
                             <origin bibitemid="ISO7301" type="inline" droploc="true" citeas="ISO 7301:2011" id="_">
                                <locality type="clause">
-                                  <referenceFrom>3.1</referenceFrom>
+                                  <referenceFrom>3(1)</referenceFrom>
                                </locality>
                             </origin>
                             <semx element="origin" source="_">
                                <fmt-origin bibitemid="ISO7301" type="inline" droploc="true" citeas="ISO 7301:2011">
                                   <locality type="clause">
-                                     <referenceFrom>3.1</referenceFrom>
+                                     <referenceFrom>3(1)</referenceFrom>
                                   </locality>
                                   <span class="std_publisher">ISO </span>
                                   <span class="std_docNumber">7301</span>
                                   :
                                   <span class="std_year">2011</span>
-                                  , 3.1
+                                  , 3(1)
                                </fmt-origin>
                             </semx>
                          </semx>
-                          <span class="fmt-termsource-delim">)</span>
+                         <span class="fmt-termsource-delim">]</span>
                       </p>
                    </fmt-definition>
                    <termexample id="_" autonum="">
@@ -455,7 +458,7 @@ RSpec.describe IsoDoc do
                    <source status="identical" id="_">
                       <origin bibitemid="ISO7301" type="inline" droploc="true" citeas="ISO 7301:2011">
                          <locality type="clause">
-                            <referenceFrom>3.1</referenceFrom>
+                            <referenceFrom>3(1)</referenceFrom>
                          </locality>
                       </origin>
                    </source>
@@ -517,17 +520,18 @@ RSpec.describe IsoDoc do
                 <p class="TermNum" id="paddy1"/>
                 <p>
                    <b>paddy</b>
-                   , &lt;rice&gt;, &lt;in agriculture, dated&gt;  <span class="fmt-termsource-delim">(</span>
+                   , &lt;rice&gt;, &lt;in agriculture, dated&gt;
+                   <span class="fmt-termsource-delim">(</span>
                    <span class="std_publisher">ISO </span>
                    <span class="std_docNumber">7301</span>
                    :
                    <span class="std_year">2011</span>
-                    , 3.1, modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here
-                  <span class="fmt-termsource-delim">)</span>
-                  : rice retaining its husk after threshing
-                  <span class="fmt-termsource-delim">(</span>
-                  adapted from t1, adapted; Termbase IEV, term ID xyz, adapted — with adjustments
-                  <span class="fmt-termsource-delim">)</span>
+                   , 3.1, modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here
+                   <span class="fmt-termsource-delim">)</span>
+                   : rice retaining its husk after threshing
+                   <span class="fmt-termsource-delim">(</span>
+                   adapted from t1, adapted; Termbase IEV, term ID xyz, adapted — with adjustments
+                   <span class="fmt-termsource-delim">)</span>
                 </p>
                 <div id="_" class="example" style="page-break-after: avoid;page-break-inside: avoid;">
                    <p class="example-title">
@@ -560,12 +564,14 @@ RSpec.describe IsoDoc do
                    <b>paddy rice</b>
                    , &lt;in agriculture&gt;;
                    <b>rough rice</b>
-                   .  <span class="fmt-termsource-delim">(</span>
+                   .
+                   <span class="fmt-termsource-delim">[</span>
                    <span class="std_publisher">ISO </span>
                    <span class="std_docNumber">7301</span>
                    :
                    <span class="std_year">2011</span>
-                   , 3.1<span class="fmt-termsource-delim">)</span>
+                   , 3(1)
+                   <span class="fmt-termsource-delim">]</span>
                 </p>
                 <div id="_" class="example">
                    <p class="example-title">
@@ -695,13 +701,13 @@ RSpec.describe IsoDoc do
                    , &lt;in agriculture&gt;;
                    <b>rough rice</b>
                    .
-                   <span class="fmt-termsource-delim">(</span>
+                   <span class="fmt-termsource-delim">[</span>
                    <span class="std_publisher">ISO </span>
                    <span class="std_docNumber">7301</span>
                    :
                    <span class="std_year">2011</span>
-                   , 3.1
-                   <span class="fmt-termsource-delim">)</span>
+                   , 3(1)
+                   <span class="fmt-termsource-delim">]</span>
                 </p>
                 <div id="_" class="example">
                    <p class="example-title">
