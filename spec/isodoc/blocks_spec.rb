@@ -1681,31 +1681,31 @@ OUTPUT
                    </fmt-name>
                    <li id="_">
                       <fmt-name id="_">
-                         <semx element="autonum" source="_">–</semx>
+                         <semx element="autonum" source="_">—</semx>
                       </fmt-name>
                       <p id="_">Level 1</p>
                    </li>
                    <li id="_">
                       <fmt-name id="_">
-                         <semx element="autonum" source="_">–</semx>
+                         <semx element="autonum" source="_">—</semx>
                       </fmt-name>
                       <p id="_">deletion of 4.3.</p>
                       <ul id="_" keep-with-next="true" keep-lines-together="true">
                          <li id="_">
                             <fmt-name id="_">
-                               <semx element="autonum" source="_">–</semx>
+                               <semx element="autonum" source="_">—</semx>
                             </fmt-name>
                             <p id="_">Level 2</p>
                             <ul id="_" keep-with-next="true" keep-lines-together="true">
                                <li id="_">
                                   <fmt-name id="_">
-                                     <semx element="autonum" source="_">–</semx>
+                                     <semx element="autonum" source="_">—</semx>
                                   </fmt-name>
                                   <p id="_">Level 3</p>
                                   <ul id="_" keep-with-next="true" keep-lines-together="true">
                                      <li id="_">
                                         <fmt-name id="_">
-                                           <semx element="autonum" source="_">–</semx>
+                                           <semx element="autonum" source="_">—</semx>
                                         </fmt-name>
                                         <p id="_">Level 4</p>
                                      </li>

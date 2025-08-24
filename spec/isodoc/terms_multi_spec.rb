@@ -352,7 +352,7 @@ RSpec.describe IsoDoc do
                       <ul>
                          <li id="_">
                             <fmt-name id="_">
-                               <semx element="autonum" source="_">–</semx>
+                               <semx element="autonum" source="_">—</semx>
                             </fmt-name>
                             A
                          </li>
@@ -388,7 +388,7 @@ RSpec.describe IsoDoc do
                       <ul>
                          <li id="_">
                             <fmt-name id="_">
-                               <semx element="autonum" source="_">–</semx>
+                               <semx element="autonum" source="_">—</semx>
                             </fmt-name>
                             A
                          </li>
@@ -458,14 +458,14 @@ RSpec.describe IsoDoc do
        <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
              <clause type="toc" id="_" displayorder="1">
-                <fmt-title id="_" depth="1">Contents</fmt-title>
+                <fmt-title depth="1" id="_">Contents</fmt-title>
              </clause>
           </preface>
           <sections>
              <p class="zzSTDTitle1" displayorder="2"/>
              <terms id="_" obligation="normative" displayorder="3">
                 <title id="_">Terms and Definitions</title>
-                <fmt-title id="_" depth="1">
+                <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="_">1</semx>
                       <span class="fmt-autonum-delim">.</span>
@@ -517,7 +517,7 @@ RSpec.describe IsoDoc do
                              rice retaining its husk after threshing, mark 2
                          </semx>
                          (
-                         <semx  element="source" source="_">
+                         <semx element="source" source="_">
                             <origin citeas="" id="_">
                                <termref base="IEV" target="xyz">t1</termref>
                             </origin>
@@ -528,7 +528,7 @@ RSpec.describe IsoDoc do
                             </semx>
                          </semx>
                          ;
-                         <semx  element="source" source="_">
+                         <semx element="source" source="_">
                             <origin citeas="" id="_">
                                <termref base="IEV" target="xyz"/>
                             </origin>
@@ -574,7 +574,7 @@ RSpec.describe IsoDoc do
                       <ul>
                          <li id="_">
                             <fmt-name id="_">
-                               <semx element="autonum" source="_">–</semx>
+                               <semx element="autonum" source="_">—</semx>
                             </fmt-name>
                             A
                          </li>
@@ -610,7 +610,7 @@ RSpec.describe IsoDoc do
                       <ul>
                          <li id="_">
                             <fmt-name id="_">
-                               <semx element="autonum" source="_">–</semx>
+                               <semx element="autonum" source="_">—</semx>
                             </fmt-name>
                             A
                          </li>
