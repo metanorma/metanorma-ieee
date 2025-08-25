@@ -183,7 +183,7 @@ module IsoDoc
       def authority_cleanup1(docxml, klass)
         dest = docxml.at("//div[@id = 'boilerplate-#{klass}-destination']")
         auth = docxml.at("//div[@id = 'boilerplate-#{klass}' " \
-                         "or @class = 'boilerplate-#{klass}']") or remove
+                         "or @class = 'boilerplate-#{klass}']") or return
         auth.xpath(".//h1[not(text())] | .//h2[not(text())]")&.each(&:remove)
         authority_cleanup_hdr(auth.remove)
         if dest && auth
