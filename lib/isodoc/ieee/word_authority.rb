@@ -110,8 +110,8 @@ module IsoDoc
         div.elements.each_with_object([[]]) do |e, m|
           member = e.name == "p" && e["type"] == "officemember"
           if prev == member
-            !m[-1].empty? && m[-1][-1]["type"] == "officeorgmember" &&
-              e["type"] != "officeorgmember" and
+            !m[-1].empty? && m[-1][-1]["class"] == stylesmap[:nameslist] &&
+              e["class"] != stylesmap[:nameslist] and
               m[-1] << Nokogiri::XML("<p>&#xa0;</p>").root
             m[-1] << e
           else
