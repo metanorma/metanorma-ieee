@@ -87,7 +87,7 @@ RSpec.describe IsoDoc do
                          </semx>
                          :
                          <semx element="definition" source="_">
-                            rice retaining its husk after threshing, mark 2 rice retaining its husk after threshing, mark 3 (
+                            rice retaining its husk after threshing, mark 2 rice retaining its husk after threshing, mark 3 <span class="fmt-termsource-delim">(</span>
                             <semx element="source" source="_">
                                <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011" id="_">
                                   <locality type="clause">
@@ -109,9 +109,9 @@ RSpec.describe IsoDoc do
                                , modified —
                                <semx element="modification" source="_">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</semx>
                             </semx>
-                            )
+                            <span class="fmt-termsource-delim">)</span>
                          </semx>
-                         (
+                         <span class="fmt-termsource-delim">(</span>
                          <semx element="source" source="_">
                             <origin citeas="" id="_">
                                <termref base="IEV" target="xyz">t1</termref>
@@ -122,7 +122,7 @@ RSpec.describe IsoDoc do
                                </fmt-origin>
                             </semx>
                          </semx>
-                         )
+                         <span class="fmt-termsource-delim">)</span>
                       </p>
                    </fmt-definition>
                    <source status="identical" id="_">
@@ -270,7 +270,7 @@ RSpec.describe IsoDoc do
                          </semx>
                          <semx element="definition" source="_">
                             <strong>(B)</strong>
-                             rice retaining its husk after threshing, mark 2 (
+                             rice retaining its husk after threshing, mark 2 <span class="fmt-termsource-delim">(</span>
                             <semx element="source" source="_">
                                <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011" id="_">
                                   <locality type="clause">
@@ -292,9 +292,9 @@ RSpec.describe IsoDoc do
                                , modified —
                                <semx element="modification" source="_">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</semx>
                             </semx>
-                            )
+                            <span class="fmt-termsource-delim">)</span>
                          </semx>
-                         (
+                         <span class="fmt-termsource-delim">(</span>
                          <semx element="source" source="_">
                             <origin citeas="" id="_">
                                <termref base="IEV" target="xyz">t1</termref>
@@ -318,7 +318,7 @@ RSpec.describe IsoDoc do
                             , modified —
                             <semx element="modification" source="_">with adjustments</semx>
                          </semx>
-                         )
+                         <span class="fmt-termsource-delim">)</span>
                       </p>
                    </fmt-definition>
                    <termexample id="_" keep-with-next="true" keep-lines-together="true" autonum="1">
@@ -516,7 +516,7 @@ RSpec.describe IsoDoc do
                             <strong>(B)</strong>
                              rice retaining its husk after threshing, mark 2
                          </semx>
-                         (
+                         <span class="fmt-termsource-delim">(</span>
                          <semx element="source" source="_">
                             <origin citeas="" id="_">
                                <termref base="IEV" target="xyz">t1</termref>
@@ -540,7 +540,7 @@ RSpec.describe IsoDoc do
                             , modified —
                             <semx element="modification" source="_">with adjustments</semx>
                          </semx>
-                         )
+                         <span class="fmt-termsource-delim">)</span>
                       </p>
                    </fmt-definition>
                    <termexample id="_" keep-with-next="true" keep-lines-together="true" autonum="1">

@@ -176,6 +176,11 @@ module IsoDoc
         super
       end
 
+      def cleanup(docxml)
+        termsource_brackets(docxml)
+        super
+      end
+
       def document_footnotes(docxml)
         first_biblio_eref_fn(docxml)
         super
