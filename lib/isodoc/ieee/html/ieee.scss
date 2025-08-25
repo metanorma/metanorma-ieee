@@ -2538,9 +2538,10 @@ font-weight:bold;
 	mso-footer-margin:36.0pt;
 	mso-line-numbers-count-by:1;
 	mso-page-numbers:roman-lower;
+        {% if unpublished %}{%else %}mso-title-page:yes;{%endif%}
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
 	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
-	mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;
+	/*mso-first-header:url("file:///C:/Doc/FILENAME_files/header.html") fh1;*/
 	mso-paper-source:0;}
 div.WordSection1
 	{page:WordSection1;

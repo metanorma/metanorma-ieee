@@ -59,10 +59,10 @@ xmlns="http://www.w3.org/TR/REC-html40">
 
 <div style='mso-element:header' id=h1>
 
-  <p class=MsoHeader><span lang=EN-US>P{{ docnumeric }}{% if draft %}/D{{ draft }},
-    {{ draft_month }} {{ draft_year }}{% endif %}</span></p>
+  <p class=MsoHeader><span lang=EN-US>{%if unpublished%}P{{ docnumeric }}{% if draft %}/D{{ draft }},
+    {{ draft_month }} {{ draft_year }}{% endif %}{%else%}IEEE Std {{docnumeric}}-{{docyear}}{%endif%}</span></p>
 
-  <p class=MsoHeader><span lang=EN-US>{{ full_doctitle }}</span></p>
+  <p class=MsoHeader><span lang=EN-US>{%if unpublished %}{%else%}IEEE {% endif %}{{ full_doctitle }}</span></p>
 
 </div>
 
