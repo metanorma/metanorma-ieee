@@ -1,6 +1,6 @@
 <div id='toggle'> <span>•</span> </div>
 
-<div class="doctitle-en"><span>P{{ docnumeric }}™{% if draft %}/D{{ draft }}{% endif %}</span><br/>
+<div class="doctitle-en">{% if unpublished %}<span>P{{ docnumeric }}™{% if draft %}/D{{ draft }}{% endif %}</span><br/>{% else %}IEEE{% endif %}
    <span lang="EN-US">{{ full_doctitle }}</span></div>
 {% if amd %}
 <div class="doctitle-part">Amendment {{ amd }}</div>
