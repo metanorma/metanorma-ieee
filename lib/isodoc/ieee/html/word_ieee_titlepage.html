@@ -1,3 +1,4 @@
+{% if unpublished %}{%else%}<p class="IEEEStdsDesignation">IEEE Std-{{docnumeric}}™-{{docyear}}</p>{%endif%}
 <p class="IEEEStdsTitle" style='margin-top:50.0pt;margin-right:0cm;margin-bottom:36.0pt;margin-left:0cm'>{% if unpublished  %}<span lang="EN-US">P{{ docnumeric }}™{% if draft %}/D{{ draft }}{% endif %}</span><br/>{% else %}IEEE{% endif %}
    <span lang="EN-US">{{ full_doctitle }}</span>
    {% if amd or corr %}
