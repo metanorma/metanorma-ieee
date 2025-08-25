@@ -194,7 +194,7 @@ RSpec.describe Metanorma::Ieee do
            <clause id="_" anchor="boilerplate-participants" type="participants" inline-header="false" obligation="normative">
              <title id="_">Participants</title>
              <clause id="_" anchor="boilerplate-participants-wg" inline-header="false" obligation="normative">
-               <p id="_">At the time this draft Recommended Practice was completed, the  had the following membership:</p>
+               <p id="_">At the time this draft recommended practice was completed, the  had the following membership:</p>
                <ul id="_">
                  <li id="_">
                    <dl id="_">
@@ -331,7 +331,7 @@ RSpec.describe Metanorma::Ieee do
                </ul>
              </clause>
              <clause id="_" anchor="boilerplate-participants-bg" inline-header="false" obligation="normative">
-               <p id="_">The following members of the   Standards Association balloting group voted on this Recommended Practice. Balloters may have voted for approval, disapproval, or abstention.</p>
+               <p id="_">The following members of the   Standards Association balloting group voted on this recommended practice. Balloters may have voted for approval, disapproval, or abstention.</p>
                <ul id="_">
                  <li id="_">
                    <dl id="_">
@@ -444,7 +444,7 @@ RSpec.describe Metanorma::Ieee do
                </ul>
              </clause>
              <clause id="_" anchor="boilerplate-participants-sb" inline-header="false" obligation="normative">
-               <p id="_">When the IEEE SA Standards Board approved this Recommended Practice on 01 Jan 1000, it had the following membership:</p>
+               <p id="_">When the IEEE SA Standards Board approved this recommended practice on 01 Jan 1000, it had the following membership:</p>
                <ul id="_">
                  <li id="_">
                    <dl id="_">
@@ -1104,7 +1104,7 @@ RSpec.describe Metanorma::Ieee do
            <clause id="_" anchor="boilerplate-participants" type="participants" inline-header="false" obligation="normative">
          <title id="_">Participants</title>
          <clause id="_" anchor="boilerplate-participants-wg" inline-header="false" obligation="normative">
-           <p id="_">At the time this draft Standard was completed, the  had the following membership:</p>
+           <p id="_">At the time this draft standard was completed, the  had the following membership:</p>
            <ul id="_">
              <li id="_">
                <dl id="_">
@@ -1161,7 +1161,7 @@ RSpec.describe Metanorma::Ieee do
            <p id="_">This is an additional clause.</p>
          </clause>
          <clause id="_" anchor="boilerplate-participants-bg" inline-header="false" obligation="normative">
-           <p id="_">The following members of the   Standards Association balloting group voted on this Standard. Balloters may have voted for approval, disapproval, or abstention.</p>
+           <p id="_">The following members of the   Standards Association balloting group voted on this standard. Balloters may have voted for approval, disapproval, or abstention.</p>
            <ul id="_">
              <li id="_">
                <dl id="_">
@@ -1221,7 +1221,7 @@ RSpec.describe Metanorma::Ieee do
            </ul>
          </clause>
          <clause id="_" anchor="boilerplate-participants-sb" inline-header="false" obligation="normative">
-           <p id="_">When the IEEE SA Standards Board approved this Standard on &lt;Date Approved&gt;, it had the following membership:</p>
+           <p id="_">When the IEEE SA Standards Board approved this standard on &lt;Date Approved&gt;, it had the following membership:</p>
            <ul id="_">
              <li id="_">
                <dl id="_">

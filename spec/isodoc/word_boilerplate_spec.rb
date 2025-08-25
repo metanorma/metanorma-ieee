@@ -84,7 +84,11 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       <abbreviation>IEEE</abbreviation></organization></contributor><edition>2</edition><version><revision-date>2000-01-01</revision-date><draft>0.3.4</draft></version><language>en</language><script>Latn</script><status><stage>20</stage><substage>20</substage><iteration>3</iteration></status><copyright><from>2000</from><owner><organization>
       <name>Institute of Electrical and Electronic Engineers</name>
       <abbreviation>IEEE</abbreviation></organization></owner></copyright><ext><doctype>standard</doctype><editorialgroup><society>SECRETARIAT</society><balloting-group>SC</balloting-group><working-group>WG</working-group><working-group>WG1</working-group><committee>TC</committee><committee>TC1</committee></editorialgroup><ics><code>1</code></ics><ics><code>2</code></ics><ics><code>3</code></ics></ext></bibdata>
-
+         <metanorma-extension>
+         <semantic-metadata>
+         <stage-published>false</stage-published>
+         </semantic-metadata>
+         </metanorma-extension>
 <boilerplate><copyright-statement>
 
 <clause id="_2746e248-b08e-5318-47d4-e45bbe84a410" inline-header="false" obligation="normative">
@@ -317,7 +321,7 @@ Users are encouraged to periodically check for errata.</p>
                 </span>
              </p>
              <p class="IEEEStdsTitleParaSans">
-                <span lang="EN-US" xml:lang="EN-US">Approved 01 Dec 1001</span>
+                <span lang="EN-US" xml:lang="EN-US">Approved Date Approved</span>
              </p>
              <p class="IEEEStdsTitleParaSans">
                 <span lang="EN-US" xml:lang="EN-US">
