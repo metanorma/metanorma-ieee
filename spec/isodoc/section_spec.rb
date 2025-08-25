@@ -1327,7 +1327,7 @@ RSpec.describe IsoDoc::Ieee do
        </div>
     OUTPUT
     word = <<~OUTPUT
-       <body lang="EN-US" link="blue" vlink="#954F72" xml:lang="EN-US">
+      <body lang="EN-US" link="blue" vlink="#954F72" xml:lang="EN-US">
           <p class="IEEEStdsParagraph">
              <br clear="all" class="section"/>
           </p>
@@ -1414,6 +1414,7 @@ RSpec.describe IsoDoc::Ieee do
                          <p class="IEEEStdsNamesList">
                             <span class="organization">Alphabet</span>
                          </p>
+                         <p class="IEEEStdsParagraph"> </p>
                          <p class="IEEEStdsParagraph">
                             <a name="_" id="_"/>
                             When the IEEE SA Standards Board approved this Standard on Date Approved, it had the following membership:
@@ -1461,6 +1462,7 @@ RSpec.describe IsoDoc::Ieee do
                                <p class="IEEEStdsNamesList">
                                   <span class="organization">Ritz</span>
                                </p>
+                               <p class="IEEEStdsParagraph"> </p>
                                <p class="IEEEStdsParagraph">
                                   <a name="_" id="_"/>
                                   And again:
@@ -1473,8 +1475,8 @@ RSpec.describe IsoDoc::Ieee do
                                   <p class="IEEEStdsNamesList">name2</p>
                                </div>
                                <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
-                               <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
-                            </span>
+                                  <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+                               </span>
                             </span>
                          </span>
                       </span>

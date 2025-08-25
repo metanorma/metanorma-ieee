@@ -109,8 +109,14 @@ module IsoDoc
       def three_column_officemembers_split_main(prev, div)
         div.elements.each_with_object([[]]) do |e, m|
           member = e.name == "p" && e["type"] == "officemember"
-          (prev == member and m[-1] << e) or m << [e]
-          # (prev == member and m[-1] << to_xml(e)) or m << [to_xml(e)]
+          if prev == member
+            !m[-1].empty? && m[-1][-1]["type"] == "officeorgmember" &&
+              e["type"] != "officeorgmember" and
+              m[-1] << Nokogiri::XML("<p>&#xa0;</p>").root
+            m[-1] << e
+          else
+            m << [e]
+          end
           prev = member
         end
       end
