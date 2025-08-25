@@ -144,6 +144,10 @@ module Metanorma
             u.at("./bibitem/docidentifier")
         end.map(&:text)
       end
+
+      def published?(stage, _xmldoc)
+        %w(approved superseded withdrawn).include?(stage&.downcase)
+      end
     end
   end
 end
