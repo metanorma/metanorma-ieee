@@ -130,15 +130,17 @@ module IsoDoc
         super
         draft = isoxml.at(ns("//bibdata/version/draft"))
         doctype(isoxml, _out)
-        set(:full_doctitle, fulltitle(@metadata[:doctype], draft))
-        set(:abbrev_doctitle, fulltitle(@metadata[:doctype_abbrev], draft))
+        published = published_default(isoxml)
+        set(:full_doctitle, fulltitle(@metadata[:doctype], draft, published))
+        set(:abbrev_doctitle, fulltitle(@metadata[:doctype_abbrev], draft, published))
         prov = isoxml.at(ns("//bibdata/title[@type='provenance']")) and
           set(:provenance_doctitle, Common::to_xml(prov.children))
       end
 
-      def fulltitle(type, draft)
+      def fulltitle(type, draft, published)
         title = "#{type || '???'} for #{@metadata[:doctitle] || '???'}"
         draft and title = "Draft #{title}"
+        published and title = "IEEE #{title}"
         title
       end
 
