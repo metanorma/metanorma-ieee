@@ -65,7 +65,7 @@ module IsoDoc
         <span lang="EN-US" style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family:
         "Times New Roman",serif;mso-fareast-font-family:"Times New Roman";mso-ansi-language:
         EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'><br clear="all"
-        style='page-break-before:auto;mso-break-type:section-break'></span>
+        style='page-break-before:auto;mso-break-type:section-break'/></span>
       BREAK
 
       def officemember_style(docxml)
