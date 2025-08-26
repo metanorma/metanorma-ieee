@@ -24,6 +24,7 @@ RSpec.describe Metanorma::Ieee do
             <title language='fr' format='text/plain' type='corrigendum'>Titre de Corrigendum</title>
               <docidentifier type="IEEE" scope="PDF">ABC</docidentifier>
               <docidentifier type="IEEE" scope="print">DEF</docidentifier>
+              <docidentifier type="IEEE-draft">P100</docidentifier>
               <docidentifier type="ISBN" scope="PDF">GHI</docidentifier>
               <docidentifier type="ISBN" scope="print">JKL</docidentifier>
               <docnumber>1000</docnumber>
@@ -305,6 +306,7 @@ RSpec.describe Metanorma::Ieee do
         correcteddate: "XXX",
         coverpage_statement: "IEEE SA Industry Affiliate Network (IAN) base specification contributed by the Spatial Web Foundation",
         createddate: "XXX",
+        docid_draft: "P100",
         docnumber: "ABC",
         docnumeric: "1000",
         docsubtype: "Amendment",

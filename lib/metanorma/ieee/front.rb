@@ -199,7 +199,7 @@ module Metanorma
           node.attr("doctitle")
         title_english1(title, "title-main", xml)
         title_english1(node.attr("title-full"), "main", xml)
-        title_english1(node.attr("title-abbrev"), "abbrev", xml)
+        title_english1(node.attr("title-abbrev"), "title-abbrev", xml)
       end
 
       def title_english1(title, type, xml)
@@ -210,6 +210,8 @@ module Metanorma
           t << title
         end
       end
+
+      def title_otherlangs(node, xml); end
     end
   end
 end
