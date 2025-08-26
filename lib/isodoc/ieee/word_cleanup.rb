@@ -41,11 +41,22 @@ module IsoDoc
         xpath = (1..level).each.map do |i|
           "//h#{i}[not(ancestor::*[@class = 'WordSection2'])]"
         end.join (" | ")
+        annexid = 0
         docxml.xpath(xpath).each do |h|
-          toc += word_toc_entry(h.name[1].to_i, header_strip(h))
+          x = ""
+          if h.name == "h1" && h["class"] == "Annex"
+            x, annexid = annex_toc(annexid)
+          end
+          toc += word_toc_entry(h.name[1].to_i, x + header_strip(h))
         end
         toc.sub(/(<p class="MsoToc1">)/,
                 %{\\1#{word_toc_preface(level)}}) + WORD_TOC_SUFFIX1
+      end
+
+      def annex_toc(annexid)
+        annexid += 1
+        x = "#{@i18n.annex} #{('@'.ord + annexid).chr} "
+        [x, annexid]
       end
 
       def biblio_cleanup(docxml)
