@@ -10,7 +10,9 @@ RSpec.describe Metanorma::Ieee do
     input = <<~INPUT
           <ieee-standard xmlns="https://www.calconnect.org/standards/ieee">
               <bibdata type="standard">
-              <title language="en" format="text/plain" type="main">Main Title<br/>in multiple lines</title>
+              <title language="en" format="text/plain" type="title-main">Main Title<br/>in multiple lines</title>
+              <title language="en" format="text/plain" type="main">Draft Recommended Practice for Main Title<br/>in multiple lines</title>
+              <title language="en" format="text/plain" type="title-abbrev">Draft Rec. Prac. for Main Title<br/>in multiple lines</title>
               <title type='provenance' language='en' format='application/xml'>Revision of ABC<br/>Incorporates BCD and EFG</title>
               <title language="en" format="text/plain" type="annex">Annex Title</title>
               <title language="fr" format="text/plain" type="main">Titre Principal</title>
@@ -357,18 +359,6 @@ RSpec.describe Metanorma::Ieee do
     docxml, = csdc.convert_init(input, "test", true)
     expect(metadata(csdc.info(docxml, nil)))
       .to be_equivalent_to(output)
-    docxml, = csdc.convert_init(
-      input.sub("<stage-published>false</stage-published>",
-                "<stage-published>true</stage-published>"), "test", true
-    )
-    output.merge!(
-      abbrev_doctitle: "IEEE Draft Rec. Prac. for Main Title<br/>in multiple lines",
-      full_doctitle: "IEEE Draft Recommended Practice for Main Title<br/>in multiple lines",
-      unpublished: false,
-    )
-    output.delete(:stageabbr)
-    expect(metadata(csdc.info(docxml, nil)))
-      .to be_equivalent_to(output)
   end
 
   it "processes ICAP, ICR metadata" do
@@ -376,7 +366,8 @@ RSpec.describe Metanorma::Ieee do
     input = <<~INPUT
           <ieee-standard xmlns="https://www.calconnect.org/standards/ieee">
               <bibdata type="standard">
-              <title language="en" format="text/plain" type="main">Main Title<br/>in multiple lines</title>
+              <title language="en" format="text/plain" type="main">Draft Whitepaper for Main Title<br/>in multiple lines</title>
+              <title language="en" format="text/plain" type="title-main">Main Title<br/>in multiple lines</title>
               <title type='provenance' language='en' format='application/xml'>Revision of ABC<br/>Incorporates BCD and EFG</title>
               <title language="en" format="text/plain" type="annex">Annex Title</title>
               <title language="fr" format="text/plain" type="main">Titre Principal</title>
@@ -637,12 +628,9 @@ RSpec.describe Metanorma::Ieee do
             </ieee-standard>
     INPUT
     docxml, = csdc.convert_init(input, "test", true)
-    # expect(htmlencode(metadata(csdc.info(docxml, nil))#.to_s
-    # .gsub(", :", ",\n:"))).to be_equivalent_to <<~"OUTPUT"
     expect(metadata(csdc.info(docxml, nil)))
       .to be_equivalent_to(
-        { abbrev_doctitle: "Draft ??? for Main Title<br/>in multiple lines",
-          accesseddate: "XXX",
+        { accesseddate: "XXX",
           adapteddate: "XXX",
           agency: "IEEE",
           amd: "A1",
@@ -713,12 +701,9 @@ RSpec.describe Metanorma::Ieee do
       )
     docxml, = csdc.convert_init(input
       .sub(">icap<", ">industry-connection-report<"), "test", true)
-    # expect(htmlencode(metadata(csdc.info(docxml, nil))#.to_s
-    # .gsub(", :", ",\n:"))).to be_equivalent_to <<~"OUTPUT"
     expect(metadata(csdc.info(docxml, nil)))
       .to be_equivalent_to(
-        { abbrev_doctitle: "Draft ??? for Main Title<br/>in multiple lines",
-          accesseddate: "XXX",
+        { accesseddate: "XXX",
           adapteddate: "XXX",
           agency: "IEEE",
           amd: "A1",
@@ -862,8 +847,7 @@ RSpec.describe Metanorma::Ieee do
     # .gsub(", :", ",\n:"))).to be_equivalent_to <<~"OUTPUT"
     expect(metadata(csdc.info(docxml, nil)))
       .to be_equivalent_to(
-        { abbrev_doctitle: "Draft Rec. Prac. for Main Title<br/>in multiple lines",
-          accesseddate: "XXX",
+        { accesseddate: "XXX",
           adapteddate: "XXX",
           announceddate: "XXX",
           circulateddate: "XXX",
@@ -882,7 +866,7 @@ RSpec.describe Metanorma::Ieee do
           draft_year: "2000",
           draftinfo: " (draft 3.4, 2000-01-01)",
           edition: "2",
-          full_doctitle: "Draft Recommended Practice for Main Title<br/>in multiple lines",
+          full_doctitle: "Main Title<br/>in multiple lines",
           ieee_sasb_approveddate: "&lt;Date Approved&gt;",
           implementeddate: "XXX",
           isbn_pdf: "978-0-XXXX-XXXX-X",

@@ -91,11 +91,18 @@ module Metanorma
         ret = { number: node.attr("docnumber"),
                 part: node.attr("partnumber"),
                 year: ieee_id_year(node, initial: true),
+                draft: ieee_draft_numbers(node),
                 redline: @doctype == "redline",
                 publisher: pub[0],
                 copublisher: pub[1..-1] }
         ret[:copublisher].empty? and ret.delete(:copublisher)
         compact_blank(ret)
+      end
+
+      def ieee_draft_numbers(node)
+        draft = node.attr("draft") or return nil
+        d = draft.split(".")
+        { version: d[0], revision: d[1] }.compact
       end
 
       def ieee_id_params_amd(node, core)
@@ -184,6 +191,23 @@ module Metanorma
           a = node.attr("amendment-number") and i.amendment a
           a = node.attr("corrigendum-number") and i.corrigendum a
           a = node.attr("copyright-year") and i.year a
+        end
+      end
+
+      def title_english(node, xml)
+        title = node.attr("title") || node.attr("title-en") ||
+          node.attr("doctitle")
+        title_english1(title, "title-main", xml)
+        title_english1(node.attr("title-full"), "main", xml)
+        title_english1(node.attr("title-abbrev"), "abbrev", xml)
+      end
+
+      def title_english1(title, type, xml)
+        title.nil? and return
+        at = { language: "en", format: "text/plain" }
+        title = Metanorma::Utils::asciidoc_sub(title)
+        xml.title **attr_code(at.merge(type: type)) do |t|
+          t << title
         end
       end
     end

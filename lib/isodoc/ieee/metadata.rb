@@ -128,20 +128,13 @@ module IsoDoc
       def title(isoxml, _out)
         metadata_parse_init(isoxml)
         super
-        draft = isoxml.at(ns("//bibdata/version/draft"))
         doctype(isoxml, _out)
-        published = published_default(isoxml)
-        set(:full_doctitle, fulltitle(@metadata[:doctype], draft, published))
-        set(:abbrev_doctitle, fulltitle(@metadata[:doctype_abbrev], draft, published))
-        prov = isoxml.at(ns("//bibdata/title[@type='provenance']")) and
-          set(:provenance_doctitle, Common::to_xml(prov.children))
-      end
-
-      def fulltitle(type, draft, published)
-        title = "#{type || '???'} for #{@metadata[:doctitle] || '???'}"
-        draft and title = "Draft #{title}"
-        published and title = "IEEE #{title}"
-        title
+        { doctitle: "title-main", full_doctitle: "main",
+          abbrev_doctitle: "title-abbrev", provenance_doctitle: "provenance" }
+          .each do |k, v|
+          t = isoxml.at(ns("//bibdata/title[@type='#{v}']")) and
+            set(k, Common::to_xml(t.children))
+        end
       end
 
       def metadata_parse_init(isoxml)

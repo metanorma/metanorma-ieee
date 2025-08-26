@@ -259,7 +259,7 @@ RSpec.describe Metanorma::Ieee do
       OUTPUT
   end
 
-  it "processes metadata with draft, no docstage, no balloting-group-type, docidentifier override" do
+  it "processes metadata with draft, no docstage, no balloting-group-type" do
     out = Nokogiri::XML(Asciidoctor.convert(<<~INPUT, *OPTIONS))
       = Document title
       Author
@@ -270,7 +270,6 @@ RSpec.describe Metanorma::Ieee do
       :draft: 3
       :balloting-group: BG
       :society: SECRETARIAT
-      :docidentifier: OVERRIDE
       :docnumber: 1000
 
     INPUT
@@ -343,14 +342,17 @@ RSpec.describe Metanorma::Ieee do
       .to be_equivalent_to Canon.format_xml(output)
   end
 
-  it "processes metadata with no draft, no docstage" do
+  it "processes metadata with no draft, no docstage, docidentifier override, user-supplied titles" do
     out = Nokogiri::XML(Asciidoctor.convert(<<~INPUT, *OPTIONS))
       = Document title
       Author
       :docfile: test.adoc
+      :docidentifier: OVERRIDE
       :nodoc:
       :novalid:
       :no-isobib:
+      :title-full: IEEE Standardaroone for Document titles
+      :title-abbrev: IEEE Std-e for Doc. tit.
 
     INPUT
     output = <<~OUTPUT

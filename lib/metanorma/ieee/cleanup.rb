@@ -112,17 +112,48 @@ module Metanorma
 
       def bibdata_cleanup(xmldoc)
         super
+        prefixed_title(xmldoc)
         provenance_title(xmldoc)
+      end
+
+      def prefixed_title(xmldoc)
+        t, stage, trial = prefixed_title_prep(xmldoc)
+        %w(main main-abbrev).reverse_each do |type|
+          xmldoc.at("//bibdata/title[@type = '#{type}']") and next
+          p = prefixed_title1(stage, trial, type)
+          t.previous = <<~XML
+            <title type='#{type}' language='en'>#{p}#{to_xml(t.children)}</title>
+          XML
+        end
+      end
+
+      def prefixed_title1(stage, trial, type)
+        ["standard", "guide", "recommended-practice"].include?(@doctype) or
+          return ""
+        m = []
+        m << stage == "draft" ? "Draft" : "IEEE"
+        trial and m << "Trial-Use"
+        doctype = @doctype.split(/[- ]/).map(&:capitalize).join(" ")
+        type == "main-abbrev" and doctype = @i18n.get["doctype_abbrev"][@doctype]
+        m << doctype
+        m << "for"
+        "#{m.join(' ')} "
+      end
+
+      def prefixed_title_prep(xmldoc)
+        t = xmldoc.at("//bibdata/title[@type = 'title-main']")
+        stage = xmldoc.at("//status/stage")&.text
+        trial = xmldoc.at("//bibdata/ext/trial-use[text() = 'true']")
+        [t, stage, trial]
       end
 
       def provenance_title(xmldoc)
         u = xmldoc.xpath("//bibdata/relation[@type = 'updates']")
         m = xmldoc.xpath("//bibdata/relation[@type = 'merges']")
         u.empty? and m.empty? and return
-        ins = xmldoc.at("//bibdata/title")
+        ins = xmldoc.at("//bibdata/title[@type = 'title-main']")
         t = provenance_title1(u, m)
-        ins.next = "<title type='provenance' language='en' " \
-                   "format='application/xml'>#{t}</title>"
+        ins.next = "<title type='provenance' language='en'>#{t}</title>"
       end
 
       def provenance_title1(updates, merges)
