@@ -65,7 +65,7 @@ module IsoDoc
         <span lang="EN-US" style='font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family:
         "Times New Roman",serif;mso-fareast-font-family:"Times New Roman";mso-ansi-language:
         EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA'><br clear="all"
-        style='page-break-before:auto;mso-break-type:section-break'></span>
+        style='page-break-before:auto;mso-break-type:section-break'/></span>
       BREAK
 
       def officemember_style(docxml)
@@ -109,8 +109,14 @@ module IsoDoc
       def three_column_officemembers_split_main(prev, div)
         div.elements.each_with_object([[]]) do |e, m|
           member = e.name == "p" && e["type"] == "officemember"
-          (prev == member and m[-1] << e) or m << [e]
-          # (prev == member and m[-1] << to_xml(e)) or m << [to_xml(e)]
+          if prev == member
+            !m[-1].empty? && m[-1][-1]["class"] == stylesmap[:nameslist] &&
+              e["class"] != stylesmap[:nameslist] and
+              m[-1] << Nokogiri::XML("<p>&#xa0;</p>").root
+            m[-1] << e
+          else
+            m << [e]
+          end
           prev = member
         end
       end
