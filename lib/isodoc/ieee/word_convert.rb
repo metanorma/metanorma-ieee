@@ -2,6 +2,7 @@ require "isodoc"
 require_relative "init"
 require_relative "word_cleanup"
 require_relative "word_cleanup_blocks"
+require_relative "word_toc"
 require_relative "word_authority"
 require_relative "word_wp_convert"
 
@@ -219,15 +220,24 @@ module IsoDoc
                       end
       end
 
-      def figure_name_parse(_node, div, name)
+      # Do not strip the caption in Annexes
+      def figure_name_parse(node, div, name)
         name.nil? and return
-        strip_caption_semx(name)
+        if name.ancestors.map(&:name).include?("annex")
+          div.parent["annex"] = true
+        else
+          strip_caption_semx(name)
+        end
         super
       end
 
       def table_title_parse(node, out)
         name = node.at(ns("./fmt-name")) or return
-        strip_caption_semx(name)
+        if name.ancestors.map(&:name).include?("annex")
+          out.parent["annex"] = true
+        else
+          strip_caption_semx(name)
+        end
         super
       end
 
