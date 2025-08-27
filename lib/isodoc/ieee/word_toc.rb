@@ -28,11 +28,11 @@ module IsoDoc
       end
 
       def table_toc_class
-        ["IEEEStds Regular Table Caption", "TableTitle", "tabletitle", "&quot;TableCaption&quot;"]
+        ["IEEEStds Regular Table Caption", "TableTitle", "tabletitle", "TableCaption"]
       end
 
       def figure_toc_class
-        ["IEEEStds Regular Figure Caption", "FigureTitle", "figuretitle", "&quot;FigureCaption&quot;"]
+        ["IEEEStds Regular Figure Caption", "FigureTitle", "figuretitle", "FigureCaption"]
       end
 
       def insert_toc(intro, docxml, level)

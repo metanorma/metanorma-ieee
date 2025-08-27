@@ -393,7 +393,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                </clause>
             </preface>
             <sections>
-               <p class="zzSTDTitle1" displayorder="2">Standard for ???</p>
+               <p class="zzSTDTitle1" displayorder="2"/>
                <clause id="A" displayorder="3">
                   <fmt-title depth="1" id="_">
                      <span class="fmt-caption-label">
