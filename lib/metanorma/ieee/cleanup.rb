@@ -112,17 +112,48 @@ module Metanorma
 
       def bibdata_cleanup(xmldoc)
         super
+        draft_id(xmldoc)
+        prefixed_title(xmldoc)
         provenance_title(xmldoc)
+      end
+
+      def prefixed_title(xmldoc)
+        t, stage, trial = prefixed_title_prep(xmldoc)
+        %w(main title-abbrev).reverse_each do |type|
+          xmldoc.at("//bibdata/title[@type = '#{type}']") and next
+          p = prefixed_title1(stage, trial, type)
+          t.previous = <<~XML
+            <title type='#{type}' language='en'>#{p}#{to_xml(t.children)}</title>
+          XML
+        end
+      end
+
+      def prefixed_title1(stage, trial, type)
+        m = []
+        m << (stage == "draft" ? "Draft" : "IEEE")
+        trial and m << "Trial-Use"
+        doctype = @doctype.split(/[- ]/).map(&:capitalize).join(" ")
+        type == "title-abbrev" && a = @i18n.get["doctype_abbrev"][@doctype] and
+          doctype = a
+        m << doctype
+        m << "for"
+        "#{m.join(' ')} "
+      end
+
+      def prefixed_title_prep(xmldoc)
+        t = xmldoc.at("//bibdata/title[@type = 'title-main']")
+        stage = xmldoc.at("//status/stage")&.text
+        trial = xmldoc.at("//bibdata/ext/trial-use[text() = 'true']")
+        [t, stage, trial]
       end
 
       def provenance_title(xmldoc)
         u = xmldoc.xpath("//bibdata/relation[@type = 'updates']")
         m = xmldoc.xpath("//bibdata/relation[@type = 'merges']")
         u.empty? and m.empty? and return
-        ins = xmldoc.at("//bibdata/title")
+        ins = xmldoc.at("//bibdata/title[@type = 'title-main']")
         t = provenance_title1(u, m)
-        ins.next = "<title type='provenance' language='en' " \
-                   "format='application/xml'>#{t}</title>"
+        ins.next = "<title type='provenance' language='en'>#{t}</title>"
       end
 
       def provenance_title1(updates, merges)
@@ -143,6 +174,20 @@ module Metanorma
             u.at("./bibitem/docidentifier[@primary = 'true']") ||
             u.at("./bibitem/docidentifier")
         end.map(&:text)
+      end
+
+      def published?(stage, _xmldoc)
+        %w(approved superseded withdrawn).include?(stage&.downcase)
+      end
+
+      # IEEE Draft Std 10000-2025/D1.2 => P10000/D1.2
+      # TODO: this needs to go to pubid-ieee
+      def draft_id(xmldoc)
+        published?(xmldoc.at("//bibdata/status/stage")&.text, xmldoc) and return
+        id = xmldoc.at("//bibdata/docidentifier[@type = 'IEEE']") or return
+        id.text.start_with?("IEEE Draft Std ") or return
+        n = id.text.sub(/^IEEE Draft Std /, "P").sub(/(\d)-(\d\d\d\d)/, "\\1")
+        id.next = %(<docidentifier type="IEEE-draft">#{n}</docidentifier>)
       end
     end
   end

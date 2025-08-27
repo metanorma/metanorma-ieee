@@ -763,6 +763,10 @@ RSpec.describe Metanorma::Ieee do
     ret.at("//xmlns:boilerplate").remove
     expect(Canon.format_xml(strip_guid(ret.to_xml)))
       .to be_equivalent_to Canon.format_xml(output)
+
+    ret = Asciidoctor.convert(input
+      .sub(":draft:", ":docstage: draft\n:draft:"), *OPTIONS)
+    expect(ret).to include "This introduction is not part of P10000/D1.2, Draft Recommended Practice for Widgets"
   end
 
   it "inserts boilerplate note in front of sections for amendment" do

@@ -379,7 +379,7 @@ RSpec.describe Metanorma::Ieee do
                    <preface>
             <introduction id='_' obligation='informative'>
               <title id="_">Introduction</title>
-              <admonition id="_">This introduction is not part of P, Standard for Document title </admonition>
+              <admonition id="_">This introduction is not part of , IEEE Standard for Document title</admonition>
               <p id='_'>
                 <eref type='inline' bibitemid='ref1' citeas='IEEE 1619™-2007'/>
               </p>

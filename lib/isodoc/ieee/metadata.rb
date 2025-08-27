@@ -119,6 +119,8 @@ module IsoDoc
         set(:stdid_pdf, dn&.text || "STDXXXXX")
         dn = isoxml.at(ns("//#{id}[@scope = 'print']"))
         set(:stdid_print, dn&.text || "STDPDXXXXX")
+        dn = isoxml.at(ns("//bibdata/docidentifier[@type = 'IEEE-draft']")) and
+          set(:docid_draft, dn.text)
         dn = isoxml.at(ns("//bibdata/ext/structuredidentifier/amendment")) and
           set(:amd, dn.text)
         dn = isoxml.at(ns("//bibdata/ext/structuredidentifier/corrigendum")) and
@@ -128,18 +130,13 @@ module IsoDoc
       def title(isoxml, _out)
         metadata_parse_init(isoxml)
         super
-        draft = isoxml.at(ns("//bibdata/version/draft"))
         doctype(isoxml, _out)
-        set(:full_doctitle, fulltitle(@metadata[:doctype], draft))
-        set(:abbrev_doctitle, fulltitle(@metadata[:doctype_abbrev], draft))
-        prov = isoxml.at(ns("//bibdata/title[@type='provenance']")) and
-          set(:provenance_doctitle, Common::to_xml(prov.children))
-      end
-
-      def fulltitle(type, draft)
-        title = "#{type || '???'} for #{@metadata[:doctitle] || '???'}"
-        draft and title = "Draft #{title}"
-        title
+        { doctitle: "title-main", full_doctitle: "main",
+          abbrev_doctitle: "title-abbrev", provenance_doctitle: "provenance" }
+          .each do |k, v|
+          t = isoxml.at(ns("//bibdata/title[@type='#{v}']")) and
+            set(k, Common::to_xml(t.children))
+        end
       end
 
       def metadata_parse_init(isoxml)

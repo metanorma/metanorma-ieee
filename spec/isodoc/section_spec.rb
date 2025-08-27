@@ -786,7 +786,7 @@ RSpec.describe IsoDoc::Ieee do
     input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
         <bibdata>
-          <title format="text/plain" language="en">Title</title>
+          <title format="text/plain" type="main" language="en">Draft Recommended Practice for Title</title>
           <version><draft>2</draft></version>
           <ext>
             <doctype>Recommended Practice</doctype>
