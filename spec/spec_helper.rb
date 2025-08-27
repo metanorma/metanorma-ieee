@@ -230,7 +230,9 @@ BLANK_HDR = <<~"HDR".freeze
   <?xml version="1.0" encoding="UTF-8"?>
   <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Ieee::VERSION}" flavor="ieee">
          <bibdata type="standard">
-       <title language="en" format="text/plain">Document title</title>
+         <title type="title-abbrev" language="en">IEEE Std. for Document title</title>
+      <title type="main" language="en">IEEE Standard for Document title</title>
+      <title language="en" format="text/plain" type="title-main">Document title</title>
                   <contributor>
              <role type="author"/>
              <organization>
@@ -264,7 +266,7 @@ BLANK_HDR = <<~"HDR".freeze
   </bibdata>
                     <metanorma-extension>
       <semantic-metadata>
-         <stage-published>false</stage-published>
+         <stage-published>true</stage-published>
       </semantic-metadata>
             <presentation-metadata>
               <name>TOC Heading Levels</name>
