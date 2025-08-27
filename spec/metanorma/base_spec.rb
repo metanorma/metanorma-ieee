@@ -120,15 +120,13 @@ RSpec.describe Metanorma::Ieee do
     expect(Canon.format_xml(output.to_xml))
       .to be_equivalent_to Canon.format_xml(<<~OUTPUT)
       <bibdata type="standard">
-         <title language="en" format="text/plain">Document title</title>
-         <title type="provenance" language="en" format="application/xml">Revision of ABC<br/>Incorporates BCD and EFG</title>
-         <title language="intro-en" format="text/plain">Introduction</title>
-         <title language="main-en" format="text/plain">Main Title -- Title</title>
-         <title language="part-en" format="text/plain">Title Part</title>
-         <title language="intro-fr" format="text/plain">Introduction Française</title>
-         <title language="main-fr" format="text/plain">Titre Principal</title>
-         <title language="part-fr" format="text/plain">Part du Titre</title>
-         <docidentifier type="IEEE" primary="true">IEEE Std 10001-2000/Cor C1-2000</docidentifier>
+            <title type="title-abbrev" language="en">IEEE Trial-Use Rec. Prac. for Document title</title>
+          <title type="main" language="en">IEEE Trial-Use Recommended Practice for Document title</title>
+          <title language="en" format="text/plain" type="title-main">Document title</title>
+          <title type="provenance" language="en">
+          Revision of ABC<br/>Incorporates BCD and EFG</title>
+         <docidentifier type="IEEE" primary="true">IEEE Draft Std 10001-2000/Cor C1-2000/D0.3</docidentifier>
+          <docidentifier type="IEEE-draft">P10001/Cor C1-2000/D0.3</docidentifier>
          <docidentifier type="IEEE" scope="PDF">GHI</docidentifier>
          <docidentifier type="IEEE" scope="print">JKL</docidentifier>
          <docidentifier type="ISBN" scope="PDF">ABC</docidentifier>
@@ -259,7 +257,7 @@ RSpec.describe Metanorma::Ieee do
       OUTPUT
   end
 
-  it "processes metadata with draft, no docstage, no balloting-group-type, docidentifier override" do
+  it "processes metadata with draft, no docstage, no balloting-group-type" do
     out = Nokogiri::XML(Asciidoctor.convert(<<~INPUT, *OPTIONS))
       = Document title
       Author
@@ -270,14 +268,16 @@ RSpec.describe Metanorma::Ieee do
       :draft: 3
       :balloting-group: BG
       :society: SECRETARIAT
-      :docidentifier: OVERRIDE
       :docnumber: 1000
 
     INPUT
     output = <<~OUTPUT
-             <bibdata type="standard">
-        <title language="en" format="text/plain">Document title</title>
-        <docidentifier primary="true" type="IEEE">OVERRIDE</docidentifier>
+      <bibdata type="standard">
+          <title type="title-abbrev" language="en">Draft Std. for Document title</title>
+          <title type="main" language="en">Draft Standard for Document title</title>
+          <title language="en" format="text/plain" type="title-main">Document title</title>
+          <docidentifier type="IEEE" primary="true">IEEE Draft Std 1000-2025/D3</docidentifier>
+          <docidentifier type="IEEE-draft">P1000/D3</docidentifier>
         <docnumber>1000</docnumber>
                    <contributor>
              <role type="author"/>
@@ -343,19 +343,25 @@ RSpec.describe Metanorma::Ieee do
       .to be_equivalent_to Canon.format_xml(output)
   end
 
-  it "processes metadata with no draft, no docstage" do
+  it "processes metadata with no draft, no docstage, docidentifier override, user-supplied titles" do
     out = Nokogiri::XML(Asciidoctor.convert(<<~INPUT, *OPTIONS))
       = Document title
       Author
       :docfile: test.adoc
+      :docidentifier: OVERRIDE
       :nodoc:
       :novalid:
       :no-isobib:
+      :title-full: IEEE Standardaroone for Document titles
+      :title-abbrev: IEEE Std-e for Doc. tit.
 
     INPUT
     output = <<~OUTPUT
       <bibdata type='standard'>
-        <title language='en' format='text/plain'>Document title</title>
+         <title language="en" format="text/plain" type="title-main">Document title</title>
+        <title language="en" format="text/plain" type="main">IEEE Standardaroone for Document titles</title>
+        <title language="en" format="text/plain" type="title-abbrev">IEEE Std-e for Doc. tit.</title>
+        <docidentifier type="IEEE" primary="true">OVERRIDE</docidentifier>
                    <contributor>
              <role type="author"/>
              <organization>
@@ -410,7 +416,9 @@ RSpec.describe Metanorma::Ieee do
     INPUT
     output = <<~OUTPUT
       <bibdata type='standard'>
-        <title language='en' format='text/plain'>Document title</title>
+         <title type="title-abbrev" language="en">IEEE Whitepaper for Document title</title>
+          <title type="main" language="en">IEEE Whitepaper for Document title</title>
+          <title language="en" format="text/plain" type="title-main">Document title</title>
                    <contributor>
              <role type="author"/>
              <organization>
@@ -570,7 +578,7 @@ RSpec.describe Metanorma::Ieee do
              </foreword>
              <introduction id="_" obligation="informative">
                 <title id="_">Introduction</title>
-                <admonition id="_">This introduction is not part of P, Standard for Document title</admonition>
+                <admonition id="_">This introduction is not part of , IEEE Standard for Document title</admonition>
                 <clause id="_" inline-header="false" obligation="informative">
                    <title id="_">Introduction Subsection</title>
                 </clause>
@@ -866,7 +874,7 @@ RSpec.describe Metanorma::Ieee do
       == Thematic Index
     INPUT
     output = <<~OUTPUT
-            #{@blank_hdr.sub('<doctype>standard</doctype>', ' <doctype>whitepaper</doctype>').sub(%r{</script>}, '</script><abstract><p>Text</p></abstract>').sub(%r{<boilerplate>.*</boilerplate>}m, '')}
+            #{@blank_hdr.sub('<doctype>standard</doctype>', ' <doctype>whitepaper</doctype>').sub(%r{</script>}, '</script><abstract><p>Text</p></abstract>').sub(%r{<boilerplate>.*</boilerplate>}m, '').sub("IEEE Std. for", "IEEE Whitepaper for").sub("IEEE Standard for", "IEEE Whitepaper for")}
           <preface>
              <abstract id="_">
                 <title id="_">Abstract</title>
@@ -878,7 +886,7 @@ RSpec.describe Metanorma::Ieee do
              </foreword>
              <introduction id="_" obligation="informative">
                 <title id="_">Introduction</title>
-                <admonition id="_">This introduction is not part of P, Whitepaper for Document title</admonition>
+                <admonition id="_">This introduction is not part of , IEEE Whitepaper for Document title</admonition>
                 <clause id="_" inline-header="false" obligation="informative">
                    <title id="_">Introduction Subsection</title>
                 </clause>

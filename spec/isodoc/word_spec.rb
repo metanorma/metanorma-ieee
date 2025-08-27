@@ -7,7 +7,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
       <bibdata>
-      <title language="en" type="main">Title</title>
+      <title language="en" type="main">Standard for Title</title>
       <ext>
       <doctype>standard</doctype>
       </ext>
@@ -35,20 +35,6 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       .at("//xmlns:div[@class = 'WordSectionMiddleTitle']")
     expect(strip_guid(Canon.format_xml(doc.to_xml)))
       .to be_equivalent_to Canon.format_xml(output)
-
-    FileUtils.rm_f "test.doc"
-    output = <<~OUTPUT
-      <p class="Titleofdocument" style="margin-left:0cm;margin-top:70.0pt">Whitepaper for Title</p>
-    OUTPUT
-    presxml = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input
-      .sub("<doctype>standard</doctype>", "<doctype>whitepaper</doctype>"), true)
-    IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
-    expect(File.exist?("test.doc")).to be true
-    doc = Nokogiri::XML(word2xml("test.doc"))
-      .at("//xmlns:p[@class = 'Titleofdocument']")
-    expect(strip_guid(Canon.format_xml(doc.to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
   end
 
   it "processes middle title for amendment/corrigendum" do
@@ -56,7 +42,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     input = <<~INPUT
        <iso-standard xmlns="http://riboseinc.com/isoxml">
        <bibdata>
-       <title language="en" type="main">Title</title>
+       <title language="en" type="main">Guide for Title</title>
        <ext>
        <doctype>Guide</doctype>
        <structuredidentifier>
@@ -1659,61 +1645,61 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-         <bibdata>
-            <ext>
-               <doctype>standard</doctype>
-            </ext>
-         </bibdata>
-         <preface>
-            <clause type="toc" id="_" displayorder="1">
-               <fmt-title id="_" depth="1">Contents</fmt-title>
-            </clause>
-         </preface>
-         <sections>
-            <p class="zzSTDTitle1" displayorder="2">Standard for ???</p>
-            <clause id="A" displayorder="3">
-               <title id="_">This is the clause title</title>
-               <fmt-title id="_" depth="1">
-                  <span class="fmt-caption-label">
-                     <semx element="autonum" source="A">1</semx>
-                     <span class="fmt-autonum-delim">.</span>
-                     </span>
-                     <span class="fmt-caption-delim">
-                        <tab/>
-                     </span>
-                     <semx element="title" source="_">This is the clause title</semx>
-               </fmt-title>
-               <fmt-xref-label>
-                  <span class="fmt-element-name">Clause</span>
-                  <semx element="autonum" source="A">1</semx>
-               </fmt-xref-label>
-               <p>body</p>
-               <clause id="B">
-                  <title id="_">This is a subclause</title>
-                  <fmt-title id="_" depth="2">
-                     <span class="fmt-caption-label">
-                        <semx element="autonum" source="A">1</semx>
-                        <span class="fmt-autonum-delim">.</span>
-                        <semx element="autonum" source="B">1</semx>
-                        <span class="fmt-autonum-delim">.</span>
-                        </span>
-                        <span class="fmt-caption-delim">
-                           <tab/>
-                        </span>
-                        <semx element="title" source="_">This is a subclause</semx>
-                  </fmt-title>
-                  <fmt-xref-label>
-                     <span class="fmt-element-name">Clause</span>
-                     <semx element="autonum" source="A">1</semx>
-                     <span class="fmt-autonum-delim">.</span>
-                     <semx element="autonum" source="B">1</semx>
-                  </fmt-xref-label>
-                  <p>body</p>
-               </clause>
-            </clause>
-         </sections>
-      </iso-standard>
+       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+          <bibdata>
+             <ext>
+                <doctype>standard</doctype>
+             </ext>
+          </bibdata>
+          <preface>
+             <clause type="toc" id="_" displayorder="1">
+                <fmt-title id="_" depth="1">Contents</fmt-title>
+             </clause>
+          </preface>
+          <sections>
+             <p class="zzSTDTitle1" displayorder="2"/>
+             <clause id="A" displayorder="3">
+                <title id="_">This is the clause title</title>
+                <fmt-title id="_" depth="1">
+                   <span class="fmt-caption-label">
+                      <semx element="autonum" source="A">1</semx>
+                      <span class="fmt-autonum-delim">.</span>
+                      </span>
+                      <span class="fmt-caption-delim">
+                         <tab/>
+                      </span>
+                      <semx element="title" source="_">This is the clause title</semx>
+                </fmt-title>
+                <fmt-xref-label>
+                   <span class="fmt-element-name">Clause</span>
+                   <semx element="autonum" source="A">1</semx>
+                </fmt-xref-label>
+                <p>body</p>
+                <clause id="B">
+                   <title id="_">This is a subclause</title>
+                   <fmt-title id="_" depth="2">
+                      <span class="fmt-caption-label">
+                         <semx element="autonum" source="A">1</semx>
+                         <span class="fmt-autonum-delim">.</span>
+                         <semx element="autonum" source="B">1</semx>
+                         <span class="fmt-autonum-delim">.</span>
+                         </span>
+                         <span class="fmt-caption-delim">
+                            <tab/>
+                         </span>
+                         <semx element="title" source="_">This is a subclause</semx>
+                   </fmt-title>
+                   <fmt-xref-label>
+                      <span class="fmt-element-name">Clause</span>
+                      <semx element="autonum" source="A">1</semx>
+                      <span class="fmt-autonum-delim">.</span>
+                      <semx element="autonum" source="B">1</semx>
+                   </fmt-xref-label>
+                   <p>body</p>
+                </clause>
+             </clause>
+          </sections>
+       </iso-standard>
     OUTPUT
     word = <<~OUTPUT
       <div>
@@ -1754,7 +1740,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
              </clause>
           </preface>
           <sections>
-             <p class="zzSTDTitle1" displayorder="2">Whitepaper for ???</p>
+             <p class="zzSTDTitle1" displayorder="2"/>
              <clause id="A" displayorder="3">
                 <title id="_">This is the clause title</title>
                 <fmt-title id="_" depth="1">

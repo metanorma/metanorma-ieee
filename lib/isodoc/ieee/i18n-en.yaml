@@ -24,6 +24,7 @@ norm_with_refs_pref: The following referenced documents are indispensable for th
 biblio_pref: Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only. 
 note_inform_fn: Notes to text, tables, and figures are for information only and do not contain requirements needed to implement the standard.
 biblio_ref_inform_fn: The numbers in brackets correspond to those of the bibliography in Annex B.
+introduction_disclaimer: This introduction is not part of {%if docid_draft %}{{docid_draft }}{%else%}{{ docnumber }}{%endif%}, {{ full_doctitle }}
 relatedterms:
   deprecates: Deprecates
   supersedes: Supersedes

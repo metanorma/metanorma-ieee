@@ -19,10 +19,7 @@ module Metanorma
 
       def intro_boilerplate(xml, isodoc)
         intro = xml.at("//introduction/title") or return
-        template = <<~ADM
-          This introduction is not part of P{{ docnumeric }}{% if draft %}/D{{ draft }}{% endif %}, {{ full_doctitle }}
-        ADM
-        adm = isodoc.populate_template(template)
+        adm = isodoc.populate_template(@i18n.introduction_disclaimer)
         intro.next = "<admonition>#{adm}</admonition>"
         add_id(intro.next)
       end
