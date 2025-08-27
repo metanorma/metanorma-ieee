@@ -1235,12 +1235,12 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <div>
+       <div>
           <a name="a" id="a"/>
           <p class="IEEEStdsLevel1Header"/>
           <p class="IEEEStdsComputerCode" style="page-break-after:avoid;">
              <a name="samplecode" id="samplecode"/>
-      #{'              '}
+                    
           </p>
           <p class="IEEEStdsComputerCode" style="page-break-after:avoid;">
              <a name="samplecode" id="samplecode"/>
@@ -1248,7 +1248,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
           </p>
           <p class="IEEEStdsComputerCode" style="page-break-after:avoid;">
              <a name="samplecode" id="samplecode"/>
-      #{'            '}
+                  
           </p>
           <p class="SourceTitle" style="text-align:center;">
              Figure 1 — Ruby
@@ -1326,7 +1326,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
              <p class="IEEEStdsImage" style="page-break-after:avoid;">
                 <img height="20" alt="alttext" title="titletxt" width="30"/>
              </p>
-             <p class="IEEEStdsRegularFigureCaption" style="text-align:center;">
+             <p class="FigureCaption" style="text-align:center;">
                 Figure A.1—Split-it-right
                 <i>sample</i>
                 divider
@@ -1382,7 +1382,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
           <br style="mso-ignore:vglayout" clear="ALL"/>
           <div class="MsoBodyText" style="page-break-after: avoid;page-break-inside: avoid;;text-align:center;">
              <a name="figureA-2" id="figureA-2"/>
-             <p class="FigureHeadings" style="text-align:center;">
+             <p class="FigureCaption" style="text-align:center;">
                 Figure A.1—Split-it-right
                 <i>sample</i>
                 divider
@@ -1486,7 +1486,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       <div>
          <a name="A1" id="A1"/>
          <h1 style="mso-list:l13 level1 lfo33;">Annex</h1>
-         <p class="IEEEStdsRegularTableCaption" style="text-align:center;">
+         <p class="TableCaption" style="text-align:center;">
             Table A.1—Split-it-right
             <i>sample</i>
             divider
@@ -1588,7 +1588,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
          <a name="A1" id="A1"/>
          <h1 style="margin-left:0cm;">Annex</h1>
          <br style="mso-ignore:vglayout" clear="ALL"/>
-         <p class="TableTitles" style="text-align:center;">
+         <p class="TableCaption" style="text-align:center;">
             Table A.1—Split-it-right
             <i>sample</i>
             divider

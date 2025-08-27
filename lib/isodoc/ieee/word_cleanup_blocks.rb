@@ -128,7 +128,6 @@ module IsoDoc
       end
 
       # hardcoded list style for notes
-      # STYLE
       def note_style_cleanup1(multi, div, seq)
         div.xpath(".//p[@class = 'Note' or not(@class)]")
           .each_with_index do |p, i|

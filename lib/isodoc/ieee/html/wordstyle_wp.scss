@@ -696,6 +696,47 @@ p.MsoCaption, li.MsoCaption, div.MsoCaption
 	mso-fareast-language:JA;
 	font-weight:bold;
 	mso-bidi-font-weight:normal;}
+/* Added to differentiate annex figures and tables in ToC */
+p.TableCaption
+      { mso-style-name:"TableCaption";
+        mso-style-parent:"MsoCaption";
+        mso-style-unhide:no;
+        mso-style-qformat:yes;
+        margin-top:6.0pt;
+        margin-right:0cm;
+        margin-bottom:6.0pt;
+        margin-left:0cm;
+        text-align:center;
+        mso-pagination:widow-orphan lines-together;
+        mso-hyphenate:none;
+        font-size:$smallerfontsize;
+        font-family:$headerfont;
+        mso-fareast-font-family:"Times New Roman";
+        mso-bidi-font-family:"Times New Roman";
+        mso-ansi-language:EN-US;
+        mso-fareast-language:JA;
+        font-weight:bold;
+        mso-bidi-font-weight:normal;}
+p.FigureCaption
+      { mso-style-name:"FigureCaption";
+        mso-style-parent:"MsoCaption";
+        mso-style-unhide:no;
+        mso-style-qformat:yes;
+        margin-top:6.0pt;
+        margin-right:0cm;
+        margin-bottom:6.0pt;
+        margin-left:0cm;
+        text-align:center;
+        mso-pagination:widow-orphan lines-together;
+        mso-hyphenate:none;
+        font-size:$smallerfontsize;
+        font-family:$headerfont;
+        mso-fareast-font-family:"Times New Roman";
+        mso-bidi-font-family:"Times New Roman";
+        mso-ansi-language:EN-US;
+        mso-fareast-language:JA;
+        font-weight:bold;
+        mso-bidi-font-weight:normal;}
 p.MsoTof, li.MsoTof, div.MsoTof
 	/**/{mso-style-unhide:no;
 	mso-style-next:Normal;
