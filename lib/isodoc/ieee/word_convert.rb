@@ -219,15 +219,18 @@ module IsoDoc
                       end
       end
 
-      def figure_name_parse(_node, div, name)
+      # Do not strip the caption in Annexes
+      def figure_name_parse(node, div, name)
         name.nil? and return
-        strip_caption_semx(name)
+        !name.ancestors.map(&:name).include?("annex") and
+          strip_caption_semx(name)
         super
       end
 
       def table_title_parse(node, out)
         name = node.at(ns("./fmt-name")) or return
-        strip_caption_semx(name)
+        !name.ancestors.map(&:name).include?("annex") and
+          strip_caption_semx(name)
         super
       end
 
