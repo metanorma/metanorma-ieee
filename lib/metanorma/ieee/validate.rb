@@ -60,7 +60,7 @@ module Metanorma
       # Style manual 12.3.2
       def locality_erefs_validate(root)
         root.xpath("//eref[descendant::locality]").each do |t|
-          if !/[:-](\d+{4})$/.match?(t["citeas"])
+          if !/[:-](\d+{4})($|-\d\d)/.match?(t["citeas"])
             @log.add("Style", t,
                      "Undated reference #{t['citeas']} should not contain " \
                      "specific elements")

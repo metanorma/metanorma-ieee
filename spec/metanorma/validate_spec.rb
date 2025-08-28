@@ -248,9 +248,13 @@ RSpec.describe Metanorma::Ieee do
       [bibliography]
       == Normative References
       * [[[iso123,ISO 123-2000]]] _Standard_
+      * [[[iso124,ISO 123-2000-12]]] _Standard_
     INPUT
     expect(File.read("test.err.html"))
       .not_to include("Undated reference ISO 123-2000 should not contain " \
+                      "specific elements")
+    expect(File.read("test.err.html"))
+      .not_to include("Undated reference ISO 123-2000-12 should not contain " \
                       "specific elements")
   end
 
