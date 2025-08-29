@@ -17,6 +17,11 @@ RSpec.describe IsoDoc do
                   <eref type='inline' bibitemid='ref5' citeas='[B2]'/>
                   <eref type='inline' bibitemid='ref5' citeas='[B2]' style='title'/>
                   <eref type='inline' bibitemid='ref5' citeas='[B2]' style='author'/>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]' style='no-biblio-tag'/>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]'>text1</eref>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]' style='title'>text2</eref>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]' style='author'>text3</eref>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]' style='no-biblio-tag'>text4</eref>
                   <eref type='inline' bibitemid='ref6' citeas='[B1]'/>
                   <eref type='inline' bibitemid='ref8' citeas='[B4]'/>
                 </p>
@@ -363,6 +368,26 @@ RSpec.describe IsoDoc do
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" style="author" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2]</fmt-xref>
                    </semx>
+            <eref type="inline" bibitemid="ref5" citeas="[B2]" style="no-biblio-tag" id="_"/>
+            <semx element="eref" source="_">
+               <fmt-xref type="inline" style="no-biblio-tag" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne</fmt-xref>
+            </semx>
+            <eref type="inline" bibitemid="ref5" citeas="[B2]" id="_">text1</eref>
+            <semx element="eref" source="_">
+               <fmt-xref type="inline" target="ref5">text1 [B2]</fmt-xref>
+            </semx>
+            <eref type="inline" bibitemid="ref5" citeas="[B2]" style="title" id="_">text2</eref>
+            <semx element="eref" source="_">
+               <fmt-xref type="inline" style="title" target="ref5">text2 [B2]</fmt-xref>
+            </semx>
+            <eref type="inline" bibitemid="ref5" citeas="[B2]" style="author" id="_">text3</eref>
+            <semx element="eref" source="_">
+               <fmt-xref type="inline" style="author" target="ref5">text3 [B2]</fmt-xref>
+            </semx>
+            <eref type="inline" bibitemid="ref5" citeas="[B2]" style="no-biblio-tag" id="_">text4</eref>
+            <semx element="eref" source="_">
+               <fmt-xref type="inline" style="no-biblio-tag" target="ref5">text4</fmt-xref>
+            </semx>
                    <eref type="inline" bibitemid="ref6" citeas="[B1]" id="_"/>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" target="ref6">Title REF4</fmt-xref>

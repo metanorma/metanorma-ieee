@@ -1,6 +1,14 @@
 module IsoDoc
   module Ieee
     class PresentationXMLConvert < IsoDoc::PresentationXMLConvert
+      def xref_empty?(node)
+        if node["citeas"] &&
+            @bibanchors[node["bibitemid"]] && !node.children.empty?
+          true
+        else super
+        end
+      end
+
       # Style manual 19
       def anchor_linkend(node, linkend)
         @bibanchors ||= biblio_ids_titles(node.document)
@@ -12,7 +20,9 @@ module IsoDoc
 
       def biblio_anchor_linkend(node, bib)
         if %w(techreport standard).include?(bib[:type])
-          if node["citeas"] == bib[:ord] then node["citeas"]
+          if !node.children.empty?
+            "#{to_xml(node.children)}".strip
+          elsif node["citeas"] == bib[:ord] then node["citeas"]
           else [node["citeas"], bib[:ord]].compact.join(" ")
           end
         else biblio_anchor_linkend_nonstd(node, bib)
@@ -20,11 +30,14 @@ module IsoDoc
       end
 
       def biblio_anchor_linkend_nonstd(node, bib)
-        if node["style"] == "title" && bib[:title]
-          "#{bib[:title]} #{node['citeas']}"
+        node["style"] == "no-biblio-tag" or tag = node["citeas"]
+        if !node.children.empty?
+          "#{to_xml(node.children)} #{tag}".strip
+        elsif node["style"] == "title" && bib[:title]
+          "#{bib[:title]} #{tag}".strip
         elsif bib[:author] # default, also if node["style"] == "title"
-          "#{bib[:author]} #{node['citeas']}"
-        else node["citeas"]
+          "#{bib[:author]} #{tag}".strip
+        else tag.strip
         end
       end
 
