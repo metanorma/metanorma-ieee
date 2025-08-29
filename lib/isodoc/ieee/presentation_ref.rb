@@ -1,18 +1,45 @@
 module IsoDoc
   module Ieee
     class PresentationXMLConvert < IsoDoc::PresentationXMLConvert
-      # Style manual 19
-      def anchor_linkend(node, linkend)
-        @bibanchors ||= biblio_ids_titles(node.document)
-        if node["citeas"] && i = @bibanchors[node["bibitemid"]]
-          biblio_anchor_linkend(node, i)
+      def xref_empty?(node)
+        if node["citeas"] &&
+            @bibanchors[node["bibitemid"]] && !node.children.empty?
+          true
         else super
         end
       end
 
+      def inline(docxml)
+        @bibanchors ||= biblio_ids_titles(docxml, false)
+        @normrefanchors ||= biblio_ids_titles(docxml, true)
+        super
+      end
+
+      # Style manual 19
+      def anchor_linkend(node, linkend)
+        if node["citeas"] && i = @bibanchors[node["bibitemid"]]
+          biblio_anchor_linkend(node, i)
+        elsif node["citeas"] && (i = @normrefanchors[node["bibitemid"]])
+          cit = normref_anchor_linkend(node, i)
+          cit || super
+        else super
+        end
+      end
+
+      # force Author-Date referencing on non-standards in norm ref
+      def normref_anchor_linkend(node, bib)
+         @ref_renderings or return nil
+        %w(techreport standard).include?(bib[:type]) and return nil
+        cit = @ref_renderings[node["bibitemid"]][:citation]&.strip
+        cit.empty? and cit = nil
+        cit
+      end
+
       def biblio_anchor_linkend(node, bib)
         if %w(techreport standard).include?(bib[:type])
-          if node["citeas"] == bib[:ord] then node["citeas"]
+          if !node.children.empty?
+            to_xml(node.children).strip
+          elsif node["citeas"] == bib[:ord] then node["citeas"]
           else [node["citeas"], bib[:ord]].compact.join(" ")
           end
         else biblio_anchor_linkend_nonstd(node, bib)
@@ -20,16 +47,19 @@ module IsoDoc
       end
 
       def biblio_anchor_linkend_nonstd(node, bib)
-        if node["style"] == "title" && bib[:title]
-          "#{bib[:title]} #{node['citeas']}"
+        node["style"] == "no-biblio-tag" or tag = node["citeas"]
+        if !node.children.empty?
+          "#{to_xml(node.children)} #{tag}".strip
+        elsif node["style"] == "title" && bib[:title]
+          "#{bib[:title]} #{tag}".strip
         elsif bib[:author] # default, also if node["style"] == "title"
-          "#{bib[:author]} #{node['citeas']}"
-        else node["citeas"]
+          "#{bib[:author]} #{tag}".strip
+        else tag.strip
         end
       end
 
-      def biblio_ids_titles(xmldoc)
-        xmldoc.xpath(ns("//references[@normative = 'false']/bibitem"))
+      def biblio_ids_titles(xmldoc, normative)
+        xmldoc.xpath(ns("//references[@normative = '#{normative}']/bibitem"))
           .each_with_object({}) do |b, acc|
           biblio_ids_titles1(b, acc)
         end

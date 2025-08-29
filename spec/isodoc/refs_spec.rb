@@ -14,9 +14,15 @@ RSpec.describe IsoDoc do
                   <eref type='inline' bibitemid='ref2' citeas='Aluffi'/>
                   <eref type='inline' bibitemid='ref3' citeas='REF4'/>
                   <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967'/>
+                  <eref type='inline' bibitemid='Johns' citeas='ISO 639:1967'/>
                   <eref type='inline' bibitemid='ref5' citeas='[B2]'/>
                   <eref type='inline' bibitemid='ref5' citeas='[B2]' style='title'/>
                   <eref type='inline' bibitemid='ref5' citeas='[B2]' style='author'/>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]' style='no-biblio-tag'/>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]'>text1</eref>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]' style='title'>text2</eref>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]' style='author'>text3</eref>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]' style='no-biblio-tag'>text4</eref>
                   <eref type='inline' bibitemid='ref6' citeas='[B1]'/>
                   <eref type='inline' bibitemid='ref8' citeas='[B4]'/>
                 </p>
@@ -63,7 +69,7 @@ RSpec.describe IsoDoc do
                 </organization>        </owner>      </copyright>      <relation type="updates">        <bibitem type="standard">          <formattedref format="text/plain">ISO 639-1:2002</formattedref>          <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>          <date type="circulated">            <on>2002-07-18</on>          </date>        </bibitem>
             </relation>      <place>Geneva</place>    </bibitem>
         </relation>  <place>Geneva</place></bibitem>
-        <bibitem id="ref7">
+        <bibitem id="ref7" type="standard">
           <title type="title-main" format="text/plain" language="en" script="Latn">Codes for the representation of names of languages</title>
           <title type="title-part" format="text/plain" language="en" script="Latn">Part 2: Alpha-3 code</title>
           <title type="main" format="text/plain" language="en" script="Latn">Codes for the representation of names of languages - Part 2: Alpha-3 code</title>
@@ -187,6 +193,11 @@ RSpec.describe IsoDoc do
                        </person>
                      </contributor>
                    </bibitem>
+                            <bibitem id="Johns" type="book" schema-version="v1.2.1">
+         <title>Title 1</title>
+         <date type="published"><on>2022</on></date>
+         <contributor><role type="author"/><person><name><surname>Johns</surname></name></person></contributor>
+         </bibitem>
                  </references>
                  <references id='_' normative='false' obligation='informative'>
                    <title>Bibliography</title>
@@ -331,7 +342,7 @@ RSpec.describe IsoDoc do
                    </semx>
                    <eref type="inline" bibitemid="ref2" citeas="Aluffi" id="_"/>
                    <semx element="eref" source="_">
-                      <fmt-xref type="inline" target="ref2">Aluffi, Anderson, Hering, Mustaţă and Payne 2022a</fmt-xref>
+                      <fmt-xref type="inline" target="ref2">Aluffi, Anderson, Hering, Mustaţă and Payne 2022a</fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref3" citeas="REF4" id="_"/>
                    <semx element="eref" source="_">
@@ -351,6 +362,10 @@ RSpec.describe IsoDoc do
                          </span>
                       </fmt-fn-label>
                    </fn>
+                   <eref type="inline" bibitemid="Johns" citeas="ISO 639:1967" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" target="Johns">Johns 2022</fmt-xref>
+                   </semx>
                    <eref type="inline" bibitemid="ref5" citeas="[B2]" id="_"/>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2]</fmt-xref>
@@ -362,6 +377,26 @@ RSpec.describe IsoDoc do
                    <eref type="inline" bibitemid="ref5" citeas="[B2]" style="author" id="_"/>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" style="author" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2]</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="no-biblio-tag" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="no-biblio-tag" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref5" citeas="[B2]" id="_">text1</eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" target="ref5">text1 [B2]</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="title" id="_">text2</eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="title" target="ref5">text2 [B2]</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="author" id="_">text3</eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="author" target="ref5">text3 [B2]</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="no-biblio-tag" id="_">text4</eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="no-biblio-tag" target="ref5">text4</fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref6" citeas="[B1]" id="_"/>
                    <semx element="eref" source="_">
@@ -507,7 +542,7 @@ RSpec.describe IsoDoc do
                    <place>Geneva</place>
                    <biblio-tag>ISO 639, </biblio-tag>
                 </bibitem>
-                <bibitem id="ref7">
+                <bibitem id="ref7" type="standard">
                    <formattedref>Codes for the representation of names of languages - Part 2: Alpha-3 code.</formattedref>
                    <title type="title-main" format="text/plain" language="en" script="Latn">Codes for the representation of names of languages</title>
                    <title type="title-part" format="text/plain" language="en" script="Latn">Part 2: Alpha-3 code</title>
@@ -687,6 +722,27 @@ RSpec.describe IsoDoc do
                       </person>
                    </contributor>
                    <biblio-tag>ISO 639:1967, </biblio-tag>
+                </bibitem>
+                <bibitem id="Johns" type="book">
+                   <formattedref>
+                      Johns,
+                      <em>Title 1</em>
+                      , 2022.
+                   </formattedref>
+                   <title>Title 1</title>
+                   <date type="published">
+                      <on>2022</on>
+                   </date>
+                   <contributor>
+                      <role type="author"/>
+                      <person>
+                         <name>
+                            <surname>Johns</surname>
+                         </name>
+                      </person>
+                   </contributor>
+                   <docidentifier type="metanorma">Johns 2022</docidentifier>
+                   <biblio-tag>Johns 2022, </biblio-tag>
                 </bibitem>
              </references>
           </sections>
@@ -1377,7 +1433,8 @@ RSpec.describe IsoDoc do
          </bibitem>
          <bibitem id="Johns" type="book" schema-version="v1.2.1">
          <title>Title 1</title>
-         <docidentifier type="metanorma">Johns 2022</docidentifier>
+         <date type="published"><on>2022</on></date>
+         <contributor><role type="author"/><person><name><surname>Johns</surname></name></person></contributor>
          </bibitem>
          </references>
          </bibliography>
@@ -1440,7 +1497,7 @@ RSpec.describe IsoDoc do
                </localityStack>
             </eref>
             <semx element="eref" source="_">
-               <fmt-xref type="inline" target="Johns">Johns 2022, 4–9</fmt-xref>
+               <fmt-xref type="inline" target="Johns">Johns 2022, 4–9</fmt-xref>
             </semx>
             <eref type="inline" bibitemid="Johns" citeas="ISO 639-2:1998" id="_">
                <localityStack>
@@ -1451,7 +1508,7 @@ RSpec.describe IsoDoc do
                </localityStack>
             </eref>
             <semx element="eref" source="_">
-               <fmt-xref type="inline" target="Johns">Johns 2022, Figure 4–9</fmt-xref>
+               <fmt-xref type="inline" target="Johns">Johns 2022, Figure 4–9</fmt-xref>
             </semx>
          </p>
       </clause>

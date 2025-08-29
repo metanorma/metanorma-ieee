@@ -39,16 +39,8 @@ module IsoDoc
       end
 
       def default_fonts(options)
-        { bodyfont: (if options[:script] == "Hans"
-                       '"Source Han Sans",serif'
-                     else
-                       '"Times New Roman",serif'
-                     end),
-          headerfont: (if options[:script] == "Hans"
-                         '"Source Han Sans",sans-serif'
-                       else
-                         '"Arial",sans-serif'
-                       end),
+        { bodyfont: '"Times New Roman",serif',
+          headerfont: '"Arial",sans-serif',
           monospacefont: '"Courier New",monospace',
           normalfontsize: "12.0pt",
           footnotefontsize: "11.0pt",
