@@ -9,19 +9,36 @@ module IsoDoc
         end
       end
 
+      def inline(docxml)
+        @bibanchors ||= biblio_ids_titles(docxml, false)
+        @normrefanchors ||= biblio_ids_titles(docxml, true)
+        super
+      end
+
       # Style manual 19
       def anchor_linkend(node, linkend)
-        @bibanchors ||= biblio_ids_titles(node.document)
         if node["citeas"] && i = @bibanchors[node["bibitemid"]]
           biblio_anchor_linkend(node, i)
+        elsif node["citeas"] && (i = @normrefanchors[node["bibitemid"]])
+          cit = normref_anchor_linkend(node, i)
+          cit || super
         else super
         end
+      end
+
+      # force Author-Date referencing on non-standards in norm ref
+      def normref_anchor_linkend(node, bib)
+         @ref_renderings or return nil
+        %w(techreport standard).include?(bib[:type]) and return nil
+        cit = @ref_renderings[node["bibitemid"]][:citation]&.strip
+        cit.empty? and cit = nil
+        cit
       end
 
       def biblio_anchor_linkend(node, bib)
         if %w(techreport standard).include?(bib[:type])
           if !node.children.empty?
-            "#{to_xml(node.children)}".strip
+            to_xml(node.children).strip
           elsif node["citeas"] == bib[:ord] then node["citeas"]
           else [node["citeas"], bib[:ord]].compact.join(" ")
           end
@@ -41,8 +58,8 @@ module IsoDoc
         end
       end
 
-      def biblio_ids_titles(xmldoc)
-        xmldoc.xpath(ns("//references[@normative = 'false']/bibitem"))
+      def biblio_ids_titles(xmldoc, normative)
+        xmldoc.xpath(ns("//references[@normative = '#{normative}']/bibitem"))
           .each_with_object({}) do |b, acc|
           biblio_ids_titles1(b, acc)
         end
