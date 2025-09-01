@@ -376,53 +376,55 @@ RSpec.describe Metanorma::Ieee do
       INPUT
       output = <<~OUTPUT
           <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
-                   <preface>
-            <introduction id='_' obligation='informative'>
-              <title id="_">Introduction</title>
-              <admonition id="_">This introduction is not part of , IEEE Standard for Document title</admonition>
-              <p id='_'>
-                <eref type='inline' bibitemid='ref1' citeas='IEEE 1619™-2007'/>
-              </p>
-              <p id='_'>
-                <eref type='inline' bibitemid='ref2' citeas='ISO&#xa0;639:2023'/>
-              </p>
-              <p id='_'>
-                <eref type='inline' bibitemid='ref1' citeas='IEEE&#xa0;1619-2007'/>
-              </p>
-            </introduction>
+          <preface>
+             <introduction id="_" obligation="informative">
+                <title id="_">Introduction</title>
+                <admonition id="_">This introduction is not part of , IEEE Standard for Document title</admonition>
+                <p id="_">
+                   <eref type="inline" bibitemid="ref1" citeas="IEEE Std 1619™-2007"/>
+                </p>
+                <p id="_">
+                   <eref type="inline" bibitemid="ref2" citeas="ISO 639:2023"/>
+                </p>
+                <p id="_">
+                   <eref type="inline" bibitemid="ref1" citeas="IEEE Std 1619-2007"/>
+                </p>
+             </introduction>
           </preface>
           <sections>
-            <clause id='_' type='overview' inline-header='false' obligation='normative'>
-              <title id="_">Overview</title>
-              <clause id='_' type='scope' inline-header='false' obligation='normative'>
-                <title id="_">Scope</title>
-                <p id='_'>
-                  <eref type='inline' bibitemid='ref1' citeas='IEEE 1619™-2007'/>
+             <clause id="_" type="overview" inline-header="false" obligation="normative">
+                <title id="_">Overview</title>
+                <clause id="_" type="scope" inline-header="false" obligation="normative">
+                   <title id="_">Scope</title>
+                   <p id="_">
+                      <eref type="inline" bibitemid="ref1" citeas="IEEE Std 1619™-2007"/>
+                   </p>
+                   <p id="_">
+                      <eref type="inline" bibitemid="ref3" citeas="IEEE 802.1D-1990"/>
+                   </p>
+                   <p id="_">
+                      <eref type="inline" bibitemid="ref2" citeas="ISO 639:2023"/>
+                   </p>
+                   <p id="_">
+                      <eref type="inline" bibitemid="ref1" citeas="IEEE Std 1619-2007"/>
+                   </p>
+                </clause>
+             </clause>
+             <clause id="_" inline-header="false" obligation="normative">
+                <title id="_">Clause</title>
+                <p id="_">
+                   <eref type="inline" bibitemid="ref1" citeas="IEEE Std 1619-2007"/>
                 </p>
-              <p id='_'><eref type='inline' bibitemid='ref3' citeas='IEEE 802.1D®-1990'/></p>
-                <p id='_'>
-                  <eref type='inline' bibitemid='ref2' citeas='ISO&#xa0;639:2023'/>
-                </p>
-                <p id='_'>
-                  <eref type='inline' bibitemid='ref1' citeas='IEEE&#xa0;1619-2007'/>
-                </p>
-              </clause>
-            </clause>
-            <clause id='_' inline-header='false' obligation='normative'>
-              <title id="_">Clause</title>
-              <p id='_'>
-                <eref type='inline' bibitemid='ref1' citeas='IEEE&#xa0;1619-2007'/>
-              </p>
-            </clause>
+             </clause>
           </sections>
-          <annex id='_' inline-header='false' obligation='normative'>
-            <title id="_">Annex</title>
-            <p id='_'>
-              <eref type='inline' bibitemid='ref1' citeas='IEEE&#xa0;1619-2007'/>
-            </p>
+          <annex id="_" inline-header="false" obligation="normative">
+             <title id="_">Annex</title>
+             <p id="_">
+                <eref type="inline" bibitemid="ref1" citeas="IEEE Std 1619-2007"/>
+             </p>
           </annex>
           <bibliography/>
-        </metanorma>
+       </metanorma>
       OUTPUT
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       out.xpath("//xmlns:bibdata | //xmlns:boilerplate | " \
@@ -499,124 +501,122 @@ RSpec.describe Metanorma::Ieee do
         * [[[ref4,IEEE Std 194-1977]]] REF5
       INPUT
       output = <<~OUTPUT
-         <bibliography>
+       <bibliography>
           <references id="_" normative="true" obligation="informative">
-            <title id="_">Normative references</title>
-            <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
-            <bibitem id="_" anchor="ref1" type="standard">
-              <fetched/>
-              <title type="main" format="text/plain">IEEE Standard on Pulse Measurement and Analysis by Objective Techniques</title>
-              <uri type="src">https://ieeexplore.ieee.org/document/29013</uri>
-              <docidentifier type="IEEE" primary="true">ANSI/IEEE 181-1977</docidentifier>
-              <docidentifier type="IEEE" scope="trademark" primary="true">ANSI/IEEE 181™-1977</docidentifier>
-              <docidentifier type="ISBN">0-7381-4176-3</docidentifier>
-              <docidentifier type="DOI">10.1109/IEEESTD.1977.81097</docidentifier>
-              <docnumber>ANSI/IEEE 181-1977</docnumber>
-              <date type="created">
-                <on>1977</on>
-              </date>
-              <date type="published">
-                <on>2002-12-10</on>
-              </date>
-              <date type="issued">
-                <on>1975-09-04</on>
-              </date>
-              <contributor>
-                <role type="publisher"/>
-                <organization>
-                  <name>Institute of Electrical and Electronics Engineers</name>
-                  <abbreviation>IEEE</abbreviation>
-                  <uri>http://www.ieee.org</uri>
-                  <address>
-                    <city>New York</city>
-                    <country>USA</country>
-                  </address>
-                </organization>
-              </contributor>
-              <note type="Availability">
-                <p id="_">ANSI/IEEE 181-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
-               </p>
-              </note>
-              <language>en</language>
-              <script>Latn</script>
-              <status>
-                <stage>withdrawn</stage>
-              </status>
-              <copyright>
-                <from>1977</from>
-                <owner>
-                  <organization>
-                    <name>Institute of Electrical and Electronics Engineers</name>
-                    <abbreviation>IEEE</abbreviation>
-                    <uri>http://www.ieee.org</uri>
-                  </organization>
-                </owner>
-              </copyright>
-              <keyword>Impulse testing</keyword>
-              <keyword>Measurement standards</keyword>
-            </bibitem>
+             <title id="_">Normative references</title>
+             <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
+             <bibitem id="_" type="standard" anchor="ref1">
+                <fetched/>
+                <title type="main" format="text/plain">IEEE Standard on Pulse Measurement and Analysis by Objective Techniques</title>
+                <uri type="src">https://ieeexplore.ieee.org/document/29013</uri>
+                <docidentifier type="IEEE" primary="true">ANSI/IEEE Std 181-1977</docidentifier>
+                <docidentifier type="IEEE" scope="trademark" primary="true">ANSI/IEEE Std 181™-1977</docidentifier>
+                <docidentifier type="ISBN">0-7381-4176-3</docidentifier>
+                <docidentifier type="DOI">10.1109/IEEESTD.1977.81097</docidentifier>
+                <docnumber>ANSI/IEEE Std 181-1977</docnumber>
+                <date type="created">
+                   <on>1977</on>
+                </date>
+                <date type="published">
+                   <on>2002-12-10</on>
+                </date>
+                <date type="issued">
+                   <on>1975-09-04</on>
+                </date>
+                <contributor>
+                   <role type="publisher"/>
+                   <organization>
+                      <name>Institute of Electrical and Electronics Engineers</name>
+                      <abbreviation>IEEE</abbreviation>
+                      <uri>http://www.ieee.org</uri>
+                      <address>
+                         <city>New York</city>
+                         <country>USA</country>
+                      </address>
+                   </organization>
+                </contributor>
+                <note type="Availability">
+                   <p id="_">ANSI/IEEE Std 181-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).</p>
+                </note>
+                <language>en</language>
+                <script>Latn</script>
+                <status>
+                   <stage>withdrawn</stage>
+                </status>
+                <copyright>
+                   <from>1977</from>
+                   <owner>
+                      <organization>
+                         <name>Institute of Electrical and Electronics Engineers</name>
+                         <abbreviation>IEEE</abbreviation>
+                         <uri>http://www.ieee.org</uri>
+                      </organization>
+                   </owner>
+                </copyright>
+                <keyword>Impulse testing</keyword>
+                <keyword>Measurement standards</keyword>
+             </bibitem>
           </references>
           <references id="_" normative="false" obligation="informative">
-            <title id="_">Bibliography</title>
-            <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
-            <bibitem id="_" anchor="ref4" type="standard">
-              <fetched/>
-              <title type="main" format="text/plain">IEEE Standard Pulse Terms and Definitions</title>
-              <uri type="src">https://ieeexplore.ieee.org/document/29015</uri>
-              <docidentifier type="IEEE" primary="true">IEEE 194-1977</docidentifier>
-              <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
-              <docidentifier type="IEEE" scope="trademark" primary="true">IEEE 194™-1977</docidentifier>
-              <docidentifier type="ISBN">0-7381-4350-2</docidentifier>
-              <docidentifier type="DOI">10.1109/IEEESTD.1977.81098</docidentifier>
-              <docnumber>IEEE 194-1977</docnumber>
-              <date type="created">
-                <on>1977</on>
-              </date>
-              <date type="published">
-                <on>2002-12-10</on>
-              </date>
-              <date type="issued">
-                <on>1975-02-17</on>
-              </date>
-              <contributor>
-                <role type="publisher"/>
-                <organization>
-                  <name>Institute of Electrical and Electronics Engineers</name>
-                  <abbreviation>IEEE</abbreviation>
-                  <uri>http://www.ieee.org</uri>
-                  <address>
-                    <city>New York</city>
-                    <country>USA</country>
-                  </address>
-                </organization>
-              </contributor>
-              <note type="Availability">
-                <p id="_">IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
-        </p>
-              </note>
-              <language>en</language>
-              <script>Latn</script>
-              <status>
-                <stage>withdrawn</stage>
-              </status>
-              <copyright>
-                <from>1977</from>
-                <owner>
-                  <organization>
-                    <name>Institute of Electrical and Electronics Engineers</name>
-                    <abbreviation>IEEE</abbreviation>
-                    <uri>http://www.ieee.org</uri>
-                  </organization>
-                </owner>
-              </copyright>
-              <keyword>Measurement standards</keyword>
-              <keyword>Terminology</keyword>
-              <keyword>Pulse circuits</keyword>
-              <keyword>Pulse generation</keyword>
-              <keyword>Standards</keyword>
-            </bibitem>
+             <title id="_">Bibliography</title>
+             <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
+             <bibitem id="_" type="standard" anchor="ref4">
+                <fetched/>
+                <title type="main" format="text/plain">IEEE Standard Pulse Terms and Definitions</title>
+                <uri type="src">https://ieeexplore.ieee.org/document/29015</uri>
+                <docidentifier type="IEEE" primary="true">IEEE Std 194-1977</docidentifier>
+                <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
+                <docidentifier type="IEEE" scope="trademark" primary="true">IEEE Std 194™-1977</docidentifier>
+                <docidentifier type="ISBN">0-7381-4350-2</docidentifier>
+                <docidentifier type="DOI">10.1109/IEEESTD.1977.81098</docidentifier>
+                <docnumber>IEEE Std 194-1977</docnumber>
+                <date type="created">
+                   <on>1977</on>
+                </date>
+                <date type="published">
+                   <on>2002-12-10</on>
+                </date>
+                <date type="issued">
+                   <on>1975-02-17</on>
+                </date>
+                <contributor>
+                   <role type="publisher"/>
+                   <organization>
+                      <name>Institute of Electrical and Electronics Engineers</name>
+                      <abbreviation>IEEE</abbreviation>
+                      <uri>http://www.ieee.org</uri>
+                      <address>
+                         <city>New York</city>
+                         <country>USA</country>
+                      </address>
+                   </organization>
+                </contributor>
+                <note type="Availability">
+                   <p id="_">IEEE Std 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).</p>
+                </note>
+                <language>en</language>
+                <script>Latn</script>
+                <status>
+                   <stage>withdrawn</stage>
+                </status>
+                <copyright>
+                   <from>1977</from>
+                   <owner>
+                      <organization>
+                         <name>Institute of Electrical and Electronics Engineers</name>
+                         <abbreviation>IEEE</abbreviation>
+                         <uri>http://www.ieee.org</uri>
+                      </organization>
+                   </owner>
+                </copyright>
+                <keyword>Measurement standards</keyword>
+                <keyword>Terminology</keyword>
+                <keyword>Pulse circuits</keyword>
+                <keyword>Pulse generation</keyword>
+                <keyword>Standards</keyword>
+             </bibitem>
           </references>
-        </bibliography>
+       </bibliography>
       OUTPUT
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
         .at("//xmlns:bibliography")
@@ -680,30 +680,25 @@ RSpec.describe Metanorma::Ieee do
                 <docidentifier type="URN">urn:iec:std:iec:61131-3::::</docidentifier>
              </bibitem>
              <bibitem id="_" type="standard" anchor="ref26">
-                <docidentifier type="IEEE" primary="true">IEEE 194-1977</docidentifier>
-                <docidentifier type="IEEE" scope="trademark" primary="true">IEEE 194™-1977</docidentifier>
+                <docidentifier type="IEEE" primary="true">IEEE Std 194-1977</docidentifier>
+                <docidentifier type="IEEE" scope="trademark" primary="true">IEEE Std 194™-1977</docidentifier>
                 <docidentifier type="ISBN">0-7381-4350-2</docidentifier>
                 <docidentifier type="DOI">10.1109/IEEESTD.1977.81098</docidentifier>
                 <note type="Availability">
-                   <p id="_">IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).</p>
+                   <p id="_">IEEE Std 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).</p>
                 </note>
              </bibitem>
-             <bibitem id="_" type="standard" anchor="ref7">
-                <docidentifier type="IEEE" primary="true">IEEE 43-2013 Redline</docidentifier>
-                <docidentifier type="IEEE" scope="trademark" primary="true">IEEE 43™-2013 Redline</docidentifier>
-                <docidentifier type="ISBN">978-0-7381-9093-8</docidentifier>
+             <bibitem id="_" type="standard" anchor="ref6">
+                <docidentifier type="IEEE" primary="true">IEEE Std 81-1983</docidentifier>
+                <docidentifier type="IEEE" scope="trademark" primary="true">IEEE Std 81™-1983</docidentifier>
+                <docidentifier type="ISBN">978-0-7381-0660-1</docidentifier>
+                <docidentifier type="DOI">10.1109/IEEESTD.1983.82378</docidentifier>
                 <note type="Availability">
                    <p id="_">The IEEE standards or products referred to in this clause are trademarks owned by The Institute of Electrical and Electronics Engineers, Incorporated.</p>
                 </note>
                 <note type="Availability">
                    <p id="_">IEEE publications are available from The Institute of Electrical and Electronics Engineers (http://standards.ieee.org/).</p>
                 </note>
-             </bibitem>
-             <bibitem id="_" type="standard" anchor="ref6">
-                <docidentifier type="IEEE" primary="true">IEEE 81-1983</docidentifier>
-                <docidentifier type="IEEE" scope="trademark" primary="true">IEEE 81™-1983</docidentifier>
-                <docidentifier type="ISBN">978-0-7381-0660-1</docidentifier>
-                <docidentifier type="DOI">10.1109/IEEESTD.1983.82378</docidentifier>
              </bibitem>
              <bibitem id="_" type="standard" anchor="ref21">
                 <docidentifier type="ISO" primary="true">ISO/IEC 2382</docidentifier>
@@ -764,6 +759,9 @@ RSpec.describe Metanorma::Ieee do
              <bibitem id="_" type="standard" anchor="ref29">
                 <docidentifier type="NIST" primary="true">NIST SP 800-30 fpd</docidentifier>
                 <docidentifier type="DOI">NIST.SP.800-30</docidentifier>
+             </bibitem>
+             <bibitem anchor="ref7" id="_">
+                <docidentifier type="IEEE">IEEE 43-2013 Redline</docidentifier>
              </bibitem>
              <bibitem anchor="ref10" id="_">
                 <docidentifier type="W3C">W3C XPTR</docidentifier>
