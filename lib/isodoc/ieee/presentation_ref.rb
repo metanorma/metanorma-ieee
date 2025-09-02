@@ -18,7 +18,7 @@ module IsoDoc
       # Style manual 19
       def anchor_linkend(node, linkend)
         if node["citeas"] && i = @bibanchors[node["bibitemid"]]
-          biblio_anchor_linkend(node, i)
+          biblio_anchor_linkend(node, i, linkend)
         elsif node["citeas"] && (i = @normrefanchors[node["bibitemid"]])
           cit = normref_anchor_linkend(node, i)
           cit || super
@@ -28,28 +28,47 @@ module IsoDoc
 
       # force Author-Date referencing on non-standards in norm ref
       def normref_anchor_linkend(node, bib)
-         @ref_renderings or return nil
+        @ref_renderings or return nil
         %w(techreport standard).include?(bib[:type]) and return nil
         cit = @ref_renderings[node["bibitemid"]][:citation]&.strip
         cit.empty? and cit = nil
         cit
       end
 
-      def biblio_anchor_linkend(node, bib)
+      def biblio_anchor_linkend(node, bib, linkend)
         if %w(techreport standard).include?(bib[:type])
-          if !node.children.empty?
-            to_xml(node.children).strip
-          elsif node["citeas"] == bib[:ord] then node["citeas"]
-          else [node["citeas"], bib[:ord]].compact.join(" ")
-          end
+          biblio_anchor_linkend_std(node, bib, linkend)
         else biblio_anchor_linkend_nonstd(node, bib)
         end
       end
 
+      def linkend_content(node)
+        c1 = non_locality_elems(node).select { |c| !c.text? || /\S/.match(c) }
+        c2 = node.xpath(ns("./locality | ./localityStack"))
+        [c1, c2]
+      end
+
+      def biblio_anchor_linkend_std(node, bib, linkend)
+        c1, c2 = linkend_content(node)
+        node["style"] == "no-biblio-tag" or tag = bib[:ord]
+        if !c1.empty?
+          c2.each(&:remove)
+          c1.map(&:to_xml).join
+        elsif node.at(ns("./location"))
+          linkend
+        elsif node["citeas"] == bib[:ord] then node["citeas"]
+        else [linkend, tag].compact.join(" ")
+        end
+      end
+
       def biblio_anchor_linkend_nonstd(node, bib)
+        c1, c2 = linkend_content(node)
         node["style"] == "no-biblio-tag" or tag = node["citeas"]
-        if !node.children.empty?
-          "#{to_xml(node.children)} #{tag}".strip
+        if !c1.empty?
+          c2.each(&:remove)
+          "#{c1.map(&:to_xml).join} #{tag}".strip
+        elsif node.at(ns("./location"))
+          tag
         elsif node["style"] == "title" && bib[:title]
           "#{bib[:title]} #{tag}".strip
         elsif bib[:author] # default, also if node["style"] == "title"

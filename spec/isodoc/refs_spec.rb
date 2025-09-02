@@ -14,6 +14,21 @@ RSpec.describe IsoDoc do
                   <eref type='inline' bibitemid='ref2' citeas='Aluffi'/>
                   <eref type='inline' bibitemid='ref3' citeas='REF4'/>
                   <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967'/>
+                  <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967' style='title'/>
+                  <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967' style='author'/>
+                  <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967' style='no-biblio-tag'/>
+                  <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967'>text1</eref>
+                  <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967' style='title'>text2</eref>
+                  <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967' style='author'>text3</eref>
+                  <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967' style='no-biblio-tag'>text4</eref>
+                  <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967'><locality type="clause"><referenceFrom>1</referenceFrom></locality></eref>
+                  <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967' style='title'><locality type="clause"><referenceFrom>2</referenceFrom><</locality></eref>
+                  <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967' style='author'><locality type="clause"><referenceFrom>3</referenceFrom><</locality></eref>
+                  <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967' style='no-biblio-tag'><locality type="clause"><referenceFrom>4</referenceFrom><</locality></eref>
+                  <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967'><locality type="clause"><referenceFrom>1</referenceFrom><</locality>text1</eref>
+                  <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967' style='title'><locality type="clause"><referenceFrom>2</referenceFrom><</locality>text2</eref>
+                  <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967' style='author'><locality type="clause"><referenceFrom>3</referenceFrom><</locality>text3</eref>
+                  <eref type='inline' bibitemid='ref4' citeas='ISO 639:1967' style='no-biblio-tag'><locality type="clause"><referenceFrom>4</referenceFrom><</locality>text4</eref>
                   <eref type='inline' bibitemid='Johns' citeas='ISO 639:1967'/>
                   <eref type='inline' bibitemid='ref5' citeas='[B2]'/>
                   <eref type='inline' bibitemid='ref5' citeas='[B2]' style='title'/>
@@ -23,6 +38,14 @@ RSpec.describe IsoDoc do
                   <eref type='inline' bibitemid='ref5' citeas='[B2]' style='title'>text2</eref>
                   <eref type='inline' bibitemid='ref5' citeas='[B2]' style='author'>text3</eref>
                   <eref type='inline' bibitemid='ref5' citeas='[B2]' style='no-biblio-tag'>text4</eref>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]'><locality type="clause"><referenceFrom>1</referenceFrom></locality></eref>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]' style='title'><locality type="clause"><referenceFrom>2</referenceFrom><</locality></eref>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]' style='author'><locality type="clause"><referenceFrom>3</referenceFrom><</locality></eref>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]' style='no-biblio-tag'><locality type="clause"><referenceFrom>4</referenceFrom><</locality></eref>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]'><locality type="clause"><referenceFrom>1</referenceFrom><</locality>text1</eref>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]' style='title'><locality type="clause"><referenceFrom>2</referenceFrom><</locality>text2</eref>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]' style='author'><locality type="clause"><referenceFrom>3</referenceFrom><</locality>text3</eref>
+                  <eref type='inline' bibitemid='ref5' citeas='[B2]' style='no-biblio-tag'><locality type="clause"><referenceFrom>4</referenceFrom><</locality>text4</eref>
                   <eref type='inline' bibitemid='ref6' citeas='[B1]'/>
                   <eref type='inline' bibitemid='ref8' citeas='[B4]'/>
                 </p>
@@ -350,7 +373,13 @@ RSpec.describe IsoDoc do
                    </semx>
                    <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" id="_"/>
                    <semx element="eref" source="_">
-                      <fmt-xref type="inline" target="ref4">ISO 639:1967 [B3]</fmt-xref>
+                      <fmt-xref type="inline" target="ref4">
+                         <span class="std_publisher">ISO </span>
+                         <span class="std_docNumber">639</span>
+                         :
+                         <span class="std_year">1967</span>
+                         [B3]
+                      </fmt-xref>
                    </semx>
                    <fn reference="4" original-reference="_" id="_" target="_">
                       <p>The numbers in brackets correspond to those of the bibliography in Annex B.</p>
@@ -362,6 +391,143 @@ RSpec.describe IsoDoc do
                          </span>
                       </fmt-fn-label>
                    </fn>
+                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="title" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="title" target="ref4">
+                         <span class="std_publisher">ISO </span>
+                         <span class="std_docNumber">639</span>
+                         :
+                         <span class="std_year">1967</span>
+                         [B3]
+                      </fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="author" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="author" target="ref4">
+                         <span class="std_publisher">ISO </span>
+                         <span class="std_docNumber">639</span>
+                         :
+                         <span class="std_year">1967</span>
+                         [B3]
+                      </fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="no-biblio-tag" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="no-biblio-tag" target="ref4">
+                         <span class="std_publisher">ISO </span>
+                         <span class="std_docNumber">639</span>
+                         :
+                         <span class="std_year">1967</span>
+                      </fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" id="_">text1</eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" target="ref4">text1</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="title" id="_">text2</eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="title" target="ref4">text2</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="author" id="_">text3</eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="author" target="ref4">text3</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="no-biblio-tag" id="_">text4</eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="no-biblio-tag" target="ref4">text4</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" id="_">
+                      <locality type="clause">
+                         <referenceFrom>1</referenceFrom>
+                      </locality>
+                   </eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" target="ref4">
+                         <span class="std_publisher">ISO </span>
+                         <span class="std_docNumber">639</span>
+                         :
+                         <span class="std_year">1967</span>
+                         [B3], Clause 1
+                      </fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="title" id="_">
+                      <locality type="clause">
+                         <referenceFrom>2</referenceFrom>
+                      </locality>
+                   </eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="title" target="ref4">
+                         <span class="std_publisher">ISO </span>
+                         <span class="std_docNumber">639</span>
+                         :
+                         <span class="std_year">1967</span>
+                         [B3], Clause 2
+                      </fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="author" id="_">
+                      <locality type="clause">
+                         <referenceFrom>3</referenceFrom>
+                      </locality>
+                   </eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="author" target="ref4">
+                         <span class="std_publisher">ISO </span>
+                         <span class="std_docNumber">639</span>
+                         :
+                         <span class="std_year">1967</span>
+                         [B3], Clause 3
+                      </fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="no-biblio-tag" id="_">
+                      <locality type="clause">
+                         <referenceFrom>4</referenceFrom>
+                      </locality>
+                   </eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="no-biblio-tag" target="ref4">
+                         <span class="std_publisher">ISO </span>
+                         <span class="std_docNumber">639</span>
+                         :
+                         <span class="std_year">1967</span>
+                         , Clause 4
+                      </fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" id="_">
+                      <locality type="clause">
+                         <referenceFrom>1</referenceFrom>
+                      </locality>
+                      text1
+                   </eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" target="ref4">text1</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="title" id="_">
+                      <locality type="clause">
+                         <referenceFrom>2</referenceFrom>
+                      </locality>
+                      text2
+                   </eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="title" target="ref4">text2</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="author" id="_">
+                      <locality type="clause">
+                         <referenceFrom>3</referenceFrom>
+                      </locality>
+                      text3
+                   </eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="author" target="ref4">text3</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="no-biblio-tag" id="_">
+                      <locality type="clause">
+                         <referenceFrom>4</referenceFrom>
+                      </locality>
+                      text4
+                   </eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="no-biblio-tag" target="ref4">text4</fmt-xref>
+                   </semx>
                    <eref type="inline" bibitemid="Johns" citeas="ISO 639:1967" id="_"/>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" target="Johns">Johns 2022</fmt-xref>
@@ -395,6 +561,74 @@ RSpec.describe IsoDoc do
                       <fmt-xref type="inline" style="author" target="ref5">text3 [B2]</fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref5" citeas="[B2]" style="no-biblio-tag" id="_">text4</eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="no-biblio-tag" target="ref5">text4</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref5" citeas="[B2]" id="_">
+                      <locality type="clause">
+                         <referenceFrom>1</referenceFrom>
+                      </locality>
+                   </eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2], Clause 1</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="title" id="_">
+                      <locality type="clause">
+                         <referenceFrom>2</referenceFrom>
+                      </locality>
+                   </eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="title" target="ref5">Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday [B2], Clause 2</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="author" id="_">
+                      <locality type="clause">
+                         <referenceFrom>3</referenceFrom>
+                      </locality>
+                   </eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="author" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2], Clause 3</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="no-biblio-tag" id="_">
+                      <locality type="clause">
+                         <referenceFrom>4</referenceFrom>
+                      </locality>
+                   </eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="no-biblio-tag" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne, Clause 4</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref5" citeas="[B2]" id="_">
+                      <locality type="clause">
+                         <referenceFrom>1</referenceFrom>
+                      </locality>
+                      text1
+                   </eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" target="ref5">text1 [B2]</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="title" id="_">
+                      <locality type="clause">
+                         <referenceFrom>2</referenceFrom>
+                      </locality>
+                      text2
+                   </eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="title" target="ref5">text2 [B2]</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="author" id="_">
+                      <locality type="clause">
+                         <referenceFrom>3</referenceFrom>
+                      </locality>
+                      text3
+                   </eref>
+                   <semx element="eref" source="_">
+                      <fmt-xref type="inline" style="author" target="ref5">text3 [B2]</fmt-xref>
+                   </semx>
+                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="no-biblio-tag" id="_">
+                      <locality type="clause">
+                         <referenceFrom>4</referenceFrom>
+                      </locality>
+                      text4
+                   </eref>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" style="no-biblio-tag" target="ref5">text4</fmt-xref>
                    </semx>
@@ -1019,65 +1253,73 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     presxml = <<~PRESXML
-      <clause id="A" inline-header="false" obligation="normative" displayorder="4">
-         <title id="_">Clause</title>
-         <fmt-title depth="1" id="_">
-            <span class="fmt-caption-label">
-               <semx element="autonum" source="A">2</semx>
-               <span class="fmt-autonum-delim">.</span>
-            </span>
-            <span class="fmt-caption-delim">
-               <tab/>
-            </span>
-            <semx element="title" source="_">Clause</semx>
-         </fmt-title>
-         <fmt-xref-label>
-            <span class="fmt-element-name">Clause</span>
-            <semx element="autonum" source="A">2</semx>
-         </fmt-xref-label>
-         <p id="_">
-            <eref bibitemid="ISO16634" id="_"/>
-            <semx element="eref" source="_">
-               <fmt-xref target="ISO16634">ISO 16634:--</fmt-xref>
-            </semx>
-            <eref type="inline" bibitemid="ISO16634" citeas="ISO 639:1967" id="_"/>
-            <semx element="eref" source="_">
-               <fmt-xref type="inline" target="ISO16634">
-                  <span class="std_publisher">ISO </span>
-                  <span class="std_docNumber">16634</span>
-               </fmt-xref>
-            </semx>
-            <eref type="inline" bibitemid="ISO16634" citeas="[B1]" id="_"/>
-            <semx element="eref" source="_">
-               <fmt-xref type="inline" target="ISO16634">
-                  <span class="std_publisher">ISO </span>
-                  <span class="std_docNumber">16634</span>
-               </fmt-xref>
-            </semx>
-            <eref type="inline" bibitemid="ISO16635" citeas="REF4" id="_">this is renderable text</eref>
-            <semx element="eref" source="_">
-               <fmt-xref type="inline" target="ISO16635">this is renderable text</fmt-xref>
-            </semx>
-            <eref type="inline" bibitemid="ISO16635" citeas="REF4" id="_"/>
-            <semx element="eref" source="_">
-               <fmt-xref type="inline" target="ISO16635">ISO 16635:-- [B1]</fmt-xref>
-            </semx>
-            <fn reference="1" original-reference="_" id="_" target="_">
-               <p>The numbers in brackets correspond to those of the bibliography in Annex B.</p>
-               <fmt-fn-label>
-                  <span class="fmt-caption-label">
-                     <sup>
-                        <semx element="autonum" source="_">1</semx>
-                     </sup>
-                  </span>
-               </fmt-fn-label>
-            </fn>
-            <eref type="inline" bibitemid="ISO16635" citeas="[B1]" id="_"/>
-            <semx element="eref" source="_">
-               <fmt-xref type="inline" target="ISO16635">ISO 16635:-- [B1]</fmt-xref>
-            </semx>
-         </p>
-      </clause>
+       <clause id="A" inline-header="false" obligation="normative" displayorder="4">
+          <title id="_">Clause</title>
+          <fmt-title depth="1" id="_">
+             <span class="fmt-caption-label">
+                <semx element="autonum" source="A">2</semx>
+                <span class="fmt-autonum-delim">.</span>
+             </span>
+             <span class="fmt-caption-delim">
+                <tab/>
+             </span>
+             <semx element="title" source="_">Clause</semx>
+          </fmt-title>
+          <fmt-xref-label>
+             <span class="fmt-element-name">Clause</span>
+             <semx element="autonum" source="A">2</semx>
+          </fmt-xref-label>
+          <p id="_">
+             <eref bibitemid="ISO16634" id="_"/>
+             <semx element="eref" source="_">
+                <fmt-xref target="ISO16634">ISO 16634:--</fmt-xref>
+             </semx>
+             <eref type="inline" bibitemid="ISO16634" citeas="ISO 639:1967" id="_"/>
+             <semx element="eref" source="_">
+                <fmt-xref type="inline" target="ISO16634">
+                   <span class="std_publisher">ISO </span>
+                   <span class="std_docNumber">16634</span>
+                </fmt-xref>
+             </semx>
+             <eref type="inline" bibitemid="ISO16634" citeas="[B1]" id="_"/>
+             <semx element="eref" source="_">
+                <fmt-xref type="inline" target="ISO16634">
+                   <span class="std_publisher">ISO </span>
+                   <span class="std_docNumber">16634</span>
+                </fmt-xref>
+             </semx>
+             <eref type="inline" bibitemid="ISO16635" citeas="REF4" id="_">this is renderable text</eref>
+             <semx element="eref" source="_">
+                <fmt-xref type="inline" target="ISO16635">this is renderable text</fmt-xref>
+             </semx>
+             <eref type="inline" bibitemid="ISO16635" citeas="REF4" id="_"/>
+             <semx element="eref" source="_">
+                <fmt-xref type="inline" target="ISO16635">
+                   <span class="std_publisher">ISO </span>
+                   <span class="std_docNumber">16635</span>
+                   [B1]
+                </fmt-xref>
+             </semx>
+             <fn reference="1" original-reference="_" id="_" target="_">
+                <p>The numbers in brackets correspond to those of the bibliography in Annex B.</p>
+                <fmt-fn-label>
+                   <span class="fmt-caption-label">
+                      <sup>
+                         <semx element="autonum" source="_">1</semx>
+                      </sup>
+                   </span>
+                </fmt-fn-label>
+             </fn>
+             <eref type="inline" bibitemid="ISO16635" citeas="[B1]" id="_"/>
+             <semx element="eref" source="_">
+                <fmt-xref type="inline" target="ISO16635">
+                   <span class="std_publisher">ISO </span>
+                   <span class="std_docNumber">16635</span>
+                   [B1]
+                </fmt-xref>
+             </semx>
+          </p>
+       </clause>
     PRESXML
     out = Nokogiri::XML(
       IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
@@ -1156,7 +1398,11 @@ RSpec.describe IsoDoc do
           <p id="_">
              <eref type="inline" bibitemid="ISO16635" citeas="REF4" id="_"/>
              <semx element="eref" source="_">
-                <fmt-xref type="inline" target="ISO16635">ISO 16635:-- [B1]</fmt-xref>
+             <fmt-xref type="inline" target="ISO16635">
+            <span class="std_publisher">ISO </span>
+            <span class="std_docNumber">16635</span>
+            [B1]
+         </fmt-xref>
              </semx>
              .
              <fn reference="1" original-reference="_" id="_" target="_">
