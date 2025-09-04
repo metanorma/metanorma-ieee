@@ -40,14 +40,15 @@ module Metanorma
 
       def designator_or_name(bib)
         id = designator_docid(bib)
-        ret = if %w(standard techreport).include?(bib["type"]) && id then id
-              else
-                bib1 = bib.dup
-                bib1.add_namespace(nil, xml_namespace)
-                n = @i.creatornames(bib1)
-                n.nil? && bib["type"].nil? and n = id
-                n
-              end
+        if %w(standard techreport).include?(bib["type"]) && id != "ZZZZ" &&
+            id != bib.at("./docidentifier[@type='metanorma']")&.text
+          ret = id
+        else
+          bib1 = dup_with_namespace(bib)
+          n = @i.creatornames(bib1)
+          n.nil? && bib["type"].nil? and n = id
+          ret = n
+        end
         [ret, id]
       end
 
