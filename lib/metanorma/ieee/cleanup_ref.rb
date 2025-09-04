@@ -40,8 +40,7 @@ module Metanorma
 
       def designator_or_name(bib)
         id = designator_docid(bib)
-        ret = case bib["type"]
-              when "standard", "techreport" then id
+        ret = if %w(standard techreport).include?(bib["type"]) && id then id
               else
                 bib1 = bib.dup
                 bib1.add_namespace(nil, xml_namespace)

@@ -55,7 +55,6 @@ RSpec.describe Metanorma::Ieee do
             surname:::: Jones
             forename:::: Indiana
 
-
       INPUT
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       expect(out.xpath("//xmlns:references/xmlns:bibitem/@anchor")
@@ -73,6 +72,11 @@ RSpec.describe Metanorma::Ieee do
         * [[[ref1,ISO 639:2023]]] REF5
         * [[[ref2,RFC 7749]]] REF7
         * [[[ref3,REF4]]] REF4
+        * [[[khronos_openxr,ref6]]],
+        span:organization[The Khronos Group Inc].
+        span:type[standard]
+        span:title[OpenXR].
+        Available at: span:uri[https://www.khronos.org/openxr].
 
         [[ref4]]
         [%bibitem]
@@ -121,7 +125,7 @@ RSpec.describe Metanorma::Ieee do
       out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       expect(out.xpath("//xmlns:references/xmlns:bibitem/@anchor")
         .map(&:value))
-        .to be_equivalent_to ["ref2", "ref1", "ref4", "ref5", "ref3"]
+        .to be_equivalent_to ["ref2", "ref1", "ref4", "ref5", "ref3", "khronos_openxr"]
   end
 
   it "numbers bibliography" do
