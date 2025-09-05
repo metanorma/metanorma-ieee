@@ -7,11 +7,11 @@ module Metanorma
 
       def sorted_bibitem_no_avail(xmldoc)
         # Get normative references first, maintaining their order
-        normative_bibitems = xmldoc.xpath("//references[@normative='true']/bibitem[not(note[@type = 'Availability'])]")
-        
-        # Get non-normative references second, maintaining their order  
-        non_normative_bibitems = xmldoc.xpath("//references[@normative='false']/bibitem[not(note[@type = 'Availability'])]")
-        
+        normative_bibitems = xmldoc.xpath("//references[@normative='true']/" \
+          "bibitem[not(note[@type = 'Availability'])]")
+        # Get non-normative references second, maintaining their order
+        non_normative_bibitems = xmldoc.xpath("//references[@normative='false']/" \
+          "bibitem[not(note[@type = 'Availability'])]")
         # Return concatenated array with normative first
         normative_bibitems.to_a + non_normative_bibitems.to_a
       end
@@ -37,7 +37,8 @@ module Metanorma
 
       def available_note(xmldoc, provenance_notes)
         bibitems = sorted_bibitem_no_avail(xmldoc)
-        iso_iec_available_note(bibitems, provenance_notes["iso-iec"], true, true)
+        iso_iec_available_note(bibitems, provenance_notes["iso-iec"], true,
+                               true)
         iso_iec_available_note(bibitems, provenance_notes["iso"], true, false)
         iso_iec_available_note(bibitems, provenance_notes["iec"], false, true)
         itu_available_note(bibitems, provenance_notes["itut"], true)

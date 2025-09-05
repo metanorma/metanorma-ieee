@@ -95,8 +95,7 @@ module Metanorma
       end
 
       def boilerplate_isodoc(xmldoc)
-        x = xmldoc.dup
-        x.root.add_namespace(nil, xml_namespace)
+        x = dup_with_namespace(xmldoc.root)
         xml = Nokogiri::XML(x.to_xml)
         i = isodoc(@lang, @script, @locale)
         i.bibdata_i18n(xml.at("//xmlns:bibdata"))
