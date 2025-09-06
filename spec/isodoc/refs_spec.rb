@@ -826,7 +826,7 @@ RSpec.describe IsoDoc do
                 </bibitem>
                 <bibitem type="book" id="ref2">
                    <formattedref>
-                      Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne,
+                      Aluffi, P. <em>et al.</em>,
                       <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>
                       , first edition, Cambridge, UK: Cambridge University Press, 2022a, DOI: https://doi.org/10.1017/9781108877831.
                       <fn id="_" reference="2" original-reference="_" target="_">
@@ -1000,7 +1000,7 @@ RSpec.describe IsoDoc do
                 </bibitem>
                 <bibitem type="book" id="ref5">
                    <formattedref>
-                      Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne,
+                      Aluffi, P. <em>et al.</em>,
                       <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>
                       , first edition, Cambridge, UK: Cambridge University Press, 2022b, DOI: https://doi.org/10.1017/9781108877831.
                    </formattedref>
@@ -1108,7 +1108,7 @@ RSpec.describe IsoDoc do
                    </biblio-tag>
                 </bibitem>
                 <bibitem id="ref8" type="standard">
-                   <formattedref>“OpenXR,”.</formattedref>
+                   <formattedref>OpenXR.</formattedref>
                    <title>OpenXR</title>
                    <docidentifier type="metanorma-ordinal">[B4]</docidentifier>
                    <docnumber>4</docnumber>
@@ -1468,7 +1468,7 @@ RSpec.describe IsoDoc do
                      <semx element="title" source="_">Normative References</semx>
                </fmt-title>
                <bibitem id="IETF_6281" type="standard">
-                  <formattedref>“Title 1,”.</formattedref>
+                  <formattedref>Title 1.</formattedref>
                   <title>Title 1</title>
                   <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
                   <docidentifier>ABC</docidentifier>
@@ -1480,7 +1480,7 @@ RSpec.describe IsoDoc do
                   </biblio-tag>
                </bibitem>
                <bibitem id="IETF_6282" type="standard">
-                  <formattedref>“Title 1,”.</formattedref>
+                  <formattedref>Title 1.</formattedref>
                   <title>Title 1</title>
                   <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
                   <docidentifier>DEF</docidentifier>
@@ -1492,7 +1492,7 @@ RSpec.describe IsoDoc do
                   </biblio-tag>
                </bibitem>
                <bibitem id="IETF_6283" type="standard">
-                  <formattedref>“Title 2,”.</formattedref>
+                  <formattedref>Title 2.</formattedref>
                   <title>Title 2</title>
                   <docidentifier type="metanorma-ordinal">[B3]</docidentifier>
                   <docidentifier>GHI</docidentifier>

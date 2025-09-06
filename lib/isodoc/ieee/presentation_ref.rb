@@ -29,14 +29,14 @@ module IsoDoc
       # force Author-Date referencing on non-standards in norm ref
       def normref_anchor_linkend(node, bib)
         @ref_renderings or return nil
-        %w(techreport standard).include?(bib[:type]) and return nil
+        %w(standard).include?(bib[:type]) and return nil
         cit = @ref_renderings[node["bibitemid"]][:citation]&.strip
         cit.empty? and cit = nil
         cit
       end
 
       def biblio_anchor_linkend(node, bib, linkend)
-        if %w(techreport standard).include?(bib[:type])
+        if %w(standard).include?(bib[:type])
           biblio_anchor_linkend_std(node, bib, linkend)
         else biblio_anchor_linkend_nonstd(node, bib)
         end
