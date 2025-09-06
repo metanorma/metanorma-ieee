@@ -125,8 +125,57 @@ RSpec.describe Metanorma::Ieee do
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     expect(out.xpath("//xmlns:references/xmlns:bibitem/@anchor")
       .map(&:value))
-      .to be_equivalent_to ["ref2", "khronos_openxr", "ref1", "ref4", "ref5",
+      .to be_equivalent_to ["ref2", "ref1", "ref4", "ref5", "khronos_openxr",
                             "ref3"]
+  end
+
+  it "supplies designators for standards" do
+    input = <<~INPUT
+      #{LOCAL_CACHED_ISOBIB_BLANK_HDR}
+
+      [bibliography]
+      == Bibliography
+
+      * [[[khronos_openxr,1]]],
+      span:organization[IFF Group Inc].
+      span:type[standard]
+      span:title[OpenXR].
+      Available at: span:uri[https://www.khronos.org/openxr].
+    INPUT
+    output = <<~OUTPUT
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
+          <sections>
+       </sections>
+          <bibliography>
+             <references id="_" normative="false" obligation="informative">
+                <title id="_">Bibliography</title>
+                <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
+                <bibitem anchor="khronos_openxr" id="_" type="standard">
+                   <formattedref format="application/x-isodoc+xml">
+                      IFF Group Inc. OpenXR. Available at:
+                      <link target="https://www.khronos.org/openxr"/>
+                      .
+                   </formattedref>
+                   <title>OpenXR</title>
+                   <docidentifier type="title" primary="true">OpenXR</docidentifier>
+                   <uri>https://www.khronos.org/openxr</uri>
+                   <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
+                   <contributor>
+                      <role type="author"/>
+                      <organization>
+                         <name>IFF Group Inc</name>
+                      </organization>
+                   </contributor>
+                </bibitem>
+             </references>
+          </bibliography>
+       </metanorma>
+    OUTPUT
+    out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
+    out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:note | " \
+              "//xmlns:metanorma-extension | //xmlns:fetched").remove
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(output)
   end
 
   it "numbers bibliography" do
@@ -455,12 +504,42 @@ RSpec.describe Metanorma::Ieee do
       <<ref6>>
       <<ref7>>
 
+      <<ref8>>
+      <<ref9>>
+      <<ref10>>
+      <<ref11>>
+
       [bibliography]
       == Normative References
 
       * [[[ref1,ISO 639:2023]]] REF5
       * [[[ref2,RFC 7749]]] REF7
       * [[[ref3,REF4]]] REF4
+      * [[[ref8,1]]]
+      span:surname[Friston], span:initials[K. J.]
+      span:surname[Salvatori], span:initials[T.]
+      span:surname[Isomura], span:initials[T.]
+      span:surname[Tschantz], span:initials[A.]
+      span:surname[Kiefer], span:initials[A.]
+      span:surname[Verbelen], span:initials[T.]
+      span:surname[Koudahl], span:initials[M.]
+      span:surname[Paul], span:initials[A.]
+      span:surname[Parr], span:initials[T.]
+      span:surname[Razi], span:initials[A.]
+      span:surname[Kagan], span:initials[B.]
+      span:surname[Buckley], span:initials[C. L.]
+      span:surname[Ramstead], span:initials[M. J. D.]
+      span:type[inproceedings]
+      span:title[Active Inference and Intentional Behaviour].
+      In: span:in_title[arxiv: Quantitative Biology--Neurons and Cognition].
+      span:date[December 2023].
+      Available at: span:uri[https://arxiv.org/abs/2312.07547].
+
+      * [[[ref10,1]]],
+      span:organization[The Khronos Group Inc].
+      span:type[standard]
+      span:title[OpenXR].
+      Available at: span:uri[https://www.khronos.org/openxr].
 
       [bibliography]
       == Bibliography
@@ -469,6 +548,32 @@ RSpec.describe Metanorma::Ieee do
       * [[[ref5,RFC 7749]]] REF7
       * [[[ref6,3]]] REF4
       * [[[ref7,ARBITRARY_ID]]] REF9
+
+      * [[[ref9,1]]]
+      span:surname[Friston], span:initials[K. J.]
+      span:surname[Salvatori], span:initials[T.]
+      span:surname[Isomura], span:initials[T.]
+      span:surname[Tschantz], span:initials[A.]
+      span:surname[Kiefer], span:initials[A.]
+      span:surname[Verbelen], span:initials[T.]
+      span:surname[Koudahl], span:initials[M.]
+      span:surname[Paul], span:initials[A.]
+      span:surname[Parr], span:initials[T.]
+      span:surname[Razi], span:initials[A.]
+      span:surname[Kagan], span:initials[B.]
+      span:surname[Buckley], span:initials[C. L.]
+      span:surname[Ramstead], span:initials[M. J. D.]
+      span:type[inproceedings]
+      span:title[Active Inference and Intentional Behaviour].
+      In: span:in_title[arxiv: Quantitative Biology--Neurons and Cognition].
+      span:date[December 2023].
+      Available at: span:uri[https://arxiv.org/abs/2312.07547].
+
+      * [[[ref11,1]]],
+      span:organization[The Khronos Group Inc].
+      span:type[standard]
+      span:title[OpenXR].
+      Available at: span:uri[https://www.khronos.org/openxr].
 
     INPUT
     output = <<~OUTPUT
@@ -480,9 +585,15 @@ RSpec.describe Metanorma::Ieee do
           <eref type='inline' bibitemid='ref3' citeas='REF4'/>
           <eref type='inline' bibitemid='ref4' citeas='ISO&#xa0;639:2023'/>
           <eref type='inline' bibitemid='ref5' citeas='IETF&#xa0;RFC&#xa0;7749'/>
-          <eref type='inline' bibitemid='ref6' citeas='[B3]'/>
-          <eref type='inline' bibitemid='ref7' citeas='[B4]'/>
+          <eref type='inline' bibitemid='ref6' citeas='[B5]'/>
+          <eref type='inline' bibitemid='ref7' citeas='[B6]'/>
         </p>
+         <p id="_">
+           <eref type="inline" bibitemid="ref8" citeas="ref8"/>
+          <eref type="inline" bibitemid="ref9" citeas="[B1]"/>
+          <eref type="inline" bibitemid="ref10" citeas="OpenXR"/>
+          <eref type="inline" bibitemid="ref11" citeas="OpenXR"/>
+      </p>
       </clause>
     OUTPUT
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
