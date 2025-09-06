@@ -648,6 +648,20 @@ RSpec.describe IsoDoc do
                    <semx element="title" source="_">Normative References</semx>
                 </fmt-title>
                 <bibitem id="ISO16634" type="standard">
+                   <biblio-tag>
+                      ISO 16634:-- (all parts)
+                      <fn id="_" reference="1" original-reference="_" target="_">
+                         <p>Under preparation. (Stage at the time of publication ISO/DIS 16634)</p>
+                         <fmt-fn-label>
+                            <span class="fmt-caption-label">
+                               <sup>
+                                  <semx element="autonum" source="_">1</semx>
+                               </sup>
+                            </span>
+                         </fmt-fn-label>
+                      </fn>
+                      ,
+                   </biblio-tag>
                    <formattedref>Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs.</formattedref>
                    <title format="text/plain" language="x">Cereals, pulses, milled cereal products, xxxx, oilseeds and animal feeding stuffs</title>
                    <title format="text/plain" language="en">Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</title>
@@ -666,22 +680,9 @@ RSpec.describe IsoDoc do
                    <extent type="part">
                       <referenceFrom>all</referenceFrom>
                    </extent>
-                   <biblio-tag>
-                      ISO 16634:-- (all parts)
-                      <fn id="_" reference="1" original-reference="_" target="_">
-                         <p>Under preparation. (Stage at the time of publication ISO/DIS 16634)</p>
-                         <fmt-fn-label>
-                            <span class="fmt-caption-label">
-                               <sup>
-                                  <semx element="autonum" source="_">1</semx>
-                               </sup>
-                            </span>
-                         </fmt-fn-label>
-                      </fn>
-                      ,
-                   </biblio-tag>
                 </bibitem>
                 <bibitem id="IETF_6281" type="standard">
+                   <biblio-tag>ISO 639, </biblio-tag>
                    <formattedref>Code for the representation of names of languages.</formattedref>
                    <fetched/>
                    <title type="title-main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
@@ -774,9 +775,9 @@ RSpec.describe IsoDoc do
                       </bibitem>
                    </relation>
                    <place>Geneva</place>
-                   <biblio-tag>ISO 639, </biblio-tag>
                 </bibitem>
                 <bibitem id="ref7" type="standard">
+                   <biblio-tag>ISO 639-2:1998, </biblio-tag>
                    <formattedref>Codes for the representation of names of languages - Part 2: Alpha-3 code.</formattedref>
                    <title type="title-main" format="text/plain" language="en" script="Latn">Codes for the representation of names of languages</title>
                    <title type="title-part" format="text/plain" language="en" script="Latn">Part 2: Alpha-3 code</title>
@@ -815,18 +816,20 @@ RSpec.describe IsoDoc do
                          </organization>
                       </owner>
                    </copyright>
-                   <biblio-tag>ISO 639-2:1998, </biblio-tag>
                 </bibitem>
                 <bibitem id="ref3">
+                   <biblio-tag>REF4, </biblio-tag>
                    <formattedref format="application/x-isodoc+xml">REF4</formattedref>
                    <docidentifier>REF4</docidentifier>
                    <docidentifier scope="biblio-tag">REF4</docidentifier>
                    <docnumber>4</docnumber>
-                   <biblio-tag>REF4, </biblio-tag>
                 </bibitem>
                 <bibitem type="book" id="ref2">
+                   <biblio-tag>Aluffi, Anderson, Hering, Mustaţă and Payne 2022a </biblio-tag>
                    <formattedref>
-                      Aluffi, P. <em>et al.</em>,
+                      Aluffi, P.
+                      <em>et al.</em>
+                      ,
                       <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>
                       , first edition, Cambridge, UK: Cambridge University Press, 2022a, DOI: https://doi.org/10.1017/9781108877831.
                       <fn id="_" reference="2" original-reference="_" target="_">
@@ -932,6 +935,7 @@ RSpec.describe IsoDoc do
                    <biblio-tag>Aluffi, Anderson, Hering, Mustaţă and Payne 2022a, </biblio-tag>
                 </bibitem>
                 <bibitem type="standard" id="ref1">
+                   <biblio-tag>ISO 639:1967, </biblio-tag>
                    <formattedref>Indiana Jones and the Last Crusade.</formattedref>
                    <fetched/>
                    <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
@@ -955,9 +959,9 @@ RSpec.describe IsoDoc do
                          </name>
                       </person>
                    </contributor>
-                   <biblio-tag>ISO 639:1967, </biblio-tag>
                 </bibitem>
                 <bibitem id="Johns" type="book">
+                   <biblio-tag>Johns 2022 </biblio-tag>
                    <formattedref>
                       Johns,
                       <em>Title 1</em>
@@ -987,20 +991,26 @@ RSpec.describe IsoDoc do
                    <semx element="title" source="_">Bibliography</semx>
                 </fmt-title>
                 <bibitem id="ref6">
-                   <formattedref format="application/x-isodoc+xml">Title</formattedref>
-                   <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
-                   <docidentifier>REF4</docidentifier>
-                   <docidentifier scope="biblio-tag">REF4</docidentifier>
-                   <docnumber>4</docnumber>
                    <biblio-tag>
                       [B1]
                       <tab/>
                       REF4,
                    </biblio-tag>
+                   <formattedref format="application/x-isodoc+xml">Title</formattedref>
+                   <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
+                   <docidentifier>REF4</docidentifier>
+                   <docidentifier scope="biblio-tag">REF4</docidentifier>
+                   <docnumber>4</docnumber>
                 </bibitem>
                 <bibitem type="book" id="ref5">
+                   <biblio-tag>
+                      [B2]
+                      <tab/>
+                   </biblio-tag>
                    <formattedref>
-                      Aluffi, P. <em>et al.</em>,
+                      Aluffi, P.
+                      <em>et al.</em>
+                      ,
                       <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>
                       , first edition, Cambridge, UK: Cambridge University Press, 2022b, DOI: https://doi.org/10.1017/9781108877831.
                    </formattedref>
@@ -1071,12 +1081,13 @@ RSpec.describe IsoDoc do
                    <size>
                       <value type="volume">1</value>
                    </size>
-                   <biblio-tag>
-                      [B2]
-                      <tab/>
-                   </biblio-tag>
                 </bibitem>
                 <bibitem type="standard" id="ref4">
+                   <biblio-tag>
+                      [B3]
+                      <tab/>
+                      ISO 639:1967,
+                   </biblio-tag>
                    <formattedref>Indiana Jones and the Last Crusade.</formattedref>
                    <fetched/>
                    <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
@@ -1101,21 +1112,16 @@ RSpec.describe IsoDoc do
                          </name>
                       </person>
                    </contributor>
-                   <biblio-tag>
-                      [B3]
-                      <tab/>
-                      ISO 639:1967,
-                   </biblio-tag>
                 </bibitem>
                 <bibitem id="ref8" type="standard">
-                   <formattedref>OpenXR.</formattedref>
-                   <title>OpenXR</title>
-                   <docidentifier type="metanorma-ordinal">[B4]</docidentifier>
-                   <docnumber>4</docnumber>
                    <biblio-tag>
                       [B4]
                       <tab/>
                    </biblio-tag>
+                   <formattedref>OpenXR.</formattedref>
+                   <title>OpenXR</title>
+                   <docidentifier type="metanorma-ordinal">[B4]</docidentifier>
+                   <docnumber>4</docnumber>
                 </bibitem>
              </references>
           </bibliography>
