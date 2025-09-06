@@ -3,13 +3,13 @@ nametemplate:
   two: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{surname[0] }} ,_{{initials[0] | join: '. '}}.{% endif %} , {{ labels['and'] }} {% if nonpersonal[1] %}{{ nonpersonal[1] }}{% else %}{{initials[1] | join: '. '}}. {{surname[1] }}{% endif %}"
   more: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{surname[0] }} ,_{{initials[0] | join: '. '}}.{% endif %} , {% if nonpersonal[1] %}{{ nonpersonal[1] }}{% else %}{{initials[1] | join: '. '}}. {{surname[1] }}{% endif %} , {{ labels['and'] }} {% if nonpersonal[2] %}{{ nonpersonal[2] }}{% else %}{{initials[2] | join: '. '}}. {{surname[2] }}{% endif %}"
   etal: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{surname[0] }} ,_{{initials[0] | join: '. '}}.{% endif %} , {% if nonpersonal[1] %}{{ nonpersonal[1] }}{% else %}{{initials[1] | join: '. '}}. {{surname[1] }}{% endif %} , {% if nonpersonal[2] %}{{ nonpersonal[2] }}{% else %}{{initials[2] | join: '. '}}. {{surname[2] }}{% endif %} <em>et al.</em>"
-  etal_count: 10
-  etal_render: 7
+  etal_count: 4
+  etal_render: 1
 extenttemplate:
   misc: "{{ volume }}, {{issue}}, {{ page }}, {{ duration }}"
 template:
   # skip authoritative_identifier, it is inserted in front of formattedref within metanorma
-  standard: "{% if home_standard %}{{ title }}.{% else %}{{ creatornames }}, “{{ title }},” {{ extent }},  {{ labels['version'] }}_{{ edition_raw }}, {{date}}, {{labels['updated'] | capitalize }}_{{date_updated}}, {{status }}, {{ authorizer }}, {% if uri %}{{ uri }}{% else %}{% if doi %}DOI: {{ doi | join: ', ' }}{% endif %}{% endif %} .{% endif %}"
+  standard: "{{ title }}{% if home_standard %}{%else%}, {% if uri %}{{ uri }}{% else %}{% if doi %}DOI: {{ doi | join: ', ' }}{% endif %}{% endif %}{% endif %}."
   article: "{{creatornames}}, “{{title}},” <em>{{ series }}</em>, {{ extent }}, {{ date }}, {{ labels['viewed'] }}_{{date_accessed}}, {% if uri %}{{ uri }}{% else %}{% if doi %}DOI: {{ doi | join: ', ' }}{% endif %}{% endif %} ."
   book: "{{creatornames}}, <em>{{title}}</em>, {{ edition }}, {{place}}: {{publisher}}, {{date}}, {{ labels['viewed'] }}_{{date_accessed}}, {% if uri %}{{ uri }}{% else %}{% if doi %}DOI: {{ doi | join: ', ' }}{% endif %}{% endif %} ."
   techreport: book
