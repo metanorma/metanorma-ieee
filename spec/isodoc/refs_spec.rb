@@ -365,7 +365,11 @@ RSpec.describe IsoDoc do
                    </semx>
                    <eref type="inline" bibitemid="ref2" citeas="Aluffi" id="_"/>
                    <semx element="eref" source="_">
-                      <fmt-xref type="inline" target="ref2">Aluffi, Anderson, Hering, Mustaţă and Payne 2022a</fmt-xref>
+                      <fmt-xref type="inline" target="ref2">
+                         Aluffi
+                         <em>et al.</em>
+                         2022a
+                      </fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref3" citeas="REF4" id="_"/>
                    <semx element="eref" source="_">
@@ -534,7 +538,11 @@ RSpec.describe IsoDoc do
                    </semx>
                    <eref type="inline" bibitemid="ref5" citeas="[B2]" id="_"/>
                    <semx element="eref" source="_">
-                      <fmt-xref type="inline" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2]</fmt-xref>
+                      <fmt-xref type="inline" target="ref5">
+                         Aluffi
+                         <em>et al.</em>
+                         [B2]
+                      </fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref5" citeas="[B2]" style="title" id="_"/>
                    <semx element="eref" source="_">
@@ -542,11 +550,18 @@ RSpec.describe IsoDoc do
                    </semx>
                    <eref type="inline" bibitemid="ref5" citeas="[B2]" style="author" id="_"/>
                    <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="author" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2]</fmt-xref>
+                      <fmt-xref type="inline" style="author" target="ref5">
+                         Aluffi
+                         <em>et al.</em>
+                         [B2]
+                      </fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref5" citeas="[B2]" style="no-biblio-tag" id="_"/>
                    <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="no-biblio-tag" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne</fmt-xref>
+                      <fmt-xref type="inline" style="no-biblio-tag" target="ref5">
+                         Aluffi
+                         <em>et al.</em>
+                      </fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref5" citeas="[B2]" id="_">text1</eref>
                    <semx element="eref" source="_">
@@ -570,7 +585,11 @@ RSpec.describe IsoDoc do
                       </locality>
                    </eref>
                    <semx element="eref" source="_">
-                      <fmt-xref type="inline" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2], Clause 1</fmt-xref>
+                      <fmt-xref type="inline" target="ref5">
+                         Aluffi
+                         <em>et al.</em>
+                         [B2], Clause 1
+                      </fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref5" citeas="[B2]" style="title" id="_">
                       <locality type="clause">
@@ -586,7 +605,11 @@ RSpec.describe IsoDoc do
                       </locality>
                    </eref>
                    <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="author" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne [B2], Clause 3</fmt-xref>
+                      <fmt-xref type="inline" style="author" target="ref5">
+                         Aluffi
+                         <em>et al.</em>
+                         [B2], Clause 3
+                      </fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref5" citeas="[B2]" style="no-biblio-tag" id="_">
                       <locality type="clause">
@@ -594,7 +617,11 @@ RSpec.describe IsoDoc do
                       </locality>
                    </eref>
                    <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="no-biblio-tag" target="ref5">Aluffi, Anderson, Hering, Mustaţă and Payne, Clause 4</fmt-xref>
+                      <fmt-xref type="inline" style="no-biblio-tag" target="ref5">
+                         Aluffi
+                         <em>et al.</em>
+                         , Clause 4
+                      </fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref5" citeas="[B2]" id="_">
                       <locality type="clause">
@@ -825,11 +852,9 @@ RSpec.describe IsoDoc do
                    <docnumber>4</docnumber>
                 </bibitem>
                 <bibitem type="book" id="ref2">
-                   <biblio-tag>Aluffi, Anderson, Hering, Mustaţă and Payne 2022a </biblio-tag>
+                   <biblio-tag>Aluffi et al. 2022a </biblio-tag>
                    <formattedref>
-                      Aluffi, P.
-                      <em>et al.</em>
-                      ,
+                      Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne,
                       <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>
                       , first edition, Cambridge, UK: Cambridge University Press, 2022a, DOI: https://doi.org/10.1017/9781108877831.
                       <fn id="_" reference="2" original-reference="_" target="_">
@@ -931,8 +956,16 @@ RSpec.describe IsoDoc do
                    <size>
                       <value type="volume">1</value>
                    </size>
-                   <docidentifier type="metanorma">Aluffi, Anderson, Hering, Mustaţă and Payne 2022a</docidentifier>
-                   <biblio-tag>Aluffi, Anderson, Hering, Mustaţă and Payne 2022a, </biblio-tag>
+                   <docidentifier type="metanorma">
+                      Aluffi
+                      <em>et al.</em>
+                      2022a
+                   </docidentifier>
+                   <biblio-tag>
+                      Aluffi
+                      <em>et al.</em>
+                      2022a,
+                   </biblio-tag>
                 </bibitem>
                 <bibitem type="standard" id="ref1">
                    <biblio-tag>ISO 639:1967, </biblio-tag>
@@ -1008,9 +1041,7 @@ RSpec.describe IsoDoc do
                       <tab/>
                    </biblio-tag>
                    <formattedref>
-                      Aluffi, P.
-                      <em>et al.</em>
-                      ,
+                      Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne,
                       <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>
                       , first edition, Cambridge, UK: Cambridge University Press, 2022b, DOI: https://doi.org/10.1017/9781108877831.
                    </formattedref>
