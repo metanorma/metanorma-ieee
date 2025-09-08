@@ -121,6 +121,10 @@ module Metanorma
                        "@type = 'metanorma-ordinal']")
         if /^\[?\d+\]?$/.match?(docid&.text)
           docid.children = "[B#{idx}]"
+          # fix metanorma to metanorma-ordinal if designation supplied
+          if bib.at("./docidentifier[@type = 'title']")
+            docid["type"] = "metanorma-ordinal"
+          end
         elsif docid = bib.at("./docidentifier") || bib.at("./title[last()]") ||
             bib.at("./formattedref")
           docid.next =
@@ -130,7 +134,7 @@ module Metanorma
 
       def select_docid(ref, type = nil)
         ret = super
-        if %w(standard techreport).include?(ref["type"]) then ret
+        if %w(standard).include?(ref["type"]) then ret
         else
           ref.at("./docidentifier[@type = 'metanorma-ordinal']") || ret
         end
@@ -143,6 +147,22 @@ module Metanorma
 
       def bibitem_cleanup(xmldoc)
         super
+        supply_designations(xmldoc)
+        supply_withdrawn_notes(xmldoc)
+      end
+
+      # force existence of a designation for standards
+      def supply_designations(xmldoc)
+        xmldoc.xpath("//references/bibitem[@type = 'standard']").each do |b|
+          b.at("./docidentifier[not(@type = 'metanorma' or @type = 'DOI' or " \
+            "@type = 'metanorma-ordinal')]") and next
+          t = b.at("./title") or next
+          b.at("./title[last()]").next =
+            "<docidentifier type='title' primary='true'>#{t.text}</docidentifier>"
+        end
+      end
+
+      def supply_withdrawn_notes(xmldoc)
         f = File.join(File.dirname(__FILE__), "ieee-footnotes.yaml")
         @provenance_notes = YAML.safe_load(File.read(f))
         withdrawn_note(xmldoc, @provenance_notes)
@@ -156,6 +176,11 @@ module Metanorma
       def bib_pubs(bib)
         bib.xpath("./contributor[role/@type = 'publisher']/organization/name")
           .map(&:text)
+      end
+
+      def reference_names(xmldoc)
+        #require "debug"; binding.b
+        super
       end
     end
   end

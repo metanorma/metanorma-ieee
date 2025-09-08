@@ -86,6 +86,7 @@ module IsoDoc
 
       def omit_docid_prefix(prefix)
         prefix == "DOI" and return true
+        prefix == "title" and return true
         super
       end
 
