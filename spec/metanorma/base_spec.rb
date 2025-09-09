@@ -750,7 +750,7 @@ RSpec.describe Metanorma::Ieee do
           <bibliography>
              <references id="_" normative="true" obligation="informative">
                 <title id="_">Normative references</title>
-                <p id="_">There are no normative references in this document.</p>
+                <p id="_">There are no normative references in this standard.</p>
              </references>
           </bibliography>
           <indexsect id="_">
@@ -1001,7 +1001,7 @@ RSpec.describe Metanorma::Ieee do
           <bibliography>
              <references id="_" normative="true" obligation="informative">
                 <title id="_">References</title>
-                <p id="_">There are no normative references in this document.</p>
+                <p id="_">There are no normative references in this whitepaper.</p>
              </references>
           </bibliography>
           <indexsect id="_">

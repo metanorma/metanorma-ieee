@@ -21,6 +21,7 @@ doctype_abbrev:
 term_def_boilerplate: |
   For the purposes of this document, the following terms and definitions apply. The _IEEE Standards Dictionary Online_ should be consulted for terms not defined in this clause.footnote:[_IEEE Standards Dictionary Online_ is available at: http://dictionary.ieee.org[]. An IEEE Account is required for access to the dictionary, and one can be created at no charge on the dictionary sign-in page.]
 norm_with_refs_pref: The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.
+norm_empty_pref: There are no normative references in this {{ doctype | downcase}}.
 biblio_pref: Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only. 
 note_inform_fn: Notes to text, tables, and figures are for information only and do not contain requirements needed to implement the standard.
 biblio_ref_inform_fn: The numbers in brackets correspond to those of the bibliography in Annex B.
