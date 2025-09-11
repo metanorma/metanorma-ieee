@@ -194,24 +194,12 @@ module Metanorma
         end
       end
 
-      def title_english(node, xml)
-        title = node.attr("title") || node.attr("title-en") ||
-          node.attr("doctitle")
-        title_english1(title, "title-main", xml)
-        title_english1(node.attr("title-full"), "main", xml)
-        title_english1(node.attr("title-abbrev"), "title-abbrev", xml)
+      def title_other(node, xml)
+        t = node.attr("title-full") and
+          add_title_xml(xml, t, @lang, "title-full")
+        t = node.attr("title-abbrev") and
+          add_title_xml(xml, t, @lang, "title-abbrev")
       end
-
-      def title_english1(title, type, xml)
-        title.nil? and return
-        at = { language: "en", format: "text/plain" }
-        title = Metanorma::Utils::asciidoc_sub(title)
-        xml.title **attr_code(at.merge(type: type)) do |t|
-          t << title
-        end
-      end
-
-      def title_otherlangs(node, xml); end
     end
   end
 end

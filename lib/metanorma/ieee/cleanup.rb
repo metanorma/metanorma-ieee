@@ -112,8 +112,16 @@ module Metanorma
       def bibdata_cleanup(xmldoc)
         super
         draft_id(xmldoc)
+        main_title(xmldoc)
         prefixed_title(xmldoc)
         provenance_title(xmldoc)
+      end
+
+      def main_title(xmldoc)
+        t = xmldoc.at("//bibdata/title[@type = 'main']") and
+          t["type"] = "title-main"
+        t = xmldoc.at("//bibdata/title[@type = 'title-full']") and
+          t["type"] = "main"
       end
 
       def prefixed_title(xmldoc)

@@ -156,8 +156,8 @@ def ieeedoc(lang)
   <<~"INPUT"
              <metanorma xmlns="http://riboseinc.com/isoxml">
              <bibdata type="standard">
-             <title language="en" format="text/plain" type="main">An ITU Standard</title>
-             <title language="fr" format="text/plain" type="main">Un Standard ITU</title>
+             <title language="en" type="main">An ITU Standard</title>
+             <title language="fr" type="main">Un Standard ITU</title>
              <docidentifier type="IEEE">12345</docidentifier>
              <language>#{lang}</language>
              <script>#{script}</script>
@@ -233,7 +233,7 @@ BLANK_HDR = <<~"HDR".freeze
          <bibdata type="standard">
          <title type="title-abbrev" language="en">IEEE Std. for Document title</title>
       <title type="main" language="en">IEEE Standard for Document title</title>
-      <title language="en" format="text/plain" type="title-main">Document title</title>
+      <title language="en" type="title-main">Document title</title>
                   <contributor>
              <role type="author"/>
              <organization>
