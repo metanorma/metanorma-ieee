@@ -125,11 +125,7 @@ module IsoDoc
         end
       end
 
-      def middle_title(docxml)
-        s = middle_title_insert(docxml) or return
-        s.previous = middle_title_body
-      end
-
+      # KILL
       def middle_title_body
         ret = "<p class='zzSTDTitle1'>#{@meta.get[:full_doctitle]}"
         @meta.get[:amd] || @meta.get[:corr] and ret += "<br/>"
@@ -140,9 +136,14 @@ module IsoDoc
         ret
       end
 
-      def middle_title_insert(docxml)
-        s = docxml.at(ns("//sections")) or return
-        s.children.first
+      def middle_title_template
+        <<~OUTPUT
+          <p class='zzSTDTitle1'>{{ full_doctitle -}}
+          {% if amd or corr %}<br/>{% endif -%}
+          {% if amd %}Amendment {{ amd }}{% endif -%}
+          {% if amd and corr %}&#x20;{% endif -%}
+          {% if corr %}Corrigenda {{ corr }}{% endif %}</p>
+        OUTPUT
       end
 
       def preface_rearrange(doc)

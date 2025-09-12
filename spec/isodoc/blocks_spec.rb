@@ -843,8 +843,7 @@ RSpec.describe IsoDoc do
              </clause>
           </preface>
           <sections>
-             <p class="zzSTDTitle1" displayorder="2"/>
-             <clause id="a" displayorder="3">
+             <clause id="a" displayorder="2">
                 <title id="_">First</title>
                 <fmt-title id="_" depth="1">
                    <span class="fmt-caption-label">
@@ -907,7 +906,7 @@ RSpec.describe IsoDoc do
                    <p id="_">Second note.</p>
                 </note>
              </clause>
-             <clause id="b" displayorder="4">
+             <clause id="b" displayorder="3">
                 <title id="_">First</title>
                 <fmt-title id="_" depth="1">
                    <span class="fmt-caption-label">
@@ -949,7 +948,6 @@ RSpec.describe IsoDoc do
     OUTPUT
     html = <<~"OUTPUT"
       #{HTML_HDR}
-          <p class="zzSTDTitle1"/>
           <div id='a'>
             <h1>1.&#xa0; First </h1>
             <div id='note1' class='Note'>
@@ -1444,7 +1442,7 @@ RSpec.describe IsoDoc do
          </standard-document>
     INPUT
     presxml = <<~OUTPUT
-      <clause id="A" inline-header="false" obligation="normative" displayorder="3">
+      <clause id="A" inline-header="false" obligation="normative" displayorder="2">
          <title id="_">Change Clause</title>
          <fmt-title id="_" depth="1">
             <span class="fmt-caption-label">

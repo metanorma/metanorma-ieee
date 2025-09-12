@@ -82,8 +82,7 @@ RSpec.describe IsoDoc do
              </clause>
           </preface>
           <sections>
-             <p class="zzSTDTitle1" displayorder="2"/>
-             <terms id="_" obligation="normative" displayorder="3">
+             <terms id="_" obligation="normative" displayorder="2">
                 <title id="_">Terms and Definitions</title>
                 <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
@@ -513,7 +512,6 @@ RSpec.describe IsoDoc do
 
     html = <<~"OUTPUT"
       #{HTML_HDR}
-             <p class="zzSTDTitle1"/>
              <div id="_">
                 <h1>1.  Terms and Definitions</h1>
                 <p>For the purposes of this document, the following terms and definitions apply.</p>
@@ -639,9 +637,7 @@ RSpec.describe IsoDoc do
           <p class="section-break">
              <br clear="all" class="section"/>
           </p>
-          <div class="WordSectionMiddleTitle">
-             <p class="IEEEStdsTitle" style="margin-left:0cm;margin-top:70.0pt"/>
-          </div>
+          <div class="WordSectionMiddleTitle"/>
           <p class="section-break">
              <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
           </p>
@@ -832,8 +828,7 @@ RSpec.describe IsoDoc do
             </clause>
          </preface>
          <sections>
-            <p class="zzSTDTitle1" displayorder="2"/>
-            <terms id="_" obligation="normative" displayorder="3">
+            <terms id="_" obligation="normative" displayorder="2">
                <title id="_">Definitions</title>
                <fmt-title id="_" depth="1">
                   <span class="fmt-caption-label">
@@ -1035,8 +1030,7 @@ RSpec.describe IsoDoc do
              </clause>
           </preface>
           <sections>
-             <p class="zzSTDTitle1" displayorder="2"/>
-             <terms id="_" obligation="normative" displayorder="3">
+             <terms id="_" obligation="normative" displayorder="2">
                 <title id="_">Terms and Definitions</title>
                 <fmt-title id="_" depth="1">
                    <span class="fmt-caption-label">
@@ -1180,8 +1174,7 @@ RSpec.describe IsoDoc do
              </clause>
           </preface>
           <sections>
-             <p class="zzSTDTitle1" displayorder="2"/>
-             <terms id="_" obligation="normative" displayorder="3">
+             <terms id="_" obligation="normative" displayorder="2">
                 <title id="_">Terms and Definitions</title>
                 <fmt-title id="_" depth="1">
                    <span class="fmt-caption-label">
@@ -1358,8 +1351,7 @@ RSpec.describe IsoDoc do
             </clause>
          </preface>
          <sections>
-            <p class="zzSTDTitle1" displayorder="2"/>
-            <terms id="A" obligation="normative" displayorder="3">
+            <terms id="A" obligation="normative" displayorder="2">
                <title id="_">Terms and definitions</title>
                <fmt-title depth="1" id="_">
                   <span class="fmt-caption-label">
@@ -1691,8 +1683,7 @@ RSpec.describe IsoDoc do
             </clause>
          </preface>
          <sections>
-            <p class="zzSTDTitle1" displayorder="2"/>
-            <terms id="A" obligation="normative" displayorder="3">
+            <terms id="A" obligation="normative" displayorder="2">
                <title id="_">Terms and definitions</title>
                <fmt-title depth="1" id="_">
                   <span class="fmt-caption-label">
@@ -1922,8 +1913,7 @@ RSpec.describe IsoDoc do
             </clause>
          </preface>
          <sections>
-            <p class="zzSTDTitle1" displayorder="2"/>
-            <terms id="A" obligation="normative" displayorder="3">
+            <terms id="A" obligation="normative" displayorder="2">
                <title depth="1" id="_">
                Terms and definitions
              </title>
@@ -2022,8 +2012,7 @@ RSpec.describe IsoDoc do
              </clause>
           </preface>
           <sections>
-             <p class="zzSTDTitle1" displayorder="2"/>
-             <terms id="_" obligation="normative" displayorder="3">
+             <terms id="_" obligation="normative" displayorder="2">
                 <title id="_">Terms and Definitions</title>
                 <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
