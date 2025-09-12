@@ -393,8 +393,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                </clause>
             </preface>
             <sections>
-               <p class="zzSTDTitle1" displayorder="2"/>
-               <clause id="A" displayorder="3">
+               <clause id="A" displayorder="2">
                   <fmt-title depth="1" id="_">
                      <span class="fmt-caption-label">
                         <semx element="autonum" source="A">1</semx>
@@ -1657,8 +1656,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
              </clause>
           </preface>
           <sections>
-             <p class="zzSTDTitle1" displayorder="2"/>
-             <clause id="A" displayorder="3">
+             <clause id="A" displayorder="2">
                 <title id="_">This is the clause title</title>
                 <fmt-title id="_" depth="1">
                    <span class="fmt-caption-label">
@@ -1740,8 +1738,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
              </clause>
           </preface>
           <sections>
-             <p class="zzSTDTitle1" displayorder="2"/>
-             <clause id="A" displayorder="3">
+             <clause id="A" displayorder="2">
                 <title id="_">This is the clause title</title>
                 <fmt-title id="_" depth="1">
                    <span class="fmt-caption-label">

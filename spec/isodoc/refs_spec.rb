@@ -323,8 +323,7 @@ RSpec.describe IsoDoc do
              </clause>
           </preface>
           <sections>
-             <p class="zzSTDTitle1" displayorder="3"/>
-             <clause id="A" inline-header="false" obligation="normative" displayorder="4">
+             <clause id="A" inline-header="false" obligation="normative" displayorder="3">
                 <title id="_">Clause</title>
                 <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
@@ -1018,7 +1017,7 @@ RSpec.describe IsoDoc do
              </references>
           </sections>
           <bibliography>
-             <references id="_" normative="false" obligation="informative" displayorder="5">
+             <references id="_" normative="false" obligation="informative" displayorder="4">
                 <title id="_">Bibliography</title>
                 <fmt-title depth="1" id="_">
                    <semx element="title" source="_">Bibliography</semx>
@@ -1290,7 +1289,7 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     presxml = <<~PRESXML
-       <clause id="A" inline-header="false" obligation="normative" displayorder="4">
+       <clause id="A" inline-header="false" obligation="normative" displayorder="3">
           <title id="_">Clause</title>
           <fmt-title depth="1" id="_">
              <span class="fmt-caption-label">
@@ -1416,7 +1415,7 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     presxml = <<~PRESXML
-      <clause id="A" inline-header="false" obligation="normative" displayorder="4">
+      <clause id="A" inline-header="false" obligation="normative" displayorder="3">
           <title id="_">Clause</title>
           <fmt-title depth="1" id="_">
              <span class="fmt-caption-label">
@@ -1588,8 +1587,7 @@ RSpec.describe IsoDoc do
             </clause>
          </preface>
          <sections>
-            <p class="zzSTDTitle1" displayorder="2"/>
-            <references id="_" normative="true" obligation="informative" displayorder="3">
+            <references id="_" normative="true" obligation="informative" displayorder="2">
                <title id="_">Normative references</title>
                <fmt-title depth="1" id="_">
                   <semx element="title" source="_">Normative references</semx>
@@ -1608,7 +1606,7 @@ RSpec.describe IsoDoc do
             </references>
          </sections>
          <bibliography>
-            <references id="_" normative="false" obligation="informative" displayorder="4">
+            <references id="_" normative="false" obligation="informative" displayorder="3">
                <title id="_">Bibliography</title>
                <fmt-title depth="1" id="_">
                   <semx element="title" source="_">Bibliography</semx>
@@ -1724,7 +1722,7 @@ RSpec.describe IsoDoc do
          </iso-standard>
     INPUT
     presxml = <<~PRESXML
-      <clause id="A" inline-header="false" obligation="normative" displayorder="4">
+      <clause id="A" inline-header="false" obligation="normative" displayorder="3">
          <title id="_">Clause</title>
          <fmt-title id="_" depth="1">
             <span class="fmt-caption-label">

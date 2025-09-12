@@ -34,8 +34,7 @@ RSpec.describe IsoDoc do
              </clause>
           </preface>
           <sections>
-             <p class="zzSTDTitle1" displayorder="2"/>
-             <terms id="_" obligation="normative" displayorder="3">
+             <terms id="_" obligation="normative" displayorder="2">
                 <title id="_">Terms and Definitions</title>
                 <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
@@ -193,8 +192,7 @@ RSpec.describe IsoDoc do
              </clause>
           </preface>
           <sections>
-             <p class="zzSTDTitle1" displayorder="2"/>
-             <terms id="_" obligation="normative" displayorder="3">
+             <terms id="_" obligation="normative" displayorder="2">
                 <title id="_">Terms and Definitions</title>
                 <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
@@ -462,8 +460,7 @@ RSpec.describe IsoDoc do
              </clause>
           </preface>
           <sections>
-             <p class="zzSTDTitle1" displayorder="2"/>
-             <terms id="_" obligation="normative" displayorder="3">
+             <terms id="_" obligation="normative" displayorder="2">
                 <title id="_">Terms and Definitions</title>
                 <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
@@ -693,8 +690,7 @@ RSpec.describe IsoDoc do
              </clause>
           </preface>
           <sections>
-             <p class="zzSTDTitle1" displayorder="2"/>
-             <terms id="_" obligation="normative" displayorder="3">
+             <terms id="_" obligation="normative" displayorder="2">
                 <title id="_">Terms and Definitions</title>
                 <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
