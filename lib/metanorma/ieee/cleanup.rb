@@ -97,11 +97,11 @@ module Metanorma
       def boilerplate_isodoc(xmldoc)
         x = dup_with_namespace(xmldoc.root)
         xml = Nokogiri::XML(x.to_xml)
-        i = isodoc(@lang, @script, @locale)
-        i.bibdata_i18n(xml.at("//xmlns:bibdata"))
-        i.localdir = @localdir
-        i.info(xml, nil)
-        i
+        @isodoc ||= isodoc(@lang, @script, @locale)
+        @isodoc.bibdata_i18n(xml.at("//xmlns:bibdata"))
+        @isodoc.localdir = @localdir
+        @isodoc.info(xml, nil)
+        @isodoc
       end
 
       def text_from_paras(node)
