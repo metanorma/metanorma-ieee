@@ -53,7 +53,7 @@ module IsoDoc
         node["style"] == "no-biblio-tag" or tag = bib[:ord]
         if !c1.empty?
           c2.each(&:remove)
-          c1.map(&:to_xml).join
+          [c1.map(&:to_xml).join, tag].compact.join(" ")
         elsif node.at(ns("./location"))
           linkend
         elsif node["citeas"] == bib[:ord] then node["citeas"]

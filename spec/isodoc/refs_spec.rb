@@ -425,15 +425,15 @@ RSpec.describe IsoDoc do
                    </semx>
                    <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" id="_">text1</eref>
                    <semx element="eref" source="_">
-                      <fmt-xref type="inline" target="ref4">text1</fmt-xref>
+                      <fmt-xref type="inline" target="ref4">text1 [B3]</fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="title" id="_">text2</eref>
                    <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="title" target="ref4">text2</fmt-xref>
+                      <fmt-xref type="inline" style="title" target="ref4">text2 [B3]</fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="author" id="_">text3</eref>
                    <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="author" target="ref4">text3</fmt-xref>
+                      <fmt-xref type="inline" style="author" target="ref4">text3 [B3]</fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="no-biblio-tag" id="_">text4</eref>
                    <semx element="eref" source="_">
@@ -502,7 +502,7 @@ RSpec.describe IsoDoc do
                       text1
                    </eref>
                    <semx element="eref" source="_">
-                      <fmt-xref type="inline" target="ref4">text1</fmt-xref>
+                      <fmt-xref type="inline" target="ref4">text1 [B3]</fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="title" id="_">
                       <locality type="clause">
@@ -511,7 +511,7 @@ RSpec.describe IsoDoc do
                       text2
                    </eref>
                    <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="title" target="ref4">text2</fmt-xref>
+                      <fmt-xref type="inline" style="title" target="ref4">text2 [B3]</fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="author" id="_">
                       <locality type="clause">
@@ -520,7 +520,7 @@ RSpec.describe IsoDoc do
                       text3
                    </eref>
                    <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="author" target="ref4">text3</fmt-xref>
+                      <fmt-xref type="inline" style="author" target="ref4">text3 [B3]</fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="no-biblio-tag" id="_">
                       <locality type="clause">
@@ -1326,7 +1326,7 @@ RSpec.describe IsoDoc do
              </semx>
              <eref type="inline" bibitemid="ISO16635" citeas="REF4" id="_">this is renderable text</eref>
              <semx element="eref" source="_">
-                <fmt-xref type="inline" target="ISO16635">this is renderable text</fmt-xref>
+                <fmt-xref type="inline" target="ISO16635">this is renderable text [B1]</fmt-xref>
              </semx>
              <eref type="inline" bibitemid="ISO16635" citeas="REF4" id="_"/>
              <semx element="eref" source="_">
