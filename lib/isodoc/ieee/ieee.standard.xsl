@@ -1380,27 +1380,6 @@
 											</fo:block>
 										</fo:block>
 									</xsl:for-each>
-
-									<!-- List of Tables -->
-									<xsl:for-each select="$contents//mnx:tables/mnx:table">
-										<xsl:if test="position() = 1">
-											<xsl:call-template name="insertListOf_Title">
-												<xsl:with-param name="title" select="$title-list-tables"/>
-											</xsl:call-template>
-										</xsl:if>
-										<xsl:call-template name="insertListOf_Item"/>
-									</xsl:for-each>
-
-									<!-- List of Figures -->
-									<xsl:for-each select="$contents//mnx:figures/mnx:figure">
-										<xsl:if test="position() = 1">
-											<xsl:call-template name="insertListOf_Title">
-												<xsl:with-param name="title" select="$title-list-figures"/>
-											</xsl:call-template>
-										</xsl:if>
-										<xsl:call-template name="insertListOf_Item"/>
-									</xsl:for-each>
-
 								</xsl:when> <!-- $stage = 'draft' -->
 
 								<xsl:when test="$stage = 'published' or $stage = 'approved' or $stage_published = 'true'">
@@ -1452,32 +1431,30 @@
 
 										</fo:list-block>
 									</xsl:for-each>
-
-									<!-- List of Figures -->
-									<xsl:for-each select="$contents//mnx:figures/mnx:figure">
-										<xsl:if test="position() = 1">
-											<fo:block break-after="page"/>
-											<xsl:call-template name="insertListOf_Title">
-												<xsl:with-param name="title" select="'Figures'"/>
-											</xsl:call-template>
-										</xsl:if>
-										<xsl:call-template name="insertListOf_Item"/>
-									</xsl:for-each>
-
-									<!-- List of Tables -->
-									<xsl:for-each select="$contents//mnx:tables/mnx:table">
-										<xsl:if test="position() = 1">
-											<fo:block break-after="page"/>
-												<xsl:call-template name="insertListOf_Title">
-													<xsl:with-param name="title" select="'Tables'"/>
-												</xsl:call-template>
-										</xsl:if>
-										<xsl:call-template name="insertListOf_Item"/>
-									</xsl:for-each>
-
 								</xsl:when> <!-- $stage = 'published' or 'approved' -->
 							</xsl:choose>
 
+							<!-- List of Tables -->
+							<xsl:for-each select="$contents//mnx:tables/mnx:table">
+								<xsl:if test="position() = 1">
+									<!-- <fo:block break-after="page"/> -->
+									<xsl:call-template name="insertListOf_Title">
+										<xsl:with-param name="title" select="$title-list-tables"/>
+									</xsl:call-template>
+								</xsl:if>
+								<xsl:call-template name="insertListOf_Item"/>
+							</xsl:for-each>
+
+							<!-- List of Figures -->
+							<xsl:for-each select="$contents//mnx:figures/mnx:figure">
+								<xsl:if test="position() = 1">
+									<!-- <fo:block break-after="page"/> -->
+									<xsl:call-template name="insertListOf_Title">
+										<xsl:with-param name="title" select="$title-list-figures"/>
+									</xsl:call-template>
+								</xsl:if>
+								<xsl:call-template name="insertListOf_Item"/>
+							</xsl:for-each>
 						</xsl:when> <!-- 'standard' or 'draft' -->
 
 						<xsl:when test="$current_template = 'whitepaper' or $current_template = 'icap-whitepaper' or $current_template = 'industry-connection-report'">
@@ -13693,7 +13670,7 @@
 
 	<xsl:template name="refine_fn-reference-style">
 		<!-- https://github.com/metanorma/metanorma-ieee/issues/595 -->
-		<xsl:if test="preceding-sibling::node()[normalize-space() != ''][1][self::mn:fn]">,</xsl:if>
+		<xsl:if test="preceding-sibling::node()[normalize-space() != ''][1][self::mn:fn]">, </xsl:if><!-- <xsl:if test="$namespace = 'bsi' or $namespace = 'pas'"></xsl:if> -->
 	</xsl:template> <!-- refine_fn-reference-style -->
 
 	<xsl:attribute-set name="fn-style">
@@ -13811,7 +13788,7 @@
 					<xsl:attribute name="padding-right">0.5mm</xsl:attribute>
 				</xsl:if> -->
 
-				<xsl:if test="preceding-sibling::node()[normalize-space() != ''][1][self::mn:fn]">,</xsl:if>
+				<xsl:if test="preceding-sibling::node()[normalize-space() != ''][1][self::mn:fn]">, </xsl:if>
 
 				<xsl:call-template name="insert_basic_link">
 					<xsl:with-param name="element">
@@ -14165,8 +14142,10 @@
 	<xsl:attribute-set name="bibitem-note-fn-style">
 		<xsl:attribute name="keep-with-previous.within-line">always</xsl:attribute>
 		<xsl:attribute name="font-size">65%</xsl:attribute>
-		<xsl:attribute name="font-size">8pt</xsl:attribute>
-		<xsl:attribute name="baseline-shift">30%</xsl:attribute>
+		<!-- <xsl:attribute name="font-size">8pt</xsl:attribute>
+			<xsl:attribute name="baseline-shift">30%</xsl:attribute> -->
+		<xsl:attribute name="font-size">65%</xsl:attribute>
+		<xsl:attribute name="vertical-align">super</xsl:attribute>
 	</xsl:attribute-set> <!-- bibitem-note-fn-style -->
 
 	<xsl:template name="refine_bibitem-note-fn-style">
@@ -14976,7 +14955,7 @@
 	<!-- List of Figures, Tables -->
 	<xsl:attribute-set name="toc-listof-title-style">
 			<xsl:attribute name="role">TOCI</xsl:attribute>
-			<xsl:attribute name="space-before">12pt</xsl:attribute>
+			<xsl:attribute name="space-before">18pt</xsl:attribute>
 			<xsl:attribute name="keep-with-next">always</xsl:attribute>
 	</xsl:attribute-set>
 
