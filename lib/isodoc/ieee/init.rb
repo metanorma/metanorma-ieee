@@ -22,8 +22,8 @@ module IsoDoc
       end
 
       def bibrenderer
-        ::Relaton::Render::Ieee::General.new(language: @lang,
-                                             i18nhash: @i18n.get)
+        ::Relaton::Render::Ieee::General
+          .new(language: @lang, script: @script, i18nhash: @i18n.get)
       end
 
       def fileloc(loc)
