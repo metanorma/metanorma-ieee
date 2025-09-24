@@ -4,10 +4,8 @@ class Html2Doc
       return unless liststyle
 
       sameelem_level = elem.ancestors.map(&:name).count(elem.parent.name)
-      if elem["style"]
-        elem["style"] += ";"
-      else
-        elem["style"] = ""
+      if elem["style"] then elem["style"] += ";"
+      else elem["style"] = ""
       end
       sameelem_level1 = sameelem_level
       if liststyle == "l11" && sameelem_level.to_i > 1
@@ -20,7 +18,7 @@ class Html2Doc
             when "1" then 2
             else 3
             end
-        sameelem_level1 += s - (sameelem_level1 % 3)
+        sameelem_level1 += s - ((sameelem_level1 % 3).zero? ? 3 : sameelem_level1 % 3)
         sameelem_level1 < 1 and sameelem_level1 += 3
       end
       elem["style"] += "mso-list:#{liststyle} level#{sameelem_level1} lfo#{listnumber}-#{level};"
@@ -32,7 +30,7 @@ class Html2Doc
     def list2para(list)
       return if list.xpath("./li").empty?
 
-      level = list["level"] || "1"
+      list["level"] || "1"
       list.delete("level")
       samelevel = list["sameelem_level"] || "1"
       list.delete("sameelem_level")
