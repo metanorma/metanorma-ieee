@@ -167,7 +167,6 @@ module Metanorma
       end
 
       def empty_docid_to_title?(bibitem)
-        bibitem.parent["normative"] == true &&
           bibitem["type"] == "standard"
       end
     end
