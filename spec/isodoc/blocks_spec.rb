@@ -1823,206 +1823,934 @@ RSpec.describe IsoDoc do
         </ol>
         </li>
         </ol>
+        <ol id="B">
+        <li>
+          <p id="_0091a277-fb0e-424a-aea8-f0001303fe78">Level 1</p>
+          </li>
+        <li>
+          <p id="_8a7b6299-db05-4ff8-9de7-ff019b9017b2">Level 1</p>
+        <ol>
+        <li>
+          <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 2</p>
+        <ol>
+        <li>
+          <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 3</p>
+        <ol>
+        <li>
+          <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 4</p>
         </li>
-      </ol>
+        </ol>
+        </li>
+        </ol>
+        </li>
+        </ol>
+        </li>
+        </ol>
+        <ol id="C">
+        <li>
+          <p id="_0091a277-fb0e-424a-aea8-f0001303fe78">Level 1</p>
+          </li>
+        <li>
+          <p id="_8a7b6299-db05-4ff8-9de7-ff019b9017b2">Level 1</p>
+        <ol>
+        <li>
+          <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 2</p>
+        <ol>
+        <li>
+          <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 3</p>
+        <ol>
+        <li>
+          <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 4</p>
+        </li>
+        </ol>
+        </li>
+        </ol>
+        </li>
+        </ol>
+        </li>
+        </ol>
       </foreword></preface>
       </iso-standard>
     INPUT
     presxml = <<~INPUT
-      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-         <preface>
-            <clause type="toc" id="_" displayorder="1">
-               <fmt-title id="_" depth="1">Contents</fmt-title>
-            </clause>
-            <foreword id="_" displayorder="2">
-               <title id="_">Foreword</title>
-               <fmt-title id="_" depth="1">
-                  <semx element="title" source="_">Foreword</semx>
-               </fmt-title>
-               <ol id="_" type="alphabet" keep-with-next="true" keep-lines-together="true">
-                  <name>Caption</name>
-                  <li id="_">
-                     <fmt-name id="_">
-                        <semx element="autonum" source="_">a</semx>
-                        <span class="fmt-label-delim">)</span>
-                     </fmt-name>
-                     <p id="_">Level 1</p>
-                  </li>
-               </ol>
-               <ol id="A" type="alphabet">
-                  <li id="_">
-                     <fmt-name id="_">
-                        <semx element="autonum" source="_">a</semx>
-                        <span class="fmt-label-delim">)</span>
-                     </fmt-name>
-                     <p id="_">Level 1</p>
-                  </li>
-                  <li id="_">
-                     <fmt-name id="_">
-                        <semx element="autonum" source="_">b</semx>
-                        <span class="fmt-label-delim">)</span>
-                     </fmt-name>
-                     <p id="_">Level 1</p>
-                     <ol type="roman">
-                        <li id="_">
-                           <fmt-name id="_">
-                              <semx element="autonum" source="_">i</semx>
-                              <span class="fmt-label-delim">)</span>
-                           </fmt-name>
-                           <p id="_">Level 2</p>
-                           <ol type="arabic">
-                              <li id="_">
-                                 <fmt-name id="_">
-                                    <semx element="autonum" source="_">1</semx>
-                                    <span class="fmt-label-delim">)</span>
-                                 </fmt-name>
-                                 <p id="_">Level 3</p>
-                                 <ol type="alphabet">
-                                    <li id="_">
-                                       <fmt-name id="_">
-                                          <semx element="autonum" source="_">a</semx>
-                                          <span class="fmt-label-delim">)</span>
-                                       </fmt-name>
-                                       <p id="_">Level 4</p>
-                                    </li>
-                                 </ol>
-                              </li>
-                           </ol>
-                        </li>
-                     </ol>
-                  </li>
-               </ol>
-            </foreword>
-         </preface>
-      </iso-standard>
+       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+          <preface>
+             <clause type="toc" id="_" displayorder="1">
+                <fmt-title depth="1" id="_">Contents</fmt-title>
+             </clause>
+             <foreword id="_" displayorder="2">
+                <title id="_">Foreword</title>
+                <fmt-title depth="1" id="_">
+                   <semx element="title" source="_">Foreword</semx>
+                </fmt-title>
+                <ol id="_" type="alphabet" keep-with-next="true" keep-lines-together="true">
+                   <name>Caption</name>
+                   <li id="_">
+                      <fmt-name id="_">
+                         <semx element="autonum" source="_">a</semx>
+                         <span class="fmt-label-delim">)</span>
+                      </fmt-name>
+                      <p id="_">Level 1</p>
+                   </li>
+                </ol>
+                <ol id="A" type="arabic">
+                   <li id="_">
+                      <fmt-name id="_">
+                         <semx element="autonum" source="_">1</semx>
+                         <span class="fmt-label-delim">)</span>
+                      </fmt-name>
+                      <p id="_">Level 1</p>
+                   </li>
+                   <li id="_">
+                      <fmt-name id="_">
+                         <semx element="autonum" source="_">2</semx>
+                         <span class="fmt-label-delim">)</span>
+                      </fmt-name>
+                      <p id="_">Level 1</p>
+                      <ol type="roman">
+                         <li id="_">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="_">i</semx>
+                               <span class="fmt-label-delim">)</span>
+                            </fmt-name>
+                            <p id="_">Level 2</p>
+                            <ol type="alphabet">
+                               <li id="_">
+                                  <fmt-name id="_">
+                                     <semx element="autonum" source="_">a</semx>
+                                     <span class="fmt-label-delim">)</span>
+                                  </fmt-name>
+                                  <p id="_">Level 3</p>
+                                  <ol type="arabic">
+                                     <li id="_">
+                                        <fmt-name id="_">
+                                           <semx element="autonum" source="_">1</semx>
+                                           <span class="fmt-label-delim">)</span>
+                                        </fmt-name>
+                                        <p id="_">Level 4</p>
+                                     </li>
+                                  </ol>
+                               </li>
+                            </ol>
+                         </li>
+                      </ol>
+                   </li>
+                </ol>
+                <ol id="B" type="roman">
+                   <li id="_">
+                      <fmt-name id="_">
+                         <semx element="autonum" source="_">i</semx>
+                         <span class="fmt-label-delim">)</span>
+                      </fmt-name>
+                      <p id="_">Level 1</p>
+                   </li>
+                   <li id="_">
+                      <fmt-name id="_">
+                         <semx element="autonum" source="_">ii</semx>
+                         <span class="fmt-label-delim">)</span>
+                      </fmt-name>
+                      <p id="_">Level 1</p>
+                      <ol type="alphabet">
+                         <li id="_">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="_">a</semx>
+                               <span class="fmt-label-delim">)</span>
+                            </fmt-name>
+                            <p id="_">Level 2</p>
+                            <ol type="arabic">
+                               <li id="_">
+                                  <fmt-name id="_">
+                                     <semx element="autonum" source="_">1</semx>
+                                     <span class="fmt-label-delim">)</span>
+                                  </fmt-name>
+                                  <p id="_">Level 3</p>
+                                  <ol type="roman">
+                                     <li id="_">
+                                        <fmt-name id="_">
+                                           <semx element="autonum" source="_">i</semx>
+                                           <span class="fmt-label-delim">)</span>
+                                        </fmt-name>
+                                        <p id="_">Level 4</p>
+                                     </li>
+                                  </ol>
+                               </li>
+                            </ol>
+                         </li>
+                      </ol>
+                   </li>
+                </ol>
+                <ol id="C" type="alphabet">
+                   <li id="_">
+                      <fmt-name id="_">
+                         <semx element="autonum" source="_">a</semx>
+                         <span class="fmt-label-delim">)</span>
+                      </fmt-name>
+                      <p id="_">Level 1</p>
+                   </li>
+                   <li id="_">
+                      <fmt-name id="_">
+                         <semx element="autonum" source="_">b</semx>
+                         <span class="fmt-label-delim">)</span>
+                      </fmt-name>
+                      <p id="_">Level 1</p>
+                      <ol type="arabic">
+                         <li id="_">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="_">1</semx>
+                               <span class="fmt-label-delim">)</span>
+                            </fmt-name>
+                            <p id="_">Level 2</p>
+                            <ol type="roman">
+                               <li id="_">
+                                  <fmt-name id="_">
+                                     <semx element="autonum" source="_">i</semx>
+                                     <span class="fmt-label-delim">)</span>
+                                  </fmt-name>
+                                  <p id="_">Level 3</p>
+                                  <ol type="alphabet">
+                                     <li id="_">
+                                        <fmt-name id="_">
+                                           <semx element="autonum" source="_">a</semx>
+                                           <span class="fmt-label-delim">)</span>
+                                        </fmt-name>
+                                        <p id="_">Level 4</p>
+                                     </li>
+                                  </ol>
+                               </li>
+                            </ol>
+                         </li>
+                      </ol>
+                   </li>
+                </ol>
+             </foreword>
+          </preface>
+       </iso-standard>
     INPUT
     html = <<~OUTPUT
-          <body lang="en">
-         <div class="title-section">
-            <p> </p>
-         </div>
-         <br/>
-         <div class="prefatory-section">
-            <p> </p>
-         </div>
-         <br/>
-         <div class="main-section">
-            <br/>
-            <div id="_" class="TOC">
-               <h1 class="IntroTitle">Contents</h1>
-            </div>
-            <br/>
-            <div id="_">
-               <h1 class="ForewordTitle">Foreword</h1>
-               <div class="ol_wrap">
-                  <ol type="a" id="_" style="page-break-after: avoid;page-break-inside: avoid;" class="alphabet">
-                     <li id="_">
-                        <p id="_">Level 1</p>
-                     </li>
-                  </ol>
-               </div>
-               <div class="ol_wrap">
-                  <ol type="a" id="A" class="alphabet">
-                     <li id="_">
-                        <p id="_">Level 1</p>
-                     </li>
-                     <li id="_">
-                        <p id="_">Level 1</p>
-                        <div class="ol_wrap">
-                           <ol type="i" class="roman">
-                              <li id="_">
-                                 <p id="_">Level 2</p>
-                                 <div class="ol_wrap">
-                                    <ol type="1" class="arabic">
-                                       <li id="_">
-                                          <p id="_">Level 3</p>
-                                          <div class="ol_wrap">
-                                             <ol type="a" class="alphabet">
-                                                <li id="_">
-                                                   <p id="_">Level 4</p>
-                                                </li>
-                                             </ol>
-                                          </div>
-                                       </li>
-                                    </ol>
-                                 </div>
-                              </li>
-                           </ol>
-                        </div>
-                     </li>
-                  </ol>
-               </div>
-            </div>
-         </div>
-      </body>
+       <body lang="en">
+          <div class="title-section">
+             <p> </p>
+          </div>
+          <br/>
+          <div class="prefatory-section">
+             <p> </p>
+          </div>
+          <br/>
+          <div class="main-section">
+             <br/>
+             <div id="_" class="TOC">
+                <h1 class="IntroTitle">Contents</h1>
+             </div>
+             <br/>
+             <div id="_">
+                <h1 class="ForewordTitle">Foreword</h1>
+                <div class="ol_wrap">
+                   <ol type="a" id="_" style="page-break-after: avoid;page-break-inside: avoid;" class="alphabet">
+                      <li id="_">
+                         <p id="_">Level 1</p>
+                      </li>
+                   </ol>
+                </div>
+                <div class="ol_wrap">
+                   <ol type="1" id="A" class="arabic">
+                      <li id="_">
+                         <p id="_">Level 1</p>
+                      </li>
+                      <li id="_">
+                         <p id="_">Level 1</p>
+                         <div class="ol_wrap">
+                            <ol type="i" class="roman">
+                               <li id="_">
+                                  <p id="_">Level 2</p>
+                                  <div class="ol_wrap">
+                                     <ol type="a" class="alphabet">
+                                        <li id="_">
+                                           <p id="_">Level 3</p>
+                                           <div class="ol_wrap">
+                                              <ol type="1" class="arabic">
+                                                 <li id="_">
+                                                    <p id="_">Level 4</p>
+                                                 </li>
+                                              </ol>
+                                           </div>
+                                        </li>
+                                     </ol>
+                                  </div>
+                               </li>
+                            </ol>
+                         </div>
+                      </li>
+                   </ol>
+                </div>
+                <div class="ol_wrap">
+                   <ol type="i" id="B" class="roman">
+                      <li id="_">
+                         <p id="_">Level 1</p>
+                      </li>
+                      <li id="_">
+                         <p id="_">Level 1</p>
+                         <div class="ol_wrap">
+                            <ol type="a" class="alphabet">
+                               <li id="_">
+                                  <p id="_">Level 2</p>
+                                  <div class="ol_wrap">
+                                     <ol type="1" class="arabic">
+                                        <li id="_">
+                                           <p id="_">Level 3</p>
+                                           <div class="ol_wrap">
+                                              <ol type="i" class="roman">
+                                                 <li id="_">
+                                                    <p id="_">Level 4</p>
+                                                 </li>
+                                              </ol>
+                                           </div>
+                                        </li>
+                                     </ol>
+                                  </div>
+                               </li>
+                            </ol>
+                         </div>
+                      </li>
+                   </ol>
+                </div>
+                <div class="ol_wrap">
+                   <ol type="a" id="C" class="alphabet">
+                      <li id="_">
+                         <p id="_">Level 1</p>
+                      </li>
+                      <li id="_">
+                         <p id="_">Level 1</p>
+                         <div class="ol_wrap">
+                            <ol type="1" class="arabic">
+                               <li id="_">
+                                  <p id="_">Level 2</p>
+                                  <div class="ol_wrap">
+                                     <ol type="i" class="roman">
+                                        <li id="_">
+                                           <p id="_">Level 3</p>
+                                           <div class="ol_wrap">
+                                              <ol type="a" class="alphabet">
+                                                 <li id="_">
+                                                    <p id="_">Level 4</p>
+                                                 </li>
+                                              </ol>
+                                           </div>
+                                        </li>
+                                     </ol>
+                                  </div>
+                               </li>
+                            </ol>
+                         </div>
+                      </li>
+                   </ol>
+                </div>
+             </div>
+          </div>
+       </body>
+    OUTPUT
+    doc = <<~OUTPUT
+       <body lang="EN-US" link="blue" vlink="#954F72">
+          <div class="WordSection1">
+             <p> </p>
+          </div>
+          <p class="section-break">
+             <br clear="all" class="section"/>
+          </p>
+          <div class="WordSection2">
+             <div class="WordSectionContents">
+                <h1 class="IEEEStdsLevel1frontmatter">Contents</h1>
+             </div>
+             <p class="page-break">
+                <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
+             </p>
+             <div id="_">
+                <h1 class="ForewordTitle">Foreword</h1>
+                <div class="ol_wrap">
+                   <ol type="a" id="_" style="page-break-after: avoid;page-break-inside: avoid;">
+                      <li id="_">
+                         <p id="_">Level 1</p>
+                      </li>
+                   </ol>
+                </div>
+                <div class="ol_wrap">
+                   <ol type="1" id="A">
+                      <li id="_">
+                         <p id="_">Level 1</p>
+                      </li>
+                      <li id="_">
+                         <p id="_">Level 1</p>
+                         <div class="ol_wrap">
+                            <ol type="i">
+                               <li id="_">
+                                  <p id="_">Level 2</p>
+                                  <div class="ol_wrap">
+                                     <ol type="a">
+                                        <li id="_">
+                                           <p id="_">Level 3</p>
+                                           <div class="ol_wrap">
+                                              <ol type="1">
+                                                 <li id="_">
+                                                    <p id="_">Level 4</p>
+                                                 </li>
+                                              </ol>
+                                           </div>
+                                        </li>
+                                     </ol>
+                                  </div>
+                               </li>
+                            </ol>
+                         </div>
+                      </li>
+                   </ol>
+                </div>
+                <div class="ol_wrap">
+                   <ol type="i" id="B">
+                      <li id="_">
+                         <p id="_">Level 1</p>
+                      </li>
+                      <li id="_">
+                         <p id="_">Level 1</p>
+                         <div class="ol_wrap">
+                            <ol type="a">
+                               <li id="_">
+                                  <p id="_">Level 2</p>
+                                  <div class="ol_wrap">
+                                     <ol type="1">
+                                        <li id="_">
+                                           <p id="_">Level 3</p>
+                                           <div class="ol_wrap">
+                                              <ol type="i">
+                                                 <li id="_">
+                                                    <p id="_">Level 4</p>
+                                                 </li>
+                                              </ol>
+                                           </div>
+                                        </li>
+                                     </ol>
+                                  </div>
+                               </li>
+                            </ol>
+                         </div>
+                      </li>
+                   </ol>
+                </div>
+                <div class="ol_wrap">
+                   <ol type="a" id="C">
+                      <li id="_">
+                         <p id="_">Level 1</p>
+                      </li>
+                      <li id="_">
+                         <p id="_">Level 1</p>
+                         <div class="ol_wrap">
+                            <ol type="1">
+                               <li id="_">
+                                  <p id="_">Level 2</p>
+                                  <div class="ol_wrap">
+                                     <ol type="i">
+                                        <li id="_">
+                                           <p id="_">Level 3</p>
+                                           <div class="ol_wrap">
+                                              <ol type="a">
+                                                 <li id="_">
+                                                    <p id="_">Level 4</p>
+                                                 </li>
+                                              </ol>
+                                           </div>
+                                        </li>
+                                     </ol>
+                                  </div>
+                               </li>
+                            </ol>
+                         </div>
+                      </li>
+                   </ol>
+                </div>
+             </div>
+             <p> </p>
+          </div>
+          <p class="section-break">
+             <br clear="all" class="section"/>
+          </p>
+          <div class="WordSectionMiddleTitle"/>
+          <p class="section-break">
+             <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+          </p>
+          <div class="WordSectionMain"/>
+       </body>
+    OUTPUT
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert.new({})
+      .convert("test", input, true)
+    expect(Canon.format_xml(strip_guid(pres_output
+      .sub(%r{<metanorma-extension>.*</metanorma-extension>}m, ""))))
+      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(Canon.format_xml(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
+      .new({})
+      .convert("test", pres_output, true))
+      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(html)
+    expect(strip_guid(Canon.format_xml(Nokogiri::XML(IsoDoc::Ieee::WordConvert
+      .new({})
+      .convert("test", pres_output, true))
+      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(doc)
+  end
+
+  it "processes mixed ordered and unordered lists" do
+    input = <<~INPUT
+          <iso-standard xmlns="http://riboseinc.com/isoxml">
+          <preface>
+          <foreword id="_" displayorder="2">
+        <ul id="A">
+        <li id="A0a">
+          <p id="_0091a277-fb0e-424a-aea8-f0001303fe78">Level 1</p>
+          </li>
+        <li id="A0b">
+          <p id="_8a7b6299-db05-4ff8-9de7-ff019b9017b2">Level 1</p>
+        <ol id="A1">
+        <li id="A1a">
+          <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 2</p>
+        <ol> id="A2"
+        <li id="A2a">
+          <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 3</p>
+        <ol id="A3">
+        <li id="A3a">
+          <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 4</p>
+        </li>
+        </ol>
+        </li>
+        </ol>
+        </li>
+        </ol>
+        </li>
+        </ol>
+      <ul id="B">
+        <li id="B0a">
+          <p id="_0091a277-fb0e-424a-aea8-f0001303fe78">Level 1</p>
+          </li>
+        <li id="B0b">
+          <p id="_8a7b6299-db05-4ff8-9de7-ff019b9017b2">Level 1</p>
+        <ol id="B1">
+        <li id="B1a">
+          <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 2</p>
+        <ol id="B2">
+        <li id="B2a">
+          <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 3</p>
+        <ol id="B3">
+        <li id="B3a">
+          <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 4</p>
+        </li>
+        </ol>
+        </li>
+        </ol>
+        </li>
+        </ol>
+        </li>
+        </ol>
+      <ol id="C">
+        <li id="C0a">
+          <p id="_0091a277-fb0e-424a-aea8-f0001303fe78">Level 1</p>
+          </li>
+        <li id="C0b">
+          <p id="_8a7b6299-db05-4ff8-9de7-ff019b9017b2">Level 1</p>
+        <ol id="C1">
+        <li id="C1a">
+          <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 2</p>
+        <ol id="C2">
+        <li id="C2a">
+          <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 3</p>
+        <ol id="C3">
+        <li id="C3a">
+          <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 4</p>
+        </li>
+        </ol>
+        </li>
+        </ol>
+        </li>
+        </ol>
+        </li>
+        </ol>
+      </foreword></preface>
+      </iso-standard>
+    INPUT
+    presxml = <<~INPUT
+       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+          <preface>
+             <clause type="toc" id="_" displayorder="1">
+                <fmt-title depth="1" id="_">Contents</fmt-title>
+             </clause>
+             <foreword id="_" displayorder="2">
+                <title id="_">Foreword</title>
+                <fmt-title depth="1" id="_">
+                   <semx element="title" source="_">Foreword</semx>
+                </fmt-title>
+                <ul id="A">
+                   <li id="A0a">
+                      <fmt-name id="_">
+                         <semx element="autonum" source="A0a">—</semx>
+                      </fmt-name>
+                      <p id="_">Level 1</p>
+                   </li>
+                   <li id="A0b">
+                      <fmt-name id="_">
+                         <semx element="autonum" source="A0b">—</semx>
+                      </fmt-name>
+                      <p id="_">Level 1</p>
+                      <ol id="A1" type="arabic">
+                         <li id="A1a">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="A1a">1</semx>
+                               <span class="fmt-label-delim">)</span>
+                            </fmt-name>
+                            <p id="_">Level 2</p>
+                            <ol type="roman">
+                               id="A2"
+                               <li id="A2a">
+                                  <fmt-name id="_">
+                                     <semx element="autonum" source="A2a">i</semx>
+                                     <span class="fmt-label-delim">)</span>
+                                  </fmt-name>
+                                  <p id="_">Level 3</p>
+                                  <ol id="A3" type="alphabet">
+                                     <li id="A3a">
+                                        <fmt-name id="_">
+                                           <semx element="autonum" source="A3a">a</semx>
+                                           <span class="fmt-label-delim">)</span>
+                                        </fmt-name>
+                                        <p id="_">Level 4</p>
+                                     </li>
+                                  </ol>
+                               </li>
+                            </ol>
+                         </li>
+                      </ol>
+                   </li>
+                </ul>
+                <ul id="B">
+                   <li id="B0a">
+                      <fmt-name id="_">
+                         <semx element="autonum" source="B0a">—</semx>
+                      </fmt-name>
+                      <p id="_">Level 1</p>
+                   </li>
+                   <li id="B0b">
+                      <fmt-name id="_">
+                         <semx element="autonum" source="B0b">—</semx>
+                      </fmt-name>
+                      <p id="_">Level 1</p>
+                      <ol id="B1" type="arabic">
+                         <li id="B1a">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="B1a">1</semx>
+                               <span class="fmt-label-delim">)</span>
+                            </fmt-name>
+                            <p id="_">Level 2</p>
+                            <ol id="B2" type="roman">
+                               <li id="B2a">
+                                  <fmt-name id="_">
+                                     <semx element="autonum" source="B2a">i</semx>
+                                     <span class="fmt-label-delim">)</span>
+                                  </fmt-name>
+                                  <p id="_">Level 3</p>
+                                  <ol id="B3" type="alphabet">
+                                     <li id="B3a">
+                                        <fmt-name id="_">
+                                           <semx element="autonum" source="B3a">a</semx>
+                                           <span class="fmt-label-delim">)</span>
+                                        </fmt-name>
+                                        <p id="_">Level 4</p>
+                                     </li>
+                                  </ol>
+                               </li>
+                            </ol>
+                         </li>
+                      </ol>
+                   </li>
+                </ul>
+                <ol id="C" type="alphabet">
+                   <li id="C0a">
+                      <fmt-name id="_">
+                         <semx element="autonum" source="C0a">a</semx>
+                         <span class="fmt-label-delim">)</span>
+                      </fmt-name>
+                      <p id="_">Level 1</p>
+                   </li>
+                   <li id="C0b">
+                      <fmt-name id="_">
+                         <semx element="autonum" source="C0b">b</semx>
+                         <span class="fmt-label-delim">)</span>
+                      </fmt-name>
+                      <p id="_">Level 1</p>
+                      <ol id="C1" type="arabic">
+                         <li id="C1a">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="C1a">1</semx>
+                               <span class="fmt-label-delim">)</span>
+                            </fmt-name>
+                            <p id="_">Level 2</p>
+                            <ol id="C2" type="roman">
+                               <li id="C2a">
+                                  <fmt-name id="_">
+                                     <semx element="autonum" source="C2a">i</semx>
+                                     <span class="fmt-label-delim">)</span>
+                                  </fmt-name>
+                                  <p id="_">Level 3</p>
+                                  <ol id="C3" type="alphabet">
+                                     <li id="C3a">
+                                        <fmt-name id="_">
+                                           <semx element="autonum" source="C3a">a</semx>
+                                           <span class="fmt-label-delim">)</span>
+                                        </fmt-name>
+                                        <p id="_">Level 4</p>
+                                     </li>
+                                  </ol>
+                               </li>
+                            </ol>
+                         </li>
+                      </ol>
+                   </li>
+                </ol>
+             </foreword>
+          </preface>
+       </iso-standard>
+    INPUT
+    html = <<~OUTPUT
+       <body lang="en">
+          <div class="title-section">
+             <p> </p>
+          </div>
+          <br/>
+          <div class="prefatory-section">
+             <p> </p>
+          </div>
+          <br/>
+          <div class="main-section">
+             <br/>
+             <div id="_" class="TOC">
+                <h1 class="IntroTitle">Contents</h1>
+             </div>
+             <br/>
+             <div id="_">
+                <h1 class="ForewordTitle">Foreword</h1>
+                <div class="ul_wrap">
+                   <ul id="A">
+                      <li id="A0a">
+                         <p id="_">Level 1</p>
+                      </li>
+                      <li id="A0b">
+                         <p id="_">Level 1</p>
+                         <div class="ol_wrap">
+                            <ol type="1" id="A1" class="arabic">
+                               <li id="A1a">
+                                  <p id="_">Level 2</p>
+                                  <div class="ol_wrap">
+                                     <ol type="i" class="roman">
+                                        id="A2"
+                                        <li id="A2a">
+                                           <p id="_">Level 3</p>
+                                           <div class="ol_wrap">
+                                              <ol type="a" id="A3" class="alphabet">
+                                                 <li id="A3a">
+                                                    <p id="_">Level 4</p>
+                                                 </li>
+                                              </ol>
+                                           </div>
+                                        </li>
+                                     </ol>
+                                  </div>
+                               </li>
+                            </ol>
+                         </div>
+                      </li>
+                   </ul>
+                </div>
+                <div class="ul_wrap">
+                   <ul id="B">
+                      <li id="B0a">
+                         <p id="_">Level 1</p>
+                      </li>
+                      <li id="B0b">
+                         <p id="_">Level 1</p>
+                         <div class="ol_wrap">
+                            <ol type="1" id="B1" class="arabic">
+                               <li id="B1a">
+                                  <p id="_">Level 2</p>
+                                  <div class="ol_wrap">
+                                     <ol type="i" id="B2" class="roman">
+                                        <li id="B2a">
+                                           <p id="_">Level 3</p>
+                                           <div class="ol_wrap">
+                                              <ol type="a" id="B3" class="alphabet">
+                                                 <li id="B3a">
+                                                    <p id="_">Level 4</p>
+                                                 </li>
+                                              </ol>
+                                           </div>
+                                        </li>
+                                     </ol>
+                                  </div>
+                               </li>
+                            </ol>
+                         </div>
+                      </li>
+                   </ul>
+                </div>
+                <div class="ol_wrap">
+                   <ol type="a" id="C" class="alphabet">
+                      <li id="C0a">
+                         <p id="_">Level 1</p>
+                      </li>
+                      <li id="C0b">
+                         <p id="_">Level 1</p>
+                         <div class="ol_wrap">
+                            <ol type="1" id="C1" class="arabic">
+                               <li id="C1a">
+                                  <p id="_">Level 2</p>
+                                  <div class="ol_wrap">
+                                     <ol type="i" id="C2" class="roman">
+                                        <li id="C2a">
+                                           <p id="_">Level 3</p>
+                                           <div class="ol_wrap">
+                                              <ol type="a" id="C3" class="alphabet">
+                                                 <li id="C3a">
+                                                    <p id="_">Level 4</p>
+                                                 </li>
+                                              </ol>
+                                           </div>
+                                        </li>
+                                     </ol>
+                                  </div>
+                               </li>
+                            </ol>
+                         </div>
+                      </li>
+                   </ol>
+                </div>
+             </div>
+          </div>
+       </body>
+
     OUTPUT
     doc = <<~OUTPUT
       <body lang="EN-US" link="blue" vlink="#954F72">
-         <div class="WordSection1">
-            <p> </p>
-         </div>
-         <p class="section-break">
-            <br clear="all" class="section"/>
-         </p>
-         <div class="WordSection2">
-            <div class="WordSectionContents">
-               <h1 class="IEEEStdsLevel1frontmatter">Contents</h1>
-            </div>
-            <p class="page-break">
-               <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
-            </p>
-            <div id="_">
-               <h1 class="ForewordTitle">Foreword</h1>
-               <div class="ol_wrap">
-                  <ol type="a" id="_" style="page-break-after: avoid;page-break-inside: avoid;">
-                     <li id="_">
-                        <p id="_">Level 1</p>
-                     </li>
-                  </ol>
-               </div>
-               <div class="ol_wrap">
-                  <ol type="a" id="A">
-                     <li id="_">
-                        <p id="_">Level 1</p>
-                     </li>
-                     <li id="_">
-                        <p id="_">Level 1</p>
-                        <div class="ol_wrap">
-                           <ol type="i">
-                              <li id="_">
-                                 <p id="_">Level 2</p>
-                                 <div class="ol_wrap">
-                                    <ol type="1">
-                                       <li id="_">
-                                          <p id="_">Level 3</p>
-                                          <div class="ol_wrap">
-                                             <ol type="a">
-                                                <li id="_">
-                                                   <p id="_">Level 4</p>
-                                                </li>
-                                             </ol>
-                                          </div>
-                                       </li>
-                                    </ol>
-                                 </div>
-                              </li>
-                           </ol>
-                        </div>
-                     </li>
-                  </ol>
-               </div>
-            </div>
-            <p> </p>
-         </div>
-         <p class="section-break">
-            <br clear="all" class="section"/>
-         </p>
-         <div class="WordSectionMiddleTitle"/>
-         <p class="section-break">
-            <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
-         </p>
-         <div class="WordSectionMain"/>
-      </body>
+          <div class="WordSection1">
+             <p> </p>
+          </div>
+          <p class="section-break">
+             <br clear="all" class="section"/>
+          </p>
+          <div class="WordSection2">
+             <div class="WordSectionContents">
+                <h1 class="IEEEStdsLevel1frontmatter">Contents</h1>
+             </div>
+             <p class="page-break">
+                <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
+             </p>
+             <div id="_">
+                <h1 class="ForewordTitle">Foreword</h1>
+                <div class="ul_wrap">
+                   <ul id="A">
+                      <li id="A0a">
+                         <p id="_">Level 1</p>
+                      </li>
+                      <li id="A0b">
+                         <p id="_">Level 1</p>
+                         <div class="ol_wrap">
+                            <ol type="1" id="A1">
+                               <li id="A1a">
+                                  <p id="_">Level 2</p>
+                                  <div class="ol_wrap">
+                                     <ol type="i">
+                                        id="A2"
+                                        <li id="A2a">
+                                           <p id="_">Level 3</p>
+                                           <div class="ol_wrap">
+                                              <ol type="a" id="A3">
+                                                 <li id="A3a">
+                                                    <p id="_">Level 4</p>
+                                                 </li>
+                                              </ol>
+                                           </div>
+                                        </li>
+                                     </ol>
+                                  </div>
+                               </li>
+                            </ol>
+                         </div>
+                      </li>
+                   </ul>
+                </div>
+                <div class="ul_wrap">
+                   <ul id="B">
+                      <li id="B0a">
+                         <p id="_">Level 1</p>
+                      </li>
+                      <li id="B0b">
+                         <p id="_">Level 1</p>
+                         <div class="ol_wrap">
+                            <ol type="1" id="B1">
+                               <li id="B1a">
+                                  <p id="_">Level 2</p>
+                                  <div class="ol_wrap">
+                                     <ol type="i" id="B2">
+                                        <li id="B2a">
+                                           <p id="_">Level 3</p>
+                                           <div class="ol_wrap">
+                                              <ol type="a" id="B3">
+                                                 <li id="B3a">
+                                                    <p id="_">Level 4</p>
+                                                 </li>
+                                              </ol>
+                                           </div>
+                                        </li>
+                                     </ol>
+                                  </div>
+                               </li>
+                            </ol>
+                         </div>
+                      </li>
+                   </ul>
+                </div>
+                <div class="ol_wrap">
+                   <ol type="a" id="C">
+                      <li id="C0a">
+                         <p id="_">Level 1</p>
+                      </li>
+                      <li id="C0b">
+                         <p id="_">Level 1</p>
+                         <div class="ol_wrap">
+                            <ol type="1" id="C1">
+                               <li id="C1a">
+                                  <p id="_">Level 2</p>
+                                  <div class="ol_wrap">
+                                     <ol type="i" id="C2">
+                                        <li id="C2a">
+                                           <p id="_">Level 3</p>
+                                           <div class="ol_wrap">
+                                              <ol type="a" id="C3">
+                                                 <li id="C3a">
+                                                    <p id="_">Level 4</p>
+                                                 </li>
+                                              </ol>
+                                           </div>
+                                        </li>
+                                     </ol>
+                                  </div>
+                               </li>
+                            </ol>
+                         </div>
+                      </li>
+                   </ol>
+                </div>
+             </div>
+             <p> </p>
+          </div>
+          <p class="section-break">
+             <br clear="all" class="section"/>
+          </p>
+          <div class="WordSectionMiddleTitle"/>
+          <p class="section-break">
+             <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+          </p>
+          <div class="WordSectionMain"/>
+       </body>
     OUTPUT
     pres_output = IsoDoc::Ieee::PresentationXMLConvert.new({})
       .convert("test", input, true)

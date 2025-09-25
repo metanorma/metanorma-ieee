@@ -87,32 +87,43 @@ module IsoDoc
         docxml.xpath(ns("//ol/li")).each { |f| ol_label(f) }
       end
 
-      def ol_numbering(docxml)
-        p = "//clause | //annex | //foreword | //acknowledgements | " \
+      def ol_numbering_containers
+        "//clause | //annex | //foreword | //acknowledgements | " \
             "//introduction | //preface/abstract | //appendix | //terms | " \
             "//term | //definitions | //references | //colophon"
-        docxml.xpath(ns(p)).each do |c|
+      end
+
+      def ol_numbering(docxml)
+        docxml.xpath(ns(ol_numbering_containers)).each do |c|
+          i = -1
           (c.xpath(ns(".//ol")) -
           c.xpath(ns("./clause//ol | ./appendix//ol | ./term//ol | " \
                      "./terms//ol | ./definitions//ol | " \
-                     "/references//ol | ./colophon//ol")))
-            .each_with_index do |o, i|
+                     "/references//ol | ./colophon//ol"))).each do |o|
+            (o.ancestors("ol").size + o.ancestors("ul").size).zero? and
+              i += 1 # ol root list
             ol_numbering1(o, i)
           end
         end
       end
 
       def ol_numbering1(elem, idx)
-        elem["type"] = ol_depth_rotate(elem, idx).to_s
+        ancestors = elem.ancestors.map(&:name).reverse
+        ul_loc = ancestors.index("ul")
+        ol_loc = ancestors.index("ol")
+        # is this a ul//ol list? if so, ignore idx of list in labelling
+        ul_root = ul_loc && (!ol_loc || ul_loc < ol_loc)
+        elem["type"] = ol_depth_rotate(elem, ul_root ? 0 : idx).to_s
       end
 
       # overrides IsoDoc:: XrefGen::OlTypeProvider: we trigger
       # @xrefs.list_anchor_names after this is called, with elem["type"] set
+      # use the order of the ol in the clause to rotate the labelling
       def ol_depth_rotate(node, idx)
-        depth = node.ancestors("ol").size + idx
+        depth = node.ancestors("ol").size + node.ancestors("ul").size + idx
         type = :alphabet
-        type = :arabic if [2, 5, 8].include? depth
-        type = :roman if [3, 6, 9].include? depth
+        type = :arabic if [1, 4, 7].include? depth
+        type = :roman if [2, 5, 8].include? depth
         type
       end
 
@@ -123,17 +134,6 @@ module IsoDoc
         else
           %w(&#x2014;)
         end
-      end
-
-      # KILL
-      def middle_title_body
-        ret = "<p class='zzSTDTitle1'>#{@meta.get[:full_doctitle]}"
-        @meta.get[:amd] || @meta.get[:corr] and ret += "<br/>"
-        @meta.get[:amd] and ret += "Amendment #{@meta.get[:amd]}"
-        @meta.get[:amd] && @meta.get[:corr] and ret += " "
-        @meta.get[:corr] and ret += "Corrigenda #{@meta.get[:corr]}"
-        ret += "</p>"
-        ret
       end
 
       def middle_title_template

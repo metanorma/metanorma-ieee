@@ -134,6 +134,15 @@ RSpec.describe Metanorma::Ieee do
       #{LOCAL_CACHED_ISOBIB_BLANK_HDR}
 
       [bibliography]
+      == Normative references
+
+      * [[[khronos_openxr1,1]]],
+      span:organization[IFF Group Inc].
+      span:type[standard]
+      span:title[OpenXR].
+      Available at: span:uri[https://www.khronos.org/openxr].
+
+      [bibliography]
       == Bibliography
 
       * [[[khronos_openxr,1]]],
@@ -147,6 +156,26 @@ RSpec.describe Metanorma::Ieee do
           <sections>
        </sections>
           <bibliography>
+             <references id="_" normative="true" obligation="informative">
+                <title id="_">Normative references</title>
+                <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
+                <bibitem anchor="khronos_openxr1" id="_" type="standard">
+                   <formattedref format="application/x-isodoc+xml">
+                      IFF Group Inc. OpenXR. Available at:
+                      <link target="https://www.khronos.org/openxr"/>
+                      .
+                   </formattedref>
+                   <title>OpenXR</title>
+                   <docidentifier type="title" primary="true">OpenXR</docidentifier>
+                   <uri>https://www.khronos.org/openxr</uri>
+                   <contributor>
+                      <role type="author"/>
+                      <organization>
+                         <name>IFF Group Inc</name>
+                      </organization>
+                   </contributor>
+                </bibitem>
+             </references>
              <references id="_" normative="false" obligation="informative">
                 <title id="_">Bibliography</title>
                 <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>

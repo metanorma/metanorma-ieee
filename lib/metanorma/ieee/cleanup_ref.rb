@@ -147,19 +147,7 @@ module Metanorma
 
       def bibitem_cleanup(xmldoc)
         super
-        supply_designations(xmldoc)
         supply_withdrawn_notes(xmldoc)
-      end
-
-      # force existence of a designation for standards
-      def supply_designations(xmldoc)
-        xmldoc.xpath("//references/bibitem[@type = 'standard']").each do |b|
-          b.at("./docidentifier[not(@type = 'metanorma' or @type = 'DOI' or " \
-            "@type = 'metanorma-ordinal')]") and next
-          t = b.at("./title") or next
-          b.at("./title[last()]").next =
-            "<docidentifier type='title' primary='true'>#{t.text}</docidentifier>"
-        end
       end
 
       def supply_withdrawn_notes(xmldoc)
@@ -178,9 +166,8 @@ module Metanorma
           .map(&:text)
       end
 
-      def reference_names(xmldoc)
-        #require "debug"; binding.b
-        super
+      def empty_docid_to_title?(bibitem)
+          bibitem["type"] == "standard"
       end
     end
   end
