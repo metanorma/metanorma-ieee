@@ -88,6 +88,40 @@ RSpec.describe IsoDoc::Ieee do
        .word_cleanup(Nokogiri::XML(input)).to_xml)
        .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
       .to be_equivalent_to Canon.format_xml(doc)
+
+    input = <<~INPUT
+      <html>
+      <head/>
+      <body>
+      <div class="WordSection1"><p/></div>
+      <div class="WordSection2"><p/></div>
+      <div class="main-section">
+      <br/>
+      <div id="x" class="abstract"/>
+      <hr/>
+      <div id="abstract-destination"/>
+      </div>
+      </body>
+      </html>
+    INPUT
+    doc = <<~OUTPUT
+      <html>
+        <head/>
+        <body>
+          <div class='main-section'>
+            <hr/>
+            <div id='abstract-destination'/>
+          </div>
+        </body>
+      </html>
+    OUTPUT
+    expect(Canon.format_xml(IsoDoc::Ieee::WordConvert
+      .new(wordcoverpage: nil,
+           wordintropage: nil,
+           filename: "test")
+       .word_cleanup(Nokogiri::XML(input)).to_xml)
+       .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
+      .to be_equivalent_to Canon.format_xml(doc)
   end
 
   it "copies scope in Word in the absence of abstract" do
@@ -315,123 +349,123 @@ RSpec.describe IsoDoc::Ieee do
 
     expect(Canon.format_xml("<div>#{word.gsub(/_Toc\d\d+/, '_Toc')}"))
       .to be_equivalent_to Canon.format_xml(<<~'OUTPUT')
-       <div>
-          WORDTOC
-          <div class="WordSectionContents">
-             <p class="IEEEStdsLevel1frontmatter">Contents</p>
-             <p class="MsoToc1">
-                <span lang="EN-GB" xml:lang="EN-GB">
-                   <span style="mso-element:field-begin"/>
-                   <span style="mso-spacerun:yes"> </span>
-                   TOC \o "1-3" \h \z \u
-                   <span style="mso-element:field-separator"/>
-                </span>
-                <span class="MsoHyperlink">
-                   <span lang="EN-GB" style="mso-no-proof:yes" xml:lang="EN-GB">
-                      <a href="#_Toc">
-                         1 Clause 4
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                            <span style="mso-tab-count:1 dotted">. </span>
-                         </span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                            <span style="mso-element:field-begin"/>
-                         </span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"> PAGEREF _Toc \h </span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                            <span style="mso-element:field-separator"/>
-                         </span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">1</span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"/>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                            <span style="mso-element:field-end"/>
-                         </span>
-                      </a>
-                   </span>
-                </span>
-             </p>
-             <p class="MsoToc2">
-                <span class="MsoHyperlink">
-                   <span lang="EN-GB" style="mso-no-proof:yes" xml:lang="EN-GB">
-                      <a href="#_Toc">
-                         1.1 Introduction to this
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                            <span style="mso-tab-count:1 dotted">. </span>
-                         </span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                            <span style="mso-element:field-begin"/>
-                         </span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"> PAGEREF _Toc \h </span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                            <span style="mso-element:field-separator"/>
-                         </span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">1</span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"/>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                            <span style="mso-element:field-end"/>
-                         </span>
-                      </a>
-                   </span>
-                </span>
-             </p>
-             <p class="MsoToc2">
-                <span class="MsoHyperlink">
-                   <span lang="EN-GB" style="mso-no-proof:yes" xml:lang="EN-GB">
-                      <a href="#_Toc">
-                         1.2 Clause 4.2
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                            <span style="mso-tab-count:1 dotted">. </span>
-                         </span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                            <span style="mso-element:field-begin"/>
-                         </span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"> PAGEREF _Toc \h </span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                            <span style="mso-element:field-separator"/>
-                         </span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">1</span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"/>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                            <span style="mso-element:field-end"/>
-                         </span>
-                      </a>
-                   </span>
-                </span>
-             </p>
-             <p class="MsoToc1">
-                <span class="MsoHyperlink">
-                   <span lang="EN-GB" style="mso-no-proof:yes" xml:lang="EN-GB">
-                      <a href="#_Toc">
-                         Annex A Annex First
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                            <span style="mso-tab-count:1 dotted">. </span>
-                         </span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                            <span style="mso-element:field-begin"/>
-                         </span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"> PAGEREF _Toc \h </span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                            <span style="mso-element:field-separator"/>
-                         </span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">1</span>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"/>
-                         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                            <span style="mso-element:field-end"/>
-                         </span>
-                      </a>
-                   </span>
-                </span>
-             </p>
-             <p class="MsoToc1">
-                <span lang="EN-GB" xml:lang="EN-GB">
-                   <span style="mso-element:field-end"/>
-                </span>
-                <span lang="EN-GB" xml:lang="EN-GB">
-                   <o:p class="MsoNormal"> </o:p>
-                </span>
-             </p>
-          </div>
-       </div>
-    OUTPUT
+        <div>
+           WORDTOC
+           <div class="WordSectionContents">
+              <p class="IEEEStdsLevel1frontmatter">Contents</p>
+              <p class="MsoToc1">
+                 <span lang="EN-GB" xml:lang="EN-GB">
+                    <span style="mso-element:field-begin"/>
+                    <span style="mso-spacerun:yes"> </span>
+                    TOC \o "1-3" \h \z \u
+                    <span style="mso-element:field-separator"/>
+                 </span>
+                 <span class="MsoHyperlink">
+                    <span lang="EN-GB" style="mso-no-proof:yes" xml:lang="EN-GB">
+                       <a href="#_Toc">
+                          1 Clause 4
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
+                             <span style="mso-tab-count:1 dotted">. </span>
+                          </span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
+                             <span style="mso-element:field-begin"/>
+                          </span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"> PAGEREF _Toc \h </span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
+                             <span style="mso-element:field-separator"/>
+                          </span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">1</span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"/>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
+                             <span style="mso-element:field-end"/>
+                          </span>
+                       </a>
+                    </span>
+                 </span>
+              </p>
+              <p class="MsoToc2">
+                 <span class="MsoHyperlink">
+                    <span lang="EN-GB" style="mso-no-proof:yes" xml:lang="EN-GB">
+                       <a href="#_Toc">
+                          1.1 Introduction to this
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
+                             <span style="mso-tab-count:1 dotted">. </span>
+                          </span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
+                             <span style="mso-element:field-begin"/>
+                          </span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"> PAGEREF _Toc \h </span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
+                             <span style="mso-element:field-separator"/>
+                          </span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">1</span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"/>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
+                             <span style="mso-element:field-end"/>
+                          </span>
+                       </a>
+                    </span>
+                 </span>
+              </p>
+              <p class="MsoToc2">
+                 <span class="MsoHyperlink">
+                    <span lang="EN-GB" style="mso-no-proof:yes" xml:lang="EN-GB">
+                       <a href="#_Toc">
+                          1.2 Clause 4.2
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
+                             <span style="mso-tab-count:1 dotted">. </span>
+                          </span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
+                             <span style="mso-element:field-begin"/>
+                          </span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"> PAGEREF _Toc \h </span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
+                             <span style="mso-element:field-separator"/>
+                          </span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">1</span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"/>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
+                             <span style="mso-element:field-end"/>
+                          </span>
+                       </a>
+                    </span>
+                 </span>
+              </p>
+              <p class="MsoToc1">
+                 <span class="MsoHyperlink">
+                    <span lang="EN-GB" style="mso-no-proof:yes" xml:lang="EN-GB">
+                       <a href="#_Toc">
+                          Annex A Annex First
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
+                             <span style="mso-tab-count:1 dotted">. </span>
+                          </span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
+                             <span style="mso-element:field-begin"/>
+                          </span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"> PAGEREF _Toc \h </span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
+                             <span style="mso-element:field-separator"/>
+                          </span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">1</span>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"/>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
+                             <span style="mso-element:field-end"/>
+                          </span>
+                       </a>
+                    </span>
+                 </span>
+              </p>
+              <p class="MsoToc1">
+                 <span lang="EN-GB" xml:lang="EN-GB">
+                    <span style="mso-element:field-end"/>
+                 </span>
+                 <span lang="EN-GB" xml:lang="EN-GB">
+                    <o:p class="MsoNormal"> </o:p>
+                 </span>
+              </p>
+           </div>
+        </div>
+      OUTPUT
   end
 
   private
