@@ -173,6 +173,7 @@ module IsoDoc
       end
 
       def abstract_header(dest)
+        dest.elements.empty? and return
         dest.elements.first.add_first_child <<~XML
           <span class='IEEEStdsAbstractHeader'><span lang='EN-US'>Abstract:</span></span>
         XML
