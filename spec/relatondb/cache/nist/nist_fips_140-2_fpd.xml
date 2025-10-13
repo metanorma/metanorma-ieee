@@ -1,5 +1,5 @@
 <bibdata type="standard" schema-version="v1.2.9">
-  <fetched>2025-08-11</fetched>
+  <fetched>2025-10-11</fetched>
   <title format="text/plain" language="en" script="Latn">Security Requirements for Cryptographic Modules</title>
   <uri type="src">https://csrc.nist.gov/pubs/fips/140-2/final</uri>
   <docidentifier type="NIST" primary="true">NIST FIPS 140-2 fpd</docidentifier>

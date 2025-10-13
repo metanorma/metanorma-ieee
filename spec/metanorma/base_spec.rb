@@ -358,7 +358,6 @@ RSpec.describe Metanorma::Ieee do
     INPUT
     output = <<~OUTPUT
       <bibdata type='standard'>
-         <title language="en" type="title-main">Document title</title>
         <title language="en" type="main">IEEE Standardaroone for Document titles</title>
         <title language="en" type="title-abbrev">IEEE Std-e for Doc. tit.</title>
         <docidentifier type="IEEE" primary="true">OVERRIDE</docidentifier>

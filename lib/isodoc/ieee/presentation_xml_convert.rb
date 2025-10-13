@@ -81,11 +81,10 @@ module IsoDoc
         warn "Failure to convert MathML to LaTeX\n#{node.parent.to_xml}\n#{e}"
       end
 
-      def ol(docxml)
-        ol_numbering(docxml)
-        @xrefs.list_anchor_names(docxml.xpath(ns(@xrefs.sections_xpath)))
-        docxml.xpath(ns("//ol/li")).each { |f| ol_label(f) }
-      end
+      #def ol(docxml)
+        #ol_prep(docxml)
+      #  docxml.xpath(ns("//ol/li")).each { |f| ol_label(f) }
+      #end
 
       def ol_numbering_containers
         "//clause | //annex | //foreword | //acknowledgements | " \

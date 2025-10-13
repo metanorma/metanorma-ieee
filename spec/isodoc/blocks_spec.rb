@@ -1883,8 +1883,11 @@ RSpec.describe IsoDoc do
                 <fmt-title depth="1" id="_">
                    <semx element="title" source="_">Foreword</semx>
                 </fmt-title>
-                <ol id="_" type="alphabet" keep-with-next="true" keep-lines-together="true">
-                   <name>Caption</name>
+                <ol id="_" type="alphabet" keep-with-next="true" keep-lines-together="true" autonum="1">
+                   <name id="_">Caption</name>
+                   <fmt-name id="_">
+               <semx element="name" source="_">Caption</semx>
+            </fmt-name>
                    <li id="_">
                       <fmt-name id="_">
                          <semx element="autonum" source="_">a</semx>
@@ -2045,6 +2048,7 @@ RSpec.describe IsoDoc do
              <div id="_">
                 <h1 class="ForewordTitle">Foreword</h1>
                 <div class="ol_wrap">
+                <p class="ListTitle">Caption</p>
                    <ol type="a" id="_" style="page-break-after: avoid;page-break-inside: avoid;" class="alphabet">
                       <li id="_">
                          <p id="_">Level 1</p>
@@ -2166,6 +2170,7 @@ RSpec.describe IsoDoc do
              <div id="_">
                 <h1 class="ForewordTitle">Foreword</h1>
                 <div class="ol_wrap">
+                <p class="ListTitle">Caption</p>
                    <ol type="a" id="_" style="page-break-after: avoid;page-break-inside: avoid;">
                       <li id="_">
                          <p id="_">Level 1</p>

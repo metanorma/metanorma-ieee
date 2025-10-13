@@ -1,5 +1,5 @@
 <bibdata type="standard" schema-version="v1.2.9">
-  <fetched>2025-08-11</fetched>
+  <fetched>2025-10-11</fetched>
   <title type="title-intro" format="text/plain" language="en" script="Latn">Information technology</title>
   <title type="title-main" format="text/plain" language="en" script="Latn">Vocabulary</title>
   <title type="main" format="text/plain" language="en" script="Latn">Information technology - Vocabulary</title>
@@ -233,7 +233,7 @@
   </relation>
   <relation type="instanceOf">
     <bibitem type="standard">
-      <fetched>2025-08-11</fetched>
+      <fetched>2025-10-11</fetched>
       <title type="title-intro" format="text/plain" language="en" script="Latn">Information technology</title>
       <title type="title-main" format="text/plain" language="en" script="Latn">Vocabulary</title>
       <title type="main" format="text/plain" language="en" script="Latn">Information technology - Vocabulary</title>
