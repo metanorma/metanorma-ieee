@@ -7,6 +7,11 @@ module IsoDoc
       end
 
       def bibdata_dates(bib)
+        bibdata_date_format(bib)
+        bibdata_date_defaults(bib)
+      end
+
+      def bibdata_date_format(bib)
         bib.xpath(ns("./date")).each do |d|
           d.next = d.dup
           d.next["format"] = "ddMMMyyyy"
@@ -14,6 +19,18 @@ module IsoDoc
             x.children = ddMMMyyyy(x.text)
           end
         end
+      end
+
+      def bibdata_date_defaults(bib)
+        bib.at(ns("./date[@type = 'ieee-sasb-approved']")) and return
+        ins = bib.at(ns("./docnumber")) ||
+          bib.at(ns("./docidentifier[last()]")) ||
+          bib.at(ns("./title[last()]")) or return
+        ins.next = <<~XML
+          <date type="ieee-sasb-approved" format="text">
+             <on>&lt;Date Approved&gt;</on>
+          </date>
+        XML
       end
 
       def ddMMMyyyy(isodate)
