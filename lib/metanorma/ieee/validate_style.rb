@@ -30,7 +30,7 @@ module Metanorma
 
         w = msg
         w += ": #{text}" if text
-        @log.add("Style", node, w)
+        @log.add("STANDOC_48", node, params: [w])
       end
 
       def style(node, text)
@@ -91,9 +91,7 @@ module Metanorma
 
           col.each do |x|
             /^[0-9. ]+$/.match?(x) && /\d{4}/.match?(x) and
-              @log.add("Style", table,
-                       "#{x} is a 4-digit number in a table column with " \
-                       "numbers broken up in threes")
+              @log.add("IEEE_2", table, params: [x])
           end
         end
       end
@@ -122,8 +120,7 @@ module Metanorma
         target += trial ? "Trial-Use " : ""
         target += @doctype ? "#{strict_capitalize_phrase(@doctype)} " : ""
         /^#{target}/.match?(title.text) or
-          @log.add("Style", title,
-                   "Expected title to start as: #{target}")
+          @log.add("IEEE_3", title, params: [target])
       end
 
       def strict_capitalize_phrase(str)
@@ -144,8 +141,7 @@ module Metanorma
           /^[[:upper:]]/.match?(w) or preposition?(w) or
             found = true
         end
-        found and @log.add("Style", title,
-                           "Title contains uncapitalised word other than preposition")
+        found and @log.add("IEEE_4", title)
       end
 
       def preposition?(word)

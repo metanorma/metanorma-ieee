@@ -28,19 +28,16 @@ module Metanorma
       def doctype_validate(xmldoc)
         %w(standard recommended-practice guide whitepaper redline other)
           .include?(@doctype) or
-          @log.add("Document Attributes", nil,
-                   "#{@doctype} is not a recognised document type")
+          @log.add("IEEE_5", nil, params: [@doctype])
         docsubtype = xmldoc.at("//bibdata/ext/subdoctype")&.text or return
         %w(amendment corrigendum erratum document).include? docsubtype or
-          @log.add("Document Attributes", nil,
-                   "#{docsubtype} is not a recognised document subtype")
+          @log.add("IEEE_6", nil, params: [docsubtype])
       end
 
       def stage_validate(xmldoc)
         stage = xmldoc&.at("//bibdata/status/stage")&.text
         %w(draft approved superseded withdrawn).include? stage or
-          @log.add("Document Attributes", nil,
-                   "#{stage} is not a recognised stage")
+          @log.add("IEEE_7", nil, params: [stage])
       end
 
       def locality_validate(root)
@@ -52,8 +49,7 @@ module Metanorma
       def locality_range_validate(root)
         root.xpath("//eref | xref").each do |e|
           e.at(".//localityStack[@connective = 'from'] | .//referenceTo") and
-            @log.add("Style", e, "Cross-reference contains range, " \
-                                 "should be separate cross-references")
+            @log.add("IEEE_8", e)
         end
       end
 
@@ -61,9 +57,7 @@ module Metanorma
       def locality_erefs_validate(root)
         root.xpath("//eref[descendant::locality]").each do |t|
           if !/[:-](\d+{4})($|-\d\d)/.match?(t["citeas"])
-            @log.add("Style", t,
-                     "Undated reference #{t['citeas']} should not contain " \
-                     "specific elements")
+            @log.add("IEEE_9", t, params: [t["citeas"]])
           end
         end
       end
@@ -76,8 +70,7 @@ module Metanorma
       def normative_dated_refs(root)
         root.xpath("//references[@normative = 'true']/bibitem").each do |b|
           b.at(".//date") or
-            @log.add("Style", b,
-                     "Normative reference #{b.at('./@anchor')&.text} is not dated.")
+            @log.add("IEEE_10", b, params: [b.at("./@anchor")&.text])
         end
       end
 
@@ -91,14 +84,12 @@ module Metanorma
         doc.xpath("//ul[.//ul//ul]").each do |u|
           next unless u.ancestors("ul").empty?
 
-          @log.add("Style", u,
-                   "Use ordered lists for lists more than two levels deep.")
+          @log.add("IEEE_11", u)
         end
         doc.xpath("//ol[.//ol//ol//ol//ol//ol]").each do |u|
           next unless u.ancestors("ol").empty?
 
-          @log.add("Style", u,
-                   "Ordered lists should not be more than five levels deep.")
+          @log.add("IEEE_12", u)
         end
       end
 
@@ -148,13 +139,12 @@ module Metanorma
         pref = image_name_prefix(xmldoc)
         (xmldoc.xpath("//figure") - xmldoc.xpath("//table//figure"))
           .each do |f|
-            (i = f.at("./image") and !i["src"]&.start_with?("data:")) or next
-            num = xrefs.anchor(f["id"], :label)
-            base = File.basename(i["src"], ".*")
-            base == "#{pref}_fig#{num}" or
-              @log.add("Style", i,
-                       "Image name #{base} is expected to be #{pref}_fig#{num}")
-          end
+          (i = f.at("./image") and !i["src"]&.start_with?("data:")) or next
+          num = xrefs.anchor(f["id"], :label)
+          base = File.basename(i["src"], ".*")
+          base == "#{pref}_fig#{num}" or
+            @log.add("IEEE_13", i, params: [base, "#{pref}_fig#{num}"])
+        end
       end
 
       # Style manual 17.2
@@ -172,8 +162,7 @@ module Metanorma
             num = tablefigurenumber(t, f, xrefs)
             base = File.basename(i["src"])
             base == num or
-              @log.add("Style", i,
-                       "Image name #{base} is expected to be #{num}")
+              @log.add("IEEE_13", i, params: [base, num])
           end
         end
       end
@@ -190,8 +179,7 @@ module Metanorma
       def table_figure_quantity_validate(xmldoc)
         xmldoc.xpath("//td[.//image] | //th[.//image]").each do |d|
           d.xpath(".//image").size > 1 and
-            @log.add("Style", d,
-                     "More than one image in the table cell")
+            @log.add("IEEE_15", d)
         end
       end
 
@@ -203,8 +191,7 @@ module Metanorma
             amend_validate1(a, desc.text.strip,
                             a.at("./newcontent//figure | " \
                                  "./newcontent//formula"))
-          else @log.add("Style", a,
-                        "Editorial instruction is missing from change")
+          else @log.add("IEEE_16", a)
           end
         end
       end
@@ -212,31 +199,21 @@ module Metanorma
       def amend_validate1(amend, description, figure_or_formula)
         case amend["change"]
         when "add" then /^Insert /.match?(description) or
-          @log.add("Style", amend,
-                   "'Add' change description should start with _Insert_")
+          @log.add("IEEE_17", amend)
         when "delete" then /^Insert /.match?(description) or
-          @log.add("Style", amend,
-                   "'Delete' change description should start with _Delete_")
+          @log.add("IEEE_18", amend)
         when "modify"
           amend_validate_modify(amend, description, figure_or_formula)
         end
       end
 
-      AMD_VALID_MOD = [
-        "'Modify' change description should start with _Change_ or _Replace_",
-        "'Modify' change description for change involving figure or equation " \
-        "should start with _Replace_",
-        "'Modify' change description for change not involving figure or " \
-        "equation should start with _Change_",
-      ].freeze
-
       def amend_validate_modify(amend, description, figure_or_formula)
         if !/^Change |^Replace/.match?(description)
-          @log.add("Style", amend, AMD_VALID_MOD[0])
+          @log.add("IEEE_19", amend)
         elsif /^Change /.match?(description)
-          !figure_or_formula or @log.add("Style", amend, AMD_VALID_MOD[1])
+          !figure_or_formula or @log.add("IEEE_20", amend)
         else
-          figure_or_formula or @log.add("Style", amend, AMD_VALID_MOD[2])
+          figure_or_formula or @log.add("IEEE_21", amend)
         end
       end
     end

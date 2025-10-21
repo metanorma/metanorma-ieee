@@ -13,15 +13,17 @@ module Metanorma
 
       def sections_presence_validate(root)
         root.at("//sections/clause[@type = 'overview']") or
-          @log.add("Style", nil, "Overview clause missing")
+          @log.add("IEEE_22", nil)
         root.at("//sections/clause[@type = 'overview']/clause[@type = 'scope']") or
-          @log.add("Style", nil, "Scope subclause missing")
+          @log.add("IEEE_23", nil)
         root.at("//sections/clause[@type = 'overview']/clause[@type = 'word-usage']") or
-          @log.add("Style", nil, "Word Usage subclause missing")
+          @log.add("IEEE_24", nil)
+        # ID = IEEE_24
         root.at("//references[@normative = 'true']") or
-          @log.add("Style", nil, "Normative references missing")
+          @log.add("IEEE_25", nil)
+        # ID = IEEE_25
         root.at("//terms") or
-          @log.add("Style", nil, "Definitions missing")
+          @log.add("IEEE_26", nil)
       end
 
       def seqcheck(names, msg, accepted)
@@ -30,7 +32,7 @@ module Metanorma
 
         test = accepted.map { |a| n.at(a) }
         if test.all?(&:nil?)
-          @log.add("Style", nil, msg)
+          @log.add("IEEE_27", nil, params: [msg])
         end
         names
       end
@@ -79,13 +81,11 @@ module Metanorma
         while elem&.name == "annex"
           elem = names.shift
           if elem.nil?
-            @log.add("Style", nil, "Document must include (references) "\
-                                   "Normative References")
+            @log.add("IEEE_28", nil)
           end
         end
         elem&.at("./self::references[@normative = 'true']") ||
-          @log.add("Style", nil, "Document must include (references) "\
-                                 "Normative References")
+          @log.add("IEEE_28", nil)
       end
 
       # Style manual 13.1
@@ -100,7 +100,7 @@ module Metanorma
       def onlychild_clause_validate(root)
         root.xpath(Standoc::Utils::SUBCLAUSE_XPATH).each do |c|
           c.xpath("../clause").size == 1 or next
-          @log.add("Style", c, "subclause is only child")
+          @log.add("IEEE_30", c)
         end
       end
 
@@ -113,8 +113,7 @@ module Metanorma
           valid = prec.empty? || foll.empty?
         else valid = false
         end
-        valid or @log.add("Style", bib, "Bibliography must be either the first "\
-                                        "or the last document annex")
+        valid or @log.add("IEEE_31", bib)
       end
     end
   end
