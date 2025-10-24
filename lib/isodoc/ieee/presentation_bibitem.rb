@@ -29,7 +29,7 @@ module IsoDoc
 
       def author_date(xml, renderings)
         author_date?(xml) or return
-        cit = renderings[xml["id"]][:citation]
+        cit = renderings[xml["id"]][:citation][:author_date]
         xml << "<docidentifier type='metanorma'>#{cit}</docidentifier>"
         xml.at(ns("./biblio-tag"))&.remove
         xml << "<biblio-tag>#{cit}, </biblio-tag>"
