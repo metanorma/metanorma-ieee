@@ -1,6 +1,6 @@
 <bibdata schema-version="v1.2.9">
-  <fetched>2025-08-20</fetched>
-  <title format="text/plain" language="en" script="Latn">&lt;empty&gt;</title>
+  <fetched>2025-10-21</fetched>
+  <title format="text/plain" language="en" script="Latn">Network Functions Virtualisation (NFV); Architectural Framework</title>
   <uri type="src">http://webapp.etsi.org/workprogram/Report_WorkItem.asp?WKI_ID=43827</uri>
   <uri type="pdf">http://www.etsi.org/deliver/etsi_gs/NFV/001_099/002/01.02.01_60/gs_NFV002v010201p.pdf</uri>
   <docidentifier type="ETSI" primary="true">ETSI GS NFV 002 V1.2.1 (2014-12)</docidentifier>
