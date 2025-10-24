@@ -30,8 +30,8 @@ module IsoDoc
       def normref_anchor_linkend(node, bib)
         @ref_renderings or return nil
         %w(standard).include?(bib[:type]) and return nil
-        cit = @ref_renderings[node["bibitemid"]][:citation]&.strip
-        cit.empty? and cit = nil
+        cit = @ref_renderings[node["bibitemid"]][:citation][:author_date]&.strip
+        cit&.empty? and cit = nil
         cit
       end
 
