@@ -17,16 +17,18 @@ module IsoDoc
 
       # Style manual 19
       def anchor_linkend(node, linkend)
-        if node["citeas"] && i = @bibanchors[node["bibitemid"]]
-          biblio_anchor_linkend(node, i, linkend)
-        elsif node["citeas"] && (i = @normrefanchors[node["bibitemid"]])
-          cit = normref_anchor_linkend(node, i)
-          cit || super
-        else super
+        if node["citeas"] && bib = @bibanchors[node["bibitemid"]]
+          biblio_anchor_linkend(node, bib, linkend)
+        else
+        node["citeas"] && (bib = @normrefanchors[node["bibitemid"]]) &&
+          !%w(standard).include?(bib[:type]) and
+          node["style"] ||= "author_date"
+        super
         end
       end
 
       # force Author-Date referencing on non-standards in norm ref
+      # KILL
       def normref_anchor_linkend(node, bib)
         @ref_renderings or return nil
         %w(standard).include?(bib[:type]) and return nil
