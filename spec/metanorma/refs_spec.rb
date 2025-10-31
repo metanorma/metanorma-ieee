@@ -174,6 +174,8 @@ RSpec.describe Metanorma::Ieee do
                          <name>IFF Group Inc</name>
                       </organization>
                    </contributor>
+                   <language>en</language>
+                   <script>Latn</script>
                 </bibitem>
              </references>
              <references id="_" normative="false" obligation="informative">
@@ -195,6 +197,8 @@ RSpec.describe Metanorma::Ieee do
                          <name>IFF Group Inc</name>
                       </organization>
                    </contributor>
+                   <language>en</language>
+                   <script>Latn</script>
                 </bibitem>
              </references>
           </bibliography>
@@ -399,12 +403,16 @@ RSpec.describe Metanorma::Ieee do
                         </name>
                      </person>
                   </contributor>
+                  <language>en</language>
+                  <script>Latn</script>
                </bibitem>
                <bibitem anchor="ref3" id="_">
                   <formattedref format="application/x-isodoc+xml">REF4</formattedref>
                   <docidentifier>REF4</docidentifier>
                   <docidentifier type="metanorma-ordinal">[B4]</docidentifier>
                   <docnumber>4</docnumber>
+                  <language>en</language>
+                  <script>Latn</script>
                </bibitem>
             </references>
          </bibliography>
@@ -972,10 +980,14 @@ RSpec.describe Metanorma::Ieee do
              <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
              <bibitem id="_" anchor="ref1">
                <formattedref format="application/x-isodoc+xml">Reference 1</formattedref>
+               <language>en</language>
+               <script>Latn</script>
              </bibitem>
              <bibitem id="_" anchor="ref2">
                <formattedref format="application/x-isodoc+xml">Reference 2</formattedref>
                <docidentifier>A</docidentifier>
+               <language>en</language>
+               <script>Latn</script>
              </bibitem>
            </references>
            <references id="_" normative="false" obligation="informative">
@@ -984,6 +996,8 @@ RSpec.describe Metanorma::Ieee do
              <bibitem id="_" anchor="ref3">
                <formattedref format="application/x-isodoc+xml">Reference 2</formattedref>
                <docidentifier type="metanorma">[B1]</docidentifier>
+               <language>en</language>
+               <script>Latn</script>
              </bibitem>
            </references>
          </bibliography>

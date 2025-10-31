@@ -241,7 +241,7 @@ RSpec.describe Relaton::Render::Ieee do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref><em>Nature</em>. 2005&#x2013;2009.</formattedref>
+      <formattedref><em>Nature</em>, 2005&#x2013;2009.</formattedref>
     OUTPUT
     expect(renderer.render(input))
       .to be_equivalent_to output

@@ -53,7 +53,7 @@ module IsoDoc
                template: "{{ creatornames }}",
                extenttemplate: { (bib["type"] || "misc").to_sym => "{{page}}" },
                sizetemplate: { (bib["type"] || "misc").to_sym => "{{data}}" })
-          .render1(RelatonBib::XMLParser.from_xml(bib.to_xml))
+          .render1(RelatonBib::XMLParser.from_xml(bib.to_xml), false)
       end
 
       def bibliography_bibitem_number1(bibitem, idx, normative)
