@@ -3,6 +3,7 @@ SimpleCov.start do
   add_filter "/spec/"
 end
 
+require "debug"
 require "bundler/setup"
 require "asciidoctor"
 require "metanorma-ieee"
