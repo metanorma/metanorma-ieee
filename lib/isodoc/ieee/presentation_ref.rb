@@ -27,16 +27,6 @@ module IsoDoc
         end
       end
 
-      # force Author-Date referencing on non-standards in norm ref
-      # KILL
-      def normref_anchor_linkend(node, bib)
-        @ref_renderings or return nil
-        %w(standard).include?(bib[:type]) and return nil
-        cit = @ref_renderings[node["bibitemid"]][:citation][:author_date]&.strip
-        cit&.empty? and cit = nil
-        cit
-      end
-
       def biblio_anchor_linkend(node, bib, linkend)
         if %w(standard).include?(bib[:type])
           biblio_anchor_linkend_std(node, bib, linkend)
