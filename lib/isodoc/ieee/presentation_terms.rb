@@ -191,6 +191,11 @@ module IsoDoc
 
       def term(docxml); end
 
+      #def term1(elem)
+        #super
+        #elem.at(ns("./fmt-name"))&.remove # keep fmt-xref-label
+      #end
+
       def license_termnote(elem, idx)
         elem.name = "fn"
         elem["reference"] = "_termnote_license_#{idx}"

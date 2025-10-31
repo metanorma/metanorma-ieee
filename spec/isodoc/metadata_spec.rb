@@ -903,4 +903,54 @@ RSpec.describe Metanorma::Ieee do
           wp_image008_emz: File.join(logoloc, "wp_image008.emz") },
       )
   end
+
+  it "insert default SASB approved date" do
+    input = <<~INPUT
+      <itu-standard xmlns="http://riboseinc.com/isoxml">
+                   <bibdata type="standard">
+              <title language="en" format="text/plain" type="title-main">Main Title<br/>in multiple lines</title>
+              <docidentifier type="IEEE-draft">P100</docidentifier>
+              <docnumber>1000</docnumber>
+              <date type='published'>2018-09-01</date>
+              <date type='published' format="ddMMMyyyy">01 Sep 2018</date>
+              <date type='issued'>2018-07-01</date>
+              <date type='issued' format="ddMMMyyyy">01 Jul 2018</date>
+              <date type='feedback-ended'>2018-08-01</date>
+              <date type='feedback-ended' format="ddMMMyyyy">01 Aug 2018</date>
+            </bibdata>
+          </itu-standard>
+    INPUT
+    output = <<~OUTPUT
+      <bibdata type="standard">
+          <title language="en" format="text/plain" type="title-main">
+             Main Title
+             <br/>
+             in multiple lines
+          </title>
+          <docidentifier type="IEEE-draft">P100</docidentifier>
+          <docnumber>1000</docnumber>
+          <date type="ieee-sasb-approved" format="text">
+             <on>&lt;Date Approved&gt;</on>
+          </date>
+          <date type="published">2018-09-01</date>
+          <date type="published" format="ddMMMyyyy">2018-09-01</date>
+          <date type="published" format="ddMMMyyyy">01 Sep 2018</date>
+          <date type="published" format="ddMMMyyyy">01 Sep 2018</date>
+          <date type="issued">2018-07-01</date>
+          <date type="issued" format="ddMMMyyyy">2018-07-01</date>
+          <date type="issued" format="ddMMMyyyy">01 Jul 2018</date>
+          <date type="issued" format="ddMMMyyyy">01 Jul 2018</date>
+          <date type="feedback-ended">2018-08-01</date>
+          <date type="feedback-ended" format="ddMMMyyyy">2018-08-01</date>
+          <date type="feedback-ended" format="ddMMMyyyy">01 Aug 2018</date>
+          <date type="feedback-ended" format="ddMMMyyyy">01 Aug 2018</date>
+       </bibdata>
+    OUTPUT
+    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
+      .new({ hierarchicalassets: true })
+      .convert("test", input, true))
+      .at("//xmlns:bibdata").to_xml)))
+      .to be_equivalent_to Canon.format_xml(output)
+  end
+
 end
