@@ -2272,22 +2272,6 @@
 	<!-- title      -->
 	<!-- ====== -->
 
-	<!-- <xsl:template match="mn:annex/mn:title">
-		<fo:block font-size="16pt" text-align="center" margin-bottom="48pt" keep-with-next="always">
-			<xsl:apply-templates />
-		</fo:block>
-	</xsl:template> -->
-
-	<!-- Bibliography -->
-	<xsl:template match="mn:references[not(@normative='true')]/mn:fmt-title">
-		<fo:block xsl:use-attribute-sets="references-non-normative-title-style">
-
-			<xsl:call-template name="refine_references-non-normative-title-style"/>
-
-			<xsl:apply-templates/>
-		</fo:block>
-	</xsl:template>
-
 	<!-- <xsl:template match="mn:fmt-title[@inline-header = 'true'][following-sibling::*[1][self::mn:p] or following-sibling::*[1][self::mn:clause] or not(following-sibling::*)]" priority="3"> -->
 	<xsl:template match="mn:fmt-title[../@inline-header = 'true'][following-sibling::*[1][self::mn:p] or following-sibling::*[1][self::mn:clause] or not(following-sibling::*)]" priority="3">
 		<fo:block>
@@ -2358,7 +2342,7 @@
 		</xsl:variable>
 
 		<xsl:choose>
-			<xsl:when test="string-length($section) != 0 and $element-name = 'fo:block' and ($current_template = 'whitepaper' or $current_template = 'icap-whitepaper' or $current_template = 'industry-connection-report')">
+			<xsl:when test="string-length($section) != 0 and $element-name = 'fo:block' and ($current_template = 'whitepaper' or $current_template = 'icap-whitepaper' or $current_template = 'industry-connection-report') and    not(parent::mn:references[not(@normative='true')])">
 				<fo:list-block>
 					<xsl:copy-of select="xalan:nodeset($title_styles)/styles/@*"/>
 
@@ -13937,16 +13921,17 @@
 	<!-- END Admonition -->
 	<!-- ================ -->
 
-	<xsl:attribute-set name="references-non-normative-title-style">
+	<xsl:attribute-set name="bibliography-title-style">
 		<xsl:attribute name="font-size">16pt</xsl:attribute>
 		<xsl:attribute name="font-weight">bold</xsl:attribute>
 		<xsl:attribute name="margin-top">6pt</xsl:attribute>
+		<xsl:attribute name="space-before">0pt</xsl:attribute>
 		<xsl:attribute name="margin-bottom">36pt</xsl:attribute>
 		<xsl:attribute name="keep-with-next">always</xsl:attribute>
 		<xsl:attribute name="role">H1</xsl:attribute>
 	</xsl:attribute-set>
 
-	<xsl:template name="refine_references-non-normative-title-style">
+	<xsl:template name="refine_bibliography-title-style">
 	</xsl:template>
 
 	<!-- bibitem in Normative References (references/@normative="true") -->
@@ -16027,6 +16012,9 @@
 	<!-- ===================================== -->
 
 	<xsl:attribute-set name="annex-title-style">
+		<xsl:attribute name="keep-with-next">always</xsl:attribute>
+		<xsl:attribute name="font-weight">normal</xsl:attribute>
+		<xsl:attribute name="margin-bottom">24pt</xsl:attribute>
 	</xsl:attribute-set> <!-- annex-title-style -->
 
 	<xsl:template name="refine_annex-title-style">
@@ -16162,15 +16150,18 @@
 					<xsl:if test="ancestor::mn:acknowledgements">
 						<xsl:attribute name="font-size">11pt</xsl:attribute>
 					</xsl:if>
-					<xsl:if test="ancestor::mn:annex">
-						<xsl:attribute name="font-weight">normal</xsl:attribute>
-					</xsl:if>
 					<xsl:if test="not(following-sibling::*[1][self::mn:clause])">
 						<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
 					</xsl:if>
 					<xsl:if test="ancestor::mn:preface or ancestor::mn:introduction or ancestor::mn:acknowledgements">
 						<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
 					</xsl:if>
+				</xsl:if>
+				<xsl:if test="parent::mn:annex"><!-- Annex title -->
+					<xsl:variable name="annex_title_styles">
+						<styles xsl:use-attribute-sets="annex-title-style"><xsl:call-template name="refine_annex-title-style"/></styles>
+					</xsl:variable>
+					<xsl:copy-of select="xalan:nodeset($annex_title_styles)/styles/@*"/>
 				</xsl:if>
 				<xsl:if test="$level &gt;= 2">
 					<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
@@ -16189,6 +16180,13 @@
 
 		<xsl:attribute name="space-before"><xsl:value-of select="$space_before"/></xsl:attribute>
 		<xsl:if test="ancestor::mn:introduction"><xsl:attribute name="margin-top"><xsl:value-of select="$space_before"/></xsl:attribute></xsl:if>
+
+		<xsl:if test="parent::mn:references[not(@normative='true')]"><!-- Bibliography section title -->
+			<xsl:variable name="bibliography_title_styles">
+				<styles xsl:use-attribute-sets="bibliography-title-style"><xsl:call-template name="refine_bibliography-title-style"/></styles>
+			</xsl:variable>
+			<xsl:copy-of select="xalan:nodeset($bibliography_title_styles)/styles/@*"/>
+		</xsl:if>
 
 		<xsl:if test="@type = 'floating-title' or @type = 'section-title'">
 			<xsl:copy-of select="@id"/>
