@@ -673,6 +673,7 @@ RSpec.describe IsoDoc::Ieee do
                       <span style="mso-tab-count:1">  </span>
                       Acronyms and abbreviations
                    </h2>
+                   <div align="left">
               <table class='dl'>
                 <tr>
                   <td valign='top' align='left'>
@@ -681,6 +682,7 @@ RSpec.describe IsoDoc::Ieee do
                   <td valign='top'>Definition</td>
                 </tr>
               </table>
+              </div>
             </div>
           </div>
           <div id='L' class='Symbols'>
@@ -689,6 +691,7 @@ RSpec.describe IsoDoc::Ieee do
                    <span style="mso-tab-count:1">  </span>
                    Acronyms and abbreviations
                 </h1>
+                <div align="left">
             <table class='dl'>
               <tr>
                 <td valign='top' align='left'>
@@ -697,6 +700,7 @@ RSpec.describe IsoDoc::Ieee do
                 <td valign='top'>Definition</td>
               </tr>
             </table>
+            </div>
           </div>
           <div id='M'>
             <h1>
