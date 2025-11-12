@@ -210,18 +210,18 @@ RSpec.describe Metanorma::Ieee do
     expect(File.read("test.err.html"))
       .to include("Normative reference iso123 is not dated")
 
-      Asciidoctor.convert(<<~INPUT, *OPTIONS)
-        #{VALIDATING_BLANK_HDR}
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
+      #{VALIDATING_BLANK_HDR}
 
-        == Scope
-        <<iso123,clause=1>>
+      == Scope
+      <<iso123,clause=1>>
 
-        [bibliography]
-        == Normative References
-        * [[[iso123,ISO 123:1985]]] _Standard_
-      INPUT
-      expect(File.read("test.err.html"))
-        .not_to include("Normative reference iso123 is not dated")
+      [bibliography]
+      == Normative References
+      * [[[iso123,ISO 123:1985]]] _Standard_
+    INPUT
+    expect(File.read("test.err.html"))
+      .not_to include("Normative reference iso123 is not dated")
   end
 
   it "warns that undated reference has locality" do
@@ -868,8 +868,10 @@ RSpec.describe Metanorma::Ieee do
     it "Warning if do not start with overview" do
       Asciidoctor.convert(<<~"INPUT", *OPTIONS)
         #{VALIDATING_BLANK_HDR}
+
         [abstract]
         == Abstract
+        Abstract
 
         == Symbols and Abbreviated Terms
 

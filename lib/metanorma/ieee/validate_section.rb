@@ -50,10 +50,10 @@ module Metanorma
       ].freeze
 
       SECTIONS_XPATH =
-        "//preface/abstract | //sections/terms | .//annex | "\
+        "//preface/abstract | //sections/terms | //annex | "\
         "//sections/definitions | //sections/clause | "\
-        "//references[not(parent::clause)] | "\
-        "//clause[descendant::references][not(parent::clause)]".freeze
+        "//references[not(parent::clause)][not(ancestor::boilerplate)] | "\
+        "//clause[descendant::references][not(parent::clause)][not(ancestor::boilerplate)]".freeze
 
       def sections_sequence_validate(root)
         names, n = sections_sequence_validate_start(root)
