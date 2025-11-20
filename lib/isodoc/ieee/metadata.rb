@@ -7,10 +7,9 @@ module IsoDoc
       def initialize(lang, script, i18n, fonts_options = {})
         super
         @metadata[:ieee_sasb_approveddate] = "&lt;Date Approved&gt;"
-        logos
       end
 
-      def logos
+      def images(_isoxml, _out)
         here = File.join(File.dirname(__FILE__), "html")
         suffix = ".emz"
         @icap and suffix = "_icap.emz"
@@ -143,7 +142,7 @@ module IsoDoc
         d = isoxml.at(ns("//bibdata/ext/subdoctype"))
         @icap = d&.text&.downcase == "icap"
         @icr = d&.text&.downcase == "industry-connection-report"
-        logos
+        images(isoxml, nil)
       end
 
       def ddMMMyyyy(isodate)
