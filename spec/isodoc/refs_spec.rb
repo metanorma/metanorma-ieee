@@ -856,7 +856,11 @@ RSpec.describe IsoDoc do
                    <docnumber>4</docnumber>
                 </bibitem>
                 <bibitem type="book" id="ref2">
-                   <biblio-tag>Aluffi et al. 2022a </biblio-tag>
+                   <biblio-tag>
+                      Aluffi
+                      <em>et al.</em>
+                      2022a
+                   </biblio-tag>
                    <formattedref>
                       Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne,
                       <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>
@@ -960,7 +964,7 @@ RSpec.describe IsoDoc do
                    <size>
                       <value type="volume">1</value>
                    </size>
-                   <docidentifier type="metanorma">
+                   <docidentifier type="author-date">
                       Aluffi
                       <em>et al.</em>
                       2022a
@@ -1016,7 +1020,7 @@ RSpec.describe IsoDoc do
                          </name>
                       </person>
                    </contributor>
-                   <docidentifier type="metanorma">Johns 2022</docidentifier>
+                   <docidentifier type="author-date">Johns 2022</docidentifier>
                    <biblio-tag>Johns 2022, </biblio-tag>
                 </bibitem>
              </references>
