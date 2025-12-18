@@ -1,5 +1,5 @@
 <bibdata type="standard" schema-version="v1.2.9">
-  <fetched>2025-10-11</fetched>
+  <fetched>2025-12-15</fetched>
   <uri type="src">https://www.itu.int/myworkspace/#/t-rec/item?id=15177&amp;lang=en</uri>
   <docidentifier type="ITU" primary="true">ITU-T K.20 (11/2022)</docidentifier>
   <contributor>
@@ -24,7 +24,7 @@
   </copyright>
   <relation type="instanceOf">
     <bibitem type="standard">
-      <fetched>2025-10-11</fetched>
+      <fetched>2025-12-15</fetched>
       <uri type="src">https://www.itu.int/myworkspace/#/t-rec/item?id=15177&amp;lang=en</uri>
       <docidentifier type="ITU" primary="true">ITU-T K.20 (11/2022)</docidentifier>
       <contributor>

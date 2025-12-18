@@ -52,30 +52,20 @@ module Metanorma
       end
 
       def metadata_other_id(node, xml)
-        # a = node.attr("isbn-pdf") and
         add_noko_elem(xml, "docidentifier", node.attr("isbn-pdf"),
                       type: "ISBN", scope: "PDF")
-        # xml.docidentifier a, type: "ISBN", scope: "PDF"
-        # a = node.attr("isbn-print") and
-        #  xml.docidentifier a, type: "ISBN", scope: "print"
         add_noko_elem(xml, "docidentifier", node.attr("isbn-print"),
                       type: "ISBN", scope: "print")
         add_noko_elem(xml, "docnumber", node.attr("docnumber"))
-        # xml.docnumber node.attr("docnumber")
       end
 
       def metadata_id(node, xml)
         if id = node.attr("docidentifier")
-          # xml.docidentifier id, **attr_code(type: "IEEE", primary: "true")
           add_noko_elem(xml, "docidentifier", id, type: "IEEE", primary: "true")
         else ieee_id(node, xml)
         end
-        # id = node.attr("stdid-pdf") and
-        # xml.docidentifier id, type: "IEEE", scope: "PDF"
         add_noko_elem(xml, "docidentifier", node.attr("stdid-pdf"),
                       type: "IEEE", scope: "PDF")
-        # id = node.attr("stdid-print") and
-        # xml.docidentifier id, type: "IEEE", scope: "print"
         add_noko_elem(xml, "docidentifier", node.attr("stdid-print"),
                       type: "IEEE", scope: "print")
       end
@@ -138,8 +128,6 @@ module Metanorma
       end
 
       def ieee_id_out(xml, params)
-        # id = pubid_select(params).create(**params)
-        # xml.docidentifier id.to_s, type: "IEEE", primary: "true"
         add_noko_elem(xml, "docidentifier",
                       pubid_select(params).create(**params).to_s,
                       type: "IEEE", primary: "true")
@@ -199,20 +187,13 @@ module Metanorma
         node.attr("docnumber") or return
         xml.structuredidentifier do |i|
           add_noko_elem(i, "docnumber", node.attr("docnumber"))
-          # i.docnumber node.attr("docnumber")
           add_noko_elem(i, "agency", "IEEE")
-          # i.agency "IEEE"
           i.class_ doctype(node)
           add_noko_elem(i, "edition", node.attr("edition"))
-          # a = node.attr("edition") and i.edition a
           add_noko_elem(i, "version", metadata_version_value(node))
-          # a = metadata_version_value(node) and i.version a
           add_noko_elem(i, "amendment", node.attr("amendment-number"))
-          # a = node.attr("amendment-number") and i.amendment a
           add_noko_elem(i, "corrigendum", node.attr("corrigendum-number"))
-          # a = node.attr("corrigendum-number") and i.corrigendum a
           add_noko_elem(i, "year", node.attr("copyright-year"))
-          # a = node.attr("copyright-year") and i.year a
         end
       end
 

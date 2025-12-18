@@ -125,6 +125,9 @@ RSpec.describe Metanorma::Ieee do
           <title language="en" type="title-main">Document title</title>
           <title type="provenance" language="en">
           Revision of ABC<br/>Incorporates BCD and EFG</title>
+             <title language="en" type="title-part-prefix">Part 1</title>
+          <title language="en" type="title-amendment-prefix">Amendment A1</title>
+          <title language="en" type="title-corrigendum-prefix">Corrigendum C1</title>
          <docidentifier type="IEEE" primary="true">IEEE Draft Std 1000-1-2000/Cor C1-2000/D0.3</docidentifier>
           <docidentifier type="IEEE-draft">P1000-1/Cor C1-2000/D0.3</docidentifier>
          <docidentifier type="IEEE" scope="PDF">GHI</docidentifier>
