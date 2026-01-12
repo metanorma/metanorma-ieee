@@ -1,5 +1,5 @@
 <bibdata type="standard" schema-version="v1.2.9">
-  <fetched>2025-10-11</fetched>
+  <fetched>2026-01-12</fetched>
   <title type="title-intro" format="text/plain" language="en" script="Latn">Information security, cybersecurity and privacy protection</title>
   <title type="title-main" format="text/plain" language="en" script="Latn">Information security management systems</title>
   <title type="title-part" format="text/plain" language="en" script="Latn">Requirements</title>
@@ -76,7 +76,7 @@
   </relation>
   <relation type="instanceOf">
     <bibitem type="standard">
-      <fetched>2025-10-11</fetched>
+      <fetched>2026-01-12</fetched>
       <title type="title-intro" format="text/plain" language="en" script="Latn">Information security, cybersecurity and privacy protection</title>
       <title type="title-main" format="text/plain" language="en" script="Latn">Information security management systems</title>
       <title type="title-part" format="text/plain" language="en" script="Latn">Requirements</title>

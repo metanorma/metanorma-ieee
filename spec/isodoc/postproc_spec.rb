@@ -299,16 +299,10 @@ RSpec.describe IsoDoc::Ieee do
         <iso-standard xmlns="http://riboseinc.com/isoxml">
           <metanorma-extension>
             <presentation-metadata>
-              <name>TOC Heading Levels</name>
-              <value>3</value>
-            </presentation-metadata>
-            <presentation-metadata>
-              <name>HTML TOC Heading Levels</name>
-              <value>2</value>
-            </presentation-metadata>
-            <presentation-metadata>
-              <name>DOC TOC Heading Levels</name>
-              <value>3</value>
+            <toc-heading-levels>2</toc-heading-levels>
+         <html-toc-heading-levels>2</html-toc-heading-levels>
+         <doc-toc-heading-levels>3</doc-toc-heading-levels>
+         <pdf-toc-heading-levels>2</pdf-toc-heading-levels>
             </presentation-metadata>
           </metanorma-extension>
           <preface><clause type="toc" id="_13d7055e-30fc-845a-c60e-8972faf092d9" displayorder="1"><fmt-title depth="1" id="_b7371af6-75a1-52fa-2891-5c5f9a06aa7c">Contents</fmt-title></clause></preface>
