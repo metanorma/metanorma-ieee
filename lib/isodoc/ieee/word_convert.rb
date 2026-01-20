@@ -38,7 +38,7 @@ module IsoDoc
         end
       end
 
-      def default_fonts(options)
+      def default_fonts(_options)
         { bodyfont: '"Times New Roman",serif',
           headerfont: '"Arial",sans-serif',
           monospacefont: '"Courier New",monospace',
@@ -113,7 +113,7 @@ module IsoDoc
           formula_parse1(node, div)
           node.children.each do |n|
             %w(fmt-stem fmt-name).include? n.name and next
-            if n.name == "dl" then formula_where(n, div)
+            if n.name == "key" then formula_where(n, div)
             else parse(n, div)
             end
           end
@@ -124,10 +124,16 @@ module IsoDoc
         %w{dt dd}.include? node.name
       end
 
-      def formula_where(dlist, out)
-        dlist or return
-        dlist.elements.select { |n| dt_dd? n }.each_slice(2) do |dt, dd|
-          formula_where1(out, dt, dd)
+      def formula_where(key, out)
+        key or return
+        key.children.each do |c|
+          if c.name == "dl"
+            c.elements.select { |n| dt_dd? n }.each_slice(2) do |dt, dd|
+              formula_where1(out, dt, dd)
+            end
+          else
+            parse(c, out)
+          end
         end
       end
 
@@ -204,7 +210,7 @@ module IsoDoc
         name.xpath(".//xmlns:semx[@element = 'autonum']/"\
                    "preceding-sibling::text()[normalize-space() = '']")
           .each do |s|
-          s.ancestors("fn").empty? and s.remove
+            s.ancestors("fn").empty? and s.remove
         end
         name.xpath(ns(".//span[@class = 'fmt-element-name']  | "\
                       ".//semx[@element = 'autonum']")).each do |s|
