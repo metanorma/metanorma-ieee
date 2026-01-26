@@ -1,17 +1,22 @@
 module Metanorma
   module Ieee
     class Converter < Standoc::Converter
+      AVAIL_MATCH = <<~XPATH.freeze
+        [contains(concat(',', normalize-space(translate(@type, ' ', '')), ','), ',Availability,')]
+      XPATH
+
       BIBITEM_NO_AVAIL =
-        "//references[@normative='true']/bibitem[not(note[@type = 'Availability'])] | "\
-        "//references[@normative='false']/bibitem[not(note[@type = 'Availability'])]".freeze
+        "//references[@normative='true']/bibitem[not(note#{AVAIL_MATCH})] | "\
+        "//references[@normative='false']/bibitem[not(note#{AVAIL_MATCH})]"
+          .freeze
 
       def sorted_bibitem_no_avail(xmldoc)
         # Get normative references first, maintaining their order
         normative_bibitems = xmldoc.xpath("//references[@normative='true']/" \
-          "bibitem[not(note[@type = 'Availability'])]")
+          "bibitem[not(note#{AVAIL_MATCH})]")
         # Get non-normative references second, maintaining their order
         non_normative_bibitems = xmldoc.xpath("//references[@normative='false']/" \
-          "bibitem[not(note[@type = 'Availability'])]")
+          "bibitem[not(note#{AVAIL_MATCH})]")
         # Return concatenated array with normative first
         normative_bibitems.to_a + non_normative_bibitems.to_a
       end
