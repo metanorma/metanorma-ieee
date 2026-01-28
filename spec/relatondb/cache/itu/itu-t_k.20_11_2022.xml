@@ -1,6 +1,9 @@
 <bibdata type="standard" schema-version="v1.2.9">
-  <fetched>2026-01-12</fetched>
-  <uri type="src">https://www.itu.int/myworkspace/#/t-rec/item?id=15177&amp;lang=en</uri>
+  <fetched>2026-01-26</fetched>
+  <title type="title-main" format="text/plain" language="en" script="Latn">Resistibility of telecommunication equipment installed in a telecommunication centre to overvoltages and overcurrents</title>
+  <title type="main" format="text/plain" language="en" script="Latn">Resistibility of telecommunication equipment installed in a telecommunication centre to overvoltages and overcurrents</title>
+  <uri type="src">https://handle.itu.int/11.1002/1000/15177</uri>
+  <uri type="pdf">https://www.itu.int/rec/dologin_pub.asp?lang=e&amp;id=T-REC-K.20-202211-I!!PDF-E&amp;type=items</uri>
   <docidentifier type="ITU" primary="true">ITU-T K.20 (11/2022)</docidentifier>
   <contributor>
     <role type="publisher"/>
@@ -10,10 +13,14 @@
       <uri>www.itu.int</uri>
     </organization>
   </contributor>
+  <edition>18</edition>
   <language>en</language>
   <script>Latn</script>
+  <status>
+    <stage>Published</stage>
+  </status>
   <copyright>
-    <from>unknown</from>
+    <from>2022</from>
     <owner>
       <organization>
         <name>International Telecommunication Union</name>
@@ -22,11 +29,197 @@
       </organization>
     </owner>
   </copyright>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K.20 (06/2021)</formattedref>
+      <docidentifier type="ITU" primary="true">K.20 (06/2021)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K.20 (11/2019)</formattedref>
+      <docidentifier type="ITU" primary="true">K.20 (11/2019)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K.20 (07/2019)</formattedref>
+      <docidentifier type="ITU" primary="true">K.20 (07/2019)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K.20 (10/2018)</formattedref>
+      <docidentifier type="ITU" primary="true">K.20 (10/2018)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K.20 (07/2017)</formattedref>
+      <docidentifier type="ITU" primary="true">K.20 (07/2017)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K.20 (12/2016)</formattedref>
+      <docidentifier type="ITU" primary="true">K.20 (12/2016)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K.20 (06/2016)</formattedref>
+      <docidentifier type="ITU" primary="true">K.20 (06/2016)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K.20 (04/2015)</formattedref>
+      <docidentifier type="ITU" primary="true">K.20 (04/2015)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K.20 (11/2011)</formattedref>
+      <docidentifier type="ITU" primary="true">K.20 (11/2011)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K.20 (04/2008)</formattedref>
+      <docidentifier type="ITU" primary="true">K.20 (04/2008)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K.20 (2003) Amd. 1 (11/2004)</formattedref>
+      <docidentifier type="ITU" primary="true">K.20 (2003) Amd. 1 (11/2004)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K.20 (07/2003)</formattedref>
+      <docidentifier type="ITU" primary="true">K.20 (07/2003)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K.20 (2003) Err. 1 (01/2004)</formattedref>
+      <docidentifier type="ITU" primary="true">K.20 (2003) Err. 1 (01/2004)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K.20 (02/2000)</formattedref>
+      <docidentifier type="ITU" primary="true">K.20 (02/2000)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K.20 (10/1996)</formattedref>
+      <docidentifier type="ITU" primary="true">K.20 (10/1996)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K.20 (03/1993)</formattedref>
+      <docidentifier type="ITU" primary="true">K.20 (03/1993)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K.20 (03/1991)</formattedref>
+      <docidentifier type="ITU" primary="true">K.20 (03/1991)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K.20 (11/1988)</formattedref>
+      <docidentifier type="ITU" primary="true">K.20 (11/1988)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K.20 (10/1984)</formattedref>
+      <docidentifier type="ITU" primary="true">K.20 (10/1984)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 3 (10/2015)</formattedref>
+      <docidentifier type="ITU" primary="true">K Suppl. 3 (10/2015)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 8 (11/2017)</formattedref>
+      <docidentifier type="ITU" primary="true">K Suppl. 8 (11/2017)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 9 (05/2019)</formattedref>
+      <docidentifier type="ITU" primary="true">K Suppl. 9 (05/2019)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 10 (11/2017)</formattedref>
+      <docidentifier type="ITU" primary="true">K Suppl. 10 (11/2017)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 13 (12/2021)</formattedref>
+      <docidentifier type="ITU" primary="true">K Suppl. 13 (12/2021)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 14 (09/2019)</formattedref>
+      <docidentifier type="ITU" primary="true">K Suppl. 14 (09/2019)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 15 (09/2018)</formattedref>
+      <docidentifier type="ITU" primary="true">K Suppl. 15 (09/2018)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 16 (10/2022)</formattedref>
+      <docidentifier type="ITU" primary="true">K Suppl. 16 (10/2022)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 19 (09/2019)</formattedref>
+      <docidentifier type="ITU" primary="true">K Suppl. 19 (09/2019)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 24 (07/2022)</formattedref>
+      <docidentifier type="ITU" primary="true">K Suppl. 24 (07/2022)</docidentifier>
+    </bibitem>
+  </relation>
+  <relation type="hasEdition">
+    <bibitem>
+      <formattedref format="text/plain" language="en" script="Latn">K Suppl. 29 (07/2022)</formattedref>
+      <docidentifier type="ITU" primary="true">K Suppl. 29 (07/2022)</docidentifier>
+    </bibitem>
+  </relation>
   <relation type="instanceOf">
     <bibitem type="standard">
-      <fetched>2026-01-12</fetched>
-      <uri type="src">https://www.itu.int/myworkspace/#/t-rec/item?id=15177&amp;lang=en</uri>
+      <fetched>2026-01-26</fetched>
+      <title type="title-main" format="text/plain" language="en" script="Latn">Resistibility of telecommunication equipment installed in a telecommunication centre to overvoltages and overcurrents</title>
+      <title type="main" format="text/plain" language="en" script="Latn">Resistibility of telecommunication equipment installed in a telecommunication centre to overvoltages and overcurrents</title>
+      <uri type="src">https://handle.itu.int/11.1002/1000/15177</uri>
+      <uri type="pdf">https://www.itu.int/rec/dologin_pub.asp?lang=e&amp;id=T-REC-K.20-202211-I!!PDF-E&amp;type=items</uri>
       <docidentifier type="ITU" primary="true">ITU-T K.20 (11/2022)</docidentifier>
+      <date type="published">
+        <on>2022-11-29</on>
+      </date>
       <contributor>
         <role type="publisher"/>
         <organization>
@@ -35,10 +228,23 @@
           <uri>www.itu.int</uri>
         </organization>
       </contributor>
+      <edition>18</edition>
       <language>en</language>
       <script>Latn</script>
+      <abstract format="text/plain" language="en" script="Latn">Recommendation ITU-T K.20 specifies resistibility requirements and test procedures for telecommunication equipment that is attached to or installed within a telecommunication centre.
+Overvoltages and overcurrents covered by Recommendation ITU-T K.20 include surges due to lightning on or near the line plant, short term induction from adjacent alternating current (AC) power lines or railway systems, earth potential rise due to power faults, direct contact between telecommunication lines and power lines, and electrostatic discharges (ESDs). The sources for overvoltages in internal lines, between equipment or racks, are mainly inductive coupling caused by lightning currents being conducted in nearby lightning strikes or lightning currents being conducted in nearby conductors.
+Major changes compared with Recommendation ITU-T K.20 (2017) include:
+–	DC insulation resistance test;
+–	revised test exemption for internal short cables;
+–	renaming of some test titles for clarity;
+–	screened cable exemptions;
+–	addition of test 7.10, a twisted pair port transverse/differential test, to Table 7.
+</abstract>
+      <status>
+        <stage>Published</stage>
+      </status>
       <copyright>
-        <from>unknown</from>
+        <from>2022</from>
         <owner>
           <organization>
             <name>International Telecommunication Union</name>
@@ -47,6 +253,186 @@
           </organization>
         </owner>
       </copyright>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K.20 (06/2021)</formattedref>
+          <docidentifier type="ITU" primary="true">K.20 (06/2021)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K.20 (11/2019)</formattedref>
+          <docidentifier type="ITU" primary="true">K.20 (11/2019)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K.20 (07/2019)</formattedref>
+          <docidentifier type="ITU" primary="true">K.20 (07/2019)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K.20 (10/2018)</formattedref>
+          <docidentifier type="ITU" primary="true">K.20 (10/2018)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K.20 (07/2017)</formattedref>
+          <docidentifier type="ITU" primary="true">K.20 (07/2017)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K.20 (12/2016)</formattedref>
+          <docidentifier type="ITU" primary="true">K.20 (12/2016)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K.20 (06/2016)</formattedref>
+          <docidentifier type="ITU" primary="true">K.20 (06/2016)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K.20 (04/2015)</formattedref>
+          <docidentifier type="ITU" primary="true">K.20 (04/2015)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K.20 (11/2011)</formattedref>
+          <docidentifier type="ITU" primary="true">K.20 (11/2011)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K.20 (04/2008)</formattedref>
+          <docidentifier type="ITU" primary="true">K.20 (04/2008)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K.20 (2003) Amd. 1 (11/2004)</formattedref>
+          <docidentifier type="ITU" primary="true">K.20 (2003) Amd. 1 (11/2004)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K.20 (07/2003)</formattedref>
+          <docidentifier type="ITU" primary="true">K.20 (07/2003)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K.20 (2003) Err. 1 (01/2004)</formattedref>
+          <docidentifier type="ITU" primary="true">K.20 (2003) Err. 1 (01/2004)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K.20 (02/2000)</formattedref>
+          <docidentifier type="ITU" primary="true">K.20 (02/2000)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K.20 (10/1996)</formattedref>
+          <docidentifier type="ITU" primary="true">K.20 (10/1996)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K.20 (03/1993)</formattedref>
+          <docidentifier type="ITU" primary="true">K.20 (03/1993)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K.20 (03/1991)</formattedref>
+          <docidentifier type="ITU" primary="true">K.20 (03/1991)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K.20 (11/1988)</formattedref>
+          <docidentifier type="ITU" primary="true">K.20 (11/1988)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K.20 (10/1984)</formattedref>
+          <docidentifier type="ITU" primary="true">K.20 (10/1984)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 3 (10/2015)</formattedref>
+          <docidentifier type="ITU" primary="true">K Suppl. 3 (10/2015)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 8 (11/2017)</formattedref>
+          <docidentifier type="ITU" primary="true">K Suppl. 8 (11/2017)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 9 (05/2019)</formattedref>
+          <docidentifier type="ITU" primary="true">K Suppl. 9 (05/2019)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 10 (11/2017)</formattedref>
+          <docidentifier type="ITU" primary="true">K Suppl. 10 (11/2017)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 13 (12/2021)</formattedref>
+          <docidentifier type="ITU" primary="true">K Suppl. 13 (12/2021)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 14 (09/2019)</formattedref>
+          <docidentifier type="ITU" primary="true">K Suppl. 14 (09/2019)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 15 (09/2018)</formattedref>
+          <docidentifier type="ITU" primary="true">K Suppl. 15 (09/2018)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 16 (10/2022)</formattedref>
+          <docidentifier type="ITU" primary="true">K Suppl. 16 (10/2022)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 19 (09/2019)</formattedref>
+          <docidentifier type="ITU" primary="true">K Suppl. 19 (09/2019)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 24 (07/2022)</formattedref>
+          <docidentifier type="ITU" primary="true">K Suppl. 24 (07/2022)</docidentifier>
+        </bibitem>
+      </relation>
+      <relation type="hasEdition">
+        <bibitem>
+          <formattedref format="text/plain" language="en" script="Latn">K Suppl. 29 (07/2022)</formattedref>
+          <docidentifier type="ITU" primary="true">K Suppl. 29 (07/2022)</docidentifier>
+        </bibitem>
+      </relation>
       <place>Geneva</place>
     </bibitem>
   </relation>
@@ -55,6 +441,10 @@
     <doctype>recommendation</doctype>
     <editorialgroup>
       <bureau>T</bureau>
+      <group type="study-group">
+        <name>ITU-T Study Group 5</name>
+        <acronym>SG</acronym>
+      </group>
     </editorialgroup>
   </ext>
 </bibdata>
