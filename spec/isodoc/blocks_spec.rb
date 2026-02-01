@@ -49,10 +49,12 @@ RSpec.describe IsoDoc do
             <td align="center">6,06</td>
           </tr>
         </tfoot>
+        <key>
         <dl>
         <dt>Drago</dt>
       <dd>A type of rice</dd>
       </dl>
+        </key>
       <note id="B"><p>This is a table about rice</p></note>
       </table>
           </foreword></preface>
@@ -163,10 +165,12 @@ RSpec.describe IsoDoc do
                         <td align="center">6,06</td>
                      </tr>
                   </tfoot>
+                  <key>
                   <dl>
                      <dt>Drago</dt>
                      <dd>A type of rice</dd>
                   </dl>
+                  </key>
                   <note id="B" autonum="">
                      <fmt-name id="_">
                         <span class="fmt-caption-label">
@@ -276,6 +280,7 @@ RSpec.describe IsoDoc do
                          <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;">6,06</td>
                       </tr>
                    </tfoot>
+                   <div class="key">
                    <div class="figdl">
                       <dl>
                          <dt>
@@ -283,6 +288,7 @@ RSpec.describe IsoDoc do
                          </dt>
                          <dd>A type of rice</dd>
                       </dl>
+                   </div>
                    </div>
                    <div id="B" class="Note">
                       <p>
@@ -403,12 +409,14 @@ RSpec.describe IsoDoc do
                      </td>
                   </tr>
                </tfoot>
+               <div class="key">
                <div class="figdl">
                   <p style="text-indent: -2.0cm; margin-left: 2.0cm; tab-stops: 2.0cm;" class="IEEEStdsParagraph">
                      Drago
                      <span style="mso-tab-count:1">  </span>
                      A type of rice
                   </p>
+               </div>
                </div>
                <div>
                   <a name="B" id="B"/>
@@ -475,10 +483,12 @@ RSpec.describe IsoDoc do
         <fn reference="a">
         <p id="_ef2c85b8-5a5a-4ecd-a1e6-92acefaaa852">The time <stem type="AsciiMath">t_90</stem> was estimated to be 18,2 min for this example.</p>
       </fn>
+      <key>
         <dl>
         <dt>A</dt>
         <dd><p>B</p></dd>
         </dl>
+        </key>
       </figure>
       <figure id="figure-B">
       <pre alt="A B">A &#x3c;
@@ -556,10 +566,9 @@ RSpec.describe IsoDoc do
                         </span>
                      </fmt-fn-label>
                   </fn>
-                  <p keep-with-next="true">
-                     <strong>Key</strong>
-                  </p>
-                  <dl class="formula_dl">
+                     <key class="formula_dl">
+                     <name>Key</name>
+               <dl>
                      <dt>
                         <p>
                            <fmt-fn-label>
@@ -590,6 +599,7 @@ RSpec.describe IsoDoc do
                         <p>B</p>
                      </dd>
                   </dl>
+                  </key>
                </figure>
                <figure id="figure-B" autonum="2">
                   <fmt-name id="_">
@@ -641,32 +651,34 @@ RSpec.describe IsoDoc do
                    <img src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7" height="20" width="auto"/>
                    <img src="data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjw/eG1sLXN0eWxlc2hlZXQgdHlwZT0idGV4dC94c2wiIGhyZWY9Ii4uLy4uLy4uL3hzbC9yZXNfZG9jL2ltZ2ZpbGUueHNsIj8+CjwhRE9DVFlQRSBpbWdmaWxlLmNvbnRlbnQgU1lTVEVNICIuLi8uLi8uLi9kdGQvdGV4dC5lbnQiPgo8aW1nZmlsZS5jb250ZW50IG1vZHVsZT0iZnVuZGFtZW50YWxzX29mX3Byb2R1Y3RfZGVzY3JpcHRpb25fYW5kX3N1cHBvcnQiIGZpbGU9ImFjdGlvbl9zY2hlbWFleHBnMS54bWwiPgo8aW1nIHNyYz0iYWN0aW9uX3NjaGVtYWV4cGcxLmdpZiI+CjxpbWcuYXJlYSBzaGFwZT0icmVjdCIgY29vcmRzPSIyMTAsMTg2LDM0MywyMjciIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9iYXNpY19hdHRyaWJ1dGVfc2NoZW1hL2Jhc2ljX2F0dHJpYnV0ZV9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMTAsMTAsOTYsNTEiIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9hY3Rpb25fc2NoZW1hL2FjdGlvbl9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMjEwLDI2NCwzNTgsMzA1IiBocmVmPSIuLi8uLi9yZXNvdXJjZXMvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEueG1sIiAvPgo8L2ltZz4KPC9pbWdmaWxlLmNvbnRlbnQ+Cg==" height="20" width="auto"/>
                    <a href="#figureA-1a" class="TableFootnoteRef">a</a>
-                   <p style="page-break-after: avoid;">
-                      <b>Key</b>
-                   </p>
-                   <div class="figdl">
-                      <dl class="formula_dl">
-                         <dt>
-                            <p>
-                               <sup>a</sup>
-                            </p>
-                         </dt>
-                         <dd>
-                            <div id="fn:figureA-1a" class="footnote">
-                               <p id="_">
-                                  The time
-                                  <span class="stem">(#(t_90)#)</span>
-                                  was estimated to be 18,2 min for this example.
+                   <div class="key formula_dl">
+                      <p style="page-break-after: avoid;">
+                         <b>Key</b>
+                      </p>
+                      <div class="figdl">
+                         <dl>
+                            <dt>
+                               <p>
+                                  <sup>a</sup>
                                </p>
-                            </div>
-                         </dd>
-                         <dt>
-                            <p>A</p>
-                         </dt>
-                         <dd>
-                            <p>B</p>
-                         </dd>
-                      </dl>
+                            </dt>
+                            <dd>
+                               <div id="fn:figureA-1a" class="footnote">
+                                  <p id="_">
+                                     The time
+                                     <span class="stem">(#(t_90)#)</span>
+                                     was estimated to be 18,2 min for this example.
+                                  </p>
+                               </div>
+                            </dd>
+                            <dt>
+                               <p>A</p>
+                            </dt>
+                            <dd>
+                               <p>B</p>
+                            </dd>
+                         </dl>
+                      </div>
                    </div>
                    <p class="FigureTitle" style="text-align:center;">
                       Figure 1—Split-it-right
@@ -702,40 +714,42 @@ RSpec.describe IsoDoc do
              <img src="_.gif" height="20" width="20"/>
              <img src="_.xml" height="20" width="0"/>
              <a href="#figureA-1a" class="TableFootnoteRef">a</a>
-             <p style="page-break-after: avoid;" class="IEEEStdsParagraph">
-                <b>Key</b>
-             </p>
-             <div align="left" style="page-break-after:avoid;">
-                <table style="text-align:left;" class="formula_dl">
-                   <tr>
-                      <td valign="top" align="left">
-                         <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">
-                            <p class="IEEEStdsParagraph">
-                               <sup>a</sup>
+             <div class="key formula_dl" style="page-break-after:avoid;">
+                <p style="page-break-after: avoid;" class="IEEEStdsParagraph">
+                   <b>Key</b>
+                </p>
+                <div align="left">
+                   <table style="text-align:left;" class="formula_dl">
+                      <tr>
+                         <td valign="top" align="left">
+                            <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">
+                               <p class="IEEEStdsParagraph">
+                                  <sup>a</sup>
+                               </p>
                             </p>
-                         </p>
-                      </td>
-                      <td valign="top">
-                         <div>
-                            <a name="ftnfigureA-1a" id="ftnfigureA-1a"/>
-                            <p class="IEEEStdsParagraph">
-                               <a name="_" id="_"/>
-                               The time
-                               <span class="stem">(#(t_90)#)</span>
-                               was estimated to be 18,2 min for this example.
-                            </p>
-                         </div>
-                      </td>
-                   </tr>
-                   <tr>
-                      <td valign="top" align="left">
-                         <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">A</p>
-                      </td>
-                      <td valign="top">
-                         <p class="IEEEStdsParagraph">B</p>
-                      </td>
-                   </tr>
-                </table>
+                         </td>
+                         <td valign="top">
+                            <div>
+                               <a name="ftnfigureA-1a" id="ftnfigureA-1a"/>
+                               <p class="IEEEStdsParagraph">
+                                  <a name="_" id="_"/>
+                                  The time
+                                  <span class="stem">(#(t_90)#)</span>
+                                  was estimated to be 18,2 min for this example.
+                               </p>
+                            </div>
+                         </td>
+                      </tr>
+                      <tr>
+                         <td valign="top" align="left">
+                            <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">A</p>
+                         </td>
+                         <td valign="top">
+                            <p class="IEEEStdsParagraph">B</p>
+                         </td>
+                      </tr>
+                   </table>
+                </div>
              </div>
              <p class="IEEEStdsRegularFigureCaption" style="text-align:center;">
                 —Split-it-right
@@ -1185,6 +1199,8 @@ RSpec.describe IsoDoc do
           <preface><foreword id="A" displayorder="1">
           <formula id="_be9158af-7e93-4ee2-90c5-26d31c181934" unnumbered="true"  keep-with-next="true" keep-lines-together="true">
         <stem type="AsciiMath">r = 1 %</stem>
+        <key>
+        <p>Introductory paragraph</p>
       <dl id="_e4fe94fe-1cde-49d9-b1ad-743293b7e21d">
         <dt>
           <stem type="AsciiMath">r</stem>
@@ -1193,6 +1209,7 @@ RSpec.describe IsoDoc do
           <p id="_1b99995d-ff03-40f5-8f2e-ab9665a69b77">is the repeatability limit.</p>
         </dd>
       </dl>
+      </key>
           <note id="_83083c7a-6c85-43db-a9fa-4d8edd0c9fc0">
         <p id="_511aaa98-4116-42af-8e5b-c87cdf5bfdc8">[durationUnits] is essentially a duration statement without the "P" prefix. "P" is unnecessary because between "G" and "U" duration is always expressed.</p>
       </note>
@@ -1220,7 +1237,9 @@ RSpec.describe IsoDoc do
                      <semx element="stem" source="_">r = 1 %</semx>
                   </fmt-stem>
                   <p keep-with-next="true">where</p>
-                  <dl id="_" class="formula_dl">
+                   <key class="formula_dl">
+                   <p>Introductory paragraph</p>
+               <dl id="_">
                      <dt>
                         <stem type="AsciiMath" id="_">r</stem>
                         <fmt-stem type="AsciiMath">
@@ -1231,6 +1250,7 @@ RSpec.describe IsoDoc do
                         <p id="_">is the repeatability limit.</p>
                      </dd>
                   </dl>
+                  </key>
                   <note id="_" autonum="">
                      <fmt-name id="_">
                         <span class="fmt-caption-label">
@@ -1277,45 +1297,46 @@ RSpec.describe IsoDoc do
     html = <<~OUTPUT
           #{HTML_HDR}
           <br/>
-          <div id="A">
-            <h1 class='ForewordTitle'>Foreword</h1>
-            <div id="_" style='page-break-after: avoid;page-break-inside: avoid;'>
-              <div class='formula'>
-                <p>
-                  <span class='stem'>(#(r = 1 %)#)</span>
-                </p>
-              </div>
-              <p style="page-break-after: avoid;">where</p>
-              <div class="figdl">
-              <dl id="_" class='formula_dl'>
-                <dt>
-                  <span class='stem'>(#(r)#)</span>
-                </dt>
-                <dd>
-                  <p id="_">is the repeatability limit.</p>
-                </dd>
-              </dl>
-              </div>
-              <div id="_" class='Note'>
-                <p>
-                  <span class='note_label'>NOTE&#x2014;</span>
-                  [durationUnits] is essentially a duration statement without the "P"
-                  prefix. "P" is unnecessary because between "G" and "U" duration is
-                  always expressed.
-                </p>
-              </div>
-            </div>
-            <div id="_">
-              <div class='formula'>
-                <p>
-                  <span class='stem'>(#(r = 1 %)#)</span>
-                  &#xa0; (1)
-                </p>
-              </div>
-            </div>
+             <div id="A">
+                <h1 class="ForewordTitle">Foreword</h1>
+                <div id="_" style="page-break-after: avoid;page-break-inside: avoid;">
+                   <div class="formula">
+                      <p>
+                         <span class="stem">(#(r = 1 %)#)</span>
+                      </p>
+                   </div>
+                   <p style="page-break-after: avoid;">where</p>
+                   <div class="key formula_dl">
+                   <p>Introductory paragraph</p>
+                      <div class="figdl">
+                         <dl id="_">
+                            <dt>
+                               <span class="stem">(#(r)#)</span>
+                            </dt>
+                            <dd>
+                               <p id="_">is the repeatability limit.</p>
+                            </dd>
+                         </dl>
+                      </div>
+                   </div>
+                   <div id="_" class="Note">
+                      <p>
+                         <span class="note_label">NOTE—</span>
+                         [durationUnits] is essentially a duration statement without the "P" prefix. "P" is unnecessary because between "G" and "U" duration is always expressed.
+                      </p>
+                   </div>
+                </div>
+                <div id="_">
+                   <div class="formula">
+                      <p>
+                         <span class="stem">(#(r = 1 %)#)</span>
+                           (1)
+                      </p>
+                   </div>
+                </div>
+             </div>
           </div>
-        </div>
-      </body>
+       </body>
     OUTPUT
     word = <<~OUTPUT
       <div>
@@ -1330,6 +1351,7 @@ RSpec.describe IsoDoc do
              </p>
            </div>
            <p style="page-break-after: avoid;" class="IEEEStdsParagraph">where</p>
+           <p class="IEEEStdsParagraph">Introductory paragraph</p>
            <p class="IEEEStdsEquationVariableList"><span class="stem">(#(r)#)</span><span style="mso-tab-count:1">  </span>is the repeatability limit.</p>
            <div>
              <a name="_" id="_"/>
