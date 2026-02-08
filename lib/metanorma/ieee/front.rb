@@ -73,7 +73,7 @@ module Metanorma
         ieee_id_out(xml, params)
       end
 
-      def metadata_id_primary_type(node)
+      def metadata_id_primary_type(_node)
         "IEEE"
       end
 
@@ -150,7 +150,8 @@ module Metanorma
         status = node.attr("status") || node.attr("docstage") ||
           (node.attr("version") || node.attr("draft") ? "draft" : "approved")
         xml.status do |s|
-          add_noko_elem(s, "stage", status)
+          add_noko_elem(s, "stage", status,
+                        abbreviation: node.attr("docstage-abbrev"))
         end
       end
 
