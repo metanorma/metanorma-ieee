@@ -1,5 +1,5 @@
 <bibdata type="standard" schema-version="v1.2.9">
-  <fetched>2026-01-26</fetched>
+  <fetched>2026-02-15</fetched>
   <title type="title-main" format="text/plain" language="en" script="Latn">Gigabit-capable Passive Optical Networks (G-PON): Physical Media Dependent (PMD) layer specification</title>
   <title type="main" format="text/plain" language="en" script="Latn">Gigabit-capable Passive Optical Networks (G-PON): Physical Media Dependent (PMD) layer specification</title>
   <uri type="src">https://handle.itu.int/11.1002/1000/14000</uri>
@@ -445,7 +445,7 @@
   </relation>
   <relation type="instanceOf">
     <bibitem type="standard">
-      <fetched>2026-01-26</fetched>
+      <fetched>2026-02-15</fetched>
       <title type="title-main" format="text/plain" language="en" script="Latn">Gigabit-capable Passive Optical Networks (G-PON): Physical Media Dependent (PMD) layer specification</title>
       <title type="main" format="text/plain" language="en" script="Latn">Gigabit-capable Passive Optical Networks (G-PON): Physical Media Dependent (PMD) layer specification</title>
       <uri type="src">https://handle.itu.int/11.1002/1000/14000</uri>

@@ -48,9 +48,9 @@ module IsoDoc
         parent.children[start_index..end_index]
       end
 
-      def unwrap_definition1(d)
+      def unwrap_definition1(defn)
         %w(verbal-definition non-verbal-representation).each do |e|
-          v = d.at(ns("./#{e}")) or next
+          v = defn.at(ns("./#{e}")) or next
           if v.elements.all? { |n| %w(source p).include?(n.name) }
             p = v.xpath(ns("./p"))
             s = v.xpath(ns("./source"))
@@ -58,9 +58,7 @@ module IsoDoc
             v.children =
               "#{p.map(&:children).map do |x|
                 to_xml(x)
-              end.join("\n")}#{s.map do |x|
-                               to_xml(x)
-                             end.join}"
+              end.join("\n")}#{s.map { |x| to_xml(x) }.join}"
           else
             wrap_termsource_in_parens(v.xpath(ns("./source")))
           end
@@ -190,11 +188,6 @@ module IsoDoc
       end
 
       def term(docxml); end
-
-      #def term1(elem)
-        #super
-        #elem.at(ns("./fmt-name"))&.remove # keep fmt-xref-label
-      #end
 
       def license_termnote(elem, idx)
         elem.name = "fn"
