@@ -1,13 +1,13 @@
 require "spec_helper"
 require "relaton_iso"
 
-RSpec.describe Metanorma::Ieee do
+RSpec.describe Metanorma::Ieee, type: :validation do
   before(:all) do
     FileUtils.rm_f "test.err.html"
   end
 
   it "Warns of illegal doctype" do
-    Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    errors = convert_and_capture_errors(<<~INPUT)
       = Document title
       Author
       :docfile: test.adoc
@@ -17,12 +17,11 @@ RSpec.describe Metanorma::Ieee do
 
       text
     INPUT
-    expect(File.read("test.err.html"))
-      .to include("pizza is not a recognised document type")
+    expect(errors).to include("pizza is not a recognised document type")
   end
 
   it "Warns of illegal docsubtype" do
-    Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    errors = convert_and_capture_errors(<<~INPUT)
       = Document title
       Author
       :docfile: test.adoc
@@ -32,12 +31,11 @@ RSpec.describe Metanorma::Ieee do
 
       text
     INPUT
-    expect(File.read("test.err.html"))
-      .to include("pizza is not a recognised document subtype")
+    expect(errors).to include("pizza is not a recognised document subtype")
   end
 
   it "Warns of illegal docstage" do
-    Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    errors = convert_and_capture_errors(<<~INPUT)
       = Document title
       Author
       :docfile: test.adoc
@@ -47,153 +45,169 @@ RSpec.describe Metanorma::Ieee do
 
       text
     INPUT
-    expect(File.read("test.err.html"))
-      .to include("pizza is not a recognised stage")
+    expect(errors).to include("pizza is not a recognised stage")
   end
 
-  it "Warns of uncapitalised word in title other than preposition (or article)" do
-    Asciidoctor.convert(<<~INPUT, *OPTIONS)
-      = Document title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :no-isobib:
-      :doctype: pizza
+  context "Capitalisation validation" do
+    let(:uncapitalised_title) do
+      convert_and_capture_errors(<<~INPUT)
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib:
+        :doctype: pizza
 
-      text
-    INPUT
-    expect(File.read("test.err.html"))
-      .to include("Title contains uncapitalised word other than preposition")
+        text
+      INPUT
+    end
 
-    Asciidoctor.convert(<<~INPUT, *OPTIONS)
-      = Document save for the Title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :no-isobib:
-      :doctype: pizza
+    let(:capitalised_title) do
+      convert_and_capture_errors(<<~INPUT)
+        = Document save for the Title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib:
+        :doctype: pizza
 
-      text
-    INPUT
-    expect(File.read("test.err.html"))
-      .not_to include("Title contains uncapitalised word other than preposition")
+        text
+      INPUT
+    end
+
+    it "Warns of uncapitalised word in title other than preposition (or article)" do
+      expect(uncapitalised_title).to include("Title contains uncapitalised word other than preposition")
+      expect(capitalised_title).not_to include("Title contains uncapitalised word other than preposition")
+    end
   end
 
-  it "Warns of uncapitalised title of figure" do
-    Asciidoctor.convert(<<~INPUT, *OPTIONS)
-      = Document title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :no-isobib:
-      :doctype: pizza
+  context "Figure and table heading capitalisation" do
+    let(:uncapitalised_figure) do
+      convert_and_capture_errors(<<~INPUT)
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib:
+        :doctype: pizza
 
-      .uncapitalised caption
-      image::spec/assets/rice_image1.png[]
-    INPUT
-    expect(File.read("test.err.html"))
-      .to include("figure heading should be capitalised")
+        .uncapitalised caption
+        image::spec/assets/rice_image1.png[]
+      INPUT
+    end
 
-    Asciidoctor.convert(<<~INPUT, *OPTIONS)
-      = Document save for the Title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :no-isobib:
-      :doctype: pizza
+    let(:capitalised_figure) do
+      convert_and_capture_errors(<<~INPUT)
+        = Document save for the Title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib:
+        :doctype: pizza
 
-      .Capitalised caption
-      image::spec/assets/rice_image1.png[]
-    INPUT
-    expect(File.read("test.err.html"))
-      .not_to include("figure heading should be capitalised")
-  end
+        .Capitalised caption
+        image::spec/assets/rice_image1.png[]
+      INPUT
+    end
 
-  it "Warns of uncapitalised title of table" do
-    Asciidoctor.convert(<<~INPUT, *OPTIONS)
-      = Document title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :no-isobib:
-      :doctype: pizza
+    let(:uncapitalised_table_caption) do
+      convert_and_capture_errors(<<~INPUT)
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib:
+        :doctype: pizza
 
-      .uncapitalised caption
-      |===
-      |A |B
-      |===
-    INPUT
-    expect(File.read("test.err.html"))
-      .to include("table heading should be capitalised")
+        .uncapitalised caption
+        |===
+        |A |B
+        |===
+      INPUT
+    end
 
-    Asciidoctor.convert(<<~INPUT, *OPTIONS)
-      = Document save for the Title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :no-isobib:
-      :doctype: pizza
+    let(:capitalised_table_caption) do
+      convert_and_capture_errors(<<~INPUT)
+        = Document save for the Title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib:
+        :doctype: pizza
 
-      .Capitalised caption
-      |===
-      |A |B
-      |===
-    INPUT
-    expect(File.read("test.err.html"))
-      .not_to include("table heading should be capitalised")
-  end
+        .Capitalised caption
+        |===
+        |A |B
+        |===
+      INPUT
+    end
 
-  it "Warns of uncapitalised heading of table" do
-    Asciidoctor.convert(<<~INPUT, *OPTIONS)
-      = Document title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :no-isobib:
-      :doctype: pizza
+    let(:uncapitalised_table_cell) do
+      convert_and_capture_errors(<<~INPUT)
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib:
+        :doctype: pizza
 
-      |===
-      |a |B
+        |===
+        |a |B
 
-      |C |D
-      |===
-    INPUT
-    expect(File.read("test.err.html"))
-      .to include("table heading should be capitalised")
+        |C |D
+        |===
+      INPUT
+    end
 
-    Asciidoctor.convert(<<~INPUT, *OPTIONS)
-      = Document title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :no-isobib:
-      :doctype: pizza
+    let(:uncapitalised_table_header_cell) do
+      convert_and_capture_errors(<<~INPUT)
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib:
+        :doctype: pizza
 
-      |===
-      |A |B
+        |===
+        |A |B
 
-      h|c |D
-      |===
-    INPUT
-    expect(File.read("test.err.html"))
-      .to include("table heading should be capitalised")
+        h|c |D
+        |===
+      INPUT
+    end
 
-    Asciidoctor.convert(<<~INPUT, *OPTIONS)
-      = Document save for the Title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :no-isobib:
-      :doctype: pizza
+    let(:capitalised_table_no_header) do
+      convert_and_capture_errors(<<~INPUT)
+        = Document save for the Title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib:
+        :doctype: pizza
 
-      |===
-      |A |B
+        |===
+        |A |B
 
-      |c |D
-      |===
-    INPUT
-    expect(File.read("test.err.html"))
-      .not_to include("table heading should be capitalised")
+        |c |D
+        |===
+      INPUT
+    end
+
+    it "Warns of uncapitalised title of figure" do
+      expect(uncapitalised_figure).to include("figure heading should be capitalised")
+      expect(capitalised_figure).not_to include("figure heading should be capitalised")
+    end
+
+    it "Warns of uncapitalised title of table" do
+      expect(uncapitalised_table_caption).to include("table heading should be capitalised")
+      expect(capitalised_table_caption).not_to include("table heading should be capitalised")
+    end
+
+    it "Warns of uncapitalised heading of table" do
+      expect(uncapitalised_table_cell).to include("table heading should be capitalised")
+      expect(uncapitalised_table_header_cell).to include("table heading should be capitalised")
+      expect(capitalised_table_no_header).not_to include("table heading should be capitalised")
+    end
   end
 
   it "warns of undated reference in normative references" do

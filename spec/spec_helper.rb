@@ -39,7 +39,7 @@ RSpec.configure do |config|
   #   end
 end
 
-OPTIONS = [backend: :ieee, header_footer: true].freeze
+OPTIONS = [{ backend: :ieee, header_footer: true }].freeze
 
 def presxml_options
   { semanticxmlinsert: "false" }
@@ -57,7 +57,7 @@ def htmlencode(xml)
     .gsub("&#x22;", '"').gsub("&#x3c;", "<")
     .gsub("&#x26;", "&").gsub("&#x27;", "'")
     .gsub(/\\u(....)/) do |_s|
-    "&#x#{$1.downcase};"
+      "&#x#{$1.downcase};"
   end
 end
 
@@ -81,7 +81,7 @@ def strip_guid(xml)
     .gsub(%r[ reference=['"]_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}_], ' reference="__')
     .gsub(%r[ reference=['"][0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}.], ' reference="_"')
     .gsub(%r[ bibitemid=['"]_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}.], ' bibitemid="_"')
-    .gsub(%r[ NOTEREF _Ref\d+], ' NOTEREF _Ref')
+    .gsub(%r[ NOTEREF _Ref\d+], " NOTEREF _Ref")
     .gsub(%r[mso-bookmark:_Ref\d+], "mso-bookmark:_Ref")
     .gsub(%r{<fetched>[^<]+</fetched>}, "<fetched/>")
     .gsub(%r{ schema-version="[^"]+"}, "")
@@ -314,5 +314,40 @@ end
 def mock_pdf
   allow(Mn2pdf).to receive(:convert) do |url, output, _c, _d|
     FileUtils.cp(url.gsub('"', ""), output.gsub('"', ""))
+  end
+end
+
+# Helper module for in-memory error capture in validation tests
+module ValidationTestHelpers
+  # Convert document and return errors without excessive file I/O
+  def convert_and_capture_errors(input, options = OPTIONS)
+    # Use a consistent error file location
+    error_file = "test.err.html"
+    FileUtils.rm_rf(error_file)
+
+    # Perform conversion
+    Asciidoctor.convert(input, *options)
+
+    # Read and return errors if file exists
+    File.exist?(error_file) ? File.read(error_file) : ""
+  end
+
+  # Memoized conversion helper - converts once and caches result
+  # Useful for Phase 2 optimization with shared contexts
+  def make_shared_convert(identifier, input, options = OPTIONS)
+    @_shared_conversion_cache ||= {}
+
+    @_shared_conversion_cache[identifier] ||= convert_and_capture_errors(input,
+                                                                         options)
+  end
+end
+
+RSpec.configure do |config|
+  # Include ValidationTestHelpers for tests marked with type: :validation
+  config.include ValidationTestHelpers, type: :validation
+
+  # Clean up conversion cache between test runs
+  config.before(:suite) do
+    @_shared_conversion_cache = {}
   end
 end
