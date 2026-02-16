@@ -2706,10 +2706,10 @@
 	</xsl:template>
 	<xsl:template match="mn:indexsect" mode="index">
 		<fo:block id="{@id}" span="all">
-			<xsl:apply-templates select="mn:title"/>
+			<xsl:apply-templates select="mn:fmt-title"/>
 		</fo:block>
 		<fo:block role="Index">
-			<xsl:apply-templates select="*[not(self::mn:title)]"/>
+			<xsl:apply-templates select="*[not(self::mn:fmt-title)]"/>
 		</fo:block>
 	</xsl:template>
 
@@ -5282,7 +5282,23 @@
 			<xsl:sort select="@displayorder" data-type="number"/>
 			<xsl:element name="page_sequence" namespace="{$namespace_full}">
 				<xsl:attribute name="main_page_sequence"/>
-				<xsl:apply-templates select="." mode="update_xml_step_move_pagebreak"/>
+
+				<!-- from common <xsl:template name="index-pages"> -->
+				<xsl:variable name="docid">
+					<xsl:call-template name="getDocumentId"/>
+				</xsl:variable>
+
+				<xsl:variable name="current_document_index_id">
+					<xsl:apply-templates select="." mode="index_add_id">
+						<xsl:with-param name="docid" select="$docid"/>
+					</xsl:apply-templates>
+				</xsl:variable>
+				<xsl:variable name="current_document_index">
+					<xsl:apply-templates select="xalan:nodeset($current_document_index_id)" mode="index_update"/>
+				</xsl:variable>
+
+				<!-- xalan:nodeset($current_document_index) -->
+				<xsl:apply-templates select="xalan:nodeset($current_document_index)" mode="update_xml_step_move_pagebreak"/>
 			</xsl:element>
 		</xsl:for-each>
 	</xsl:template>
@@ -11101,6 +11117,18 @@
 			</xsl:with-param>
 		</xsl:call-template>
 	</xsl:template> <!-- xref -->
+<xsl:template match="mn:indexsect//mn:fmt-xref[@pagenumber = 'true']" priority="2">
+	<xsl:call-template name="insert_basic_link">
+		<xsl:with-param name="element">
+			<fo:basic-link internal-destination="{@target}" fox:alt-text="{@target}" xsl:use-attribute-sets="xref-style">
+				<fo:inline>
+					<xsl:copy-of select="@id"/>
+					<fo:page-number-citation ref-id="{@target}"/>
+				</fo:inline>
+			</fo:basic-link>
+		</xsl:with-param>
+	</xsl:call-template>
+</xsl:template>
 
 	<!-- command between two xref points to non-standard bibitem -->
 	<xsl:template match="text()[. = ','][preceding-sibling::node()[1][self::mn:sup][mn:fmt-xref[@type = 'footnote']] and    following-sibling::node()[1][self::mn:sup][mn:fmt-xref[@type = 'footnote']]]"><xsl:value-of select="."/>
@@ -14535,8 +14563,24 @@
 	<!-- End Highlight syntax styles -->
 
 	<!-- Index section styles -->
+
+	<xsl:attribute-set name="indexsect-region-body-style">
+		<xsl:attribute name="column-count">2</xsl:attribute>
+		<xsl:attribute name="column-gap">10mm</xsl:attribute>
+	</xsl:attribute-set>
+
+	<xsl:attribute-set name="indexsect-title-block-style">
+		<xsl:attribute name="role">SKIP</xsl:attribute>
+		<xsl:attribute name="span">all</xsl:attribute>
+	</xsl:attribute-set>
+
 	<xsl:attribute-set name="indexsect-title-style">
 		<xsl:attribute name="role">H1</xsl:attribute>
+		<xsl:attribute name="font-weight">bold</xsl:attribute>
+		<xsl:attribute name="margin-bottom">24pt</xsl:attribute>
+		<xsl:attribute name="font-family">Arial</xsl:attribute>
+		<xsl:attribute name="font-size">12pt</xsl:attribute>
+		<xsl:attribute name="margin-bottom">24pt</xsl:attribute>
 	</xsl:attribute-set> <!-- indexsect-title-style -->
 
 	<xsl:template name="refine_indexsect-title-style">
@@ -14561,6 +14605,27 @@
 			<bookmark><xsl:value-of select="@id"/></bookmark>
 		</xsl:for-each>
 	</xsl:variable>
+
+	<xsl:template name="index-pages">
+		<xsl:variable name="num"><xsl:number level="any" count="mn:metanorma"/></xsl:variable>
+
+		<xsl:variable name="docid">
+			<xsl:call-template name="getDocumentId"/>
+		</xsl:variable>
+
+		<xsl:variable name="current_document_index_id">
+			<xsl:apply-templates select="//mn:indexsect" mode="index_add_id">
+				<xsl:with-param name="docid" select="$docid"/>
+			</xsl:apply-templates>
+		</xsl:variable>
+		<xsl:variable name="current_document_index">
+			<xsl:apply-templates select="xalan:nodeset($current_document_index_id)" mode="index_update"/>
+		</xsl:variable>
+
+		<xsl:apply-templates select="xalan:nodeset($current_document_index)" mode="index">
+			<xsl:with-param name="num" select="$num"/>
+		</xsl:apply-templates>
+	</xsl:template>
 
 	<xsl:template match="@*|node()" mode="index_add_id">
 		<xsl:param name="docid"/>
@@ -14614,7 +14679,7 @@
 	<xsl:template match="mn:indexsect//mn:li" mode="index_update">
 		<xsl:copy>
 			<xsl:apply-templates select="@*" mode="index_update"/>
-		<xsl:apply-templates select="node()[not(self::mn:fmt-name)][1]" mode="process_li_element"/>
+			<xsl:apply-templates select="node()[not(self::mn:fmt-name)][1]" mode="process_li_element"/>
 		</xsl:copy>
 	</xsl:template>
 
