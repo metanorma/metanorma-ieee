@@ -210,285 +210,295 @@ RSpec.describe Metanorma::Ieee, type: :validation do
     end
   end
 
-  it "warns of undated reference in normative references" do
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
-      #{VALIDATING_BLANK_HDR}
+  context "Reference validation" do
+    let(:undated_reference) do
+      convert_and_capture_errors(<<~"INPUT")
+        #{VALIDATING_BLANK_HDR}
 
-      == Scope
-      <<iso123,clause=1>>
+        == Scope
+        <<iso123,clause=1>>
 
-      [bibliography]
-      == Normative References
-      * [[[iso123,ISO 123]]] _Standard_
-    INPUT
-    expect(File.read("test.err.html"))
-      .to include("Normative reference iso123 is not dated")
+        [bibliography]
+        == Normative References
+        * [[[iso123,ISO 123]]] _Standard_
+      INPUT
+    end
 
-    Asciidoctor.convert(<<~INPUT, *OPTIONS)
-      #{VALIDATING_BLANK_HDR}
+    let(:dated_reference) do
+      convert_and_capture_errors(<<~INPUT)
+        #{VALIDATING_BLANK_HDR}
 
-      == Scope
-      <<iso123,clause=1>>
+        == Scope
+        <<iso123,clause=1>>
 
-      [bibliography]
-      == Normative References
-      * [[[iso123,ISO 123:1985]]] _Standard_
-    INPUT
-    expect(File.read("test.err.html"))
-      .not_to include("Normative reference iso123 is not dated")
+        [bibliography]
+        == Normative References
+        * [[[iso123,ISO 123:1985]]] _Standard_
+      INPUT
+    end
+
+    let(:dated_references_with_parts) do
+      convert_and_capture_errors(<<~"INPUT")
+        #{VALIDATING_BLANK_HDR}
+
+        == Scope
+        <<iso123,clause=1>>
+
+        [bibliography]
+        == Normative References
+        * [[[iso123,ISO 123-2000]]] _Standard_
+        * [[[iso124,ISO 123-2000-12]]] _Standard_
+      INPUT
+    end
+
+    it "warns of undated reference in normative references" do
+      expect(undated_reference).to include("Normative reference iso123 is not dated")
+      expect(dated_reference).not_to include("Normative reference iso123 is not dated")
+    end
+
+    it "warns that undated reference has locality" do
+      expect(undated_reference).to include("Undated reference ISO 123 should not contain specific elements")
+    end
+
+    it "does not warn for dated references with parts" do
+      expect(dated_references_with_parts).not_to include("Undated reference ISO 123-2000 should not contain specific elements")
+      expect(dated_references_with_parts).not_to include("Undated reference ISO 123-2000-12 should not contain specific elements")
+    end
   end
 
-  it "warns that undated reference has locality" do
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
-      #{VALIDATING_BLANK_HDR}
+  context "List depth validation" do
+    let(:unordered_3_levels) do
+      convert_and_capture_errors(<<~"INPUT")
+        #{VALIDATING_BLANK_HDR}
 
-      == Scope
-      <<iso123,clause=1>>
+        == Clause
 
-      [bibliography]
-      == Normative References
-      * [[[iso123,ISO 123]]] _Standard_
-    INPUT
-    expect(File.read("test.err.html"))
-      .to include("Undated reference ISO 123 should not contain " \
-                  "specific elements")
+        * List
+        ** List
+        *** List
+      INPUT
+    end
 
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
-      #{VALIDATING_BLANK_HDR}
+    let(:unordered_2_levels) do
+      convert_and_capture_errors(<<~"INPUT")
+        #{VALIDATING_BLANK_HDR}
 
-      == Scope
-      <<iso123,clause=1>>
+        == Clause
 
-      [bibliography]
-      == Normative References
-      * [[[iso123,ISO 123-2000]]] _Standard_
-      * [[[iso124,ISO 123-2000-12]]] _Standard_
-    INPUT
-    expect(File.read("test.err.html"))
-      .not_to include("Undated reference ISO 123-2000 should not contain " \
-                      "specific elements")
-    expect(File.read("test.err.html"))
-      .not_to include("Undated reference ISO 123-2000-12 should not contain " \
-                      "specific elements")
+        * List
+        ** List
+      INPUT
+    end
+
+    let(:ordered_6_levels) do
+      convert_and_capture_errors(<<~"INPUT")
+        #{VALIDATING_BLANK_HDR}
+
+        == Clause
+
+        . List
+        .. List
+        ... List
+        .... List
+        ..... List
+        ...... List
+      INPUT
+    end
+
+    let(:ordered_5_levels) do
+      convert_and_capture_errors(<<~"INPUT")
+        #{VALIDATING_BLANK_HDR}
+
+        == Clause
+
+        . List
+        .. List
+        ... List
+        .... List
+        ..... List
+      INPUT
+    end
+
+    let(:subclause_6_levels) do
+      convert_and_capture_errors(<<~"INPUT")
+        #{VALIDATING_BLANK_HDR}
+
+        == Clause
+
+        === Clause
+
+        ==== Clause
+
+        ===== Clause
+
+        ====== Clause
+
+        [level=6]
+        ====== Clause
+
+      INPUT
+    end
+
+    let(:subclause_5_levels) do
+      convert_and_capture_errors(<<~"INPUT")
+        #{VALIDATING_BLANK_HDR}
+
+        == Clause
+
+        === Clause
+
+        ==== Clause
+
+        ===== Clause
+
+        ====== Clause
+
+      INPUT
+    end
+
+    let(:only_child_subclause) do
+      convert_and_capture_errors(<<~"INPUT")
+        #{VALIDATING_BLANK_HDR}
+        == Clause
+
+        === Subclause
+
+      INPUT
+    end
+
+    let(:multiple_ordered_lists) do
+      convert_and_capture_errors(<<~"INPUT")
+        #{VALIDATING_BLANK_HDR}
+
+        == Clause
+
+        . A
+        .. B
+        ... C
+
+        a
+
+        . A
+        .. B
+
+        a
+
+        . B
+
+      INPUT
+    end
+
+    let(:multiple_ordered_lists_in_subclauses) do
+      convert_and_capture_errors(<<~"INPUT")
+        #{VALIDATING_BLANK_HDR}
+
+        == Clause
+
+        . A
+        .. B
+        ... C
+
+        === Clause
+        a
+
+        . A
+        .. B
+
+        a
+
+      INPUT
+    end
+
+    it "Warn if unordered list more than 2 levels deep" do
+      expect(unordered_3_levels).to include("Use ordered lists for lists more than two levels deep")
+      expect(unordered_2_levels).not_to include("Use ordered lists for lists more than two levels deep")
+    end
+
+    it "Warn if ordered list more than 5 levels deep" do
+      expect(ordered_6_levels).to include("Ordered lists should not be more than five levels deep")
+      expect(ordered_5_levels).not_to include("Ordered lists should not be more than five levels deep")
+    end
+
+    it "Warn if more than 5 levels of subclause" do
+      expect(subclause_6_levels).to include("Exceeds the maximum clause depth of 5")
+      expect(subclause_5_levels).not_to include("exceeds the maximum clause depth of 5")
+    end
+
+    it "Warning if subclause is only child of its parent, or none" do
+      expect(only_child_subclause).to include("subclause is only child")
+    end
+
+    it "Warn if more than one ordered lists in a clause" do
+      expect(multiple_ordered_lists).to include("More than 1 ordered list in a numbered clause")
+      expect(multiple_ordered_lists_in_subclauses).not_to include("More than 1 ordered list in a numbered clause")
+    end
   end
 
-  it "Warn if unordered list more than 2 levels deep" do
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
-      #{VALIDATING_BLANK_HDR}
+  context "Crossreference validation" do
+    let(:xref_with_dash_range) do
+      convert_and_capture_errors(<<~INPUT)
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib:
+        :doctype: pizza
 
-      == Clause
+        <<ref1,clause=3-5>>
 
-      * List
-      ** List
-      *** List
-    INPUT
-    expect(File.read("test.err.html"))
-      .to include("Use ordered lists for lists more than two levels deep")
+        [bibliography]
+        == Bibliography
 
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
-      #{VALIDATING_BLANK_HDR}
+        * [[[ref1,XYZ]]] _Standard_
+      INPUT
+    end
 
-      == Clause
+    let(:xref_with_to_range) do
+      convert_and_capture_errors(<<~INPUT)
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib:
+        :doctype: pizza
 
-      * List
-      ** List
-    INPUT
-    expect(File.read("test.err.html"))
-      .not_to include("Use ordered lists for lists more than two levels deep")
-  end
+        <<ref1,clause=3;to!clause=5>>
 
-  it "Warn if ordered list more than 5 levels deep" do
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
-      #{VALIDATING_BLANK_HDR}
+        [bibliography]
+        == Bibliography
 
-      == Clause
+        * [[[ref1,XYZ]]] _Standard_
+      INPUT
+    end
 
-      . List
-      .. List
-      ... List
-      .... List
-      ..... List
-      ...... List
-    INPUT
-    expect(File.read("test.err.html"))
-      .to include("Ordered lists should not be more than five levels deep")
+    let(:xref_without_range) do
+      convert_and_capture_errors(<<~INPUT)
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :no-isobib:
+        :doctype: pizza
 
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
-      #{VALIDATING_BLANK_HDR}
+        <<ref1,clause=3>>
 
-      == Clause
+        [bibliography]
+        == Bibliography
 
-      . List
-      .. List
-      ... List
-      .... List
-      ..... List
-    INPUT
-    expect(File.read("test.err.html"))
-      .not_to include("Ordered lists should not be more than five levels deep")
-  end
+        * [[[ref1,XYZ]]] _Standard_
+      INPUT
+    end
 
-  it "Warn if more than 5 levels of subclause" do
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
-      #{VALIDATING_BLANK_HDR}
-
-      == Clause
-
-      === Clause
-
-      ==== Clause
-
-      ===== Clause
-
-      ====== Clause
-
-      [level=6]
-      ====== Clause
-
-    INPUT
-    expect(File.read("test.err.html"))
-      .to include("Exceeds the maximum clause depth of 5")
-
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
-      #{VALIDATING_BLANK_HDR}
-
-      == Clause
-
-      === Clause
-
-      ==== Clause
-
-      ===== Clause
-
-      ====== Clause
-
-    INPUT
-    expect(File.read("test.err.html"))
-      .not_to include("exceeds the maximum clause depth of 5")
-  end
-
-  it "Warning if subclause is only child of its parent, or none" do
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
-      #{VALIDATING_BLANK_HDR}
-      == Clause
-
-      === Subclause
-
-    INPUT
-    expect(File.read("test.err.html"))
-      .to include("subclause is only child")
-  end
-
-  it "Warn if more than one ordered lists in a clause" do
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
-      #{VALIDATING_BLANK_HDR}
-
-      == Clause
-
-      . A
-      .. B
-      ... C
-
-      a
-
-      . A
-      .. B
-
-      a
-
-      . B
-
-    INPUT
-    expect(File.read("test.err.html"))
-      .to include("More than 1 ordered list in a numbered clause")
-
-    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
-      #{VALIDATING_BLANK_HDR}
-
-      == Clause
-
-      . A
-      .. B
-      ... C
-
-      === Clause
-      a
-
-      . A
-      .. B
-
-      a
-
-    INPUT
-    expect(File.read("test.err.html"))
-      .not_to include("More than 1 ordered list in a numbered clause")
-  end
-
-  it "Warns of ranges in crossreferences" do
-    Asciidoctor.convert(<<~INPUT, *OPTIONS)
-      = Document title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :no-isobib:
-      :doctype: pizza
-
-      <<ref1,clause=3-5>>
-
-      [bibliography]
-      == Bibliography
-
-      * [[[ref1,XYZ]]] _Standard_
-    INPUT
-
-    expect(File.read("test.err.html"))
-      .to include("Cross-reference contains range, "\
-                  "should be separate cross-references")
-
-    Asciidoctor.convert(<<~INPUT, *OPTIONS)
-      = Document title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :no-isobib:
-      :doctype: pizza
-
-      <<ref1,clause=3;to!clause=5>>
-
-      [bibliography]
-      == Bibliography
-
-      * [[[ref1,XYZ]]] _Standard_
-    INPUT
-
-    expect(File.read("test.err.html"))
-      .to include("Cross-reference contains range, "\
-                  "should be separate cross-references")
-
-    Asciidoctor.convert(<<~INPUT, *OPTIONS)
-      = Document title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :no-isobib:
-      :doctype: pizza
-
-      <<ref1,clause=3>>
-
-      [bibliography]
-      == Bibliography
-
-      * [[[ref1,XYZ]]] _Standard_
-    INPUT
-
-    expect(File.read("test.err.html"))
-      .not_to include("Cross-reference contains range, "\
-                      "should be separate cross-references")
+    it "Warns of ranges in crossreferences" do
+      expect(xref_with_dash_range).to include("Cross-reference contains range, should be separate cross-references")
+      expect(xref_with_to_range).to include("Cross-reference contains range, should be separate cross-references")
+      expect(xref_without_range).not_to include("Cross-reference contains range, should be separate cross-references")
+    end
   end
 
   context "Warns of missing overview" do
-    it "Overview clause missing" do
-      Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    let(:missing_overview) do
+      convert_and_capture_errors(<<~INPUT)
         = Document title
         Author
         :docfile: test.adoc
@@ -498,17 +508,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
 
         text
       INPUT
-
-      expect(File.read("test.err.html"))
-        .to include("Overview clause missing")
-      expect(File.read("test.err.html"))
-        .to include("Scope subclause missing")
-      expect(File.read("test.err.html"))
-        .to include("Word Usage subclause missing")
     end
 
-    it "Overview clause not missing if supplied" do
-      Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    let(:overview_supplied) do
+      convert_and_capture_errors(<<~INPUT)
         = Document title
         Author
         :docfile: test.adoc
@@ -518,16 +521,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
 
         == Overview
       INPUT
-      expect(File.read("test.err.html"))
-        .not_to include("Overview clause missing")
-      expect(File.read("test.err.html"))
-        .to include("Scope subclause missing")
-      expect(File.read("test.err.html"))
-        .to include("Word Usage subclause missing")
     end
 
-    it "Scope and Word usage clause not missing if supplied" do
-      Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    let(:full_overview_structure) do
+      convert_and_capture_errors(<<~INPUT)
         = Document title
         Author
         :docfile: test.adoc
@@ -541,17 +538,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
 
         === Word Usage
       INPUT
-      expect(File.read("test.err.html"))
-        .not_to include("Overview clause missing")
-      expect(File.read("test.err.html"))
-        .not_to include("Scope subclause missing")
-      expect(File.read("test.err.html"))
-        .not_to include("Word Usage subclause missing")
     end
 
-    it "Overview clause not missing in amendments" do
-      FileUtils.rm_f "test.err.html"
-      Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    let(:amendment_no_overview) do
+      convert_and_capture_errors(<<~INPUT)
         = Document title
         Author
         :docfile: test.adoc
@@ -561,30 +551,50 @@ RSpec.describe Metanorma::Ieee, type: :validation do
 
         text
       INPUT
-      expect(File.read("test.err.html"))
-        .not_to include("Overview clause missing")
-      expect(File.read("test.err.html"))
-        .not_to include("Scope subclause missing")
-      expect(File.read("test.err.html"))
-        .not_to include("Word Usage subclause missing")
+    end
+
+    it "Overview clause missing" do
+      expect(missing_overview).to include("Overview clause missing")
+      expect(missing_overview).to include("Scope subclause missing")
+      expect(missing_overview).to include("Word Usage subclause missing")
+    end
+
+    it "Overview clause not missing if supplied" do
+      expect(overview_supplied).not_to include("Overview clause missing")
+      expect(overview_supplied).to include("Scope subclause missing")
+      expect(overview_supplied).to include("Word Usage subclause missing")
+    end
+
+    it "Scope and Word usage clause not missing if supplied" do
+      expect(full_overview_structure).not_to include("Overview clause missing")
+      expect(full_overview_structure).not_to include("Scope subclause missing")
+      expect(full_overview_structure).not_to include("Word Usage subclause missing")
+    end
+
+    it "Overview clause not missing in amendments" do
+      expect(amendment_no_overview).not_to include("Overview clause missing")
+      expect(amendment_no_overview).not_to include("Scope subclause missing")
+      expect(amendment_no_overview).not_to include("Word Usage subclause missing")
     end
   end
 
-  it "warns that title should match doctype" do
-    Asciidoctor.convert(<<~INPUT, *OPTIONS)
-      = Fred
-      :docfile: test.adoc
-      :doctype: recommended-practice
-      :draft: 1.1
-      :docsubtype: amendment
-      :trial-use: true
-      :no-pdf:
+  context "Title matching" do
+    let(:mismatched_title) do
+      convert_and_capture_errors(<<~INPUT)
+        = Fred
+        :docfile: test.adoc
+        :doctype: recommended-practice
+        :draft: 1.1
+        :docsubtype: amendment
+        :trial-use: true
+        :no-pdf:
 
-    INPUT
-    expect(File.exist?("test.err.html")).to be true
-    expect(File.read("test.err.html"))
-      .to include("Expected title to start as: " \
-                  "Draft Trial-Use Recommended Practice")
+      INPUT
+    end
+
+    it "warns that title should match doctype" do
+      expect(mismatched_title).to include("Expected title to start as: Draft Trial-Use Recommended Practice")
+    end
   end
 
   context "Amends" do
@@ -752,9 +762,8 @@ RSpec.describe Metanorma::Ieee, type: :validation do
   end
 
   context "Warns of missing normative references" do
-    it "Normative references missing" do
-      FileUtils.rm_f "test.err.html"
-      Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    let(:missing_normative_refs) do
+      convert_and_capture_errors(<<~INPUT)
         = Document title
         Author
         :docfile: test.adoc
@@ -764,12 +773,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
 
         text
       INPUT
-      expect(File.read("test.err.html"))
-        .to include("Normative references missing")
     end
 
-    it "Normative references not missing if supplied" do
-      Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    let(:normative_refs_supplied) do
+      convert_and_capture_errors(<<~INPUT)
         = Document title
         Author
         :docfile: test.adoc
@@ -780,12 +787,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
         [bibliography]
         == Normative references
       INPUT
-      expect(File.read("test.err.html"))
-        .not_to include("Normative references missing")
     end
 
-    it "Normative references not missing in amendments" do
-      Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    let(:amendment_no_normative_refs) do
+      convert_and_capture_errors(<<~INPUT)
         = Document title
         Author
         :docfile: test.adoc
@@ -795,14 +800,24 @@ RSpec.describe Metanorma::Ieee, type: :validation do
 
         text
       INPUT
-      expect(File.read("test.err.html"))
-        .not_to include("Normative references missing")
+    end
+
+    it "Normative references missing" do
+      expect(missing_normative_refs).to include("Normative references missing")
+    end
+
+    it "Normative references not missing if supplied" do
+      expect(normative_refs_supplied).not_to include("Normative references missing")
+    end
+
+    it "Normative references not missing in amendments" do
+      expect(amendment_no_normative_refs).not_to include("Normative references missing")
     end
   end
 
   context "Warns of missing terms & definitions" do
-    it "Terms & definitions missing" do
-      Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    let(:missing_definitions) do
+      convert_and_capture_errors(<<~INPUT)
         = Document title
         Author
         :docfile: test.adoc
@@ -812,12 +827,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
 
         text
       INPUT
-      expect(File.read("test.err.html"))
-        .to include("Definitions missing")
     end
 
-    it "Terms & definitions not missing if supplied" do
-      Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    let(:definitions_supplied) do
+      convert_and_capture_errors(<<~INPUT)
         = Document title
         Author
         :docfile: test.adoc
@@ -828,12 +841,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
         == Terms and definitions
         === Term 1
       INPUT
-      expect(File.read("test.err.html"))
-        .not_to include("Definitions missing")
     end
 
-    it "Terms & definitions not missing in amendment" do
-      Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    let(:amendment_no_definitions) do
+      convert_and_capture_errors(<<~INPUT)
         = Document title
         Author
         :docfile: test.adoc
@@ -843,24 +854,34 @@ RSpec.describe Metanorma::Ieee, type: :validation do
 
         text
       INPUT
-      expect(File.read("test.err.html"))
-        .not_to include("Definitions missing")
+    end
+
+    it "Terms & definitions missing" do
+      expect(missing_definitions).to include("Definitions missing")
+    end
+
+    it "Terms & definitions not missing if supplied" do
+      expect(definitions_supplied).not_to include("Definitions missing")
+    end
+
+    it "Terms & definitions not missing in amendment" do
+      expect(amendment_no_definitions).not_to include("Definitions missing")
     end
   end
 
   context "Section ordering" do
-    it "Warning if missing abstract" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:missing_abstract) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         == Symbols and Abbreviated Terms
 
         Paragraph
       INPUT
-      expect(File.read("test.err.html"))
-        .to include("Initial section must be (content) Abstract")
+    end
 
-      Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    let(:amendment_with_abstract) do
+      convert_and_capture_errors(<<~INPUT)
         = Document title
         Author
         :docfile: test.adoc
@@ -875,12 +896,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
 
         Paragraph
       INPUT
-      expect(File.read("test.err.html"))
-        .not_to include("Initial section must be (content) Abstract")
     end
 
-    it "Warning if do not start with overview" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:missing_overview) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         [abstract]
@@ -891,10 +910,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
 
         Paragraph
       INPUT
-      expect(File.read("test.err.html"))
-        .to include("Prefatory material must be followed by (clause) Overview")
+    end
 
-      Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    let(:amendment_without_overview) do
+      convert_and_capture_errors(<<~INPUT)
         = Document title
         Author
         :docfile: test.adoc
@@ -909,12 +928,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
 
         Paragraph
       INPUT
-      expect(File.read("test.err.html"))
-        .not_to include("Prefatory material must be followed by (clause) Overview")
     end
 
-    it "Warning if normative references not followed by terms and definitions" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:normrefs_not_followed_by_definitions) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         [abstract]
@@ -929,11 +946,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
 
         Paragraph
       INPUT
-      expect(File.read("test.err.html"))
-        .to include("Normative References must be followed by " \
-                    "Definitions")
+    end
 
-      Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    let(:amendment_normrefs_ordering) do
+      convert_and_capture_errors(<<~INPUT)
         = Document title
         Author
         :docfile: test.adoc
@@ -953,13 +969,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
 
         Paragraph
       INPUT
-      expect(File.read("test.err.html"))
-        .not_to include("Normative References must be followed by " \
-                        "Definitions")
     end
 
-    it "Warning if bibliography out of place" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:bibliography_not_annex) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         == Overview
@@ -968,11 +981,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
         == Bibiliography
 
       INPUT
-      expect(File.read("test.err.html"))
-        .to include("Bibliography must be either the first or the last " \
-                    "document annex")
+    end
 
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:bibliography_middle_of_annexes) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         == Overview
@@ -988,11 +1000,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
         [appendix]
         == Appendix
       INPUT
-      expect(File.read("test.err.html"))
-        .to include("Bibliography must be either the first or the last " \
-                    "document annex")
+    end
 
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:bibliography_last_annex) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         == Overview
@@ -1006,11 +1017,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
         === Bibiliography
 
       INPUT
-      expect(File.read("test.err.html"))
-        .not_to include("Bibliography must be either the first or the last " \
-                        "document annex")
+    end
 
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:bibliography_first_annex) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         == Overview
@@ -1023,70 +1033,79 @@ RSpec.describe Metanorma::Ieee, type: :validation do
         [appendix]
         == Appendix
       INPUT
-      expect(File.read("test.err.html"))
-        .not_to include("Bibliography must be either the first or the last " \
-                        "document annex")
+    end
+
+    it "Warning if missing abstract" do
+      expect(missing_abstract).to include("Initial section must be (content) Abstract")
+      expect(amendment_with_abstract).not_to include("Initial section must be (content) Abstract")
+    end
+
+    it "Warning if do not start with overview" do
+      expect(missing_overview).to include("Prefatory material must be followed by (clause) Overview")
+      expect(amendment_without_overview).not_to include("Prefatory material must be followed by (clause) Overview")
+    end
+
+    it "Warning if normative references not followed by terms and definitions" do
+      expect(normrefs_not_followed_by_definitions).to include("Normative References must be followed by Definitions")
+      expect(amendment_normrefs_ordering).not_to include("Normative References must be followed by Definitions")
+    end
+
+    it "Warning if bibliography out of place" do
+      expect(bibliography_not_annex).to include("Bibliography must be either the first or the last document annex")
+      expect(bibliography_middle_of_annexes).to include("Bibliography must be either the first or the last document annex")
+      expect(bibliography_last_annex).not_to include("Bibliography must be either the first or the last document annex")
+      expect(bibliography_first_annex).not_to include("Bibliography must be either the first or the last document annex")
     end
   end
 
   context "Number validation" do
-    it "Style warning if decimal point" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:decimal_comma) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         == Clause
         8,1
       INPUT
-      expect(File.read("test.err.html"))
-        .to include("possible decimal comma")
     end
 
-    it "Style warning if leading decimal point without zero" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:leading_decimal_without_zero) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         == Clause
         Number: .1
       INPUT
-      expect(File.read("test.err.html"))
-        .to include("decimal without initial zero")
     end
 
-    it "Style warning if percent sign without space" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:percent_without_space) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         == Clause
         9%
       INPUT
-      expect(File.read("test.err.html"))
-        .to include("no space before percent sign")
     end
 
-    it "Style warning if no space between number and unit" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:number_unit_no_space) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         == Clause
         7km
       INPUT
-      expect(File.read("test.err.html"))
-        .to include("no space between number and SI unit")
     end
 
-    it "Style warning if no unit on both unit and tolerance" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:tolerance_missing_unit) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         == Clause
         7 ± 2 km
       INPUT
-      expect(File.read("test.err.html"))
-        .to include("unit is needed on both value and tolerance")
     end
 
-    it "Style warning if 5-digit numeral in table" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:table_4digit_ok) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         == Clause
@@ -1098,10 +1117,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
         |===
 
       INPUT
-      expect(File.read("test.err.html"))
-        .not_to include("number in table not broken up in threes")
+    end
 
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:table_5digit_integer) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         == Clause
@@ -1109,10 +1128,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
         | 98765 | 0
         |===
       INPUT
-      expect(File.read("test.err.html"))
-        .to include("number in table not broken up in threes")
+    end
 
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:table_5digit_decimal) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         == Clause
@@ -1120,12 +1139,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
         | 10.98765 | 0
         |===
       INPUT
-      expect(File.read("test.err.html"))
-        .to include("number in table not broken up in threes")
     end
 
-    it "Style warning if 4-digit numeral in table column with 5-digit numerals" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:table_4digit_no_breaks) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         == Clause
@@ -1135,10 +1152,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
         |===
 
       INPUT
-      expect(File.read("test.err.html"))
-        .not_to include(" is a 4-digit number in a table column with numbers broken up in threes")
+    end
 
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:table_4digit_with_breaks_integer) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         == Clause
@@ -1148,10 +1165,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
         |===
 
       INPUT
-      expect(File.read("test.err.html"))
-        .to include(" is a 4-digit number in a table column with numbers broken up in threes")
+    end
 
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:table_4digit_with_breaks_decimal) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         == Clause
@@ -1161,14 +1178,44 @@ RSpec.describe Metanorma::Ieee, type: :validation do
         |===
 
       INPUT
-      expect(File.read("test.err.html"))
-        .to include(" is a 4-digit number in a table column with numbers broken up in threes")
+    end
+
+    it "Style warning if decimal point" do
+      expect(decimal_comma).to include("possible decimal comma")
+    end
+
+    it "Style warning if leading decimal point without zero" do
+      expect(leading_decimal_without_zero).to include("decimal without initial zero")
+    end
+
+    it "Style warning if percent sign without space" do
+      expect(percent_without_space).to include("no space before percent sign")
+    end
+
+    it "Style warning if no space between number and unit" do
+      expect(number_unit_no_space).to include("no space between number and SI unit")
+    end
+
+    it "Style warning if no unit on both unit and tolerance" do
+      expect(tolerance_missing_unit).to include("unit is needed on both value and tolerance")
+    end
+
+    it "Style warning if 5-digit numeral in table" do
+      expect(table_4digit_ok).not_to include("number in table not broken up in threes")
+      expect(table_5digit_integer).to include("number in table not broken up in threes")
+      expect(table_5digit_decimal).to include("number in table not broken up in threes")
+    end
+
+    it "Style warning if 4-digit numeral in table column with 5-digit numerals" do
+      expect(table_4digit_no_breaks).not_to include(" is a 4-digit number in a table column with numbers broken up in threes")
+      expect(table_4digit_with_breaks_integer).to include(" is a 4-digit number in a table column with numbers broken up in threes")
+      expect(table_4digit_with_breaks_decimal).to include(" is a 4-digit number in a table column with numbers broken up in threes")
     end
   end
 
   context "Image name validation" do
-    it "warn on wrong image names" do
-      Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    let(:wrong_image_names) do
+      convert_and_capture_errors(<<~INPUT)
         = Document title
         Author
         :docfile: test.adoc
@@ -1185,16 +1232,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
 
         image::spec/assets/1000-2000_fig4.png[]
       INPUT
-      expect(File.read("test.err.html"))
-        .to include("Image name document-2000_​fig1 is expected to be 1000-2000_​fig1")
-      expect(File.read("test.err.html"))
-        .not_to include("Image name document-2000_​fig2 is expected to be 1000-2000_​fig2")
-      expect(File.read("test.err.html"))
-        .to include("Image name 1000-2000_​fig4 is expected to be 1000-2000_​fig3")
     end
 
-    it "warn on wrong image names within tables" do
-      Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    let(:wrong_image_names_in_tables) do
+      convert_and_capture_errors(<<~INPUT)
         = Document title
         Author
         :docfile: test.adoc
@@ -1217,16 +1258,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
         a| image::spec/assets/1000-fig4.png[] | D
         |===
       INPUT
-      expect(File.read("test.err.html"))
-        .not_to include("Image name Tab2Row1Col2.png is expected to be Tab2Row1Col2")
-      expect(File.read("test.err.html"))
-        .to include("Image name 1000-fig2.png is expected to be Tab2Row2Col2")
-      expect(File.read("test.err.html"))
-        .to include("Image name 1000-fig4.png is expected to be Tab2Row3Col1")
     end
 
-    it "warn on two images in a table cell" do
-      Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    let(:two_images_in_cell) do
+      convert_and_capture_errors(<<~INPUT)
         = Document title
         Author
         :docfile: test.adoc
@@ -1241,10 +1276,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
         image::spec/assets/rice_image2.png[] | B
         |===
       INPUT
-      expect(File.read("test.err.html"))
-        .to include("More than one image in the table cell")
+    end
 
-      Asciidoctor.convert(<<~INPUT, *OPTIONS)
+    let(:single_image_in_cell) do
+      convert_and_capture_errors(<<~INPUT)
         = Document title
         Author
         :docfile: test.adoc
@@ -1258,12 +1293,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
         a| image::spec/assets/rice_image1.png[] | B
         |===
       INPUT
-      expect(File.read("test.err.html"))
-        .not_to include("More than one image in the table cell")
     end
 
-    it "warn on missing related terms" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:term_with_related) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         == Terms and definitions
@@ -1271,10 +1304,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
         === Term
         related:contrast[que]
       INPUT
-      expect(File.read("test.err.html"))
-        .not_to include("Error: Term reference to <code>que</code> missing:`")
+    end
 
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:term_with_missing_symbol) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         == Terms and definitions
@@ -1282,10 +1315,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
         === Term
         symbol:[que]
       INPUT
-      expect(File.read("test.err.html"))
-        .to include("Symbol reference in <code>symbol​[que]</code> missing:")
+    end
 
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:term_with_all_refs) do
+      convert_and_capture_errors(<<~"INPUT")
         #{VALIDATING_BLANK_HDR}
 
         == Terms and definitions
@@ -1300,14 +1333,10 @@ RSpec.describe Metanorma::Ieee, type: :validation do
 
         que1:: X
       INPUT
-      expect(File.read("test.err.html"))
-        .not_to include("Error: Term reference to <code>que</code> missing:")
-      expect(File.read("test.err.html"))
-        .not_to include("Symbol reference in <code>symbol​[que1]</code> missing:")
     end
 
-    it "validates document against Metanorma XML schema" do
-      Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+    let(:invalid_xml_schema) do
+      convert_and_capture_errors(<<~"INPUT")
         = A
         X
         :docfile: test.adoc
@@ -1316,8 +1345,34 @@ RSpec.describe Metanorma::Ieee, type: :validation do
         [align=mid-air]
         Para
       INPUT
-      expect(File.read("test.err.html"))
-        .to include('value of attribute "align" is invalid; must be equal to')
+    end
+
+    it "warn on wrong image names" do
+      expect(wrong_image_names).to include("Image name document-2000_​fig1 is expected to be 1000-2000_​fig1")
+      expect(wrong_image_names).not_to include("Image name document-2000_​fig2 is expected to be 1000-2000_​fig2")
+      expect(wrong_image_names).to include("Image name 1000-2000_​fig4 is expected to be 1000-2000_​fig3")
+    end
+
+    it "warn on wrong image names within tables" do
+      expect(wrong_image_names_in_tables).not_to include("Image name Tab2Row1Col2.png is expected to be Tab2Row1Col2")
+      expect(wrong_image_names_in_tables).to include("Image name 1000-fig2.png is expected to be Tab2Row2Col2")
+      expect(wrong_image_names_in_tables).to include("Image name 1000-fig4.png is expected to be Tab2Row3Col1")
+    end
+
+    it "warn on two images in a table cell" do
+      expect(two_images_in_cell).to include("More than one image in the table cell")
+      expect(single_image_in_cell).not_to include("More than one image in the table cell")
+    end
+
+    it "warn on missing related terms" do
+      expect(term_with_related).not_to include("Error: Term reference to <code>que</code> missing:`")
+      expect(term_with_missing_symbol).to include("Symbol reference in <code>symbol​[que]</code> missing:")
+      expect(term_with_all_refs).not_to include("Error: Term reference to <code>que</code> missing:")
+      expect(term_with_all_refs).not_to include("Symbol reference in <code>symbol​[que1]</code> missing:")
+    end
+
+    it "validates document against Metanorma XML schema" do
+      expect(invalid_xml_schema).to include('value of attribute "align" is invalid; must be equal to')
     end
   end
 end
