@@ -760,7 +760,6 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                 <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpMiddle">
                    <a name="_" id="_"/>
                    B1
-                   <div class="ListContLevel1">
                       <div class="ul_wrap">
                          <p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2">
                             <a name="_" id="_"/>
@@ -788,7 +787,6 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                             Q
                          </p>
                       </div>
-                   </div>
                 </p>
                 <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpLast">
                    <a name="_" id="_"/>
@@ -926,7 +924,6 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                <p style="mso-list:l23 level1 lfo1;" class="BulletedList">
                   <a name="_" id="_"/>
                   B1
-                  <div class="ListContLevel1">
                      <div class="ul_wrap">
                         <p style="mso-list:l23 level2 lfo1;" class="BulletedList">
                            <a name="_" id="_"/>
@@ -953,7 +950,6 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                            <a name="_" id="_"/>
                            Q
                         </p>
-                     </div>
                   </div>
                </p>
                <p style="mso-list:l23 level1 lfo1;" class="BulletedList">
