@@ -131,14 +131,17 @@ module IsoDoc
       def note_style_cleanup1(multi, div, seq)
         div.xpath(".//p[@class = 'Note' or not(@class)]")
           .each_with_index do |p, i|
-          p["class"] =
-            i.zero? && multi ? "IEEEStdsMultipleNotes" : "IEEEStdsSingleNote"
-          if multi
-            p["style"] ||= ""
-            p["style"] += "mso-list:l17 level1 lfo#{seq};"
-          end
+            p["class"] =
+              i.zero? && multi ? "IEEEStdsMultipleNotes" : "IEEEStdsSingleNote"
+            if multi
+              p["style"] ||= ""
+              p["style"] += "mso-list:l17 level1 lfo#{seq};"
+            end
         end
       end
+
+      # override indent via <div class="ListContLevel-n">
+      def list_add(xlist, lvl); end
 
       private
 
@@ -195,7 +198,8 @@ module IsoDoc
           elsif child.xpath(".//br").any?
             # Add child to current element
             temp_para = create_new_para(node.document.at("//p[@class='Sourcecode']"))
-            temp_para = process_element_with_breaks(child, temp_para, result_paras)
+            temp_para = process_element_with_breaks(child, temp_para,
+                                                    result_paras)
             # If new paras were created, we need to handle the split
             if result_paras.any? && result_paras.last != curr_para
               # A split occurred, add current element to current para and update
