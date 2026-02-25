@@ -1,6 +1,6 @@
 module Metanorma
   module Ieee
-    class Converter < Standoc::Converter
+    class Validate < Standoc::Validate
       ASSETS_TO_STYLE =
         "//term//source | //formula | //termnote | " \
         "//p[not(ancestor::boilerplate)] | //li[not(p)] | //dt | " \

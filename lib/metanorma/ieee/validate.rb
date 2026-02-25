@@ -3,7 +3,7 @@ require_relative "validate_style"
 
 module Metanorma
   module Ieee
-    class Converter < Standoc::Converter
+    class Validate < Standoc::Validate
       def schema_file
         "ieee.rng"
       end

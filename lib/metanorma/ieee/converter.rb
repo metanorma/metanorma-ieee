@@ -59,13 +59,6 @@ module Metanorma
                                        nil, false, "#{@filename}.pdf")
       end
 
-      def boilerplate_file(xmldoc)
-        file = "boilerplate.adoc"
-        doctype = xmldoc.at("//bibdata/ext/doctype")&.text
-        doctype == "whitepaper" and file = "boilerplate_wp.adoc"
-        File.join(@libdir, file)
-      end
-
       def html_extract_attributes(node)
         super.merge(hierarchicalassets:
                     node.attr("hierarchical-object-numbering"),

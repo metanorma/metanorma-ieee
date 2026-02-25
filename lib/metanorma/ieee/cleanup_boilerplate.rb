@@ -1,6 +1,13 @@
 module Metanorma
   module Ieee
-    class Converter < Standoc::Converter
+    class Cleanup < Standoc::Cleanup
+      def boilerplate_file(xmldoc)
+        file = "boilerplate.adoc"
+        doctype = xmldoc.at("//bibdata/ext/doctype")&.text
+        doctype == "whitepaper" and file = "boilerplate_wp.adoc"
+        File.join(@libdir, file)
+      end
+
       def initial_boilerplate(xml, isodoc)
         intro_boilerplate(xml, isodoc)
         super if @document_scheme == "ieee-sa-2021"

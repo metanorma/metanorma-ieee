@@ -1,6 +1,6 @@
 module Metanorma
   module Ieee
-    class Converter < Standoc::Converter
+    class Cleanup < Standoc::Cleanup
       AVAIL_MATCH = <<~XPATH.freeze
         [contains(concat(',', normalize-space(translate(@type, ' ', '')), ','), ',Availability,')]
       XPATH

@@ -1,6 +1,6 @@
 module Metanorma
   module Ieee
-    class Converter < Standoc::Converter
+    class Cleanup < Standoc::Cleanup
       BIBLIO =
         "//bibliography/references[@normative = 'false'][not(@hidden)] | " \
         "//bibliography/clause[.//references[@normative = 'false']] | " \
