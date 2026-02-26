@@ -3,8 +3,6 @@ require "metanorma/standoc/converter"
 require "fileutils"
 require "metanorma-utils"
 require_relative "front"
-require_relative "cleanup"
-require_relative "validate"
 
 module Metanorma
   module Ieee
