@@ -1,10 +1,8 @@
 require "asciidoctor"
-require "metanorma/standoc/converter"
+require "metanorma-standoc"
 require "fileutils"
 require "metanorma-utils"
 require_relative "front"
-require_relative "cleanup"
-require_relative "validate"
 
 module Metanorma
   module Ieee
@@ -57,13 +55,6 @@ module Metanorma
         node.attr("no-pdf") or
           pdf_converter(node)&.convert("#{@filename}.presentation.xml",
                                        nil, false, "#{@filename}.pdf")
-      end
-
-      def boilerplate_file(xmldoc)
-        file = "boilerplate.adoc"
-        doctype = xmldoc.at("//bibdata/ext/doctype")&.text
-        doctype == "whitepaper" and file = "boilerplate_wp.adoc"
-        File.join(@libdir, file)
       end
 
       def html_extract_attributes(node)

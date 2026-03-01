@@ -8,7 +8,7 @@ require "bundler/setup"
 require "asciidoctor"
 require "metanorma-ieee"
 require "isodoc/ieee/html_convert"
-require "metanorma/standoc/converter"
+require "metanorma-standoc"
 require "rspec/matchers"
 require "equivalent-xml"
 require "htmlentities"
@@ -118,12 +118,13 @@ HDR
 def boilerplate_read(file, xmldoc)
   conv = Metanorma::Ieee::Converter.new(:ieee, {})
   conv.init(Asciidoctor::Document.new([]))
+  cl = Metanorma::Ieee::Cleanup.new(conv)
   file.gsub!(/(?<!\{)(\{\{[^{}]+\}\})(?!\})/, "pass:[\\1]")
-  isodoc = conv.boilerplate_isodoc(xmldoc)
+  isodoc = cl.boilerplate_isodoc(xmldoc)
   # conv.boilerplate_isodoc_values(isodoc)
   x = isodoc.populate_template(file, nil)
-  ret = conv.boilerplate_file_restructure(x)
-  conv.footnote_boilerplate_renumber(ret)
+  ret = cl.boilerplate_file_restructure(x)
+  cl.footnote_boilerplate_renumber(ret)
   ret.to_xml(encoding: "UTF-8", indent: 2,
              save_with: Nokogiri::XML::Node::SaveOptions::AS_XML)
     .gsub(/<(\/)?sections>/, "<\\1boilerplate>")

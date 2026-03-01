@@ -5,7 +5,7 @@ require_relative "term_lookup_cleanup"
 
 module Metanorma
   module Ieee
-    class Converter < Standoc::Converter
+    class Cleanup < Standoc::Cleanup
       def obligations_cleanup_norm(xml)
         super
         xml.xpath("//sections/clause").each do |r|
