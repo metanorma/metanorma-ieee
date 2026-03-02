@@ -221,9 +221,9 @@ RSpec.describe IsoDoc do
            <br/>
              <div id="A">
                 <h1 class="ForewordTitle">Foreword</h1>
-                <p class="TableTitle" style="text-align:center;">Table 1—Hello</p>
                 <table id="tableD-1" class="MsoISOTable" style="border-width:1px;border-spacing:0;" title="tool tip">
                    <caption>
+                   Table 1—Hello
                       <span style="display:none">long desc</span>
                    </caption>
                    <thead>
@@ -648,7 +648,7 @@ RSpec.describe IsoDoc do
                                <br/>
              <div id="A">
                 <h1 class="ForewordTitle">Foreword</h1>
-                <div id="figureA-1" class="figure" style="page-break-after: avoid;page-break-inside: avoid;">
+                <figure id="figureA-1" class="figure" style="page-break-after: avoid;page-break-inside: avoid;">
                    <img src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7" height="20" width="auto"/>
                    <img src="data:application/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjw/eG1sLXN0eWxlc2hlZXQgdHlwZT0idGV4dC94c2wiIGhyZWY9Ii4uLy4uLy4uL3hzbC9yZXNfZG9jL2ltZ2ZpbGUueHNsIj8+CjwhRE9DVFlQRSBpbWdmaWxlLmNvbnRlbnQgU1lTVEVNICIuLi8uLi8uLi9kdGQvdGV4dC5lbnQiPgo8aW1nZmlsZS5jb250ZW50IG1vZHVsZT0iZnVuZGFtZW50YWxzX29mX3Byb2R1Y3RfZGVzY3JpcHRpb25fYW5kX3N1cHBvcnQiIGZpbGU9ImFjdGlvbl9zY2hlbWFleHBnMS54bWwiPgo8aW1nIHNyYz0iYWN0aW9uX3NjaGVtYWV4cGcxLmdpZiI+CjxpbWcuYXJlYSBzaGFwZT0icmVjdCIgY29vcmRzPSIyMTAsMTg2LDM0MywyMjciIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9iYXNpY19hdHRyaWJ1dGVfc2NoZW1hL2Jhc2ljX2F0dHJpYnV0ZV9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMTAsMTAsOTYsNTEiIGhyZWY9Ii4uLy4uL3Jlc291cmNlcy9hY3Rpb25fc2NoZW1hL2FjdGlvbl9zY2hlbWEueG1sIiAvPgo8aW1nLmFyZWEgc2hhcGU9InJlY3QiIGNvb3Jkcz0iMjEwLDI2NCwzNTgsMzA1IiBocmVmPSIuLi8uLi9yZXNvdXJjZXMvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEvc3VwcG9ydF9yZXNvdXJjZV9zY2hlbWEueG1sIiAvPgo8L2ltZz4KPC9pbWdmaWxlLmNvbnRlbnQ+Cg==" height="20" width="auto"/>
                    <a href="#figureA-1a" class="TableFootnoteRef">a</a>
@@ -681,25 +681,25 @@ RSpec.describe IsoDoc do
                          </dl>
                       </div>
                    </div>
-                   <p class="FigureTitle" style="text-align:center;">
+                   <figcaption>
                       Figure 1—Split-it-right
                       <i>sample</i>
                       divider
                       <a class="FootnoteRef" href="#fn:_">
                          <sup>1</sup>
                       </a>
-                   </p>
-                </div>
-                <div id="figure-B" class="figure">
+                   </figcaption>
+                </figure>
+                <figure id="figure-B" class="figure">
                    <pre>A &lt;
        B</pre>
-                   <p class="FigureTitle" style="text-align:center;">Figure 2</p>
+                   <figcaption>Figure 2</figcaption>
                 </div>
-                <div id="figure-C" class="figure">
+                <figure id="figure-C" class="figure">
                    <pre>A &lt;
        B</pre>
-                </div>
-             </div>
+                </figure>
+             </figure>
              <aside id="fn:_" class="footnote">
                 <p>X</p>
              </aside>
