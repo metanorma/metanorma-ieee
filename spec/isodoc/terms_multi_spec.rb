@@ -54,7 +54,7 @@ RSpec.describe IsoDoc do
                 <term id="paddy1">
                    <preferred id="_">
                       <expression>
-                         <name>paddy</name>
+                         <name id="_">paddy</name>
                       </expression>
                    </preferred>
                    <domain id="_">rice</domain>
@@ -77,7 +77,9 @@ RSpec.describe IsoDoc do
                    <fmt-definition id="_">
                       <p>
                          <semx element="preferred" source="_">
-                            <strong>paddy</strong>
+                            <strong>
+                               <semx element="expression/name" source="_">paddy</semx>
+                            </strong>
                             <span class="fmt-designation-field">
                                , &lt;
                                <semx element="domain" source="_">rice</semx>
@@ -86,7 +88,8 @@ RSpec.describe IsoDoc do
                          </semx>
                          :
                          <semx element="definition" source="_">
-                            rice retaining its husk after threshing, mark 2 rice retaining its husk after threshing, mark 3 <span class="fmt-termsource-delim">(</span>
+                            rice retaining its husk after threshing, mark 2 rice retaining its husk after threshing, mark 3
+                            <span class="fmt-termsource-delim">(</span>
                             <semx element="source" source="_">
                                <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011" id="_">
                                   <locality type="clause">
@@ -212,7 +215,7 @@ RSpec.describe IsoDoc do
                 <term id="paddy1">
                    <preferred id="_">
                       <expression>
-                         <name>paddy</name>
+                         <name id="_">paddy</name>
                       </expression>
                    </preferred>
                    <domain id="_">rice</domain>
@@ -245,7 +248,9 @@ RSpec.describe IsoDoc do
                    <fmt-definition id="_">
                       <p>
                          <semx element="preferred" source="_">
-                            <strong>paddy</strong>
+                            <strong>
+                               <semx element="expression/name" source="_">paddy</semx>
+                            </strong>
                             <span class="fmt-designation-field">
                                , &lt;
                                <semx element="domain" source="_">rice</semx>
@@ -268,7 +273,8 @@ RSpec.describe IsoDoc do
                          </semx>
                          <semx element="definition" source="_">
                             <strong>(B)</strong>
-                             rice retaining its husk after threshing, mark 2 <span class="fmt-termsource-delim">(</span>
+                             rice retaining its husk after threshing, mark 2
+                            <span class="fmt-termsource-delim">(</span>
                             <semx element="source" source="_">
                                <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011" id="_">
                                   <locality type="clause">
@@ -480,7 +486,7 @@ RSpec.describe IsoDoc do
                 <term id="paddy1">
                    <preferred id="_">
                       <expression>
-                         <name>paddy</name>
+                         <name id="_">paddy</name>
                       </expression>
                    </preferred>
                    <domain id="_">rice</domain>
@@ -497,7 +503,9 @@ RSpec.describe IsoDoc do
                    <fmt-definition id="_">
                       <p>
                          <semx element="preferred" source="_">
-                            <strong>paddy</strong>
+                            <strong>
+                               <semx element="expression/name" source="_">paddy</semx>
+                            </strong>
                             <span class="fmt-designation-field">
                                , &lt;
                                <semx element="domain" source="_">rice</semx>
@@ -709,12 +717,12 @@ RSpec.describe IsoDoc do
                 <term id="paddy1">
                    <preferred id="_">
                       <expression>
-                         <name>A</name>
+                         <name id="_">A</name>
                       </expression>
                    </preferred>
                    <preferred id="_">
                       <expression>
-                         <name>B</name>
+                         <name id="_">B</name>
                       </expression>
                    </preferred>
                    <domain id="_">rice</domain>
@@ -726,7 +734,9 @@ RSpec.describe IsoDoc do
                    <fmt-definition id="_">
                       <p>
                          <semx element="preferred" source="_">
-                            <strong>A</strong>
+                            <strong>
+                               <semx element="expression/name" source="_">A</semx>
+                            </strong>
                             <span class="fmt-designation-field">
                                , &lt;
                                <semx element="domain" source="_">rice</semx>
@@ -739,7 +749,9 @@ RSpec.describe IsoDoc do
                          <semx element="related" source="_">
                             <fmt-preferred>
                                <semx element="preferred" source="_">
-                                  <strong>B</strong>
+                                  <strong>
+                                     <semx element="expression/name" source="_">B</semx>
+                                  </strong>
                                   <span class="fmt-designation-field">
                                      , &lt;
                                      <semx element="domain" source="_">rice</semx>
@@ -756,7 +768,9 @@ RSpec.describe IsoDoc do
                    <fmt-definition id="_">
                       <p>
                          <semx element="preferred" source="_">
-                            <strong>B</strong>
+                            <strong>
+                               <semx element="expression/name" source="_">B</semx>
+                            </strong>
                             <span class="fmt-designation-field">
                                , &lt;
                                <semx element="domain" source="_">rice</semx>
@@ -768,7 +782,9 @@ RSpec.describe IsoDoc do
                          <semx element="related" source="_">
                             <fmt-preferred>
                                <semx element="preferred" source="_">
-                                  <strong>A</strong>
+                                  <strong>
+                                     <semx element="expression/name" source="_">A</semx>
+                                  </strong>
                                   <span class="fmt-designation-field">
                                      , &lt;
                                      <semx element="domain" source="_">rice</semx>
@@ -784,12 +800,12 @@ RSpec.describe IsoDoc do
                 <term id="paddy2">
                    <preferred id="_">
                       <expression>
-                         <name language="eng">C</name>
+                         <name language="eng" id="_">C</name>
                       </expression>
                    </preferred>
                    <preferred id="_">
                       <expression>
-                         <name language="eng">D</name>
+                         <name language="eng" id="_">D</name>
                       </expression>
                       <abbreviation-type>initialism</abbreviation-type>
                    </preferred>
@@ -802,7 +818,9 @@ RSpec.describe IsoDoc do
                    <fmt-definition id="_">
                       <p>
                          <semx element="preferred" source="_">
-                            <strong>C</strong>
+                            <strong>
+                               <semx element="expression/name" source="_">C</semx>
+                            </strong>
                             <span class="fmt-designation-field">
                                , &lt;
                                <semx element="domain" source="_">rice</semx>
@@ -811,7 +829,9 @@ RSpec.describe IsoDoc do
                          </semx>
                          (
                          <semx element="preferred" source="_">
-                            <strong>D</strong>
+                            <strong>
+                               <semx element="expression/name" source="_">D</semx>
+                            </strong>
                          </semx>
                          ):
                          <semx element="definition" source="_">rice retaining its husk after threshing</semx>
@@ -821,12 +841,12 @@ RSpec.describe IsoDoc do
                 <term id="paddy1a">
                    <preferred id="_">
                       <expression>
-                         <name>E</name>
+                         <name id="_">E</name>
                       </expression>
                    </preferred>
                    <admitted id="_">
                       <expression>
-                         <name>F</name>
+                         <name id="_">F</name>
                       </expression>
                    </admitted>
                    <domain id="_">rice</domain>
@@ -838,7 +858,9 @@ RSpec.describe IsoDoc do
                    <fmt-definition id="_">
                       <p>
                          <semx element="preferred" source="_">
-                            <strong>E</strong>
+                            <strong>
+                               <semx element="expression/name" source="_">E</semx>
+                            </strong>
                             <span class="fmt-designation-field">
                                , &lt;
                                <semx element="domain" source="_">rice</semx>
@@ -851,7 +873,9 @@ RSpec.describe IsoDoc do
                          <semx element="related" source="_">
                             <fmt-preferred>
                                <semx element="admitted" source="_">
-                                  <strong>F</strong>
+                                  <strong>
+                                     <semx element="expression/name" source="_">F</semx>
+                                  </strong>
                                </semx>
                             </fmt-preferred>
                          </semx>
@@ -863,14 +887,18 @@ RSpec.describe IsoDoc do
                    <fmt-definition id="_">
                       <p>
                          <semx element="admitted" source="_">
-                            <strong>F</strong>
+                            <strong>
+                               <semx element="expression/name" source="_">F</semx>
+                            </strong>
                          </semx>
                          :
                          <em>See:</em>
                          <semx element="related" source="_">
                             <fmt-preferred>
                                <semx element="preferred" source="_">
-                                  <strong>E</strong>
+                                  <strong>
+                                     <semx element="expression/name" source="_">E</semx>
+                                  </strong>
                                   <span class="fmt-designation-field">
                                      , &lt;
                                      <semx element="domain" source="_">rice</semx>
@@ -886,12 +914,12 @@ RSpec.describe IsoDoc do
                 <term id="paddy2a">
                    <preferred id="_">
                       <expression>
-                         <name language="eng">G</name>
+                         <name language="eng" id="_">G</name>
                       </expression>
                    </preferred>
                    <admitted id="_">
                       <expression>
-                         <name language="eng">H</name>
+                         <name language="eng" id="_">H</name>
                       </expression>
                       <abbreviation-type>initialism</abbreviation-type>
                    </admitted>
@@ -904,7 +932,9 @@ RSpec.describe IsoDoc do
                    <fmt-definition id="_">
                       <p>
                          <semx element="preferred" source="_">
-                            <strong>G</strong>
+                            <strong>
+                               <semx element="expression/name" source="_">G</semx>
+                            </strong>
                             <span class="fmt-designation-field">
                                , &lt;
                                <semx element="domain" source="_">rice</semx>
@@ -913,7 +943,9 @@ RSpec.describe IsoDoc do
                          </semx>
                          (
                          <semx element="admitted" source="_">
-                            <strong>H</strong>
+                            <strong>
+                               <semx element="expression/name" source="_">H</semx>
+                            </strong>
                          </semx>
                          ):
                          <semx element="definition" source="_">rice retaining its husk after threshing</semx>
@@ -923,12 +955,12 @@ RSpec.describe IsoDoc do
                 <term id="paddy3">
                    <preferred geographic-area="US" id="_">
                       <expression>
-                         <name>I</name>
+                         <name id="_">I</name>
                       </expression>
                    </preferred>
                    <preferred id="_">
                       <expression>
-                         <name>J</name>
+                         <name id="_">J</name>
                       </expression>
                    </preferred>
                    <domain id="_">rice</domain>
@@ -940,7 +972,9 @@ RSpec.describe IsoDoc do
                    <fmt-definition id="_">
                       <p>
                          <semx element="preferred" source="_">
-                            <strong>I</strong>
+                            <strong>
+                               <semx element="expression/name" source="_">I</semx>
+                            </strong>
                             <span class="fmt-designation-field">
                                , &lt;
                                <semx element="domain" source="_">rice</semx>
@@ -954,7 +988,9 @@ RSpec.describe IsoDoc do
                          <semx element="related" source="_">
                             <fmt-preferred>
                                <semx element="preferred" source="_">
-                                  <strong>J</strong>
+                                  <strong>
+                                     <semx element="expression/name" source="_">J</semx>
+                                  </strong>
                                   <span class="fmt-designation-field">
                                      , &lt;
                                      <semx element="domain" source="_">rice</semx>
@@ -971,7 +1007,9 @@ RSpec.describe IsoDoc do
                    <fmt-definition id="_">
                       <p>
                          <semx element="preferred" source="_">
-                            <strong>J</strong>
+                            <strong>
+                               <semx element="expression/name" source="_">J</semx>
+                            </strong>
                             <span class="fmt-designation-field">
                                , &lt;
                                <semx element="domain" source="_">rice</semx>
@@ -983,7 +1021,9 @@ RSpec.describe IsoDoc do
                          <semx element="related" source="_">
                             <fmt-preferred>
                                <semx element="preferred" source="_">
-                                  <strong>I</strong>
+                                  <strong>
+                                     <semx element="expression/name" source="_">I</semx>
+                                  </strong>
                                   <span class="fmt-designation-field">
                                      , &lt;
                                      <semx element="domain" source="_">rice</semx>
@@ -1000,12 +1040,12 @@ RSpec.describe IsoDoc do
                 <term id="paddy4">
                    <preferred id="_">
                       <expression language="eng">
-                         <name>K</name>
+                         <name id="_">K</name>
                       </expression>
                    </preferred>
                    <preferred id="_">
                       <expression language="fra">
-                         <name>L</name>
+                         <name id="_">L</name>
                       </expression>
                    </preferred>
                    <domain id="_">rice</domain>
@@ -1017,7 +1057,9 @@ RSpec.describe IsoDoc do
                    <fmt-definition id="_">
                       <p>
                          <semx element="preferred" source="_">
-                            <strong>K</strong>
+                            <strong>
+                               <semx element="expression/name" source="_">K</semx>
+                            </strong>
                             <span class="fmt-designation-field">
                                , &lt;
                                <semx element="domain" source="_">rice</semx>
@@ -1031,7 +1073,9 @@ RSpec.describe IsoDoc do
                          <semx element="related" source="_">
                             <fmt-preferred>
                                <semx element="preferred" source="_">
-                                  <strong>L</strong>
+                                  <strong>
+                                     <semx element="expression/name" source="_">L</semx>
+                                  </strong>
                                   <span class="fmt-designation-field">
                                      , &lt;
                                      <semx element="domain" source="_">rice</semx>
@@ -1049,7 +1093,9 @@ RSpec.describe IsoDoc do
                    <fmt-definition id="_">
                       <p>
                          <semx element="preferred" source="_">
-                            <strong>L</strong>
+                            <strong>
+                               <semx element="expression/name" source="_">L</semx>
+                            </strong>
                             <span class="fmt-designation-field">
                                , &lt;
                                <semx element="domain" source="_">rice</semx>
@@ -1062,7 +1108,9 @@ RSpec.describe IsoDoc do
                          <semx element="related" source="_">
                             <fmt-preferred>
                                <semx element="preferred" source="_">
-                                  <strong>K</strong>
+                                  <strong>
+                                     <semx element="expression/name" source="_">K</semx>
+                                  </strong>
                                   <span class="fmt-designation-field">
                                      , &lt;
                                      <semx element="domain" source="_">rice</semx>
