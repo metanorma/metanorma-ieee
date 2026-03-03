@@ -223,13 +223,15 @@ RSpec.describe IsoDoc::Ieee do
                    <term id="J">
                       <preferred id="_">
                          <expression>
-                            <name>Term2</name>
+                            <name id="_">Term2</name>
                          </expression>
                       </preferred>
                       <fmt-definition id="_">
                          <p>
                             <semx element="preferred" source="_">
-                               <strong>Term2</strong>
+                               <strong>
+                                  <semx element="expression/name" source="_">Term2</semx>
+                               </strong>
                             </semx>
                             :
                          </p>
@@ -508,7 +510,7 @@ RSpec.describe IsoDoc::Ieee do
                <h2>3.1.&#xa0; Normal Terms</h2>
                <p class='TermNum' id='J'/>
                <p>
-                 <b>Term2</b>
+                 <b><dfn>Term2</dfn></b>
                  :
                </p>
              </div>

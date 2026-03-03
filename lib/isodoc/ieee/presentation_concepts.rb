@@ -5,9 +5,9 @@ module IsoDoc
         desgn.remove
       end
 
-      def designation_boldface(desgn)
-        name = desgn.at(ns("./expression/name | ./letter-symbol/name")) or return
-        name.children = "<strong>#{name.children}</strong>"
+      def designation_expression_boldface(_desgn, name)
+        name.name == "name" and
+          name.children = "<strong>#{name.children}</strong>"
       end
 
       def related(docxml)
@@ -144,7 +144,7 @@ module IsoDoc
         pref =
           term.parent.at(ns("./preferred[not(abbreviation-type)][expression/name]"))
         x = term.parent.xpath(ns("./preferred[expression/name][abbreviation-type] | " \
-                          "./admitted[expression/name][abbreviation-type]"))
+                                 "./admitted[expression/name][abbreviation-type]"))
         (pref && !x.empty?) or return
         fmt_pref = term.parent.at(ns(".//semx[@source = '#{pref['id']}']"))
         fdf = fmt_pref.at(ns(".//span[@class = 'fmt-designation-field']"))&.text
