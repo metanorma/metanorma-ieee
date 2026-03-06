@@ -558,7 +558,8 @@
 								<!-- <xsl:for-each select=".//mn:page_sequence[parent::mn:preface][normalize-space() != '' or .//mn:image or .//*[local-name() = 'svg']]"> -->
 								<xsl:for-each select=".//mn:page_sequence[mn:introduction or mn:acknowledgements]">
 
-									<fo:page-sequence master-reference="document-draft"> <!-- format="i" initial-page-number="1" -->
+									<fo:page-sequence master-reference="document-draft" xsl:use-attribute-sets="page-sequence-preface"> <!-- format="i" initial-page-number="1" -->
+										<xsl:call-template name="refine_page-sequence-preface"/>
 
 										<xsl:call-template name="insertFootnoteSeparator"/>
 
@@ -581,7 +582,9 @@
 							</xsl:for-each>
 
 							<xsl:for-each select="/*/mn:preface/mn:clause[@type = 'toc']">
-								<fo:page-sequence master-reference="document-draft">
+								<fo:page-sequence master-reference="document-draft" xsl:use-attribute-sets="page-sequence-preface">
+									<xsl:call-template name="refine_page-sequence-preface"/>
+
 									<xsl:call-template name="insertFootnoteSeparator"/>
 
 									<xsl:call-template name="insertHeaderFooter">
@@ -607,7 +610,8 @@
 							<!-- NOTICE AND DISCLAIMER OF LIABILITY CONCERNING THE USE OF IEEE SA INDUSTRY CONNECTIONS DOCUMENTS -->
 
 							<!-- ToC -->
-							<fo:page-sequence master-reference="page-toc" force-page-count="no-force">
+							<fo:page-sequence master-reference="page-toc" force-page-count="no-force" xsl:use-attribute-sets="page-sequence-preface">
+								<xsl:call-template name="refine_page-sequence-preface"/>
 
 								<xsl:call-template name="insertHeaderFooter">
 									<xsl:with-param name="copyright_year" select="$copyright_year"/>
@@ -818,7 +822,8 @@
 		<xsl:param name="copyright_holder"/>
 		<xsl:param name="is_first_sequence"/>
 
-		<fo:page-sequence master-reference="document-draft" force-page-count="no-force">
+		<fo:page-sequence master-reference="document-draft" force-page-count="no-force" xsl:use-attribute-sets="page-sequence-main">
+			<xsl:call-template name="refine_page-sequence-main"/>
 
 			<xsl:if test="@orientation = 'landscape'">
 				<xsl:attribute name="master-reference">document-draft-<xsl:value-of select="@orientation"/></xsl:attribute>
@@ -1376,7 +1381,7 @@
 													<xsl:apply-templates select="mnx:title"/>
 
 													<fo:inline keep-together.within-line="always">
-														<fo:leader xsl:use-attribute-sets="toc-leader-style"/>
+														<fo:leader xsl:use-attribute-sets="toc-leader-style"><xsl:call-template name="refine_toc-leader-style"/></fo:leader>
 														<fo:inline>
 															<fo:page-number-citation ref-id="{@id}"/>
 														</fo:inline>
@@ -1424,7 +1429,7 @@
 															<xsl:apply-templates select="mnx:title"/>
 
 															<fo:inline keep-together.within-line="always">
-																<fo:leader xsl:use-attribute-sets="toc-leader-style"/>
+																<fo:leader xsl:use-attribute-sets="toc-leader-style"><xsl:call-template name="refine_toc-leader-style"/></fo:leader>
 																<fo:inline>
 																	<fo:page-number-citation ref-id="{@id}"/>
 																</fo:inline>
@@ -3986,20 +3991,22 @@
 	</xsl:variable>
 
 	<xsl:attribute-set name="page-sequence-preface">
-		<xsl:attribute name="format">i</xsl:attribute>
-	</xsl:attribute-set>
+	</xsl:attribute-set> <!-- page-sequence-preface -->
 
 	<xsl:template name="refine_page-sequence-preface">
 		<xsl:param name="layoutVersion"/>
-	</xsl:template>
+		<xsl:param name="doctype"/>
+		<xsl:param name="num"/>
+		<xsl:param name="skip_force_page_count">false</xsl:param>
+	</xsl:template> <!-- refine_page-sequence-preface -->
 
 	<xsl:attribute-set name="page-sequence-main">
-
-	</xsl:attribute-set>
+	</xsl:attribute-set> <!-- page-sequence-main -->
 
 	<xsl:template name="refine_page-sequence-main">
 		<xsl:param name="layoutVersion"/>
-	</xsl:template>
+		<xsl:param name="doctype"/>
+	</xsl:template> <!-- refine_page-sequence-main -->
 
 	<xsl:variable name="font_noto_sans">Noto Sans, Noto Sans HK, Noto Sans JP, Noto Sans KR, Noto Sans SC, Noto Sans TC</xsl:variable>
 	<xsl:variable name="font_noto_sans_mono">Noto Sans Mono, Noto Sans Mono CJK HK, Noto Sans Mono CJK JP, Noto Sans Mono CJK KR, Noto Sans Mono CJK SC, Noto Sans Mono CJK TC</xsl:variable>
@@ -17058,16 +17065,17 @@
 	<!-- insert fo:basic-link, if external-destination or internal-destination is non-empty, otherwise insert fo:inline -->
 	<xsl:template name="insert_basic_link">
 		<xsl:param name="element"/>
+		<xsl:param name="wrapper">true</xsl:param>
 		<xsl:variable name="element_node" select="xalan:nodeset($element)"/>
 		<xsl:variable name="external-destination" select="normalize-space(count($element_node/fo:basic-link/@external-destination[. != '']) = 1)"/>
 		<xsl:variable name="internal-destination" select="normalize-space(count($element_node/fo:basic-link/@internal-destination[. != '']) = 1)"/>
 		<xsl:choose>
-			<xsl:when test="$internal-destination = 'true'">
+			<xsl:when test="$internal-destination = 'true' and $wrapper = 'true'">
 				<fo:wrapper role="Reference">
 					<xsl:copy-of select="$element_node"/>
 				</fo:wrapper>
 			</xsl:when>
-			<xsl:when test="$external-destination = 'true'">
+			<xsl:when test="$internal-destination = 'true' or $external-destination = 'true'">
 				<xsl:copy-of select="$element_node"/>
 			</xsl:when>
 			<xsl:otherwise>
