@@ -1026,11 +1026,11 @@ RSpec.describe IsoDoc do
       <br/>
         <div>
                     <h1 class='ForewordTitle'>Foreword</h1>
-                          <div id="_" class='Admonition' style='page-break-after: avoid;page-break-inside: avoid;'>
-        <p class='AdmonitionTitle' style='text-align:center;'>CAUTION</p>
+                          <div id="_" class='Admonition AdmonitionCaution' style='page-break-after: avoid;page-break-inside: avoid;'>
+        <p class='AdmonitionTitle AdmonitionCaution' style='text-align:center;'>CAUTION</p>
         <p id="_">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
       </div>
-      <div id="_" class='Admonition' style='page-break-after: avoid;page-break-inside: avoid;'>
+      <div id="_" class='Admonition AdmonitionCaution' style='page-break-after: avoid;page-break-inside: avoid;'>
         <p id="_">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
              </div>
            </div>
