@@ -868,7 +868,7 @@ RSpec.describe IsoDoc do
                       <fn id="_" reference="2" original-reference="_" target="_">
                          <p>
                 IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
-        
+      #{'  '}
               </p>
                          <fmt-fn-label>
                             <span class="fmt-caption-label">
@@ -1298,73 +1298,73 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     presxml = <<~PRESXML
-       <clause id="A" inline-header="false" obligation="normative" displayorder="3">
-          <title id="_">Clause</title>
-          <fmt-title depth="1" id="_">
-             <span class="fmt-caption-label">
-                <semx element="autonum" source="A">2</semx>
-                <span class="fmt-autonum-delim">.</span>
-             </span>
-             <span class="fmt-caption-delim">
-                <tab/>
-             </span>
-             <semx element="title" source="_">Clause</semx>
-          </fmt-title>
-          <fmt-xref-label>
-             <span class="fmt-element-name">Clause</span>
-             <semx element="autonum" source="A">2</semx>
-          </fmt-xref-label>
-          <p id="_">
-             <eref bibitemid="ISO16634" id="_"/>
-             <semx element="eref" source="_">
-                <fmt-xref target="ISO16634">ISO 16634:--</fmt-xref>
-             </semx>
-             <eref type="inline" bibitemid="ISO16634" citeas="ISO 639:1967" id="_"/>
-             <semx element="eref" source="_">
-                <fmt-xref type="inline" target="ISO16634">
-                   <span class="std_publisher">ISO </span>
-                   <span class="std_docNumber">16634</span>
-                </fmt-xref>
-             </semx>
-             <eref type="inline" bibitemid="ISO16634" citeas="[B1]" id="_"/>
-             <semx element="eref" source="_">
-                <fmt-xref type="inline" target="ISO16634">
-                   <span class="std_publisher">ISO </span>
-                   <span class="std_docNumber">16634</span>
-                </fmt-xref>
-             </semx>
-             <eref type="inline" bibitemid="ISO16635" citeas="REF4" id="_">this is renderable text</eref>
-             <semx element="eref" source="_">
-                <fmt-xref type="inline" target="ISO16635">this is renderable text [B1]</fmt-xref>
-             </semx>
-             <eref type="inline" bibitemid="ISO16635" citeas="REF4" id="_"/>
-             <semx element="eref" source="_">
-                <fmt-xref type="inline" target="ISO16635">
-                   <span class="std_publisher">ISO </span>
-                   <span class="std_docNumber">16635</span>
-                   [B1]
-                </fmt-xref>
-             </semx>
-             <fn reference="1" original-reference="_" id="_" target="_">
-                <p>The numbers in brackets correspond to those of the bibliography in Annex B.</p>
-                <fmt-fn-label>
-                   <span class="fmt-caption-label">
-                      <sup>
-                         <semx element="autonum" source="_">1</semx>
-                      </sup>
-                   </span>
-                </fmt-fn-label>
-             </fn>
-             <eref type="inline" bibitemid="ISO16635" citeas="[B1]" id="_"/>
-             <semx element="eref" source="_">
-                <fmt-xref type="inline" target="ISO16635">
-                   <span class="std_publisher">ISO </span>
-                   <span class="std_docNumber">16635</span>
-                   [B1]
-                </fmt-xref>
-             </semx>
-          </p>
-       </clause>
+      <clause id="A" inline-header="false" obligation="normative" displayorder="3">
+         <title id="_">Clause</title>
+         <fmt-title depth="1" id="_">
+            <span class="fmt-caption-label">
+               <semx element="autonum" source="A">2</semx>
+               <span class="fmt-autonum-delim">.</span>
+            </span>
+            <span class="fmt-caption-delim">
+               <tab/>
+            </span>
+            <semx element="title" source="_">Clause</semx>
+         </fmt-title>
+         <fmt-xref-label>
+            <span class="fmt-element-name">Clause</span>
+            <semx element="autonum" source="A">2</semx>
+         </fmt-xref-label>
+         <p id="_">
+            <eref bibitemid="ISO16634" id="_"/>
+            <semx element="eref" source="_">
+               <fmt-xref target="ISO16634">ISO 16634:--</fmt-xref>
+            </semx>
+            <eref type="inline" bibitemid="ISO16634" citeas="ISO 639:1967" id="_"/>
+            <semx element="eref" source="_">
+               <fmt-xref type="inline" target="ISO16634">
+                  <span class="std_publisher">ISO </span>
+                  <span class="std_docNumber">16634</span>
+               </fmt-xref>
+            </semx>
+            <eref type="inline" bibitemid="ISO16634" citeas="[B1]" id="_"/>
+            <semx element="eref" source="_">
+               <fmt-xref type="inline" target="ISO16634">
+                  <span class="std_publisher">ISO </span>
+                  <span class="std_docNumber">16634</span>
+               </fmt-xref>
+            </semx>
+            <eref type="inline" bibitemid="ISO16635" citeas="REF4" id="_">this is renderable text</eref>
+            <semx element="eref" source="_">
+               <fmt-xref type="inline" target="ISO16635">this is renderable text [B1]</fmt-xref>
+            </semx>
+            <eref type="inline" bibitemid="ISO16635" citeas="REF4" id="_"/>
+            <semx element="eref" source="_">
+               <fmt-xref type="inline" target="ISO16635">
+                  <span class="std_publisher">ISO </span>
+                  <span class="std_docNumber">16635</span>
+                  [B1]
+               </fmt-xref>
+            </semx>
+            <fn reference="1" original-reference="_" id="_" target="_">
+               <p>The numbers in brackets correspond to those of the bibliography in Annex B.</p>
+               <fmt-fn-label>
+                  <span class="fmt-caption-label">
+                     <sup>
+                        <semx element="autonum" source="_">1</semx>
+                     </sup>
+                  </span>
+               </fmt-fn-label>
+            </fn>
+            <eref type="inline" bibitemid="ISO16635" citeas="[B1]" id="_"/>
+            <semx element="eref" source="_">
+               <fmt-xref type="inline" target="ISO16635">
+                  <span class="std_publisher">ISO </span>
+                  <span class="std_docNumber">16635</span>
+                  [B1]
+               </fmt-xref>
+            </semx>
+         </p>
+      </clause>
     PRESXML
     out = Nokogiri::XML(
       IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
@@ -1471,7 +1471,6 @@ RSpec.describe IsoDoc do
     expect(Canon.format_xml(strip_guid(out.to_xml)))
       .to be_equivalent_to Canon.format_xml(presxml)
   end
-
 
   it "re-sorts biblio citations" do
     input = <<~INPUT
@@ -1589,101 +1588,101 @@ RSpec.describe IsoDoc do
             </ieee-standard>
     INPUT
     presxml = <<~PRESXML
-       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-          <preface>
-             <clause type="toc" id="_" displayorder="1">
-                <fmt-title depth="1" id="_">Contents</fmt-title>
-             </clause>
-          </preface>
-          <sections>
-             <references id="_" normative="true" obligation="informative" displayorder="2">
-                <title id="_">Normative references</title>
-                <fmt-title depth="1" id="_">
-                   <semx element="title" source="_">Normative references</semx>
-                </fmt-title>
-                <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
-                <bibitem id="ref1">
-                   <biblio-tag/>
-                   <formattedref format="application/x-isodoc+xml">Reference 1</formattedref>
-                </bibitem>
-                <bibitem id="ref2">
-                   <biblio-tag>A, </biblio-tag>
-                   <formattedref format="application/x-isodoc+xml">Reference 2</formattedref>
-                   <docidentifier>A</docidentifier>
-                   <docidentifier scope="biblio-tag">A</docidentifier>
-                </bibitem>
-             </references>
-          </sections>
-          <bibliography>
-             <references id="_" normative="false" obligation="informative" displayorder="3">
-                <title id="_">Bibliography</title>
-                <fmt-title depth="1" id="_">
-                   <semx element="title" source="_">Bibliography</semx>
-                </fmt-title>
-                <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
-                <bibitem id="ref3">
-                   <biblio-tag>
-                      [B1]
-                      <fn id="_" reference="1" original-reference="1" target="_">
-                         <p original-id="_">
-                            ISO publications are available from the International Organization for Standardization (
-                            <link target="https://www.iso.org/" id="_"/>
-                            <semx element="link" source="_">
-                               <fmt-link target="https://www.iso.org/"/>
-                            </semx>
-                            ) and the American National Standards Institute (
-                            <link target="https://www.ansi.org/" id="_"/>
-                            <semx element="link" source="_">
-                               <fmt-link target="https://www.ansi.org/"/>
-                            </semx>
-                            ).
-                         </p>
-                         <fmt-fn-label>
-                            <span class="fmt-caption-label">
-                               <sup>
-                                  <semx element="autonum" source="_">1</semx>
-                               </sup>
-                            </span>
-                         </fmt-fn-label>
-                      </fn>
-                      <tab/>
-                   </biblio-tag>
-                   <formattedref format="application/x-isodoc+xml">Reference 2</formattedref>
-                   <docidentifier type="metanorma">[B1]</docidentifier>
-                </bibitem>
-             </references>
-          </bibliography>
-          <fmt-footnote-container>
-             <fmt-fn-body id="_" target="_" reference="1">
-                <semx element="fn" source="_">
-                   <p id="_">
-                      <fmt-fn-label>
-                         <span class="fmt-caption-label">
-                            <sup>
-                               <semx element="autonum" source="_">1</semx>
-                            </sup>
-                         </span>
-                         <span class="fmt-caption-delim">
-                            <tab/>
-                         </span>
-                      </fmt-fn-label>
-                      ISO publications are available from the International Organization for Standardization (
-                      <link target="https://www.iso.org/" id="_"/>
-                      <semx element="link" source="_">
-                         <fmt-link target="https://www.iso.org/"/>
-                      </semx>
-                      ) and the American National Standards Institute (
-                      <link target="https://www.ansi.org/" id="_"/>
-                      <semx element="link" source="_">
-                         <fmt-link target="https://www.ansi.org/"/>
-                      </semx>
-                      ).
-                   </p>
-                </semx>
-             </fmt-fn-body>
-          </fmt-footnote-container>
-       </iso-standard>
-       PRESXML
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+         <preface>
+            <clause type="toc" id="_" displayorder="1">
+               <fmt-title depth="1" id="_">Contents</fmt-title>
+            </clause>
+         </preface>
+         <sections>
+            <references id="_" normative="true" obligation="informative" displayorder="2">
+               <title id="_">Normative references</title>
+               <fmt-title depth="1" id="_">
+                  <semx element="title" source="_">Normative references</semx>
+               </fmt-title>
+               <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
+               <bibitem id="ref1">
+                  <biblio-tag/>
+                  <formattedref format="application/x-isodoc+xml">Reference 1</formattedref>
+               </bibitem>
+               <bibitem id="ref2">
+                  <biblio-tag>A, </biblio-tag>
+                  <formattedref format="application/x-isodoc+xml">Reference 2</formattedref>
+                  <docidentifier>A</docidentifier>
+                  <docidentifier scope="biblio-tag">A</docidentifier>
+               </bibitem>
+            </references>
+         </sections>
+         <bibliography>
+            <references id="_" normative="false" obligation="informative" displayorder="3">
+               <title id="_">Bibliography</title>
+               <fmt-title depth="1" id="_">
+                  <semx element="title" source="_">Bibliography</semx>
+               </fmt-title>
+               <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
+               <bibitem id="ref3">
+                  <biblio-tag>
+                     [B1]
+                     <fn id="_" reference="1" original-reference="1" target="_">
+                        <p original-id="_">
+                           ISO publications are available from the International Organization for Standardization (
+                           <link target="https://www.iso.org/" id="_"/>
+                           <semx element="link" source="_">
+                              <fmt-link target="https://www.iso.org/"/>
+                           </semx>
+                           ) and the American National Standards Institute (
+                           <link target="https://www.ansi.org/" id="_"/>
+                           <semx element="link" source="_">
+                              <fmt-link target="https://www.ansi.org/"/>
+                           </semx>
+                           ).
+                        </p>
+                        <fmt-fn-label>
+                           <span class="fmt-caption-label">
+                              <sup>
+                                 <semx element="autonum" source="_">1</semx>
+                              </sup>
+                           </span>
+                        </fmt-fn-label>
+                     </fn>
+                     <tab/>
+                  </biblio-tag>
+                  <formattedref format="application/x-isodoc+xml">Reference 2</formattedref>
+                  <docidentifier type="metanorma">[B1]</docidentifier>
+               </bibitem>
+            </references>
+         </bibliography>
+         <fmt-footnote-container>
+            <fmt-fn-body id="_" target="_" reference="1">
+               <semx element="fn" source="_">
+                  <p id="_">
+                     <fmt-fn-label>
+                        <span class="fmt-caption-label">
+                           <sup>
+                              <semx element="autonum" source="_">1</semx>
+                           </sup>
+                        </span>
+                        <span class="fmt-caption-delim">
+                           <tab/>
+                        </span>
+                     </fmt-fn-label>
+                     ISO publications are available from the International Organization for Standardization (
+                     <link target="https://www.iso.org/" id="_"/>
+                     <semx element="link" source="_">
+                        <fmt-link target="https://www.iso.org/"/>
+                     </semx>
+                     ) and the American National Standards Institute (
+                     <link target="https://www.ansi.org/" id="_"/>
+                     <semx element="link" source="_">
+                        <fmt-link target="https://www.ansi.org/"/>
+                     </semx>
+                     ).
+                  </p>
+               </semx>
+            </fmt-fn-body>
+         </fmt-footnote-container>
+      </iso-standard>
+    PRESXML
     out = Nokogiri::XML(
       IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true),
@@ -1731,77 +1730,77 @@ RSpec.describe IsoDoc do
          </iso-standard>
     INPUT
     presxml = <<~PRESXML
-       <clause id="A" inline-header="false" obligation="normative" displayorder="3">
-          <title id="_">Clause</title>
-          <fmt-title depth="1" id="_">
-             <span class="fmt-caption-label">
-                <semx element="autonum" source="A">2</semx>
-                <span class="fmt-autonum-delim">.</span>
-             </span>
-             <span class="fmt-caption-delim">
-                <tab/>
-             </span>
-             <semx element="title" source="_">Clause</semx>
-          </fmt-title>
-          <fmt-xref-label>
-             <span class="fmt-element-name">Clause</span>
-             <semx element="autonum" source="A">2</semx>
-          </fmt-xref-label>
-          <p id="_">
-             <eref type="inline" bibitemid="IETF_6281" citeas="ISO 639:1967" id="_">
-                <localityStack>
-                   <locality type="page">
-                      <referenceFrom>4</referenceFrom>
-                      <referenceTo>9</referenceTo>
-                   </locality>
-                </localityStack>
-             </eref>
-             <semx element="eref" source="_">
-                <fmt-xref type="inline" target="IETF_6281">
-                   <span class="std_publisher">IETF </span>
-                   <span class="std_docNumber">6281</span>
-                   , 4–9
-                </fmt-xref>
-             </semx>
-             <eref type="inline" bibitemid="IETF_6281" citeas="ISO 639:1967" id="_">
-                <localityStack>
-                   <locality type="figure">
-                      <referenceFrom>4</referenceFrom>
-                      <referenceTo>9</referenceTo>
-                   </locality>
-                </localityStack>
-             </eref>
-             <semx element="eref" source="_">
-                <fmt-xref type="inline" target="IETF_6281">
-                   <span class="std_publisher">IETF </span>
-                   <span class="std_docNumber">6281</span>
-                   , Figure 4–9
-                </fmt-xref>
-             </semx>
-             <eref type="inline" bibitemid="Johns" citeas="ISO 639-2:1998" id="_">
-                <localityStack>
-                   <locality type="page">
-                      <referenceFrom>4</referenceFrom>
-                      <referenceTo>9</referenceTo>
-                   </locality>
-                </localityStack>
-             </eref>
-             <semx element="eref" source="_">
-                <fmt-xref type="inline" style="author_date" target="Johns">Johns 2022,  4–9</fmt-xref>
-             </semx>
-             <eref type="inline" bibitemid="Johns" citeas="ISO 639-2:1998" id="_">
-                <localityStack>
-                   <locality type="figure">
-                      <referenceFrom>4</referenceFrom>
-                      <referenceTo>9</referenceTo>
-                   </locality>
-                </localityStack>
-             </eref>
-             <semx element="eref" source="_">
-                <fmt-xref type="inline" style="author_date" target="Johns">Johns 2022,  Figure 4–9</fmt-xref>
-             </semx>
-          </p>
-       </clause>
+      <clause id="A" inline-header="false" obligation="normative" displayorder="3">
+         <title id="_">Clause</title>
+         <fmt-title depth="1" id="_">
+            <span class="fmt-caption-label">
+               <semx element="autonum" source="A">2</semx>
+               <span class="fmt-autonum-delim">.</span>
+            </span>
+            <span class="fmt-caption-delim">
+               <tab/>
+            </span>
+            <semx element="title" source="_">Clause</semx>
+         </fmt-title>
+         <fmt-xref-label>
+            <span class="fmt-element-name">Clause</span>
+            <semx element="autonum" source="A">2</semx>
+         </fmt-xref-label>
+         <p id="_">
+            <eref type="inline" bibitemid="IETF_6281" citeas="ISO 639:1967" id="_">
+               <localityStack>
+                  <locality type="page">
+                     <referenceFrom>4</referenceFrom>
+                     <referenceTo>9</referenceTo>
+                  </locality>
+               </localityStack>
+            </eref>
+            <semx element="eref" source="_">
+               <fmt-xref type="inline" target="IETF_6281">
+                  <span class="std_publisher">IETF </span>
+                  <span class="std_docNumber">6281</span>
+                  , 4–9
+               </fmt-xref>
+            </semx>
+            <eref type="inline" bibitemid="IETF_6281" citeas="ISO 639:1967" id="_">
+               <localityStack>
+                  <locality type="figure">
+                     <referenceFrom>4</referenceFrom>
+                     <referenceTo>9</referenceTo>
+                  </locality>
+               </localityStack>
+            </eref>
+            <semx element="eref" source="_">
+               <fmt-xref type="inline" target="IETF_6281">
+                  <span class="std_publisher">IETF </span>
+                  <span class="std_docNumber">6281</span>
+                  , Figure 4–9
+               </fmt-xref>
+            </semx>
+            <eref type="inline" bibitemid="Johns" citeas="ISO 639-2:1998" id="_">
+               <localityStack>
+                  <locality type="page">
+                     <referenceFrom>4</referenceFrom>
+                     <referenceTo>9</referenceTo>
+                  </locality>
+               </localityStack>
+            </eref>
+            <semx element="eref" source="_">
+               <fmt-xref type="inline" style="author_date" target="Johns">Johns 2022,  4–9</fmt-xref>
+            </semx>
+            <eref type="inline" bibitemid="Johns" citeas="ISO 639-2:1998" id="_">
+               <localityStack>
+                  <locality type="figure">
+                     <referenceFrom>4</referenceFrom>
+                     <referenceTo>9</referenceTo>
+                  </locality>
+               </localityStack>
+            </eref>
+            <semx element="eref" source="_">
+               <fmt-xref type="inline" style="author_date" target="Johns">Johns 2022,  Figure 4–9</fmt-xref>
+            </semx>
+         </p>
+      </clause>
     PRESXML
     out = Nokogiri::XML(
       IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
@@ -1809,6 +1808,455 @@ RSpec.describe IsoDoc do
     )
     out = out.at("//xmlns:clause[@id = 'A']")
     expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
+  end
+
+  it "processes Relaton bibliographies with references on the same date" do
+    input = <<~INPUT
+          <iso-standard xmlns="http://riboseinc.com/isoxml">
+          <bibdata>
+          <language>en</language>
+          </bibdata>
+          <preface><foreword>
+        <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
+        <eref bibitemid="ref1"/>
+        <eref bibitemid="ref2"/>
+        <eref bibitemid="ref3"/>
+        <eref bibitemid="ref4"/>
+        <eref bibitemid="ref5"/>
+        <eref bibitemid="ref6"/>
+        <eref bibitemid="ref7"/>
+        <eref bibitemid="ref8"/>
+        </p>
+          </foreword></preface>
+          <bibliography>
+        <references id="_normative_references" obligation="informative" normative="true"><title>Normative References</title>
+      <bibitem id="ref1" type="standard">
+        <title type="main" format="text/plain">Cereals and cereal products</title>
+        <docidentifier type="ISO">ISO 712</docidentifier>
+        <contributor>
+          <role type="author"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <date type="published"><on>2000</on></date>
+      </bibitem>
+      <bibitem id="ref2" type="standard">
+        <title type="main" format="text/plain">Books and book products</title>
+        <docidentifier type="ISO">ISO 713</docidentifier>
+        <contributor>
+          <role type="author"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <date type="published"><on>2000</on></date>
+      </bibitem>
+      <bibitem id="ref3" type="book">
+        <title type="main" format="text/plain">Cereals and cereal products</title>
+        <contributor>
+          <role type="author"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <date type="published"><on>2000</on></date>
+      </bibitem>
+            <bibitem id="ref4" type="book">
+        <title type="main" format="text/plain">Books and book products</title>
+        <contributor>
+          <role type="author"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <date type="published"><on>2000</on></date>
+      </bibitem>
+       </references>
+       <references id="_normative_references" obligation="informative" normative="true"><title>Normative References</title>
+      <bibitem id="ref5" type="standard">
+        <title type="main" format="text/plain">Cereals and cereal products</title>
+        <docidentifier type="ISO">ISO 712</docidentifier>
+        <contributor>
+          <role type="author"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <date type="published"><on>2000</on></date>
+      </bibitem>
+      <bibitem id="ref6" type="standard">
+        <title type="main" format="text/plain">Books and book products</title>
+        <docidentifier type="ISO">ISO 713</docidentifier>
+        <contributor>
+          <role type="author"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <date type="published"><on>2000</on></date>
+      </bibitem>
+      <bibitem id="ref7" type="book">
+        <title type="main" format="text/plain">Cereals and cereal products</title>
+        <contributor>
+          <role type="author"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <date type="published"><on>2000</on></date>
+      </bibitem>
+      <bibitem id="ref8" type="book">
+        <title type="main" format="text/plain">Books and book products</title>
+        <contributor>
+          <role type="author"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <date type="published"><on>2000</on></date>
+      </bibitem>
+       </references>
+       </bibliography>
+       </iso-standard>
+    INPUT
+    presxml = <<~PRESXML
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+         <bibdata>
+            <language current="true">en</language>
+         </bibdata>
+         <preface>
+            <clause type="toc" id="_" displayorder="1">
+               <fmt-title depth="1" id="_">Contents</fmt-title>
+            </clause>
+            <foreword id="_" displayorder="2">
+               <title id="_">Foreword</title>
+               <fmt-title depth="1" id="_">
+                  <semx element="title" source="_">Foreword</semx>
+               </fmt-title>
+               <p id="_">
+                  <eref bibitemid="ref1" id="_"/>
+                  <semx element="eref" source="_">
+                     <fmt-xref target="ref1">ISO 712</fmt-xref>
+                  </semx>
+                  <eref bibitemid="ref2" id="_"/>
+                  <semx element="eref" source="_">
+                     <fmt-xref target="ref2">ISO 713</fmt-xref>
+                  </semx>
+                  <eref bibitemid="ref3" id="_"/>
+                  <semx element="eref" source="_">
+                     <fmt-xref target="ref3">International Organization for Standardization 2000c</fmt-xref>
+                  </semx>
+                  <eref bibitemid="ref4" id="_"/>
+                  <semx element="eref" source="_">
+                     <fmt-xref target="ref4">International Organization for Standardization 2000d</fmt-xref>
+                  </semx>
+                  <eref bibitemid="ref5" id="_"/>
+                  <semx element="eref" source="_">
+                     <fmt-xref target="ref5">ISO 712</fmt-xref>
+                  </semx>
+                  <eref bibitemid="ref6" id="_"/>
+                  <semx element="eref" source="_">
+                     <fmt-xref target="ref6">ISO 713</fmt-xref>
+                  </semx>
+                  <eref bibitemid="ref7" id="_"/>
+                  <semx element="eref" source="_">
+                     <fmt-xref target="ref7">International Organization for Standardization 2000g</fmt-xref>
+                  </semx>
+                  <eref bibitemid="ref8" id="_"/>
+                  <semx element="eref" source="_">
+                     <fmt-xref target="ref8">International Organization for Standardization 2000h</fmt-xref>
+                  </semx>
+               </p>
+            </foreword>
+         </preface>
+         <sections>
+            <references id="_" obligation="informative" normative="true" displayorder="3">
+               <title id="_">Normative References</title>
+               <fmt-title depth="1" id="_">
+                  <span class="fmt-caption-label">
+                     <semx element="autonum" source="_">1</semx>
+                     <span class="fmt-autonum-delim">.</span>
+                  </span>
+                  <span class="fmt-caption-delim">
+                     <tab/>
+                  </span>
+                  <semx element="title" source="_">Normative References</semx>
+               </fmt-title>
+               <fmt-xref-label>
+                  <span class="fmt-element-name">Clause</span>
+                  <semx element="autonum" source="_">1</semx>
+               </fmt-xref-label>
+               <bibitem id="ref1" type="standard">
+                  <biblio-tag>ISO 712, </biblio-tag>
+                  <formattedref>Cereals and cereal products.</formattedref>
+                  <title type="main" format="text/plain">Cereals and cereal products</title>
+                  <docidentifier type="ISO">ISO 712</docidentifier>
+                  <docidentifier scope="biblio-tag">ISO 712</docidentifier>
+                  <contributor>
+                     <role type="author"/>
+                     <organization>
+                        <name>International Organization for Standardization</name>
+                     </organization>
+                  </contributor>
+                  <contributor>
+                     <role type="publisher"/>
+                     <organization>
+                        <name>International Organization for Standardization</name>
+                     </organization>
+                  </contributor>
+                  <date type="published">
+                     <on>2000</on>
+                  </date>
+               </bibitem>
+               <bibitem id="ref2" type="standard">
+                  <biblio-tag>ISO 713, </biblio-tag>
+                  <formattedref>Books and book products.</formattedref>
+                  <title type="main" format="text/plain">Books and book products</title>
+                  <docidentifier type="ISO">ISO 713</docidentifier>
+                  <docidentifier scope="biblio-tag">ISO 713</docidentifier>
+                  <contributor>
+                     <role type="author"/>
+                     <organization>
+                        <name>International Organization for Standardization</name>
+                     </organization>
+                  </contributor>
+                  <contributor>
+                     <role type="publisher"/>
+                     <organization>
+                        <name>International Organization for Standardization</name>
+                     </organization>
+                  </contributor>
+                  <date type="published">
+                     <on>2000</on>
+                  </date>
+               </bibitem>
+               <bibitem id="ref3" type="book">
+                  <biblio-tag>International Organization for Standardization 2000c </biblio-tag>
+                  <formattedref>
+                     International Organization for Standardization,
+                     <em>Cereals and cereal products</em>
+                     , International Organization for Standardization, 2000c.
+                  </formattedref>
+                  <title type="main" format="text/plain">Cereals and cereal products</title>
+                  <contributor>
+                     <role type="author"/>
+                     <organization>
+                        <name>International Organization for Standardization</name>
+                     </organization>
+                  </contributor>
+                  <contributor>
+                     <role type="publisher"/>
+                     <organization>
+                        <name>International Organization for Standardization</name>
+                     </organization>
+                  </contributor>
+                  <date type="published">
+                     <on>2000</on>
+                  </date>
+                  <docidentifier type="author-date">International Organization for Standardization 2000c</docidentifier>
+                  <biblio-tag>International Organization for Standardization 2000c, </biblio-tag>
+               </bibitem>
+               <bibitem id="ref4" type="book">
+                  <biblio-tag>International Organization for Standardization 2000d </biblio-tag>
+                  <formattedref>
+                     International Organization for Standardization,
+                     <em>Books and book products</em>
+                     , International Organization for Standardization, 2000d.
+                  </formattedref>
+                  <title type="main" format="text/plain">Books and book products</title>
+                  <contributor>
+                     <role type="author"/>
+                     <organization>
+                        <name>International Organization for Standardization</name>
+                     </organization>
+                  </contributor>
+                  <contributor>
+                     <role type="publisher"/>
+                     <organization>
+                        <name>International Organization for Standardization</name>
+                     </organization>
+                  </contributor>
+                  <date type="published">
+                     <on>2000</on>
+                  </date>
+                  <docidentifier type="author-date">International Organization for Standardization 2000d</docidentifier>
+                  <biblio-tag>International Organization for Standardization 2000d, </biblio-tag>
+               </bibitem>
+            </references>
+            <references id="_" obligation="informative" normative="true">
+               <title id="_">Normative References</title>
+               <fmt-title depth="1" id="_">
+                  <span class="fmt-caption-label">
+                     <semx element="autonum" source="_">1</semx>
+                     <span class="fmt-autonum-delim">.</span>
+                  </span>
+                  <span class="fmt-caption-delim">
+                     <tab/>
+                  </span>
+                  <semx element="title" source="_">Normative References</semx>
+               </fmt-title>
+               <fmt-xref-label>
+                  <span class="fmt-element-name">Clause</span>
+                  <semx element="autonum" source="_">1</semx>
+               </fmt-xref-label>
+               <bibitem id="ref5" type="standard">
+                  <biblio-tag>ISO 712, </biblio-tag>
+                  <formattedref>Cereals and cereal products.</formattedref>
+                  <title type="main" format="text/plain">Cereals and cereal products</title>
+                  <docidentifier type="ISO">ISO 712</docidentifier>
+                  <docidentifier scope="biblio-tag">ISO 712</docidentifier>
+                  <contributor>
+                     <role type="author"/>
+                     <organization>
+                        <name>International Organization for Standardization</name>
+                     </organization>
+                  </contributor>
+                  <contributor>
+                     <role type="publisher"/>
+                     <organization>
+                        <name>International Organization for Standardization</name>
+                     </organization>
+                  </contributor>
+                  <date type="published">
+                     <on>2000</on>
+                  </date>
+               </bibitem>
+               <bibitem id="ref6" type="standard">
+                  <biblio-tag>ISO 713, </biblio-tag>
+                  <formattedref>Books and book products.</formattedref>
+                  <title type="main" format="text/plain">Books and book products</title>
+                  <docidentifier type="ISO">ISO 713</docidentifier>
+                  <docidentifier scope="biblio-tag">ISO 713</docidentifier>
+                  <contributor>
+                     <role type="author"/>
+                     <organization>
+                        <name>International Organization for Standardization</name>
+                     </organization>
+                  </contributor>
+                  <contributor>
+                     <role type="publisher"/>
+                     <organization>
+                        <name>International Organization for Standardization</name>
+                     </organization>
+                  </contributor>
+                  <date type="published">
+                     <on>2000</on>
+                  </date>
+               </bibitem>
+               <bibitem id="ref7" type="book">
+                  <biblio-tag>International Organization for Standardization 2000g </biblio-tag>
+                  <formattedref>
+                     International Organization for Standardization,
+                     <em>Cereals and cereal products</em>
+                     , International Organization for Standardization, 2000g.
+                  </formattedref>
+                  <title type="main" format="text/plain">Cereals and cereal products</title>
+                  <contributor>
+                     <role type="author"/>
+                     <organization>
+                        <name>International Organization for Standardization</name>
+                     </organization>
+                  </contributor>
+                  <contributor>
+                     <role type="publisher"/>
+                     <organization>
+                        <name>International Organization for Standardization</name>
+                     </organization>
+                  </contributor>
+                  <date type="published">
+                     <on>2000</on>
+                  </date>
+                  <docidentifier type="author-date">International Organization for Standardization 2000g</docidentifier>
+                  <biblio-tag>International Organization for Standardization 2000g, </biblio-tag>
+               </bibitem>
+               <bibitem id="ref8" type="book">
+                  <biblio-tag>International Organization for Standardization 2000h </biblio-tag>
+                  <formattedref>
+                     International Organization for Standardization,
+                     <em>Books and book products</em>
+                     , International Organization for Standardization, 2000h.
+                  </formattedref>
+                  <title type="main" format="text/plain">Books and book products</title>
+                  <contributor>
+                     <role type="author"/>
+                     <organization>
+                        <name>International Organization for Standardization</name>
+                     </organization>
+                  </contributor>
+                  <contributor>
+                     <role type="publisher"/>
+                     <organization>
+                        <name>International Organization for Standardization</name>
+                     </organization>
+                  </contributor>
+                  <date type="published">
+                     <on>2000</on>
+                  </date>
+                  <docidentifier type="author-date">International Organization for Standardization 2000h</docidentifier>
+                  <biblio-tag>International Organization for Standardization 2000h, </biblio-tag>
+               </bibitem>
+            </references>
+         </sections>
+         <bibliography>
+       </bibliography>
+      </iso-standard>
+    PRESXML
+    pres_output = Nokogiri::XML(
+      IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true),
+    )
+    pres_output.at("//xmlns:localized-strings").remove
+    expect(Canon.format_xml(strip_guid(pres_output.to_xml)))
       .to be_equivalent_to Canon.format_xml(presxml)
   end
 end
