@@ -111,6 +111,7 @@ module IsoDoc
 
       def variant_title(node, out)
         node.parent.name == "annex" or return super
+        node["type"] == "sub" or return super
         out.p { |e| e << "&#xa0;" }
         out.p **attr_code(class: "Unnumberedheading") do |p|
           node.children.each { |c| parse(c, p) }

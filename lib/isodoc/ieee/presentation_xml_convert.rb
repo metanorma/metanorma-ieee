@@ -22,24 +22,21 @@ module IsoDoc
         "&#x2014;"
       end
 
-      def annex1(elem)
-        if @doctype == "whitepaper"
-          annex1_whitepaper(elem)
-        else
-          super
+      def annex1_title_fmt(elem)
+        if (@doctype == "whitepaper") && (t = elem.at(ns("./title")))
+          t.next = to_xml(t)
+          v = t.next
+          v.name = "variant-title"
+          v["type"] = "sub"
         end
+        super
       end
 
-      def annex1_whitepaper(elem)
-        lbl = @xrefs.anchor(elem["id"], :label)
-        if t = elem.at(ns("./title"))
-          d = t.dup
-          # TODO fmt-variant-title
-          d.name = "variant-title"
-          d["type"] = "sub"
-          t.next = d
+      def annex1_title_fmt_inline(title)
+        if @doctype == "whitepaper"
+          to_xml(title.children)
+        else super
         end
-        elem.add_first_child "<fmt-title>#{lbl}</fmt-title>"
       end
 
       def annex_delim(_elem)
@@ -81,15 +78,10 @@ module IsoDoc
         warn "Failure to convert MathML to LaTeX\n#{node.parent.to_xml}\n#{e}"
       end
 
-      #def ol(docxml)
-        #ol_prep(docxml)
-      #  docxml.xpath(ns("//ol/li")).each { |f| ol_label(f) }
-      #end
-
       def ol_numbering_containers
         "//clause | //annex | //foreword | //acknowledgements | " \
-            "//introduction | //preface/abstract | //appendix | //terms | " \
-            "//term | //definitions | //references | //colophon"
+          "//introduction | //preface/abstract | //appendix | //terms | " \
+          "//term | //definitions | //references | //colophon"
       end
 
       def ol_numbering(docxml)
