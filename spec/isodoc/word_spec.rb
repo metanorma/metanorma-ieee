@@ -1301,6 +1301,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     output2 = <<~OUTPUT
       <div>
           <a name="A1" id="A1"/>
+          <p style="display:none;" class="variant-title-toc">Annex A</p>
           <h1 style="mso-list:l13 level1 lfo33;">Annex</h1>
           <div class="IEEEStdsImage" style="page-break-after: avoid;page-break-inside: avoid;">
              <a name="figureA-2" id="figureA-2"/>
@@ -1359,6 +1360,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     output2 = <<~OUTPUT
       <div>
           <a name="A1" id="A1"/>
+          <p style="display:none;" class="variant-title-toc">Annex A</p>
           <h1 style="margin-left:0cm;">Annex</h1>
           <br style="mso-ignore:vglayout" clear="ALL"/>
           <div class="MsoBodyText" style="page-break-after: avoid;page-break-inside: avoid;;text-align:center;">
@@ -1466,6 +1468,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     output2 = <<~OUTPUT
       <div>
          <a name="A1" id="A1"/>
+         <p style="display:none;" class="variant-title-toc">Annex A</p>
          <h1 style="mso-list:l13 level1 lfo33;">Annex</h1>
          <p class="TableCaption" style="text-align:center;">
             Table A.1—Split-it-right
@@ -1567,6 +1570,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     output2 = <<~OUTPUT
           <div>
          <a name="A1" id="A1"/>
+         <p style="display:none;" class="variant-title-toc">Annex A</p>
          <h1 style="margin-left:0cm;">Annex</h1>
          <br style="mso-ignore:vglayout" clear="ALL"/>
          <p class="TableCaption" style="text-align:center;">
@@ -1818,6 +1822,64 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         </annex>
       </iso-standard>
     INPUT
+    presxml = <<~OUTPUT
+       <annex id="A" autonum="A" displayorder="2">
+          <title id="_">This is the annex title</title>
+          <fmt-title id="_">
+             <strong>
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Annex</span>
+                   <semx element="autonum" source="A">A</semx>
+                </span>
+             </strong>
+             <br/>
+             <span class="fmt-obligation">(informative)</span>
+             <span class="fmt-caption-delim">
+                <br/>
+             </span>
+             <semx element="title" source="_">
+                <strong>This is the annex title</strong>
+             </semx>
+          </fmt-title>
+          <fmt-xref-label>
+             <span class="fmt-element-name">Annex</span>
+             <semx element="autonum" source="A">A</semx>
+          </fmt-xref-label>
+          <variant-title type="toc">
+             <span class="fmt-caption-label">
+                <span class="fmt-element-name">Annex</span>
+                <semx element="autonum" source="A">A</semx>
+             </span>
+             <span class="fmt-caption-delim">
+                <tab/>
+             </span>
+             <semx element="title" source="_">This is the annex title</semx>
+          </variant-title>
+          <p>body</p>
+          <clause id="B" autonum="A.1">
+             <title id="_">This is a subclause</title>
+             <fmt-title depth="2" id="_">
+                <span class="fmt-caption-label">
+                   <semx element="autonum" source="A">A</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                   <semx element="autonum" source="B">1</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">This is a subclause</semx>
+             </fmt-title>
+             <fmt-xref-label>
+                <span class="fmt-element-name">Annex</span>
+                <semx element="autonum" source="A">A</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="B">1</semx>
+             </fmt-xref-label>
+             <p>body</p>
+          </clause>
+       </annex>
+    OUTPUT
     word = <<~OUTPUT
       <div>
         <a name="A" id="A"/>
@@ -1827,6 +1889,11 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
           <br/>
           <b>This is the annex title</b>
         </h1>
+       <p style="display:none;" class="variant-title-toc">
+      Annex A
+      <span style="mso-tab-count:1">  </span>
+      This is the annex title
+        </p>
         <p class="IEEEStdsParagraph">body</p>
         <div>
           <a name="B" id="B"/>
@@ -1838,6 +1905,9 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
+    expect(strip_guid(Canon.format_xml(Nokogiri::XML(pres_output)
+      .at("//xmlns:annex").to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
@@ -1845,10 +1915,69 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(strip_guid(Canon.format_xml(doc.to_xml)))
       .to be_equivalent_to Canon.format_xml(word)
 
+       presxml = <<~OUTPUT
+       <annex id="A" autonum="A" displayorder="2">
+          <title id="_">This is the annex title</title>
+          <fmt-title id="_">
+             <span class="fmt-caption-label">
+                <span class="fmt-element-name">Annex</span>
+                <semx element="autonum" source="A">A</semx>
+             </span>
+             <span class="fmt-caption-delim">
+                <br/>
+             </span>
+             <semx element="title" source="_">
+                <strong>This is the annex title</strong>
+             </semx>
+          </fmt-title>
+          <fmt-xref-label>
+             <span class="fmt-element-name">Annex</span>
+             <semx element="autonum" source="A">A</semx>
+          </fmt-xref-label>
+          <variant-title type="toc">
+             <span class="fmt-caption-label">
+                <span class="fmt-element-name">Annex</span>
+                <semx element="autonum" source="A">A</semx>
+             </span>
+             <span class="fmt-caption-delim">
+                <tab/>
+             </span>
+             <semx element="title" source="_">This is the annex title</semx>
+          </variant-title>
+          <variant-title type="sub">This is the annex title</variant-title>
+          <p>body</p>
+          <clause id="B" autonum="A.1">
+             <title id="_">This is a subclause</title>
+             <fmt-title depth="2" id="_">
+                <span class="fmt-caption-label">
+                   <semx element="autonum" source="A">A</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                   <semx element="autonum" source="B">1</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">This is a subclause</semx>
+             </fmt-title>
+             <fmt-xref-label>
+                <span class="fmt-element-name">Annex</span>
+                <semx element="autonum" source="A">A</semx>
+                <span class="fmt-autonum-delim">.</span>
+                <semx element="autonum" source="B">1</semx>
+             </fmt-xref-label>
+             <p>body</p>
+          </clause>
+       </annex>
+    OUTPUT
     word = <<~OUTPUT
       <div>
          <a name="A" id="A"/>
-         <h1 style="margin-left:0cm;">Annex A</h1>
+         <h1 style="margin-left:0cm;">
+            Annex A
+            <br/>
+            <b>This is the annex title</b>
+        </h1>
          <wrapblock>
             <v:line id="Line_x0020_23" o:spid="_x0000_s2052" style="visibility:visible;mso-wrap-style:square;mso-left-percent:-10001; mso-top-percent:-10001;mso-position-horizontal:absolute; mso-position-horizontal-relative:char;mso-position-vertical:absolute; mso-position-vertical-relative:line;mso-left-percent:-10001;mso-top-percent:-10001" from="55.05pt,2953.75pt" to="217pt,2953.75pt" o:gfxdata="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 " strokecolor="#00aeef" strokeweight="8pt">
              <lock v:ext="edit" shapetype="f"/>
@@ -1856,6 +1985,11 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
            </v:line>
          </wrapblock>
          <br style="mso-ignore:vglayout" clear="ALL"/>
+         <p style="display:none;" class="variant-title-toc">
+              Annex A
+              <span style="mso-tab-count:1">  </span>
+              This is the annex title
+          </p>
          <p class="MsoBodyText"> </p>
         <p class="Unnumberedheading">This is the annex title</p>
          <p class="MsoBodyText">body</p>
@@ -1870,6 +2004,9 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       .new(presxml_options)
       .convert("test", input.sub("<doctype>standard</doctype>",
                                  "<doctype>whitepaper</doctype>"), true)
+    expect(strip_guid(Canon.format_xml(Nokogiri::XML(pres_output)
+      .at("//xmlns:annex").to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
     IsoDoc::Ieee::WordConvert.new({})
       .convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true

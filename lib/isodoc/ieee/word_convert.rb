@@ -157,7 +157,8 @@ module IsoDoc
 
       def annex_name(_annex, name, div)
         name.nil? and return
-        name&.at(ns(".//strong"))&.remove # supplied by CSS list numbering
+        @doctype != "whitepaper" and # there is a prefix
+          name&.at(ns(".//strong"))&.remove # supplied by CSS list numbering
         div.h1 class: "Annex" do |t|
           # annex_name1(name, t)
           children_parse(name, t)
@@ -207,12 +208,12 @@ module IsoDoc
       # are provided by Word styles instead.
       # Retain the em-dash delimiting caption
       def strip_caption_semx(name)
-        name.xpath(".//xmlns:semx[@element = 'autonum']/"\
+        name.xpath(".//xmlns:semx[@element = 'autonum']/" \
                    "preceding-sibling::text()[normalize-space() = '']")
           .each do |s|
-            s.ancestors("fn").empty? and s.remove
+          s.ancestors("fn").empty? and s.remove
         end
-        name.xpath(ns(".//span[@class = 'fmt-element-name']  | "\
+        name.xpath(ns(".//span[@class = 'fmt-element-name']  | " \
                       ".//semx[@element = 'autonum']")).each do |s|
                         s.ancestors("fn").empty? and s.remove
                       end

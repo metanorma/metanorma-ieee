@@ -1559,7 +1559,7 @@ RSpec.describe IsoDoc do
                       </em>
                 </strong>
              </p>
-             <quote id="D">
+             <quote id="D" type="newcontent">
                 <table id="E" number="2" autonum="2">
                    <name id="_">Edges of triangle and quadrilateral cells</name>
                    <fmt-name id="_">
