@@ -35,6 +35,7 @@ module Metanorma
         title = bib.at("./title[@type = 'main']")&.text ||
           bib.at("./title")&.text || bib.at("./formattedref")&.text
         title.gsub!(/[[:punct:]]/, "")
+        warn  @c.decode("#{name} #{title} #{docid}").strip.downcase
         @c.decode("#{name} #{title} #{docid}").strip.downcase
       end
 

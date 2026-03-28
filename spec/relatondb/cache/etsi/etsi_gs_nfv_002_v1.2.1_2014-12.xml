@@ -1,0 +1,46 @@
+<bibdata schema-version="v1.4.1">
+  <fetched>2026-03-29</fetched>
+  <title language="en" script="Latn">Network Functions Virtualisation (NFV); Architectural Framework</title>
+  <uri type="src">http://webapp.etsi.org/workprogram/Report_WorkItem.asp?WKI_ID=43827</uri>
+  <uri type="pdf">http://www.etsi.org/deliver/etsi_gs/NFV/001_099/002/01.02.01_60/gs_NFV002v010201p.pdf</uri>
+  <docidentifier type="ETSI" primary="true">ETSI GS NFV 002 V1.2.1 (2014-12)</docidentifier>
+  <docnumber>ETSI GS NFV 002 V1.2.1 (2014-12)</docnumber>
+  <date type="published">
+    <on>2014-12</on>
+  </date>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name language="en" script="Latn">European Telecommunications Standards Institute</name>
+      <abbreviation language="en" script="Latn">ETSI</abbreviation>
+    </organization>
+  </contributor>
+  <contributor>
+    <role type="author">
+      <description>committee</description>
+    </role>
+    <organization>
+      <name>European Telecommunications Standards Institute</name>
+      <subdivision type="technical-committee">
+        <name>Network Functions Virtualisation</name>
+      </subdivision>
+      <abbreviation language="en" script="Latn">ETSI</abbreviation>
+    </organization>
+  </contributor>
+  <version>
+    <draft>1.2.1</draft>
+  </version>
+  <language>en</language>
+  <script>Latn</script>
+  <abstract language="en" script="Latn">The document describes the high-level architectural framework and design philosophy of VNFs, and of the supporting platform and infrastructure. The work to realize in the revision of the Architectural Framework aims at developing the basic principles of the existing framework and implementing any current missing description that will help improve the understanding of the NFV architecture within and outside the NFV ISG context.</abstract>
+  <status>
+    <stage>Published</stage>
+  </status>
+  <keyword>
+    <taxon language="en" script="Latn">ARCHITECTURE</taxon>
+    <taxon language="en" script="Latn">NFV</taxon>
+  </keyword>
+  <ext schema-version="v0.0.3">
+    <doctype abbreviation="GS">Group Specification</doctype>
+  </ext>
+</bibdata>

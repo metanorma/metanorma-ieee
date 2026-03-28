@@ -1,0 +1,167 @@
+<bibdata type="standard" schema-version="v1.4.1">
+  <fetched>2026-03-29</fetched>
+  <title language="en" script="Latn">Protecting Controlled Unclassified Information in Nonfederal Information Systems and Organizations</title>
+  <uri type="src">https://csrc.nist.gov/pubs/sp/800/171/final</uri>
+  <docidentifier type="NIST" primary="true">NIST SP 800-171 fpd</docidentifier>
+  <date type="published">
+    <on>2015-06-18</on>
+  </date>
+  <date type="obsoleted">
+    <on>2015-10-01</on>
+  </date>
+  <date type="issued">
+    <on>2015-06-01</on>
+  </date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <prefix language="en" script="Latn">Dr.</prefix>
+        <forename language="en" script="Latn">Ron</forename>
+        <surname language="en" script="Latn">Ross</surname>
+        <completename language="en" script="Latn">Ron S. Ross</completename>
+      </name>
+      <affiliation>
+        <organization>
+          <name>National Institute of Standards and Technology</name>
+          <abbreviation>NIST</abbreviation>
+        </organization>
+      </affiliation>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <forename language="en" script="Latn">Kelley</forename>
+        <surname language="en" script="Latn">Dempsey</surname>
+        <completename language="en" script="Latn">Kelley L. Dempsey</completename>
+      </name>
+      <affiliation>
+        <organization>
+          <name>National Institute of Standards and Technology</name>
+          <abbreviation>NIST</abbreviation>
+        </organization>
+      </affiliation>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <forename language="en" script="Latn">Patrick</forename>
+        <surname language="en" script="Latn">Viscuso</surname>
+        <completename language="en" script="Latn">Patrick Viscuso</completename>
+      </name>
+      <affiliation>
+        <organization>
+          <name>National Archives and Records Administration</name>
+          <abbreviation>NARA</abbreviation>
+        </organization>
+      </affiliation>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <forename language="en" script="Latn">Mark</forename>
+        <surname language="en" script="Latn">Riddle</surname>
+        <completename language="en" script="Latn">Mark Riddle</completename>
+      </name>
+      <affiliation>
+        <organization>
+          <name>National Archives and Records Administration</name>
+          <abbreviation>NARA</abbreviation>
+        </organization>
+      </affiliation>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <forename language="en" script="Latn">Gary</forename>
+        <surname language="en" script="Latn">Guissanie</surname>
+        <completename language="en" script="Latn">Gary Guissanie</completename>
+      </name>
+      <affiliation>
+        <organization>
+          <name>Institute for Defense Analyses</name>
+          <abbreviation>IDA</abbreviation>
+        </organization>
+      </affiliation>
+    </person>
+  </contributor>
+  <language>en</language>
+  <script>Latn</script>
+  <status>
+    <stage>final</stage>
+    <substage>withdrawn</substage>
+    <iteration>final</iteration>
+  </status>
+  <copyright>
+    <from>2015</from>
+    <owner>
+      <organization>
+        <name>National Institute of Standards and Technology</name>
+        <abbreviation>NIST</abbreviation>
+        <uri>www.nist.gov</uri>
+      </organization>
+    </owner>
+  </copyright>
+  <relation type="updates">
+    <bibitem>
+      <formattedref>NIST SP 800-171 fpd</formattedref>
+      <uri type="src">https://csrc.nist.gov/pubs/sp/800/171/upd1/final</uri>
+      <docidentifier type="NIST" primary="true">NIST SP 800-171 fpd</docidentifier>
+    </bibitem>
+  </relation>
+  <place>
+    <city>Gaithersburg</city>
+    <region iso="MD"></region>
+  </place>
+  <keyword>
+    <taxon>Controlled Unclassified Information</taxon>
+  </keyword>
+  <keyword>
+    <taxon>CUI Registry</taxon>
+  </keyword>
+  <keyword>
+    <taxon>Executive Order 13556</taxon>
+  </keyword>
+  <keyword>
+    <taxon>FIPS Publication 199</taxon>
+  </keyword>
+  <keyword>
+    <taxon>FIPS Publication 200</taxon>
+  </keyword>
+  <keyword>
+    <taxon>FISMA</taxon>
+  </keyword>
+  <keyword>
+    <taxon>NIST SP 800-53</taxon>
+  </keyword>
+  <keyword>
+    <taxon>Nonfederal Information Systems</taxon>
+  </keyword>
+  <keyword>
+    <taxon>Security Control</taxon>
+  </keyword>
+  <keyword>
+    <taxon>Security Requirement</taxon>
+  </keyword>
+  <keyword>
+    <taxon>Derived Security Requirement</taxon>
+  </keyword>
+  <keyword>
+    <taxon>Contractor Information Systems</taxon>
+  </keyword>
+  <keyword>
+    <taxon>Security Assessment</taxon>
+  </keyword>
+  <ext schema-version="v1.0.0">
+    <doctype>standard</doctype>
+    <flavor>nist</flavor>
+  </ext>
+</bibdata>
