@@ -53,7 +53,7 @@ module Metanorma
       end
 
       def designator_docid(bib)
-        n = bib.at("./docidentifier[@primary]") ||
+        n = bib.at("./docidentifier[@primary = 'true']") ||
           bib.at("./docidentifier[not(#{@conv.skip_docid})]")
         n or return "ZZZZ"
         @isodoc.docid_prefix(n["type"], n.children.to_xml)
