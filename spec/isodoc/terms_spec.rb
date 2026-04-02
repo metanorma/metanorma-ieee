@@ -783,14 +783,14 @@ RSpec.describe IsoDoc do
     pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(Canon.format_xml(strip_guid(pres_output)))
-      .to be_equivalent_to Canon.format_xml(presxml)
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(pres_output))
+      .to be_xml_equivalent_to presxml
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(html)
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::WordConvert.new({})
+      .at("//body").to_xml)).to be_html5_equivalent_to html
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::WordConvert.new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(word)
+      .at("//body").to_xml)).to be_html4_equivalent_to word
   end
 
   it "sorts terms" do
@@ -1023,10 +1023,10 @@ RSpec.describe IsoDoc do
           </fmt-footnote-container>
        </ieee-standard>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
-        .convert("test", input, true))))
-      .to be_equivalent_to Canon.format_xml(output)
+        .convert("test", input, true)))
+      .to be_xml_equivalent_to output
   end
 
   it "processes IsoXML term with grammatical information" do
@@ -1189,10 +1189,10 @@ RSpec.describe IsoDoc do
           </sections>
        </iso-standard>
     PRESXML
-    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
-      .convert("test", input, true))))
-      .to be_equivalent_to Canon.format_xml(presxml)
+      .convert("test", input, true)))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes IsoXML term with empty or graphical designations" do
@@ -1298,10 +1298,10 @@ RSpec.describe IsoDoc do
           </sections>
        </iso-standard>
     PRESXML
-    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
-      .convert("test", input, true))))
-      .to be_equivalent_to Canon.format_xml(presxml)
+      .convert("test", input, true)))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes IsoXML term with nonverbal definitions" do
@@ -1660,10 +1660,10 @@ RSpec.describe IsoDoc do
           </sections>
        </iso-standard>
     PRESXML
-    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
-      .convert("test", input, true))))
-      .to be_equivalent_to Canon.format_xml(presxml)
+      .convert("test", input, true)))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes related terms and admitted terms" do
@@ -1944,10 +1944,10 @@ RSpec.describe IsoDoc do
            </sections>
         </iso-standard>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
        .new(presxml_options)
-       .convert("test", input, true))))
-      .to be_equivalent_to Canon.format_xml(output)
+       .convert("test", input, true)))
+      .to be_xml_equivalent_to output
   end
 
   it "processes missing related terms" do
@@ -2044,10 +2044,10 @@ RSpec.describe IsoDoc do
          </sections>
       </iso-standard>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
         .new(presxml_options)
-        .convert("test", input, true))))
-      .to be_equivalent_to Canon.format_xml(output)
+        .convert("test", input, true)))
+      .to be_xml_equivalent_to output
   end
 
   it "processes termnotes with license information" do
@@ -2233,9 +2233,9 @@ RSpec.describe IsoDoc do
            </fmt-footnote-container>
         </iso-standard>
     PRESXML
-    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
        .new(presxml_options)
-       .convert("test", input, true))))
-      .to be_equivalent_to Canon.format_xml(output)
+       .convert("test", input, true)))
+      .to be_xml_equivalent_to output
   end
 end

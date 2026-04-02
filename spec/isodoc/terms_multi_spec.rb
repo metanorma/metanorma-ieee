@@ -137,10 +137,10 @@ RSpec.describe IsoDoc do
           </sections>
        </iso-standard>
     PRESXML
-    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
-      .convert("test", input, true))))
-      .to be_equivalent_to Canon.format_xml(presxml)
+      .convert("test", input, true)))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes IsoXML term with multiple definitions" do
@@ -416,10 +416,10 @@ RSpec.describe IsoDoc do
           </sections>
        </iso-standard>
     PRESXML
-    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
-      .convert("test", input, true))))
-      .to be_equivalent_to Canon.format_xml(presxml)
+      .convert("test", input, true)))
+      .to be_xml_equivalent_to presxml
 
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
@@ -639,10 +639,10 @@ RSpec.describe IsoDoc do
           </sections>
        </iso-standard>
     PRESXML
-    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
-      .convert("test", input, true))))
-      .to be_equivalent_to Canon.format_xml(presxml)
+      .convert("test", input, true)))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes IsoXML term with multiple preferred or preferred and admitted terms" do
@@ -1128,9 +1128,9 @@ RSpec.describe IsoDoc do
           </sections>
        </iso-standard>
     PRESXML
-    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
+    expect(strip_guid(IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
-      .convert("test", input, true))))
-      .to be_equivalent_to Canon.format_xml(presxml)
+      .convert("test", input, true)))
+      .to be_xml_equivalent_to presxml
   end
 end

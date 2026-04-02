@@ -918,8 +918,8 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:body")
     doc.at("//xmlns:div[@class = 'WordSectionContents']")&.remove
-    expect(strip_guid(Canon.format_xml(doc.to_xml)))
-      .to be_equivalent_to Canon.format_xml(word)
+    expect(strip_guid(doc.to_xml))
+      .to be_xml_equivalent_to word
   end
 
   it "processes boilerplate, whitepaper" do
@@ -1391,8 +1391,8 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     doc.xpath("//xmlns:p[@class = 'MsoToc1']").each(&:remove)
     doc.xpath("//v:shape | //v:shapetype | //v:rect | //v:line | //v:group",
               "v" => "urn:schemas-microsoft-com:vml").each(&:remove)
-    expect(strip_guid(Canon.format_xml(doc.to_xml)))
-      .to be_equivalent_to Canon.format_xml(word)
+    expect(strip_guid(doc.to_xml))
+      .to be_xml_equivalent_to word
   end
 
   it "balances participant columns" do
@@ -1777,7 +1777,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     doc.at("//xmlns:div[@class = 'WordSectionContents']")&.remove
     doc.at("//xmlns:div[@class = 'WordSectionMiddleTitle']")&.remove
     doc.at("//xmlns:div[@class = 'WordSectionMain']")&.remove
-    expect(strip_guid(Canon.format_xml(doc.to_xml)))
-      .to be_equivalent_to Canon.format_xml(word)
+    expect(strip_guid(doc.to_xml))
+      .to be_xml_equivalent_to word
   end
 end

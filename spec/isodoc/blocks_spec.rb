@@ -442,24 +442,24 @@ RSpec.describe IsoDoc do
     pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(Canon.format_xml(strip_guid(pres_output)))
-      .to be_equivalent_to Canon.format_xml(presxml)
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(pres_output))
+      .to be_xml_equivalent_to presxml
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(html)
+      .at("//body").to_xml)).to be_html5_equivalent_to html
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
-    expect(strip_guid(Canon.format_xml(doc.to_xml
-      .gsub("<m:", "<").gsub("</m:", "</"))))
-      .to be_equivalent_to Canon.format_xml(word)
+    expect(strip_guid(doc.to_xml
+      .gsub("<m:", "<").gsub("</m:", "</")))
+      .to be_xml_equivalent_to word
 
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
       .new({ hierarchicalassets: true })
       .convert("test", input, true))
-      .at("//xmlns:table/xmlns:fmt-name").to_xml)))
-      .to be_equivalent_to <<~OUTPUT
+      .at("//xmlns:table/xmlns:fmt-name").to_xml))
+      .to be_xml_equivalent_to <<~OUTPUT
         <fmt-name id="_">
            <span class="fmt-caption-label">
               <span class="fmt-element-name">Table</span>
@@ -696,14 +696,14 @@ RSpec.describe IsoDoc do
                 </figure>
                 <figure id="figure-B" class="figure">
                    <pre>A &lt;
-       B</pre>
+      B</pre>
                    <figcaption>Figure 2</figcaption>
-                </div>
+                </figure>
                 <figure id="figure-C" class="figure">
                    <pre>A &lt;
-       B</pre>
+      B</pre>
                 </figure>
-             </figure>
+             </div>
              <aside id="fn:_" class="footnote">
                 <p>X</p>
              </aside>
@@ -711,97 +711,97 @@ RSpec.describe IsoDoc do
        </body>
     OUTPUT
     word = <<~OUTPUT
-       <div>
-          <a name="A" id="A"/>
-          <p class="IEEEStdsLevel1Header">Foreword</p>
-          <div class="IEEEStdsImage" style="page-break-after: avoid;page-break-inside: avoid;">
-             <a name="figureA-1" id="figureA-1"/>
-             <img src="_.gif" height="20" width="20"/>
-             <img src="_.xml" height="20" width="0"/>
-             <a href="#figureA-1a" class="TableFootnoteRef">a</a>
-             <div class="key formula_dl" style="page-break-after:avoid;">
-                <p style="page-break-after: avoid;" class="IEEEStdsParagraph">
-                   <b>Key</b>
-                </p>
-                <div align="left">
-                   <table style="text-align:left;" class="formula_dl">
-                      <tr>
-                         <td valign="top" align="left">
-                            <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">
-                               <p class="IEEEStdsParagraph">
-                                  <sup>a</sup>
-                               </p>
-                            </p>
-                         </td>
-                         <td valign="top">
-                            <div>
-                               <a name="ftnfigureA-1a" id="ftnfigureA-1a"/>
-                               <p class="IEEEStdsParagraph">
-                                  <a name="_" id="_"/>
-                                  The time
-                                  <span class="stem">(#(t_90)#)</span>
-                                  was estimated to be 18,2 min for this example.
-                               </p>
-                            </div>
-                         </td>
-                      </tr>
-                      <tr>
-                         <td valign="top" align="left">
-                            <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">A</p>
-                         </td>
-                         <td valign="top">
-                            <p class="IEEEStdsParagraph">B</p>
-                         </td>
-                      </tr>
-                   </table>
-                </div>
-             </div>
-             <p class="IEEEStdsRegularFigureCaption" style="text-align:center;">
-                —Split-it-right
-                <i>sample</i>
-                divider
-                <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
-                   <a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_">
-                      <span class="MsoFootnoteReference">
-                         <span style="mso-special-character:footnote"/>
-                      </span>
-                   </a>
-                </span>
-             </p>
-          </div>
-          <div class="IEEEStdsImage">
-             <a name="figure-B" id="figure-B"/>
-             <pre style="page-break-after:avoid;">A 
-       B</pre>
-             <p class="IEEEStdsRegularFigureCaption" style="text-align:center;"/>
-          </div>
-          <div class="IEEEStdsImage">
-             <a name="figure-C" id="figure-C"/>
-             <pre>A 
-       B</pre>
-          </div>
-       </div>
+      <div>
+         <a name="A" id="A"/>
+         <p class="IEEEStdsLevel1Header">Foreword</p>
+         <div class="IEEEStdsImage" style="page-break-after: avoid;page-break-inside: avoid;">
+            <a name="figureA-1" id="figureA-1"/>
+            <img src="_.gif" height="20" width="20"/>
+            <img src="_.xml" height="20" width="0"/>
+            <a href="#figureA-1a" class="TableFootnoteRef">a</a>
+            <div class="key formula_dl" style="page-break-after:avoid;">
+               <p style="page-break-after: avoid;" class="IEEEStdsParagraph">
+                  <b>Key</b>
+               </p>
+               <div align="left">
+                  <table style="text-align:left;" class="formula_dl">
+                     <tr>
+                        <td valign="top" align="left">
+                           <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">
+                              <p class="IEEEStdsParagraph">
+                                 <sup>a</sup>
+                              </p>
+                           </p>
+                        </td>
+                        <td valign="top">
+                           <div>
+                              <a name="ftnfigureA-1a" id="ftnfigureA-1a"/>
+                              <p class="IEEEStdsParagraph">
+                                 <a name="_" id="_"/>
+                                 The time
+                                 <span class="stem">(#(t_90)#)</span>
+                                 was estimated to be 18,2 min for this example.
+                              </p>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td valign="top" align="left">
+                           <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">A</p>
+                        </td>
+                        <td valign="top">
+                           <p class="IEEEStdsParagraph">B</p>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            </div>
+            <p class="IEEEStdsRegularFigureCaption" style="text-align:center;">
+               —Split-it-right
+               <i>sample</i>
+               divider
+               <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
+                  <a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_">
+                     <span class="MsoFootnoteReference">
+                        <span style="mso-special-character:footnote"/>
+                     </span>
+                  </a>
+               </span>
+            </p>
+         </div>
+         <div class="IEEEStdsImage">
+            <a name="figure-B" id="figure-B"/>
+            <pre style="page-break-after:avoid;">A#{' '}
+      B</pre>
+            <p class="IEEEStdsRegularFigureCaption" style="text-align:center;"/>
+         </div>
+         <div class="IEEEStdsImage">
+            <a name="figure-C" id="figure-C"/>
+            <pre>A#{' '}
+      B</pre>
+         </div>
+      </div>
     OUTPUT
     pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(Canon.format_xml(strip_guid(pres_output)
-      .gsub("&lt;", "&#x3c;")))
-      .to be_equivalent_to Canon.format_xml(presxml)
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(pres_output)
+      .gsub("&lt;", "&#x3c;"))
+      .to be_xml_equivalent_to presxml
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(html)
+      .at("//body").to_xml)).to be_html5_equivalent_to html
     FileUtils.rm_rf "spec/assets/odf1.emf"
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
-    expect(strip_guid(Canon.format_xml(doc.to_xml
+    expect(strip_guid(doc.to_xml
       .gsub("<m:", "<").gsub("</m:", "</")
       .gsub(/['"][^'".]+\.(gif|xml)['"]/, "'_.\\1'")
       .gsub("epub:", "")
-      .gsub(/mso-bookmark:_Ref\d+/, "mso-bookmark:_Ref"))))
-      .to be_equivalent_to Canon.format_xml(word)
+      .gsub(/mso-bookmark:_Ref\d+/, "mso-bookmark:_Ref")))
+      .to be_xml_equivalent_to word
 
     output = <<~OUTPUT
           <fmt-name id="_">
@@ -829,11 +829,11 @@ RSpec.describe IsoDoc do
          </semx>
       </fmt-name>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
      .new({ hierarchicalassets: true })
      .convert("test", input, true))
-     .at("//xmlns:figure/xmlns:fmt-name").to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+     .at("//xmlns:figure/xmlns:fmt-name").to_xml))
+      .to be_xml_equivalent_to output
   end
 
   it "processes sequences of notes" do
@@ -999,12 +999,12 @@ RSpec.describe IsoDoc do
     pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(Canon.format_xml(strip_guid(pres_output)
-       .gsub("&lt;", "&#x3c;")))
-      .to be_equivalent_to Canon.format_xml(presxml)
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(pres_output)
+       .gsub("&lt;", "&#x3c;"))
+      .to be_xml_equivalent_to presxml
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(html)
+      .at("//body").to_xml)).to be_html5_equivalent_to html
   end
 
   it "processes admonitions" do
@@ -1064,15 +1064,15 @@ RSpec.describe IsoDoc do
         <p>&#xa0;</p>
       </div>
     OUTPUT
-    expect(strip_guid(Canon.format_xml(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
       .new({})
       .convert("test", presxml, true))
-      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(html)
-    expect(strip_guid(Canon.format_xml(Nokogiri::XML(IsoDoc::Ieee::WordConvert
+      .at("//body").to_xml)).to be_html5_equivalent_to html
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::WordConvert
       .new({})
       .convert("test", presxml, true))
-                .at("//div[@class = 'WordSection2']").to_xml)))
-      .to be_equivalent_to Canon.format_xml(word)
+                .at("//div[@class = 'WordSection2']").to_xml))
+      .to be_html4_equivalent_to word
   end
 
   it "processes examples" do
@@ -1148,9 +1148,9 @@ RSpec.describe IsoDoc do
                <figure id="X" class="sourcecode" spellcheck="false" translation="no">
                       <pre>
                          <br/>
-                                  
+      #{'                            '}
                          <br/>
-                                
+      #{'                          '}
                       </pre>
                       <figcaption class="SourceTitle">Sample</figcaption>
                    </figure>
@@ -1182,20 +1182,20 @@ RSpec.describe IsoDoc do
     pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(Canon.format_xml(strip_guid(pres_output
-       .gsub("&lt;", "&#x3c;"))))
-      .to be_equivalent_to Canon.format_xml(presxml)
-    expect(strip_guid(Canon.format_xml(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
+    expect(strip_guid(pres_output
+       .gsub("&lt;", "&#x3c;")))
+      .to be_xml_equivalent_to presxml
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
       .new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(html)
+      .at("//body").to_xml)).to be_xml_equivalent_to html
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
-    expect(strip_guid(Canon.format_xml(doc.to_xml
-      .gsub("<m:", "<").gsub("</m:", "</"))))
-      .to be_equivalent_to Canon.format_xml(word)
+    expect(strip_guid(doc.to_xml
+      .gsub("<m:", "<").gsub("</m:", "</")))
+      .to be_xml_equivalent_to word
   end
 
   it "process formulae" do
@@ -1300,48 +1300,48 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     html = <<~OUTPUT
-          #{HTML_HDR}
-          <br/>
-             <div id="A">
-                <h1 class="ForewordTitle">Foreword</h1>
-                <div id="_" style="page-break-after: avoid;page-break-inside: avoid;">
-                   <div class="formula">
-                      <p>
-                         <span class="stem">(#(r = 1 %)#)</span>
-                      </p>
-                   </div>
-                   <p style="page-break-after: avoid;">where</p>
-                   <div class="key formula_dl">
-                   <p>Introductory paragraph</p>
-                      <div class="figdl">
-                         <dl id="_">
-                            <dt>
-                               <span class="stem">(#(r)#)</span>
-                            </dt>
-                            <dd>
-                               <p id="_">is the repeatability limit.</p>
-                            </dd>
-                         </dl>
-                      </div>
-                   </div>
-                   <div id="_" class="Note">
-                      <p>
-                         <span class="note_label">NOTE—</span>
-                         [durationUnits] is essentially a duration statement without the "P" prefix. "P" is unnecessary because between "G" and "U" duration is always expressed.
-                      </p>
-                   </div>
-                </div>
-                <div id="_">
-                   <div class="formula">
-                      <p>
-                         <span class="stem">(#(r = 1 %)#)</span>
-                           (1)
-                      </p>
-                   </div>
-                </div>
-             </div>
-          </div>
-       </body>
+         #{HTML_HDR}
+         <br/>
+            <div id="A">
+               <h1 class="ForewordTitle">Foreword</h1>
+               <div id="_" style="page-break-after: avoid;page-break-inside: avoid;">
+                  <div class="formula">
+                     <p>
+                        <span class="stem">(#(r = 1 %)#)</span>
+                     </p>
+                  </div>
+                  <p style="page-break-after: avoid;">where</p>
+                  <div class="key formula_dl">
+                  <p>Introductory paragraph</p>
+                     <div class="figdl">
+                        <dl id="_">
+                           <dt>
+                              <span class="stem">(#(r)#)</span>
+                           </dt>
+                           <dd>
+                              <p id="_">is the repeatability limit.</p>
+                           </dd>
+                        </dl>
+                     </div>
+                  </div>
+                  <div id="_" class="Note">
+                     <p>
+                        <span class="note_label">NOTE—</span>
+                        [durationUnits] is essentially a duration statement without the "P" prefix. "P" is unnecessary because between "G" and "U" duration is always expressed.
+                     </p>
+                  </div>
+               </div>
+               <div id="_">
+                  <div class="formula">
+                     <p>
+                        <span class="stem">(#(r = 1 %)#)</span>
+                          (1)
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </body>
     OUTPUT
     word = <<~OUTPUT
       <div>
@@ -1374,18 +1374,18 @@ RSpec.describe IsoDoc do
     pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(Canon.format_xml(strip_guid(pres_output)))
-      .to be_equivalent_to Canon.format_xml(presxml)
-    expect(strip_guid(Canon.format_xml(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(pres_output))
+      .to be_xml_equivalent_to presxml
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
   .convert("test", pres_output, true))
-  .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(html)
+  .at("//body").to_xml)).to be_html5_equivalent_to html
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
-    expect(strip_guid(Canon.format_xml(doc.to_xml
-      .gsub("<m:", "<").gsub("</m:", "</"))))
-      .to be_equivalent_to Canon.format_xml(word)
+    expect(strip_guid(doc.to_xml
+      .gsub("<m:", "<").gsub("</m:", "</")))
+      .to be_xml_equivalent_to word
   end
 
   it "processes amend blocks" do
@@ -1471,188 +1471,188 @@ RSpec.describe IsoDoc do
          </standard-document>
     INPUT
     presxml = <<~OUTPUT
-       <clause id="A" inline-header="false" obligation="normative" displayorder="2">
-          <title id="_">Change Clause</title>
-          <fmt-title depth="1" id="_">
-             <span class="fmt-caption-label">
-                <semx element="autonum" source="A">1</semx>
-                <span class="fmt-autonum-delim">.</span>
-             </span>
-             <span class="fmt-caption-delim">
-                <tab/>
-             </span>
-             <semx element="title" source="_">Change Clause</semx>
-          </fmt-title>
-          <fmt-xref-label>
-             <span class="fmt-element-name">Clause</span>
-             <semx element="autonum" source="A">1</semx>
-          </fmt-xref-label>
-          <amend id="B" change="modify" path="//table[2]" path_end="//table[2]/following-sibling:example[1]" title="Change">
-             <autonumber type="table">2</autonumber>
-             <autonumber type="example">A.7</autonumber>
-             <description>
-                <p original-id="C">
-                   <strong>
-                      <em>
-                        This table contains information on polygon cells which are not
-                        included in ISO 10303-52. Remove table 2 completely and replace
-                        with:
-                      </em>
-                   </strong>
-                </p>
-             </description>
-             <newcontent original-id="D">
-                <table number="2" original-id="E">
-                   <name>Edges of triangle and quadrilateral cells</name>
-                   <tbody>
-                      <tr>
-                         <th colspan="2" valign="middle" align="center">triangle</th>
-                         <th colspan="2" valign="middle" align="center">quadrilateral</th>
-                      </tr>
-                      <tr>
-                         <td valign="middle" align="center">edge</td>
-                         <td valign="middle" align="center">vertices</td>
-                         <td valign="middle" align="center">edge</td>
-                         <td valign="middle" align="center">vertices</td>
-                      </tr>
-                      <tr>
-                         <td valign="middle" align="center">1</td>
-                         <td valign="middle" align="center">1, 2</td>
-                         <td valign="middle" align="center">1</td>
-                         <td valign="middle" align="center">1, 2</td>
-                      </tr>
-                      <tr>
-                         <td valign="middle" align="center">2</td>
-                         <td valign="middle" align="center">2, 3</td>
-                         <td valign="middle" align="center">2</td>
-                         <td valign="middle" align="center">2, 3</td>
-                      </tr>
-                      <tr>
-                         <td valign="middle" align="center">3</td>
-                         <td valign="middle" align="center">3, 1</td>
-                         <td valign="middle" align="center">3</td>
-                         <td valign="middle" align="center">3, 4</td>
-                      </tr>
-                      <tr>
-                         <td valign="top" align="left"/>
-                         <td valign="top" align="left"/>
-                         <td valign="middle" align="center">4</td>
-                         <td valign="middle" align="center">4, 1</td>
-                      </tr>
-                   </tbody>
-                </table>
-                <figure unnumbered="true" original-id="H">
-                   <name>Figure</name>
-                </figure>
-                <example number="A.7" original-id="F">
-                   <p original-id="G">This is not generalised further.</p>
-                </example>
-             </newcontent>
-          </amend>
-          <semx element="amend" source="B">
-             <p id="C">
-                <strong>
-                   <em>
-                        This table contains information on polygon cells which are not
-                        included in ISO 10303-52. Remove table 2 completely and replace
-                        with:
-                      </em>
-                </strong>
-             </p>
-             <quote id="D" type="newcontent">
-                <table id="E" number="2" autonum="2">
-                   <name id="_">Edges of triangle and quadrilateral cells</name>
-                   <fmt-name id="_">
-                      <span class="fmt-caption-label">
-                         <span class="fmt-element-name">Table</span>
-                         <semx element="autonum" source="E">2</semx>
-                      </span>
-                      <span class="fmt-caption-delim">—</span>
-                      <semx element="name" source="_">Edges of triangle and quadrilateral cells</semx>
-                   </fmt-name>
-                   <fmt-xref-label>
-                      <span class="fmt-element-name">Table</span>
-                      <semx element="autonum" source="E">2</semx>
-                   </fmt-xref-label>
-                   <tbody>
-                      <tr>
-                         <th colspan="2" valign="middle" align="center">triangle</th>
-                         <th colspan="2" valign="middle" align="center">quadrilateral</th>
-                      </tr>
-                      <tr>
-                         <td valign="middle" align="center">edge</td>
-                         <td valign="middle" align="center">vertices</td>
-                         <td valign="middle" align="center">edge</td>
-                         <td valign="middle" align="center">vertices</td>
-                      </tr>
-                      <tr>
-                         <td valign="middle" align="center">1</td>
-                         <td valign="middle" align="center">1, 2</td>
-                         <td valign="middle" align="center">1</td>
-                         <td valign="middle" align="center">1, 2</td>
-                      </tr>
-                      <tr>
-                         <td valign="middle" align="center">2</td>
-                         <td valign="middle" align="center">2, 3</td>
-                         <td valign="middle" align="center">2</td>
-                         <td valign="middle" align="center">2, 3</td>
-                      </tr>
-                      <tr>
-                         <td valign="middle" align="center">3</td>
-                         <td valign="middle" align="center">3, 1</td>
-                         <td valign="middle" align="center">3</td>
-                         <td valign="middle" align="center">3, 4</td>
-                      </tr>
-                      <tr>
-                         <td valign="top" align="left"/>
-                         <td valign="top" align="left"/>
-                         <td valign="middle" align="center">4</td>
-                         <td valign="middle" align="center">4, 1</td>
-                      </tr>
-                   </tbody>
-                </table>
-                <figure id="H" unnumbered="true">
-                   <name id="_">Figure</name>
-                   <fmt-name id="_">
-                      <semx element="name" source="_">Figure</semx>
-                   </fmt-name>
-                </figure>
-                <example id="F" number="A.7" autonum="A.7">
-                   <fmt-name id="_">
-                      <em>
-                         <span class="fmt-caption-label">
-                            <span class="fmt-element-name">Example</span>
-                            <semx element="autonum" source="F">A.7</semx>
-                         </span>
-                      </em>
-                      <em>
-                         <span class="fmt-caption-delim">:</span>
-                      </em>
-                   </fmt-name>
-                   <fmt-xref-label>
-                      <span class="fmt-element-name">Example</span>
-                      <semx element="autonum" source="F">A.7</semx>
-                   </fmt-xref-label>
-                   <fmt-xref-label container="A">
-                      <span class="fmt-xref-container">
-                         <span class="fmt-element-name">Clause</span>
-                         <semx element="autonum" source="A">1</semx>
-                      </span>
-                      <span class="fmt-comma">,</span>
-                      <span class="fmt-element-name">Example</span>
-                      <semx element="autonum" source="F">A.7</semx>
-                   </fmt-xref-label>
-                   <p id="G">This is not generalised further.</p>
-                </example>
-             </quote>
-          </semx>
-       </clause>
+      <clause id="A" inline-header="false" obligation="normative" displayorder="2">
+         <title id="_">Change Clause</title>
+         <fmt-title depth="1" id="_">
+            <span class="fmt-caption-label">
+               <semx element="autonum" source="A">1</semx>
+               <span class="fmt-autonum-delim">.</span>
+            </span>
+            <span class="fmt-caption-delim">
+               <tab/>
+            </span>
+            <semx element="title" source="_">Change Clause</semx>
+         </fmt-title>
+         <fmt-xref-label>
+            <span class="fmt-element-name">Clause</span>
+            <semx element="autonum" source="A">1</semx>
+         </fmt-xref-label>
+         <amend id="B" change="modify" path="//table[2]" path_end="//table[2]/following-sibling:example[1]" title="Change">
+            <autonumber type="table">2</autonumber>
+            <autonumber type="example">A.7</autonumber>
+            <description>
+               <p original-id="C">
+                  <strong>
+                     <em>
+                       This table contains information on polygon cells which are not
+                       included in ISO 10303-52. Remove table 2 completely and replace
+                       with:
+                     </em>
+                  </strong>
+               </p>
+            </description>
+            <newcontent original-id="D">
+               <table number="2" original-id="E">
+                  <name>Edges of triangle and quadrilateral cells</name>
+                  <tbody>
+                     <tr>
+                        <th colspan="2" valign="middle" align="center">triangle</th>
+                        <th colspan="2" valign="middle" align="center">quadrilateral</th>
+                     </tr>
+                     <tr>
+                        <td valign="middle" align="center">edge</td>
+                        <td valign="middle" align="center">vertices</td>
+                        <td valign="middle" align="center">edge</td>
+                        <td valign="middle" align="center">vertices</td>
+                     </tr>
+                     <tr>
+                        <td valign="middle" align="center">1</td>
+                        <td valign="middle" align="center">1, 2</td>
+                        <td valign="middle" align="center">1</td>
+                        <td valign="middle" align="center">1, 2</td>
+                     </tr>
+                     <tr>
+                        <td valign="middle" align="center">2</td>
+                        <td valign="middle" align="center">2, 3</td>
+                        <td valign="middle" align="center">2</td>
+                        <td valign="middle" align="center">2, 3</td>
+                     </tr>
+                     <tr>
+                        <td valign="middle" align="center">3</td>
+                        <td valign="middle" align="center">3, 1</td>
+                        <td valign="middle" align="center">3</td>
+                        <td valign="middle" align="center">3, 4</td>
+                     </tr>
+                     <tr>
+                        <td valign="top" align="left"/>
+                        <td valign="top" align="left"/>
+                        <td valign="middle" align="center">4</td>
+                        <td valign="middle" align="center">4, 1</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <figure unnumbered="true" original-id="H">
+                  <name>Figure</name>
+               </figure>
+               <example number="A.7" original-id="F">
+                  <p original-id="G">This is not generalised further.</p>
+               </example>
+            </newcontent>
+         </amend>
+         <semx element="amend" source="B">
+            <p id="C">
+               <strong>
+                  <em>
+                       This table contains information on polygon cells which are not
+                       included in ISO 10303-52. Remove table 2 completely and replace
+                       with:
+                     </em>
+               </strong>
+            </p>
+            <quote id="D" type="newcontent">
+               <table id="E" number="2" autonum="2">
+                  <name id="_">Edges of triangle and quadrilateral cells</name>
+                  <fmt-name id="_">
+                     <span class="fmt-caption-label">
+                        <span class="fmt-element-name">Table</span>
+                        <semx element="autonum" source="E">2</semx>
+                     </span>
+                     <span class="fmt-caption-delim">—</span>
+                     <semx element="name" source="_">Edges of triangle and quadrilateral cells</semx>
+                  </fmt-name>
+                  <fmt-xref-label>
+                     <span class="fmt-element-name">Table</span>
+                     <semx element="autonum" source="E">2</semx>
+                  </fmt-xref-label>
+                  <tbody>
+                     <tr>
+                        <th colspan="2" valign="middle" align="center">triangle</th>
+                        <th colspan="2" valign="middle" align="center">quadrilateral</th>
+                     </tr>
+                     <tr>
+                        <td valign="middle" align="center">edge</td>
+                        <td valign="middle" align="center">vertices</td>
+                        <td valign="middle" align="center">edge</td>
+                        <td valign="middle" align="center">vertices</td>
+                     </tr>
+                     <tr>
+                        <td valign="middle" align="center">1</td>
+                        <td valign="middle" align="center">1, 2</td>
+                        <td valign="middle" align="center">1</td>
+                        <td valign="middle" align="center">1, 2</td>
+                     </tr>
+                     <tr>
+                        <td valign="middle" align="center">2</td>
+                        <td valign="middle" align="center">2, 3</td>
+                        <td valign="middle" align="center">2</td>
+                        <td valign="middle" align="center">2, 3</td>
+                     </tr>
+                     <tr>
+                        <td valign="middle" align="center">3</td>
+                        <td valign="middle" align="center">3, 1</td>
+                        <td valign="middle" align="center">3</td>
+                        <td valign="middle" align="center">3, 4</td>
+                     </tr>
+                     <tr>
+                        <td valign="top" align="left"/>
+                        <td valign="top" align="left"/>
+                        <td valign="middle" align="center">4</td>
+                        <td valign="middle" align="center">4, 1</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <figure id="H" unnumbered="true">
+                  <name id="_">Figure</name>
+                  <fmt-name id="_">
+                     <semx element="name" source="_">Figure</semx>
+                  </fmt-name>
+               </figure>
+               <example id="F" number="A.7" autonum="A.7">
+                  <fmt-name id="_">
+                     <em>
+                        <span class="fmt-caption-label">
+                           <span class="fmt-element-name">Example</span>
+                           <semx element="autonum" source="F">A.7</semx>
+                        </span>
+                     </em>
+                     <em>
+                        <span class="fmt-caption-delim">:</span>
+                     </em>
+                  </fmt-name>
+                  <fmt-xref-label>
+                     <span class="fmt-element-name">Example</span>
+                     <semx element="autonum" source="F">A.7</semx>
+                  </fmt-xref-label>
+                  <fmt-xref-label container="A">
+                     <span class="fmt-xref-container">
+                        <span class="fmt-element-name">Clause</span>
+                        <semx element="autonum" source="A">1</semx>
+                     </span>
+                     <span class="fmt-comma">,</span>
+                     <span class="fmt-element-name">Example</span>
+                     <semx element="autonum" source="F">A.7</semx>
+                  </fmt-xref-label>
+                  <p id="G">This is not generalised further.</p>
+               </example>
+            </quote>
+         </semx>
+      </clause>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(
+    expect(strip_guid(Nokogiri::XML(
       IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true),
-    ).at("//xmlns:clause[@id = 'A']").to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    ).at("//xmlns:clause[@id = 'A']").to_xml))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes unordered lists" do
@@ -1745,9 +1745,9 @@ RSpec.describe IsoDoc do
     INPUT
     pres_output = IsoDoc::Ieee::PresentationXMLConvert.new({})
       .convert("test", input, true)
-    expect(Canon.format_xml(strip_guid(pres_output
-      .sub(%r{<metanorma-extension>.*</metanorma-extension>}m, ""))))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(pres_output
+      .sub(%r{<metanorma-extension>.*</metanorma-extension>}m, "")))
+      .to be_xml_equivalent_to presxml
     presxml = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
          <bibdata>
@@ -1812,10 +1812,10 @@ RSpec.describe IsoDoc do
                       "<bibdata><ext><doctype>whitepaper</doctype></ext></bibdata><preface>")
     pres_output = IsoDoc::Ieee::PresentationXMLConvert.new({})
       .convert("test", input, true)
-    expect(Canon.format_xml(strip_guid(pres_output
+    expect(strip_guid(pres_output
                                        .sub(%r{<localized-strings>.*</localized-strings>}m, "")
-      .sub(%r{<metanorma-extension>.*</metanorma-extension>}m, ""))))
-      .to be_equivalent_to Canon.format_xml(presxml)
+      .sub(%r{<metanorma-extension>.*</metanorma-extension>}m, "")))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes ordered lists" do
@@ -1902,429 +1902,429 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     presxml = <<~INPUT
-       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-          <preface>
-             <clause type="toc" id="_" displayorder="1">
-                <fmt-title depth="1" id="_">Contents</fmt-title>
-             </clause>
-             <foreword id="_" displayorder="2">
-                <title id="_">Foreword</title>
-                <fmt-title depth="1" id="_">
-                   <semx element="title" source="_">Foreword</semx>
-                </fmt-title>
-                <ol id="_" type="alphabet" keep-with-next="true" keep-lines-together="true" autonum="1">
-                   <name id="_">Caption</name>
-                   <fmt-name id="_">
-               <semx element="name" source="_">Caption</semx>
-            </fmt-name>
-                   <li id="_">
-                      <fmt-name id="_">
-                         <semx element="autonum" source="_">a</semx>
-                         <span class="fmt-label-delim">)</span>
-                      </fmt-name>
-                      <p id="_">Level 1</p>
-                   </li>
-                </ol>
-                <ol id="A" type="arabic">
-                   <li id="_">
-                      <fmt-name id="_">
-                         <semx element="autonum" source="_">1</semx>
-                         <span class="fmt-label-delim">)</span>
-                      </fmt-name>
-                      <p id="_">Level 1</p>
-                   </li>
-                   <li id="_">
-                      <fmt-name id="_">
-                         <semx element="autonum" source="_">2</semx>
-                         <span class="fmt-label-delim">)</span>
-                      </fmt-name>
-                      <p id="_">Level 1</p>
-                      <ol type="roman">
-                         <li id="_">
-                            <fmt-name id="_">
-                               <semx element="autonum" source="_">i</semx>
-                               <span class="fmt-label-delim">)</span>
-                            </fmt-name>
-                            <p id="_">Level 2</p>
-                            <ol type="alphabet">
-                               <li id="_">
-                                  <fmt-name id="_">
-                                     <semx element="autonum" source="_">a</semx>
-                                     <span class="fmt-label-delim">)</span>
-                                  </fmt-name>
-                                  <p id="_">Level 3</p>
-                                  <ol type="arabic">
-                                     <li id="_">
-                                        <fmt-name id="_">
-                                           <semx element="autonum" source="_">1</semx>
-                                           <span class="fmt-label-delim">)</span>
-                                        </fmt-name>
-                                        <p id="_">Level 4</p>
-                                     </li>
-                                  </ol>
-                               </li>
-                            </ol>
-                         </li>
-                      </ol>
-                   </li>
-                </ol>
-                <ol id="B" type="roman">
-                   <li id="_">
-                      <fmt-name id="_">
-                         <semx element="autonum" source="_">i</semx>
-                         <span class="fmt-label-delim">)</span>
-                      </fmt-name>
-                      <p id="_">Level 1</p>
-                   </li>
-                   <li id="_">
-                      <fmt-name id="_">
-                         <semx element="autonum" source="_">ii</semx>
-                         <span class="fmt-label-delim">)</span>
-                      </fmt-name>
-                      <p id="_">Level 1</p>
-                      <ol type="alphabet">
-                         <li id="_">
-                            <fmt-name id="_">
-                               <semx element="autonum" source="_">a</semx>
-                               <span class="fmt-label-delim">)</span>
-                            </fmt-name>
-                            <p id="_">Level 2</p>
-                            <ol type="arabic">
-                               <li id="_">
-                                  <fmt-name id="_">
-                                     <semx element="autonum" source="_">1</semx>
-                                     <span class="fmt-label-delim">)</span>
-                                  </fmt-name>
-                                  <p id="_">Level 3</p>
-                                  <ol type="roman">
-                                     <li id="_">
-                                        <fmt-name id="_">
-                                           <semx element="autonum" source="_">i</semx>
-                                           <span class="fmt-label-delim">)</span>
-                                        </fmt-name>
-                                        <p id="_">Level 4</p>
-                                     </li>
-                                  </ol>
-                               </li>
-                            </ol>
-                         </li>
-                      </ol>
-                   </li>
-                </ol>
-                <ol id="C" type="alphabet">
-                   <li id="_">
-                      <fmt-name id="_">
-                         <semx element="autonum" source="_">a</semx>
-                         <span class="fmt-label-delim">)</span>
-                      </fmt-name>
-                      <p id="_">Level 1</p>
-                   </li>
-                   <li id="_">
-                      <fmt-name id="_">
-                         <semx element="autonum" source="_">b</semx>
-                         <span class="fmt-label-delim">)</span>
-                      </fmt-name>
-                      <p id="_">Level 1</p>
-                      <ol type="arabic">
-                         <li id="_">
-                            <fmt-name id="_">
-                               <semx element="autonum" source="_">1</semx>
-                               <span class="fmt-label-delim">)</span>
-                            </fmt-name>
-                            <p id="_">Level 2</p>
-                            <ol type="roman">
-                               <li id="_">
-                                  <fmt-name id="_">
-                                     <semx element="autonum" source="_">i</semx>
-                                     <span class="fmt-label-delim">)</span>
-                                  </fmt-name>
-                                  <p id="_">Level 3</p>
-                                  <ol type="alphabet">
-                                     <li id="_">
-                                        <fmt-name id="_">
-                                           <semx element="autonum" source="_">a</semx>
-                                           <span class="fmt-label-delim">)</span>
-                                        </fmt-name>
-                                        <p id="_">Level 4</p>
-                                     </li>
-                                  </ol>
-                               </li>
-                            </ol>
-                         </li>
-                      </ol>
-                   </li>
-                </ol>
-             </foreword>
-          </preface>
-       </iso-standard>
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+         <preface>
+            <clause type="toc" id="_" displayorder="1">
+               <fmt-title depth="1" id="_">Contents</fmt-title>
+            </clause>
+            <foreword id="_" displayorder="2">
+               <title id="_">Foreword</title>
+               <fmt-title depth="1" id="_">
+                  <semx element="title" source="_">Foreword</semx>
+               </fmt-title>
+               <ol id="_" type="alphabet" keep-with-next="true" keep-lines-together="true" autonum="1">
+                  <name id="_">Caption</name>
+                  <fmt-name id="_">
+              <semx element="name" source="_">Caption</semx>
+           </fmt-name>
+                  <li id="_">
+                     <fmt-name id="_">
+                        <semx element="autonum" source="_">a</semx>
+                        <span class="fmt-label-delim">)</span>
+                     </fmt-name>
+                     <p id="_">Level 1</p>
+                  </li>
+               </ol>
+               <ol id="A" type="arabic">
+                  <li id="_">
+                     <fmt-name id="_">
+                        <semx element="autonum" source="_">1</semx>
+                        <span class="fmt-label-delim">)</span>
+                     </fmt-name>
+                     <p id="_">Level 1</p>
+                  </li>
+                  <li id="_">
+                     <fmt-name id="_">
+                        <semx element="autonum" source="_">2</semx>
+                        <span class="fmt-label-delim">)</span>
+                     </fmt-name>
+                     <p id="_">Level 1</p>
+                     <ol type="roman">
+                        <li id="_">
+                           <fmt-name id="_">
+                              <semx element="autonum" source="_">i</semx>
+                              <span class="fmt-label-delim">)</span>
+                           </fmt-name>
+                           <p id="_">Level 2</p>
+                           <ol type="alphabet">
+                              <li id="_">
+                                 <fmt-name id="_">
+                                    <semx element="autonum" source="_">a</semx>
+                                    <span class="fmt-label-delim">)</span>
+                                 </fmt-name>
+                                 <p id="_">Level 3</p>
+                                 <ol type="arabic">
+                                    <li id="_">
+                                       <fmt-name id="_">
+                                          <semx element="autonum" source="_">1</semx>
+                                          <span class="fmt-label-delim">)</span>
+                                       </fmt-name>
+                                       <p id="_">Level 4</p>
+                                    </li>
+                                 </ol>
+                              </li>
+                           </ol>
+                        </li>
+                     </ol>
+                  </li>
+               </ol>
+               <ol id="B" type="roman">
+                  <li id="_">
+                     <fmt-name id="_">
+                        <semx element="autonum" source="_">i</semx>
+                        <span class="fmt-label-delim">)</span>
+                     </fmt-name>
+                     <p id="_">Level 1</p>
+                  </li>
+                  <li id="_">
+                     <fmt-name id="_">
+                        <semx element="autonum" source="_">ii</semx>
+                        <span class="fmt-label-delim">)</span>
+                     </fmt-name>
+                     <p id="_">Level 1</p>
+                     <ol type="alphabet">
+                        <li id="_">
+                           <fmt-name id="_">
+                              <semx element="autonum" source="_">a</semx>
+                              <span class="fmt-label-delim">)</span>
+                           </fmt-name>
+                           <p id="_">Level 2</p>
+                           <ol type="arabic">
+                              <li id="_">
+                                 <fmt-name id="_">
+                                    <semx element="autonum" source="_">1</semx>
+                                    <span class="fmt-label-delim">)</span>
+                                 </fmt-name>
+                                 <p id="_">Level 3</p>
+                                 <ol type="roman">
+                                    <li id="_">
+                                       <fmt-name id="_">
+                                          <semx element="autonum" source="_">i</semx>
+                                          <span class="fmt-label-delim">)</span>
+                                       </fmt-name>
+                                       <p id="_">Level 4</p>
+                                    </li>
+                                 </ol>
+                              </li>
+                           </ol>
+                        </li>
+                     </ol>
+                  </li>
+               </ol>
+               <ol id="C" type="alphabet">
+                  <li id="_">
+                     <fmt-name id="_">
+                        <semx element="autonum" source="_">a</semx>
+                        <span class="fmt-label-delim">)</span>
+                     </fmt-name>
+                     <p id="_">Level 1</p>
+                  </li>
+                  <li id="_">
+                     <fmt-name id="_">
+                        <semx element="autonum" source="_">b</semx>
+                        <span class="fmt-label-delim">)</span>
+                     </fmt-name>
+                     <p id="_">Level 1</p>
+                     <ol type="arabic">
+                        <li id="_">
+                           <fmt-name id="_">
+                              <semx element="autonum" source="_">1</semx>
+                              <span class="fmt-label-delim">)</span>
+                           </fmt-name>
+                           <p id="_">Level 2</p>
+                           <ol type="roman">
+                              <li id="_">
+                                 <fmt-name id="_">
+                                    <semx element="autonum" source="_">i</semx>
+                                    <span class="fmt-label-delim">)</span>
+                                 </fmt-name>
+                                 <p id="_">Level 3</p>
+                                 <ol type="alphabet">
+                                    <li id="_">
+                                       <fmt-name id="_">
+                                          <semx element="autonum" source="_">a</semx>
+                                          <span class="fmt-label-delim">)</span>
+                                       </fmt-name>
+                                       <p id="_">Level 4</p>
+                                    </li>
+                                 </ol>
+                              </li>
+                           </ol>
+                        </li>
+                     </ol>
+                  </li>
+               </ol>
+            </foreword>
+         </preface>
+      </iso-standard>
     INPUT
     html = <<~OUTPUT
-       <body lang="en">
-          <div class="title-section">
-             <p> </p>
-          </div>
-          <br/>
-          <div class="prefatory-section">
-             <p> </p>
-          </div>
-          <br/>
-          <div class="main-section">
-             <br/>
-             <div id="_" class="TOC">
-                <h1 class="IntroTitle">Contents</h1>
-             </div>
-             <br/>
-             <div id="_">
-                <h1 class="ForewordTitle">Foreword</h1>
-                <div class="ol_wrap">
-                <p class="ListTitle">Caption</p>
-                   <ol type="a" id="_" style="page-break-after: avoid;page-break-inside: avoid;" class="alphabet">
-                      <li id="_">
-                         <p id="_">Level 1</p>
-                      </li>
-                   </ol>
-                </div>
-                <div class="ol_wrap">
-                   <ol type="1" id="A" class="arabic">
-                      <li id="_">
-                         <p id="_">Level 1</p>
-                      </li>
-                      <li id="_">
-                         <p id="_">Level 1</p>
-                         <div class="ol_wrap">
-                            <ol type="i" class="roman">
-                               <li id="_">
-                                  <p id="_">Level 2</p>
-                                  <div class="ol_wrap">
-                                     <ol type="a" class="alphabet">
-                                        <li id="_">
-                                           <p id="_">Level 3</p>
-                                           <div class="ol_wrap">
-                                              <ol type="1" class="arabic">
-                                                 <li id="_">
-                                                    <p id="_">Level 4</p>
-                                                 </li>
-                                              </ol>
-                                           </div>
-                                        </li>
-                                     </ol>
-                                  </div>
-                               </li>
-                            </ol>
-                         </div>
-                      </li>
-                   </ol>
-                </div>
-                <div class="ol_wrap">
-                   <ol type="i" id="B" class="roman">
-                      <li id="_">
-                         <p id="_">Level 1</p>
-                      </li>
-                      <li id="_">
-                         <p id="_">Level 1</p>
-                         <div class="ol_wrap">
-                            <ol type="a" class="alphabet">
-                               <li id="_">
-                                  <p id="_">Level 2</p>
-                                  <div class="ol_wrap">
-                                     <ol type="1" class="arabic">
-                                        <li id="_">
-                                           <p id="_">Level 3</p>
-                                           <div class="ol_wrap">
-                                              <ol type="i" class="roman">
-                                                 <li id="_">
-                                                    <p id="_">Level 4</p>
-                                                 </li>
-                                              </ol>
-                                           </div>
-                                        </li>
-                                     </ol>
-                                  </div>
-                               </li>
-                            </ol>
-                         </div>
-                      </li>
-                   </ol>
-                </div>
-                <div class="ol_wrap">
-                   <ol type="a" id="C" class="alphabet">
-                      <li id="_">
-                         <p id="_">Level 1</p>
-                      </li>
-                      <li id="_">
-                         <p id="_">Level 1</p>
-                         <div class="ol_wrap">
-                            <ol type="1" class="arabic">
-                               <li id="_">
-                                  <p id="_">Level 2</p>
-                                  <div class="ol_wrap">
-                                     <ol type="i" class="roman">
-                                        <li id="_">
-                                           <p id="_">Level 3</p>
-                                           <div class="ol_wrap">
-                                              <ol type="a" class="alphabet">
-                                                 <li id="_">
-                                                    <p id="_">Level 4</p>
-                                                 </li>
-                                              </ol>
-                                           </div>
-                                        </li>
-                                     </ol>
-                                  </div>
-                               </li>
-                            </ol>
-                         </div>
-                      </li>
-                   </ol>
-                </div>
-             </div>
-          </div>
-       </body>
+      <body lang="en">
+         <div class="title-section">
+            <p> </p>
+         </div>
+         <br/>
+         <div class="prefatory-section">
+            <p> </p>
+         </div>
+         <br/>
+         <div class="main-section">
+            <br/>
+            <div id="_" class="TOC">
+               <h1 class="IntroTitle">Contents</h1>
+            </div>
+            <br/>
+            <div id="_">
+               <h1 class="ForewordTitle">Foreword</h1>
+               <div class="ol_wrap">
+               <p class="ListTitle">Caption</p>
+                  <ol type="a" id="_" style="page-break-after: avoid;page-break-inside: avoid;" class="alphabet">
+                     <li id="_">
+                        <p id="_">Level 1</p>
+                     </li>
+                  </ol>
+               </div>
+               <div class="ol_wrap">
+                  <ol type="1" id="A" class="arabic">
+                     <li id="_">
+                        <p id="_">Level 1</p>
+                     </li>
+                     <li id="_">
+                        <p id="_">Level 1</p>
+                        <div class="ol_wrap">
+                           <ol type="i" class="roman">
+                              <li id="_">
+                                 <p id="_">Level 2</p>
+                                 <div class="ol_wrap">
+                                    <ol type="a" class="alphabet">
+                                       <li id="_">
+                                          <p id="_">Level 3</p>
+                                          <div class="ol_wrap">
+                                             <ol type="1" class="arabic">
+                                                <li id="_">
+                                                   <p id="_">Level 4</p>
+                                                </li>
+                                             </ol>
+                                          </div>
+                                       </li>
+                                    </ol>
+                                 </div>
+                              </li>
+                           </ol>
+                        </div>
+                     </li>
+                  </ol>
+               </div>
+               <div class="ol_wrap">
+                  <ol type="i" id="B" class="roman">
+                     <li id="_">
+                        <p id="_">Level 1</p>
+                     </li>
+                     <li id="_">
+                        <p id="_">Level 1</p>
+                        <div class="ol_wrap">
+                           <ol type="a" class="alphabet">
+                              <li id="_">
+                                 <p id="_">Level 2</p>
+                                 <div class="ol_wrap">
+                                    <ol type="1" class="arabic">
+                                       <li id="_">
+                                          <p id="_">Level 3</p>
+                                          <div class="ol_wrap">
+                                             <ol type="i" class="roman">
+                                                <li id="_">
+                                                   <p id="_">Level 4</p>
+                                                </li>
+                                             </ol>
+                                          </div>
+                                       </li>
+                                    </ol>
+                                 </div>
+                              </li>
+                           </ol>
+                        </div>
+                     </li>
+                  </ol>
+               </div>
+               <div class="ol_wrap">
+                  <ol type="a" id="C" class="alphabet">
+                     <li id="_">
+                        <p id="_">Level 1</p>
+                     </li>
+                     <li id="_">
+                        <p id="_">Level 1</p>
+                        <div class="ol_wrap">
+                           <ol type="1" class="arabic">
+                              <li id="_">
+                                 <p id="_">Level 2</p>
+                                 <div class="ol_wrap">
+                                    <ol type="i" class="roman">
+                                       <li id="_">
+                                          <p id="_">Level 3</p>
+                                          <div class="ol_wrap">
+                                             <ol type="a" class="alphabet">
+                                                <li id="_">
+                                                   <p id="_">Level 4</p>
+                                                </li>
+                                             </ol>
+                                          </div>
+                                       </li>
+                                    </ol>
+                                 </div>
+                              </li>
+                           </ol>
+                        </div>
+                     </li>
+                  </ol>
+               </div>
+            </div>
+         </div>
+      </body>
     OUTPUT
     doc = <<~OUTPUT
-       <body lang="EN-US" link="blue" vlink="#954F72">
-          <div class="WordSection1">
-             <p> </p>
-          </div>
-          <p class="section-break">
-             <br clear="all" class="section"/>
-          </p>
-          <div class="WordSection2">
-             <div class="WordSectionContents">
-                <h1 class="IEEEStdsLevel1frontmatter">Contents</h1>
-             </div>
-             <p class="page-break">
-                <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
-             </p>
-             <div id="_">
-                <h1 class="ForewordTitle">Foreword</h1>
-                <div class="ol_wrap">
-                <p class="ListTitle">Caption</p>
-                   <ol type="a" id="_" style="page-break-after: avoid;page-break-inside: avoid;">
-                      <li id="_">
-                         <p id="_">Level 1</p>
-                      </li>
-                   </ol>
-                </div>
-                <div class="ol_wrap">
-                   <ol type="1" id="A">
-                      <li id="_">
-                         <p id="_">Level 1</p>
-                      </li>
-                      <li id="_">
-                         <p id="_">Level 1</p>
-                         <div class="ol_wrap">
-                            <ol type="i">
-                               <li id="_">
-                                  <p id="_">Level 2</p>
-                                  <div class="ol_wrap">
-                                     <ol type="a">
-                                        <li id="_">
-                                           <p id="_">Level 3</p>
-                                           <div class="ol_wrap">
-                                              <ol type="1">
-                                                 <li id="_">
-                                                    <p id="_">Level 4</p>
-                                                 </li>
-                                              </ol>
-                                           </div>
-                                        </li>
-                                     </ol>
-                                  </div>
-                               </li>
-                            </ol>
-                         </div>
-                      </li>
-                   </ol>
-                </div>
-                <div class="ol_wrap">
-                   <ol type="i" id="B">
-                      <li id="_">
-                         <p id="_">Level 1</p>
-                      </li>
-                      <li id="_">
-                         <p id="_">Level 1</p>
-                         <div class="ol_wrap">
-                            <ol type="a">
-                               <li id="_">
-                                  <p id="_">Level 2</p>
-                                  <div class="ol_wrap">
-                                     <ol type="1">
-                                        <li id="_">
-                                           <p id="_">Level 3</p>
-                                           <div class="ol_wrap">
-                                              <ol type="i">
-                                                 <li id="_">
-                                                    <p id="_">Level 4</p>
-                                                 </li>
-                                              </ol>
-                                           </div>
-                                        </li>
-                                     </ol>
-                                  </div>
-                               </li>
-                            </ol>
-                         </div>
-                      </li>
-                   </ol>
-                </div>
-                <div class="ol_wrap">
-                   <ol type="a" id="C">
-                      <li id="_">
-                         <p id="_">Level 1</p>
-                      </li>
-                      <li id="_">
-                         <p id="_">Level 1</p>
-                         <div class="ol_wrap">
-                            <ol type="1">
-                               <li id="_">
-                                  <p id="_">Level 2</p>
-                                  <div class="ol_wrap">
-                                     <ol type="i">
-                                        <li id="_">
-                                           <p id="_">Level 3</p>
-                                           <div class="ol_wrap">
-                                              <ol type="a">
-                                                 <li id="_">
-                                                    <p id="_">Level 4</p>
-                                                 </li>
-                                              </ol>
-                                           </div>
-                                        </li>
-                                     </ol>
-                                  </div>
-                               </li>
-                            </ol>
-                         </div>
-                      </li>
-                   </ol>
-                </div>
-             </div>
-             <p> </p>
-          </div>
-          <p class="section-break">
-             <br clear="all" class="section"/>
-          </p>
-          <div class="WordSectionMiddleTitle"/>
-          <p class="section-break">
-             <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
-          </p>
-          <div class="WordSectionMain"/>
-       </body>
+      <body lang="EN-US" link="blue" vlink="#954F72">
+         <div class="WordSection1">
+            <p> </p>
+         </div>
+         <p class="section-break">
+            <br clear="all" class="section"/>
+         </p>
+         <div class="WordSection2">
+            <div class="WordSectionContents">
+               <h1 class="IEEEStdsLevel1frontmatter">Contents</h1>
+            </div>
+            <p class="page-break">
+               <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
+            </p>
+            <div id="_">
+               <h1 class="ForewordTitle">Foreword</h1>
+               <div class="ol_wrap">
+               <p class="ListTitle">Caption</p>
+                  <ol type="a" id="_" style="page-break-after: avoid;page-break-inside: avoid;">
+                     <li id="_">
+                        <p id="_">Level 1</p>
+                     </li>
+                  </ol>
+               </div>
+               <div class="ol_wrap">
+                  <ol type="1" id="A">
+                     <li id="_">
+                        <p id="_">Level 1</p>
+                     </li>
+                     <li id="_">
+                        <p id="_">Level 1</p>
+                        <div class="ol_wrap">
+                           <ol type="i">
+                              <li id="_">
+                                 <p id="_">Level 2</p>
+                                 <div class="ol_wrap">
+                                    <ol type="a">
+                                       <li id="_">
+                                          <p id="_">Level 3</p>
+                                          <div class="ol_wrap">
+                                             <ol type="1">
+                                                <li id="_">
+                                                   <p id="_">Level 4</p>
+                                                </li>
+                                             </ol>
+                                          </div>
+                                       </li>
+                                    </ol>
+                                 </div>
+                              </li>
+                           </ol>
+                        </div>
+                     </li>
+                  </ol>
+               </div>
+               <div class="ol_wrap">
+                  <ol type="i" id="B">
+                     <li id="_">
+                        <p id="_">Level 1</p>
+                     </li>
+                     <li id="_">
+                        <p id="_">Level 1</p>
+                        <div class="ol_wrap">
+                           <ol type="a">
+                              <li id="_">
+                                 <p id="_">Level 2</p>
+                                 <div class="ol_wrap">
+                                    <ol type="1">
+                                       <li id="_">
+                                          <p id="_">Level 3</p>
+                                          <div class="ol_wrap">
+                                             <ol type="i">
+                                                <li id="_">
+                                                   <p id="_">Level 4</p>
+                                                </li>
+                                             </ol>
+                                          </div>
+                                       </li>
+                                    </ol>
+                                 </div>
+                              </li>
+                           </ol>
+                        </div>
+                     </li>
+                  </ol>
+               </div>
+               <div class="ol_wrap">
+                  <ol type="a" id="C">
+                     <li id="_">
+                        <p id="_">Level 1</p>
+                     </li>
+                     <li id="_">
+                        <p id="_">Level 1</p>
+                        <div class="ol_wrap">
+                           <ol type="1">
+                              <li id="_">
+                                 <p id="_">Level 2</p>
+                                 <div class="ol_wrap">
+                                    <ol type="i">
+                                       <li id="_">
+                                          <p id="_">Level 3</p>
+                                          <div class="ol_wrap">
+                                             <ol type="a">
+                                                <li id="_">
+                                                   <p id="_">Level 4</p>
+                                                </li>
+                                             </ol>
+                                          </div>
+                                       </li>
+                                    </ol>
+                                 </div>
+                              </li>
+                           </ol>
+                        </div>
+                     </li>
+                  </ol>
+               </div>
+            </div>
+            <p> </p>
+         </div>
+         <p class="section-break">
+            <br clear="all" class="section"/>
+         </p>
+         <div class="WordSectionMiddleTitle"/>
+         <p class="section-break">
+            <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
+         </p>
+         <div class="WordSectionMain"/>
+      </body>
     OUTPUT
     pres_output = IsoDoc::Ieee::PresentationXMLConvert.new({})
       .convert("test", input, true)
-    expect(Canon.format_xml(strip_guid(pres_output
-      .sub(%r{<metanorma-extension>.*</metanorma-extension>}m, ""))))
-      .to be_equivalent_to Canon.format_xml(presxml)
-    expect(strip_guid(Canon.format_xml(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
+    expect(strip_guid(pres_output
+      .sub(%r{<metanorma-extension>.*</metanorma-extension>}m, "")))
+      .to be_xml_equivalent_to presxml
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
       .new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(html)
-    expect(strip_guid(Canon.format_xml(Nokogiri::XML(IsoDoc::Ieee::WordConvert
+      .at("//body").to_xml)).to be_html5_equivalent_to html
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::WordConvert
       .new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(doc)
+      .at("//body").to_xml)).to be_html4_equivalent_to doc
   end
 
   it "processes mixed ordered and unordered lists" do
@@ -2405,261 +2405,261 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     presxml = <<~INPUT
-       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-          <preface>
-             <clause type="toc" id="_" displayorder="1">
-                <fmt-title depth="1" id="_">Contents</fmt-title>
-             </clause>
-             <foreword id="_" displayorder="2">
-                <title id="_">Foreword</title>
-                <fmt-title depth="1" id="_">
-                   <semx element="title" source="_">Foreword</semx>
-                </fmt-title>
-                <ul id="A">
-                   <li id="A0a">
-                      <fmt-name id="_">
-                         <semx element="autonum" source="A0a">—</semx>
-                      </fmt-name>
-                      <p id="_">Level 1</p>
-                   </li>
-                   <li id="A0b">
-                      <fmt-name id="_">
-                         <semx element="autonum" source="A0b">—</semx>
-                      </fmt-name>
-                      <p id="_">Level 1</p>
-                      <ol id="A1" type="arabic">
-                         <li id="A1a">
-                            <fmt-name id="_">
-                               <semx element="autonum" source="A1a">1</semx>
-                               <span class="fmt-label-delim">)</span>
-                            </fmt-name>
-                            <p id="_">Level 2</p>
-                            <ol type="roman">
-                               id="A2"
-                               <li id="A2a">
-                                  <fmt-name id="_">
-                                     <semx element="autonum" source="A2a">i</semx>
-                                     <span class="fmt-label-delim">)</span>
-                                  </fmt-name>
-                                  <p id="_">Level 3</p>
-                                  <ol id="A3" type="alphabet">
-                                     <li id="A3a">
-                                        <fmt-name id="_">
-                                           <semx element="autonum" source="A3a">a</semx>
-                                           <span class="fmt-label-delim">)</span>
-                                        </fmt-name>
-                                        <p id="_">Level 4</p>
-                                     </li>
-                                  </ol>
-                               </li>
-                            </ol>
-                         </li>
-                      </ol>
-                   </li>
-                </ul>
-                <ul id="B">
-                   <li id="B0a">
-                      <fmt-name id="_">
-                         <semx element="autonum" source="B0a">—</semx>
-                      </fmt-name>
-                      <p id="_">Level 1</p>
-                   </li>
-                   <li id="B0b">
-                      <fmt-name id="_">
-                         <semx element="autonum" source="B0b">—</semx>
-                      </fmt-name>
-                      <p id="_">Level 1</p>
-                      <ol id="B1" type="arabic">
-                         <li id="B1a">
-                            <fmt-name id="_">
-                               <semx element="autonum" source="B1a">1</semx>
-                               <span class="fmt-label-delim">)</span>
-                            </fmt-name>
-                            <p id="_">Level 2</p>
-                            <ol id="B2" type="roman">
-                               <li id="B2a">
-                                  <fmt-name id="_">
-                                     <semx element="autonum" source="B2a">i</semx>
-                                     <span class="fmt-label-delim">)</span>
-                                  </fmt-name>
-                                  <p id="_">Level 3</p>
-                                  <ol id="B3" type="alphabet">
-                                     <li id="B3a">
-                                        <fmt-name id="_">
-                                           <semx element="autonum" source="B3a">a</semx>
-                                           <span class="fmt-label-delim">)</span>
-                                        </fmt-name>
-                                        <p id="_">Level 4</p>
-                                     </li>
-                                  </ol>
-                               </li>
-                            </ol>
-                         </li>
-                      </ol>
-                   </li>
-                </ul>
-                <ol id="C" type="alphabet">
-                   <li id="C0a">
-                      <fmt-name id="_">
-                         <semx element="autonum" source="C0a">a</semx>
-                         <span class="fmt-label-delim">)</span>
-                      </fmt-name>
-                      <p id="_">Level 1</p>
-                   </li>
-                   <li id="C0b">
-                      <fmt-name id="_">
-                         <semx element="autonum" source="C0b">b</semx>
-                         <span class="fmt-label-delim">)</span>
-                      </fmt-name>
-                      <p id="_">Level 1</p>
-                      <ol id="C1" type="arabic">
-                         <li id="C1a">
-                            <fmt-name id="_">
-                               <semx element="autonum" source="C1a">1</semx>
-                               <span class="fmt-label-delim">)</span>
-                            </fmt-name>
-                            <p id="_">Level 2</p>
-                            <ol id="C2" type="roman">
-                               <li id="C2a">
-                                  <fmt-name id="_">
-                                     <semx element="autonum" source="C2a">i</semx>
-                                     <span class="fmt-label-delim">)</span>
-                                  </fmt-name>
-                                  <p id="_">Level 3</p>
-                                  <ol id="C3" type="alphabet">
-                                     <li id="C3a">
-                                        <fmt-name id="_">
-                                           <semx element="autonum" source="C3a">a</semx>
-                                           <span class="fmt-label-delim">)</span>
-                                        </fmt-name>
-                                        <p id="_">Level 4</p>
-                                     </li>
-                                  </ol>
-                               </li>
-                            </ol>
-                         </li>
-                      </ol>
-                   </li>
-                </ol>
-             </foreword>
-          </preface>
-       </iso-standard>
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+         <preface>
+            <clause type="toc" id="_" displayorder="1">
+               <fmt-title depth="1" id="_">Contents</fmt-title>
+            </clause>
+            <foreword id="_" displayorder="2">
+               <title id="_">Foreword</title>
+               <fmt-title depth="1" id="_">
+                  <semx element="title" source="_">Foreword</semx>
+               </fmt-title>
+               <ul id="A">
+                  <li id="A0a">
+                     <fmt-name id="_">
+                        <semx element="autonum" source="A0a">—</semx>
+                     </fmt-name>
+                     <p id="_">Level 1</p>
+                  </li>
+                  <li id="A0b">
+                     <fmt-name id="_">
+                        <semx element="autonum" source="A0b">—</semx>
+                     </fmt-name>
+                     <p id="_">Level 1</p>
+                     <ol id="A1" type="arabic">
+                        <li id="A1a">
+                           <fmt-name id="_">
+                              <semx element="autonum" source="A1a">1</semx>
+                              <span class="fmt-label-delim">)</span>
+                           </fmt-name>
+                           <p id="_">Level 2</p>
+                           <ol type="roman">
+                              id="A2"
+                              <li id="A2a">
+                                 <fmt-name id="_">
+                                    <semx element="autonum" source="A2a">i</semx>
+                                    <span class="fmt-label-delim">)</span>
+                                 </fmt-name>
+                                 <p id="_">Level 3</p>
+                                 <ol id="A3" type="alphabet">
+                                    <li id="A3a">
+                                       <fmt-name id="_">
+                                          <semx element="autonum" source="A3a">a</semx>
+                                          <span class="fmt-label-delim">)</span>
+                                       </fmt-name>
+                                       <p id="_">Level 4</p>
+                                    </li>
+                                 </ol>
+                              </li>
+                           </ol>
+                        </li>
+                     </ol>
+                  </li>
+               </ul>
+               <ul id="B">
+                  <li id="B0a">
+                     <fmt-name id="_">
+                        <semx element="autonum" source="B0a">—</semx>
+                     </fmt-name>
+                     <p id="_">Level 1</p>
+                  </li>
+                  <li id="B0b">
+                     <fmt-name id="_">
+                        <semx element="autonum" source="B0b">—</semx>
+                     </fmt-name>
+                     <p id="_">Level 1</p>
+                     <ol id="B1" type="arabic">
+                        <li id="B1a">
+                           <fmt-name id="_">
+                              <semx element="autonum" source="B1a">1</semx>
+                              <span class="fmt-label-delim">)</span>
+                           </fmt-name>
+                           <p id="_">Level 2</p>
+                           <ol id="B2" type="roman">
+                              <li id="B2a">
+                                 <fmt-name id="_">
+                                    <semx element="autonum" source="B2a">i</semx>
+                                    <span class="fmt-label-delim">)</span>
+                                 </fmt-name>
+                                 <p id="_">Level 3</p>
+                                 <ol id="B3" type="alphabet">
+                                    <li id="B3a">
+                                       <fmt-name id="_">
+                                          <semx element="autonum" source="B3a">a</semx>
+                                          <span class="fmt-label-delim">)</span>
+                                       </fmt-name>
+                                       <p id="_">Level 4</p>
+                                    </li>
+                                 </ol>
+                              </li>
+                           </ol>
+                        </li>
+                     </ol>
+                  </li>
+               </ul>
+               <ol id="C" type="alphabet">
+                  <li id="C0a">
+                     <fmt-name id="_">
+                        <semx element="autonum" source="C0a">a</semx>
+                        <span class="fmt-label-delim">)</span>
+                     </fmt-name>
+                     <p id="_">Level 1</p>
+                  </li>
+                  <li id="C0b">
+                     <fmt-name id="_">
+                        <semx element="autonum" source="C0b">b</semx>
+                        <span class="fmt-label-delim">)</span>
+                     </fmt-name>
+                     <p id="_">Level 1</p>
+                     <ol id="C1" type="arabic">
+                        <li id="C1a">
+                           <fmt-name id="_">
+                              <semx element="autonum" source="C1a">1</semx>
+                              <span class="fmt-label-delim">)</span>
+                           </fmt-name>
+                           <p id="_">Level 2</p>
+                           <ol id="C2" type="roman">
+                              <li id="C2a">
+                                 <fmt-name id="_">
+                                    <semx element="autonum" source="C2a">i</semx>
+                                    <span class="fmt-label-delim">)</span>
+                                 </fmt-name>
+                                 <p id="_">Level 3</p>
+                                 <ol id="C3" type="alphabet">
+                                    <li id="C3a">
+                                       <fmt-name id="_">
+                                          <semx element="autonum" source="C3a">a</semx>
+                                          <span class="fmt-label-delim">)</span>
+                                       </fmt-name>
+                                       <p id="_">Level 4</p>
+                                    </li>
+                                 </ol>
+                              </li>
+                           </ol>
+                        </li>
+                     </ol>
+                  </li>
+               </ol>
+            </foreword>
+         </preface>
+      </iso-standard>
     INPUT
     html = <<~OUTPUT
-       <body lang="en">
-          <div class="title-section">
-             <p> </p>
-          </div>
-          <br/>
-          <div class="prefatory-section">
-             <p> </p>
-          </div>
-          <br/>
-          <div class="main-section">
-             <br/>
-             <div id="_" class="TOC">
-                <h1 class="IntroTitle">Contents</h1>
-             </div>
-             <br/>
-             <div id="_">
-                <h1 class="ForewordTitle">Foreword</h1>
-                <div class="ul_wrap">
-                   <ul id="A">
-                      <li id="A0a">
-                         <p id="_">Level 1</p>
-                      </li>
-                      <li id="A0b">
-                         <p id="_">Level 1</p>
-                         <div class="ol_wrap">
-                            <ol type="1" id="A1" class="arabic">
-                               <li id="A1a">
-                                  <p id="_">Level 2</p>
-                                  <div class="ol_wrap">
-                                     <ol type="i" class="roman">
-                                        id="A2"
-                                        <li id="A2a">
-                                           <p id="_">Level 3</p>
-                                           <div class="ol_wrap">
-                                              <ol type="a" id="A3" class="alphabet">
-                                                 <li id="A3a">
-                                                    <p id="_">Level 4</p>
-                                                 </li>
-                                              </ol>
-                                           </div>
-                                        </li>
-                                     </ol>
-                                  </div>
-                               </li>
-                            </ol>
-                         </div>
-                      </li>
-                   </ul>
-                </div>
-                <div class="ul_wrap">
-                   <ul id="B">
-                      <li id="B0a">
-                         <p id="_">Level 1</p>
-                      </li>
-                      <li id="B0b">
-                         <p id="_">Level 1</p>
-                         <div class="ol_wrap">
-                            <ol type="1" id="B1" class="arabic">
-                               <li id="B1a">
-                                  <p id="_">Level 2</p>
-                                  <div class="ol_wrap">
-                                     <ol type="i" id="B2" class="roman">
-                                        <li id="B2a">
-                                           <p id="_">Level 3</p>
-                                           <div class="ol_wrap">
-                                              <ol type="a" id="B3" class="alphabet">
-                                                 <li id="B3a">
-                                                    <p id="_">Level 4</p>
-                                                 </li>
-                                              </ol>
-                                           </div>
-                                        </li>
-                                     </ol>
-                                  </div>
-                               </li>
-                            </ol>
-                         </div>
-                      </li>
-                   </ul>
-                </div>
-                <div class="ol_wrap">
-                   <ol type="a" id="C" class="alphabet">
-                      <li id="C0a">
-                         <p id="_">Level 1</p>
-                      </li>
-                      <li id="C0b">
-                         <p id="_">Level 1</p>
-                         <div class="ol_wrap">
-                            <ol type="1" id="C1" class="arabic">
-                               <li id="C1a">
-                                  <p id="_">Level 2</p>
-                                  <div class="ol_wrap">
-                                     <ol type="i" id="C2" class="roman">
-                                        <li id="C2a">
-                                           <p id="_">Level 3</p>
-                                           <div class="ol_wrap">
-                                              <ol type="a" id="C3" class="alphabet">
-                                                 <li id="C3a">
-                                                    <p id="_">Level 4</p>
-                                                 </li>
-                                              </ol>
-                                           </div>
-                                        </li>
-                                     </ol>
-                                  </div>
-                               </li>
-                            </ol>
-                         </div>
-                      </li>
-                   </ol>
-                </div>
-             </div>
-          </div>
-       </body>
+      <body lang="en">
+         <div class="title-section">
+            <p> </p>
+         </div>
+         <br/>
+         <div class="prefatory-section">
+            <p> </p>
+         </div>
+         <br/>
+         <div class="main-section">
+            <br/>
+            <div id="_" class="TOC">
+               <h1 class="IntroTitle">Contents</h1>
+            </div>
+            <br/>
+            <div id="_">
+               <h1 class="ForewordTitle">Foreword</h1>
+               <div class="ul_wrap">
+                  <ul id="A">
+                     <li id="A0a">
+                        <p id="_">Level 1</p>
+                     </li>
+                     <li id="A0b">
+                        <p id="_">Level 1</p>
+                        <div class="ol_wrap">
+                           <ol type="1" id="A1" class="arabic">
+                              <li id="A1a">
+                                 <p id="_">Level 2</p>
+                                 <div class="ol_wrap">
+                                    <ol type="i" class="roman">
+                                       id="A2"
+                                       <li id="A2a">
+                                          <p id="_">Level 3</p>
+                                          <div class="ol_wrap">
+                                             <ol type="a" id="A3" class="alphabet">
+                                                <li id="A3a">
+                                                   <p id="_">Level 4</p>
+                                                </li>
+                                             </ol>
+                                          </div>
+                                       </li>
+                                    </ol>
+                                 </div>
+                              </li>
+                           </ol>
+                        </div>
+                     </li>
+                  </ul>
+               </div>
+               <div class="ul_wrap">
+                  <ul id="B">
+                     <li id="B0a">
+                        <p id="_">Level 1</p>
+                     </li>
+                     <li id="B0b">
+                        <p id="_">Level 1</p>
+                        <div class="ol_wrap">
+                           <ol type="1" id="B1" class="arabic">
+                              <li id="B1a">
+                                 <p id="_">Level 2</p>
+                                 <div class="ol_wrap">
+                                    <ol type="i" id="B2" class="roman">
+                                       <li id="B2a">
+                                          <p id="_">Level 3</p>
+                                          <div class="ol_wrap">
+                                             <ol type="a" id="B3" class="alphabet">
+                                                <li id="B3a">
+                                                   <p id="_">Level 4</p>
+                                                </li>
+                                             </ol>
+                                          </div>
+                                       </li>
+                                    </ol>
+                                 </div>
+                              </li>
+                           </ol>
+                        </div>
+                     </li>
+                  </ul>
+               </div>
+               <div class="ol_wrap">
+                  <ol type="a" id="C" class="alphabet">
+                     <li id="C0a">
+                        <p id="_">Level 1</p>
+                     </li>
+                     <li id="C0b">
+                        <p id="_">Level 1</p>
+                        <div class="ol_wrap">
+                           <ol type="1" id="C1" class="arabic">
+                              <li id="C1a">
+                                 <p id="_">Level 2</p>
+                                 <div class="ol_wrap">
+                                    <ol type="i" id="C2" class="roman">
+                                       <li id="C2a">
+                                          <p id="_">Level 3</p>
+                                          <div class="ol_wrap">
+                                             <ol type="a" id="C3" class="alphabet">
+                                                <li id="C3a">
+                                                   <p id="_">Level 4</p>
+                                                </li>
+                                             </ol>
+                                          </div>
+                                       </li>
+                                    </ol>
+                                 </div>
+                              </li>
+                           </ol>
+                        </div>
+                     </li>
+                  </ol>
+               </div>
+            </div>
+         </div>
+      </body>
 
     OUTPUT
     doc = <<~OUTPUT
@@ -2788,16 +2788,16 @@ RSpec.describe IsoDoc do
     OUTPUT
     pres_output = IsoDoc::Ieee::PresentationXMLConvert.new({})
       .convert("test", input, true)
-    expect(Canon.format_xml(strip_guid(pres_output
-      .sub(%r{<metanorma-extension>.*</metanorma-extension>}m, ""))))
-      .to be_equivalent_to Canon.format_xml(presxml)
-    expect(strip_guid(Canon.format_xml(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
+    expect(strip_guid(pres_output
+      .sub(%r{<metanorma-extension>.*</metanorma-extension>}m, "")))
+      .to be_xml_equivalent_to presxml
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
       .new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(html)
-    expect(strip_guid(Canon.format_xml(Nokogiri::XML(IsoDoc::Ieee::WordConvert
+      .at("//body").to_xml)).to be_html5_equivalent_to html
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::WordConvert
       .new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml))).to be_equivalent_to Canon.format_xml(doc)
+      .at("//body").to_xml)).to be_html4_equivalent_to doc
   end
 end

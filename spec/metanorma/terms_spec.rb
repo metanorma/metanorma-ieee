@@ -108,8 +108,8 @@ RSpec.describe Metanorma::Ieee do
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:references | " \
               "//xmlns:metanorma-extension").remove
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to output
   end
 
   it "renders a full term" do
@@ -295,8 +295,8 @@ RSpec.describe Metanorma::Ieee do
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:references | " \
               "//xmlns:metanorma-extension").remove
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to output
   end
 
   it "deals with missing terms" do
@@ -361,7 +361,7 @@ RSpec.describe Metanorma::Ieee do
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:references | " \
               "//xmlns:metanorma-extension").remove
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to output
   end
 end

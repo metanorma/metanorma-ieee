@@ -32,14 +32,14 @@ RSpec.describe IsoDoc::Ieee do
         <div id='abstract-destination'/>
       </main>
     OUTPUT
-    expect(Canon.format_xml(IsoDoc::Ieee::HtmlConvert
+    expect(IsoDoc::Ieee::HtmlConvert
       .new(htmlcoverpage: nil,
            htmlintropage: nil,
            bare: true,
            filename: "test")
-       .html_cleanup(Nokogiri::XML(input)).to_xml)
+       .html_cleanup(Nokogiri::XML(input)).to_xml
        .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
-      .to be_equivalent_to Canon.format_xml(doc)
+      .to be_html5_equivalent_to doc
   end
 
   it "moves abstract in Word, and style abstracts" do
@@ -81,13 +81,13 @@ RSpec.describe IsoDoc::Ieee do
         </body>
       </html>
     OUTPUT
-    expect(Canon.format_xml(IsoDoc::Ieee::WordConvert
+    expect(IsoDoc::Ieee::WordConvert
       .new(wordcoverpage: nil,
            wordintropage: nil,
            filename: "test")
-       .word_cleanup(Nokogiri::XML(input)).to_xml)
+       .word_cleanup(Nokogiri::XML(input)).to_xml
        .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
-      .to be_equivalent_to Canon.format_xml(doc)
+      .to be_xml_equivalent_to doc
 
     input = <<~INPUT
       <html>
@@ -115,13 +115,13 @@ RSpec.describe IsoDoc::Ieee do
         </body>
       </html>
     OUTPUT
-    expect(Canon.format_xml(IsoDoc::Ieee::WordConvert
+    expect(IsoDoc::Ieee::WordConvert
       .new(wordcoverpage: nil,
            wordintropage: nil,
            filename: "test")
-       .word_cleanup(Nokogiri::XML(input)).to_xml)
+       .word_cleanup(Nokogiri::XML(input)).to_xml
        .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
-      .to be_equivalent_to Canon.format_xml(doc)
+      .to be_xml_equivalent_to doc
   end
 
   it "copies scope in Word in the absence of abstract" do
@@ -168,13 +168,13 @@ RSpec.describe IsoDoc::Ieee do
         </body>
       </html>
     OUTPUT
-    expect(Canon.format_xml(IsoDoc::Ieee::WordConvert
+    expect(IsoDoc::Ieee::WordConvert
       .new(wordcoverpage: nil,
            wordintropage: nil,
            filename: "test")
-   .word_cleanup(Nokogiri::XML(input)).to_xml)
+   .word_cleanup(Nokogiri::XML(input)).to_xml
    .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
-      .to be_equivalent_to Canon.format_xml(doc)
+      .to be_xml_equivalent_to doc
   end
 
   it "moves introductory material in Word" do
@@ -223,13 +223,13 @@ RSpec.describe IsoDoc::Ieee do
           </body>
        </html>
     OUTPUT
-    expect(Canon.format_xml(IsoDoc::Ieee::WordConvert
+    expect(IsoDoc::Ieee::WordConvert
       .new(wordcoverpage: nil,
            wordintropage: nil,
            filename: "test")
-       .word_cleanup(Nokogiri::XML(input)).to_xml)
+       .word_cleanup(Nokogiri::XML(input)).to_xml
        .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
-      .to be_equivalent_to Canon.format_xml(doc)
+      .to be_xml_equivalent_to doc
   end
 
   it "renders headings in Word" do
@@ -280,13 +280,13 @@ RSpec.describe IsoDoc::Ieee do
          </body>
        </html>
     OUTPUT
-    expect(Canon.format_xml(IsoDoc::Ieee::WordConvert
+    expect(IsoDoc::Ieee::WordConvert
        .new(wordcoverpage: nil,
             wordintropage: nil,
             filename: "test")
-        .word_cleanup(Nokogiri::XML(input)).to_xml)
+        .word_cleanup(Nokogiri::XML(input)).to_xml
         .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
-      .to be_equivalent_to Canon.format_xml(doc)
+      .to be_xml_equivalent_to doc
   end
 
   it "populates Word ToC" do
@@ -339,10 +339,10 @@ RSpec.describe IsoDoc::Ieee do
     word = File.read("test.doc", encoding: "UTF-8")
       .sub(/^.*An empty word intro page\./m, "")
       .sub(%r{</div>.*$}m, "</div>")
-      .gsub(/<o:p>&#xA0;<\/o:p>/, "")
+      .gsub("<o:p>&#xA0;</o:p>", "")
 
-    expect(Canon.format_xml("<div>#{word.gsub(/_Toc\d\d+/, '_Toc')}"))
-      .to be_equivalent_to Canon.format_xml(<<~'OUTPUT')
+    expect("<div>#{word.gsub(/_Toc\d\d+/, '_Toc')}")
+      .to be_xml_equivalent_to <<~'OUTPUT'
         <div>
            WORDTOC
            <div class="WordSectionContents">
@@ -465,7 +465,7 @@ RSpec.describe IsoDoc::Ieee do
   private
 
   def mock_populate_template
-    allow_any_instance_of(::IsoDoc::WordFunction::Postprocess)
+    allow_any_instance_of(IsoDoc::WordFunction::Postprocess)
       .to receive(:populate_template)
       .with(anything, anything)
       .and_return nil

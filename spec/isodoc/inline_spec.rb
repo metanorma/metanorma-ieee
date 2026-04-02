@@ -205,9 +205,9 @@ RSpec.describe IsoDoc::Ieee do
       OUTPUT
     output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(output)
-      .at("//xmlns:p[@id ='A']").to_xml)))
-      .to be_equivalent_to Canon.format_xml(strip_guid(presxml))
+    expect(strip_guid(Nokogiri::XML(output)
+      .at("//xmlns:p[@id ='A']").to_xml))
+      .to be_xml_equivalent_to strip_guid(presxml)
   end
 
   it "combines locality stacks with connectives, omitting subclauses" do
@@ -387,8 +387,8 @@ RSpec.describe IsoDoc::Ieee do
           </p>
        </itu-standard>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true)))).to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true))).to be_xml_equivalent_to output
   end
 
   it "processes concept markup" do
@@ -685,8 +685,8 @@ RSpec.describe IsoDoc::Ieee do
     OUTPUT
     xml = Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))
-    expect(Canon.format_xml(strip_guid(xml.at("//xmlns:p[@id = 'A']").to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(xml.at("//xmlns:p[@id = 'A']").to_xml))
+      .to be_xml_equivalent_to presxml
   end
 
   it "duplicates MathML with AsciiMath and LaTeXMath" do
@@ -745,7 +745,7 @@ RSpec.describe IsoDoc::Ieee do
     xml = Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new({})
       .convert("test", input, true))
     xml = xml.at("//xmlns:p[@id = 'A']")
-    expect(Canon.format_xml(strip_guid(xml.to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(xml.to_xml))
+      .to be_xml_equivalent_to output
   end
 end

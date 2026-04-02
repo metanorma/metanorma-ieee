@@ -649,8 +649,8 @@ RSpec.describe Metanorma::Ieee do
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.at("//xmlns:bibdata").remove
     ret = ret.at("//xmlns:boilerplate")
-    expect(Canon.format_xml(strip_guid(ret.to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(ret.to_xml))
+      .to be_xml_equivalent_to output
   end
 
   it "does not insert boilerplate in front of sections if legacy document scheme nominated" do
@@ -678,8 +678,8 @@ RSpec.describe Metanorma::Ieee do
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.xpath("//xmlns:bibdata | //xmlns:metanorma-extension").each(&:remove)
-    expect(Canon.format_xml(strip_guid(ret.to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(ret.to_xml))
+      .to be_xml_equivalent_to output
   end
 
   it "inserts introduction boilerplate in front of sections" do
@@ -765,8 +765,8 @@ RSpec.describe Metanorma::Ieee do
     ret.at("//xmlns:bibdata").remove
     ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:boilerplate").remove
-    expect(Canon.format_xml(strip_guid(ret.to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(ret.to_xml))
+      .to be_xml_equivalent_to output
 
     ret = Asciidoctor.convert(input
       .sub(":draft:", ":docstage: draft\n:draft:"), *OPTIONS)
@@ -843,8 +843,8 @@ RSpec.describe Metanorma::Ieee do
     ret.at("//xmlns:bibdata").remove
     ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:boilerplate").remove
-    expect(Canon.format_xml(strip_guid(ret.to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(ret.to_xml))
+      .to be_xml_equivalent_to output
   end
 
   it "does not insert boilerplate in front of bibliography if already provided" do
@@ -884,8 +884,8 @@ RSpec.describe Metanorma::Ieee do
     ret.at("//xmlns:bibdata").remove
     ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:boilerplate").remove
-    expect(Canon.format_xml(strip_guid(ret.to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(ret.to_xml))
+      .to be_xml_equivalent_to output
   end
 
   it "removes extraneous instances of overview clauses" do
@@ -934,8 +934,8 @@ RSpec.describe Metanorma::Ieee do
     ret.at("//xmlns:boilerplate").remove
     ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:clause[@anchor = 'boilerplate_word_usage']")&.remove
-    expect(Canon.format_xml(strip_guid(ret.to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(ret.to_xml))
+      .to be_xml_equivalent_to output
   end
 
   it "inserts footnote note on first note" do
@@ -1000,8 +1000,8 @@ RSpec.describe Metanorma::Ieee do
     ret.at("//xmlns:boilerplate").remove
     ret.at("//xmlns:metanorma-extension").remove
     ret.at("//xmlns:clause[@anchor = 'boilerplate_word_usage']")&.remove
-    expect(Canon.format_xml(strip_guid(ret.to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(ret.to_xml))
+      .to be_xml_equivalent_to output
   end
 
   it "processes footnotes" do
@@ -1037,8 +1037,8 @@ RSpec.describe Metanorma::Ieee do
       </sections>
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
-    expect(Canon.format_xml(strip_guid(ret.at("//xmlns:sections").to_xml)))
-      .to be_equivalent_to(Canon.format_xml(output))
+    expect(strip_guid(ret.at("//xmlns:sections").to_xml))
+      .to be_xml_equivalent_to(output)
   end
 
   it "processes participants" do
@@ -1346,8 +1346,8 @@ RSpec.describe Metanorma::Ieee do
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       .at("//xmlns:clause[@anchor = 'boilerplate-participants']")
-    expect(Canon.format_xml(strip_guid(ret.to_xml)))
-      .to be_equivalent_to(Canon.format_xml(output))
+    expect(strip_guid(ret.to_xml))
+      .to be_xml_equivalent_to(output)
   end
 
   it "do not insert word usage clause if this is legacy document schema" do
@@ -1435,7 +1435,7 @@ RSpec.describe Metanorma::Ieee do
     OUTPUT
     ret = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     ret.xpath("//xmlns:bibdata | //xmlns:metanorma-extension").each(&:remove)
-    expect(Canon.format_xml(strip_guid(ret.to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(ret.to_xml))
+      .to be_xml_equivalent_to output
   end
 end

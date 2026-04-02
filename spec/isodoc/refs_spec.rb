@@ -1240,8 +1240,8 @@ RSpec.describe IsoDoc do
       IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true),
     )
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
   end
 
   it "places bibliography bracket information footnote after first occurence of [B...]" do
@@ -1371,8 +1371,8 @@ RSpec.describe IsoDoc do
       .convert("test", input, true),
     )
     out = out.at("//xmlns:clause[@id = 'A']")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
   end
 
   it "avoids punctuation when placing bibliography bracket information footnote after first occurence of [B...]" do
@@ -1468,8 +1468,8 @@ RSpec.describe IsoDoc do
       .convert("test", input, true),
     )
     out = out.at("//xmlns:clause[@id = 'A']")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
   end
 
   it "re-sorts biblio citations" do
@@ -1555,8 +1555,8 @@ RSpec.describe IsoDoc do
       IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true),
     )
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
   end
 
   it "renders reference without identifier, avoids redundant rendering of footnotes in biblio-tag" do
@@ -1687,8 +1687,8 @@ RSpec.describe IsoDoc do
       IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true),
     )
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
   end
 
   it "removes page locality" do
@@ -1807,8 +1807,8 @@ RSpec.describe IsoDoc do
       .convert("test", input, true),
     )
     out = out.at("//xmlns:clause[@id = 'A']")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes Relaton bibliographies with references on the same date" do
@@ -2256,7 +2256,7 @@ RSpec.describe IsoDoc do
       .convert("test", input, true),
     )
     pres_output.at("//xmlns:localized-strings").remove
-    expect(Canon.format_xml(strip_guid(pres_output.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(pres_output.to_xml))
+      .to be_xml_equivalent_to presxml
   end
 end

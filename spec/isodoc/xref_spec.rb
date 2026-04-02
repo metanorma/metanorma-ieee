@@ -103,9 +103,9 @@ RSpec.describe Metanorma::Ieee do
            </p>
         </foreword>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true)).at("//xmlns:foreword").to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)).at("//xmlns:foreword").to_xml))
+      .to be_xml_equivalent_to output
   end
 
   it "cross-references formulae" do
@@ -191,10 +191,10 @@ RSpec.describe Metanorma::Ieee do
            </p>
         </foreword>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+      .at("//xmlns:foreword").to_xml))
+      .to be_xml_equivalent_to output
   end
 
   it "processes figures as hierarchical assets" do
@@ -396,11 +396,11 @@ RSpec.describe Metanorma::Ieee do
            </p>
         </foreword>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
       .new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+      .at("//xmlns:foreword").to_xml))
+      .to be_xml_equivalent_to output
     output = <<~OUTPUT
         <foreword id="fwd" displayorder="2">
            <title id="_">Foreword</title>
@@ -535,10 +535,10 @@ RSpec.describe Metanorma::Ieee do
            </p>
         </foreword>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
       .new({ hierarchicalassets: true })
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+      .at("//xmlns:foreword").to_xml))
+      .to be_xml_equivalent_to output
   end
 end

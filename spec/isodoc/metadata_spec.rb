@@ -950,11 +950,11 @@ RSpec.describe Metanorma::Ieee do
           <date type="feedback-ended" format="ddMMMyyyy">01 Aug 2018</date>
        </bibdata>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
       .new({ hierarchicalassets: true })
       .convert("test", input, true))
-      .at("//xmlns:bibdata").to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+      .at("//xmlns:bibdata").to_xml))
+      .to be_xml_equivalent_to output
   end
 
 end
