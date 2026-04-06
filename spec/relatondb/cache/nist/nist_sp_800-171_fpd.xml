@@ -1,5 +1,5 @@
-<bibdata type="standard" schema-version="v1.4.1">
-  <fetched>2026-03-29</fetched>
+<bibdata type="standard" schema-version="v1.5.6">
+  <fetched>2026-04-07</fetched>
   <title language="en" script="Latn">Protecting Controlled Unclassified Information in Nonfederal Information Systems and Organizations</title>
   <uri type="src">https://csrc.nist.gov/pubs/sp/800/171/final</uri>
   <docidentifier type="NIST" primary="true">NIST SP 800-171 fpd</docidentifier>
@@ -122,45 +122,45 @@
     <region iso="MD"></region>
   </place>
   <keyword>
-    <taxon>Controlled Unclassified Information</taxon>
+    <vocab>Controlled Unclassified Information</vocab>
   </keyword>
   <keyword>
-    <taxon>CUI Registry</taxon>
+    <vocab>CUI Registry</vocab>
   </keyword>
   <keyword>
-    <taxon>Executive Order 13556</taxon>
+    <vocab>Executive Order 13556</vocab>
   </keyword>
   <keyword>
-    <taxon>FIPS Publication 199</taxon>
+    <vocab>FIPS Publication 199</vocab>
   </keyword>
   <keyword>
-    <taxon>FIPS Publication 200</taxon>
+    <vocab>FIPS Publication 200</vocab>
   </keyword>
   <keyword>
-    <taxon>FISMA</taxon>
+    <vocab>FISMA</vocab>
   </keyword>
   <keyword>
-    <taxon>NIST SP 800-53</taxon>
+    <vocab>NIST SP 800-53</vocab>
   </keyword>
   <keyword>
-    <taxon>Nonfederal Information Systems</taxon>
+    <vocab>Nonfederal Information Systems</vocab>
   </keyword>
   <keyword>
-    <taxon>Security Control</taxon>
+    <vocab>Security Control</vocab>
   </keyword>
   <keyword>
-    <taxon>Security Requirement</taxon>
+    <vocab>Security Requirement</vocab>
   </keyword>
   <keyword>
-    <taxon>Derived Security Requirement</taxon>
+    <vocab>Derived Security Requirement</vocab>
   </keyword>
   <keyword>
-    <taxon>Contractor Information Systems</taxon>
+    <vocab>Contractor Information Systems</vocab>
   </keyword>
   <keyword>
-    <taxon>Security Assessment</taxon>
+    <vocab>Security Assessment</vocab>
   </keyword>
-  <ext schema-version="v1.0.0">
+  <ext schema-version="v1.1.2">
     <doctype>standard</doctype>
     <flavor>nist</flavor>
   </ext>

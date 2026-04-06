@@ -1915,7 +1915,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(strip_guid(Canon.format_xml(doc.to_xml)))
       .to be_equivalent_to Canon.format_xml(word)
 
-       presxml = <<~OUTPUT
+    presxml = <<~OUTPUT
        <annex id="A" autonum="A" displayorder="2">
           <title id="_">This is the annex title</title>
           <fmt-title id="_">

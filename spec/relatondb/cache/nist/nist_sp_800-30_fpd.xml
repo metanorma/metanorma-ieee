@@ -1,5 +1,5 @@
-<bibdata type="standard" schema-version="v1.4.1">
-  <fetched>2026-03-29</fetched>
+<bibdata type="standard" schema-version="v1.5.6">
+  <fetched>2026-04-07</fetched>
   <title language="en" script="Latn">Risk Management Guide for Information Technology Systems</title>
   <uri type="src">https://csrc.nist.gov/pubs/sp/800/30/final</uri>
   <uri type="doi">https://doi.org/10.6028/NIST.SP.800-30</uri>
@@ -107,33 +107,33 @@
     <region iso="MD"></region>
   </place>
   <keyword>
-    <taxon>cost-benefit analysis</taxon>
+    <vocab>cost-benefit analysis</vocab>
   </keyword>
   <keyword>
-    <taxon>residual risk</taxon>
+    <vocab>residual risk</vocab>
   </keyword>
   <keyword>
-    <taxon>risk</taxon>
+    <vocab>risk</vocab>
   </keyword>
   <keyword>
-    <taxon>risk assessment</taxon>
+    <vocab>risk assessment</vocab>
   </keyword>
   <keyword>
-    <taxon>risk management</taxon>
+    <vocab>risk management</vocab>
   </keyword>
   <keyword>
-    <taxon>risk mitigation</taxon>
+    <vocab>risk mitigation</vocab>
   </keyword>
   <keyword>
-    <taxon>security controls</taxon>
+    <vocab>security controls</vocab>
   </keyword>
   <keyword>
-    <taxon>threat</taxon>
+    <vocab>threat</vocab>
   </keyword>
   <keyword>
-    <taxon>vulnerability</taxon>
+    <vocab>vulnerability</vocab>
   </keyword>
-  <ext schema-version="v1.0.0">
+  <ext schema-version="v1.1.2">
     <doctype>standard</doctype>
     <flavor>nist</flavor>
   </ext>

@@ -1,5 +1,5 @@
-<bibdata type="standard" schema-version="v1.4.1">
-  <fetched>2026-03-29</fetched>
+<bibdata type="standard" schema-version="v1.5.6">
+  <fetched>2026-04-07</fetched>
   <title language="en" script="Latn" type="title-main">Programmable controllers – Part 3: Programming languages</title>
   <title language="en" script="Latn" type="main">Programmable controllers – Part 3: Programming languages</title>
   <title language="fr" script="Latn" type="title-main">Automates programmables</title>
@@ -8,7 +8,7 @@
   <uri type="src">https://webstore.iec.ch/publication/68533</uri>
   <uri type="obp">https://webstore.iec.ch/preview/info_iec61131-3{ed4.0}b.pdf</uri>
   <docidentifier type="IEC" primary="true">IEC 61131-3</docidentifier>
-  <docidentifier type="URN">urn:iec:std:iec:61131-3:::</docidentifier>
+  <docidentifier type="URN">urn:iec:std:iec:61131:-3::::</docidentifier>
   <contributor>
     <role type="publisher"/>
     <organization>
@@ -57,7 +57,7 @@
       <uri type="src">https://webstore.iec.ch/publication/68533</uri>
       <uri type="obp">https://webstore.iec.ch/preview/info_iec61131-3{ed4.0}b.pdf</uri>
       <docidentifier type="IEC" primary="true">IEC 61131-3:2025</docidentifier>
-      <docidentifier type="URN">urn:iec:std:iec:61131-3:2025-05:::</docidentifier>
+      <docidentifier type="URN">urn:iec:std:iec:61131:-3:2025:::</docidentifier>
       <date type="published">
         <on>2025-05-22</on>
       </date>
@@ -124,7 +124,7 @@ b) l’Annexe B contient une liste complète des fonctionnalités qui ont été 
   <place>
     <city>Geneva</city>
   </place>
-  <ext schema-version="v1.0.0">
+  <ext schema-version="v1.1.2">
     <doctype>international-standard</doctype>
     <flavor>iec</flavor>
     <price-code>iec:P</price-code>

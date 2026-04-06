@@ -1,5 +1,5 @@
-<bibdata schema-version="v1.4.1">
-  <fetched>2026-03-29</fetched>
+<bibdata schema-version="v1.5.6">
+  <fetched>2026-04-07</fetched>
   <title language="en" script="Latn">Zero-touch network and Service Management (ZSM); Enablers for Artificial Intelligence-based Network and Service Automation</title>
   <uri type="src">http://webapp.etsi.org/workprogram/Report_WorkItem.asp?WKI_ID=62010</uri>
   <uri type="pdf">http://www.etsi.org/deliver/etsi_gs/ZSM/001_099/012/01.01.01_60/gs_ZSM012v010101p.pdf</uri>
@@ -38,11 +38,16 @@ The work item will consider AI-related scenarios defined in ETSI GS ZSM 001 V1.1
     <stage>Published</stage>
   </status>
   <keyword>
-    <taxon language="en" script="Latn">artificial intelligence</taxon>
-    <taxon language="en" script="Latn">automation</taxon>
-    <taxon language="en" script="Latn">NETWORK</taxon>
+    <vocab language="en" script="Latn">artificial intelligence</vocab>
   </keyword>
-  <ext schema-version="v0.0.3">
+  <keyword>
+    <vocab language="en" script="Latn">automation</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">NETWORK</vocab>
+  </keyword>
+  <ext schema-version="v0.1.2">
     <doctype abbreviation="GS">Group Specification</doctype>
+    <flavor>etsi</flavor>
   </ext>
 </bibdata>

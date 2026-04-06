@@ -1,5 +1,5 @@
-<bibdata type="standard" schema-version="v1.4.1">
-  <fetched>2026-03-29</fetched>
+<bibdata type="standard" schema-version="v1.5.6">
+  <fetched>2026-04-07</fetched>
   <title type="main">IEEE Guide for Measuring Earth Resistivity, Ground Impedance, and Earth Surface Potentials of a Ground System Part 1: Normal Measurements</title>
   <uri type="src">https://ieeexplore.ieee.org/document/30647</uri>
   <docidentifier type="IEEE" primary="true">IEEE Std 81-1983</docidentifier>
@@ -54,19 +54,39 @@
     </owner>
   </copyright>
   <keyword>
-    <taxon language="en" script="Latn">Grounding</taxon>
-    <taxon language="en" script="Latn">Resistance measurement</taxon>
-    <taxon language="en" script="Latn">Fault currents</taxon>
-    <taxon language="en" script="Latn">Measurement standards</taxon>
-    <taxon language="en" script="Latn">Testing</taxon>
-    <taxon language="en" script="Latn">Voltage measurement</taxon>
-    <taxon language="en" script="Latn">resistivity</taxon>
-    <taxon language="en" script="Latn">earth</taxon>
-    <taxon language="en" script="Latn">ground</taxon>
-    <taxon language="en" script="Latn">impedance</taxon>
-    <taxon language="en" script="Latn">potentials</taxon>
+    <vocab language="en" script="Latn">Grounding</vocab>
   </keyword>
-  <ext schema-version="v1.0.1">
+  <keyword>
+    <vocab language="en" script="Latn">Resistance measurement</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">Fault currents</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">Measurement standards</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">Testing</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">Voltage measurement</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">resistivity</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">earth</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">ground</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">impedance</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">potentials</vocab>
+  </keyword>
+  <ext schema-version="v1.1.3">
     <doctype>standard</doctype>
     <flavor>ieee</flavor>
     <ics>

@@ -1,5 +1,5 @@
-<bibdata type="standard" schema-version="v1.4.1">
-  <fetched>2026-03-29</fetched>
+<bibdata type="standard" schema-version="v1.5.6">
+  <fetched>2026-04-07</fetched>
   <title language="en" script="Latn" type="title-intro" format="text/plain">Fasteners</title>
   <title language="en" script="Latn" type="title-main" format="text/plain">Hexagon socket countersunk head screws with reduced loadability</title>
   <title language="en" script="Latn" type="main" format="text/plain">Fasteners - Hexagon socket countersunk head screws with reduced loadability</title>
@@ -157,7 +157,7 @@ NOTE 3    Une attention toute particulière est nécessaire pour assurer l'align
   <place>
     <formattedPlace>Geneva</formattedPlace>
   </place>
-  <ext schema-version="v1.0.5">
+  <ext schema-version="v1.1.2">
     <doctype>international-standard</doctype>
     <flavor>iso</flavor>
     <ics>

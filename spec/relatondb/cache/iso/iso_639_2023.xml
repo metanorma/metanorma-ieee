@@ -1,5 +1,5 @@
-<bibdata type="standard" schema-version="v1.4.1">
-  <fetched>2026-03-29</fetched>
+<bibdata type="standard" schema-version="v1.5.6">
+  <fetched>2026-04-07</fetched>
   <title language="en" script="Latn" type="title-main" format="text/plain">Code for individual languages and language groups</title>
   <title language="en" script="Latn" type="main" format="text/plain">Code for individual languages and language groups</title>
   <title language="fr" script="Latn" type="title-main" format="text/plain">Code pour les langues individuelles et les groupes de langues</title>
@@ -94,7 +94,7 @@ The ISOÂ 639 language code is maintained by the ISO 639 Maintenance Agency (ISOÂ
   <place>
     <formattedPlace>Geneva</formattedPlace>
   </place>
-  <ext schema-version="v1.0.5">
+  <ext schema-version="v1.1.2">
     <doctype>international-standard</doctype>
     <flavor>iso</flavor>
     <ics>

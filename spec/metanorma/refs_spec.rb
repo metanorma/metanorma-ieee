@@ -766,6 +766,8 @@ RSpec.describe Metanorma::Ieee do
                 </copyright>
                 <keyword>
                    <vocab language="en" script="Latn">Impulse testing</vocab>
+                </keyword>
+                <keyword>
                    <vocab language="en" script="Latn">Measurement standards</vocab>
                 </keyword>
              </bibitem>
@@ -836,9 +838,17 @@ RSpec.describe Metanorma::Ieee do
                 </copyright>
                 <keyword>
                    <vocab language="en" script="Latn">Measurement standards</vocab>
+                </keyword>
+                <keyword>
                    <vocab language="en" script="Latn">Terminology</vocab>
+                </keyword>
+                <keyword>
                    <vocab language="en" script="Latn">Pulse circuits</vocab>
+                </keyword>
+                <keyword>
                    <vocab language="en" script="Latn">Pulse generation</vocab>
+                </keyword>
+                <keyword>
                    <vocab language="en" script="Latn">Standards</vocab>
                 </keyword>
              </bibitem>

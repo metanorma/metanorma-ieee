@@ -1,5 +1,5 @@
-<bibdata type="standard" schema-version="v1.4.1">
-  <fetched>2026-03-29</fetched>
+<bibdata type="standard" schema-version="v1.5.6">
+  <fetched>2026-04-07</fetched>
   <title language="en" script="Latn">Security Requirements for Cryptographic Modules</title>
   <uri type="src">https://csrc.nist.gov/pubs/fips/140-2/final</uri>
   <docidentifier type="NIST" primary="true">NIST FIPS 140-2 fpd</docidentifier>
@@ -53,18 +53,18 @@
     <region iso="MD"></region>
   </place>
   <keyword>
-    <taxon>computer security</taxon>
+    <vocab>computer security</vocab>
   </keyword>
   <keyword>
-    <taxon>cryptographic module</taxon>
+    <vocab>cryptographic module</vocab>
   </keyword>
   <keyword>
-    <taxon>FIPS 140-2</taxon>
+    <vocab>FIPS 140-2</vocab>
   </keyword>
   <keyword>
-    <taxon>validation</taxon>
+    <vocab>validation</vocab>
   </keyword>
-  <ext schema-version="v1.0.0">
+  <ext schema-version="v1.1.2">
     <doctype>standard</doctype>
     <flavor>nist</flavor>
   </ext>

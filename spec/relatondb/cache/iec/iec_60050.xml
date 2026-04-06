@@ -1,5 +1,5 @@
-<bibdata type="standard" schema-version="v1.4.1">
-  <fetched>2026-03-29</fetched>
+<bibdata type="standard" schema-version="v1.5.6">
+  <fetched>2026-04-07</fetched>
   <title language="en" script="Latn" type="title-intro">International Electrotechnical Vocabulary (IEV)</title>
   <title language="en" script="Latn" type="title-main">Index</title>
   <title language="en" script="Latn" type="main">International Electrotechnical Vocabulary (IEV) - Index</title>
@@ -8,7 +8,7 @@
   <title language="fr" script="Latn" type="main">Vocabulaire Electrotechnique International (IEV) - Index</title>
   <uri type="src">https://webstore.iec.ch/publication/12502</uri>
   <docidentifier type="IEC" primary="true">IEC 60050</docidentifier>
-  <docidentifier type="URN">urn:iec:std:iec:60050:::</docidentifier>
+  <docidentifier type="URN">urn:iec:std:iec:60050::::</docidentifier>
   <contributor>
     <role type="publisher"/>
     <organization>
@@ -57,7 +57,7 @@
       <title language="fr" script="Latn" type="main">Vocabulaire Electrotechnique International (IEV) - Index</title>
       <uri type="src">https://webstore.iec.ch/publication/12502</uri>
       <docidentifier type="IEC" primary="true">IEC 60050:1975</docidentifier>
-      <docidentifier type="URN">urn:iec:std:iec:60050:1975-01:::</docidentifier>
+      <docidentifier type="URN">urn:iec:std:iec:60050:1975:::</docidentifier>
       <date type="published">
         <on>1975-01-01</on>
       </date>
@@ -113,7 +113,7 @@
   <place>
     <city>Geneva</city>
   </place>
-  <ext schema-version="v1.0.0">
+  <ext schema-version="v1.1.2">
     <doctype>international-standard</doctype>
     <flavor>iec</flavor>
     <price-code>iec:M</price-code>
