@@ -896,16 +896,25 @@ RSpec.describe Metanorma::Ieee do
           <references id="_" normative="true" obligation="informative">
              <title id="_">Normative references</title>
              <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
+             <bibitem id="_" anchor="ref11">
+                <docidentifier type="ETSI" primary="true">ETSI GS NFV 002 V1.2.1 (2014-12)</docidentifier>
+                <note type="Availability">
+                   <p id="_">ETSI publications are available the European Telecommunications Standards Institute (http://www.etsi.org).</p>
+                </note>
+             </bibitem>
+             <bibitem id="_" anchor="ref31">
+                <docidentifier type="ETSI" primary="true">ETSI GS ZSM 012 V1.1.1 (2022-12)</docidentifier>
+             </bibitem>
              <bibitem id="_" type="standard" anchor="ref23">
                 <docidentifier type="IEC" primary="true">IEC 60050</docidentifier>
-                <docidentifier type="URN">urn:iec:std:iec:60050:::</docidentifier>
+                <docidentifier type="URN">urn:iec:std:iec:60050::::</docidentifier>
                 <note type="Availability">
                    <p id="_">IEC publications are available from the International Electrotechnical Commission (https://www.iec.ch) and the American National Standards Institute (https://www.ansi.org/).</p>
                 </note>
              </bibitem>
              <bibitem id="_" type="standard" anchor="ref3">
                 <docidentifier type="IEC" primary="true">IEC 61131-3</docidentifier>
-                <docidentifier type="URN">urn:iec:std:iec:61131-3:::</docidentifier>
+                <docidentifier type="URN">urn:iec:std:iec:61131-3::::</docidentifier>
              </bibitem>
              <bibitem id="_" type="standard" anchor="ref26">
                 <docidentifier type="IEEE" primary="true">IEEE Std 194-1977</docidentifier>
@@ -955,10 +964,10 @@ RSpec.describe Metanorma::Ieee do
                 <docidentifier type="URN">urn:iso:std:iso:639:stage-60.60</docidentifier>
              </bibitem>
              <bibitem id="_" type="standard" anchor="ref25">
-                <docidentifier type="ITU" primary="true">ITU-R P.838-0</docidentifier>
+                <docidentifier type="ITU" primary="true">ITU-R P.838-3</docidentifier>
              </bibitem>
              <bibitem id="_" type="standard" anchor="ref5">
-                <docidentifier type="ITU" primary="true">ITU-R P.839-0</docidentifier>
+                <docidentifier type="ITU" primary="true">ITU-R P.839-4</docidentifier>
              </bibitem>
              <bibitem id="_" type="standard" anchor="ref4">
                 <docidentifier type="ITU" primary="true">ITU-T G.984.2</docidentifier>
@@ -968,12 +977,6 @@ RSpec.describe Metanorma::Ieee do
              </bibitem>
              <bibitem id="_" type="standard" anchor="ref24">
                 <docidentifier type="ITU" primary="true">ITU-T K.20</docidentifier>
-             </bibitem>
-             <bibitem id="_" anchor="ref11">
-                <docidentifier type="ETSI" primary="true">ETSI GS NFV 002 V1.2.1 (2014-12)</docidentifier>
-                <note type="Availability">
-                   <p id="_">ETSI publications are available the European Telecommunications Standards Institute (http://www.etsi.org).</p>
-                </note>
              </bibitem>
              <bibitem id="_" type="standard" anchor="ref8">
                 <docidentifier type="NIST" primary="true">NIST FIPS 140-2 fpd</docidentifier>
@@ -1005,9 +1008,6 @@ RSpec.describe Metanorma::Ieee do
                 <note type="Availability">
                    <p id="_">W3C recommendations are available from the World Wide Web Consortium (https://www.w3.org).</p>
                 </note>
-             </bibitem>
-             <bibitem id="_" anchor="ref31">
-                <docidentifier type="ETSI" primary="true">ETSI GS ZSM 012 V1.1.1 (2022-12)</docidentifier>
              </bibitem>
           </references>
        </bibliography>

@@ -1,5 +1,5 @@
 <bibdata type="standard" schema-version="v1.5.6">
-  <fetched>2026-04-07</fetched>
+  <fetched>2026-04-08</fetched>
   <title type="main">The "xml2rfc" Version 2 Vocabulary</title>
   <uri type="src">https://www.rfc-editor.org/info/rfc7749</uri>
   <docidentifier type="IETF" primary="true">RFC 7749</docidentifier>
@@ -55,19 +55,19 @@
     <title>IAB</title>
   </series>
   <keyword>
-    <taxon>XML</taxon>
+    <vocab>XML</vocab>
   </keyword>
   <keyword>
-    <taxon>IETF</taxon>
+    <vocab>IETF</vocab>
   </keyword>
   <keyword>
-    <taxon>RFC</taxon>
+    <vocab>RFC</vocab>
   </keyword>
   <keyword>
-    <taxon>Internet-Draft</taxon>
+    <vocab>Internet-Draft</vocab>
   </keyword>
   <keyword>
-    <taxon>Vocabulary</taxon>
+    <vocab>Vocabulary</vocab>
   </keyword>
   <ext schema-version="v1.1.2">
     <doctype>rfc</doctype>
