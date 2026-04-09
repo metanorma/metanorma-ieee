@@ -1,5 +1,5 @@
 require "spec_helper"
-require "relaton_iso"
+require "relaton/iso"
 
 RSpec.describe Metanorma::Ieee, type: :validation do
   before(:all) do

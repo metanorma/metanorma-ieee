@@ -91,8 +91,8 @@ RSpec.describe IsoDoc do
                 <abbreviation>ISO</abbreviation>          <uri>www.iso.org</uri>        </organization>      </contributor>      <edition>1</edition>      <language>en</language>      <script>Latn</script>      <abstract format="text/plain" language="en" script="Latn">Gives a two-letter lower-case code. The symbols were devised primarily for use in terminology, lexicography and linguistic, but they may be used for any application. It also includes guidance on the use of language symbols in some of these applications. The annex includes a classified list of languages and their symbols arranged by families.</abstract>      <status>        <stage>95</stage>        <substage>99</substage>      </status>      <copyright>        <from>1988</from>        <owner>          <organization>
       <name>ISO</name>
                 </organization>        </owner>      </copyright>      <relation type="updates">        <bibitem type="standard">          <formattedref format="text/plain">ISO 639-1:2002</formattedref>          <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>          <date type="circulated">            <on>2002-07-18</on>          </date>        </bibitem>
-            </relation>      <place>Geneva</place>    </bibitem>
-        </relation>  <place>Geneva</place></bibitem>
+            </relation>      <place><formattedPlace>Geneva</formattedPlace></place>    </bibitem>
+        </relation>  <place><formattedPlace>Geneva</formattedPlace></place></bibitem>
         <bibitem id="ref7" type="standard">
           <title type="title-main" format="text/plain" language="en" script="Latn">Codes for the representation of names of languages</title>
           <title type="title-part" format="text/plain" language="en" script="Latn">Part 2: Alpha-3 code</title>
@@ -190,7 +190,7 @@ RSpec.describe IsoDoc do
                       <name>Cambridge University Press</name>
                     </organization>
                   </contributor>
-                  <place>Cambridge, UK</place>
+                  <place><formattedPlace>Cambridge, UK</formattedPlace></place>
                 <size><value type="volume">1</value></size>
             </bibitem>
                    <bibitem type='standard' id='ref1'>
@@ -278,7 +278,7 @@ RSpec.describe IsoDoc do
                       <name>Cambridge University Press</name>
                     </organization>
                   </contributor>
-                  <place>Cambridge, UK</place>
+                  <place><formattedPlace>Cambridge, UK</formattedPlace></place>
                 <size><value type="volume">1</value></size>
             </bibitem>
                    <bibitem type='standard' id='ref4'>
@@ -802,10 +802,10 @@ RSpec.describe IsoDoc do
                                </date>
                             </bibitem>
                          </relation>
-                         <place>Geneva</place>
+                         <place><formattedPlace>Geneva</formattedPlace></place>
                       </bibitem>
                    </relation>
-                   <place>Geneva</place>
+                   <place><formattedPlace>Geneva</formattedPlace></place>
                 </bibitem>
                 <bibitem id="ref7" type="standard">
                    <biblio-tag>ISO 639-2:1998, </biblio-tag>
@@ -960,7 +960,7 @@ RSpec.describe IsoDoc do
                          <name>Cambridge University Press</name>
                       </organization>
                    </contributor>
-                   <place>Cambridge, UK</place>
+                   <place><formattedPlace>Cambridge, UK</formattedPlace></place>
                    <size>
                       <value type="volume">1</value>
                    </size>
@@ -1116,7 +1116,7 @@ RSpec.describe IsoDoc do
                          <name>Cambridge University Press</name>
                       </organization>
                    </contributor>
-                   <place>Cambridge, UK</place>
+                   <place><formattedPlace>Cambridge, UK</formattedPlace></place>
                    <size>
                       <value type="volume">1</value>
                    </size>

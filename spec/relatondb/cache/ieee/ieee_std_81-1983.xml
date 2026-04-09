@@ -1,0 +1,100 @@
+<bibdata type="standard" schema-version="v1.5.6">
+  <fetched>2026-04-09</fetched>
+  <title type="main">IEEE Guide for Measuring Earth Resistivity, Ground Impedance, and Earth Surface Potentials of a Ground System Part 1: Normal Measurements</title>
+  <uri type="src">https://ieeexplore.ieee.org/document/30647</uri>
+  <docidentifier type="IEEE" primary="true">IEEE Std 81-1983</docidentifier>
+  <docidentifier type="IEEE" scope="trademark" primary="true">IEEE Std 81™-1983</docidentifier>
+  <docidentifier type="ISBN">978-0-7381-0660-1</docidentifier>
+  <docidentifier type="DOI">10.1109/IEEESTD.1983.82378</docidentifier>
+  <docnumber>IEEE Std 81-1983</docnumber>
+  <date type="created">
+    <on>1983-03-11</on>
+  </date>
+  <date type="published">
+    <on>2012-12-21</on>
+  </date>
+  <date type="issued">
+    <on>1981-09-17</on>
+  </date>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name language="en" script="Latn">Institute of Electrical and Electronics Engineers</name>
+      <abbreviation>IEEE</abbreviation>
+      <address>
+        <city>New York</city>
+        <country>USA</country>
+      </address>
+      <uri type="org">http://www.ieee.org</uri>
+    </organization>
+  </contributor>
+  <contributor>
+    <role type="author">
+      <description language="en" script="Latn">committee</description>
+    </role>
+    <organization>
+      <name language="en" script="Latn">Institute of Electrical and Electronics Engineers</name>
+      <subdivision type="committee">
+        <name language="en" script="Latn">Substations of the IEEE Power and Energy Society</name>
+      </subdivision>
+      <abbreviation>IEEE</abbreviation>
+    </organization>
+  </contributor>
+  <language>en</language>
+  <script>Latn</script>
+  <abstract language="en" script="Latn">The present state of the technique of measuring ground resistance and impedance, earth resistivity, and potential gradients from currents in the earth, and the prediction of the magnitude of ground resistance and potential gradients from scale-model tests are described and discussed. Factors influencing the choice of instruments and the techniques for various types of measurements are covered. These include the purpose of the measurement, the accuracy required, the type of instruments available, possible sources of error, and the nature of the ground or grounding system under test. The intent is to assist the engineer or technician in obtaining and interpreting accurate, reliable data. The test procedures described promote the safety of personnel and property and prevent interference with the operation of neighboring facilities.</abstract>
+  <copyright>
+    <from>1983</from>
+    <owner>
+      <organization>
+        <name language="en" script="Latn">Institute of Electrical and Electronics Engineers</name>
+        <abbreviation>IEEE</abbreviation>
+        <uri type="org">http://www.ieee.org</uri>
+      </organization>
+    </owner>
+  </copyright>
+  <keyword>
+    <vocab language="en" script="Latn">Grounding</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">Resistance measurement</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">Fault currents</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">Measurement standards</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">Testing</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">Voltage measurement</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">resistivity</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">earth</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">ground</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">impedance</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">potentials</vocab>
+  </keyword>
+  <ext schema-version="v1.1.3">
+    <doctype>standard</doctype>
+    <flavor>ieee</flavor>
+    <ics>
+      <code>29.120.50</code>
+      <text>Fuses and other overcurrent protection devices</text>
+    </ics>
+    <standard_status>Superseded</standard_status>
+    <pubstatus>Active</pubstatus>
+    <holdstatus>Publish</holdstatus>
+  </ext>
+</bibdata>

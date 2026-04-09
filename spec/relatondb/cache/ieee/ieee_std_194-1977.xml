@@ -1,0 +1,90 @@
+<bibdata type="standard" schema-version="v1.5.6">
+  <fetched>2026-04-09</fetched>
+  <title type="main">IEEE Standard Pulse Terms and Definitions</title>
+  <uri type="src">https://ieeexplore.ieee.org/document/29015</uri>
+  <docidentifier type="IEEE" primary="true">IEEE Std 194-1977</docidentifier>
+  <docidentifier type="IEEE" scope="trademark" primary="true">IEEE Std 194™-1977</docidentifier>
+  <docidentifier type="ISBN">0-7381-4350-2</docidentifier>
+  <docidentifier type="DOI">10.1109/IEEESTD.1977.81098</docidentifier>
+  <docnumber>IEEE Std 194-1977</docnumber>
+  <date type="created">
+    <on>1977</on>
+  </date>
+  <date type="published">
+    <on>2002-12-10</on>
+  </date>
+  <date type="issued">
+    <on>1975-02-17</on>
+  </date>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name language="en" script="Latn">Institute of Electrical and Electronics Engineers</name>
+      <abbreviation>IEEE</abbreviation>
+      <address>
+        <city>New York</city>
+        <country>USA</country>
+      </address>
+      <uri type="org">http://www.ieee.org</uri>
+    </organization>
+  </contributor>
+  <contributor>
+    <role type="author">
+      <description language="en" script="Latn">committee</description>
+    </role>
+    <organization>
+      <name language="en" script="Latn">Institute of Electrical and Electronics Engineers</name>
+      <subdivision type="committee">
+        <name language="en" script="Latn">International Electrotechnical Commission Technical Committee 66</name>
+      </subdivision>
+      <abbreviation>IEEE</abbreviation>
+    </organization>
+  </contributor>
+  <language>en</language>
+  <script>Latn</script>
+  <abstract language="en" script="Latn">This standard provides fundamental definitions for general use in time domain pulse technology. It defines terms for pulse phenomena and pulse parameters which are prerequisite to: efficient communication of technical information; standards for methods of pulse parameter measurement; standards for pulse apparatus; and standards for apparatus which employs pulse techniques. With its scope, the object of this standard is the definition of an internally consistent, mathematically rigorous, and general set of pulse terms which are applicable to: hypothetical and practical pulses regardless of accuracy or precision; to a wide range of technologies and disciplines; and, in a measurement situation, regardless of the means of measurement or the means for waveform evaluation employed.<ETX>&gt;</ETX></abstract>
+  <status>
+    <stage>withdrawn</stage>
+  </status>
+  <copyright>
+    <from>1977</from>
+    <owner>
+      <organization>
+        <name language="en" script="Latn">Institute of Electrical and Electronics Engineers</name>
+        <abbreviation>IEEE</abbreviation>
+        <uri type="org">http://www.ieee.org</uri>
+      </organization>
+    </owner>
+  </copyright>
+  <keyword>
+    <vocab language="en" script="Latn">Measurement standards</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">Terminology</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">Pulse circuits</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">Pulse generation</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">Standards</vocab>
+  </keyword>
+  <ext schema-version="v1.1.3">
+    <doctype>standard</doctype>
+    <flavor>ieee</flavor>
+    <ics>
+      <code>01.040.17</code>
+      <text>Metrology and measurement. Physical phenomena (Vocabularies)</text>
+    </ics>
+    <ics>
+      <code>17.220.20</code>
+      <text>Measurement of electrical and magnetic quantities</text>
+    </ics>
+    <standard_status>Inactive</standard_status>
+    <standard_modified>Withdrawn</standard_modified>
+    <pubstatus>Active</pubstatus>
+    <holdstatus>Publish</holdstatus>
+  </ext>
+</bibdata>
