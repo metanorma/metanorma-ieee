@@ -1,6 +1,6 @@
-<bibdata schema-version="v1.2.9">
-  <fetched>2026-03-30</fetched>
-  <title format="text/plain" language="en" script="Latn">Zero-touch network and Service Management (ZSM); Enablers for Artificial Intelligence-based Network and Service Automation</title>
+<bibdata schema-version="v1.5.6">
+  <fetched>2026-04-13</fetched>
+  <title language="en" script="Latn">Zero-touch network and Service Management (ZSM); Enablers for Artificial Intelligence-based Network and Service Automation</title>
   <uri type="src">http://webapp.etsi.org/workprogram/Report_WorkItem.asp?WKI_ID=62010</uri>
   <uri type="pdf">http://www.etsi.org/deliver/etsi_gs/ZSM/001_099/012/01.01.01_60/gs_ZSM012v010101p.pdf</uri>
   <docidentifier type="ETSI" primary="true">ETSI GS ZSM 012 V1.1.1 (2022-12)</docidentifier>
@@ -15,20 +15,39 @@
       <abbreviation language="en" script="Latn">ETSI</abbreviation>
     </organization>
   </contributor>
+  <contributor>
+    <role type="author">
+      <description>committee</description>
+    </role>
+    <organization>
+      <name>European Telecommunications Standards Institute</name>
+      <subdivision type="technical-committee">
+        <name>Zero-touch network and Service Management</name>
+      </subdivision>
+      <abbreviation language="en" script="Latn">ETSI</abbreviation>
+    </organization>
+  </contributor>
   <version>
     <draft>1.1.1</draft>
   </version>
   <language>en</language>
   <script>Latn</script>
-  <abstract format="text/plain" language="en" script="Latn">The work item will specify extensions and new capabilities (so-called "AI enablers") for the ZSM framework reference architecture providing support for the automation of management functionalities and operations based on Artificial Intelligence (AI), applicable end-to-end and per management domain. The set of AI-enabling capabilities will be specified as management services, complementing the existing management services defined in ETSI GS ZSM 002 V1.1.1. The focus will be on AI-related areas such as data (including data handling and analytics), action, interoperation, governance and execution environment. Furthermore, the use and integration in the ZSM framework of externally provided AI-based capabilities will be taken into account. 
+  <abstract language="en" script="Latn">The work item will specify extensions and new capabilities (so-called "AI enablers") for the ZSM framework reference architecture providing support for the automation of management functionalities and operations based on Artificial Intelligence (AI), applicable end-to-end and per management domain. The set of AI-enabling capabilities will be specified as management services, complementing the existing management services defined in ETSI GS ZSM 002 V1.1.1. The focus will be on AI-related areas such as data (including data handling and analytics), action, interoperation, governance and execution environment. Furthermore, the use and integration in the ZSM framework of externally provided AI-based capabilities will be taken into account. 
 The work item will consider AI-related scenarios defined in ETSI GS ZSM 001 V1.1.1, as well as new scenarios, in order to derive AI-specific requirements. The work item will also document deployment aspects of the above scenarios to validate the applicability of the AI enablers. Related work from standard development organizations, open source projects and other sources will be considered and re-used, where applicable, in the development of the specifications.</abstract>
-  <keyword>artificial intelligence</keyword>
-  <keyword>automation</keyword>
-  <keyword>NETWORK</keyword>
-  <ext schema-version="v0.0.3">
+  <status>
+    <stage>Published</stage>
+  </status>
+  <keyword>
+    <vocab language="en" script="Latn">artificial intelligence</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">automation</vocab>
+  </keyword>
+  <keyword>
+    <vocab language="en" script="Latn">NETWORK</vocab>
+  </keyword>
+  <ext schema-version="v0.1.2">
     <doctype abbreviation="GS">Group Specification</doctype>
-    <editorialgroup>
-      <technical-committee>Zero-touch network and Service Management</technical-committee>
-    </editorialgroup>
+    <flavor>etsi</flavor>
   </ext>
 </bibdata>

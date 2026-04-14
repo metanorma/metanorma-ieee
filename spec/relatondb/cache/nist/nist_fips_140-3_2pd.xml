@@ -1,13 +1,13 @@
-<bibdata type="standard" schema-version="v1.2.9">
-  <fetched>2026-03-30</fetched>
-  <title format="text/plain" language="en" script="Latn">Security Requirements for Cryptographic Modules</title>
+<bibdata type="standard" schema-version="v1.5.6">
+  <fetched>2026-04-13</fetched>
+  <title language="en" script="Latn">Security Requirements for Cryptographic Modules</title>
   <uri type="src">https://csrc.nist.gov/pubs/fips/140-3/2pd</uri>
   <docidentifier type="NIST" primary="true">NIST FIPS 140-3 2pd</docidentifier>
   <date type="published">
-    <on>2009-12</on>
+    <on>2009-12-11</on>
   </date>
   <date type="obsoleted">
-    <on>2019-03</on>
+    <on>2019-03-22</on>
   </date>
   <contributor>
     <role type="author"/>
@@ -33,16 +33,34 @@
       </organization>
     </owner>
   </copyright>
-  <place>Gaithersburg, MD</place>
-  <keyword>computer security</keyword>
-  <keyword>telecommunication security</keyword>
-  <keyword>physical security</keyword>
-  <keyword>software security</keyword>
-  <keyword>cryptography</keyword>
-  <keyword>cryptographic modules</keyword>
-  <keyword>Federal Information Processing Standard (FIPS).</keyword>
-  <ext schema-version="v1.0.0">
+  <place>
+    <city>Gaithersburg</city>
+    <region iso="MD"></region>
+  </place>
+  <keyword>
+    <vocab>computer security</vocab>
+  </keyword>
+  <keyword>
+    <vocab>telecommunication security</vocab>
+  </keyword>
+  <keyword>
+    <vocab>physical security</vocab>
+  </keyword>
+  <keyword>
+    <vocab>software security</vocab>
+  </keyword>
+  <keyword>
+    <vocab>cryptography</vocab>
+  </keyword>
+  <keyword>
+    <vocab>cryptographic modules</vocab>
+  </keyword>
+  <keyword>
+    <vocab>Federal Information Processing Standard (FIPS).</vocab>
+  </keyword>
+  <ext schema-version="v1.1.2">
     <doctype>standard</doctype>
+    <flavor>nist</flavor>
     <commentperiod>
       <from>2009-12-11</from>
       <to>2010-03-11</to>

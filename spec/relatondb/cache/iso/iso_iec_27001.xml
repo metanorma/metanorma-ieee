@@ -1,13 +1,13 @@
-<bibdata type="standard" schema-version="v1.2.9">
-  <fetched>2026-03-16</fetched>
-  <title type="title-intro" format="text/plain" language="en" script="Latn">Information security, cybersecurity and privacy protection</title>
-  <title type="title-main" format="text/plain" language="en" script="Latn">Information security management systems</title>
-  <title type="title-part" format="text/plain" language="en" script="Latn">Requirements</title>
-  <title type="main" format="text/plain" language="en" script="Latn">Information security, cybersecurity and privacy protection - Information security management systems - Requirements</title>
-  <title type="title-intro" format="text/plain" language="fr" script="Latn">Sécurité de l'information, cybersécurité et protection de la vie privée</title>
-  <title type="title-main" format="text/plain" language="fr" script="Latn">Systèmes de management de la sécurité de l'information</title>
-  <title type="title-part" format="text/plain" language="fr" script="Latn">Exigences</title>
-  <title type="main" format="text/plain" language="fr" script="Latn">Sécurité de l'information, cybersécurité et protection de la vie privée - Systèmes de management de la sécurité de l'information - Exigences</title>
+<bibdata type="standard" schema-version="v1.5.6">
+  <fetched>2026-04-09</fetched>
+  <title language="en" script="Latn" type="title-intro" format="text/plain">Information security, cybersecurity and privacy protection</title>
+  <title language="en" script="Latn" type="title-main" format="text/plain">Information security management systems</title>
+  <title language="en" script="Latn" type="title-part" format="text/plain">Requirements</title>
+  <title language="en" script="Latn" type="main" format="text/plain">Information security, cybersecurity and privacy protection - Information security management systems - Requirements</title>
+  <title language="fr" script="Latn" type="title-intro" format="text/plain">Sécurité de l'information, cybersécurité et protection de la vie privée</title>
+  <title language="fr" script="Latn" type="title-main" format="text/plain">Systèmes de management de la sécurité de l'information</title>
+  <title language="fr" script="Latn" type="title-part" format="text/plain">Exigences</title>
+  <title language="fr" script="Latn" type="main" format="text/plain">Sécurité de l'information, cybersécurité et protection de la vie privée - Systèmes de management de la sécurité de l'information - Exigences</title>
   <uri type="src">https://www.iso.org/standard/27001</uri>
   <uri type="obp">https://www.iso.org/obp/ui/en/#!iso:std:82875:en</uri>
   <uri type="rss">https://www.iso.org/contents/data/standard/08/28/82875.detail.rss</uri>
@@ -31,6 +31,19 @@
       <uri>www.iec.ch</uri>
     </organization>
   </contributor>
+  <contributor>
+    <role type="author">
+      <description>committee</description>
+    </role>
+    <organization>
+      <name>International Organization for Standardization</name>
+      <subdivision type="technical-committee" subtype="IEC">
+        <name>Information security, cybersecurity and privacy protection</name>
+        <identifier>ISO/IEC JTC 1/SC 27</identifier>
+      </subdivision>
+      <abbreviation>ISO</abbreviation>
+    </organization>
+  </contributor>
   <edition>3</edition>
   <language>en</language>
   <language>fr</language>
@@ -49,25 +62,25 @@
   </copyright>
   <relation type="obsoletes">
     <bibitem type="standard">
-      <formattedref format="text/plain">ISO/IEC 27001:2013</formattedref>
+      <formattedref>ISO/IEC 27001:2013</formattedref>
       <docidentifier type="ISO" primary="true">ISO/IEC 27001:2013</docidentifier>
     </bibitem>
   </relation>
   <relation type="obsoletes">
     <bibitem type="standard">
-      <formattedref format="text/plain">ISO/IEC 27001:2013/Cor 1:2014</formattedref>
+      <formattedref>ISO/IEC 27001:2013/Cor 1:2014</formattedref>
       <docidentifier type="ISO" primary="true">ISO/IEC 27001:2013/Cor 1:2014</docidentifier>
     </bibitem>
   </relation>
   <relation type="obsoletes">
     <bibitem type="standard">
-      <formattedref format="text/plain">ISO/IEC 27001:2013/Cor 2:2015</formattedref>
+      <formattedref>ISO/IEC 27001:2013/Cor 2:2015</formattedref>
       <docidentifier type="ISO" primary="true">ISO/IEC 27001:2013/Cor 2:2015</docidentifier>
     </bibitem>
   </relation>
   <relation type="updates">
     <bibitem type="standard">
-      <formattedref format="text/plain">ISO/IEC 27001:2022/Amd 1:2024</formattedref>
+      <formattedref>ISO/IEC 27001:2022/Amd 1:2024</formattedref>
       <docidentifier type="ISO" primary="true">ISO/IEC 27001:2022/Amd 1:2024</docidentifier>
       <date type="circulated">
         <on>2022-10-25</on>
@@ -76,15 +89,14 @@
   </relation>
   <relation type="instanceOf">
     <bibitem type="standard">
-      <fetched>2026-03-16</fetched>
-      <title type="title-intro" format="text/plain" language="en" script="Latn">Information security, cybersecurity and privacy protection</title>
-      <title type="title-main" format="text/plain" language="en" script="Latn">Information security management systems</title>
-      <title type="title-part" format="text/plain" language="en" script="Latn">Requirements</title>
-      <title type="main" format="text/plain" language="en" script="Latn">Information security, cybersecurity and privacy protection - Information security management systems - Requirements</title>
-      <title type="title-intro" format="text/plain" language="fr" script="Latn">Sécurité de l'information, cybersécurité et protection de la vie privée</title>
-      <title type="title-main" format="text/plain" language="fr" script="Latn">Systèmes de management de la sécurité de l'information</title>
-      <title type="title-part" format="text/plain" language="fr" script="Latn">Exigences</title>
-      <title type="main" format="text/plain" language="fr" script="Latn">Sécurité de l'information, cybersécurité et protection de la vie privée - Systèmes de management de la sécurité de l'information - Exigences</title>
+      <title language="en" script="Latn" type="title-intro" format="text/plain">Information security, cybersecurity and privacy protection</title>
+      <title language="en" script="Latn" type="title-main" format="text/plain">Information security management systems</title>
+      <title language="en" script="Latn" type="title-part" format="text/plain">Requirements</title>
+      <title language="en" script="Latn" type="main" format="text/plain">Information security, cybersecurity and privacy protection - Information security management systems - Requirements</title>
+      <title language="fr" script="Latn" type="title-intro" format="text/plain">Sécurité de l'information, cybersécurité et protection de la vie privée</title>
+      <title language="fr" script="Latn" type="title-main" format="text/plain">Systèmes de management de la sécurité de l'information</title>
+      <title language="fr" script="Latn" type="title-part" format="text/plain">Exigences</title>
+      <title language="fr" script="Latn" type="main" format="text/plain">Sécurité de l'information, cybersécurité et protection de la vie privée - Systèmes de management de la sécurité de l'information - Exigences</title>
       <uri type="src">https://www.iso.org/standard/27001</uri>
       <uri type="obp">https://www.iso.org/obp/ui/en/#!iso:std:82875:en</uri>
       <uri type="rss">https://www.iso.org/contents/data/standard/08/28/82875.detail.rss</uri>
@@ -111,6 +123,19 @@
           <uri>www.iec.ch</uri>
         </organization>
       </contributor>
+      <contributor>
+        <role type="author">
+          <description>committee</description>
+        </role>
+        <organization>
+          <name>International Organization for Standardization</name>
+          <subdivision type="technical-committee" subtype="IEC">
+            <name>Information security, cybersecurity and privacy protection</name>
+            <identifier>ISO/IEC JTC 1/SC 27</identifier>
+          </subdivision>
+          <abbreviation>ISO</abbreviation>
+        </organization>
+      </contributor>
       <edition>3</edition>
       <language>en</language>
       <language>fr</language>
@@ -129,40 +154,42 @@
       </copyright>
       <relation type="obsoletes">
         <bibitem type="standard">
-          <formattedref format="text/plain">ISO/IEC 27001:2013</formattedref>
+          <formattedref>ISO/IEC 27001:2013</formattedref>
           <docidentifier type="ISO" primary="true">ISO/IEC 27001:2013</docidentifier>
         </bibitem>
       </relation>
       <relation type="obsoletes">
         <bibitem type="standard">
-          <formattedref format="text/plain">ISO/IEC 27001:2013/Cor 1:2014</formattedref>
+          <formattedref>ISO/IEC 27001:2013/Cor 1:2014</formattedref>
           <docidentifier type="ISO" primary="true">ISO/IEC 27001:2013/Cor 1:2014</docidentifier>
         </bibitem>
       </relation>
       <relation type="obsoletes">
         <bibitem type="standard">
-          <formattedref format="text/plain">ISO/IEC 27001:2013/Cor 2:2015</formattedref>
+          <formattedref>ISO/IEC 27001:2013/Cor 2:2015</formattedref>
           <docidentifier type="ISO" primary="true">ISO/IEC 27001:2013/Cor 2:2015</docidentifier>
         </bibitem>
       </relation>
       <relation type="updates">
         <bibitem type="standard">
-          <formattedref format="text/plain">ISO/IEC 27001:2022/Amd 1:2024</formattedref>
+          <formattedref>ISO/IEC 27001:2022/Amd 1:2024</formattedref>
           <docidentifier type="ISO" primary="true">ISO/IEC 27001:2022/Amd 1:2024</docidentifier>
           <date type="circulated">
             <on>2022-10-25</on>
           </date>
         </bibitem>
       </relation>
-      <place>Geneva</place>
+      <place>
+        <formattedPlace>Geneva</formattedPlace>
+      </place>
     </bibitem>
   </relation>
-  <place>Geneva</place>
-  <ext schema-version="v1.0.3">
+  <place>
+    <formattedPlace>Geneva</formattedPlace>
+  </place>
+  <ext schema-version="v1.1.2">
     <doctype>international-standard</doctype>
-    <editorialgroup>
-      <technical-committee number="1" type="IEC" identifier="ISO/IEC JTC 1/SC 27">Information security, cybersecurity and privacy protection</technical-committee>
-    </editorialgroup>
+    <flavor>iso</flavor>
     <ics>
       <code>35.030</code>
       <text>IT Security</text>

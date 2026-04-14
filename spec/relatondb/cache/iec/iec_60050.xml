@@ -1,20 +1,33 @@
-<bibdata type="standard" schema-version="v1.2.9">
-  <fetched>2026-02-24</fetched>
-  <title type="title-intro" format="text/plain" language="en" script="Latn">International Electrotechnical Vocabulary (IEV)</title>
-  <title type="title-main" format="text/plain" language="en" script="Latn">Index</title>
-  <title type="main" format="text/plain" language="en" script="Latn">International Electrotechnical Vocabulary (IEV) - Index</title>
-  <title type="title-intro" format="text/plain" language="fr" script="Latn">Vocabulaire Electrotechnique International (IEV)</title>
-  <title type="title-main" format="text/plain" language="fr" script="Latn">Index</title>
-  <title type="main" format="text/plain" language="fr" script="Latn">Vocabulaire Electrotechnique International (IEV) - Index</title>
+<bibdata type="standard" schema-version="v1.5.6">
+  <fetched>2026-04-13</fetched>
+  <title language="en" script="Latn" type="title-intro">International Electrotechnical Vocabulary (IEV)</title>
+  <title language="en" script="Latn" type="title-main">Index</title>
+  <title language="en" script="Latn" type="main">International Electrotechnical Vocabulary (IEV) - Index</title>
+  <title language="fr" script="Latn" type="title-intro">Vocabulaire Electrotechnique International (IEV)</title>
+  <title language="fr" script="Latn" type="title-main">Index</title>
+  <title language="fr" script="Latn" type="main">Vocabulaire Electrotechnique International (IEV) - Index</title>
   <uri type="src">https://webstore.iec.ch/publication/12502</uri>
   <docidentifier type="IEC" primary="true">IEC 60050</docidentifier>
   <docidentifier type="URN">urn:iec:std:iec:60050::::</docidentifier>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>International Electrotechnical Commission</name>
-      <abbreviation>IEC</abbreviation>
-      <uri>www.iec.ch</uri>
+      <name language="en" script="Latn">International Electrotechnical Commission</name>
+      <abbreviation language="en" script="Latn">IEC</abbreviation>
+      <uri type="org">www.iec.ch</uri>
+    </organization>
+  </contributor>
+  <contributor>
+    <role type="author">
+      <description>committee</description>
+    </role>
+    <organization>
+      <name language="en" script="Latn">International Electrotechnical Commission</name>
+      <subdivision type="technical-committee">
+        <name language="en" script="Latn">TC 1</name>
+        <identifier>1</identifier>
+      </subdivision>
+      <abbreviation language="en" script="Latn">IEC</abbreviation>
     </organization>
   </contributor>
   <edition>3</edition>
@@ -28,24 +41,23 @@
     <from>1975</from>
     <owner>
       <organization>
-        <name>International Electrotechnical Commission</name>
-        <abbreviation>IEC</abbreviation>
-        <uri>www.iec.ch</uri>
+        <name language="en" script="Latn">International Electrotechnical Commission</name>
+        <abbreviation language="en" script="Latn">IEC</abbreviation>
+        <uri type="org">www.iec.ch</uri>
       </organization>
     </owner>
   </copyright>
   <relation type="instanceOf">
     <bibitem type="standard">
-      <fetched>2026-02-24</fetched>
-      <title type="title-intro" format="text/plain" language="en" script="Latn">International Electrotechnical Vocabulary (IEV)</title>
-      <title type="title-main" format="text/plain" language="en" script="Latn">Index</title>
-      <title type="main" format="text/plain" language="en" script="Latn">International Electrotechnical Vocabulary (IEV) - Index</title>
-      <title type="title-intro" format="text/plain" language="fr" script="Latn">Vocabulaire Electrotechnique International (IEV)</title>
-      <title type="title-main" format="text/plain" language="fr" script="Latn">Index</title>
-      <title type="main" format="text/plain" language="fr" script="Latn">Vocabulaire Electrotechnique International (IEV) - Index</title>
+      <title language="en" script="Latn" type="title-intro">International Electrotechnical Vocabulary (IEV)</title>
+      <title language="en" script="Latn" type="title-main">Index</title>
+      <title language="en" script="Latn" type="main">International Electrotechnical Vocabulary (IEV) - Index</title>
+      <title language="fr" script="Latn" type="title-intro">Vocabulaire Electrotechnique International (IEV)</title>
+      <title language="fr" script="Latn" type="title-main">Index</title>
+      <title language="fr" script="Latn" type="main">Vocabulaire Electrotechnique International (IEV) - Index</title>
       <uri type="src">https://webstore.iec.ch/publication/12502</uri>
       <docidentifier type="IEC" primary="true">IEC 60050:1975</docidentifier>
-      <docidentifier type="URN">urn:iec:std:iec:60050:1975-01:::</docidentifier>
+      <docidentifier type="URN">urn:iec:std:iec:60050:1975:::</docidentifier>
       <date type="published">
         <on>1975-01-01</on>
       </date>
@@ -58,9 +70,22 @@
       <contributor>
         <role type="publisher"/>
         <organization>
-          <name>International Electrotechnical Commission</name>
-          <abbreviation>IEC</abbreviation>
-          <uri>www.iec.ch</uri>
+          <name language="en" script="Latn">International Electrotechnical Commission</name>
+          <abbreviation language="en" script="Latn">IEC</abbreviation>
+          <uri type="org">www.iec.ch</uri>
+        </organization>
+      </contributor>
+      <contributor>
+        <role type="author">
+          <description>committee</description>
+        </role>
+        <organization>
+          <name language="en" script="Latn">International Electrotechnical Commission</name>
+          <subdivision type="technical-committee">
+            <name language="en" script="Latn">TC 1</name>
+            <identifier>1</identifier>
+          </subdivision>
+          <abbreviation language="en" script="Latn">IEC</abbreviation>
         </organization>
       </contributor>
       <edition>3</edition>
@@ -74,24 +99,26 @@
         <from>1975</from>
         <owner>
           <organization>
-            <name>International Electrotechnical Commission</name>
-            <abbreviation>IEC</abbreviation>
-            <uri>www.iec.ch</uri>
+            <name language="en" script="Latn">International Electrotechnical Commission</name>
+            <abbreviation language="en" script="Latn">IEC</abbreviation>
+            <uri type="org">www.iec.ch</uri>
           </organization>
         </owner>
       </copyright>
-      <place>Geneva</place>
+      <place>
+        <city>Geneva</city>
+      </place>
     </bibitem>
   </relation>
-  <place>Geneva</place>
-  <ext schema-version="v1.0.0">
+  <place>
+    <city>Geneva</city>
+  </place>
+  <ext schema-version="v1.1.2">
     <doctype>international-standard</doctype>
-    <editorialgroup>
-      <technical-committee number="1" type="technicalCommittee">TC 1</technical-committee>
-    </editorialgroup>
+    <flavor>iec</flavor>
+    <price-code>iec:M</price-code>
     <structuredidentifier type="IEC">
       <project-number>1000001181</project-number>
     </structuredidentifier>
-    <price-code>iec:M</price-code>
   </ext>
 </bibdata>

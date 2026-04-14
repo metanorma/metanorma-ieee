@@ -1,27 +1,24 @@
-<bibdata type="standard" schema-version="v1.2.9">
-  <fetched>2026-02-15</fetched>
-  <title type="main" format="text/plain" language="en" script="Latn">Specific attenuation model for rain for use in prediction methods</title>
-  <uri type="src">https://extranet.itu.int/brdocsearch/_layouts/15/DocSetHome.aspx?id=/brdocsearch/R-REC/R-REC-P/R-REC-P.838/R-REC-P.838-3-200503-I</uri>
+<bibdata type="standard" schema-version="v1.5.6">
+  <fetched>2026-04-13</fetched>
+  <title language="en" script="Latn" type="main">Specific attenuation model for rain for use in prediction methods</title>
+  <uri type="pdf">https://www.itu.int/dms_pubrec/itu-r/rec/p/R-REC-P.838-3-200503-I!!PDF-E.pdf</uri>
   <docidentifier type="ITU" primary="true">ITU-R P.838-3</docidentifier>
   <language>en</language>
   <script>Latn</script>
   <relation type="instanceOf">
     <bibitem type="standard">
-      <fetched>2026-02-15</fetched>
-      <title type="main" format="text/plain" language="en" script="Latn">Specific attenuation model for rain for use in prediction methods</title>
-      <uri type="src">https://extranet.itu.int/brdocsearch/_layouts/15/DocSetHome.aspx?id=/brdocsearch/R-REC/R-REC-P/R-REC-P.838/R-REC-P.838-3-200503-I</uri>
+      <title language="en" script="Latn" type="main">Specific attenuation model for rain for use in prediction methods</title>
+      <uri type="pdf">https://www.itu.int/dms_pubrec/itu-r/rec/p/R-REC-P.838-3-200503-I!!PDF-E.pdf</uri>
       <docidentifier type="ITU" primary="true">ITU-R P.838-3</docidentifier>
-      <date type="confirmed">
-        <on>2005-03-08</on>
-      </date>
       <date type="published">
-        <on>2005</on>
+        <on>2019-03</on>
       </date>
       <language>en</language>
       <script>Latn</script>
     </bibitem>
   </relation>
-  <ext schema-version="v1.0.0">
+  <ext schema-version="v1.1.3">
     <doctype>recommendation</doctype>
+    <flavor>itu</flavor>
   </ext>
 </bibdata>

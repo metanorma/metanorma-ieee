@@ -1,6 +1,6 @@
-<bibdata type="standard" schema-version="v1.2.9">
-  <fetched>2026-02-01</fetched>
-  <title format="text/plain">Extensible Markup Language (XML) 1.0 (Fifth Edition)</title>
+<bibdata type="standard" schema-version="v1.5.6">
+  <fetched>2026-04-13</fetched>
+  <title language="en" script="Latn">Extensible Markup Language (XML) 1.0 (Fifth Edition)</title>
   <uri type="src">https://www.w3.org/TR/xml/</uri>
   <docidentifier type="W3C" primary="true">W3C xml</docidentifier>
   <docnumber>xml</docnumber>
@@ -9,93 +9,94 @@
     <organization>
       <name>World Wide Web Consortium</name>
       <abbreviation>W3C</abbreviation>
-      <uri>https://www.w3.org/</uri>
+      <uri>https://www.w3.org</uri>
     </organization>
   </contributor>
   <language>en</language>
   <script>Latn</script>
   <relation type="hasEdition">
     <bibitem>
-      <title format="text/plain">Extensible Markup Language (XML) 1.0 (Fifth Edition)</title>
+      <title language="en" script="Latn">Extensible Markup Language (XML) 1.0 (Fifth Edition)</title>
       <uri type="src">https://www.w3.org/TR/2008/REC-xml-20081126/</uri>
       <docidentifier type="W3C" primary="true">W3C REC-xml-20081126</docidentifier>
     </bibitem>
   </relation>
   <relation type="hasEdition">
     <bibitem>
-      <title format="text/plain">Extensible Markup Language (XML) 1.0 (Fifth Edition)</title>
+      <title language="en" script="Latn">Extensible Markup Language (XML) 1.0 (Fifth Edition)</title>
       <uri type="src">https://www.w3.org/TR/2008/PER-xml-20080205</uri>
       <docidentifier type="W3C" primary="true">W3C PER-xml-20080205</docidentifier>
     </bibitem>
   </relation>
   <relation type="hasEdition">
     <bibitem>
-      <title format="text/plain">Extensible Markup Language (XML) 1.0 (Fourth Edition)</title>
+      <title language="en" script="Latn">Extensible Markup Language (XML) 1.0 (Fourth Edition)</title>
       <uri type="src">https://www.w3.org/TR/2006/REC-xml-20060816/</uri>
       <docidentifier type="W3C" primary="true">W3C REC-xml-20060816</docidentifier>
     </bibitem>
   </relation>
   <relation type="hasEdition">
     <bibitem>
-      <title format="text/plain">Extensible Markup Language (XML) 1.0 (Fourth Edition)</title>
+      <title language="en" script="Latn">Extensible Markup Language (XML) 1.0 (Fourth Edition)</title>
       <uri type="src">https://www.w3.org/TR/2006/PER-xml-20060614</uri>
       <docidentifier type="W3C" primary="true">W3C PER-xml-20060614</docidentifier>
     </bibitem>
   </relation>
   <relation type="hasEdition">
     <bibitem>
-      <title format="text/plain">Extensible Markup Language (XML) 1.0 (Third Edition)</title>
+      <title language="en" script="Latn">Extensible Markup Language (XML) 1.0 (Third Edition)</title>
       <uri type="src">https://www.w3.org/TR/2004/REC-xml-20040204/</uri>
       <docidentifier type="W3C" primary="true">W3C REC-xml-20040204</docidentifier>
     </bibitem>
   </relation>
   <relation type="hasEdition">
     <bibitem>
-      <title format="text/plain">Extensible Markup Language (XML) 1.0 (Third Edition)</title>
+      <title language="en" script="Latn">Extensible Markup Language (XML) 1.0 (Third Edition)</title>
       <uri type="src">https://www.w3.org/TR/2003/PER-xml-20031030</uri>
       <docidentifier type="W3C" primary="true">W3C PER-xml-20031030</docidentifier>
     </bibitem>
   </relation>
   <relation type="hasEdition">
     <bibitem>
-      <title format="text/plain">Extensible Markup Language (XML) 1.0 (Second Edition)</title>
+      <title language="en" script="Latn">Extensible Markup Language (XML) 1.0 (Second Edition)</title>
       <uri type="src">https://www.w3.org/TR/2000/REC-xml-20001006</uri>
       <docidentifier type="W3C" primary="true">W3C REC-xml-20001006</docidentifier>
     </bibitem>
   </relation>
   <relation type="hasEdition">
     <bibitem>
-      <title format="text/plain">XML 1.0 Recommendation</title>
+      <title language="en" script="Latn">XML 1.0 Recommendation</title>
       <uri type="src">https://www.w3.org/TR/2000/WD-xml-2e-20000814</uri>
       <docidentifier type="W3C" primary="true">W3C WD-xml-2e-20000814</docidentifier>
     </bibitem>
   </relation>
   <relation type="hasEdition">
     <bibitem>
-      <title format="text/plain">XML 1.0 Recommendation</title>
+      <title language="en" script="Latn">XML 1.0 Recommendation</title>
       <uri type="src">https://www.w3.org/TR/1998/REC-xml-19980210</uri>
       <docidentifier type="W3C" primary="true">W3C REC-xml-19980210</docidentifier>
     </bibitem>
   </relation>
   <relation type="hasEdition">
     <bibitem>
-      <title format="text/plain">XML 1.0 Recommendation</title>
+      <title language="en" script="Latn">XML 1.0 Recommendation</title>
       <uri type="src">https://www.w3.org/TR/PR-xml-971208</uri>
       <docidentifier type="W3C" primary="true">W3C PR-xml-971208</docidentifier>
     </bibitem>
   </relation>
   <relation type="hasEdition">
     <bibitem>
-      <title format="text/plain">XML 1.0 Recommendation</title>
+      <title language="en" script="Latn">XML 1.0 Recommendation</title>
       <uri type="src">https://www.w3.org/TR/WD-xml-961114</uri>
       <docidentifier type="W3C" primary="true">W3C WD-xml-961114</docidentifier>
     </bibitem>
   </relation>
   <series>
-    <title format="text/plain">W3C technicalReport</title>
+    <title language="en" script="Latn">W3C technicalReport</title>
     <number>xml</number>
   </series>
   <ext schema-version="v1.0.0">
     <doctype>technicalReport</doctype>
+    <flavor>w3c</flavor>
   </ext>
 </bibdata>

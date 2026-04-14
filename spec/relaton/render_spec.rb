@@ -51,7 +51,7 @@ RSpec.describe Relaton::Render::Ieee do
                 <name>Cambridge University Press</name>
               </organization>
             </contributor>
-            <place>Cambridge, UK</place>
+            <place><formattedPlace>Cambridge, UK</formattedPlace></place>
           <size><value type="volume">1</value></size>
       </bibitem>
     INPUT
@@ -146,7 +146,7 @@ RSpec.describe Relaton::Render::Ieee do
                 <name>Cambridge University Press</name>
               </organization>
             </contributor>
-            <place>Cambridge, UK</place>
+            <place><formattedPlace>Cambridge, UK</formattedPlace></place>
           <size><value type="volume">1</value></size>
       </bibitem>
     INPUT
@@ -215,7 +215,7 @@ RSpec.describe Relaton::Render::Ieee do
               <form>electronic resource</form>
               <size>8vo</size>
             </medium>
-            <place>New York, NY</place>
+            <place><formattedPlace>New York, NY</formattedPlace></place>
           </bibitem>
         </relation>
         <extent>
@@ -297,7 +297,7 @@ RSpec.describe Relaton::Render::Ieee do
                 <name>Cambridge University Press</name>
               </organization>
             </contributor>
-            <place>Cambridge, UK</place>
+            <place><formattedPlace>Cambridge, UK</formattedPlace></place>
             <extent>
                 <localityStack>
                   <locality type="volume"><referenceFrom>1</referenceFrom></locality>
@@ -392,7 +392,7 @@ RSpec.describe Relaton::Render::Ieee do
             <docidentifier type="ISO" primary="true">ISO 124:2011</docidentifier>
           </bibitem>
         </relation>
-        <place>Geneva</place>
+        <place><formattedPlace>Geneva</formattedPlace></place>
         <ext schema-version="v1.0.0">
           <doctype>international-standard</doctype>
           <editorialgroup>
