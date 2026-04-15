@@ -1146,12 +1146,7 @@ RSpec.describe IsoDoc do
                <p class='example-title'><i>Example</i><i>:</i></p>
                <p>Hello</p>
                <figure id="X" class="sourcecode" spellcheck="false" translation="no">
-                      <pre>
-                         <br/>
-      #{'                            '}
-                         <br/>
-      #{'                          '}
-                      </pre>
+                      <pre><br/>          <br/>        </pre>
                       <figcaption class="SourceTitle">Sample</figcaption>
                    </figure>
         </div>
@@ -2341,7 +2336,7 @@ RSpec.describe IsoDoc do
         <ol id="A1">
         <li id="A1a">
           <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 2</p>
-        <ol> id="A2"
+        <ol id="A2">
         <li id="A2a">
           <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 3</p>
         <ol id="A3">
@@ -2434,8 +2429,7 @@ RSpec.describe IsoDoc do
                               <span class="fmt-label-delim">)</span>
                            </fmt-name>
                            <p id="_">Level 2</p>
-                           <ol type="roman">
-                              id="A2"
+                           <ol type="roman" id="A2">
                               <li id="A2a">
                                  <fmt-name id="_">
                                     <semx element="autonum" source="A2a">i</semx>
@@ -2546,121 +2540,119 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     html = <<~OUTPUT
-      <body lang="en">
-         <div class="title-section">
-            <p> </p>
-         </div>
-         <br/>
-         <div class="prefatory-section">
-            <p> </p>
-         </div>
-         <br/>
-         <div class="main-section">
-            <br/>
-            <div id="_" class="TOC">
-               <h1 class="IntroTitle">Contents</h1>
-            </div>
-            <br/>
-            <div id="_">
-               <h1 class="ForewordTitle">Foreword</h1>
-               <div class="ul_wrap">
-                  <ul id="A">
-                     <li id="A0a">
-                        <p id="_">Level 1</p>
-                     </li>
-                     <li id="A0b">
-                        <p id="_">Level 1</p>
-                        <div class="ol_wrap">
-                           <ol type="1" id="A1" class="arabic">
-                              <li id="A1a">
-                                 <p id="_">Level 2</p>
-                                 <div class="ol_wrap">
-                                    <ol type="i" class="roman">
-                                       id="A2"
-                                       <li id="A2a">
-                                          <p id="_">Level 3</p>
-                                          <div class="ol_wrap">
-                                             <ol type="a" id="A3" class="alphabet">
-                                                <li id="A3a">
-                                                   <p id="_">Level 4</p>
-                                                </li>
-                                             </ol>
-                                          </div>
-                                       </li>
-                                    </ol>
-                                 </div>
-                              </li>
-                           </ol>
-                        </div>
-                     </li>
-                  </ul>
-               </div>
-               <div class="ul_wrap">
-                  <ul id="B">
-                     <li id="B0a">
-                        <p id="_">Level 1</p>
-                     </li>
-                     <li id="B0b">
-                        <p id="_">Level 1</p>
-                        <div class="ol_wrap">
-                           <ol type="1" id="B1" class="arabic">
-                              <li id="B1a">
-                                 <p id="_">Level 2</p>
-                                 <div class="ol_wrap">
-                                    <ol type="i" id="B2" class="roman">
-                                       <li id="B2a">
-                                          <p id="_">Level 3</p>
-                                          <div class="ol_wrap">
-                                             <ol type="a" id="B3" class="alphabet">
-                                                <li id="B3a">
-                                                   <p id="_">Level 4</p>
-                                                </li>
-                                             </ol>
-                                          </div>
-                                       </li>
-                                    </ol>
-                                 </div>
-                              </li>
-                           </ol>
-                        </div>
-                     </li>
-                  </ul>
-               </div>
-               <div class="ol_wrap">
-                  <ol type="a" id="C" class="alphabet">
-                     <li id="C0a">
-                        <p id="_">Level 1</p>
-                     </li>
-                     <li id="C0b">
-                        <p id="_">Level 1</p>
-                        <div class="ol_wrap">
-                           <ol type="1" id="C1" class="arabic">
-                              <li id="C1a">
-                                 <p id="_">Level 2</p>
-                                 <div class="ol_wrap">
-                                    <ol type="i" id="C2" class="roman">
-                                       <li id="C2a">
-                                          <p id="_">Level 3</p>
-                                          <div class="ol_wrap">
-                                             <ol type="a" id="C3" class="alphabet">
-                                                <li id="C3a">
-                                                   <p id="_">Level 4</p>
-                                                </li>
-                                             </ol>
-                                          </div>
-                                       </li>
-                                    </ol>
-                                 </div>
-                              </li>
-                           </ol>
-                        </div>
-                     </li>
-                  </ol>
-               </div>
-            </div>
-         </div>
-      </body>
-
+       <body lang="en">
+          <div class="title-section">
+             <p> </p>
+          </div>
+          <br/>
+          <div class="prefatory-section">
+             <p> </p>
+          </div>
+          <br/>
+          <div class="main-section">
+             <br/>
+             <div id="_" class="TOC">
+                <h1 class="IntroTitle">Contents</h1>
+             </div>
+             <br/>
+             <div id="_">
+                <h1 class="ForewordTitle">Foreword</h1>
+                <div class="ul_wrap">
+                   <ul id="A">
+                      <li id="A0a">
+                         <p id="_">Level 1</p>
+                      </li>
+                      <li id="A0b">
+                         <p id="_">Level 1</p>
+                         <div class="ol_wrap">
+                            <ol type="1" id="A1" class="arabic">
+                               <li id="A1a">
+                                  <p id="_">Level 2</p>
+                                  <div class="ol_wrap">
+                                     <ol type="i" class="roman" id="A2">
+                                        <li id="A2a">
+                                           <p id="_">Level 3</p>
+                                           <div class="ol_wrap">
+                                              <ol type="a" id="A3" class="alphabet">
+                                                 <li id="A3a">
+                                                    <p id="_">Level 4</p>
+                                                 </li>
+                                              </ol>
+                                           </div>
+                                        </li>
+                                     </ol>
+                                  </div>
+                               </li>
+                            </ol>
+                         </div>
+                      </li>
+                   </ul>
+                </div>
+                <div class="ul_wrap">
+                   <ul id="B">
+                      <li id="B0a">
+                         <p id="_">Level 1</p>
+                      </li>
+                      <li id="B0b">
+                         <p id="_">Level 1</p>
+                         <div class="ol_wrap">
+                            <ol type="1" id="B1" class="arabic">
+                               <li id="B1a">
+                                  <p id="_">Level 2</p>
+                                  <div class="ol_wrap">
+                                     <ol type="i" id="B2" class="roman">
+                                        <li id="B2a">
+                                           <p id="_">Level 3</p>
+                                           <div class="ol_wrap">
+                                              <ol type="a" id="B3" class="alphabet">
+                                                 <li id="B3a">
+                                                    <p id="_">Level 4</p>
+                                                 </li>
+                                              </ol>
+                                           </div>
+                                        </li>
+                                     </ol>
+                                  </div>
+                               </li>
+                            </ol>
+                         </div>
+                      </li>
+                   </ul>
+                </div>
+                <div class="ol_wrap">
+                   <ol type="a" id="C" class="alphabet">
+                      <li id="C0a">
+                         <p id="_">Level 1</p>
+                      </li>
+                      <li id="C0b">
+                         <p id="_">Level 1</p>
+                         <div class="ol_wrap">
+                            <ol type="1" id="C1" class="arabic">
+                               <li id="C1a">
+                                  <p id="_">Level 2</p>
+                                  <div class="ol_wrap">
+                                     <ol type="i" id="C2" class="roman">
+                                        <li id="C2a">
+                                           <p id="_">Level 3</p>
+                                           <div class="ol_wrap">
+                                              <ol type="a" id="C3" class="alphabet">
+                                                 <li id="C3a">
+                                                    <p id="_">Level 4</p>
+                                                 </li>
+                                              </ol>
+                                           </div>
+                                        </li>
+                                     </ol>
+                                  </div>
+                               </li>
+                            </ol>
+                         </div>
+                      </li>
+                   </ol>
+                </div>
+             </div>
+          </div>
+       </body>
     OUTPUT
     doc = <<~OUTPUT
       <body lang="EN-US" link="blue" vlink="#954F72">
@@ -2691,8 +2683,7 @@ RSpec.describe IsoDoc do
                                <li id="A1a">
                                   <p id="_">Level 2</p>
                                   <div class="ol_wrap">
-                                     <ol type="i">
-                                        id="A2"
+                                     <ol type="i" id="A2">
                                         <li id="A2a">
                                            <p id="_">Level 3</p>
                                            <div class="ol_wrap">
