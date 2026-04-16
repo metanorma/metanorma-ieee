@@ -16,6 +16,8 @@ require "metanorma"
 require "metanorma/ieee"
 require "canon"
 
+Canon::Config.instance.profile = :metanorma
+
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
@@ -57,7 +59,7 @@ def htmlencode(xml)
     .gsub("&#x22;", '"').gsub("&#x3c;", "<")
     .gsub("&#x26;", "&").gsub("&#x27;", "'")
     .gsub(/\\u(....)/) do |_s|
-      "&#x#{$1.downcase};"
+    "&#x#{$1.downcase};"
   end
 end
 
@@ -230,7 +232,6 @@ def ieeedoc(lang)
 end
 
 BLANK_HDR = <<~"HDR".freeze
-  <?xml version="1.0" encoding="UTF-8"?>
   <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Ieee::VERSION}" flavor="ieee">
          <bibdata type="standard">
          <title type="title-abbrev" language="en">IEEE Std. for Document title</title>

@@ -215,8 +215,8 @@ RSpec.describe Metanorma::Ieee do
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:note | " \
               "//xmlns:metanorma-extension | //xmlns:fetched").remove
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to output
   end
 
   it "numbers bibliography" do
@@ -467,8 +467,8 @@ RSpec.describe Metanorma::Ieee do
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:note | " \
               "//xmlns:metanorma-extension | //xmlns:fetched").remove
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to output
   end
 
   it "inserts trademarks against IEEE citations" do
@@ -568,8 +568,8 @@ RSpec.describe Metanorma::Ieee do
               "//xmlns:references | //xmlns:metanorma-extension | " \
               "//xmlns:clause[@anchor = 'boilerplate_word_usage']")
       .remove
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to output
   end
 
   it "cites references" do
@@ -681,8 +681,8 @@ RSpec.describe Metanorma::Ieee do
     OUTPUT
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       .at("//xmlns:clause[@anchor = 'A']")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to output
   end
 
   it "footnotes withdrawn IEEE references" do
@@ -858,8 +858,8 @@ RSpec.describe Metanorma::Ieee do
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       .at("//xmlns:bibliography")
     out.xpath("//xmlns:abstract").each(&:remove)
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to output
   end
 
   it "footnotes availability of references" do
@@ -1014,10 +1014,11 @@ RSpec.describe Metanorma::Ieee do
     OUTPUT
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       .at("//xmlns:bibliography")
-    out.xpath("//xmlns:bibitem/*[local-name() != 'note' and local-name() != 'docidentifier']")
+    out.xpath("//xmlns:bibitem/*[local-name() != 'note' " \
+              "and local-name() != 'docidentifier']")
       .each(&:remove)
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to output
   end
 
   it "removes ordinals from Normative references" do
@@ -1087,7 +1088,7 @@ RSpec.describe Metanorma::Ieee do
          </bibliography>
       </metanorma>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)))
+      .to be_xml_equivalent_to output
   end
 end

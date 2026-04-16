@@ -483,102 +483,79 @@ RSpec.describe IsoDoc::Ieee do
       #{HTML_HDR}
            <br/>
            <div id="_">
-             <h1 class='AbstractTitle'>Foreword</h1>
-             <p id='A'>This is a preamble</p>
+             <h1 class="AbstractTitle">Foreword</h1>
+             <p id="A">This is a preamble</p>
            </div>
            <br/>
-           <div class='Section3' id='B'>
-             <h1 class='IntroTitle'>Introduction</h1>
-             <div id='C'>
-               <h2>Introduction Subsection</h2>
+           <div class="Section3" id="B">
+             <h1 class="IntroTitle">Introduction</h1>
+             <div id="C"><h2>Introduction Subsection</h2>
              </div>
              <p>This is patent boilerplate</p>
            </div>
            <br/>
-           <div class='Section3' id='_'>
-             <h1 class='IntroTitle'>Acknolwedgements</h1>
-             <p id='A'>This is a preamble</p>
+           <div class="Section3" id="_">
+             <h1 class="IntroTitle">Acknolwedgements</h1>
+             <p id="A">This is a preamble</p>
            </div>
-           <div id='D'>
-             <h1>1.&#xa0; Overview</h1>
-             <p id='E'>Text</p>
-             <div id='D1' type='scope'>
-               <h2>1.1.&#xa0; Scope</h2>
+           <div id="D">
+             <h1>1.&#xA0; Overview</h1>
+             <p id="E">Text</p>
+             <div id="D1" type="scope"><h2>1.1.&#xA0; Scope</h2>
              </div>
-             <div id='D2' type='purpose'>
-               <h2>1.2.&#xa0; Purpose</h2>
+             <div id="D2" type="purpose"><h2>1.2.&#xA0; Purpose</h2>
              </div>
            </div>
-           <div>
-             <h1>2.&#xa0; Normative References</h1>
+           <div><h1>2.&#xA0; Normative References</h1>
            </div>
-           <div id='H'>
-             <h1>3.&#xa0; Terms, Definitions, Symbols and Abbreviated Terms</h1>
-             <div id='I'>
-               <h2>3.1.&#xa0; Normal Terms</h2>
-               <p class='TermNum' id='J'/>
-               <p>
-                 <b><dfn>Term2</dfn></b>
-                 :
-               </p>
+           <div id="H">
+             <h1>3.&#xA0; Terms, Definitions, Symbols and Abbreviated Terms</h1>
+             <div id="I"><h2>3.1.&#xA0; Normal Terms</h2>
+               <p class="TermNum" id="J"/>
+               <p><b><dfn>Term2</dfn></b>:  </p>
              </div>
-             <div id='K'>
-           <h2>3.2.  Acronyms and abbreviations</h2>
-               <div class="figdl">
+             <div id="K"><h2>3.2.&#xA0; Acronyms and abbreviations</h2>
+               <div class="figdl"><dl><dt><p>Symbol</p></dt><dd>Definition</dd></dl></div>
+             </div>
+           </div>
+           <div id="L" class="Symbols">
+             <h1>4.&#xA0; Acronyms and abbreviations</h1>
+             <div class="figdl">
                <dl>
                  <dt>
                    <p>Symbol</p>
                  </dt>
                  <dd>Definition</dd>
                </dl>
-               </div>
              </div>
            </div>
-           <div id='L' class='Symbols'>
-         <h1>4.  Acronyms and abbreviations</h1>
-             <div class="figdl">
-             <dl>
-               <dt>
-                 <p>Symbol</p>
-               </dt>
-               <dd>Definition</dd>
-             </dl>
+           <div id="M">
+             <h1>5.&#xA0; Clause 4</h1>
+             <div id="N"><h2>5.1.&#xA0; Introduction</h2>
              </div>
-           </div>
-           <div id='M'>
-             <h1>5.&#xa0; Clause 4</h1>
-             <div id='N'>
-               <h2>5.1.&#xa0; Introduction</h2>
-             </div>
-             <div id='O'>
-               <h2>5.2.&#xa0; Clause 4.2</h2>
+             <div id="O"><h2>5.2.&#xA0; Clause 4.2</h2>
              </div>
            </div>
            <br/>
-           <div id='P' class='Section3'>
-             <h1 class='Annex'>
+           <div id="P" class="Section3">
+             <h1 class="Annex">
                <b>Annex A</b>
                <br/>
                <span class="obligation">(normative)</span>
                <br/>
                <b>Annex</b>
              </h1>
-              <p style="display:none;" class="variant-title-toc">Annex A  Annex</p>
-             <div id='Q'>
-               <h2>A.1.&#xa0; Annex A.1</h2>
-               <div id='Q1'>
-                 <h3>A.1.1.&#xa0; Annex A.1a</h3>
-               </div>
-             </div>
-             <div>
-               <h2 class='Section3'>A.2.&#xa0; Annex Bibliography</h2>
+             <p style="display:none;" class="variant-title-toc">Annex A&#xA0; Annex</p>
+             <div id="Q"><h2>A.1.&#xA0; Annex A.1</h2>
+             <div id="Q1"><h3>A.1.1.&#xA0; Annex A.1a</h3>
              </div>
            </div>
+             <div><h2 class="Section3">A.2.&#xA0; Annex Bibliography</h2>
+           </div>
+           </div>
            <br/>
-           <div>
-             <h1 class='Section3'>Bibliography</h1>
-             <div>
-               <h2 class='Section3'>Bibliography Subsection</h2>
+           <div><h1 class="Section3">Bibliography</h1>
+             <div><h2 class="Section3">Bibliography Subsection</h2>
              </div>
            </div>
          </div>
@@ -786,16 +763,16 @@ RSpec.describe IsoDoc::Ieee do
     pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(Canon.format_xml(strip_guid(pres_output)))
-      .to be_equivalent_to Canon.format_xml(presxml)
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(pres_output))
+      .to be_xml_equivalent_to presxml
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml)))
-      .to be_equivalent_to Canon.format_xml(html)
-    expect(Canon.format_xml(strip_guid(IsoDoc::Ieee::WordConvert.new({})
+      .at("//body").to_xml))
+      .to be_html5_equivalent_to html
+    expect(strip_guid(IsoDoc::Ieee::WordConvert.new({})
       .convert("test", pres_output, true)
-      .sub(/^.*<body /m, "<body ").sub(%r{</body>.*$}m, "</body>"))))
-      .to be_equivalent_to Canon.format_xml(word)
+      .sub(/^.*<body /m, "<body ").sub(%r{</body>.*$}m, "</body>")))
+      .to be_html4_equivalent_to word
   end
 
   it "processes middle title" do
@@ -856,17 +833,17 @@ RSpec.describe IsoDoc::Ieee do
     pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(pres_output)
-                .at("//xmlns:sections").to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(Nokogiri::XML(pres_output)
+                .at("//xmlns:sections").to_xml))
+      .to be_xml_equivalent_to presxml
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
-      .at("//div[@class = 'main-section']").to_xml)))
-      .to be_equivalent_to Canon.format_xml(html)
-    expect(Canon.format_xml(Nokogiri::XML(IsoDoc::Ieee::WordConvert.new({})
+      .at("//div[@class = 'main-section']").to_xml))
+      .to be_html5_equivalent_to html
+    expect(Nokogiri::XML(IsoDoc::Ieee::WordConvert.new({})
       .convert("test", pres_output, true))
-      .at("//div[@class = 'WordSectionMiddleTitle']").to_xml))
-      .to be_equivalent_to Canon.format_xml(word)
+      .at("//div[@class = 'WordSectionMiddleTitle']").to_xml)
+      .to be_html4_equivalent_to word
   end
 
   it "processes bibliography annex" do
@@ -955,19 +932,19 @@ RSpec.describe IsoDoc::Ieee do
       #{HTML_HDR}
            <br/>
            <div id='a' class='Section3'>
-             <h1 class='Annex'>
-               <b>Annex A</b><br/><span class='obligation'>(normative)</span>
-               <br/>
-               <b>Appendix C</b>
-             </h1>
+              <h1 class="Annex">
+                <b>Annex A</b>
+                <br/>
+                <span class="obligation">(normative)</span>
+                <br/>
+                <b>Appendix C</b>
+              </h1>
               <p style="display:none;" class="variant-title-toc">Annex A  Appendix C</p>
              <div>
-               <p id='_'>
-                  Bibliographical references are resources that provide additional or
+               <p id='_'>Bibliographical references are resources that provide additional or
                  helpful material but do not need to be understood or used to implement
                  this standard. Reference to these resources is made for informational
-                 use only.
-               </p>
+                 use only.</p>
                <p id='ABC' class='Biblio'>[B1]&#xa0; DEF, </p>
              </div>
            </div>
@@ -1006,18 +983,18 @@ RSpec.describe IsoDoc::Ieee do
     pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(Canon.format_xml(strip_guid(pres_output)))
-      .to be_equivalent_to Canon.format_xml(presxml)
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(pres_output))
+      .to be_xml_equivalent_to presxml
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml)))
-      .to be_equivalent_to Canon.format_xml(html)
+      .at("//body").to_xml))
+      .to be_html5_equivalent_to html
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
-    expect(strip_guid(Canon.format_xml(doc.to_xml)))
-      .to be_equivalent_to Canon.format_xml(word)
+    expect(strip_guid(doc.to_xml))
+      .to be_xml_equivalent_to word
   end
 
   it "processes participants" do
@@ -1539,13 +1516,13 @@ RSpec.describe IsoDoc::Ieee do
     pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(Canon.format_xml(strip_guid(pres_output)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(pres_output))
+      .to be_xml_equivalent_to presxml
     IsoDoc::Ieee::HtmlConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.html")).to be true
-    expect(strip_guid(Canon.format_xml(Nokogiri::XML(File.read("test.html"))
-      .at("//div[@id = 'boilerplate-participants']").to_xml)))
-      .to be_equivalent_to Canon.format_xml(html)
+    expect(strip_guid(Nokogiri::XML(File.read("test.html"))
+      .at("//div[@id = 'boilerplate-participants']").to_xml))
+      .to be_html5_equivalent_to html
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::XML(word2xml("test.doc")).at("//xmlns:body")
@@ -1554,7 +1531,7 @@ RSpec.describe IsoDoc::Ieee do
     doc.at("//xmlns:div[@class = 'WordSectionContents']")&.remove
     doc.at("//xmlns:div[@class = 'WordSectionMiddleTitle']")&.remove
     doc.at("//xmlns:div[@class = 'WordSectionMain']")&.remove
-    expect(strip_guid(Canon.format_xml(doc.to_xml)))
-      .to be_equivalent_to Canon.format_xml(word)
+    expect(strip_guid(doc.to_xml))
+      .to be_xml_equivalent_to word
   end
 end

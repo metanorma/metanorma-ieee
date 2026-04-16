@@ -19,8 +19,8 @@ RSpec.describe Metanorma::Ieee do
       <sections/>
       </metanorma>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)))
+      .to be_xml_equivalent_to output
   end
 
   it "converts a blank document" do
@@ -35,8 +35,8 @@ RSpec.describe Metanorma::Ieee do
         <sections/>
       </metanorma>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)))
+      .to be_xml_equivalent_to output
     expect(File.exist?("test.html")).to be true
   end
 
@@ -117,8 +117,8 @@ RSpec.describe Metanorma::Ieee do
     INPUT
     output.at("//xmlns:note")&.remove
     output = output.at("//xmlns:bibdata")
-    expect(Canon.format_xml(output.to_xml))
-      .to be_equivalent_to Canon.format_xml(<<~OUTPUT)
+    expect(output.to_xml)
+      .to be_xml_equivalent_to <<~OUTPUT
       <bibdata type="standard">
             <title type="title-abbrev" language="en">IEEE Trial-Use Rec. Prac. for Document title</title>
           <title type="main" language="en">IEEE Trial-Use Recommended Practice for Document title</title>
@@ -342,8 +342,8 @@ RSpec.describe Metanorma::Ieee do
       </bibdata>
     OUTPUT
     out = out.at("//xmlns:bibdata")
-    expect(Canon.format_xml(out.to_xml))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(out.to_xml)
+      .to be_xml_equivalent_to output
   end
 
   it "processes metadata with no draft, no docstage, docidentifier override, user-supplied titles" do
@@ -400,8 +400,8 @@ RSpec.describe Metanorma::Ieee do
       </bibdata>
     OUTPUT
     out = out.at("//xmlns:bibdata")
-    expect(Canon.format_xml(out.to_xml))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(out.to_xml)
+      .to be_xml_equivalent_to output
   end
 
   it "processes metadata for industry-connection-report white paper" do
@@ -457,8 +457,8 @@ RSpec.describe Metanorma::Ieee do
        </bibdata>
     OUTPUT
     out = out.at("//xmlns:bibdata")
-    expect(Canon.format_xml(out.to_xml))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(out.to_xml)
+      .to be_xml_equivalent_to output
   end
 
   it "processes sections" do
@@ -764,9 +764,9 @@ RSpec.describe Metanorma::Ieee do
           </indexsect>
        </metanorma>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS)
-      .sub(%r{<boilerplate>.*</boilerplate>}m, ""))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)
+      .sub(%r{<boilerplate>.*</boilerplate>}m, "")))
+      .to be_xml_equivalent_to output
   end
 
   it "processes sections, white paper" do
@@ -1015,8 +1015,8 @@ RSpec.describe Metanorma::Ieee do
           </indexsect>
        </metanorma>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS)
-      .sub(%r{<boilerplate>.*</boilerplate>}m, ""))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)
+      .sub(%r{<boilerplate>.*</boilerplate>}m, "")))
+      .to be_xml_equivalent_to output
   end
 end
