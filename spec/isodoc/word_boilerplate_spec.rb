@@ -915,7 +915,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       .convert("test", input, true)
     IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
-    doc = Nokogiri::XML(word2xml("test.doc"))
+    doc = Nokogiri::HTML5(word2xml("test.doc"))
       .at("//xmlns:body")
     doc.at("//xmlns:div[@class = 'WordSectionContents']")&.remove
     expect(strip_guid(doc.to_xml))
@@ -1385,7 +1385,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                                  "<doctype>whitepaper</doctype>"), true)
     IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
-    doc = Nokogiri::XML(word2xml("test.doc"))
+    doc = Nokogiri::HTML5(word2xml("test.doc"))
       .at("//xmlns:body")
     doc.at("//xmlns:div[@class = 'WordSectionContents']")&.remove
     doc.xpath("//xmlns:p[@class = 'MsoToc1']").each(&:remove)
@@ -1771,7 +1771,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       .convert("test", input, true)
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
-    doc = Nokogiri::XML(word2xml("test.doc")).at("//xmlns:body")
+    doc = Nokogiri::HTML5(word2xml("test.doc")).at("//xmlns:body")
     doc.at("//xmlns:div[@class = 'WordSection1']")&.remove
     doc.at("//xmlns:div[@class = 'WordSection2']")&.remove
     doc.at("//xmlns:div[@class = 'WordSectionContents']")&.remove
