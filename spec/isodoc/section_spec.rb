@@ -765,7 +765,7 @@ RSpec.describe IsoDoc::Ieee do
       .convert("test", input, true)
     expect(strip_guid(pres_output))
       .to be_xml_equivalent_to presxml
-    expect(strip_guid(Nokogiri::HTML5(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
       .at("//body").to_xml))
       .to be_html5_equivalent_to html
@@ -836,11 +836,11 @@ RSpec.describe IsoDoc::Ieee do
     expect(strip_guid(Nokogiri::XML(pres_output)
                 .at("//xmlns:sections").to_xml))
       .to be_xml_equivalent_to presxml
-    expect(strip_guid(Nokogiri::HTML5(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
       .at("//div[@class = 'main-section']").to_xml))
       .to be_html5_equivalent_to html
-    expect(Nokogiri::HTML5(IsoDoc::Ieee::WordConvert.new({})
+    expect(Nokogiri::XML(IsoDoc::Ieee::WordConvert.new({})
       .convert("test", pres_output, true))
       .at("//div[@class = 'WordSectionMiddleTitle']").to_xml)
       .to be_html4_equivalent_to word
@@ -985,13 +985,13 @@ RSpec.describe IsoDoc::Ieee do
       .convert("test", input, true)
     expect(strip_guid(pres_output))
       .to be_xml_equivalent_to presxml
-    expect(strip_guid(Nokogiri::HTML5(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
       .at("//body").to_xml))
       .to be_html5_equivalent_to html
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
-    doc = Nokogiri::HTML5(word2xml("test.doc"))
+    doc = Nokogiri::XML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'a']]")
     expect(strip_guid(doc.to_xml))
       .to be_xml_equivalent_to word
@@ -1520,12 +1520,12 @@ RSpec.describe IsoDoc::Ieee do
       .to be_xml_equivalent_to presxml
     IsoDoc::Ieee::HtmlConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.html")).to be true
-    expect(strip_guid(Nokogiri::HTML5(File.read("test.html"))
+    expect(strip_guid(Nokogiri::XML(File.read("test.html"))
       .at("//div[@id = 'boilerplate-participants']").to_xml))
       .to be_html5_equivalent_to html
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
-    doc = Nokogiri::HTML5(word2xml("test.doc")).at("//xmlns:body")
+    doc = Nokogiri::XML(word2xml("test.doc")).at("//xmlns:body")
     doc.at("//xmlns:div[@class = 'WordSection1']")&.remove
     doc.at("//xmlns:div[@class = 'WordSection2']")&.remove
     doc.at("//xmlns:div[@class = 'WordSectionContents']")&.remove

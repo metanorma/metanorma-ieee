@@ -1,5 +1,5 @@
 require "spec_helper"
-require "metanorma-core"
+require "metanorma"
 
 RSpec.describe Metanorma::Ieee::Processor do
   registry = Metanorma::Registry.instance
