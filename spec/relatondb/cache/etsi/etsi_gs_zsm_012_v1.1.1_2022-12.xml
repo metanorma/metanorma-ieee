@@ -1,8 +1,8 @@
-<bibdata schema-version="v1.5.6">
-  <fetched>2026-04-15</fetched>
+<bibdata type="standard" schema-version="v1.5.6">
+  <fetched>2026-04-27</fetched>
   <title language="en" script="Latn">Zero-touch network and Service Management (ZSM); Enablers for Artificial Intelligence-based Network and Service Automation</title>
-  <uri type="src">http://webapp.etsi.org/workprogram/Report_WorkItem.asp?WKI_ID=62010</uri>
-  <uri type="pdf">http://www.etsi.org/deliver/etsi_gs/ZSM/001_099/012/01.01.01_60/gs_ZSM012v010101p.pdf</uri>
+  <uri type="src">https://webapp.etsi.org/workprogram/Report_WorkItem.asp?WKI_ID=62010</uri>
+  <uri type="pdf">https://www.etsi.org/deliver/etsi_gs/ZSM/001_099/012/01.01.01_60/gs_ZSM012v010101p.pdf</uri>
   <docidentifier type="ETSI" primary="true">ETSI GS ZSM 012 V1.1.1 (2022-12)</docidentifier>
   <docnumber>ETSI GS ZSM 012 V1.1.1 (2022-12)</docnumber>
   <date type="published">
