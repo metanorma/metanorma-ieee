@@ -685,156 +685,77 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       .to be_html4_equivalent_to word
 
     word = <<~OUTPUT
-       <div>
-         <a name="A" id="A"/>
-         <p class="IEEESectionHeader">1.</p>
-         <p class="MsoBodyText">
+      <div>
+          <a name="A" id="A"/>
+          <p class="IEEESectionHeader">1.</p>
+          <p class="MsoBodyText">
+      
+      
+        </p>
+          <div class="ol_wrap">
+            <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpFirst"><a name="_" id="_"/>A</p>
+            <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpMiddle"><a name="_" id="_"/>B</p>
+            <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpMiddle">
+              <a name="_" id="_"/>
+            </p>
             <div class="ol_wrap">
-               <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpFirst">
+              <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpFirst"><a name="_" id="_"/>C</p>
+              <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpMiddle"><a name="_" id="_"/>D</p>
+              <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpMiddle">
+                <a name="_" id="_"/>
+              </p>
+              <div class="ol_wrap">
+                <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpFirst"><a name="_" id="_"/>E</p>
+                <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpMiddle"><a name="_" id="_"/>F</p>
+                <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpMiddle">
                   <a name="_" id="_"/>
-                  A
-               </p>
-               <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpMiddle">
-                  <a name="_" id="_"/>
-                  B
-               </p>
-               <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpMiddle">
-                  <a name="_" id="_"/>
+                </p>
+                <div class="ol_wrap">
+                  <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpFirst"><a name="_" id="_"/>G</p>
+                  <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpMiddle"><a name="_" id="_"/>H</p>
+                  <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpMiddle">
+                    <a name="_" id="_"/>
+                  </p>
                   <div class="ol_wrap">
-                     <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpFirst">
-                        <a name="_" id="_"/>
-                        C
-                     </p>
-                     <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpMiddle">
-                        <a name="_" id="_"/>
-                        D
-                     </p>
-                     <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpMiddle">
-                        <a name="_" id="_"/>
-                        <div class="ol_wrap">
-                           <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpFirst">
-                              <a name="_" id="_"/>
-                              E
-                           </p>
-                           <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpMiddle">
-                              <a name="_" id="_"/>
-                              F
-                           </p>
-                           <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpMiddle">
-                              <a name="_" id="_"/>
-                              <div class="ol_wrap">
-                                 <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpFirst">
-                                    <a name="_" id="_"/>
-                                    G
-                                 </p>
-                                 <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpMiddle">
-                                    <a name="_" id="_"/>
-                                    H
-                                 </p>
-                                 <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpMiddle">
-                                    <a name="_" id="_"/>
-                                    <div class="ol_wrap">
-                                       <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpFirst">
-                                          <a name="_" id="_"/>
-                                          I
-                                       </p>
-                                       <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpMiddle">
-                                          <a name="_" id="_"/>
-                                          J
-                                       </p>
-                                       <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpMiddle">
-                                          <a name="_" id="_"/>
-                                          <div class="ol_wrap">
-                                             <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpFirst">
-                                                <a name="_" id="_"/>
-                                                K
-                                             </p>
-                                             <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpMiddle">
-                                                <a name="_" id="_"/>
-                                                L
-                                             </p>
-                                             <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpLast">
-                                                <a name="_" id="_"/>
-                                                M
-                                             </p>
-                                          </div>
-                                       </p>
-                                       <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpLast">
-                                          <a name="_" id="_"/>
-                                          N
-                                       </p>
-                                    </div>
-                                 </p>
-                                 <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpLast">
-                                    <a name="_" id="_"/>
-                                    O
-                                 </p>
-                              </div>
-                           </p>
-                           <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpLast">
-                              <a name="_" id="_"/>
-                              P
-                           </p>
-                        </div>
-                     </p>
-                     <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpLast">
-                        <a name="_" id="_"/>
-                        Q
-                     </p>
+                    <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpFirst"><a name="_" id="_"/>I</p>
+                    <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpMiddle"><a name="_" id="_"/>J</p>
+                    <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpMiddle">
+                      <a name="_" id="_"/>
+                    </p>
+                    <div class="ol_wrap">
+                      <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpFirst"><a name="_" id="_"/>K</p>
+                      <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpMiddle"><a name="_" id="_"/>L</p>
+                      <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpLast"><a name="_" id="_"/>M</p>
+                    </div>
+                    <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpLast"><a name="_" id="_"/>N</p>
                   </div>
-               </p>
-               <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpLast">
-                  <a name="_" id="_"/>
-                  R
-               </p>
+                  <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpLast"><a name="_" id="_"/>O</p>
+                </div>
+                <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpLast"><a name="_" id="_"/>P</p>
+              </div>
+              <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpLast"><a name="_" id="_"/>Q</p>
             </div>
+            <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpLast"><a name="_" id="_"/>R</p>
+          </div>
+          <div class="ul_wrap">
+            <p style="mso-list:l23 level1 lfo1;" class="BulletedList"><a name="_" id="_"/>A</p>
+            <p style="mso-list:l23 level1 lfo1;" class="BulletedList"><a name="_" id="_"/>B</p>
+            <p style="mso-list:l23 level1 lfo1;" class="BulletedList"><a name="_" id="_"/>B1</p>
             <div class="ul_wrap">
-               <p style="mso-list:l23 level1 lfo1;" class="BulletedList">
-                  <a name="_" id="_"/>
-                  A
-               </p>
-               <p style="mso-list:l23 level1 lfo1;" class="BulletedList">
-                  <a name="_" id="_"/>
-                  B
-               </p>
-               <p style="mso-list:l23 level1 lfo1;" class="BulletedList">
-                  <a name="_" id="_"/>
-                  B1
-                     <div class="ul_wrap">
-                        <p style="mso-list:l23 level2 lfo1;" class="BulletedList">
-                           <a name="_" id="_"/>
-                           C
-                        </p>
-                        <p style="mso-list:l23 level2 lfo1;" class="BulletedList">
-                           <a name="_" id="_"/>
-                           D
-                        </p>
-                        <p style="mso-list:l23 level2 lfo1;" class="BulletedList">
-                           <a name="_" id="_"/>
-                           <div class="ul_wrap">
-                              <p style="mso-list:l23 level3 lfo1;" class="BulletedList">
-                                 <a name="_" id="_"/>
-                                 E
-                              </p>
-                              <p style="mso-list:l23 level3 lfo1;" class="BulletedList">
-                                 <a name="_" id="_"/>
-                                 F
-                              </p>
-                           </div>
-                        </p>
-                        <p style="mso-list:l23 level2 lfo1;" class="BulletedList">
-                           <a name="_" id="_"/>
-                           Q
-                        </p>
-                  </div>
-               </p>
-               <p style="mso-list:l23 level1 lfo1;" class="BulletedList">
-                  <a name="_" id="_"/>
-                  R
-               </p>
+              <p style="mso-list:l23 level2 lfo1;" class="BulletedList"><a name="_" id="_"/>C</p>
+              <p style="mso-list:l23 level2 lfo1;" class="BulletedList"><a name="_" id="_"/>D</p>
+              <p style="mso-list:l23 level2 lfo1;" class="BulletedList">
+                <a name="_" id="_"/>
+              </p>
+              <div class="ul_wrap">
+                <p style="mso-list:l23 level3 lfo1;" class="BulletedList"><a name="_" id="_"/>E</p>
+                <p style="mso-list:l23 level3 lfo1;" class="BulletedList"><a name="_" id="_"/>F</p>
+              </div>
+              <p style="mso-list:l23 level2 lfo1;" class="BulletedList"><a name="_" id="_"/>Q</p>
             </div>
-         </p>
-      </div>
+            <p style="mso-list:l23 level1 lfo1;" class="BulletedList"><a name="_" id="_"/>R</p>
+          </div>
+        </div>
     OUTPUT
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output
     .sub("<doctype>standard</doctype>", "<doctype>whitepaper</doctype>"), false)
@@ -1300,48 +1221,41 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <div>
-         <a name="a" id="a"/>
-         <p class="IEEEStdsLevel1Header">1.</p>
-         <p class="IEEEStdsRegularTableCaption" style="text-align:center;">
-            —Split-it-right
-            <i>sample</i>
-            divider
-            <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
-               <a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_">
-                  <span class="MsoFootnoteReference">
-                     <span style="mso-special-character:footnote"/>
-                  </span>
-               </a>
-            </span>
-         </p>
-         <div align="center" class="table_container">
+        <div>
+          <a name="a" id="a"/>
+          <p class="IEEEStdsLevel1Header">1.</p>
+          <p class="IEEEStdsRegularTableCaption" style="text-align:center;">—Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref" class="MsoFootnoteReference"><a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
+          <div align="center" class="table_container">
             <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;page-break-after: avoid;page-break-inside: avoid;">
-               <a name="figureA-1" id="figureA-1"/>
-               <thead>
-                  <tr>
-                     <th style="font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                        <p class="IEEEStdsTableColumnHead" style="page-break-after:avoid">A</p>
-                     </th>
-                  </tr>
-               </thead>
-               <tbody>
-                  <tr>
-                     <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                        <p class="IEEEStdsTableData-Left" style="page-break-after:auto">B</p>
-                     </td>
-                  </tr>
-               </tbody>
-               <div>
-                  <a name="A" id="A"/>
-                  <p class="IEEEStdsSingleNote">
-                     <span class="note_label">Note</span>
-                     This is a note
-                  </p>
-               </div>
+              <a name="figureA-1" id="figureA-1"/>
+              <thead>
+                <tr>
+                  <th style="font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
+                    <p class="IEEEStdsTableColumnHead" style="page-break-after:avoid">A</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                    <p class="IEEEStdsTableData-Left" style="page-break-after:auto">B</p>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="1" style="border-top:0pt;mso-border-top-alt:0pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;">
+                    <p class="IEEEStdsTableData-Left"/>
+                    <div>
+                      <a name="A" id="A"/>
+                      <p class="IEEEStdsSingleNote"><span class="note_label">Note</span>This is a note</p>
+                    </div>
+                  </td>
+                </tr>
+              </tfoot>
             </table>
-         </div>
-      </div>
+          </div>
+        </div>
     OUTPUT
     output2 = <<~OUTPUT
       <div>

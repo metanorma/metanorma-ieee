@@ -322,7 +322,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                </span>
             </p>
             <p class="IEEEStdsTitleParaSans">
-               <span lang="EN-US" xml:lang="EN-US">Approved Date Approved</span>
+               <span lang="EN-US" xml:lang="EN-US">Approved &lt;Date Approved&gt;</span>
             </p>
             <p class="IEEEStdsTitleParaSans">
                <span lang="EN-US" xml:lang="EN-US">
@@ -485,10 +485,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                      .
                   </p>
                   <p class="IEEEStdsParagraph">
-                     <a name="_" id="_"/>
-                     Suggestions for changes in documents should be in the form of a proposed change of text, together with appropriate supporting comments. Since IEEE standards represent a consensus of concerned interests, it is important that any responses to comments and questions also receive the concurrence of a balance of interests. For this reason, IEEE and the members of its Societies and subcommittees of the IEEE SA Board of Governors are not able to provide an instant response to comments or questions, except in those cases where the matter has previously been addressed. For the same reason, IEEE does not respond to interpretation requests. Any person who would like to participate in evaluating comments or in revisions to an IEEE standard is welcome to join the relevant IEEE SA working group. You can indicate interest in a working group using the Interests tab in the Manage Profile Interests area of the
-                     <a href="https://development.standards.ieee.org/myproject-web/public/view.html#landing">IEEE SA myProject system</a>
-                     .
+                     <a name="_" id="_"/>Suggestions for changes in documents should be in the form of a proposed change of text, together with appropriate supporting comments. Since IEEE standards represent a consensus of concerned interests, it is important that any responses to comments and questions also receive the concurrence of a balance of interests. For this reason, IEEE and the members of its Societies and subcommittees of the IEEE SA Board of Governors are not able to provide an instant response to comments or questions, except in those cases where the matter has previously been addressed. For the same reason, IEEE does not respond to interpretation requests. Any person who would like to participate in evaluating comments or in revisions to an IEEE standard is welcome to join the relevant IEEE SA working group. You can indicate interest in a working group using the Interests tab in the Manage Profile &amp; Interests area of the <a href="https://development.standards.ieee.org/myproject-web/public/view.html#landing">IEEE SA myProject system</a>.
                      <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
                         <a class="FootnoteRef" type="footnote" href="#_ftn2" style="mso-footnote-id:ftn2" name="_" title="" id="_">
                            <span class="MsoFootnoteReference">
@@ -808,10 +805,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                   All rights reserved. Published . Printed in the United States of America.
                </p>
                <p class="IEEEStdsCRTextReg"> </p>
-               <p class="IEEEStdsCRTextReg">
-                  <a name="_" id="_"/>
-                  IEEE is a registered trademark in the U.S. Patent Trademark Office, owned by The Institute of Electrical and Electronics Engineers, Incorporated.
-               </p>
+               <p class="IEEEStdsCRTextReg"><a name="_" id="_"/>IEEE is a registered trademark in the U.S. Patent &amp; Trademark Office, owned by The Institute of Electrical and Electronics Engineers, Incorporated.</p>
                <p class="IEEEStdsCRTextReg"> </p>
                <p class="IEEEStdsCRTextReg">
                   PDF:
@@ -1044,341 +1038,322 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       </ieee-standard>
     INPUT
     word = <<~OUTPUT
-          <body lang="EN-US" link="blue" vlink="#954F72" xml:lang="EN-US">
-        <div class="WordSection1">
-          <p class="MsoBodyText">
-            <span lang="EN-US" style="mso-no-proof:yes" xml:lang="EN-US">
-              <a name="_" id="_"/>
-            </span>
-          </p>
-          <p class="MsoBodyText">
-            <span lang="EN-US" xml:lang="EN-US">
-              <p class="MsoNormal"> </p>
-            </span>
-          </p>
-          <p class="MsoBodyText">
-            <span lang="EN-US" xml:lang="EN-US">
-              <p class="MsoNormal"> </p>
-            </span>
-          </p>
-          <p class="MsoBodyText">
-            <span lang="EN-US" xml:lang="EN-US">
-              <p class="MsoNormal"> </p>
-            </span>
-          </p>
-          <p class="MsoBodyText"/>
-          <p class="MsoBodyText">
-            <span lang="EN-US" xml:lang="EN-US">
-              <p class="MsoNormal"> </p>
-            </span>
-          </p>
-          <p class="MsoBodyText">
-            <span lang="EN-US" xml:lang="EN-US">
-              <p class="MsoNormal"> </p>
-            </span>
-          </p>
-          <p class="MsoBodyText">
-            <span lang="EN-US" xml:lang="EN-US">
-              <p class="MsoNormal"> </p>
-            </span>
-          </p>
-          <p class="MsoBodyText">
-            <span lang="EN-US" xml:lang="EN-US">
-              <p class="MsoNormal"> </p>
-            </span>
-          </p>
-          <p class="MsoBodyText">
-            <span lang="EN-US" xml:lang="EN-US">
-              <p class="MsoNormal"> </p>
-            </span>
-          </p>
-          <p class="StyleHeading3Left175" style="margin-right:7.2pt">
-            <span lang="EN-US" style="font-family:&quot;Arial Black&quot;,sans-serif" xml:lang="EN-US">NAME OF PROGRAM<p class="MsoNormal"/></span>
-          </p>
-          <p class="MsoBodyText">
-            <span lang="EN-US" xml:lang="EN-US">
-              <p class="MsoNormal"> </p>
-            </span>
-          </p>
-          <p class="Titleline" style="margin-right:7.2pt">
-            <a name="_" id="_"/>
-            <a name="_" id="_"/>
-            <a name="_" id="_"/>
-            <a name="_" id="_"/>
-            <a name="_" id="_">
-              <span style="mso-bookmark:_Toc46424326">
-                <span style="mso-bookmark:_Toc45554015">
-                  <span style="mso-bookmark:_Toc45552042">
-                    <span style="mso-bookmark:_Toc45551699">
-                      <span lang="EN-US" xml:lang="EN-US">Paper Title</span>
-                    </span>
-                  </span>
+      <body lang="EN-US" link="blue" vlink="#954F72" xml:lang="EN-US">
+          <div class="WordSection1">
+      <p class="MsoBodyText">
+      #{'  '}
+      #{'  '}
+      #{'  '}
+      #{'  '}
+        <span lang="EN-US" style="mso-no-proof:yes" xml:lang="EN-US">
+          <a name="_" id="_"/>
+        </span>
+      #{'  '}
+      </p>
+
+      <p class="MsoBodyText">
+        <span lang="EN-US" xml:lang="EN-US">
+          <p class="MsoNormal"> </p>
+        </span>
+      </p>
+
+      <p class="MsoBodyText">
+        <span lang="EN-US" xml:lang="EN-US">
+          <p class="MsoNormal"> </p>
+        </span>
+      </p>
+
+      <p class="MsoBodyText">
+        <span lang="EN-US" xml:lang="EN-US">
+          <p class="MsoNormal"> </p>
+        </span>
+      </p>
+
+      <p class="MsoBodyText">
+      #{'  '}
+      #{'  '}
+      </p>
+
+      <p class="MsoBodyText">
+        <span lang="EN-US" xml:lang="EN-US">
+          <p class="MsoNormal"> </p>
+        </span>
+      </p>
+
+      <p class="MsoBodyText">
+        <span lang="EN-US" xml:lang="EN-US">
+          <p class="MsoNormal"> </p>
+        </span>
+      </p>
+
+      <p class="MsoBodyText">
+        <span lang="EN-US" xml:lang="EN-US">
+          <p class="MsoNormal"> </p>
+        </span>
+      </p>
+
+      <p class="MsoBodyText">
+        <span lang="EN-US" xml:lang="EN-US">
+          <p class="MsoNormal"> </p>
+        </span>
+      </p>
+
+      <p class="MsoBodyText">
+        <span lang="EN-US" xml:lang="EN-US">
+          <p class="MsoNormal"> </p>
+        </span>
+      </p>
+
+      <p class="StyleHeading3Left175" style="margin-right:7.2pt">
+        <span lang="EN-US" style="font-family:&quot;Arial Black&quot;,sans-serif" xml:lang="EN-US">NAME OF PROGRAM<p class="MsoNormal"/></span>
+      </p>
+
+      <p class="MsoBodyText">
+        <span lang="EN-US" xml:lang="EN-US">
+          <p class="MsoNormal"> </p>
+        </span>
+      </p>
+
+      <p class="Titleline" style="margin-right:7.2pt">
+        <a name="_" id="_"/>
+        <a name="_" id="_"/>
+        <a name="_" id="_"/>
+        <a name="_" id="_"/>
+        <a name="_" id="_">
+          <span style="mso-bookmark:_Toc46424326">
+            <span style="mso-bookmark:_Toc45554015">
+              <span style="mso-bookmark:_Toc45552042">
+                <span style="mso-bookmark:_Toc45551699">
+                  <span lang="EN-US" xml:lang="EN-US">Paper Title</span>
                 </span>
               </span>
-            </a>
-          </p>
-          <p class="MsoBodyText">
-            <span lang="EN-US" xml:lang="EN-US">
-              <p class="MsoNormal"> </p>
             </span>
-          </p>
-          <p class="MsoBodyText">
-            <span lang="EN-US" xml:lang="EN-US">
-              <p class="MsoNormal"> </p>
-            </span>
-          </p>
-          <p class="AuthoredbyCover" style="margin-right:7.2pt">
-            <span lang="EN-US" xml:lang="EN-US">Authored
+          </span>
+        </a>
+      </p>
+
+      <p class="MsoBodyText">
+        <span lang="EN-US" xml:lang="EN-US">
+          <p class="MsoNormal"> </p>
+        </span>
+      </p>
+
+      <p class="MsoBodyText">
+        <span lang="EN-US" xml:lang="EN-US">
+          <p class="MsoNormal"> </p>
+        </span>
+      </p>
+
+      <p class="AuthoredbyCover" style="margin-right:7.2pt">
+        <span lang="EN-US" xml:lang="EN-US">Authored
       by</span>
-          </p>
-          <p class="AuthoredbyCover" style="margin-right:7.2pt">
-            <span lang="EN-US" xml:lang="EN-US">
-              <p class="MsoNormal"> </p>
-            </span>
-          </p>
-          <p class="Authornames" style="margin-right:7.2pt">
-            <span class="SpellE">
-              <span lang="EN-US" xml:lang="EN-US">Y X</span>
-            </span>
-          </p>
-          <p class="Authornames" style="margin-right:7.2pt">
-            <i style="mso-bidi-font-style:                         normal">
-              <span lang="EN-US" xml:lang="EN-US">Z<p class="MsoNormal"/></span>
-            </i>
-          </p>
-          <p class="Authornames" style="margin-right:7.2pt">
-            <span class="SpellE">
-              <span lang="EN-US" xml:lang="EN-US">Y1 X1</span>
-            </span>
-          </p>
-          <p class="Authornames" style="margin-right:7.2pt">
-            <i style="mso-bidi-font-style:                         normal">
-              <span lang="EN-US" xml:lang="EN-US">Z1<p class="MsoNormal"/></span>
-            </i>
-          </p>
-          <p class="names" style="margin-right:7.2pt">
-            <div v:shape="Text_x0020_Box_x0020_46" style="padding:0pt 0pt 0pt 0pt" class="shape">
-              <p class="MsoBodyText">
-                <span lang="EN-US" xml:lang="EN-US">3 Park Avenue | New <span style="letter-spacing:-.2pt">York, </span>NY 10016-5997 | USA</span>
-              </p>
-            </div>
-            <span lang="EN-US" xml:lang="EN-US">
-              <br clear="all" style="mso-special-character:line-break;page-break-before: always"/>
-            </span>
-          </p>
-          <div>
-            <a name="boilerplate-tm" id="boilerplate-tm"/>
-            <p class="Unnumberedheading">Trademarks and Disclaimers</p>
-            <p class="Disclaimertext"><a name="_" id="_"/>IEEE believes the information in this publication is accurate as of its publication date; such information is subject to change without notice. IEEE is not responsible for any inadvertent errors.</p>
-            <p class="Disclaimertext"><a name="_" id="_"/>The ideas and proposals in this specification are the respective author’s views and do not represent the views of the affiliated organization.</p>
+      </p>
+
+      <p class="AuthoredbyCover" style="margin-right:7.2pt">
+        <span lang="EN-US" xml:lang="EN-US">
+          <p class="MsoNormal"> </p>
+        </span>
+      </p>
+
+
+
+      <p class="Authornames" style="margin-right:7.2pt">
+        <span class="SpellE">
+          <span lang="EN-US" xml:lang="EN-US">Y X</span>
+        </span>
+      </p>
+
+      <p class="Authornames" style="margin-right:7.2pt">
+        <i style="mso-bidi-font-style:                         normal">
+          <span lang="EN-US" xml:lang="EN-US">Z<p class="MsoNormal"/></span>
+        </i>
+      </p>
+
+
+
+
+      <p class="Authornames" style="margin-right:7.2pt">
+        <span class="SpellE">
+          <span lang="EN-US" xml:lang="EN-US">Y1 X1</span>
+        </span>
+      </p>
+
+      <p class="Authornames" style="margin-right:7.2pt">
+        <i style="mso-bidi-font-style:                         normal">
+          <span lang="EN-US" xml:lang="EN-US">Z1<p class="MsoNormal"/></span>
+        </i>
+      </p>
+
+
+
+
+      <p class="names" style="margin-right:7.2pt">
+      #{'    '}
+      #{'    '}
+          <span lang="EN-US" xml:lang="EN-US"><br clear="all" style="mso-special-character:line-break;page-break-before: always"/>
+      </span></p><div v:shape="Text_x0020_Box_x0020_46" style="padding:0pt 0pt 0pt 0pt" class="shape">
+          <p class="MsoBodyText"><span lang="EN-US" xml:lang="EN-US">3 Park Avenue | New <span style="letter-spacing:-.2pt">York, </span>NY 10016-5997 | USA</span></p>
           </div>
-          <div>
-            <a name="boilerplate-participants" id="boilerplate-participants"/>
-            <p class="Unnumberedheading">Acknowledgements</p>
-            <div>
-              <a name="boilerplate-participants-blank" id="boilerplate-participants-blank"/>
-              <p class="MsoBodyText"><a name="_" id="_"/>Special thanks are given to the following reviewers of this paper:</p>
-              <p class="IEEEnames">Balloter1</p>
-              <p class="IEEEnames">Balloter2</p>
-              <p class="IEEEnames">Balloter3</p>
-              <p class="IEEEnames">Balloter4</p>
-              <p class="IEEEnames">Balloter5</p>
-              <p class="IEEEnames">Balloter6</p>
-              <p class="IEEEnames">Balloter7</p>
-              <p class="IEEEnames">Balloter8</p>
-              <p class="IEEEnames">Balloter9</p>
-            </div>
-          </div>
-          <div>
-            <a name="boilerplate-feedback-destination" id="boilerplate-feedback-destination"/>
-          </div>
-          <!--<span lang="EN-US" style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:
+
+      <div><a name="boilerplate-tm" id="boilerplate-tm"/><p class="Unnumberedheading">Trademarks and Disclaimers</p>
+
+      <p class="Disclaimertext"><a name="_" id="_"/>IEEE believes the information in this publication is accurate as of its publication date; such information is subject to change without notice. IEEE is not responsible for any inadvertent errors.</p>
+      <p class="Disclaimertext"><a name="_" id="_"/>The ideas and proposals in this specification are the respective author’s views and do not represent the views of the affiliated organization.</p>
+      </div>
+      <div><a name="boilerplate-participants" id="boilerplate-participants"/><p class="Unnumberedheading">Acknowledgements</p>
+
+      <div><a name="boilerplate-participants-blank" id="boilerplate-participants-blank"/>
+      <p class="MsoBodyText"><a name="_" id="_"/>Special thanks are given to the following reviewers of this paper:</p>
+
+
+      <p class="IEEEnames">Balloter1</p>
+      <p class="IEEEnames">Balloter2</p>
+      <p class="IEEEnames">Balloter3</p>
+      <p class="IEEEnames">Balloter4</p>
+      <p class="IEEEnames">Balloter5</p>
+      <p class="IEEEnames">Balloter6</p>
+      <p class="IEEEnames">Balloter7</p>
+      <p class="IEEEnames">Balloter8</p>
+      <p class="IEEEnames">Balloter9</p>
+
+
+      </div>
+      </div>
+      <div><a name="boilerplate-feedback-destination" id="boilerplate-feedback-destination"/></div>
+
+      <!--<span lang="EN-US" style='font-size:11.0pt;mso-bidi-font-size:10.0pt;line-height:
       150%;font-family:"Calibri",sans-serif;mso-fareast-font-family:Calibri;
       mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><br
       clear="all" style='mso-special-character:line-break;page-break-before:always'/>
       </span>-->
-          <p class="MsoBodyText">
-            <span lang="EN-US" xml:lang="EN-US">
-              <p class="MsoNormal"> </p>
-            </span>
-          </p>
-          <div class="boilerplate-copyright">
-            <div>
-              <a name="_" id="_"/>
-              <p style="text-align:left;" align="left" class="CopyrightInformationPage"><a name="_" id="_"/>The Institute of Electrical and Electronics Engineers, Inc.  3 Park Avenue, New York, NY 10016-5997, USA</p>
-            </div>
-            <div>
-              <a name="_" id="_"/>
-              <p class="CopyrightInformationPage"><a name="_" id="_"/>Copyright © 2020 by The Institute of Electrical and Electronics Engineers, Inc.</p>
-              <p class="CopyrightInformationPage"><a name="_" id="_"/>All rights reserved. 2929. Printed in the United States of America.</p>
-            </div>
-            <div>
-              <a name="_" id="_"/>
-              <div align="center" class="table_container">
-                <p class="CopyrightInformationPage" align="left">Print:<span style="mso-tab-count:1"/>ISBN ISBN 3<span style="mso-tab-count:1"/>STD 3</p>
-              </div>
-            </div>
-            <div>
-              <a name="_" id="_"/>
-              <p class="CopyrightInformationPage"><a name="_" id="_"/>IEEE is a registered trademark in the U.S. Patent  Trademark Office, owned by The Institute of Electrical and Electronics Engineers, Incorporated. All other trademarks are the property of the respective trademark owners.</p>
-            </div>
-            <div>
-              <a name="_" id="_"/>
-              <p class="CopyrightInformationPage"><a name="_" id="_"/>IEEE prohibits discrimination, harassment, and bullying.<br/>
+
+      <p class="MsoBodyText">
+        <span lang="EN-US" xml:lang="EN-US">
+          <p class="MsoNormal"> </p>
+        </span>
+      </p>
+
+      <div class="boilerplate-copyright">
+
+      <div><a name="_" id="_"/>
+      <p style="text-align:left;" align="left" class="CopyrightInformationPage"><a name="_" id="_"/>The Institute of Electrical and Electronics Engineers, Inc.  3 Park Avenue, New York, NY 10016-5997, USA</p>
+      </div>
+
+      <div><a name="_" id="_"/>
+      <p class="CopyrightInformationPage"><a name="_" id="_"/>Copyright © 2020 by The Institute of Electrical and Electronics Engineers, Inc.</p>
+
+      <p class="CopyrightInformationPage"><a name="_" id="_"/>All rights reserved. 2929. Printed in the United States of America.</p>
+      </div>
+
+      <div><a name="_" id="_"/>
+      <div align="center" class="table_container"><p class="CopyrightInformationPage" align="left">Print:<span style="mso-tab-count:1"> </span>ISBN ISBN 3<span style="mso-tab-count:1"> </span>STD 3</p></div>
+      </div>
+
+      <div><a name="_" id="_"/>
+      <p class="CopyrightInformationPage"><a name="_" id="_"/>IEEE is a registered trademark in the U.S. Patent &amp; Trademark Office, owned by The Institute of Electrical and Electronics Engineers, Incorporated. All other trademarks are the property of the respective trademark owners.</p>
+      </div>
+
+      <div><a name="_" id="_"/>
+      <p class="CopyrightInformationPage"><a name="_" id="_"/>IEEE prohibits discrimination, harassment, and bullying.<br/>
       For more information, visit <a href="https://www.ieee.org/about/corporate/governance/p9-26.html">https://www.ieee.org/about/corporate/governance/p9-26.html</a>.</p>
-              <p class="CopyrightInformationPage"><a name="_" id="_"/>No part of this publication may be reproduced in any form, in an electronic retrieval system or otherwise, without the prior written permission of the publisher.</p>
-              <p class="CopyrightInformationPage"><a name="_" id="_"/>Find IEEE standards and standards-related product listings at: <a href="http://standards.ieee.org">http://standards.ieee.org</a>.</p>
-            </div>
-          </div>
-          <div>
-            <a name="boilerplate-license-destination" id="boilerplate-license-destination"/>
-          </div>
-          <br clear="all" style="mso-special-character:line-break;page-break-before: always"/>
-          <div>
-            <a name="boilerplate-disclaimers" id="boilerplate-disclaimers"/>
-            <p class="Unnumberedheading">Notice and Disclaimer of Liability Concerning the Use of IEEE SA Documents</p>
-            <p class="Disclaimertext"><a name="_" id="_"/>This IEEE Standards Association (“IEEE SA”) publication (“Work”) is not a consensus standard document. Specifically, this document is NOT AN IEEE STANDARD. Information contained in this Work has been created by, or obtained from, sources believed to be reliable, and reviewed by members of the activity that produced this Work. IEEE and the NAME OF GROUP expressly disclaim all warranties (express, implied, and statutory) related to this Work, including, but not limited to, the warranties of: merchantability; fitness for a particular purpose; non-infringement; quality, accuracy, effectiveness, currency, or completeness of the Work or content within the Work. In addition, IEEE and the NAME OF GROUP disclaim any and all conditions relating to: results; and workmanlike effort. This document is supplied “AS IS” and “WITH ALL FAULTS.”</p>
-            <p class="Disclaimertext"><a name="_" id="_"/>Although the NAME OF GROUP members who have created this Work believe that the information and guidance given in this Work serve as an enhancement to users, all persons must rely upon their own skill and judgment when making use of it. IN NO EVENT SHALL IEEE SA OR NAME OF GROUP MEMBERS BE LIABLE FOR ANY ERRORS OR OMISSIONS OR DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO: PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS WORK, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE AND REGARDLESS OF WHETHER SUCH DAMAGE WAS FORESEEABLE.</p>
-            <p class="Disclaimertext"><a name="_" id="_"/>Further, information contained in this Work may be protected by intellectual property rights held by third parties or organizations, and the use of this information may require the user to negotiate with any such rights holders in order to legally acquire the rights to do so, and such rights holders may refuse to grant such rights. Attention is also called to the possibility that implementation of any or all of this Work may require use of subject matter covered by patent rights. By publication of this Work, no position is taken by the IEEE with respect to the existence or validity of any patent rights in connection therewith. The IEEE is not responsible for identifying patent rights for which a license may be required, or for conducting inquiries into the legal validity or scope of patents claims. Users are expressly advised that determination of the validity of any patent rights, and the risk of infringement of such rights, is entirely their own responsibility. No commitment to grant licenses under patent rights on a reasonable or non-discriminatory basis has been sought or received from any rights holder.</p>
-            <p class="Disclaimertext"><a name="_" id="_"/>This Work is published with the understanding that IEEE and the NAME OF GROUP members are supplying information through this Work, not attempting to render engineering or other professional services. If such services are required, the assistance of an appropriate professional should be sought. IEEE is not responsible for the statements and opinions advanced in this Work.</p>
-          </div>
-          <p class="MsoBodyText"> </p>
-        </div>
-        <p class="MsoBodyText">
-          <br clear="all" class="section"/>
-        </p>
-        <div class="WordSection2">
-          <p class="MsoToc3" style="margin-right:7.2pt"/>
-          <div style="margin-left:130.5pt;tab-stops:right dotted 510.7pt"/>
-          <div class="authority">
-            <div class="boilerplate-legal"/>
-          </div>
-          <p class="MsoBodyText"> </p>
-        </div>
-        <p class="MsoBodyText">
-          <br clear="all" class="section"/>
-        </p>
-        <div class="WordSection3">
-          <p class="Titleofdocument" style="margin-left:0cm;margin-top:70.0pt">Whitepaper for Paper Title</p>
-          <wrapblock/>
-          <br style="mso-ignore:vglayout" clear="ALL"/>
-          <p class="MsoBodyText"/>
-          <div>
-            <a name="_" id="_"/>
-            <p class="IEEESectionHeader">Clause</p>
-            <p class="MsoBodyText"><a name="_" id="_"/>Hello</p>
-          </div>
-        </div>
-        <p class="MsoBodyText">
-          <br clear="all" class="section"/>
-        </p>
-        <div class="WordSection4">
+
+      <p class="CopyrightInformationPage"><a name="_" id="_"/>No part of this publication may be reproduced in any form, in an electronic retrieval system or otherwise, without the prior written permission of the publisher.</p>
+
+      <p class="CopyrightInformationPage"><a name="_" id="_"/>Find IEEE standards and standards-related product listings at: <a href="http://standards.ieee.org">http://standards.ieee.org</a>.</p>
+      </div>
+      </div>
+      <div><a name="boilerplate-license-destination" id="boilerplate-license-destination"/></div>
+      <br clear="all" style="mso-special-character:line-break;page-break-before: always"/>
+      <div><a name="boilerplate-disclaimers" id="boilerplate-disclaimers"/><p class="Unnumberedheading">Notice and Disclaimer of Liability Concerning the Use of IEEE SA Documents</p>
+
+      <p class="Disclaimertext"><a name="_" id="_"/>This IEEE Standards Association (“IEEE SA”) publication (“Work”) is not a consensus standard document. Specifically, this document is NOT AN IEEE STANDARD. Information contained in this Work has been created by, or obtained from, sources believed to be reliable, and reviewed by members of the activity that produced this Work. IEEE and the NAME OF GROUP expressly disclaim all warranties (express, implied, and statutory) related to this Work, including, but not limited to, the warranties of: merchantability; fitness for a particular purpose; non-infringement; quality, accuracy, effectiveness, currency, or completeness of the Work or content within the Work. In addition, IEEE and the NAME OF GROUP disclaim any and all conditions relating to: results; and workmanlike effort. This document is supplied “AS IS” and “WITH ALL FAULTS.”</p>
+
+      <p class="Disclaimertext"><a name="_" id="_"/>Although the NAME OF GROUP members who have created this Work believe that the information and guidance given in this Work serve as an enhancement to users, all persons must rely upon their own skill and judgment when making use of it. IN NO EVENT SHALL IEEE SA OR NAME OF GROUP MEMBERS BE LIABLE FOR ANY ERRORS OR OMISSIONS OR DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO: PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS WORK, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE AND REGARDLESS OF WHETHER SUCH DAMAGE WAS FORESEEABLE.</p>
+
+      <p class="Disclaimertext"><a name="_" id="_"/>Further, information contained in this Work may be protected by intellectual property rights held by third parties or organizations, and the use of this information may require the user to negotiate with any such rights holders in order to legally acquire the rights to do so, and such rights holders may refuse to grant such rights. Attention is also called to the possibility that implementation of any or all of this Work may require use of subject matter covered by patent rights. By publication of this Work, no position is taken by the IEEE with respect to the existence or validity of any patent rights in connection therewith. The IEEE is not responsible for identifying patent rights for which a license may be required, or for conducting inquiries into the legal validity or scope of patents claims. Users are expressly advised that determination of the validity of any patent rights, and the risk of infringement of such rights, is entirely their own responsibility. No commitment to grant licenses under patent rights on a reasonable or non-discriminatory basis has been sought or received from any rights holder.</p>
+
+      <p class="Disclaimertext"><a name="_" id="_"/>This Work is published with the understanding that IEEE and the NAME OF GROUP members are supplying information through this Work, not attempting to render engineering or other professional services. If such services are required, the assistance of an appropriate professional should be sought. IEEE is not responsible for the statements and opinions advanced in this Work.</p>
+      </div>
+
+      <p class="MsoBodyText"> </p></div>
           <p class="MsoBodyText">
-            <span lang="EN-US" xml:lang="EN-US">
-              <p class="MsoNormal"> </p>
-            </span>
+            <br clear="all" class="section"/>
           </p>
+          <div class="WordSection2">#{' '}
+      <p class="MsoToc3" style="margin-right:7.2pt">
+
+
+      </p>
+
+
+      <div style="margin-left:130.5pt;tab-stops:right dotted 510.7pt">
+
+
+      </div>
+
+
+      <div class="authority">
+
+      <div class="boilerplate-legal">
+
+
+
+
+
+
+      </div>
+      </div><p class="MsoBodyText"> </p></div>
           <p class="MsoBodyText">
-            <span lang="EN-US" xml:lang="EN-US">
-              <p class="MsoNormal"> </p>
-            </span>
+            <br clear="all" class="section"/>
           </p>
+          <div class="WordSection3"><p class="Titleofdocument" style="margin-left:0cm;margin-top:70.0pt">Whitepaper for Paper Title</p><wrapblock/><br style="mso-ignore:vglayout" clear="ALL"/>
+      <p class="MsoBodyText"/><div><a name="_" id="_"/><p class="IEEESectionHeader">Clause</p><p class="MsoBodyText"><a name="_" id="_"/>Hello</p></div></div>
           <p class="MsoBodyText">
-            <span lang="EN-US" xml:lang="EN-US">
-              <p class="MsoNormal"> </p>
-            </span>
+            <br clear="all" class="section"/>
           </p>
-          <p class="MsoBodyText"/>
-          <p class="Titleline" style="margin-right:7.2pt">
-            <wrapblock/>
-            <br style="mso-ignore:vglayout" clear="ALL">
-              <a name="_" id="_"/>
-              <a name="_" id="_"/>
-              <a name="_" id="_"/>
-              <a name="_" id="_"/>
-              <a name="_" id="_">
-                <span style="mso-bookmark:_Toc45554030">
-                  <span style="mso-bookmark:_Toc45552713">
-                    <span style="mso-bookmark:_Toc45552056">
-                      <span style="mso-bookmark:_Toc45551731">
-                        <span lang="EN-US" xml:lang="EN-US">RAISING THE WORLD’S
-      STANDARDS</span>
-                      </span>
-                    </span>
-                  </span>
-                </span>
-              </a>
-            </br>
-            <p class="BackCover" style="margin-right:7.2pt">
-              <span lang="EN-US" xml:lang="EN-US">
-                <p class="MsoNormal"> </p>
-              </span>
-            </p>
-            <p class="MsoBodyText">
-              <span lang="EN-US" xml:lang="EN-US">
-                <p class="MsoNormal"> </p>
-              </span>
-            </p>
-            <p class="MsoBodyText">
-              <span lang="EN-US" xml:lang="EN-US">
-                <p class="MsoNormal"> </p>
-              </span>
-            </p>
-            <p class="MsoBodyText">
-              <span lang="EN-US" xml:lang="EN-US">
-                <p class="MsoNormal"> </p>
-              </span>
-            </p>
-            <p class="MsoBodyText">
-              <span lang="EN-US" xml:lang="EN-US">
-                <p class="MsoNormal"> </p>
-              </span>
-            </p>
-            <p class="MsoBodyText">
-              <span lang="EN-US" xml:lang="EN-US">
-                <p class="MsoNormal"> </p>
-              </span>
-            </p>
-            <p class="MsoBodyText">
-              <span lang="EN-US" xml:lang="EN-US">
-                <p class="MsoNormal"> </p>
-              </span>
-            </p>
-            <p class="MsoBodyText">
-              <span lang="EN-US" xml:lang="EN-US">
-                <p class="MsoNormal"> </p>
-              </span>
-            </p>
-            <p class="MsoBodyText">
-              <span lang="EN-US" xml:lang="EN-US">
-                <p class="MsoNormal"> </p>
-              </span>
-            </p>
-            <p class="MsoBodyText">
-              <span lang="EN-US" xml:lang="EN-US">
-                <p class="MsoNormal"> </p>
-              </span>
-            </p>
-            <p class="MsoBodyText">
-              <span lang="EN-US" xml:lang="EN-US">
-                <p class="MsoNormal"> </p>
-              </span>
-            </p>
-            <p class="MsoBodyText">
-              <span lang="EN-US" xml:lang="EN-US">
-                <p class="MsoNormal"> </p>
-              </span>
-            </p>
-            <p class="MsoBodyText" style="text-indent:126.0pt;line-height:normal">
-              <span lang="EN-US" xml:lang="EN-US">3 Park Avenue, New York, NY 10016-5997 USA<span style="mso-spacerun:yes">  </span><a href="http://standards.ieee.org/"><span style="color:#00B0F0;text-decoration:none;text-underline:none"><span style="mso-spacerun:yes"> </span></span><span style="color:#00A9E9">http://standards.ieee.org</span></a></span>
-            </p>
-            <p class="MsoBodyText" style="text-indent:126.0pt;line-height:normal">
-              <span lang="EN-US" xml:lang="EN-US">Tel.+1732-981-0060 Fax+1732-562-1571</span>
-            </p>
-          </p>
-        </div>
-        <div style="mso-element:footnote-list"/>
-      </body>
+          <div class="WordSection4"><p class="MsoBodyText"><span lang="EN-US" xml:lang="EN-US"><p class="MsoNormal"> </p></span></p>
+
+      <p class="MsoBodyText"><span lang="EN-US" xml:lang="EN-US"><p class="MsoNormal"> </p></span></p>
+
+      <p class="MsoBodyText"><span lang="EN-US" xml:lang="EN-US"><p class="MsoNormal"> </p></span></p>
+
+      <p class="MsoBodyText"/>
+
+      <p class="Titleline" style="margin-right:7.2pt"><wrapblock/><br style="mso-ignore:vglayout" clear="ALL"/>
+      <a name="_" id="_"/><a name="_" id="_"/><a name="_" id="_"/><a name="_" id="_"/><a name="_" id="_"><span style="mso-bookmark:_Toc45554030"><span style="mso-bookmark:_Toc45552713"><span style="mso-bookmark:_Toc45552056"><span style="mso-bookmark:_Toc45551731"><span lang="EN-US" xml:lang="EN-US">RAISING THE WORLD’S
+      STANDARDS</span></span></span></span></span></a>
+
+      </p><p class="BackCover" style="margin-right:7.2pt"><span lang="EN-US" xml:lang="EN-US"><p class="MsoNormal"> </p></span></p>
+
+      <p class="MsoBodyText"><span lang="EN-US" xml:lang="EN-US"><p class="MsoNormal"> </p></span></p>
+
+      <p class="MsoBodyText"><span lang="EN-US" xml:lang="EN-US"><p class="MsoNormal"> </p></span></p>
+
+      <p class="MsoBodyText"><span lang="EN-US" xml:lang="EN-US"><p class="MsoNormal"> </p></span></p>
+
+      <p class="MsoBodyText"><span lang="EN-US" xml:lang="EN-US"><p class="MsoNormal"> </p></span></p>
+
+      <p class="MsoBodyText"><span lang="EN-US" xml:lang="EN-US"><p class="MsoNormal"> </p></span></p>
+
+      <p class="MsoBodyText"><span lang="EN-US" xml:lang="EN-US"><p class="MsoNormal"> </p></span></p>
+
+      <p class="MsoBodyText"><span lang="EN-US" xml:lang="EN-US"><p class="MsoNormal"> </p></span></p>
+
+      <p class="MsoBodyText"><span lang="EN-US" xml:lang="EN-US"><p class="MsoNormal"> </p></span></p>
+
+      <p class="MsoBodyText"><span lang="EN-US" xml:lang="EN-US"><p class="MsoNormal"> </p></span></p>
+
+      <p class="MsoBodyText"><span lang="EN-US" xml:lang="EN-US"><p class="MsoNormal"> </p></span></p>
+
+      <p class="MsoBodyText"><span lang="EN-US" xml:lang="EN-US"><p class="MsoNormal"> </p></span></p>
+
+      <p class="MsoBodyText" style="text-indent:126.0pt;line-height:normal"><span lang="EN-US" xml:lang="EN-US">3 Park Avenue, New York, NY 10016-5997 USA<span style="mso-spacerun:yes">  </span><a href="http://standards.ieee.org/"><span style="color:#00B0F0;text-decoration:none;text-underline:none"><span style="mso-spacerun:yes"> </span></span><span style="color:#00A9E9">http://standards.ieee.org</span></a></span></p>
+
+      <p class="MsoBodyText" style="text-indent:126.0pt;line-height:normal"><span lang="EN-US" xml:lang="EN-US">Tel.+1732-981-0060 Fax+1732-562-1571</span></p>
+
+      </div>
+          <div style="mso-element:footnote-list"/>
+        </body>
     OUTPUT
     presxml = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input.sub("<doctype>standard</doctype>",
@@ -1386,12 +1361,11 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
-      .at("//body")
     doc.at("//div[@class = 'WordSectionContents']")&.remove
     doc.xpath("//p[@class = 'MsoToc1']").each(&:remove)
-    doc.xpath("//v:shape | //v:shapetype | //v:rect | //v:line | //v:group",
-              "v" => "urn:schemas-microsoft-com:vml").each(&:remove)
-    expect(strip_guid(doc.to_xml))
+    doc.xpath("//*[local-name()='v:shape' or local-name()='v:shapetype' or local-name()='v:rect' or local-name()='v:line' or local-name()='v:group' or local-name()='v:stroke' or local-name()='v:formulas' or local-name()='v:f' or local-name()='v:path' or local-name()='v:imagedata' or local-name()='v:group' or local-name()='v:textbox']")
+      .each(&:remove)
+    expect(strip_guid(doc.at("//body").to_xml))
       .to be_html4_equivalent_to word
   end
 

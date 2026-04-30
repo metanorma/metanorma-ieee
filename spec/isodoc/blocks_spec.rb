@@ -219,225 +219,177 @@ RSpec.describe IsoDoc do
     html = <<~"OUTPUT"
       #{HTML_HDR}
            <br/>
-             <div id="A">
-                <h1 class="ForewordTitle">Foreword</h1>
-                <table id="tableD-1" class="MsoISOTable" style="border-width:1px;border-spacing:0;" title="tool tip">
-                   <caption>
-                   Table 1—Hello
-                      <span style="display:none">long desc</span>
-                   </caption>
-                   <thead>
-                      <tr>
-                         <td rowspan="2" style="text-align:left;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;" scope="col">Description</td>
-                         <td colspan="4" style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;" scope="colgroup">Rice sample</td>
-                      </tr>
-                      <tr>
-                         <td style="text-align:left;border-top:none;border-bottom:solid windowtext 1.5pt;" scope="col">Arborio</td>
-                         <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;" scope="col">
-                            Drago
-                            <a href="#tableD-1a" class="TableFootnoteRef">a</a>
-                         </td>
-                         <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;" scope="col">
-                            Balilla
-                            <a href="#tableD-1a" class="TableFootnoteRef">a</a>
-                         </td>
-                         <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;" scope="col">Thaibonnet</td>
-                      </tr>
-                   </thead>
-                   <tbody>
-                      <tr>
-                         <th style="font-weight:bold;text-align:left;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;" scope="row">
-                            <p>
-                               Number of laboratories retained after eliminating outliers
-                               <br/>
-                               Laboratory count
-                            </p>
-                         </th>
-                         <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;">13</td>
-                         <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;">11</td>
-                         <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;">13</td>
-                         <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;">13</td>
-                      </tr>
-                      <tr>
-                         <td style="text-align:left;border-top:none;border-bottom:solid windowtext 1.5pt;">Mean value, g/100 g</td>
-                         <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;">81,2</td>
-                         <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;">82,0</td>
-                         <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;">81,8</td>
-                         <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;">77,7</td>
-                      </tr>
-                   </tbody>
-                   <tfoot>
-                      <tr>
-                         <td style="text-align:left;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;">
-                            Reproducibility limit,
-                            <span class="stem">(#(R)#)</span>
-                            (= 2,83
-                            <span class="stem">(#(s_R)#)</span>
-                            )
-                         </td>
-                         <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;">2,89</td>
-                         <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;">0,57</td>
-                         <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;">2,26</td>
-                         <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;">6,06</td>
-                      </tr>
-                   </tfoot>
-                   <div class="key">
-                   <div class="figdl">
-                      <dl>
-                         <dt>
-                            <p>Drago</p>
-                         </dt>
-                         <dd>A type of rice</dd>
-                      </dl>
-                   </div>
-                   </div>
-                   <div id="B" class="Note">
-                      <p>
-                         <span class="note_label">NOTE—</span>
-                         This is a table about rice
-                      </p>
-                   </div>
-                   <aside id="fn:tableD-1a" class="footnote">
-                      <p id="_">
-                         <span class="TableFootnoteRef">a</span>
-                           Parboiled rice.
-                      </p>
-                   </aside>
-                </table>
-             </div>
-          </div>
+           <div id="A">
+             <h1 class="ForewordTitle">Foreword</h1>
+             <table id="tableD-1" class="MsoISOTable" style="border-width:1px;border-spacing:0;" title="tool tip">
+               <caption>Table 1—Hello<span style="display:none">long desc</span></caption>
+               <thead>
+                 <tr>
+                   <td rowspan="2" style="text-align:left;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;" scope="col">Description</td>
+                   <td colspan="4" style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;" scope="colgroup">Rice sample</td>
+                 </tr>
+                 <tr>
+                   <td style="text-align:left;border-top:none;border-bottom:solid windowtext 1.5pt;" scope="col">Arborio</td>
+                   <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;" scope="col">Drago<a href="#tableD-1a" class="TableFootnoteRef">a</a></td>
+                   <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;" scope="col">Balilla<a href="#tableD-1a" class="TableFootnoteRef">a</a></td>
+                   <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;" scope="col">Thaibonnet</td>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr>
+                   <th style="font-weight:bold;text-align:left;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;" scope="row">
+                     <p>Number of laboratories retained after eliminating outliers<br/>
+             Laboratory count</p>
+                   </th>
+                   <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;">13</td>
+                   <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;">11</td>
+                   <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;">13</td>
+                   <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;">13</td>
+                 </tr>
+                 <tr>
+                   <td style="text-align:left;border-top:none;border-bottom:solid windowtext 1.5pt;">Mean value, g/100 g</td>
+                   <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;">81,2</td>
+                   <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;">82,0</td>
+                   <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;">81,8</td>
+                   <td style="text-align:center;border-top:none;border-bottom:solid windowtext 1.5pt;">77,7</td>
+                 </tr>
+               </tbody>
+               <tfoot>
+                 <tr>
+                   <td style="text-align:left;border-top:solid windowtext 1.5pt;border-bottom:0pt;">Reproducibility limit, <span class="stem">(#(R)#)</span> (= 2,83 <span class="stem">(#(s_R)#)</span>)</td>
+                   <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:0pt;">2,89</td>
+                   <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:0pt;">0,57</td>
+                   <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:0pt;">2,26</td>
+                   <td style="text-align:center;border-top:solid windowtext 1.5pt;border-bottom:0pt;">6,06</td>
+                 </tr>
+                 <tr>
+                   <td colspan="5" style="border-top:0pt;border-bottom:solid windowtext 1.5pt;">
+                     <div class="key">
+         <div class="figdl"><dl><dt><p>Drago</p></dt><dd>A type of rice</dd></dl></div>
+         </div>
+                     <div id="B" class="Note">
+                       <p><span class="note_label">NOTE—</span>This is a table about rice</p>
+                     </div>
+                     <aside id="fn:tableD-1a" class="footnote">
+         <p id="_"><span class="TableFootnoteRef">a</span>  Parboiled rice.</p>
+       </aside>
+                   </td>
+                 </tr>
+               </tfoot>
+             </table>
+           </div>
+         </div>
        </body>
     OUTPUT
 
     word = <<~WORD
-      <div>
+       <div>
          <a name="A" id="A"/>
          <p class="IEEEStdsLevel1Header">Foreword</p>
-         <p class="IEEEStdsRegularTableCaption" style="text-align:center;"> —Hello</p>
+         <p class="IEEEStdsRegularTableCaption" style="text-align:center;">—Hello</p>
          <div align="center" class="table_container">
-            <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;" title="tool tip" summary="long desc">
-               <a name="tableD-1" id="tableD-1"/>
-               <thead>
-                  <tr>
-                     <td rowspan="2" align="left" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                        <p class="IEEEStdsTableColumnHead" style="text-align: left;page-break-after:avoid">Description</p>
-                     </td>
-                     <td colspan="4" align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
-                        <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">Rice sample</p>
-                     </td>
-                  </tr>
-                  <tr>
-                     <td align="left" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                        <p class="IEEEStdsTableColumnHead" style="text-align: left;page-break-after:avoid">Arborio</p>
-                     </td>
-                     <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                        <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">
-                           Drago
-                           <a href="#tableD-1a" class="TableFootnoteRef">a</a>
-                        </p>
-                     </td>
-                     <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                        <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">
-                           Balilla
-                           <a href="#tableD-1a" class="TableFootnoteRef">a</a>
-                        </p>
-                     </td>
-                     <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                        <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">Thaibonnet</p>
-                     </td>
-                  </tr>
-               </thead>
-               <tbody>
-                  <tr>
-                     <th align="left" style="font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
-                        <p class="IEEEStdsTableLineHead" style="text-align: left;page-break-after:avoid">Number of laboratories retained after eliminating outliers</p>
-                        <p class="IEEEStdsTableLineSubhead" style="text-align: left;page-break-after:avoid">
-            Laboratory count</p>
-                     </th>
-                     <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
-                        <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">13</p>
-                     </td>
-                     <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
-                        <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">11</p>
-                     </td>
-                     <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
-                        <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">13</p>
-                     </td>
-                     <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
-                        <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">13</p>
-                     </td>
-                  </tr>
-                  <tr>
-                     <td align="left" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                        <p class="IEEEStdsTableData-Left" style="text-align: left;page-break-after:auto">Mean value, g/100 g</p>
-                     </td>
-                     <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                        <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">81,2</p>
-                     </td>
-                     <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                        <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">82,0</p>
-                     </td>
-                     <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                        <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">81,8</p>
-                     </td>
-                     <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                        <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">77,7</p>
-                     </td>
-                  </tr>
-               </tbody>
-               <tfoot>
-                  <tr>
-                     <td align="left" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                        <p class="IEEEStdsTableData-Left" style="text-align: left;page-break-after:auto">
-                           Reproducibility limit,
-                           <span class="stem">(#(R)#)</span>
-                           (= 2,83
-                           <span class="stem">(#(s_R)#)</span>
-                           )
-                        </p>
-                     </td>
-                     <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                        <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">2,89</p>
-                     </td>
-                     <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                        <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">0,57</p>
-                     </td>
-                     <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                        <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">2,26</p>
-                     </td>
-                     <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                        <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">6,06</p>
-                     </td>
-                  </tr>
-               </tfoot>
-               <div class="key">
-               <div class="figdl">
-                  <p style="text-indent: -2.0cm; margin-left: 2.0cm; tab-stops: 2.0cm;" class="IEEEStdsParagraph">
-                     Drago
-                     <span style="mso-tab-count:1">  </span>
-                     A type of rice
-                  </p>
-               </div>
-               </div>
-               <div>
-                  <a name="B" id="B"/>
-                  <p class="IEEEStdsSingleNote">
-                     <span class="note_label">NOTE—</span>
-                     This is a table about rice
-                  </p>
-               </div>
-               <aside>
-                  <a name="ftntableD-1a" id="ftntableD-1a"/>
-                  <p class="IEEEStdsParagraph">
-                     <a name="_" id="_"/>
-                     <span class="TableFootnoteRef">a</span>
-                     <span style="mso-tab-count:1">  </span>
-                     Parboiled rice.
-                  </p>
-               </aside>
-            </table>
+           <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;" title="tool tip" summary="long desc">
+             <a name="tableD-1" id="tableD-1"/>
+             <thead>
+               <tr>
+                 <td rowspan="2" align="left" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
+                   <p class="IEEEStdsTableColumnHead" style="text-align: left;page-break-after:avoid">Description</p>
+                 </td>
+                 <td colspan="4" align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
+                   <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">Rice sample</p>
+                 </td>
+               </tr>
+               <tr>
+                 <td align="left" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
+                   <p class="IEEEStdsTableColumnHead" style="text-align: left;page-break-after:avoid">Arborio</p>
+                 </td>
+                 <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
+                   <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">Drago<a href="#tableD-1a" class="TableFootnoteRef">a</a></p>
+                 </td>
+                 <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
+                   <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">Balilla<a href="#tableD-1a" class="TableFootnoteRef">a</a></p>
+                 </td>
+                 <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
+                   <p class="IEEEStdsTableColumnHead" style="text-align: center;page-break-after:avoid">Thaibonnet</p>
+                 </td>
+               </tr>
+             </thead>
+             <tbody>
+               <tr>
+                 <th align="left" style="font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
+                   <p class="IEEEStdsTableLineHead" style="text-align: left;page-break-after:avoid">Number of laboratories retained after eliminating outliers</p>
+                   <p class="IEEEStdsTableLineSubhead" style="text-align: left;page-break-after:avoid">
+             Laboratory count</p>
+                 </th>
+                 <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">13</p>
+                 </td>
+                 <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">11</p>
+                 </td>
+                 <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">13</p>
+                 </td>
+                 <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;">
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:avoid">13</p>
+                 </td>
+               </tr>
+               <tr>
+                 <td align="left" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                   <p class="IEEEStdsTableData-Left" style="text-align: left;page-break-after:auto">Mean value, g/100 g</p>
+                 </td>
+                 <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">81,2</p>
+                 </td>
+                 <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">82,0</p>
+                 </td>
+                 <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">81,8</p>
+                 </td>
+                 <td align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">77,7</p>
+                 </td>
+               </tr>
+             </tbody>
+             <tfoot>
+               <tr>
+                 <td align="left" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:0pt;mso-border-bottom-alt:0pt;page-break-after:auto;">
+                   <p class="IEEEStdsTableData-Left" style="text-align: left;page-break-after:auto">Reproducibility limit, <span class="stem">(#(R)#)</span> (= 2,83 <span class="stem">(#(s_R)#)</span>)</p>
+                 </td>
+                 <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:0pt;mso-border-bottom-alt:0pt;page-break-after:auto;">
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">2,89</p>
+                 </td>
+                 <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:0pt;mso-border-bottom-alt:0pt;page-break-after:auto;">
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">0,57</p>
+                 </td>
+                 <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:0pt;mso-border-bottom-alt:0pt;page-break-after:auto;">
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">2,26</p>
+                 </td>
+                 <td align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:0pt;mso-border-bottom-alt:0pt;page-break-after:auto;">
+                   <p class="IEEEStdsTableData-Center" style="text-align: center;page-break-after:auto">6,06</p>
+                 </td>
+               </tr>
+               <tr>
+                 <td colspan="5" style="border-top:0pt;mso-border-top-alt:0pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;">
+                   <p class="IEEEStdsTableData-Left">
+                     <aside><a name="ftntableD-1a" id="ftntableD-1a"/>
+         <p class="IEEEStdsParagraph"><a name="_" id="_"/><span class="TableFootnoteRef">a</span><span style="mso-tab-count:1">  </span>Parboiled rice.</p>
+       </aside>
+                   </p>
+                   <div class="key">
+         <div class="figdl"><p style="text-indent: -2.0cm; margin-left: 2.0cm; tab-stops: 2.0cm;" class="IEEEStdsParagraph">Drago<span style="mso-tab-count:1">  </span>A type of rice</p></div>
          </div>
-      </div>
+                   <div>
+                     <a name="B" id="B"/>
+                     <p class="IEEEStdsSingleNote"><span class="note_label">NOTE—</span>This is a table about rice</p>
+                   </div>
+                 </td>
+               </tr>
+             </tfoot>
+           </table>
+         </div>
+       </div>
     WORD
     pres_output = IsoDoc::Ieee::PresentationXMLConvert
       .new(presxml_options)
@@ -450,7 +402,7 @@ RSpec.describe IsoDoc do
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
-      .at("//xmlns:div[xmlns:a[@id = 'A']]")
+      .at("//div[a[@id = 'A']]")
     expect(strip_guid(doc.to_xml
       .gsub("<m:", "<").gsub("</m:", "</")))
       .to be_html4_equivalent_to word
@@ -727,11 +679,10 @@ RSpec.describe IsoDoc do
                   <table style="text-align:left;" class="formula_dl">
                      <tr>
                         <td valign="top" align="left">
-                           <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph">
+                           <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph"/>
                               <p class="IEEEStdsParagraph">
                                  <sup>a</sup>
                               </p>
-                           </p>
                         </td>
                         <td valign="top">
                            <div>
@@ -771,13 +722,13 @@ RSpec.describe IsoDoc do
          </div>
          <div class="IEEEStdsImage">
             <a name="figure-B" id="figure-B"/>
-            <pre style="page-break-after:avoid;">A#{' '}
+            <pre style="page-break-after:avoid;">A &lt;
       B</pre>
             <p class="IEEEStdsRegularFigureCaption" style="text-align:center;"/>
          </div>
          <div class="IEEEStdsImage">
             <a name="figure-C" id="figure-C"/>
-            <pre>A#{' '}
+            <pre>A &lt;
       B</pre>
          </div>
       </div>
@@ -795,7 +746,7 @@ RSpec.describe IsoDoc do
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
-      .at("//xmlns:div[xmlns:a[@id = 'A']]")
+      .at("//div[a[@id = 'A']]")
     expect(strip_guid(doc.to_xml
       .gsub("<m:", "<").gsub("</m:", "</")
       .gsub(/['"][^'".]+\.(gif|xml)['"]/, "'_.\\1'")
@@ -1187,7 +1138,7 @@ RSpec.describe IsoDoc do
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
-      .at("//xmlns:div[xmlns:a[@id = 'A']]")
+      .at("//div[a[@id = 'A']]")
     expect(strip_guid(doc.to_xml
       .gsub("<m:", "<").gsub("</m:", "</")))
       .to be_html4_equivalent_to word
@@ -1377,7 +1328,7 @@ RSpec.describe IsoDoc do
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
-      .at("//xmlns:div[xmlns:a[@id = 'A']]")
+      .at("//div[a[@id = 'A']]")
     expect(strip_guid(doc.to_xml
       .gsub("<m:", "<").gsub("</m:", "</")))
       .to be_html4_equivalent_to word
