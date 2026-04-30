@@ -175,8 +175,7 @@ module IsoDoc
       end
 
       def termnote_parse(node, out)
-        name = node.at(ns("./fmt-name"))
-        para = node.at(ns("./p"))
+        name, para = termnote_parse_prep(node)
         out.div **note_attrs(node) do |div|
           div.p do |p|
             name and termnote_label(p, name)
@@ -184,6 +183,12 @@ module IsoDoc
           end
           para.xpath("./following-sibling::*").each { |n| parse(n, div) }
         end
+      end
+
+      def termnote_parse_prep(node)
+        name = node.at(ns("./fmt-name"))
+        para = node.at(ns("./p"))
+        [name, para]
       end
 
       def termnote_label(para, name)

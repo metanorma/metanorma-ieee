@@ -37,7 +37,7 @@ RSpec.describe IsoDoc::Ieee do
            htmlintropage: nil,
            bare: true,
            filename: "test")
-       .html_cleanup(Nokogiri::XML(input)).to_xml
+       .html_cleanup(Nokogiri::HTML(input)).to_xml
        .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
       .to be_html5_equivalent_to doc
   end
@@ -85,9 +85,9 @@ RSpec.describe IsoDoc::Ieee do
       .new(wordcoverpage: nil,
            wordintropage: nil,
            filename: "test")
-       .word_cleanup(Nokogiri::XML(input)).to_xml
+       .word_cleanup(Nokogiri::HTML(input)).to_xml
        .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
-      .to be_xml_equivalent_to doc
+      .to be_html4_equivalent_to doc
 
     input = <<~INPUT
       <html>
@@ -119,9 +119,9 @@ RSpec.describe IsoDoc::Ieee do
       .new(wordcoverpage: nil,
            wordintropage: nil,
            filename: "test")
-       .word_cleanup(Nokogiri::XML(input)).to_xml
+       .word_cleanup(Nokogiri::HTML(input)).to_xml
        .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
-      .to be_xml_equivalent_to doc
+      .to be_html4_equivalent_to doc
   end
 
   it "copies scope in Word in the absence of abstract" do
@@ -172,9 +172,9 @@ RSpec.describe IsoDoc::Ieee do
       .new(wordcoverpage: nil,
            wordintropage: nil,
            filename: "test")
-   .word_cleanup(Nokogiri::XML(input)).to_xml
+   .word_cleanup(Nokogiri::HTML(input)).to_xml
    .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
-      .to be_xml_equivalent_to doc
+      .to be_html4_equivalent_to doc
   end
 
   it "moves introductory material in Word" do
@@ -227,9 +227,9 @@ RSpec.describe IsoDoc::Ieee do
       .new(wordcoverpage: nil,
            wordintropage: nil,
            filename: "test")
-       .word_cleanup(Nokogiri::XML(input)).to_xml
+       .word_cleanup(Nokogiri::HTML(input)).to_xml
        .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
-      .to be_xml_equivalent_to doc
+      .to be_html4_equivalent_to doc
   end
 
   it "renders headings in Word" do
@@ -284,9 +284,9 @@ RSpec.describe IsoDoc::Ieee do
        .new(wordcoverpage: nil,
             wordintropage: nil,
             filename: "test")
-        .word_cleanup(Nokogiri::XML(input)).to_xml
+        .word_cleanup(Nokogiri::HTML(input)).to_xml
         .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
-      .to be_xml_equivalent_to doc
+      .to be_html4_equivalent_to doc
   end
 
   it "populates Word ToC" do

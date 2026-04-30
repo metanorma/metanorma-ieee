@@ -131,17 +131,25 @@ module IsoDoc
       def note_style_cleanup1(multi, div, seq)
         div.xpath(".//p[@class = 'Note' or not(@class)]")
           .each_with_index do |p, i|
-            p["class"] =
-              i.zero? && multi ? "IEEEStdsMultipleNotes" : "IEEEStdsSingleNote"
-            if multi
-              p["style"] ||= ""
-              p["style"] += "mso-list:l17 level1 lfo#{seq};"
-            end
+          p["class"] =
+            i.zero? && multi ? "IEEEStdsMultipleNotes" : "IEEEStdsSingleNote"
+          if multi
+            p["style"] ||= ""
+            p["style"] += "mso-list:l17 level1 lfo#{seq};"
+          end
         end
       end
 
       # override indent via <div class="ListContLevel-n">
       def list_add(xlist, lvl); end
+
+      def p_div_cleanup(docxml)
+        docxml.xpath("//p[div]").each do |p|
+          p.xpath("./div").reverse_each do |div|
+            p.next = div
+          end
+        end
+      end
 
       private
 

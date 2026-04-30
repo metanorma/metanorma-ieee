@@ -444,16 +444,16 @@ RSpec.describe IsoDoc do
       .convert("test", input, true)
     expect(strip_guid(pres_output))
       .to be_xml_equivalent_to presxml
-    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
       .at("//body").to_xml)).to be_html5_equivalent_to html
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
-    doc = Nokogiri::XML(word2xml("test.doc"))
+    doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
     expect(strip_guid(doc.to_xml
       .gsub("<m:", "<").gsub("</m:", "</")))
-      .to be_xml_equivalent_to word
+      .to be_html4_equivalent_to word
 
     expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::PresentationXMLConvert
       .new({ hierarchicalassets: true })
@@ -788,20 +788,20 @@ RSpec.describe IsoDoc do
     expect(strip_guid(pres_output)
       .gsub("&lt;", "&#x3c;"))
       .to be_xml_equivalent_to presxml
-    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
       .at("//body").to_xml)).to be_html5_equivalent_to html
     FileUtils.rm_rf "spec/assets/odf1.emf"
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
-    doc = Nokogiri::XML(word2xml("test.doc"))
+    doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
     expect(strip_guid(doc.to_xml
       .gsub("<m:", "<").gsub("</m:", "</")
       .gsub(/['"][^'".]+\.(gif|xml)['"]/, "'_.\\1'")
       .gsub("epub:", "")
       .gsub(/mso-bookmark:_Ref\d+/, "mso-bookmark:_Ref")))
-      .to be_xml_equivalent_to word
+      .to be_html4_equivalent_to word
 
     output = <<~OUTPUT
           <fmt-name id="_">
@@ -1002,7 +1002,7 @@ RSpec.describe IsoDoc do
     expect(strip_guid(pres_output)
        .gsub("&lt;", "&#x3c;"))
       .to be_xml_equivalent_to presxml
-    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
       .at("//body").to_xml)).to be_html5_equivalent_to html
   end
@@ -1064,11 +1064,11 @@ RSpec.describe IsoDoc do
         <p>&#xa0;</p>
       </div>
     OUTPUT
-    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
+    expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::HtmlConvert
       .new({})
       .convert("test", presxml, true))
       .at("//body").to_xml)).to be_html5_equivalent_to html
-    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::WordConvert
+    expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::WordConvert
       .new({})
       .convert("test", presxml, true))
                 .at("//div[@class = 'WordSection2']").to_xml))
@@ -1180,17 +1180,17 @@ RSpec.describe IsoDoc do
     expect(strip_guid(pres_output
        .gsub("&lt;", "&#x3c;")))
       .to be_xml_equivalent_to presxml
-    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
+    expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::HtmlConvert
       .new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml)).to be_xml_equivalent_to html
+      .at("//body").to_xml)).to be_html5_equivalent_to html
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
-    doc = Nokogiri::XML(word2xml("test.doc"))
+    doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
     expect(strip_guid(doc.to_xml
       .gsub("<m:", "<").gsub("</m:", "</")))
-      .to be_xml_equivalent_to word
+      .to be_html4_equivalent_to word
   end
 
   it "process formulae" do
@@ -1371,16 +1371,16 @@ RSpec.describe IsoDoc do
       .convert("test", input, true)
     expect(strip_guid(pres_output))
       .to be_xml_equivalent_to presxml
-    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::HtmlConvert.new({})
   .convert("test", pres_output, true))
   .at("//body").to_xml)).to be_html5_equivalent_to html
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
-    doc = Nokogiri::XML(word2xml("test.doc"))
+    doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//xmlns:div[xmlns:a[@id = 'A']]")
     expect(strip_guid(doc.to_xml
       .gsub("<m:", "<").gsub("</m:", "</")))
-      .to be_xml_equivalent_to word
+      .to be_html4_equivalent_to word
   end
 
   it "processes amend blocks" do
@@ -2312,11 +2312,11 @@ RSpec.describe IsoDoc do
     expect(strip_guid(pres_output
       .sub(%r{<metanorma-extension>.*</metanorma-extension>}m, "")))
       .to be_xml_equivalent_to presxml
-    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
+    expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::HtmlConvert
       .new({})
       .convert("test", pres_output, true))
       .at("//body").to_xml)).to be_html5_equivalent_to html
-    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::WordConvert
+    expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::WordConvert
       .new({})
       .convert("test", pres_output, true))
       .at("//body").to_xml)).to be_html4_equivalent_to doc
@@ -2782,11 +2782,11 @@ RSpec.describe IsoDoc do
     expect(strip_guid(pres_output
       .sub(%r{<metanorma-extension>.*</metanorma-extension>}m, "")))
       .to be_xml_equivalent_to presxml
-    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::HtmlConvert
+    expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::HtmlConvert
       .new({})
       .convert("test", pres_output, true))
       .at("//body").to_xml)).to be_html5_equivalent_to html
-    expect(strip_guid(Nokogiri::XML(IsoDoc::Ieee::WordConvert
+    expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::WordConvert
       .new({})
       .convert("test", pres_output, true))
       .at("//body").to_xml)).to be_html4_equivalent_to doc

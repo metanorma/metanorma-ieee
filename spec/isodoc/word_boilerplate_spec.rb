@@ -915,11 +915,11 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       .convert("test", input, true)
     IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
-    doc = Nokogiri::XML(word2xml("test.doc"))
-      .at("//xmlns:body")
-    doc.at("//xmlns:div[@class = 'WordSectionContents']")&.remove
+    doc = Nokogiri::HTML(word2xml("test.doc"))
+      .at("//body")
+    doc.at("//div[@class = 'WordSectionContents']")&.remove
     expect(strip_guid(doc.to_xml))
-      .to be_xml_equivalent_to word
+      .to be_html4_equivalent_to word
   end
 
   it "processes boilerplate, whitepaper" do
@@ -1385,14 +1385,14 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                                  "<doctype>whitepaper</doctype>"), true)
     IsoDoc::Ieee::WordConvert.new({}).convert("test", presxml, false)
     expect(File.exist?("test.doc")).to be true
-    doc = Nokogiri::XML(word2xml("test.doc"))
-      .at("//xmlns:body")
-    doc.at("//xmlns:div[@class = 'WordSectionContents']")&.remove
-    doc.xpath("//xmlns:p[@class = 'MsoToc1']").each(&:remove)
+    doc = Nokogiri::HTML(word2xml("test.doc"))
+      .at("//body")
+    doc.at("//div[@class = 'WordSectionContents']")&.remove
+    doc.xpath("//p[@class = 'MsoToc1']").each(&:remove)
     doc.xpath("//v:shape | //v:shapetype | //v:rect | //v:line | //v:group",
               "v" => "urn:schemas-microsoft-com:vml").each(&:remove)
     expect(strip_guid(doc.to_xml))
-      .to be_xml_equivalent_to word
+      .to be_html4_equivalent_to word
   end
 
   it "balances participant columns" do
@@ -1771,13 +1771,13 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       .convert("test", input, true)
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
-    doc = Nokogiri::XML(word2xml("test.doc")).at("//xmlns:body")
-    doc.at("//xmlns:div[@class = 'WordSection1']")&.remove
-    doc.at("//xmlns:div[@class = 'WordSection2']")&.remove
-    doc.at("//xmlns:div[@class = 'WordSectionContents']")&.remove
-    doc.at("//xmlns:div[@class = 'WordSectionMiddleTitle']")&.remove
-    doc.at("//xmlns:div[@class = 'WordSectionMain']")&.remove
+    doc = Nokogiri::HTML(word2xml("test.doc")).at("//body")
+    doc.at("//div[@class = 'WordSection1']")&.remove
+    doc.at("//div[@class = 'WordSection2']")&.remove
+    doc.at("//div[@class = 'WordSectionContents']")&.remove
+    doc.at("//div[@class = 'WordSectionMiddleTitle']")&.remove
+    doc.at("//div[@class = 'WordSectionMain']")&.remove
     expect(strip_guid(doc.to_xml))
-      .to be_xml_equivalent_to word
+      .to be_html4_equivalent_to word
   end
 end

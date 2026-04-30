@@ -27,6 +27,7 @@ module IsoDoc
         headings_cleanup(docxml)
         caption_cleanup(docxml)
         table_cleanup(docxml)
+        p_div_cleanup(docxml)
         style_cleanup(docxml)
         para_type_cleanup(docxml)
         docxml
