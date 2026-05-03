@@ -671,9 +671,9 @@ RSpec.describe IsoDoc do
       .sub(/^.*<body/m, "<body").sub(/<\/body>.*$/, "</body>")
     expect(strip_guid(output))
       .to be_html5_equivalent_to html
-    expect(strip_guid(Nokogiri::HTML5(IsoDoc::Ieee::WordConvert.new({})
+    expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::WordConvert.new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml)).to be_html4_equivalent_to word
+      .at("//body").to_xhtml)).to be_html4_equivalent_to word
   end
 
   it "sorts terms" do

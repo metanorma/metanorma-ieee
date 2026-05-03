@@ -765,9 +765,9 @@ RSpec.describe IsoDoc::Ieee do
       .convert("test", input, true)
     expect(strip_guid(pres_output))
       .to be_xml_equivalent_to presxml
-    expect(strip_guid(Nokogiri::HTML5(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml))
+      .at("//body").to_xhtml))
       .to be_html5_equivalent_to html
     expect(strip_guid(IsoDoc::Ieee::WordConvert.new({})
       .convert("test", pres_output, true)
@@ -836,13 +836,13 @@ RSpec.describe IsoDoc::Ieee do
     expect(strip_guid(Nokogiri::XML(pres_output)
                 .at("//xmlns:sections").to_xml))
       .to be_xml_equivalent_to presxml
-    expect(strip_guid(Nokogiri::HTML5(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
-      .at("//div[@class = 'main-section']").to_xml))
+      .at("//div[@class = 'main-section']").to_xhtml))
       .to be_html5_equivalent_to html
-    expect(Nokogiri::HTML5(IsoDoc::Ieee::WordConvert.new({})
+    expect(Nokogiri::HTML(IsoDoc::Ieee::WordConvert.new({})
       .convert("test", pres_output, true))
-      .at("//div[@class = 'WordSectionMiddleTitle']").to_xml)
+      .at("//div[@class = 'WordSectionMiddleTitle']").to_xhtml)
       .to be_html4_equivalent_to word
   end
 
@@ -985,16 +985,16 @@ RSpec.describe IsoDoc::Ieee do
       .convert("test", input, true)
     expect(strip_guid(pres_output))
       .to be_xml_equivalent_to presxml
-    expect(strip_guid(Nokogiri::HTML5(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml))
+      .at("//body").to_xhtml))
       .to be_html5_equivalent_to html
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
-    doc = Nokogiri::HTML5(word2xml("test.doc"))
-      .at("//xmlns:div[xmlns:a[@id = 'a']]")
-    expect(strip_guid(doc.to_xml))
-      .to be_xml_equivalent_to word
+    doc = Nokogiri::HTML(word2xml("test.doc"))
+      .at("//div[a[@id = 'a']]")
+    expect(strip_guid(doc.to_xhtml))
+      .to be_html4_equivalent_to word
   end
 
   it "processes participants" do
@@ -1428,7 +1428,7 @@ RSpec.describe IsoDoc::Ieee do
              <p class="IEEEStdsParagraph"> </p>
              <p class="IEEEStdsParagraph">
                 <a name="_" id="_"/>
-                When the IEEE SA Standards Board approved this Standard on Date Approved, it had the following membership:
+                When the IEEE SA Standards Board approved this Standard on &lt;Date Approved&gt;, it had the following membership:
              </p>
              <p style="text-align:center;" align="center" class="IEEEStdsNamesCtrCxSpFirst">
                 <b>Aeschylus</b>
@@ -1520,18 +1520,18 @@ RSpec.describe IsoDoc::Ieee do
       .to be_xml_equivalent_to presxml
     IsoDoc::Ieee::HtmlConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.html")).to be true
-    expect(strip_guid(Nokogiri::HTML5(File.read("test.html"))
-      .at("//div[@id = 'boilerplate-participants']").to_xml))
+    expect(strip_guid(Nokogiri::HTML(File.read("test.html"))
+      .at("//div[@id = 'boilerplate-participants']").to_xhtml))
       .to be_html5_equivalent_to html
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
-    doc = Nokogiri::HTML5(word2xml("test.doc")).at("//xmlns:body")
-    doc.at("//xmlns:div[@class = 'WordSection1']")&.remove
-    doc.at("//xmlns:div[@class = 'WordSection2']")&.remove
-    doc.at("//xmlns:div[@class = 'WordSectionContents']")&.remove
-    doc.at("//xmlns:div[@class = 'WordSectionMiddleTitle']")&.remove
-    doc.at("//xmlns:div[@class = 'WordSectionMain']")&.remove
-    expect(strip_guid(doc.to_xml))
-      .to be_xml_equivalent_to word
+    doc = Nokogiri::HTML(word2xml("test.doc")).at("//body")
+    doc.at("//div[@class = 'WordSection1']")&.remove
+    doc.at("//div[@class = 'WordSection2']")&.remove
+    doc.at("//div[@class = 'WordSectionContents']")&.remove
+    doc.at("//div[@class = 'WordSectionMiddleTitle']")&.remove
+    doc.at("//div[@class = 'WordSectionMain']")&.remove
+    expect(strip_guid(doc.to_xhtml))
+      .to be_html4_equivalent_to word
   end
 end
