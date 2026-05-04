@@ -83,7 +83,7 @@ module IsoDoc
         else super
         end
       end
-      
+
       def ol_attrs(node)
         ret = super
         ret.merge(class: OL_STYLE.invert[ret[:type]])

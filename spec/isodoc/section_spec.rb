@@ -511,7 +511,7 @@ RSpec.describe IsoDoc::Ieee do
            <div id="H">
              <h1>3.&#xA0; Terms, Definitions, Symbols and Abbreviated Terms</h1>
              <div id="I"><h2>3.1.&#xA0; Normal Terms</h2>
-               <p class="TermNum" id="J"/>
+               <p class="TermNum" id="J"></p>
                <p><b><dfn>Term2</dfn></b>:  </p>
              </div>
              <div id="K"><h2>3.2.&#xA0; Acronyms and abbreviations</h2>
@@ -603,7 +603,7 @@ RSpec.describe IsoDoc::Ieee do
         <p class="section-break">
           <br clear='all' class='section'/>
         </p>
-        <div class='WordSectionMiddleTitle'/>
+        <div class='WordSectionMiddleTitle'></div>
         <p class="section-break">
           <br clear='all' style='page-break-before:auto;mso-break-type:section-break'/>
         </p>
@@ -649,7 +649,7 @@ RSpec.describe IsoDoc::Ieee do
                 <span style='mso-tab-count:1'>&#xa0; </span>
                 Normal Terms
               </h2>
-              <p class='TermNum' id='J'/>
+              <p class='TermNum' id='J'></p>
               <p>
                 <b>Term2</b>
                 :
@@ -715,12 +715,7 @@ RSpec.describe IsoDoc::Ieee do
             <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
           </p>
           <div id='P' class='Annex'>
-            <h1 class='Annex'>
-              <br/>
-              <span style='font-weight:normal;'>(normative)</span>
-              <br/>
-              <b>Annex</b>
-            </h1>
+            <h1 class='Annex'><br/><span style='font-weight:normal;'>(normative)</span><br/><b>Annex</b></h1>
          <p style="display:none;" class="variant-title-toc">
             Annex A
             <span style="mso-tab-count:1">  </span>
@@ -953,7 +948,7 @@ RSpec.describe IsoDoc::Ieee do
     OUTPUT
     word = <<~OUTPUT
       <div>
-         <a name='a' id='a'/>
+         <a name='a' id='a'></a>
          <h1 style='mso-list:l13 level1 lfo33;'>
            <br/>
            <span style='font-weight:normal;'>(normative)</span>
@@ -967,14 +962,14 @@ RSpec.describe IsoDoc::Ieee do
           </p>
          <div>
            <p class='IEEEStdsParagraph'>
-             <a name='_' id='_'/>
+             <a name='_' id='_'></a>
               Bibliographical references are resources that provide additional or
              helpful material but do not need to be understood or used to implement
              this standard. Reference to these resources is made for informational use
              only.
            </p>
            <p class='IEEEStdsBibliographicEntry'>
-             <a name='ABC' id='ABC'/>
+             <a name='ABC' id='ABC'></a>
              DEF,
            </p>
          </div>
@@ -1292,10 +1287,11 @@ RSpec.describe IsoDoc::Ieee do
     OUTPUT
     html = <<~OUTPUT
       <div id="boilerplate-participants" type="participants">
-         <h1 class="IntroTitle"><a class="anchor" href="#boilerplate-participants"/><a class="header" href="#boilerplate-participants">Participants</a></h1>
+         <h1 class="IntroTitle"><a class="anchor" href="#boilerplate-participants"></a><a class="header" href="#boilerplate-participants">Participants</a></h1>
          <div id="boilerplate-participants-wg">
            <p id="_">At the time this draft Standard was completed, the  had the following membership:</p>
-           <p style="text-align:center;" class="officeholder"><b><span class="surname">Socrates</span><span class="forename">Adalbert</span></b>, <i><span class="au_role">Chair</span></i></p>
+           <p style="text-align:center;" class="officeholder"><b><span class="surname">Socrates</span>
+            <span class="forename">Adalbert</span></b>, <i><span class="au_role">Chair</span></i></p>
            <p style="text-align:center;" class="officeholder"><b>Plato</b>, <i><span class="au_role">Technical editor</span></i></p>
            <p>Aristotle</p>
            <p>Anaximander</p>
@@ -1343,7 +1339,7 @@ RSpec.describe IsoDoc::Ieee do
           </span>
           <div class="WordSection3">
              <div>
-                <a name="boilerplate-disclaimers-destination" id="boilerplate-disclaimers-destination"/>
+                <a name="boilerplate-disclaimers-destination" id="boilerplate-disclaimers-destination"></a>
              </div>
           </div>
           <b style="mso-bidi-font-weight:normal">
@@ -1353,10 +1349,10 @@ RSpec.describe IsoDoc::Ieee do
           </b>
           <div class="WordSection4">
              <div type="participants">
-                <a name="boilerplate-participants" id="boilerplate-participants"/>
+                <a name="boilerplate-participants" id="boilerplate-participants"></a>
                 <p class="IEEEStdsLevel1frontmatter">Participants</p>
                 <p class="IEEEStdsParagraph">
-                   <a name="_" id="_"/>
+                   <a name="_" id="_"></a>
                    At the time this draft Standard was completed, the had the following membership:
                 </p>
                 <p style="text-align:center;" align="center" class="IEEEStdsNamesCtrCxSpFirst">
@@ -1391,11 +1387,11 @@ RSpec.describe IsoDoc::Ieee do
           <div class="WordSection6">
              <p class="IEEEStdsParagraph"> </p>
              <p class="IEEEStdsParagraph">
-                <a name="_" id="_"/>
+                <a name="_" id="_"></a>
                 This is an additional clause.
              </p>
              <p class="IEEEStdsParagraph">
-                <a name="_" id="_"/>
+                <a name="_" id="_"></a>
                 The following members of the Standards Association balloting group voted on this Standard. Balloters may have voted for approval, disapproval, or abstention.
              </p>
           </div>
@@ -1416,7 +1412,7 @@ RSpec.describe IsoDoc::Ieee do
           <div class="WordSection8">
              <p class="IEEEStdsParagraph"> </p>
              <p class="IEEEStdsParagraph">
-                <a name="_" id="_"/>
+                <a name="_" id="_"></a>
                 And this is another list
              </p>
              <p class="IEEEStdsNamesList">
@@ -1427,7 +1423,7 @@ RSpec.describe IsoDoc::Ieee do
              </p>
              <p class="IEEEStdsParagraph"> </p>
              <p class="IEEEStdsParagraph">
-                <a name="_" id="_"/>
+                <a name="_" id="_"></a>
                 When the IEEE SA Standards Board approved this Standard on &lt;Date Approved&gt;, it had the following membership:
              </p>
              <p style="text-align:center;" align="center" class="IEEEStdsNamesCtrCxSpFirst">
@@ -1450,23 +1446,16 @@ RSpec.describe IsoDoc::Ieee do
           </span>
           <div class="WordSection9">
              <p class="IEEEStdsNamesList">Euripides</p>
-             <p class="IEEEStdsNamesList">
-                Aristophanes
-                <span class="cite_fn">*</span>
-             </p>
+             <p class="IEEEStdsNamesList">Aristophanes<span class="cite_fn">*</span></p>
           </div>
           <span lang="EN-US" style="font-size:9.0pt;mso-bidi-font-size:10.0pt;font-family: &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language: EN-US;mso-fareast-language:JA;mso-bidi-language:AR-SA" xml:lang="EN-US">
              <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
           </span>
           <div class="WordSection10">
              <p class="IEEEStdsParagraph"> </p>
-             <p class="IEEEStdsParaMemEmeritus">
-                <a name="_" id="_"/>
-                <span class="cite_fn">*</span>
-                Member Emeritus
-             </p>
+             <p class="IEEEStdsParaMemEmeritus"><a name="_" id="_"></a><span class="cite_fn">*</span>Member Emeritus</p>
              <p class="IEEEStdsParagraph">
-                <a name="_" id="_"/>
+                <a name="_" id="_"></a>
                 This is an additional clause.
              </p>
              <p class="IEEEStdsNamesList">
@@ -1477,7 +1466,7 @@ RSpec.describe IsoDoc::Ieee do
              </p>
              <p class="IEEEStdsParagraph"> </p>
              <p class="IEEEStdsParagraph">
-                <a name="_" id="_"/>
+                <a name="_" id="_"></a>
                 And again:
              </p>
           </div>
@@ -1508,7 +1497,7 @@ RSpec.describe IsoDoc::Ieee do
           <p class="IEEEStdsParagraph">
              <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
           </p>
-          <div style="mso-element:footnote-list"/>
+          <div style="mso-element:footnote-list"></div>
        </body>
     OUTPUT
     FileUtils.rm_rf "test.html"
