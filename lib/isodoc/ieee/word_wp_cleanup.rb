@@ -95,6 +95,20 @@ module IsoDoc
         end
       end
 
+      # Whitepaper figure_parse1 emits caption-before-image, so the upstream
+      # wrap (img-before-caption) never fires. Wrap the trailing img so it
+      # carries Body Text + Centered. https://github.com/metanorma/metanorma-ieee/issues/739
+      def word_image_caption(docxml)
+        super
+        docxml.xpath("//p[@class = 'FigureTitle' or @class = 'SourceTitle']")
+          .each do |t|
+          n = t.next_element
+          n&.name == "img" or next
+          n.swap("<p class='figure' style='text-align:center;'>" \
+                 "#{n.to_xml}</p>")
+        end
+      end
+
       def authority_cleanup(docxml)
         %w(copyright disclaimers tm participants).each do |t|
           authority_cleanup1(docxml, t)
