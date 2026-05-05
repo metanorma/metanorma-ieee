@@ -864,44 +864,44 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
             </iso-standard>
     INPUT
     word = <<~OUTPUT
-       <div>
-         <a name="A" id="A"></a>
-         <p class="IEEEStdsLevel1Header">1.</p>
-         <p class="TermNum">
-           <a name="B" id="B"></a>
-         </p>
-         <p class="IEEEStdsParagraph"><b>Alpha</b>: Definition </p>
-         <div>
-           <a name="n1" id="n1"></a>
-           <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo1;">First</p>
-         </div>
-         <div>
-           <a name="n2" id="n2"></a>
-           <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo1;">Second</p>
-           <p class="IEEEStdsSingleNote" style="mso-list:l17 level1 lfo1;">Multi-para note</p>
-         </div>
-         <p class="TermNum">
-           <a name="C" id="C"></a>
-         </p>
-         <p class="IEEEStdsParagraph"><b>Beta</b>: Definition2 </p>
-         <div>
-           <a name="n3" id="n3"></a>
-           <p class="IEEEStdsSingleNote"><span class="note_label">NOTE—</span>Third</p>
-           <div class="Quote">Quotation</div>
-         </div>
-         <p class="TermNum">
-           <a name="D" id="D"></a>
-         </p>
-         <p class="IEEEStdsParagraph"><b>Gamma</b>: Definition3 </p>
-         <div>
-           <a name="n4" id="n4"></a>
-           <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo2;">Fourth</p>
-         </div>
-         <div>
-           <a name="n5" id="n5"></a>
-           <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo2;">Fifth</p>
-         </div>
-       </div>
+           <div>
+             <a name="A" id="A"></a>
+             <p class="IEEEStdsLevel1Header">1.</p>
+             <p class="TermNum">
+               <a name="B" id="B"></a>
+             </p>
+             <p class="IEEEStdsParagraph"><b>Alpha</b>: Definition </p>
+             <div>
+               <a name="n1" id="n1"></a>
+               <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo1;">First</p>
+             </div>
+             <div>
+               <a name="n2" id="n2"></a>
+               <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo1;">Second</p>
+               <p class="IEEEStdsSingleNote" style="mso-list:l17 level1 lfo1;">Multi-para note</p>
+             </div>
+             <p class="TermNum">
+               <a name="C" id="C"></a>
+             </p>
+             <p class="IEEEStdsParagraph"><b>Beta</b>: Definition2 </p>
+             <div>
+               <a name="n3" id="n3"></a>
+               <p class="IEEEStdsSingleNote"><span class="note_label">NOTE&#x2014;</span>Third</p>
+               <div class="Quote">Quotation</div>
+             </div>
+             <p class="TermNum">
+               <a name="D" id="D"></a>
+             </p>
+             <p class="IEEEStdsParagraph"><b>Gamma</b>: Definition3 </p>
+             <div>
+               <a name="n4" id="n4"></a>
+               <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo2;">Fourth</p>
+             </div>
+             <div>
+               <a name="n5" id="n5"></a>
+               <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo2;">Fifth</p>
+             </div>
+           </div>
     OUTPUT
     pres_output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
@@ -909,8 +909,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[a[@id = 'A']]")
-    expect(strip_guid(doc
-      .to_xhtml(save_with: Nokogiri::XML::Node::SaveOptions::AS_XML, indent: 0)))
+    expect(strip_guid(doc.to_xhtml))
       .to be_html4_equivalent_to word
   end
 
