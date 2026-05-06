@@ -25,11 +25,11 @@ RSpec.describe IsoDoc::Ieee do
       <main class='main-section'>
         <br/>
         <div id='x' class='abstract'>
-          <h1 class='AbstractTitle'><a class="anchor" href="#x"/><a class="header" href="#x">Abstract</a></h1>
+          <h1 class='AbstractTitle'><a class="anchor" href="#x"></a><a class="header" href="#x">Abstract</a></h1>
           <p>Abstract text</p>
         </div>
         <hr/>
-        <div id='abstract-destination'/>
+        <div id='abstract-destination'></div>
       </main>
     OUTPUT
     expect(IsoDoc::Ieee::HtmlConvert
@@ -37,7 +37,7 @@ RSpec.describe IsoDoc::Ieee do
            htmlintropage: nil,
            bare: true,
            filename: "test")
-       .html_cleanup(Nokogiri::HTML(input)).to_xml
+       .html_cleanup(Nokogiri::HTML(input)).to_xhtml
        .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
       .to be_html5_equivalent_to doc
   end
@@ -64,13 +64,11 @@ RSpec.describe IsoDoc::Ieee do
       </html>
     INPUT
     doc = <<~OUTPUT
-      <html>
-        <head/>
         <body>
           <div class='main-section'>
             <hr/>
             <div id='abstract-destination'>
-               <p class='IEEEStdsAbstractBody' style="font-family: 'Arial', sans-serif;"><span class="IEEEStdsAbstractHeader"><span lang="EN-US">Abstract:</span></span> Abstract text</p>
+               <p class='IEEEStdsAbstractBody' style="font-family: 'Arial', sans-serif;"><span class="IEEEStdsAbstractHeader"><span lang="EN-US" xml:lang="EN-US">Abstract:</span></span> Abstract text</p>
                <ul>
                  <li>
                    <p style="font-family: 'Arial', sans-serif;" class='IEEEStdsAbstractBody'>X</p>
@@ -79,48 +77,44 @@ RSpec.describe IsoDoc::Ieee do
             </div>
           </div>
         </body>
-      </html>
     OUTPUT
     expect(IsoDoc::Ieee::WordConvert
       .new(wordcoverpage: nil,
            wordintropage: nil,
            filename: "test")
-       .word_cleanup(Nokogiri::XML(input)).to_xml
-       .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
+       .word_cleanup(Nokogiri::HTML5(input)).to_xhtml
+       .sub(/^.*<body/m, "<body").sub(%r{</body>.*$}m, "</body>"))
       .to be_html4_equivalent_to doc
 
     input = <<~INPUT
       <html>
-      <head/>
+      <head></head>
       <body>
-      <div class="WordSection1"><p/></div>
-      <div class="WordSection2"><p/></div>
+      <div class="WordSection1"><p></p></div>
+      <div class="WordSection2"><p></p></div>
       <div class="main-section">
       <br/>
-      <div id="x" class="abstract"/>
+      <div id="x" class="abstract"></div>
       <hr/>
-      <div id="abstract-destination"/>
+      <div id="abstract-destination"></div>
       </div>
       </body>
       </html>
     INPUT
     doc = <<~OUTPUT
-      <html>
-        <head/>
         <body>
           <div class='main-section'>
             <hr/>
-            <div id='abstract-destination'/>
+            <div id='abstract-destination'></div>
           </div>
         </body>
-      </html>
     OUTPUT
     expect(IsoDoc::Ieee::WordConvert
       .new(wordcoverpage: nil,
            wordintropage: nil,
            filename: "test")
-       .word_cleanup(Nokogiri::XML(input)).to_xml
-       .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
+       .word_cleanup(Nokogiri::HTML5(input)).to_xhtml
+       .sub(/^.*<body/m, "<body").sub(%r{</body>.*$}m, "</body>"))
       .to be_html4_equivalent_to doc
   end
 
@@ -128,24 +122,22 @@ RSpec.describe IsoDoc::Ieee do
     mock_populate_template
     input = <<~INPUT
       <html>
-      <head/>
+      <head></head>
       <body>
-      <div class="WordSection1"><p/></div>
-      <div class="WordSection2"><p/></div>
+      <div class="WordSection1"><p></p></div>
+      <div class="WordSection2"><p></p></div>
       <div class="main-section">
       <div id="x" type="overview"> <h1>Overview</h1>
       <div id="x1" type="scope"> <h2>Overview</h2>
       <p>Abstract text</p>
       </div>
       <hr/>
-      <div id="abstract-destination"/>
+      <div id="abstract-destination"></div>
       </div>
       </body>
       </html>
     INPUT
     doc = <<~OUTPUT
-          <html>
-        <head/>
         <body>
           <div class='main-section'>
             <div id='x' type='overview'>
@@ -158,7 +150,7 @@ RSpec.describe IsoDoc::Ieee do
               <div id='abstract-destination'>
                 <p class='IEEEStdsAbstractBody' style="font-family: 'Arial', sans-serif;">
                   <span class='IEEEStdsAbstractHeader'>
-                    <span lang='EN-US'>Abstract:</span>
+                    <span lang='EN-US' xml:lang="EN-US">Abstract:</span>
                   </span>
                    Abstract text
                 </p>
@@ -166,14 +158,13 @@ RSpec.describe IsoDoc::Ieee do
             </div>
           </div>
         </body>
-      </html>
     OUTPUT
     expect(IsoDoc::Ieee::WordConvert
       .new(wordcoverpage: nil,
            wordintropage: nil,
            filename: "test")
-   .word_cleanup(Nokogiri::XML(input)).to_xml
-   .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
+   .word_cleanup(Nokogiri::HTML5(input)).to_xhtml
+   .sub(/^.*<body/m, "<body").sub(%r{</body>.*$}m, "</body>"))
       .to be_html4_equivalent_to doc
   end
 
@@ -181,10 +172,10 @@ RSpec.describe IsoDoc::Ieee do
     mock_populate_template
     input = <<~INPUT
       <html>
-      <head/>
+      <head></head>
       <body>
-      <div class="WordSection1"><p/></div>
-      <div class="WordSection2"><p/></div>
+      <div class="WordSection1"><p></p></div>
+      <div class="WordSection2"><p></p></div>
       <div class="main-section">
       <br/>
       <div id="x">
@@ -198,14 +189,12 @@ RSpec.describe IsoDoc::Ieee do
       <p>As given</p>
       </div>
       <hr/>
-      <div id="introduction-destination"/>
+      <div id="introduction-destination"></div>
       </div>
       </body>
       </html>
     INPUT
     doc = <<~OUTPUT
-      <html>
-          <head/>
           <body>
              <div class="main-section">
                 <hr/>
@@ -221,14 +210,13 @@ RSpec.describe IsoDoc::Ieee do
                 </div>
              </div>
           </body>
-       </html>
     OUTPUT
     expect(IsoDoc::Ieee::WordConvert
       .new(wordcoverpage: nil,
            wordintropage: nil,
            filename: "test")
-       .word_cleanup(Nokogiri::XML(input)).to_xml
-       .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
+       .word_cleanup(Nokogiri::HTML5(input)).to_xhtml
+       .sub(/^.*<body/m, "<body").sub(%r{</body>.*$}m, "</body>"))
       .to be_html4_equivalent_to doc
   end
 
@@ -236,10 +224,10 @@ RSpec.describe IsoDoc::Ieee do
     mock_populate_template
     input = <<~INPUT
       <html>
-      <head/>
+      <head></head>
       <body>
-          <div class="WordSection1"><p/></div>
-          <div class="WordSection2"><p/></div>
+          <div class="WordSection1"><p></p></div>
+          <div class="WordSection2"><p></p></div>
          <div class='WordSection14'>
            <div id='D'>
              <h1>1. <span style='mso-tab-count:1'>&#xa0; </span>Overview
@@ -261,8 +249,6 @@ RSpec.describe IsoDoc::Ieee do
            </body></html>
     INPUT
     doc = <<~OUTPUT
-      <html>
-      <head/>
          <body>
            <div class='WordSection1'>
              <div id='D'>
@@ -278,14 +264,13 @@ RSpec.describe IsoDoc::Ieee do
              </div>
            </div>
          </body>
-       </html>
     OUTPUT
     expect(IsoDoc::Ieee::WordConvert
        .new(wordcoverpage: nil,
             wordintropage: nil,
             filename: "test")
-        .word_cleanup(Nokogiri::XML(input)).to_xml
-        .sub(/^.*<main/m, "<main").sub(%r{</main>.*$}m, "</main>"))
+        .word_cleanup(Nokogiri::HTML5(input)).to_xhtml
+        .sub(/^.*<body/m, "<body").sub(%r{</body>.*$}m, "</body>"))
       .to be_html4_equivalent_to doc
   end
 
@@ -349,10 +334,10 @@ RSpec.describe IsoDoc::Ieee do
               <p class="IEEEStdsLevel1frontmatter">Contents</p>
               <p class="MsoToc1">
                  <span lang="EN-GB" xml:lang="EN-GB">
-                    <span style="mso-element:field-begin"/>
+                    <span style="mso-element:field-begin"></span>
                     <span style="mso-spacerun:yes"> </span>
                     TOC \o "1-3" \h \z \u
-                    <span style="mso-element:field-separator"/>
+                    <span style="mso-element:field-separator"></span>
                  </span>
                  <span class="MsoHyperlink">
                     <span lang="EN-GB" style="mso-no-proof:yes" xml:lang="EN-GB">
@@ -362,16 +347,16 @@ RSpec.describe IsoDoc::Ieee do
                              <span style="mso-tab-count:1 dotted">. </span>
                           </span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                             <span style="mso-element:field-begin"/>
+                             <span style="mso-element:field-begin"></span>
                           </span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"> PAGEREF _Toc \h </span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                             <span style="mso-element:field-separator"/>
+                             <span style="mso-element:field-separator"></span>
                           </span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">1</span>
-                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"/>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"></span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                             <span style="mso-element:field-end"/>
+                             <span style="mso-element:field-end"></span>
                           </span>
                        </a>
                     </span>
@@ -386,16 +371,16 @@ RSpec.describe IsoDoc::Ieee do
                              <span style="mso-tab-count:1 dotted">. </span>
                           </span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                             <span style="mso-element:field-begin"/>
+                             <span style="mso-element:field-begin"></span>
                           </span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"> PAGEREF _Toc \h </span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                             <span style="mso-element:field-separator"/>
+                             <span style="mso-element:field-separator"></span>
                           </span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">1</span>
-                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"/>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"></span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                             <span style="mso-element:field-end"/>
+                             <span style="mso-element:field-end"></span>
                           </span>
                        </a>
                     </span>
@@ -410,16 +395,16 @@ RSpec.describe IsoDoc::Ieee do
                              <span style="mso-tab-count:1 dotted">. </span>
                           </span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                             <span style="mso-element:field-begin"/>
+                             <span style="mso-element:field-begin"></span>
                           </span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"> PAGEREF _Toc \h </span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                             <span style="mso-element:field-separator"/>
+                             <span style="mso-element:field-separator"></span>
                           </span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">1</span>
-                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"/>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"></span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                             <span style="mso-element:field-end"/>
+                             <span style="mso-element:field-end"></span>
                           </span>
                        </a>
                     </span>
@@ -434,16 +419,16 @@ RSpec.describe IsoDoc::Ieee do
                              <span style="mso-tab-count:1 dotted">. </span>
                           </span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                             <span style="mso-element:field-begin"/>
+                             <span style="mso-element:field-begin"></span>
                           </span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"> PAGEREF _Toc \h </span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                             <span style="mso-element:field-separator"/>
+                             <span style="mso-element:field-separator"></span>
                           </span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">1</span>
-                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"/>
+                          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"></span>
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
-                             <span style="mso-element:field-end"/>
+                             <span style="mso-element:field-end"></span>
                           </span>
                        </a>
                     </span>
@@ -451,7 +436,7 @@ RSpec.describe IsoDoc::Ieee do
               </p>
               <p class="MsoToc1">
                  <span lang="EN-GB" xml:lang="EN-GB">
-                    <span style="mso-element:field-end"/>
+                    <span style="mso-element:field-end"></span>
                  </span>
                  <span lang="EN-GB" xml:lang="EN-GB">
                     <o:p class="MsoNormal"> </o:p>

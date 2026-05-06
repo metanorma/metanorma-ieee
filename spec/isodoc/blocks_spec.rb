@@ -284,12 +284,12 @@ RSpec.describe IsoDoc do
 
     word = <<~WORD
        <div>
-         <a name="A" id="A"/>
+         <a name="A" id="A"></a>
          <p class="IEEEStdsLevel1Header">Foreword</p>
          <p class="IEEEStdsRegularTableCaption" style="text-align:center;">—Hello</p>
          <div align="center" class="table_container">
            <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;" title="tool tip" summary="long desc">
-             <a name="tableD-1" id="tableD-1"/>
+             <a name="tableD-1" id="tableD-1"></a>
              <thead>
                <tr>
                  <td rowspan="2" align="left" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
@@ -373,15 +373,15 @@ RSpec.describe IsoDoc do
                <tr>
                  <td colspan="5" style="border-top:0pt;mso-border-top-alt:0pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;">
                    <p class="IEEEStdsTableData-Left">
-                     <aside><a name="ftntableD-1a" id="ftntableD-1a"/>
-         <p class="IEEEStdsParagraph"><a name="_" id="_"/><span class="TableFootnoteRef">a</span><span style="mso-tab-count:1">  </span>Parboiled rice.</p>
+                     <aside><a name="ftntableD-1a" id="ftntableD-1a"></a>
+         <p class="IEEEStdsParagraph"><a name="_" id="_"></a><span class="TableFootnoteRef">a</span><span style="mso-tab-count:1">  </span>Parboiled rice.</p>
        </aside>
                    </p>
                    <div class="key">
          <div class="figdl"><p style="text-indent: -2.0cm; margin-left: 2.0cm; tab-stops: 2.0cm;" class="IEEEStdsParagraph">Drago<span style="mso-tab-count:1">  </span>A type of rice</p></div>
          </div>
                    <div>
-                     <a name="B" id="B"/>
+                     <a name="B" id="B"></a>
                      <p class="IEEEStdsSingleNote"><span class="note_label">NOTE—</span>This is a table about rice</p>
                    </div>
                  </td>
@@ -396,14 +396,14 @@ RSpec.describe IsoDoc do
       .convert("test", input, true)
     expect(strip_guid(pres_output))
       .to be_xml_equivalent_to presxml
-    expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::HtmlConvert.new({})
+    expect(strip_guid(Nokogiri::HTML5(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml)).to be_html5_equivalent_to html
+      .at("//body").to_xhtml)).to be_html5_equivalent_to html
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[a[@id = 'A']]")
-    expect(strip_guid(doc.to_xml
+    expect(strip_guid(doc.to_xhtml
       .gsub("<m:", "<").gsub("</m:", "</")))
       .to be_html4_equivalent_to word
 
@@ -664,10 +664,10 @@ RSpec.describe IsoDoc do
     OUTPUT
     word = <<~OUTPUT
       <div>
-         <a name="A" id="A"/>
+         <a name="A" id="A"></a>
          <p class="IEEEStdsLevel1Header">Foreword</p>
          <div class="IEEEStdsImage" style="page-break-after: avoid;page-break-inside: avoid;">
-            <a name="figureA-1" id="figureA-1"/>
+            <a name="figureA-1" id="figureA-1"></a>
             <img src="_.gif" height="20" width="20"/>
             <img src="_.xml" height="20" width="0"/>
             <a href="#figureA-1a" class="TableFootnoteRef">a</a>
@@ -679,16 +679,16 @@ RSpec.describe IsoDoc do
                   <table style="text-align:left;" class="formula_dl">
                      <tr>
                         <td valign="top" align="left">
-                           <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph"/>
+                           <p align="left" style="margin-left:0pt;text-align:left;" class="IEEEStdsParagraph"></p>
                               <p class="IEEEStdsParagraph">
                                  <sup>a</sup>
                               </p>
                         </td>
                         <td valign="top">
                            <div>
-                              <a name="ftnfigureA-1a" id="ftnfigureA-1a"/>
+                              <a name="ftnfigureA-1a" id="ftnfigureA-1a"></a>
                               <p class="IEEEStdsParagraph">
-                                 <a name="_" id="_"/>
+                                 <a name="_" id="_"></a>
                                  The time
                                  <span class="stem">(#(t_90)#)</span>
                                  was estimated to be 18,2 min for this example.
@@ -714,20 +714,20 @@ RSpec.describe IsoDoc do
                <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
                   <a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_">
                      <span class="MsoFootnoteReference">
-                        <span style="mso-special-character:footnote"/>
+                        <span style="mso-special-character:footnote"></span>
                      </span>
                   </a>
                </span>
             </p>
          </div>
          <div class="IEEEStdsImage">
-            <a name="figure-B" id="figure-B"/>
+            <a name="figure-B" id="figure-B"></a>
             <pre style="page-break-after:avoid;">A &lt;
       B</pre>
-            <p class="IEEEStdsRegularFigureCaption" style="text-align:center;"/>
+            <p class="IEEEStdsRegularFigureCaption" style="text-align:center;"></p>
          </div>
          <div class="IEEEStdsImage">
-            <a name="figure-C" id="figure-C"/>
+            <a name="figure-C" id="figure-C"></a>
             <pre>A &lt;
       B</pre>
          </div>
@@ -741,13 +741,13 @@ RSpec.describe IsoDoc do
       .to be_xml_equivalent_to presxml
     expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml)).to be_html5_equivalent_to html
+      .at("//body").to_xhtml)).to be_html5_equivalent_to html
     FileUtils.rm_rf "spec/assets/odf1.emf"
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[a[@id = 'A']]")
-    expect(strip_guid(doc.to_xml
+    expect(strip_guid(doc.to_xhtml
       .gsub("<m:", "<").gsub("</m:", "</")
       .gsub(/['"][^'".]+\.(gif|xml)['"]/, "'_.\\1'")
       .gsub("epub:", "")
@@ -955,7 +955,7 @@ RSpec.describe IsoDoc do
       .to be_xml_equivalent_to presxml
     expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::HtmlConvert.new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml)).to be_html5_equivalent_to html
+      .at("//body").to_xhtml)).to be_html5_equivalent_to html
   end
 
   it "processes admonitions" do
@@ -1003,9 +1003,7 @@ RSpec.describe IsoDoc do
         <div>
           <h1 class='ForewordTitle'>Foreword</h1>
           <div id="_" class='IEEEStdsWarning' style='page-break-after: avoid;page-break-inside: avoid;'>
-            <p class='IEEEStdsWarning' style='text-align:center;'>
-              <b>CAUTION</b>
-            </p>
+            <p class='IEEEStdsWarning' style='text-align:center;'><b>CAUTION</b></p>
             <p id="_">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
           </div>
           <div id="_" class='IEEEStdsWarning' style='page-break-after: avoid;page-break-inside: avoid;'>
@@ -1018,11 +1016,11 @@ RSpec.describe IsoDoc do
     expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::HtmlConvert
       .new({})
       .convert("test", presxml, true))
-      .at("//body").to_xml)).to be_html5_equivalent_to html
+      .at("//body").to_xhtml)).to be_html5_equivalent_to html
     expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::WordConvert
       .new({})
       .convert("test", presxml, true))
-                .at("//div[@class = 'WordSection2']").to_xml))
+                .at("//div[@class = 'WordSection2']").to_xhtml))
       .to be_html4_equivalent_to word
   end
 
@@ -1105,20 +1103,20 @@ RSpec.describe IsoDoc do
     OUTPUT
     word = <<~OUTPUT
       <div>
-         <a name='A' id='A'/>
+         <a name='A' id='A'></a>
          <p class='IEEEStdsLevel1Header'>Foreword</p>
          <div class='IEEEStdsParagraph' style='page-break-after: avoid;page-break-inside: avoid;'>
-           <a name='samplecode' id='samplecode'/>
+           <a name='samplecode' id='samplecode'></a>
            <p class='IEEEStdsParagraph'>
              <i>Example</i><i>:</i>
            </p>
            <p class='IEEEStdsParagraph'>Hello</p>
              <p class="IEEEStdsComputerCode" style="page-break-after:avoid;">
-                <a name="X" id="X"/>
+                <a name="X" id="X"></a>
       #{'                   '}
              </p>
              <p class="IEEEStdsComputerCode" style="page-break-after:avoid;">
-                <a name="X" id="X"/>
+                <a name="X" id="X"></a>
       #{'                 '}
              </p>
            <p class='SourceTitle' style='text-align:center;'>Sample</p>
@@ -1134,12 +1132,12 @@ RSpec.describe IsoDoc do
     expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::HtmlConvert
       .new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml)).to be_html5_equivalent_to html
+      .at("//body").to_xhtml)).to be_html5_equivalent_to html
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[a[@id = 'A']]")
-    expect(strip_guid(doc.to_xml
+    expect(strip_guid(doc.to_xhtml
       .gsub("<m:", "<").gsub("</m:", "</")))
       .to be_html4_equivalent_to word
   end
@@ -1291,26 +1289,23 @@ RSpec.describe IsoDoc do
     OUTPUT
     word = <<~OUTPUT
       <div>
-         <a name="A" id="A"/>
+         <a name="A" id="A"></a>
          <p class="IEEEStdsLevel1Header">Foreword</p>
-         <div style="page-break-after: avoid;page-break-inside: avoid;">
-           <a name="_" id="_"/>
+         <div style="page-break-after: avoid;page-break-inside: avoid;"><a name="_" id="_"></a>
            <div class="IEEEStdsEquation">
-             <p class="IEEEStdsEquation">
-               <span class="stem">(#(r = 1 %)#)</span>
-               <span style="mso-tab-count:1">  </span>
-             </p>
+             <p class="IEEEStdsEquation"><span class="stem">(#(r = 1 %)#)</span><span style="mso-tab-count:1">  </span></p>
            </div>
            <p style="page-break-after: avoid;" class="IEEEStdsParagraph">where</p>
            <p class="IEEEStdsParagraph">Introductory paragraph</p>
-           <p class="IEEEStdsEquationVariableList"><span class="stem">(#(r)#)</span><span style="mso-tab-count:1">  </span>is the repeatability limit.</p>
+           <p class="IEEEStdsEquationVariableList">
+            <span class="stem">(#(r)#)</span>
+            <span style="mso-tab-count:1">  </span>is the repeatability limit.</p>
            <div>
-             <a name="_" id="_"/>
+             <a name="_" id="_"></a>
              <p class="IEEEStdsSingleNote"><span class="note_label">NOTE—</span>[durationUnits] is essentially a duration statement without the "P" prefix. "P" is unnecessary because between "G" and "U" duration is always expressed.</p>
            </div>
          </div>
-         <div>
-           <a name="_" id="_"/>
+         <div><a name="_" id="_"></a>
            <div class="IEEEStdsEquation">
              <p class="IEEEStdsEquation"><span class="stem">(#(r = 1 %)#)</span><span style="mso-tab-count:1">  </span>(1)</p>
            </div>
@@ -1324,12 +1319,12 @@ RSpec.describe IsoDoc do
       .to be_xml_equivalent_to presxml
     expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::HtmlConvert.new({})
   .convert("test", pres_output, true))
-  .at("//body").to_xml)).to be_html5_equivalent_to html
+  .at("//body").to_xhtml)).to be_html5_equivalent_to html
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[a[@id = 'A']]")
-    expect(strip_guid(doc.to_xml
+    expect(strip_guid(doc.to_xhtml
       .gsub("<m:", "<").gsub("</m:", "</")))
       .to be_html4_equivalent_to word
   end
@@ -2251,11 +2246,11 @@ RSpec.describe IsoDoc do
          <p class="section-break">
             <br clear="all" class="section"/>
          </p>
-         <div class="WordSectionMiddleTitle"/>
+         <div class="WordSectionMiddleTitle"></div>
          <p class="section-break">
             <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
          </p>
-         <div class="WordSectionMain"/>
+         <div class="WordSectionMain"></div>
       </body>
     OUTPUT
     pres_output = IsoDoc::Ieee::PresentationXMLConvert.new({})
@@ -2266,11 +2261,11 @@ RSpec.describe IsoDoc do
     expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::HtmlConvert
       .new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml)).to be_html5_equivalent_to html
+      .at("//body").to_xhtml)).to be_html5_equivalent_to html
     expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::WordConvert
       .new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml)).to be_html4_equivalent_to doc
+      .at("//body").to_xhtml)).to be_html4_equivalent_to doc
   end
 
   it "processes mixed ordered and unordered lists" do
@@ -2721,11 +2716,11 @@ RSpec.describe IsoDoc do
           <p class="section-break">
              <br clear="all" class="section"/>
           </p>
-          <div class="WordSectionMiddleTitle"/>
+          <div class="WordSectionMiddleTitle"></div>
           <p class="section-break">
              <br clear="all" style="page-break-before:auto;mso-break-type:section-break"/>
           </p>
-          <div class="WordSectionMain"/>
+          <div class="WordSectionMain"></div>
        </body>
     OUTPUT
     pres_output = IsoDoc::Ieee::PresentationXMLConvert.new({})
@@ -2736,10 +2731,10 @@ RSpec.describe IsoDoc do
     expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::HtmlConvert
       .new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml)).to be_html5_equivalent_to html
+      .at("//body").to_xhtml)).to be_html5_equivalent_to html
     expect(strip_guid(Nokogiri::HTML(IsoDoc::Ieee::WordConvert
       .new({})
       .convert("test", pres_output, true))
-      .at("//body").to_xml)).to be_html4_equivalent_to doc
+      .at("//body").to_xhtml)).to be_html4_equivalent_to doc
   end
 end

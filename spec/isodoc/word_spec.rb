@@ -33,7 +33,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[@class = 'WordSectionMiddleTitle']")
-    expect(strip_guid(doc.to_xml))
+    expect(strip_guid(doc.to_xhtml))
       .to be_html4_equivalent_to output
   end
 
@@ -78,7 +78,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[@class = 'WordSectionMiddleTitle']")
-    expect(strip_guid(doc.to_xml))
+    expect(strip_guid(doc.to_xhtml))
       .to be_html4_equivalent_to output
   end
 
@@ -95,11 +95,11 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     INPUT
     output = <<~OUTPUT
       <div class='Section3'>
-        <a name="_" id="_"/>
+        <a name="_" id="_"></a>
         <p class='IEEEStdsLevel1frontmatter'>Introduction</p>
         <p class='IEEEStdsIntroduction'>This introduction is not part of P1000/D0.3.4, Draft Standard for Empty </p>
         <p class='IEEEStdsParagraph'>
-          <a name="_" id="_"/>
+          <a name="_" id="_"></a>
           This is an introduction
         </p>
       </div>
@@ -108,7 +108,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//*[@class = 'IEEEStdsIntroduction']/..")
-    expect(strip_guid(doc.to_xml))
+    expect(strip_guid(doc.to_xhtml))
       .to be_html4_equivalent_to output
   end
 
@@ -128,14 +128,14 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     INPUT
     output = <<~OUTPUT
       <div>
-        <a name='abstract-destination' id='abstract-destination'/>
+        <a name='abstract-destination' id='abstract-destination'></a>
         <div class='IEEEStdsWarning'><span class="IEEEStdsAbstractHeader"><span lang="EN-US" xml:lang="EN-US">Abstract:</span></span> This introduction is not part of P1000/D0.3.4, Draft Standard for Empty </div>
         <p class='IEEEStdsAbstractBody' style="font-family: 'Arial', sans-serif;">Text</p>
         <div class="ul_wrap">
         <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;font-family: 'Arial', sans-serif;" class="IEEEStdsUnorderedListCxSpFirst">List</p>
         </div>
         <p class='IEEEStdsAbstractBody' style="font-family: 'Arial', sans-serif;">
-          <a name="_" id="_"/>
+          <a name="_" id="_"></a>
           This is an introduction
         </p>
       </div>
@@ -144,12 +144,12 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//*[@name = 'abstract-destination']/..")
-    expect(strip_guid(doc.to_xml))
+    expect(strip_guid(doc.to_xhtml))
       .to be_html4_equivalent_to output
 
     output = <<~OUTPUT
       <div class="abstract_div">
-        <a name="_" id="_"/>
+        <a name="_" id="_"></a>
         <p class="Unnumberedheading" style="margin-top:18.0pt;margin-right:7.2pt;margin-bottom:6.0pt;margin-left:0cm;">Introduction</p>
         <div class="IEEEStdsWarning">This introduction is not part of P1000/D0.3.4, Draft Standard for Empty
       </div>
@@ -157,7 +157,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         <div class="ul_wrap">
         <p style="mso-list:l23 level1 lfo1;margin-left:0cm;margin-right:0.25cm;" class="BulletedList">List</p>
         </div>
-        <p class="Abstract" style="margin-left:0cm;margin-right:0.25cm;"><a name="_" id="_"/>This is an introduction</p>
+        <p class="Abstract" style="margin-left:0cm;margin-right:0.25cm;"><a name="_" id="_"></a>This is an introduction</p>
       </div>
     OUTPUT
     IsoDoc::Ieee::WordConvert.new({})
@@ -166,7 +166,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[@class = 'abstract_div']")
-    expect(strip_guid(doc.to_xml))
+    expect(strip_guid(doc.to_xhtml))
       .to be_html4_equivalent_to output
   end
 
@@ -218,7 +218,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         <p class='IEEEStdsCRFootnote'>
           <a class='FootnoteRef' href='#_ftn1' type='footnote' style='mso-footnote-id:ftn1' name="_" title='' id="_">
             <span class='MsoFootnoteReference'>
-              <span style='mso-special-character:footnote'/>
+              <span style='mso-special-character:footnote'></span>
             </span>
           </a>
         </p>
@@ -227,7 +227,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
           <span style='mso-bookmark:_Ref' class="MsoFootnoteReference">
             <a class='FootnoteRef' href='#_ftn2' type='footnote' style='mso-footnote-id:ftn2' name="_" title='' id="_">
               <span class='MsoFootnoteReference'>
-                <span style='mso-special-character:footnote'/>
+                <span style='mso-special-character:footnote'></span>
               </span>
             </a>
           </span>
@@ -237,7 +237,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
           <span style='mso-bookmark:_Ref' class="MsoFootnoteReference">
             <a class='FootnoteRef' href='#_ftn3' type='footnote' style='mso-footnote-id:ftn3' name="_" title='' id="_">
               <span class='MsoFootnoteReference'>
-                <span style='mso-special-character:footnote'/>
+                <span style='mso-special-character:footnote'></span>
               </span>
             </a>
           </span>
@@ -247,23 +247,23 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     footnotes = <<~OUTPUT
         <div style="mso-element:footnote-list">
           <div style="mso-element:footnote" id="ftn1">
-            <p style="text-align:left;" align="left" class="IEEEStdsCRTextReg"><a name="_" id="_"/><a style="mso-footnote-id:ftn1" href="#_ftn1" name="_" title="" id="_"/><a style="mso-footnote-id:ftn0" href="#_ftnref0" name="_" title="" id="_"/>
+            <p style="text-align:left;" align="left" class="IEEEStdsCRTextReg"><a name="_" id="_"></a><a style="mso-footnote-id:ftn1" href="#_ftn1" name="_" title="" id="_"></a><a style="mso-footnote-id:ftn0" href="#_ftnref0" name="_" title="" id="_"></a>
         The Institute of Electrical and Electronics Engineers, Inc.<br/> 3 Park Avenue, New York, NY 10016-5997, USA</p>
             <p class="IEEEStdsCRTextReg"> </p>
-            <p class="IEEEStdsCRTextReg"><a name="_" id="_"/>Copyright © 2000 by The Institute of Electrical and Electronics Engineers, Inc.</p>
+            <p class="IEEEStdsCRTextReg"><a name="_" id="_"></a>Copyright © 2000 by The Institute of Electrical and Electronics Engineers, Inc.</p>
             <p class="IEEEStdsCRTextReg"> </p>
-            <p class="IEEEStdsCRTextReg"><a name="_" id="_"/>IEEE is a registered trademark in the U.S. Patent &amp; Trademark Office, owned by The Institute of Electrical and Electronics Engineers, Incorporated.</p>
+            <p class="IEEEStdsCRTextReg"><a name="_" id="_"></a>IEEE is a registered trademark in the U.S. Patent &amp; Trademark Office, owned by The Institute of Electrical and Electronics Engineers, Incorporated.</p>
             <p class="IEEEStdsCRTextReg"> </p>
             <p class="IEEEStdsCRTextReg">PDF:<span style="mso-tab-count:1"> </span>ISBN 978-0-XXXX-XXXX-X<span style="mso-tab-count:1"> </span>STDXXXXX</p>
             <p class="IEEEStdsCRTextReg">Print:<span style="mso-tab-count:1"> </span>ISBN 978-0-XXXX-XXXX-X<span style="mso-tab-count:1"> </span>STDPDXXXXX</p>
             <p class="IEEEStdsCRTextItal"> </p>
-            <p class="IEEEStdsCRTextItal"><a name="_" id="_"/>IEEE prohibits discrimination, harassment, and bullying.</p>
+            <p class="IEEEStdsCRTextItal"><a name="_" id="_"></a>IEEE prohibits discrimination, harassment, and bullying.</p>
           </div>
           <div style="mso-element:footnote" id="ftn2">
-            <p class="IEEEStdsFootnote"><a name="_" id="_"/><a style="mso-footnote-id:ftn2" href="#_ftn2" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a>Formerly denoted as 15 % (m/m).</p>
+            <p class="IEEEStdsFootnote"><a name="_" id="_"></a><a style="mso-footnote-id:ftn2" href="#_ftn2" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"></span></span></a>Formerly denoted as 15 % (m/m).</p>
           </div>
           <div style="mso-element:footnote" id="ftn3">
-            <p class="IEEEStdsFootnote"><a name="_" id="_"/><a style="mso-footnote-id:ftn3" href="#_ftn3" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a>Hello! denoted as 15 % (m/m).</p>
+            <p class="IEEEStdsFootnote"><a name="_" id="_"></a><a style="mso-footnote-id:ftn3" href="#_ftn3" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"></span></span></a>Hello! denoted as 15 % (m/m).</p>
           </div>
         </div>
     OUTPUT
@@ -273,11 +273,11 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[@style = 'mso-element:footnote-list']")
-    expect(strip_guid(doc.to_xml))
+    expect(strip_guid(doc.to_xhtml))
       .to be_html4_equivalent_to footnotes
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .xpath("//p[.//a[@class = 'FootnoteRef']]")
-    expect(strip_guid("<div>#{doc.to_xml}</div>"))
+    expect(strip_guid("<div>#{doc.to_xhtml}</div>"))
       .to be_html4_equivalent_to references
   end
 
@@ -601,74 +601,74 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     OUTPUT
     word = <<~OUTPUT
         <div>
-          <a name="A" id="A"/>
+          <a name="A" id="A"></a>
           <p class="IEEEStdsLevel1Header">1.</p>
           <p class="IEEEStdsParagraph">
       
       
         </p>
           <div class="ol_wrap">
-            <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpFirst"><a name="_" id="_"/>A</p>
-            <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpMiddle"><a name="_" id="_"/>B</p>
+            <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpFirst"><a name="_" id="_"></a>A</p>
+            <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpMiddle"><a name="_" id="_"></a>B</p>
             <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpMiddle">
-              <a name="_" id="_"/>
+              <a name="_" id="_"></a>
             </p>
             <div class="ol_wrap">
-              <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpFirst"><a name="_" id="_"/>C</p>
-              <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpMiddle"><a name="_" id="_"/>D</p>
+              <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpFirst"><a name="_" id="_"></a>C</p>
+              <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpMiddle"><a name="_" id="_"></a>D</p>
               <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpMiddle">
-                <a name="_" id="_"/>
+                <a name="_" id="_"></a>
               </p>
               <div class="ol_wrap">
-                <p style="mso-list:l16 level3 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpFirst"><a name="_" id="_"/>E</p>
-                <p style="mso-list:l16 level3 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpMiddle"><a name="_" id="_"/>F</p>
+                <p style="mso-list:l16 level3 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpFirst"><a name="_" id="_"></a>E</p>
+                <p style="mso-list:l16 level3 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpMiddle"><a name="_" id="_"></a>F</p>
                 <p style="mso-list:l16 level3 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpMiddle">
-                  <a name="_" id="_"/>
+                  <a name="_" id="_"></a>
                 </p>
                 <div class="ol_wrap">
-                  <p style="mso-list:l16 level4 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpFirst"><a name="_" id="_"/>G</p>
-                  <p style="mso-list:l16 level4 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpMiddle"><a name="_" id="_"/>H</p>
+                  <p style="mso-list:l16 level4 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpFirst"><a name="_" id="_"></a>G</p>
+                  <p style="mso-list:l16 level4 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpMiddle"><a name="_" id="_"></a>H</p>
                   <p style="mso-list:l16 level4 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpMiddle">
-                    <a name="_" id="_"/>
+                    <a name="_" id="_"></a>
                   </p>
                   <div class="ol_wrap">
-                    <p style="mso-list:l16 level5 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpFirst"><a name="_" id="_"/>I</p>
-                    <p style="mso-list:l16 level5 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpMiddle"><a name="_" id="_"/>J</p>
+                    <p style="mso-list:l16 level5 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpFirst"><a name="_" id="_"></a>I</p>
+                    <p style="mso-list:l16 level5 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpMiddle"><a name="_" id="_"></a>J</p>
                     <p style="mso-list:l16 level5 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpMiddle">
-                      <a name="_" id="_"/>
+                      <a name="_" id="_"></a>
                     </p>
                     <div class="ol_wrap">
-                      <p style="mso-list:l16 level6 lfo2-6;text-indent:-0.79cm; margin-left:4.960000000000001cm;" class="IEEEStdsNumberedListLevel6CxSpFirst"><a name="_" id="_"/>K</p>
-                      <p style="mso-list:l16 level6 lfo2-6;text-indent:-0.79cm; margin-left:4.960000000000001cm;" class="IEEEStdsNumberedListLevel6CxSpMiddle"><a name="_" id="_"/>L</p>
-                      <p style="mso-list:l16 level6 lfo2-6;text-indent:-0.79cm; margin-left:4.960000000000001cm;" class="IEEEStdsNumberedListLevel6CxSpLast"><a name="_" id="_"/>M</p>
+                      <p style="mso-list:l16 level6 lfo2-6;text-indent:-0.79cm; margin-left:4.960000000000001cm;" class="IEEEStdsNumberedListLevel6CxSpFirst"><a name="_" id="_"></a>K</p>
+                      <p style="mso-list:l16 level6 lfo2-6;text-indent:-0.79cm; margin-left:4.960000000000001cm;" class="IEEEStdsNumberedListLevel6CxSpMiddle"><a name="_" id="_"></a>L</p>
+                      <p style="mso-list:l16 level6 lfo2-6;text-indent:-0.79cm; margin-left:4.960000000000001cm;" class="IEEEStdsNumberedListLevel6CxSpLast"><a name="_" id="_"></a>M</p>
                     </div>
-                    <p style="mso-list:l16 level5 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpLast"><a name="_" id="_"/>N</p>
+                    <p style="mso-list:l16 level5 lfo2-5;text-indent:-0.79cm; margin-left:4.2cm;" class="IEEEStdsNumberedListLevel5CxSpLast"><a name="_" id="_"></a>N</p>
                   </div>
-                  <p style="mso-list:l16 level4 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpLast"><a name="_" id="_"/>O</p>
+                  <p style="mso-list:l16 level4 lfo2-4;text-indent:-0.79cm; margin-left:3.44cm;" class="IEEEStdsNumberedListLevel4CxSpLast"><a name="_" id="_"></a>O</p>
                 </div>
-                <p style="mso-list:l16 level3 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpLast"><a name="_" id="_"/>P</p>
+                <p style="mso-list:l16 level3 lfo2-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsNumberedListLevel3CxSpLast"><a name="_" id="_"></a>P</p>
               </div>
-              <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpLast"><a name="_" id="_"/>Q</p>
+              <p style="mso-list:l16 level2 lfo2-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsNumberedListLevel2CxSpLast"><a name="_" id="_"></a>Q</p>
             </div>
-            <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpLast"><a name="_" id="_"/>R</p>
+            <p style="mso-list:l16 level1 lfo2-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsNumberedListLevel1CxSpLast"><a name="_" id="_"></a>R</p>
           </div>
           <div class="ul_wrap">
-            <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpFirst"><a name="_" id="_"/>A</p>
-            <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpMiddle"><a name="_" id="_"/>B</p>
-            <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpMiddle"><a name="_" id="_"/>B1</p>
+            <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpFirst"><a name="_" id="_"></a>A</p>
+            <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpMiddle"><a name="_" id="_"></a>B</p>
+            <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpMiddle"><a name="_" id="_"></a>B1</p>
             <div class="ul_wrap">
-              <p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2"><a name="_" id="_"/>C</p>
-              <p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2"><a name="_" id="_"/>D</p>
+              <p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2"><a name="_" id="_"></a>C</p>
+              <p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2"><a name="_" id="_"></a>D</p>
               <p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2">
-                <a name="_" id="_"/>
+                <a name="_" id="_"></a>
               </p>
               <div class="ul_wrap">
-                <p style="mso-list:l21 level2 lfo1-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsUnorderedListLevel2"><a name="_" id="_"/>E</p>
-                <p style="mso-list:l21 level2 lfo1-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsUnorderedListLevel2"><a name="_" id="_"/>F</p>
+                <p style="mso-list:l21 level2 lfo1-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsUnorderedListLevel2"><a name="_" id="_"></a>E</p>
+                <p style="mso-list:l21 level2 lfo1-3;text-indent:-0.79cm; margin-left:2.68cm;" class="IEEEStdsUnorderedListLevel2"><a name="_" id="_"></a>F</p>
               </div>
-              <p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2"><a name="_" id="_"/>Q</p>
+              <p style="mso-list:l21 level1 lfo1-2;text-indent:-0.79cm; margin-left:1.92cm;" class="IEEEStdsUnorderedListLevel2"><a name="_" id="_"></a>Q</p>
             </div>
-            <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpLast"><a name="_" id="_"/>R</p>
+            <p style="mso-list:l11 level1 lfo1-1;text-indent:-0.79cm; margin-left:1.1600000000000001cm;" class="IEEEStdsUnorderedListCxSpLast"><a name="_" id="_"></a>R</p>
           </div>
         </div>
     OUTPUT
@@ -681,79 +681,79 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[a[@id = 'A']]")
-    expect(strip_guid(doc.to_xml))
+    expect(strip_guid(doc.to_xhtml))
       .to be_html4_equivalent_to word
 
     word = <<~OUTPUT
       <div>
-          <a name="A" id="A"/>
+          <a name="A" id="A"></a>
           <p class="IEEESectionHeader">1.</p>
           <p class="MsoBodyText">
       
       
         </p>
           <div class="ol_wrap">
-            <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpFirst"><a name="_" id="_"/>A</p>
-            <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpMiddle"><a name="_" id="_"/>B</p>
+            <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpFirst"><a name="_" id="_"></a>A</p>
+            <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpMiddle"><a name="_" id="_"></a>B</p>
             <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpMiddle">
-              <a name="_" id="_"/>
+              <a name="_" id="_"></a>
             </p>
             <div class="ol_wrap">
-              <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpFirst"><a name="_" id="_"/>C</p>
-              <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpMiddle"><a name="_" id="_"/>D</p>
+              <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpFirst"><a name="_" id="_"></a>C</p>
+              <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpMiddle"><a name="_" id="_"></a>D</p>
               <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpMiddle">
-                <a name="_" id="_"/>
+                <a name="_" id="_"></a>
               </p>
               <div class="ol_wrap">
-                <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpFirst"><a name="_" id="_"/>E</p>
-                <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpMiddle"><a name="_" id="_"/>F</p>
+                <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpFirst"><a name="_" id="_"></a>E</p>
+                <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpMiddle"><a name="_" id="_"></a>F</p>
                 <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpMiddle">
-                  <a name="_" id="_"/>
+                  <a name="_" id="_"></a>
                 </p>
                 <div class="ol_wrap">
-                  <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpFirst"><a name="_" id="_"/>G</p>
-                  <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpMiddle"><a name="_" id="_"/>H</p>
+                  <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpFirst"><a name="_" id="_"></a>G</p>
+                  <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpMiddle"><a name="_" id="_"></a>H</p>
                   <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpMiddle">
-                    <a name="_" id="_"/>
+                    <a name="_" id="_"></a>
                   </p>
                   <div class="ol_wrap">
-                    <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpFirst"><a name="_" id="_"/>I</p>
-                    <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpMiddle"><a name="_" id="_"/>J</p>
+                    <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpFirst"><a name="_" id="_"></a>I</p>
+                    <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpMiddle"><a name="_" id="_"></a>J</p>
                     <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpMiddle">
-                      <a name="_" id="_"/>
+                      <a name="_" id="_"></a>
                     </p>
                     <div class="ol_wrap">
-                      <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpFirst"><a name="_" id="_"/>K</p>
-                      <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpMiddle"><a name="_" id="_"/>L</p>
-                      <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpLast"><a name="_" id="_"/>M</p>
+                      <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpFirst"><a name="_" id="_"></a>K</p>
+                      <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpMiddle"><a name="_" id="_"></a>L</p>
+                      <p style="mso-list:l16 level6 lfo2;" class="MsoListParagraphCxSpLast"><a name="_" id="_"></a>M</p>
                     </div>
-                    <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpLast"><a name="_" id="_"/>N</p>
+                    <p style="mso-list:l16 level5 lfo2;" class="MsoListParagraphCxSpLast"><a name="_" id="_"></a>N</p>
                   </div>
-                  <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpLast"><a name="_" id="_"/>O</p>
+                  <p style="mso-list:l16 level4 lfo2;" class="MsoListParagraphCxSpLast"><a name="_" id="_"></a>O</p>
                 </div>
-                <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpLast"><a name="_" id="_"/>P</p>
+                <p style="mso-list:l16 level3 lfo2;" class="MsoListParagraphCxSpLast"><a name="_" id="_"></a>P</p>
               </div>
-              <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpLast"><a name="_" id="_"/>Q</p>
+              <p style="mso-list:l16 level2 lfo2;" class="MsoListParagraphCxSpLast"><a name="_" id="_"></a>Q</p>
             </div>
-            <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpLast"><a name="_" id="_"/>R</p>
+            <p style="mso-list:l16 level1 lfo2;" class="MsoListParagraphCxSpLast"><a name="_" id="_"></a>R</p>
           </div>
           <div class="ul_wrap">
-            <p style="mso-list:l23 level1 lfo1;" class="BulletedList"><a name="_" id="_"/>A</p>
-            <p style="mso-list:l23 level1 lfo1;" class="BulletedList"><a name="_" id="_"/>B</p>
-            <p style="mso-list:l23 level1 lfo1;" class="BulletedList"><a name="_" id="_"/>B1</p>
+            <p style="mso-list:l23 level1 lfo1;" class="BulletedList"><a name="_" id="_"></a>A</p>
+            <p style="mso-list:l23 level1 lfo1;" class="BulletedList"><a name="_" id="_"></a>B</p>
+            <p style="mso-list:l23 level1 lfo1;" class="BulletedList"><a name="_" id="_"></a>B1</p>
             <div class="ul_wrap">
-              <p style="mso-list:l23 level2 lfo1;" class="BulletedList"><a name="_" id="_"/>C</p>
-              <p style="mso-list:l23 level2 lfo1;" class="BulletedList"><a name="_" id="_"/>D</p>
+              <p style="mso-list:l23 level2 lfo1;" class="BulletedList"><a name="_" id="_"></a>C</p>
+              <p style="mso-list:l23 level2 lfo1;" class="BulletedList"><a name="_" id="_"></a>D</p>
               <p style="mso-list:l23 level2 lfo1;" class="BulletedList">
-                <a name="_" id="_"/>
+                <a name="_" id="_"></a>
               </p>
               <div class="ul_wrap">
-                <p style="mso-list:l23 level3 lfo1;" class="BulletedList"><a name="_" id="_"/>E</p>
-                <p style="mso-list:l23 level3 lfo1;" class="BulletedList"><a name="_" id="_"/>F</p>
+                <p style="mso-list:l23 level3 lfo1;" class="BulletedList"><a name="_" id="_"></a>E</p>
+                <p style="mso-list:l23 level3 lfo1;" class="BulletedList"><a name="_" id="_"></a>F</p>
               </div>
-              <p style="mso-list:l23 level2 lfo1;" class="BulletedList"><a name="_" id="_"/>Q</p>
+              <p style="mso-list:l23 level2 lfo1;" class="BulletedList"><a name="_" id="_"></a>Q</p>
             </div>
-            <p style="mso-list:l23 level1 lfo1;" class="BulletedList"><a name="_" id="_"/>R</p>
+            <p style="mso-list:l23 level1 lfo1;" class="BulletedList"><a name="_" id="_"></a>R</p>
           </div>
         </div>
     OUTPUT
@@ -762,7 +762,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[a[@id = 'A']]")
-    expect(strip_guid(doc.to_xml))
+    expect(strip_guid(doc.to_xhtml))
       .to be_html4_equivalent_to word
   end
 
@@ -790,40 +790,40 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     INPUT
     word = <<~OUTPUT
         <div>
-          <a name="A" id="A"/>
+          <a name="A" id="A"></a>
           <p class="IEEEStdsLevel1Header">1.</p>
           <div>
-            <a name="B" id="B"/>
+            <a name="B" id="B"></a>
             <p class="IEEEStdsLevel2Header">1.1.</p>
             <div>
-              <a name="n1" id="n1"/>
+              <a name="n1" id="n1"></a>
               <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo1;">First</p>
             </div>
             <p class="IEEEStdsParagraph">Blah blah</p>
             <div>
-              <a name="n2" id="n2"/>
+              <a name="n2" id="n2"></a>
               <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo1;">Second</p>
               <p class="IEEEStdsSingleNote" style="mso-list:l17 level1 lfo1;">Multi-para note</p>
             </div>
           </div>
           <div>
-            <a name="C" id="C"/>
+            <a name="C" id="C"></a>
             <p class="IEEEStdsLevel2Header">1.2.</p>
             <div>
-              <a name="n3" id="n3"/>
+              <a name="n3" id="n3"></a>
               <p class="IEEEStdsSingleNote"><span class="note_label">NOTE—</span>Third</p>
               <div class="Quote">Quotation</div>
             </div>
           </div>
           <div>
-            <a name="D" id="D"/>
+            <a name="D" id="D"></a>
             <p class="IEEEStdsLevel2Header">1.3.</p>
             <div>
-              <a name="n4" id="n4"/>
+              <a name="n4" id="n4"></a>
               <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo2;">Fourth</p>
             </div>
             <div>
-              <a name="n5" id="n5"/>
+              <a name="n5" id="n5"></a>
               <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo2;">Fifth</p>
             </div>
           </div>
@@ -835,7 +835,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[a[@id = 'A']]")
-    expect(strip_guid(doc.to_xml))
+    expect(strip_guid(doc.to_xhtml))
       .to be_html4_equivalent_to word
   end
 
@@ -864,44 +864,44 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
             </iso-standard>
     INPUT
     word = <<~OUTPUT
-       <div>
-         <a name="A" id="A"/>
-         <p class="IEEEStdsLevel1Header">1.</p>
-         <p class="TermNum">
-           <a name="B" id="B"/>
-         </p>
-         <p class="IEEEStdsParagraph"><b>Alpha</b>: Definition </p>
-         <div>
-           <a name="n1" id="n1"/>
-           <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo1;">First</p>
-         </div>
-         <div>
-           <a name="n2" id="n2"/>
-           <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo1;">Second</p>
-           <p class="IEEEStdsSingleNote" style="mso-list:l17 level1 lfo1;">Multi-para note</p>
-         </div>
-         <p class="TermNum">
-           <a name="C" id="C"/>
-         </p>
-         <p class="IEEEStdsParagraph"><b>Beta</b>: Definition2 </p>
-         <div>
-           <a name="n3" id="n3"/>
-           <p class="IEEEStdsSingleNote"><span class="note_label">NOTE—</span>Third</p>
-           <div class="Quote">Quotation</div>
-         </div>
-         <p class="TermNum">
-           <a name="D" id="D"/>
-         </p>
-         <p class="IEEEStdsParagraph"><b>Gamma</b>: Definition3 </p>
-         <div>
-           <a name="n4" id="n4"/>
-           <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo2;">Fourth</p>
-         </div>
-         <div>
-           <a name="n5" id="n5"/>
-           <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo2;">Fifth</p>
-         </div>
-       </div>
+           <div>
+             <a name="A" id="A"></a>
+             <p class="IEEEStdsLevel1Header">1.</p>
+             <p class="TermNum">
+               <a name="B" id="B"></a>
+             </p>
+             <p class="IEEEStdsParagraph"><b>Alpha</b>: Definition </p>
+             <div>
+               <a name="n1" id="n1"></a>
+               <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo1;">First</p>
+             </div>
+             <div>
+               <a name="n2" id="n2"></a>
+               <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo1;">Second</p>
+               <p class="IEEEStdsSingleNote" style="mso-list:l17 level1 lfo1;">Multi-para note</p>
+             </div>
+             <p class="TermNum">
+               <a name="C" id="C"></a>
+             </p>
+             <p class="IEEEStdsParagraph"><b>Beta</b>: Definition2 </p>
+             <div>
+               <a name="n3" id="n3"></a>
+               <p class="IEEEStdsSingleNote"><span class="note_label">NOTE&#x2014;</span>Third</p>
+               <div class="Quote">Quotation</div>
+             </div>
+             <p class="TermNum">
+               <a name="D" id="D"></a>
+             </p>
+             <p class="IEEEStdsParagraph"><b>Gamma</b>: Definition3 </p>
+             <div>
+               <a name="n4" id="n4"></a>
+               <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo2;">Fourth</p>
+             </div>
+             <div>
+               <a name="n5" id="n5"></a>
+               <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo2;">Fifth</p>
+             </div>
+           </div>
     OUTPUT
     pres_output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
@@ -909,8 +909,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[a[@id = 'A']]")
-    expect(strip_guid(doc
-      .to_xml(save_with: Nokogiri::XML::Node::SaveOptions::AS_XML, indent: 0)))
+    expect(strip_guid(doc.to_xhtml))
       .to be_html4_equivalent_to word
   end
 
@@ -930,23 +929,23 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     INPUT
     output = <<~OUTPUT
           <div>
-        <a name='a' id='a'/>
-        <p class='IEEEStdsLevel1Header'/>
+        <a name='a' id='a'></a>
+        <p class='IEEEStdsLevel1Header'></p>
         <div class='IEEEStdsWarning' style='page-break-after: avoid;page-break-inside: avoid;'>
-          <a name="_" id="_"/>
+          <a name="_" id="_"></a>
           <p class='IEEEStdsWarning' style='text-align:center;'>
             <b>CAUTION</b>
           </p>
           <p class='IEEEStdsParagraph'>
-            <a name="_" id="_"/>
+            <a name="_" id="_"></a>
             Only use paddy or parboiled rice for the determination of husked rice
             yield.
           </p>
         </div>
         <div class='IEEEStdsWarning' style='page-break-after: avoid;page-break-inside: avoid;'>
-          <a name="_" id="_"/>
+          <a name="_" id="_"></a>
           <p class='IEEEStdsParagraph'>
-            <a name="_" id="_"/>
+            <a name="_" id="_"></a>
             Only use paddy or parboiled rice for the determination of husked rice
             yield.
           </p>
@@ -957,7 +956,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[a[@id = 'a']]")
-    expect(strip_guid(doc.to_xml))
+    expect(strip_guid(doc.to_xhtml))
       .to be_html4_equivalent_to output
   end
 
@@ -974,15 +973,15 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     INPUT
     output = <<~OUTPUT
           <div>
-        <a name='a' id='a'/>
-        <p class='IEEEStdsLevel1Header'/>
+        <a name='a' id='a'></a>
+        <p class='IEEEStdsLevel1Header'></p>
         <div class='zzHelp' style='page-break-after: avoid;page-break-inside: avoid;'>
-          <a name="_" id="_"/>
+          <a name="_" id="_"></a>
           <p class='zzHelp' style='text-align:center;'>
             <b>EDITORIAL</b>
           </p>
           <p class='zzHelp'>
-            <a name="_" id="_"/>
+            <a name="_" id="_"></a>
             Only use paddy or parboiled rice for the determination of husked rice
             yield.
           </p>
@@ -993,7 +992,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[a[@id = 'a']]")
-    expect(strip_guid(doc.to_xml))
+    expect(strip_guid(doc.to_xhtml))
       .to be_html4_equivalent_to output
   end
 
@@ -1016,18 +1015,18 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     INPUT
     output = <<~OUTPUT
        <div>
-          <a name="a" id="a"/>
-          <p class="IEEEStdsLevel1Header"/>
+          <a name="a" id="a"></a>
+          <p class="IEEEStdsLevel1Header"></p>
           <p class="IEEEStdsComputerCode" style="page-break-after:avoid;">
-             <a name="samplecode" id="samplecode"/>
+             <a name="samplecode" id="samplecode"></a>
                     
           </p>
           <p class="IEEEStdsComputerCode" style="page-break-after:avoid;">
-             <a name="samplecode" id="samplecode"/>
+             <a name="samplecode" id="samplecode"></a>
                       puts x
           </p>
           <p class="IEEEStdsComputerCode" style="page-break-after:avoid;">
-             <a name="samplecode" id="samplecode"/>
+             <a name="samplecode" id="samplecode"></a>
                   
           </p>
           <p class="SourceTitle" style="text-align:center;">
@@ -1038,7 +1037,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
              <span class="n">Que?</span>
           </p>
           <p class="IEEEStdsComputerCode" style="page-break-after:avoid;">
-             <a name="samplecode" id="samplecode"/>
+             <a name="samplecode" id="samplecode"></a>
              <span class="n">  tal</span>
           </p>
        </div>
@@ -1047,7 +1046,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[a[@id = 'a']]")
-    expect(strip_guid(doc.to_xml))
+    expect(strip_guid(doc.to_xhtml))
       .to be_html4_equivalent_to output
   end
 
@@ -1075,10 +1074,10 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     INPUT
     output = <<~OUTPUT
       <div>
-         <a name="a" id="a"/>
+         <a name="a" id="a"></a>
          <p class="IEEEStdsLevel1Header">1.</p>
          <div class="IEEEStdsImage" style="page-break-after: avoid;page-break-inside: avoid;">
-            <a name="figureA-1" id="figureA-1"/>
+            <a name="figureA-1" id="figureA-1"></a>
             <p class="IEEEStdsImage" style="page-break-after:avoid;">
                <img height="20" alt="alttext" title="titletxt" width="30"/>
             </p>
@@ -1089,7 +1088,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
                   <a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_">
                      <span class="MsoFootnoteReference">
-                        <span style="mso-special-character:footnote"/>
+                        <span style="mso-special-character:footnote"></span>
                      </span>
                   </a>
                </span>
@@ -1098,29 +1097,18 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
       </div>
     OUTPUT
     output2 = <<~OUTPUT
-      <div>
-          <a name="A1" id="A1"/>
-          <p style="display:none;" class="variant-title-toc">Annex A</p>
-          <h1 style="mso-list:l13 level1 lfo33;">Annex</h1>
-          <div class="IEEEStdsImage" style="page-break-after: avoid;page-break-inside: avoid;">
-             <a name="figureA-2" id="figureA-2"/>
-             <p class="IEEEStdsImage" style="page-break-after:avoid;">
-                <img height="20" alt="alttext" title="titletxt" width="30"/>
-             </p>
-             <p class="FigureCaption" style="text-align:center;">
-                Figure A.1—Split-it-right
-                <i>sample</i>
-                divider
-                <span class="MsoFootnoteReference">
-                   <span style="mso-element:field-begin"/>
-                   NOTEREF _Ref \\f \\h
-                   <span style="mso-element:field-separator"/>
-                   1
-                   <span style="mso-element:field-end"/>
-                </span>
-             </p>
-          </div>
-       </div>
+           <div>
+             <a name="A1" id="A1"></a>
+             <p style="display:none;" class="variant-title-toc">Annex A</p>
+             <h1 style="mso-list:l13 level1 lfo33;">Annex</h1>
+             <div class="IEEEStdsImage" style="page-break-after: avoid;page-break-inside: avoid;">
+               <a name="figureA-2" id="figureA-2"></a>
+               <p class="IEEEStdsImage" style="page-break-after:avoid;">
+                 <img height="20" alt="alttext" title="titletxt" width="30" />
+               </p>
+               <p class="FigureCaption" style="text-align:center;">Figure A.1&#x2014;Split-it-right <i>sample</i> divider<span class="MsoFootnoteReference"><span style="mso-element:field-begin"></span> NOTEREF _Ref \\f \\h<span style="mso-element:field-separator"></span>1<span style="mso-element:field-end"></span></span></p>
+             </div>
+           </div>
     OUTPUT
     pres_output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
@@ -1128,18 +1116,18 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
     expect(strip_guid(doc
-      .at("//div[a[@id = 'a']]").to_xml))
+      .at("//div[a[@id = 'a']]").to_xhtml))
       .to be_html4_equivalent_to output
     expect(strip_guid(doc
-      .at("//div[a[@id = 'A1']]").to_xml))
+      .at("//div[a[@id = 'A1']]").to_xhtml))
       .to be_html4_equivalent_to output2
 
     output = <<~OUTPUT
       <div>
-         <a name="a" id="a"/>
+         <a name="a" id="a"></a>
          <p class="IEEESectionHeader">1.</p>
          <div class="MsoBodyText" style="page-break-after: avoid;page-break-inside: avoid;;text-align:center;">
-            <a name="figureA-1" id="figureA-1"/>
+            <a name="figureA-1" id="figureA-1"></a>
             <p class="FigureHeadings" style="text-align:center;">
                —Split-it-right
                <i>sample</i>
@@ -1147,37 +1135,25 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
                   <a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_">
                      <span class="MsoFootnoteReference">
-                        <span style="mso-special-character:footnote"/>
+                        <span style="mso-special-character:footnote"></span>
                      </span>
                   </a>
                </span>
             </p>
-            <img height="20" alt="alttext" title="titletxt" width="30"/>
+            <p class="MsoBodyText" style="text-align:center;"><img height="20" alt="alttext" title="titletxt" width="30"/></p>
          </div>
       </div>
     OUTPUT
     output2 = <<~OUTPUT
-      <div>
-          <a name="A1" id="A1"/>
-          <p style="display:none;" class="variant-title-toc">Annex A</p>
-          <h1 style="margin-left:0cm;">Annex</h1>
-          <br style="mso-ignore:vglayout" clear="ALL"/>
-          <div class="MsoBodyText" style="page-break-after: avoid;page-break-inside: avoid;;text-align:center;">
-             <a name="figureA-2" id="figureA-2"/>
-             <p class="FigureCaption" style="text-align:center;">
-                Figure A.1—Split-it-right
-                <i>sample</i>
-                divider
-                <span class="MsoFootnoteReference">
-                   <span style="mso-element:field-begin"/>
-                   NOTEREF _Ref \\f \\h
-                   <span style="mso-element:field-separator"/>
-                   1
-                   <span style="mso-element:field-end"/>
-                </span>
-             </p>
-             <img height="20" alt="alttext" title="titletxt" width="30"/>
-          </div>
+       <div>
+         <a name="A1" id="A1"></a>
+         <p style="display:none;" class="variant-title-toc">Annex A</p>
+         <h1 style="margin-left:0cm;">Annex</h1>
+         <br style="mso-ignore:vglayout" clear="ALL"/>
+         <div class="MsoBodyText" style="page-break-after: avoid;page-break-inside: avoid;;text-align:center;"><a name="figureA-2" id="figureA-2"></a>
+         <p class="FigureCaption" style="text-align:center;">Figure A.1—Split-it-right <i>sample</i> divider<span class="MsoFootnoteReference"><span style="mso-element:field-begin"></span> NOTEREF _Ref \\f \\h<span style="mso-element:field-separator"></span>1<span style="mso-element:field-end"></span></span></p>
+         <p class="MsoBodyText" style="text-align:center;"><img height="20" alt="alttext" title="titletxt" width="30"/></p>
+         </div>
        </div>
     OUTPUT
     pres_output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
@@ -1189,11 +1165,11 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     doc = Nokogiri::HTML(word2xml("test.doc"))
     doc.xpath("//wrapblock").each(&:remove)
     expect(strip_guid(doc
-      .at("//div[a[@id = 'a']]").to_xml))
+      .at("//div[a[@id = 'a']]").to_xhtml))
       .to be_html4_equivalent_to output
     expect(strip_guid(doc
-      .at("//div[a[@id = 'A1']]").to_xml))
-      .to be_xml_equivalent_to output2
+      .at("//div[a[@id = 'A1']]").to_xhtml))
+      .to be_html4_equivalent_to output2
   end
 
   it "process tables" do
@@ -1222,12 +1198,12 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     INPUT
     output = <<~OUTPUT
         <div>
-          <a name="a" id="a"/>
+          <a name="a" id="a"></a>
           <p class="IEEEStdsLevel1Header">1.</p>
-          <p class="IEEEStdsRegularTableCaption" style="text-align:center;">—Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref" class="MsoFootnoteReference"><a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"/></span></a></span></p>
+          <p class="IEEEStdsRegularTableCaption" style="text-align:center;">—Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref" class="MsoFootnoteReference"><a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"></span></span></a></span></p>
           <div align="center" class="table_container">
             <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;page-break-after: avoid;page-break-inside: avoid;">
-              <a name="figureA-1" id="figureA-1"/>
+              <a name="figureA-1" id="figureA-1"></a>
               <thead>
                 <tr>
                   <th style="font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
@@ -1245,9 +1221,9 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
               <tfoot>
                 <tr>
                   <td colspan="1" style="border-top:0pt;mso-border-top-alt:0pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;">
-                    <p class="IEEEStdsTableData-Left"/>
+                    <p class="IEEEStdsTableData-Left"></p>
                     <div>
-                      <a name="A" id="A"/>
+                      <a name="A" id="A"></a>
                       <p class="IEEEStdsSingleNote"><span class="note_label">Note</span>This is a note</p>
                     </div>
                   </td>
@@ -1258,49 +1234,42 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         </div>
     OUTPUT
     output2 = <<~OUTPUT
-      <div>
-         <a name="A1" id="A1"/>
-         <p style="display:none;" class="variant-title-toc">Annex A</p>
-         <h1 style="mso-list:l13 level1 lfo33;">Annex</h1>
-         <p class="TableCaption" style="text-align:center;">
-            Table A.1—Split-it-right
-            <i>sample</i>
-            divider
-            <span class="MsoFootnoteReference">
-               <span style="mso-element:field-begin"/>
-               NOTEREF _Ref \\f \\h
-               <span style="mso-element:field-separator"/>
-               1
-               <span style="mso-element:field-end"/>
-            </span>
-         </p>
-         <div align="center" class="table_container">
+        <div>
+          <a name="A1" id="A1"></a>
+          <p style="display:none;" class="variant-title-toc">Annex A</p>
+          <h1 style="mso-list:l13 level1 lfo33;">Annex</h1>
+          <p class="TableCaption" style="text-align:center;">Table A.1—Split-it-right <i>sample</i> divider<span class="MsoFootnoteReference"><span style="mso-element:field-begin"></span> NOTEREF _Ref \\f \\h<span style="mso-element:field-separator"></span>1<span style="mso-element:field-end"></span></span></p>
+          <div align="center" class="table_container">
             <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;page-break-after: avoid;page-break-inside: avoid;">
-               <a name="figureA-2" id="figureA-2"/>
-               <thead>
-                  <tr>
-                     <th style="font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                        <p class="IEEEStdsTableColumnHead" style="page-break-after:avoid">A</p>
-                     </th>
-                  </tr>
-               </thead>
-               <tbody>
-                  <tr>
-                     <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                        <p class="IEEEStdsTableData-Left" style="page-break-after:auto">B</p>
-                     </td>
-                  </tr>
-               </tbody>
-               <div>
-                  <a name="Aa" id="Aa"/>
-                  <p class="IEEEStdsSingleNote">
-                     <span class="note_label">Note</span>
-                     This is a note
-                  </p>
-               </div>
+              <a name="figureA-2" id="figureA-2"></a>
+              <thead>
+                <tr>
+                  <th style="font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
+                    <p class="IEEEStdsTableColumnHead" style="page-break-after:avoid">A</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
+                    <p class="IEEEStdsTableData-Left" style="page-break-after:auto">B</p>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="1" style="border-top:0pt;mso-border-top-alt:0pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;">
+                    <p class="IEEEStdsTableData-Left"></p>
+                    <div>
+                      <a name="Aa" id="Aa"></a>
+                      <p class="IEEEStdsSingleNote"><span class="note_label">Note</span>This is a note</p>
+                    </div>
+                  </td>
+                </tr>
+              </tfoot>
             </table>
-         </div>
-      </div>
+          </div>
+        </div>
     OUTPUT
     FileUtils.rm_f("test.doc")
     pres_output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
@@ -1309,101 +1278,97 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
     expect(strip_guid(doc
-  .at("//div[a[@id = 'a']]").to_xml))
+  .at("//div[a[@id = 'a']]").to_xhtml))
       .to be_html4_equivalent_to output
     expect(strip_guid(doc
-      .at("//div[a[@id = 'A1']]").to_xml))
+      .at("//div[a[@id = 'A1']]").to_xhtml))
       .to be_html4_equivalent_to output2
 
     output = <<~OUTPUT
-      <div>
-         <a name="a" id="a"/>
-         <p class="IEEESectionHeader">1.</p>
-         <p class="TableTitles" style="text-align:center;">
-            —Split-it-right
-            <i>sample</i>
-            divider
-            <span style="mso-bookmark:_Ref" class="MsoFootnoteReference">
-               <a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_">
-                  <span class="MsoFootnoteReference">
-                     <span style="mso-special-character:footnote"/>
-                  </span>
-               </a>
-            </span>
-         </p>
-         <div align="center" class="table_container">
-            <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;page-break-after: avoid;page-break-inside: avoid;">
-               <a name="figureA-1" id="figureA-1"/>
-               <thead>
-                  <tr>
+       <html xmlns="http://www.w3.org/1999/xhtml">
+         <head></head>
+         <body>
+           <div>
+             <a name="a" id="a"></a>
+             <p class="IEEESectionHeader">1.</p>
+             <p class="TableTitles" style="text-align:center;">&#x2014;Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref" class="MsoFootnoteReference"><a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"></span></span></a></span></p>
+             <div align="center" class="table_container">
+               <a name="figureA-1" id="figureA-1"></a>
+               <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;page-break-after: avoid;page-break-inside: avoid;">
+                 <thead>
+                   <tr>
                      <th style="font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                        <p class="Tablecolumnheader" style="page-break-after:avoid">A</p>
+                       <p class="Tablecolumnheader" style="page-break-after:avoid">A</p>
                      </th>
-                  </tr>
-               </thead>
-               <tbody>
-                  <tr>
+                   </tr>
+                 </thead>
+                 <tbody>
+                   <tr>
                      <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                        <p class="Tablecelltext" style="page-break-after:auto">B</p>
+                       <p class="Tablecelltext" style="page-break-after:auto">B</p>
                      </td>
-                  </tr>
-               </tbody>
-               <div class="Note">
-                  <a name="A" id="A"/>
-                  <p class="Tablenotes">
-                     <span class="note_label">Note</span>
-                     This is a note
-                  </p>
-               </div>
-            </table>
-         </div>
-      </div>
+                   </tr>
+                 </tbody>
+                 <tfoot>
+                   <tr>
+                     <td colspan="1" style="border-top:0pt;mso-border-top-alt:0pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;">
+                       <p class="Tablecelltext"></p>
+                       <div class="Note">
+                         <a name="A" id="A"></a>
+                         <p class="Tablenotes"><span class="note_label">Note</span>This is a note</p>
+                       </div>
+                     </td>
+                   </tr>
+                 </tfoot>
+               </table>
+             </div>
+           </div>
+         </body>
+       </html>
     OUTPUT
     output2 = <<~OUTPUT
-          <div>
-         <a name="A1" id="A1"/>
-         <p style="display:none;" class="variant-title-toc">Annex A</p>
-         <h1 style="margin-left:0cm;">Annex</h1>
-         <br style="mso-ignore:vglayout" clear="ALL"/>
-         <p class="TableCaption" style="text-align:center;">
-            Table A.1—Split-it-right
-            <i>sample</i>
-            divider
-            <span class="MsoFootnoteReference">
-               <span style="mso-element:field-begin"/>
-               NOTEREF _Ref \\f \\h
-               <span style="mso-element:field-separator"/>
-               1
-               <span style="mso-element:field-end"/>
-            </span>
-         </p>
-         <div align="center" class="table_container">
-            <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;page-break-after: avoid;page-break-inside: avoid;">
-               <a name="figureA-2" id="figureA-2"/>
-               <thead>
-                  <tr>
+      <html xmlns="http://www.w3.org/1999/xhtml">
+         <head></head>
+         <body>
+           <div>
+             <a name="A1" id="A1"></a>
+             <p style="display:none;" class="variant-title-toc">Annex A</p>
+             <h1 style="margin-left:0cm;">Annex</h1>
+             <br style="mso-ignore:vglayout" clear="ALL" />
+             <p class="TableCaption" style="text-align:center;">Table A.1&#x2014;Split-it-right <i>sample</i> divider<span class="MsoFootnoteReference"><span style="mso-element:field-begin"></span> NOTEREF _Ref \\f \\h<span style="mso-element:field-separator"></span>1<span style="mso-element:field-end"></span></span></p>
+             <div align="center" class="table_container">
+               <a name="figureA-2" id="figureA-2"></a>
+               <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;page-break-after: avoid;page-break-inside: avoid;">
+                 <thead>
+                   <tr>
                      <th style="font-weight:bold;border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;">
-                        <p class="Tablecolumnheader" style="page-break-after:avoid">A</p>
+                       <p class="Tablecolumnheader" style="page-break-after:avoid">A</p>
                      </th>
-                  </tr>
-               </thead>
-               <tbody>
-                  <tr>
+                   </tr>
+                 </thead>
+                 <tbody>
+                   <tr>
                      <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;">
-                        <p class="Tablecelltext" style="page-break-after:auto">B</p>
+                       <p class="Tablecelltext" style="page-break-after:auto">B</p>
                      </td>
-                  </tr>
-               </tbody>
-               <div class="Note">
-                  <a name="Aa" id="Aa"/>
-                  <p class="Tablenotes">
-                     <span class="note_label">Note</span>
-                     This is a note
-                  </p>
-               </div>
-            </table>
-         </div>
-      </div>
+                   </tr>
+                 </tbody>
+                 <tfoot>
+                   <tr>
+                     <td colspan="1" style="border-top:0pt;mso-border-top-alt:0pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;">
+                       <p class="Tablecelltext"></p>
+                       <div class="Note">
+                         <a name="Aa" id="Aa"></a>
+                         <p class="Tablenotes"><span class="note_label">Note</span>This is a note</p>
+                       </div>
+                     </td>
+                   </tr>
+                 </tfoot>
+               </table>
+             </div>
+           </div>
+         </body>
+       </html>
     OUTPUT
     pres_output = IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
@@ -1414,10 +1379,10 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     doc = Nokogiri::HTML(word2xml("test.doc"))
     doc.xpath("//wrapblock").each(&:remove)
     expect(strip_guid(doc
-      .at("//div[a[@id = 'a']]").to_xml))
+      .at("//div[a[@id = 'a']]").to_xhtml))
       .to be_html4_equivalent_to output
     expect(strip_guid(doc
-      .at("//div[a[@id = 'A1']]").to_xml))
+      .at("//div[a[@id = 'A1']]").to_xhtml))
       .to be_html4_equivalent_to output2
   end
 
@@ -1493,11 +1458,11 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     OUTPUT
     word = <<~OUTPUT
       <div>
-         <a name="A" id="A"/>
+         <a name="A" id="A"></a>
          <p class="IEEEStdsLevel1Header">This is the clause title</p>
          <p class="IEEEStdsParagraph">body</p>
          <div>
-           <a name="B" id="B"/>
+           <a name="B" id="B"></a>
            <p class="IEEEStdsLevel2Header">This is a subclause</p>
            <p class="IEEEStdsParagraph">body</p>
          </div>
@@ -1509,12 +1474,12 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     xml = Nokogiri::XML(pres_output)
     xml.at("//xmlns:localized-strings")&.remove
     expect(strip_guid(xml.to_xml))
-      .to be_html5_equivalent_to presxml
+      .to be_xml_equivalent_to presxml
     IsoDoc::Ieee::WordConvert.new({}).convert("test", pres_output, false)
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[a[@id = 'A']]")
-    expect(strip_guid(doc.to_xml))
+    expect(strip_guid(doc.to_xhtml))
       .to be_html4_equivalent_to word
 
     presxml = <<~OUTPUT
@@ -1575,11 +1540,11 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     OUTPUT
     word = <<~OUTPUT
       <div>
-         <a name="A" id="A"/>
+         <a name="A" id="A"></a>
          <p class="IEEESectionHeader">This is the clause title</p>
          <p class="MsoBodyText">body</p>
          <div>
-           <a name="B" id="B"/>
+           <a name="B" id="B"></a>
            <h2 style="mso-list:l22 level2 lfo33;">This is a subclause</h2>
            <p class="MsoBodyText">body</p>
          </div>
@@ -1598,7 +1563,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[a[@id = 'A']]")
-    expect(strip_guid(doc.to_xml))
+    expect(strip_guid(doc.to_xhtml))
       .to be_html4_equivalent_to word
   end
 
@@ -1674,7 +1639,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     OUTPUT
     word = <<~OUTPUT
       <div>
-        <a name="A" id="A"/>
+        <a name="A" id="A"></a>
         <h1 style="mso-list:l13 level1 lfo33;">
           <br/>
           <span style="font-weight:normal;">(informative)</span>
@@ -1688,7 +1653,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         </p>
         <p class="IEEEStdsParagraph">body</p>
         <div>
-          <a name="B" id="B"/>
+          <a name="B" id="B"></a>
           <h2 style="mso-list:l13 level2 lfo33;">This is a subclause</h2>
           <p class="IEEEStdsParagraph">body</p>
         </div>
@@ -1704,7 +1669,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[a[@id = 'A']]")
-    expect(strip_guid(doc.to_xml))
+    expect(strip_guid(doc.to_xhtml))
       .to be_html4_equivalent_to word
 
     presxml = <<~OUTPUT
@@ -1764,7 +1729,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     OUTPUT
     word = <<~OUTPUT
       <div>
-         <a name="A" id="A"/>
+         <a name="A" id="A"></a>
          <h1 style="margin-left:0cm;">
             Annex A
             <br/>
@@ -1772,7 +1737,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         </h1>
          <wrapblock>
             <v:line id="Line_x0020_23" o:spid="_x0000_s2052" style="visibility:visible;mso-wrap-style:square;mso-left-percent:-10001; mso-top-percent:-10001;mso-position-horizontal:absolute; mso-position-horizontal-relative:char;mso-position-vertical:absolute; mso-position-vertical-relative:line;mso-left-percent:-10001;mso-top-percent:-10001" from="55.05pt,2953.75pt" to="217pt,2953.75pt" o:gfxdata="UEsDBBQABgAIAAAAIQC2gziS/gAAAOEBAAATAAAAW0NvbnRlbnRfVHlwZXNdLnhtbJSRQU7DMBBF 90jcwfIWJU67QAgl6YK0S0CoHGBkTxKLZGx5TGhvj5O2G0SRWNoz/78nu9wcxkFMGNg6quQqL6RA 0s5Y6ir5vt9lD1JwBDIwOMJKHpHlpr69KfdHjyxSmriSfYz+USnWPY7AufNIadK6MEJMx9ApD/oD OlTrorhX2lFEilmcO2RdNtjC5xDF9pCuTyYBB5bi6bQ4syoJ3g9WQ0ymaiLzg5KdCXlKLjvcW893 SUOqXwnz5DrgnHtJTxOsQfEKIT7DmDSUCaxw7Rqn8787ZsmRM9e2VmPeBN4uqYvTtW7jvijg9N/y JsXecLq0q+WD6m8AAAD//wMAUEsDBBQABgAIAAAAIQA4/SH/1gAAAJQBAAALAAAAX3JlbHMvLnJl bHOkkMFqwzAMhu+DvYPRfXGawxijTi+j0GvpHsDYimMaW0Yy2fr2M4PBMnrbUb/Q94l/f/hMi1qR JVI2sOt6UJgd+ZiDgffL8ekFlFSbvV0oo4EbChzGx4f9GRdb25HMsYhqlCwG5lrLq9biZkxWOiqY 22YiTra2kYMu1l1tQD30/bPm3wwYN0x18gb45AdQl1tp5j/sFB2T0FQ7R0nTNEV3j6o9feQzro1i OWA14Fm+Q8a1a8+Bvu/d/dMb2JY5uiPbhG/ktn4cqGU/er3pcvwCAAD//wMAUEsDBBQABgAIAAAA IQA/XJkksgEAAE0DAAAOAAAAZHJzL2Uyb0RvYy54bWysU9tuGyEQfa/Uf0C8x4utJKpWXkdVbPcl bS0l+YAxsF5UlkEM9q7/voAvbdq3KC+IuXBmzplh/jD2lh10IIOu4dOJ4Ew7icq4XcNfX9Y3Xzij CE6BRacbftTEHxafP80HX+sZdmiVDiyBOKoH3/AuRl9XFclO90AT9NqlYIuhh5jMsKtUgCGh97aa CXFfDRiUDyg1UfIuT0G+KPhtq2X82bakI7MNT73FcoZybvNZLeZQ7wL4zshzG/COLnowLhW9Qi0h AtsH8x9Ub2RAwjZOJPYVtq2RunBIbKbiHzbPHXhduCRxyF9loo+DlT8Oj24TcutydM/+CeUvSqJU g6f6GswG+U1g2+E7qjRG2EcsfMc29PlxYsLGIuvxKqseI5PJORN34nZ6x5m8xCqoLw99oPhNY8/y peHWuMwYajg8UcyNQH1JyW6Ha2NtmZp1bEgrJ6b3QpQnhNaoHM6JFHbbRxvYAfLkxdfVap2HneDe pGXsJVB3yiuh004E3DtV6nQa1Op8j2Ds6Z6ArDvrlKXJG0f1FtVxE3KdbKWZlYrn/cpL8bddsv78 gsVvAAAA//8DAFBLAwQUAAYACAAAACEA8DUns+EAAAAQAQAADwAAAGRycy9kb3ducmV2LnhtbExP XUvDQBB8F/wPxwq+2Ys1tCHNpYgfiBTR1oKv29w2Keb2Qu7Sxn/vCoLuw8Lszs7OFMvRtepIfTh4 NnA9SUARV94euDawfX+8ykCFiGyx9UwGvijAsjw/KzC3/sRrOm5irUSEQ44Gmhi7XOtQNeQwTHxH LLu97x1GgX2tbY8nEXetnibJTDs8sHxosKO7hqrPzeAM7J8zXaVP+LHiF/u2nr0O24cVGXN5Md4v pN0uQEUa498F/GQQ/1CKsZ0f2AbVCpYSqoHpPJuDEkZ6k0rE3e9El4X+H6T8BgAA//8DAFBLAQIt ABQABgAIAAAAIQC2gziS/gAAAOEBAAATAAAAAAAAAAAAAAAAAAAAAABbQ29udGVudF9UeXBlc10u eG1sUEsBAi0AFAAGAAgAAAAhADj9If/WAAAAlAEAAAsAAAAAAAAAAAAAAAAALwEAAF9yZWxzLy5y ZWxzUEsBAi0AFAAGAAgAAAAhAD9cmSSyAQAATQMAAA4AAAAAAAAAAAAAAAAALgIAAGRycy9lMm9E b2MueG1sUEsBAi0AFAAGAAgAAAAhAPA1J7PhAAAAEAEAAA8AAAAAAAAAAAAAAAAADAQAAGRycy9k b3ducmV2LnhtbFBLBQYAAAAABAAEAPMAAAAaBQAAAAA= " strokecolor="#00aeef" strokeweight="8pt">
-             <lock v:ext="edit" shapetype="f"/>
+             <lock v:ext="edit" shapetype="f"></lock>
              <w:wrap type="topAndBottom" anchorx="page"/>
            </v:line>
          </wrapblock>
@@ -1786,7 +1751,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
         <p class="Unnumberedheading">This is the annex title</p>
          <p class="MsoBodyText">body</p>
          <div>
-           <a name="B" id="B"/>
+           <a name="B" id="B"></a>
            <h2 class="Unnumberedheading">This is a subclause</h2>
            <p class="MsoBodyText">body</p>
          </div>
@@ -1804,7 +1769,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     expect(File.exist?("test.doc")).to be true
     doc = Nokogiri::HTML(word2xml("test.doc"))
       .at("//div[a[@id = 'A']]")
-    expect(strip_guid(doc.to_xml))
+    expect(strip_guid(doc.to_xhtml))
       .to be_html4_equivalent_to word
   end
 end
