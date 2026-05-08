@@ -701,158 +701,35 @@ RSpec.describe Metanorma::Ieee do
     INPUT
     output = <<~OUTPUT
        <bibliography>
-          <references id="_" normative="true" obligation="informative">
-             <title id="_">Normative references</title>
-             <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
-             <bibitem id="_" type="standard" anchor="ref1">
-                <fetched/>
-                <title type="main">IEEE Standard on Pulse Measurement and Analysis by Objective Techniques</title>
-                <uri type="src">https://ieeexplore.ieee.org/document/29013</uri>
-                <docidentifier type="IEEE" primary="true">ANSI/IEEE Std 181-1977</docidentifier>
-                <docidentifier type="IEEE" scope="trademark" primary="true">ANSI/IEEE Std 181™-1977</docidentifier>
-                <docidentifier type="ISBN">0-7381-4176-3</docidentifier>
-                <docidentifier type="DOI">10.1109/IEEESTD.1977.81097</docidentifier>
-                <docnumber>ANSI/IEEE Std 181-1977</docnumber>
-                <date type="created">
-                   <on>1977</on>
-                </date>
-                <date type="published">
-                   <on>2002-12-10</on>
-                </date>
-                <date type="issued">
-                   <on>1975-09-04</on>
-                </date>
-                <contributor>
-                   <role type="publisher"/>
-                   <organization>
-                      <name language="en" script="Latn">Institute of Electrical and Electronics Engineers</name>
-                      <abbreviation>IEEE</abbreviation>
-                      <address>
-                         <city>New York</city>
-                         <country>USA</country>
-                      </address>
-                      <uri type="org">http://www.ieee.org</uri>
-                   </organization>
-                </contributor>
-                <contributor>
-                   <role type="author">
-                      <description language="en" script="Latn">committee</description>
-                   </role>
-                   <organization>
-                      <name language="en" script="Latn">Institute of Electrical and Electronics Engineers</name>
-                      <subdivision type="committee">
-                         <name language="en" script="Latn">International Electrotechnical Commission Technical Committee 66</name>
-                      </subdivision>
-                      <abbreviation>IEEE</abbreviation>
-                   </organization>
-                </contributor>
-                <note type="Availability">
-                   <p id="_">ANSI/IEEE Std 181-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).</p>
-                </note>
-                <language>en</language>
-                <script>Latn</script>
-                <status>
-                   <stage>withdrawn</stage>
-                </status>
-                <copyright>
-                   <from>1977</from>
-                   <owner>
-                      <organization>
-                         <name language="en" script="Latn">Institute of Electrical and Electronics Engineers</name>
-                         <abbreviation>IEEE</abbreviation>
-                         <uri type="org">http://www.ieee.org</uri>
-                      </organization>
-                   </owner>
-                </copyright>
-                <keyword>
-                   <vocab language="en" script="Latn">Impulse testing</vocab>
-                </keyword>
-                <keyword>
-                   <vocab language="en" script="Latn">Measurement standards</vocab>
-                </keyword>
-             </bibitem>
-          </references>
-          <references id="_" normative="false" obligation="informative">
-             <title id="_">Bibliography</title>
-             <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
-             <bibitem id="_" type="standard" anchor="ref4">
-                <fetched/>
-                <title type="main">IEEE Standard Pulse Terms and Definitions</title>
-                <uri type="src">https://ieeexplore.ieee.org/document/29015</uri>
-                <docidentifier type="IEEE" primary="true">IEEE Std 194-1977</docidentifier>
-                <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
-                <docidentifier type="IEEE" scope="trademark" primary="true">IEEE Std 194™-1977</docidentifier>
-                <docidentifier type="ISBN">0-7381-4350-2</docidentifier>
-                <docidentifier type="DOI">10.1109/IEEESTD.1977.81098</docidentifier>
-                <docnumber>IEEE Std 194-1977</docnumber>
-                <date type="created">
-                   <on>1977</on>
-                </date>
-                <date type="published">
-                   <on>2002-12-10</on>
-                </date>
-                <date type="issued">
-                   <on>1975-02-17</on>
-                </date>
-                <contributor>
-                   <role type="publisher"/>
-                   <organization>
-                      <name language="en" script="Latn">Institute of Electrical and Electronics Engineers</name>
-                      <abbreviation>IEEE</abbreviation>
-                      <address>
-                         <city>New York</city>
-                         <country>USA</country>
-                      </address>
-                      <uri type="org">http://www.ieee.org</uri>
-                   </organization>
-                </contributor>
-                <contributor>
-                   <role type="author">
-                      <description language="en" script="Latn">committee</description>
-                   </role>
-                   <organization>
-                      <name language="en" script="Latn">Institute of Electrical and Electronics Engineers</name>
-                      <subdivision type="committee">
-                         <name language="en" script="Latn">International Electrotechnical Commission Technical Committee 66</name>
-                      </subdivision>
-                      <abbreviation>IEEE</abbreviation>
-                   </organization>
-                </contributor>
-                <note type="Availability">
-                   <p id="_">IEEE Std 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).</p>
-                </note>
-                <language>en</language>
-                <script>Latn</script>
-                <status>
-                   <stage>withdrawn</stage>
-                </status>
-                <copyright>
-                   <from>1977</from>
-                   <owner>
-                      <organization>
-                         <name language="en" script="Latn">Institute of Electrical and Electronics Engineers</name>
-                         <abbreviation>IEEE</abbreviation>
-                         <uri type="org">http://www.ieee.org</uri>
-                      </organization>
-                   </owner>
-                </copyright>
-                <keyword>
-                   <vocab language="en" script="Latn">Measurement standards</vocab>
-                </keyword>
-                <keyword>
-                   <vocab language="en" script="Latn">Terminology</vocab>
-                </keyword>
-                <keyword>
-                   <vocab language="en" script="Latn">Pulse circuits</vocab>
-                </keyword>
-                <keyword>
-                   <vocab language="en" script="Latn">Pulse generation</vocab>
-                </keyword>
-                <keyword>
-                   <vocab language="en" script="Latn">Standards</vocab>
-                </keyword>
-             </bibitem>
-          </references>
+         <references id="_" normative="true" obligation="informative">
+           <title id="_">Normative references</title>
+           <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
+           <bibitem anchor="ref1" id="_">
+             <formattedref format="application/x-isodoc+xml">REF5</formattedref>
+             <docidentifier type="IEEE">IEEE Std 181-1977</docidentifier>
+             <docnumber>181</docnumber>
+             <date type="published">
+               <on>1977</on>
+             </date>
+             <language>en</language>
+             <script>Latn</script>
+           </bibitem>
+         </references>
+         <references id="_" normative="false" obligation="informative">
+           <title id="_">Bibliography</title>
+           <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
+           <bibitem anchor="ref4" id="_">
+             <formattedref format="application/x-isodoc+xml">REF5</formattedref>
+             <docidentifier type="IEEE">IEEE Std 194-1977</docidentifier>
+             <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
+             <docnumber>194</docnumber>
+             <date type="published">
+               <on>1977</on>
+             </date>
+             <language>en</language>
+             <script>Latn</script>
+           </bibitem>
+         </references>
        </bibliography>
     OUTPUT
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
@@ -893,123 +770,120 @@ RSpec.describe Metanorma::Ieee do
     INPUT
     output = <<~OUTPUT
        <bibliography>
-          <references id="_" normative="true" obligation="informative">
-             <title id="_">Normative references</title>
-             <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
-             <bibitem id="_" anchor="ref11" type="standard">
-                <docidentifier type="ETSI" primary="true">ETSI GS NFV 002 V1.2.1 (2014-12)</docidentifier>
-                <note type="Availability">
-                   <p id="_">ETSI publications are available the European Telecommunications Standards Institute (http://www.etsi.org).</p>
-                </note>
-             </bibitem>
-             <bibitem id="_" anchor="ref31" type="standard">
-                <docidentifier type="ETSI" primary="true">ETSI GS ZSM 012 V1.1.1 (2022-12)</docidentifier>
-             </bibitem>
-             <bibitem id="_" type="standard" anchor="ref23">
-                <docidentifier type="IEC" primary="true">IEC 60050</docidentifier>
-                <docidentifier type="URN">urn:iec:std:iec:60050::::</docidentifier>
-                <note type="Availability">
-                   <p id="_">IEC publications are available from the International Electrotechnical Commission (https://www.iec.ch) and the American National Standards Institute (https://www.ansi.org/).</p>
-                </note>
-             </bibitem>
-             <bibitem id="_" type="standard" anchor="ref3">
-                <docidentifier type="IEC" primary="true">IEC 61131-3</docidentifier>
-                <docidentifier type="URN">urn:iec:std:iec:61131-3::::</docidentifier>
-             </bibitem>
-             <bibitem id="_" type="standard" anchor="ref26">
-                <docidentifier type="IEEE" primary="true">IEEE Std 194-1977</docidentifier>
-                <docidentifier type="IEEE" scope="trademark" primary="true">IEEE Std 194™-1977</docidentifier>
-                <docidentifier type="ISBN">0-7381-4350-2</docidentifier>
-                <docidentifier type="DOI">10.1109/IEEESTD.1977.81098</docidentifier>
-                <note type="Availability">
-                   <p id="_">IEEE Std 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).</p>
-                </note>
-             </bibitem>
-             <bibitem id="_" type="standard" anchor="ref6">
-                <docidentifier type="IEEE" primary="true">IEEE Std 81-1983</docidentifier>
-                <docidentifier type="IEEE" scope="trademark" primary="true">IEEE Std 81™-1983</docidentifier>
-                <docidentifier type="ISBN">978-0-7381-0660-1</docidentifier>
-                <docidentifier type="DOI">10.1109/IEEESTD.1983.82378</docidentifier>
-                <note type="Availability">
-                   <p id="_">The IEEE standards or products referred to in this clause are trademarks owned by The Institute of Electrical and Electronics Engineers, Incorporated.</p>
-                </note>
-                <note type="Availability">
-                   <p id="_">IEEE publications are available from The Institute of Electrical and Electronics Engineers (http://standards.ieee.org/).</p>
-                </note>
-             </bibitem>
-             <bibitem id="_" type="standard" anchor="ref21">
-                <docidentifier type="ISO" primary="true">ISO/IEC 2382</docidentifier>
-                <docidentifier type="iso-reference">ISO/IEC 2382(E)</docidentifier>
-                <docidentifier type="URN">urn:iso:std:iso-iec:2382:stage-90.93</docidentifier>
-                <note type="Availability">
-                   <p id="_">ISO/IEC documents are available from the International Organization for Standardization (https://www.iso.org/). ISO/IEC publications are also available in the United States from Global Engineering Documents (https://global.ihs.com/). Electronic copies are available in the United States from the American National Standards Institute (https://www.ansi.org/)</p>
-                </note>
-             </bibitem>
-             <bibitem id="_" type="standard" anchor="ref1">
-                <docidentifier type="ISO" primary="true">ISO/IEC 27001</docidentifier>
-                <docidentifier type="iso-reference">ISO/IEC 27001(E)</docidentifier>
-                <docidentifier type="URN">urn:iso:std:iso-iec:27001:stage-60.60</docidentifier>
-             </bibitem>
-             <bibitem id="_" type="standard" anchor="ref2">
-                <docidentifier type="ISO" primary="true">ISO 10642</docidentifier>
-                <docidentifier type="iso-reference">ISO 10642(E)</docidentifier>
-                <docidentifier type="URN">urn:iso:std:iso:10642:stage-90.92</docidentifier>
-                <note type="Availability">
-                   <p id="_">ISO publications are available from the International Organization for Standardization (https://www.iso.org/) and the American National Standards Institute (https://www.ansi.org/).</p>
-                </note>
-             </bibitem>
-             <bibitem id="_" type="standard" anchor="ref22">
-                <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
-                <docidentifier type="iso-reference">ISO 639(E)</docidentifier>
-                <docidentifier type="URN">urn:iso:std:iso:639:stage-60.60</docidentifier>
-             </bibitem>
-             <bibitem id="_" type="standard" anchor="ref25">
-                <docidentifier type="ITU" primary="true">ITU-R P.838-3</docidentifier>
-             </bibitem>
-             <bibitem id="_" type="standard" anchor="ref5">
-                <docidentifier type="ITU" primary="true">ITU-R P.839-4</docidentifier>
-             </bibitem>
-             <bibitem id="_" type="standard" anchor="ref4">
-                <docidentifier type="ITU" primary="true">ITU-T G.984.2</docidentifier>
-                <note type="Availability">
-                   <p id="_">ITU-T publications are available from the International Telecommunications Union (http://www.itu.int/).</p>
-                </note>
-             </bibitem>
-             <bibitem id="_" type="standard" anchor="ref24">
-                <docidentifier type="ITU" primary="true">ITU-T K.20</docidentifier>
-             </bibitem>
-             <bibitem id="_" type="standard" anchor="ref8">
-                <docidentifier type="NIST" primary="true">NIST FIPS 140-2 fpd</docidentifier>
-                <note type="Availability">
-                   <p id="_">NIST publications are available from the National Institute of Standards and Technology (http://www.nist.gov/).</p>
-                </note>
-             </bibitem>
-             <bibitem id="_" type="standard" anchor="ref28">
-                <docidentifier type="NIST" primary="true">NIST FIPS 140-3 2pd</docidentifier>
-             </bibitem>
-             <bibitem id="_" type="standard" anchor="ref9">
-                <docidentifier type="NIST" primary="true">NIST SP 800-171 fpd</docidentifier>
-                <note type="Availability">
-                   <p id="_">FIPS publications are available from the National Technical Information Service (NTIS) (http://csrc.nist.gov).</p>
-                </note>
-             </bibitem>
-             <bibitem id="_" type="standard" anchor="ref29">
-                <docidentifier type="NIST" primary="true">NIST SP 800-30 fpd</docidentifier>
-                <docidentifier type="DOI">NIST.SP.800-30</docidentifier>
-             </bibitem>
-             <bibitem anchor="ref7" id="_">
-                <docidentifier type="IEEE">IEEE 43-2013 Redline</docidentifier>
-             </bibitem>
-             <bibitem anchor="ref10" id="_">
-                <docidentifier type="W3C">W3C XPTR</docidentifier>
-             </bibitem>
-             <bibitem id="_" type="standard" anchor="ref30">
-                <docidentifier type="W3C" primary="true">W3C xml</docidentifier>
-                <note type="Availability">
-                   <p id="_">W3C recommendations are available from the World Wide Web Consortium (https://www.w3.org).</p>
-                </note>
-             </bibitem>
-          </references>
+         <references id="_" normative="true" obligation="informative">
+           <title id="_">Normative references</title>
+           <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
+           <bibitem id="_" type="standard" anchor="ref11">
+             <docidentifier type="ETSI" primary="true">ETSI GS NFV 002 V1.2.1 (2014-12)</docidentifier>
+             <note type="Availability">
+               <p id="_">ETSI publications are available the European Telecommunications Standards Institute (http://www.etsi.org).</p>
+             </note>
+           </bibitem>
+           <bibitem id="_" type="standard" anchor="ref31">
+             <docidentifier type="ETSI" primary="true">ETSI GS ZSM 012 V1.1.1 (2022-12)</docidentifier>
+           </bibitem>
+           <bibitem id="_" type="standard" anchor="ref23">
+             <docidentifier type="IEC" primary="true">IEC 60050</docidentifier>
+             <docidentifier type="URN">urn:iec:std:iec:60050::::</docidentifier>
+             <note type="Availability">
+               <p id="_">IEC publications are available from the International Electrotechnical Commission (https://www.iec.ch) and the American National Standards Institute (https://www.ansi.org/).</p>
+             </note>
+           </bibitem>
+           <bibitem id="_" type="standard" anchor="ref3">
+             <docidentifier type="IEC" primary="true">IEC 61131-3</docidentifier>
+             <docidentifier type="URN">urn:iec:std:iec:61131-3::::</docidentifier>
+           </bibitem>
+           <bibitem id="_" type="standard" anchor="ref6">
+             <docidentifier type="IEEE" primary="true">IEEE Std 81-1983</docidentifier>
+             <docidentifier type="IEEE" scope="trademark" primary="true">IEEE Std 81™-1983</docidentifier>
+             <docidentifier type="ISBN">978-0-7381-0660-1</docidentifier>
+             <docidentifier type="DOI">10.1109/IEEESTD.1983.82378</docidentifier>
+             <note type="Availability">
+               <p id="_">The IEEE standards or products referred to in this clause are trademarks owned by The Institute of Electrical and Electronics Engineers, Incorporated.</p>
+             </note>
+             <note type="Availability">
+               <p id="_">IEEE publications are available from The Institute of Electrical and Electronics Engineers (http://standards.ieee.org/).</p>
+             </note>
+           </bibitem>
+           <bibitem id="_" type="standard" anchor="ref21">
+             <docidentifier type="ISO" primary="true">ISO/IEC 2382</docidentifier>
+             <docidentifier type="iso-reference">ISO/IEC 2382(E)</docidentifier>
+             <docidentifier type="URN">urn:iso:std:iso-iec:2382:stage-90.93</docidentifier>
+             <note type="Availability">
+               <p id="_">ISO/IEC documents are available from the International Organization for Standardization (https://www.iso.org/). ISO/IEC publications are also available in the United States from Global Engineering Documents (https://global.ihs.com/). Electronic copies are available in the United States from the American National Standards Institute (https://www.ansi.org/)</p>
+             </note>
+           </bibitem>
+           <bibitem id="_" type="standard" anchor="ref1">
+             <docidentifier type="ISO" primary="true">ISO/IEC 27001</docidentifier>
+             <docidentifier type="iso-reference">ISO/IEC 27001(E)</docidentifier>
+             <docidentifier type="URN">urn:iso:std:iso-iec:27001:stage-60.60</docidentifier>
+           </bibitem>
+           <bibitem id="_" type="standard" anchor="ref2">
+             <docidentifier type="ISO" primary="true">ISO 10642</docidentifier>
+             <docidentifier type="iso-reference">ISO 10642(E)</docidentifier>
+             <docidentifier type="URN">urn:iso:std:iso:10642:stage-90.92</docidentifier>
+             <note type="Availability">
+               <p id="_">ISO publications are available from the International Organization for Standardization (https://www.iso.org/) and the American National Standards Institute (https://www.ansi.org/).</p>
+             </note>
+           </bibitem>
+           <bibitem id="_" type="standard" anchor="ref22">
+             <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
+             <docidentifier type="iso-reference">ISO 639(E)</docidentifier>
+             <docidentifier type="URN">urn:iso:std:iso:639:stage-60.60</docidentifier>
+           </bibitem>
+           <bibitem id="_" type="standard" anchor="ref25">
+             <docidentifier type="ITU" primary="true">ITU-R P.838-3</docidentifier>
+           </bibitem>
+           <bibitem id="_" type="standard" anchor="ref5">
+             <docidentifier type="ITU" primary="true">ITU-R P.839-4</docidentifier>
+           </bibitem>
+           <bibitem id="_" type="standard" anchor="ref4">
+             <docidentifier type="ITU" primary="true">ITU-T G.984.2</docidentifier>
+             <note type="Availability">
+               <p id="_">ITU-T publications are available from the International Telecommunications Union (http://www.itu.int/).</p>
+             </note>
+           </bibitem>
+           <bibitem id="_" type="standard" anchor="ref24">
+             <docidentifier type="ITU" primary="true">ITU-T K.20</docidentifier>
+           </bibitem>
+           <bibitem id="_" type="standard" anchor="ref8">
+             <docidentifier type="NIST" primary="true">NIST FIPS 140-2/Upd2</docidentifier>
+             <docidentifier type="DOI">NIST.FIPS.140-2</docidentifier>
+             <note type="Availability">
+               <p id="_">NIST publications are available from the National Institute of Standards and Technology (http://www.nist.gov/).</p>
+             </note>
+           </bibitem>
+           <bibitem id="_" type="standard" anchor="ref28">
+             <docidentifier type="NIST" primary="true">NIST FIPS 140-3</docidentifier>
+             <docidentifier type="DOI">NIST.FIPS.140-3</docidentifier>
+           </bibitem>
+           <bibitem id="_" type="standard" anchor="ref9">
+             <docidentifier type="NIST" primary="true">NIST SP 800-171/Upd2</docidentifier>
+             <docidentifier type="DOI">NIST.SP.800-171</docidentifier>
+             <note type="Availability">
+               <p id="_">FIPS publications are available from the National Technical Information Service (NTIS) (http://csrc.nist.gov).</p>
+             </note>
+           </bibitem>
+           <bibitem id="_" type="standard" anchor="ref29">
+             <docidentifier type="NIST" primary="true">NIST SP 800-30</docidentifier>
+             <docidentifier type="DOI">NIST.SP.800-30</docidentifier>
+           </bibitem>
+           <bibitem anchor="ref7" id="_">
+             <docidentifier type="IEEE">IEEE 43-2013 Redline</docidentifier>
+           </bibitem>
+           <bibitem anchor="ref10" id="_">
+             <docidentifier type="W3C">W3C XPTR</docidentifier>
+           </bibitem>
+           <bibitem anchor="ref26" id="_">
+             <docidentifier type="IEEE">IEEE Std 194-1977</docidentifier>
+           </bibitem>
+           <bibitem id="_" type="standard" anchor="ref30">
+             <docidentifier type="W3C" primary="true">W3C xml</docidentifier>
+             <note type="Availability">
+               <p id="_">W3C recommendations are available from the World Wide Web Consortium (https://www.w3.org).</p>
+             </note>
+           </bibitem>
+         </references>
        </bibliography>
     OUTPUT
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))

@@ -1,5 +1,5 @@
 <bibdata type="standard" schema-version="v1.5.6">
-  <fetched>2026-05-04</fetched>
+  <fetched>2026-05-08</fetched>
   <title language="en" script="Latn" type="title-main">Programmable controllers – Part 3: Programming languages</title>
   <title language="en" script="Latn" type="main">Programmable controllers – Part 3: Programming languages</title>
   <title language="fr" script="Latn" type="title-main">Automates programmables</title>
@@ -127,7 +127,6 @@ b) l’Annexe B contient une liste complète des fonctionnalités qui ont été 
   <ext schema-version="v1.1.2">
     <doctype>international-standard</doctype>
     <flavor>iec</flavor>
-    <price-code>iec:P</price-code>
     <ics>
       <code>25.040.40</code>
       <text>Industrial process measurement and control</text>
@@ -139,5 +138,6 @@ b) l’Annexe B contient une liste complète des fonctionnalités qui ont été 
     <structuredidentifier type="IEC">
       <project-number>105169</project-number>
     </structuredidentifier>
+    <price-code>iec:P</price-code>
   </ext>
 </bibdata>

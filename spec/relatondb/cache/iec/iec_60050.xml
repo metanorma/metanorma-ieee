@@ -1,5 +1,5 @@
 <bibdata type="standard" schema-version="v1.5.6">
-  <fetched>2026-05-04</fetched>
+  <fetched>2026-05-08</fetched>
   <title language="en" script="Latn" type="title-intro">International Electrotechnical Vocabulary (IEV)</title>
   <title language="en" script="Latn" type="title-main">Index</title>
   <title language="en" script="Latn" type="main">International Electrotechnical Vocabulary (IEV) - Index</title>
@@ -116,9 +116,9 @@
   <ext schema-version="v1.1.2">
     <doctype>international-standard</doctype>
     <flavor>iec</flavor>
-    <price-code>iec:M</price-code>
     <structuredidentifier type="IEC">
       <project-number>1000001181</project-number>
     </structuredidentifier>
+    <price-code>iec:M</price-code>
   </ext>
 </bibdata>
