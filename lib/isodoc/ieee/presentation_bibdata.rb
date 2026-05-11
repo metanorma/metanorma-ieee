@@ -34,14 +34,22 @@ module IsoDoc
       end
 
       def ddMMMyyyy(isodate)
-        isodate.nil? and return nil
-        arr = isodate.split("-")
-        if arr.size == 1 && (/^\d+$/.match isodate)
-          Date.new(*arr.map(&:to_i)).strftime("%Y")
-        elsif arr.size == 2
-          Date.new(*arr.map(&:to_i)).strftime("%b %Y")
-        else
-          Date.parse(isodate).strftime("%d %b %Y")
+        return isodate if isodate.nil? || isodate.to_s.empty?
+
+        parts = isodate.split("-")
+        normalized = [parts[0], parts[1] || "01", parts[2] || "01"].join("-")
+        IsoDoc::ExtendedDateFormatter.format(
+          normalized, date_format_by_arity(parts.size), lang: @lang
+        )
+      rescue StandardError
+        isodate
+      end
+
+      def date_format_by_arity(arity)
+        case arity
+        when 1 then "%Y"
+        when 2 then "%b %Y"
+        else "%d %b %Y"
         end
       end
 
