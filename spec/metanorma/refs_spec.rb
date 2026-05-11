@@ -704,30 +704,153 @@ RSpec.describe Metanorma::Ieee do
          <references id="_" normative="true" obligation="informative">
            <title id="_">Normative references</title>
            <p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>
-           <bibitem anchor="ref1" id="_">
-             <formattedref format="application/x-isodoc+xml">REF5</formattedref>
-             <docidentifier type="IEEE">IEEE Std 181-1977</docidentifier>
-             <docnumber>181</docnumber>
-             <date type="published">
+           <bibitem id="_" type="standard" anchor="ref1">
+             <fetched/>
+             <title type="main">IEEE Standard on Pulse Measurement and Analysis by Objective Techniques</title>
+             <uri type="src">https://ieeexplore.ieee.org/document/29013</uri>
+             <docidentifier type="IEEE" primary="true">ANSI/IEEE Std 181-1977</docidentifier>
+             <docidentifier type="IEEE" scope="trademark" primary="true">ANSI/IEEE Std 181™-1977</docidentifier>
+             <docidentifier type="ISBN">0-7381-4176-3</docidentifier>
+             <docidentifier type="DOI">10.1109/IEEESTD.1977.81097</docidentifier>
+             <docnumber>ANSI/IEEE Std 181-1977</docnumber>
+             <date type="created">
                <on>1977</on>
              </date>
+             <date type="published">
+               <on>2002-12-10</on>
+             </date>
+             <date type="issued">
+               <on>1975-09-04</on>
+             </date>
+             <contributor>
+               <role type="publisher"/>
+               <organization>
+                 <name language="en" script="Latn">Institute of Electrical and Electronics Engineers</name>
+                 <abbreviation>IEEE</abbreviation>
+                 <address>
+                   <city>New York</city>
+                   <country>USA</country>
+                 </address>
+                 <uri type="org">http://www.ieee.org</uri>
+               </organization>
+             </contributor>
+             <contributor>
+               <role type="author">
+                 <description language="en" script="Latn">committee</description>
+               </role>
+               <organization>
+                 <name language="en" script="Latn">Institute of Electrical and Electronics Engineers</name>
+                 <subdivision type="committee">
+                   <name language="en" script="Latn">International Electrotechnical Commission Technical Committee 66</name>
+                 </subdivision>
+                 <abbreviation>IEEE</abbreviation>
+               </organization>
+             </contributor>
+             <note type="Availability">
+               <p id="_">ANSI/IEEE Std 181-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).</p>
+             </note>
              <language>en</language>
              <script>Latn</script>
+             <status>
+               <stage>withdrawn</stage>
+             </status>
+             <copyright>
+               <from>1977</from>
+               <owner>
+                 <organization>
+                   <name language="en" script="Latn">Institute of Electrical and Electronics Engineers</name>
+                   <abbreviation>IEEE</abbreviation>
+                   <uri type="org">http://www.ieee.org</uri>
+                 </organization>
+               </owner>
+             </copyright>
+             <keyword>
+               <vocab language="en" script="Latn">Impulse testing</vocab>
+             </keyword>
+             <keyword>
+               <vocab language="en" script="Latn">Measurement standards</vocab>
+             </keyword>
            </bibitem>
          </references>
          <references id="_" normative="false" obligation="informative">
            <title id="_">Bibliography</title>
            <p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p>
-           <bibitem anchor="ref4" id="_">
-             <formattedref format="application/x-isodoc+xml">REF5</formattedref>
-             <docidentifier type="IEEE">IEEE Std 194-1977</docidentifier>
+           <bibitem id="_" type="standard" anchor="ref4">
+             <fetched/>
+             <title type="main">IEEE Standard Pulse Terms and Definitions</title>
+             <uri type="src">https://ieeexplore.ieee.org/document/29015</uri>
+             <docidentifier type="IEEE" primary="true">IEEE Std 194-1977</docidentifier>
              <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
-             <docnumber>194</docnumber>
-             <date type="published">
+             <docidentifier type="IEEE" scope="trademark" primary="true">IEEE Std 194™-1977</docidentifier>
+             <docidentifier type="ISBN">0-7381-4350-2</docidentifier>
+             <docidentifier type="DOI">10.1109/IEEESTD.1977.81098</docidentifier>
+             <docnumber>IEEE Std 194-1977</docnumber>
+             <date type="created">
                <on>1977</on>
              </date>
+             <date type="published">
+               <on>2002-12-10</on>
+             </date>
+             <date type="issued">
+               <on>1975-02-17</on>
+             </date>
+             <contributor>
+               <role type="publisher"/>
+               <organization>
+                 <name language="en" script="Latn">Institute of Electrical and Electronics Engineers</name>
+                 <abbreviation>IEEE</abbreviation>
+                 <address>
+                   <city>New York</city>
+                   <country>USA</country>
+                 </address>
+                 <uri type="org">http://www.ieee.org</uri>
+               </organization>
+             </contributor>
+             <contributor>
+               <role type="author">
+                 <description language="en" script="Latn">committee</description>
+               </role>
+               <organization>
+                 <name language="en" script="Latn">Institute of Electrical and Electronics Engineers</name>
+                 <subdivision type="committee">
+                   <name language="en" script="Latn">International Electrotechnical Commission Technical Committee 66</name>
+                 </subdivision>
+                 <abbreviation>IEEE</abbreviation>
+               </organization>
+             </contributor>
+             <note type="Availability">
+               <p id="_">IEEE Std 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).</p>
+             </note>
              <language>en</language>
              <script>Latn</script>
+             <status>
+               <stage>withdrawn</stage>
+             </status>
+             <copyright>
+               <from>1977</from>
+               <owner>
+                 <organization>
+                   <name language="en" script="Latn">Institute of Electrical and Electronics Engineers</name>
+                   <abbreviation>IEEE</abbreviation>
+                   <uri type="org">http://www.ieee.org</uri>
+                 </organization>
+               </owner>
+             </copyright>
+             <keyword>
+               <vocab language="en" script="Latn">Measurement standards</vocab>
+             </keyword>
+             <keyword>
+               <vocab language="en" script="Latn">Terminology</vocab>
+             </keyword>
+             <keyword>
+               <vocab language="en" script="Latn">Pulse circuits</vocab>
+             </keyword>
+             <keyword>
+               <vocab language="en" script="Latn">Pulse generation</vocab>
+             </keyword>
+             <keyword>
+               <vocab language="en" script="Latn">Standards</vocab>
+             </keyword>
            </bibitem>
          </references>
        </bibliography>
@@ -793,6 +916,15 @@ RSpec.describe Metanorma::Ieee do
              <docidentifier type="IEC" primary="true">IEC 61131-3</docidentifier>
              <docidentifier type="URN">urn:iec:std:iec:61131-3::::</docidentifier>
            </bibitem>
+     <bibitem anchor="ref26" id="_" type="standard">
+       <docidentifier primary="true" type="IEEE">IEEE Std 194-1977</docidentifier>
+       <docidentifier primary="true" scope="trademark" type="IEEE">IEEE Std 194™-1977</docidentifier>
+       <docidentifier type="ISBN">0-7381-4350-2</docidentifier>
+       <docidentifier type="DOI">10.1109/IEEESTD.1977.81098</docidentifier>
+       <note type="Availability">
+         <p id="_">IEEE Std 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).</p>
+       </note>
+     </bibitem>
            <bibitem id="_" type="standard" anchor="ref6">
              <docidentifier type="IEEE" primary="true">IEEE Std 81-1983</docidentifier>
              <docidentifier type="IEEE" scope="trademark" primary="true">IEEE Std 81™-1983</docidentifier>
@@ -873,9 +1005,6 @@ RSpec.describe Metanorma::Ieee do
            </bibitem>
            <bibitem anchor="ref10" id="_">
              <docidentifier type="W3C">W3C XPTR</docidentifier>
-           </bibitem>
-           <bibitem anchor="ref26" id="_">
-             <docidentifier type="IEEE">IEEE Std 194-1977</docidentifier>
            </bibitem>
            <bibitem id="_" type="standard" anchor="ref30">
              <docidentifier type="W3C" primary="true">W3C xml</docidentifier>
