@@ -153,6 +153,9 @@ RSpec.describe Metanorma::Ieee do
          <date type="ieee-sasb-approved">
           <on>1004-12-01</on>
           </date>
+         <date type="updated">
+          <on>2000-01-01</on>
+        </date>
          <contributor>
            <role type="author"/>
            <organization>
@@ -195,10 +198,7 @@ RSpec.describe Metanorma::Ieee do
            </organization>
          </contributor>
          <edition>2</edition>
-         <version>
-           <revision-date>2000-01-01</revision-date>
-           <draft>0.3.4</draft>
-         </version>
+         <version>0.3.4</version>
          <language>en</language>
          <script>Latn</script>
          <status>
@@ -311,9 +311,7 @@ RSpec.describe Metanorma::Ieee do
             <abbreviation>IEEE</abbreviation>
           </organization>
         </contributor>
-        <version>
-          <draft>3</draft>
-        </version>
+        <version>3</version>
         <language>en</language>
         <script>Latn</script>
         <status>

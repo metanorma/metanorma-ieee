@@ -1,5 +1,5 @@
 <bibdata type="standard" schema-version="v1.5.6">
-  <fetched>2026-05-04</fetched>
+  <fetched>2026-05-08</fetched>
   <title language="en" script="Latn">Network Functions Virtualisation (NFV); Architectural Framework</title>
   <uri type="src">https://webapp.etsi.org/workprogram/Report_WorkItem.asp?WKI_ID=43827</uri>
   <uri type="pdf">https://www.etsi.org/deliver/etsi_gs/NFV/001_099/002/01.02.01_60/gs_NFV002v010201p.pdf</uri>
@@ -27,9 +27,7 @@
       <abbreviation language="en" script="Latn">ETSI</abbreviation>
     </organization>
   </contributor>
-  <version>
-    <draft>1.2.1</draft>
-  </version>
+  <version>1.2.1</version>
   <language>en</language>
   <script>Latn</script>
   <abstract language="en" script="Latn">The document describes the high-level architectural framework and design philosophy of VNFs, and of the supporting platform and infrastructure. The work to realize in the revision of the Architectural Framework aims at developing the basic principles of the existing framework and implementing any current missing description that will help improve the understanding of the NFV architecture within and outside the NFV ISG context.</abstract>

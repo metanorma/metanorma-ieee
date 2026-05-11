@@ -1,5 +1,5 @@
 <bibdata type="standard" schema-version="v1.5.6">
-  <fetched>2026-05-04</fetched>
+  <fetched>2026-05-08</fetched>
   <title language="en" script="Latn">Zero-touch network and Service Management (ZSM); Enablers for Artificial Intelligence-based Network and Service Automation</title>
   <uri type="src">https://webapp.etsi.org/workprogram/Report_WorkItem.asp?WKI_ID=62010</uri>
   <uri type="pdf">https://www.etsi.org/deliver/etsi_gs/ZSM/001_099/012/01.01.01_60/gs_ZSM012v010101p.pdf</uri>
@@ -27,9 +27,7 @@
       <abbreviation language="en" script="Latn">ETSI</abbreviation>
     </organization>
   </contributor>
-  <version>
-    <draft>1.1.1</draft>
-  </version>
+  <version>1.1.1</version>
   <language>en</language>
   <script>Latn</script>
   <abstract language="en" script="Latn">The work item will specify extensions and new capabilities (so-called "AI enablers") for the ZSM framework reference architecture providing support for the automation of management functionalities and operations based on Artificial Intelligence (AI), applicable end-to-end and per management domain. The set of AI-enabling capabilities will be specified as management services, complementing the existing management services defined in ETSI GS ZSM 002 V1.1.1. The focus will be on AI-related areas such as data (including data handling and analytics), action, interoperation, governance and execution environment. Furthermore, the use and integration in the ZSM framework of externally provided AI-based capabilities will be taken into account. 

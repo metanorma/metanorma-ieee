@@ -36,6 +36,7 @@ RSpec.describe Metanorma::Ieee do
               <date type='feedback-ended' format="ddMMMyyyy">01 Aug 2018</date>
               <date type="ieee-sasb-approved"><on>1004-12-01</on></date>
               <date type="ieee-sasb-approved" format="ddMMMyyyy"><on>01 Dec 1004</on></date>
+              <date type="updated"><on>2000-01-01</on></date>
                                   <contributor>
                    <role type='editor'>Working Group Chair</role>
                    <person>
@@ -203,10 +204,7 @@ RSpec.describe Metanorma::Ieee do
          </organization>
       </contributor>
               <edition>2</edition>
-            <version>
-              <revision-date>2000-01-01</revision-date>
-              <draft>3.4</draft>
-            </version>
+            <version>3.4</version>
               <language>en</language>
               <script>Latn</script>
               <status>
@@ -392,6 +390,7 @@ RSpec.describe Metanorma::Ieee do
               <date type='issued' format="ddMMMyyyy">01 Jul 2018</date>
               <date type='feedback-ended'>2018-08-01</date>
               <date type='feedback-ended' format="ddMMMyyyy">01 Aug 2018</date>
+              <date type="updated"><on>2000-01-01</on></date>
                                   <contributor>
                    <role type='editor'>Working Group Chair</role>
                    <person>
@@ -551,10 +550,7 @@ RSpec.describe Metanorma::Ieee do
          </organization>
       </contributor>
               <edition>2</edition>
-            <version>
-              <revision-date>2000-01-01</revision-date>
-              <draft>3.4</draft>
-            </version>
+            <version>3.4</version>
               <language>en</language>
               <script>Latn</script>
               <status>
@@ -797,11 +793,9 @@ RSpec.describe Metanorma::Ieee do
         <docnumber>1000</docnumber>
         <date type='published'>2018-09-01</date>
         <date type='published' format="ddMMMyyyy">01 Sep 2018</date>
+        <date type="updated"><on>2000-01-01</on></date>
         <edition>2</edition>
-      <version>
-        <revision-date>2000-01-01</revision-date>
-        <draft>3.4</draft>
-      </version>
+      <version>3.4</version>
         <language>en</language>
         <script>Latn</script>
         <status>

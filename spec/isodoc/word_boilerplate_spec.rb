@@ -26,6 +26,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
             <date type="confirmed" format="ddMMMyyyy"><on>01 Dec 1000</on></date>
             <date type="issued"><on>1001-12-01</on></date>
             <date type="issued" format="ddMMMyyyy"><on>01 Dec 1001</on></date>
+            <date type="updated"><on>2000-01-01</on></date>
             <contributor><role type="editor">Working Group Chair</role><person>
             <name><completename>AB</completename></name>
             </person></contributor><contributor><role type="editor">Working Group Vice-Chair</role><person>
@@ -82,7 +83,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
          </contributor>
             <contributor><role type="publisher"/><organization>
             <name>Institute of Electrical and Electronic Engineers</name>
-            <abbreviation>IEEE</abbreviation></organization></contributor><edition>2</edition><version><revision-date>2000-01-01</revision-date><draft>0.3.4</draft></version><language>en</language><script>Latn</script><status><stage>20</stage><substage>20</substage><iteration>3</iteration></status><copyright><from>2000</from><owner><organization>
+            <abbreviation>IEEE</abbreviation></organization></contributor><edition>2</edition><version>0.3.4</version><language>en</language><script>Latn</script><status><stage>20</stage><substage>20</substage><iteration>3</iteration></status><copyright><from>2000</from><owner><organization>
             <name>Institute of Electrical and Electronic Engineers</name>
             <abbreviation>IEEE</abbreviation></organization></owner></copyright><ext><doctype>standard</doctype><editorialgroup><society>SECRETARIAT</society><balloting-group>SC</balloting-group><working-group>WG</working-group><working-group>WG1</working-group><committee>TC</committee><committee>TC1</committee></editorialgroup><ics><code>1</code></ics><ics><code>2</code></ics><ics><code>3</code></ics></ext></bibdata>
                <metanorma-extension>

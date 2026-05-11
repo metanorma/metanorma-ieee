@@ -114,7 +114,7 @@ module Metanorma
       # Style Manual 11.3
       def title_validate_type(xml)
         title = xml.at("//bibdata/title") or return
-        draft = xml.at("//bibdata//draft")
+        draft = xml.at("//bibdata//version")
         trial = xml.at("//bibdata/ext/trial-use[text() = 'true']")
         target = draft ? "Draft " : ""
         target += trial ? "Trial-Use " : ""
