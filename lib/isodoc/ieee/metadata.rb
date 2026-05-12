@@ -23,12 +23,12 @@ module IsoDoc
 
       def bibdate(isoxml, _out)
         isoxml.xpath(ns("//bibdata/date[@format = 'ddMMMyyyy']")).each do |d|
-          set("#{d['type'].tr('-', '_')}date".to_sym, Common::date_range(d))
+          set(:"#{d['type'].tr('-', '_')}date", Common::date_range(d))
         end
         draft = isoxml.at(ns("//bibdata/date[@type = 'issued']")) ||
           isoxml.at(ns("//bibdata/date[@type = 'circulated']")) ||
           isoxml.at(ns("//bibdata/date[@type = 'created']")) ||
-          isoxml.at(ns("//bibdata/version/revision-date")) or return
+          isoxml.at(ns("//bibdata/date[@type = 'updated']")) or return
         date = DateTime.parse(draft.text)
         set(:draft_month, date.strftime("%B"))
         set(:draft_year, date.strftime("%Y"))
@@ -59,7 +59,7 @@ module IsoDoc
       def agency(xml)
         super
         logos = xml.xpath(ns("//bibdata/contributor[xmlns:role/@type = 'author']/" \
-                   "organization/logo/image/@src"))
+                             "organization/logo/image/@src"))
         set(:corporate_author_logos, logos.map { |l| to_datauri(l.value) })
         set(:corporate_author_logo_attrs, contrib_logo_attrs(xml, "author"))
       end
@@ -78,27 +78,27 @@ module IsoDoc
 
       def society(xml)
         society = xml.at(ns("//bibdata/contributor[role/@type = 'authorizer']/" \
-        "organization/subdivision[@type='Society']/name"))&.text ||
+                            "organization/subdivision[@type='Society']/name"))&.text ||
           "&lt;Society&gt;"
         set(:society, society)
       end
 
       def tc(xml)
         tc = xml.at(ns("//bibdata/contributor[role/@type = 'authorizer']/" \
-          "organization/subdivision[@type='Committee']/name"))&.text ||
+                       "organization/subdivision[@type='Committee']/name"))&.text ||
           "&lt;Committee Name&gt;"
         set(:technical_committee, tc)
       end
 
       def wg(xml)
         wg = xml.at(ns("//bibdata/contributor[role/@type = 'authorizer']/" \
-         "organization/subdivision[@type='Working group']/name")) or return nil
+                       "organization/subdivision[@type='Working group']/name")) or return nil
         set(:working_group, wg.text)
       end
 
       def bg(xml)
         bg = xml.at(ns("//bibdata/contributor[role/@type = 'authorizer']/" \
-         "organization/subdivision[@type='Balloting group']/name")) or return nil
+                       "organization/subdivision[@type='Balloting group']/name")) or return nil
         set(:balloting_group, bg.text)
         set(:balloting_group_type, bg.parent["subtype"])
       end
@@ -146,15 +146,13 @@ module IsoDoc
       end
 
       def ddMMMyyyy(isodate)
-        isodate.nil? and return nil
-        arr = isodate.split("-")
-        if arr.size == 1 && (/^\d+$/.match isodate)
-          Date.new(*arr.map(&:to_i)).strftime("%Y")
-        elsif arr.size == 2
-          Date.new(*arr.map(&:to_i)).strftime("%b %Y")
-        else
-          Date.parse(isodate).strftime("%d %b %Y")
-        end
+        IsoDoc::ExtendedDateFormatter.format_iso_date(
+          isodate,
+          lang: @lang,
+          year: "%Y",
+          year_month: "%b %Y",
+          full: "%d %b %Y",
+        )
       end
     end
   end
