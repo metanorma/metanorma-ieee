@@ -154,11 +154,11 @@ RSpec.describe IsoDoc do
                                  <locality type="clause">
                                     <referenceFrom>3.1</referenceFrom>
                                  </locality>
-                                 <span class="std_publisher">ISO </span>
+                                 <span class="std_publisher">ISO</span> 
                                  <span class="std_docNumber">7301</span>
                                  :
                                  <span class="std_year">2011</span>
-                                 , 3.1
+                                 ,  3.1
                               </fmt-origin>
                            </semx>
                            , modified —
@@ -360,11 +360,11 @@ RSpec.describe IsoDoc do
                                  <locality type="clause">
                                     <referenceFrom>3(1)</referenceFrom>
                                  </locality>
-                                 <span class="std_publisher">ISO </span>
+                                 <span class="std_publisher">ISO</span> 
                                  <span class="std_docNumber">7301</span>
                                  :
                                  <span class="std_year">2011</span>
-                                 , 3(1)
+                                 ,  3(1)
                               </fmt-origin>
                            </semx>
                         </semx>
@@ -536,7 +536,7 @@ RSpec.describe IsoDoc do
           <div id="paddy1">
             <h2 class="TermNum" id="_"><a class="anchor" href="#paddy1"></a><a class="header" href="#paddy1"></a></h2>
           </div>
-          <p><b><dfn>paddy</dfn></b>, &lt;rice&gt;, &lt;in agriculture, dated&gt;<span class="fmt-termsource-delim">(</span><span class="std_publisher">ISO&#xA0;</span><span class="std_docNumber">7301</span>:<span class="std_year">2011</span>,  3.1, modified &#x2014; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here<span class="fmt-termsource-delim">)</span>: rice retaining its husk after threshing <span class="fmt-termsource-delim">(</span>adapted from t1, adapted; Termbase IEV, term ID xyz, adapted &#x2014; with adjustments<span class="fmt-termsource-delim">)</span></p>
+          <p><b><dfn>paddy</dfn></b>, &lt;rice&gt;, &lt;in agriculture, dated&gt;<span class="fmt-termsource-delim">(</span><span class="std_publisher">ISO</span>&#xA0;<span class="std_docNumber">7301</span>:<span class="std_year">2011</span>,  3.1, modified &#x2014; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here<span class="fmt-termsource-delim">)</span>: rice retaining its husk after threshing <span class="fmt-termsource-delim">(</span>adapted from t1, adapted; Termbase IEV, term ID xyz, adapted &#x2014; with adjustments<span class="fmt-termsource-delim">)</span></p>
           <div id="_" class="example" style="page-break-after: avoid;page-break-inside: avoid;">
             <p class="example-title"><i>Example 1</i><i>:</i></p>
             <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
@@ -557,7 +557,7 @@ RSpec.describe IsoDoc do
           <div id="paddy">
             <h2 class="TermNum" id="_"><a class="anchor" href="#paddy"></a><a class="header" href="#paddy"></a></h2>
           </div>
-          <p><b><dfn>paddy</dfn></b>: rice retaining its husk after threshing <i>Syn:</i> <b><dfn>paddy rice</dfn></b>, &lt;in agriculture&gt;; <b><dfn>rough rice</dfn></b>. <span class="fmt-termsource-delim">[</span><span class="std_publisher">ISO&#xA0;</span><span class="std_docNumber">7301</span>:<span class="std_year">2011</span>,  3(1)<span class="fmt-termsource-delim">]</span></p>
+          <p><b><dfn>paddy</dfn></b>: rice retaining its husk after threshing <i>Syn:</i> <b><dfn>paddy rice</dfn></b>, &lt;in agriculture&gt;; <b><dfn>rough rice</dfn></b>. <span class="fmt-termsource-delim">[</span><span class="std_publisher">ISO</span>&#xA0;<span class="std_docNumber">7301</span>:<span class="std_year">2011</span>,  3(1)<span class="fmt-termsource-delim">]</span></p>
           <div id="_" class="example">
             <p class="example-title"><i>Example</i><i>:</i></p>
             <div class="ul_wrap">
@@ -616,7 +616,7 @@ RSpec.describe IsoDoc do
             <h1>1.<span style="mso-tab-count:1">  </span>Terms and Definitions</h1>
             <p>For the purposes of this document, the following terms and definitions apply.</p>
             <p class="TermNum" id="paddy1"></p>
-            <p><b>paddy</b>, &lt;rice&gt;, &lt;in agriculture, dated&gt;<span class="fmt-termsource-delim">(</span><span class="std_publisher">ISO </span><span class="std_docNumber">7301</span>:<span class="std_year">2011</span>,  3.1, modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here<span class="fmt-termsource-delim">)</span>: rice retaining its husk after threshing <span class="fmt-termsource-delim">(</span>adapted from t1, adapted; Termbase IEV, term ID xyz, adapted — with adjustments<span class="fmt-termsource-delim">)</span></p>
+            <p><b>paddy</b>, &lt;rice&gt;, &lt;in agriculture, dated&gt;<span class="fmt-termsource-delim">(</span><span class="std_publisher">ISO</span> <span class="std_docNumber">7301</span>:<span class="std_year">2011</span>,  3.1, modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here<span class="fmt-termsource-delim">)</span>: rice retaining its husk after threshing <span class="fmt-termsource-delim">(</span>adapted from t1, adapted; Termbase IEV, term ID xyz, adapted — with adjustments<span class="fmt-termsource-delim">)</span></p>
             <div id="_" class="example" style="page-break-after: avoid;page-break-inside: avoid;">
               <p class="example-title"><i>Example 1</i><i>:</i></p>
               <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
@@ -635,7 +635,7 @@ RSpec.describe IsoDoc do
               </div>
             </div>
             <p class="TermNum" id="paddy"></p>
-            <p><b>paddy</b>: rice retaining its husk after threshing <i>Syn:</i> <b>paddy rice</b>, &lt;in agriculture&gt;; <b>rough rice</b>. <span class="fmt-termsource-delim">[</span><span class="std_publisher">ISO </span><span class="std_docNumber">7301</span>:<span class="std_year">2011</span>,  3(1)<span class="fmt-termsource-delim">]</span></p>
+            <p><b>paddy</b>: rice retaining its husk after threshing <i>Syn:</i> <b>paddy rice</b>, &lt;in agriculture&gt;; <b>rough rice</b>. <span class="fmt-termsource-delim">[</span><span class="std_publisher">ISO</span> <span class="std_docNumber">7301</span>:<span class="std_year">2011</span>,  3(1)<span class="fmt-termsource-delim">]</span></p>
             <div id="_" class="example">
               <p class="example-title"><i>Example</i><i>:</i></p>
               <div class="ul_wrap">
@@ -2015,11 +2015,11 @@ RSpec.describe IsoDoc do
                                  <locality type="clause">
                                     <referenceFrom>3.1</referenceFrom>
                                  </locality>
-                                 <span class="std_publisher">ISO </span>
+                                 <span class="std_publisher">ISO</span> 
                                  <span class="std_docNumber">7301</span>
                                  :
                                  <span class="std_year">2011</span>
-                                 , 3.1
+                                 ,  3.1
                               </fmt-origin>
                            </semx>
                         </semx>

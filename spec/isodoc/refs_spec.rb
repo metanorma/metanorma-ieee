@@ -348,8 +348,8 @@ RSpec.describe IsoDoc do
                    <eref type="inline" bibitemid="ref1" citeas="ISO 639:1967" id="_"/>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" target="ref1">
-                         <span class="std_publisher">ISO </span>
-                         <span class="std_docNumber">639</span>
+                         <span class="std_publisher">ISO</span>
+                          <span class="std_docNumber">639</span>
                          :
                          <span class="std_year">1967</span>
                       </fmt-xref>
@@ -357,8 +357,10 @@ RSpec.describe IsoDoc do
                    <eref type="inline" bibitemid="ref7" citeas="ISO 639-2:1998" id="_"/>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" target="ref7">
-                         <span class="std_publisher">ISO </span>
-                         <span class="std_docNumber">639-2</span>
+                         <span class="std_publisher">ISO</span>
+                          <span class="std_docNumber">639</span>
+                         -
+                         <span class="std_docNumber">2</span>
                          :
                          <span class="std_year">1998</span>
                       </fmt-xref>
@@ -377,13 +379,17 @@ RSpec.describe IsoDoc do
                    </semx>
                    <eref type="inline" bibitemid="ref3" citeas="REF4" id="_"/>
                    <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="author_date" target="ref3">REF4</fmt-xref>
+                      <fmt-xref type="inline" style="author_date" target="ref3">
+
+                         REF4
+
+                      </fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" id="_"/>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" target="ref4">
-                         <span class="std_publisher">ISO </span>
-                         <span class="std_docNumber">639</span>
+                         <span class="std_publisher">ISO</span>
+                          <span class="std_docNumber">639</span>
                          :
                          <span class="std_year">1967</span>
                          [B3]
@@ -402,8 +408,8 @@ RSpec.describe IsoDoc do
                    <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="title" id="_"/>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" style="title" target="ref4">
-                         <span class="std_publisher">ISO </span>
-                         <span class="std_docNumber">639</span>
+                         <span class="std_publisher">ISO</span>
+                          <span class="std_docNumber">639</span>
                          :
                          <span class="std_year">1967</span>
                          [B3]
@@ -412,8 +418,8 @@ RSpec.describe IsoDoc do
                    <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="author" id="_"/>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" style="author" target="ref4">
-                         <span class="std_publisher">ISO </span>
-                         <span class="std_docNumber">639</span>
+                         <span class="std_publisher">ISO</span>
+                          <span class="std_docNumber">639</span>
                          :
                          <span class="std_year">1967</span>
                          [B3]
@@ -422,8 +428,8 @@ RSpec.describe IsoDoc do
                    <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="no-biblio-tag" id="_"/>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" style="no-biblio-tag" target="ref4">
-                         <span class="std_publisher">ISO </span>
-                         <span class="std_docNumber">639</span>
+                         <span class="std_publisher">ISO</span>
+                          <span class="std_docNumber">639</span>
                          :
                          <span class="std_year">1967</span>
                       </fmt-xref>
@@ -451,11 +457,11 @@ RSpec.describe IsoDoc do
                    </eref>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" target="ref4">
-                         <span class="std_publisher">ISO </span>
-                         <span class="std_docNumber">639</span>
+                         <span class="std_publisher">ISO</span>
+                          <span class="std_docNumber">639</span>
                          :
                          <span class="std_year">1967</span>
-                         [B3], Clause 1
+                         [B3],  Clause 1
                       </fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="title" id="_">
@@ -465,11 +471,11 @@ RSpec.describe IsoDoc do
                    </eref>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" style="title" target="ref4">
-                         <span class="std_publisher">ISO </span>
-                         <span class="std_docNumber">639</span>
+                         <span class="std_publisher">ISO</span>
+                          <span class="std_docNumber">639</span>
                          :
                          <span class="std_year">1967</span>
-                         [B3], Clause 2
+                         [B3],  Clause 2
                       </fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="author" id="_">
@@ -479,11 +485,11 @@ RSpec.describe IsoDoc do
                    </eref>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" style="author" target="ref4">
-                         <span class="std_publisher">ISO </span>
-                         <span class="std_docNumber">639</span>
+                         <span class="std_publisher">ISO</span>
+                          <span class="std_docNumber">639</span>
                          :
                          <span class="std_year">1967</span>
-                         [B3], Clause 3
+                         [B3],  Clause 3
                       </fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="no-biblio-tag" id="_">
@@ -493,11 +499,11 @@ RSpec.describe IsoDoc do
                    </eref>
                    <semx element="eref" source="_">
                       <fmt-xref type="inline" style="no-biblio-tag" target="ref4">
-                         <span class="std_publisher">ISO </span>
-                         <span class="std_docNumber">639</span>
+                         <span class="std_publisher">ISO</span>
+                          <span class="std_docNumber">639</span>
                          :
                          <span class="std_year">1967</span>
-                         , Clause 4
+                         ,  Clause 4
                       </fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" id="_">
@@ -592,7 +598,7 @@ RSpec.describe IsoDoc do
                       <fmt-xref type="inline" target="ref5">
                          Aluffi
                          <em>et al.</em>
-                         [B2], Clause 1
+                         [B2],  Clause 1
                       </fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref5" citeas="[B2]" style="title" id="_">
@@ -612,7 +618,7 @@ RSpec.describe IsoDoc do
                       <fmt-xref type="inline" style="author" target="ref5">
                          Aluffi
                          <em>et al.</em>
-                         [B2], Clause 3
+                         [B2],  Clause 3
                       </fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref5" citeas="[B2]" style="no-biblio-tag" id="_">
@@ -624,7 +630,7 @@ RSpec.describe IsoDoc do
                       <fmt-xref type="inline" style="no-biblio-tag" target="ref5">
                          Aluffi
                          <em>et al.</em>
-                         , Clause 4
+                         ,  Clause 4
                       </fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref5" citeas="[B2]" id="_">
@@ -1322,15 +1328,15 @@ RSpec.describe IsoDoc do
             <eref type="inline" bibitemid="ISO16634" citeas="ISO 639:1967" id="_"/>
             <semx element="eref" source="_">
                <fmt-xref type="inline" target="ISO16634">
-                  <span class="std_publisher">ISO </span>
-                  <span class="std_docNumber">16634</span>
+                  <span class="std_publisher">ISO</span>
+                   <span class="std_docNumber">16634</span>:--
                </fmt-xref>
             </semx>
             <eref type="inline" bibitemid="ISO16634" citeas="[B1]" id="_"/>
             <semx element="eref" source="_">
                <fmt-xref type="inline" target="ISO16634">
-                  <span class="std_publisher">ISO </span>
-                  <span class="std_docNumber">16634</span>
+                  <span class="std_publisher">ISO</span>
+                   <span class="std_docNumber">16634</span>:--
                </fmt-xref>
             </semx>
             <eref type="inline" bibitemid="ISO16635" citeas="REF4" id="_">this is renderable text</eref>
@@ -1340,9 +1346,9 @@ RSpec.describe IsoDoc do
             <eref type="inline" bibitemid="ISO16635" citeas="REF4" id="_"/>
             <semx element="eref" source="_">
                <fmt-xref type="inline" target="ISO16635">
-                  <span class="std_publisher">ISO </span>
-                  <span class="std_docNumber">16635</span>
-                  [B1]
+                  <span class="std_publisher">ISO</span>
+                   <span class="std_docNumber">16635</span>
+                  :-- [B1]
                </fmt-xref>
             </semx>
             <fn reference="1" original-reference="_" id="_" target="_">
@@ -1358,9 +1364,9 @@ RSpec.describe IsoDoc do
             <eref type="inline" bibitemid="ISO16635" citeas="[B1]" id="_"/>
             <semx element="eref" source="_">
                <fmt-xref type="inline" target="ISO16635">
-                  <span class="std_publisher">ISO </span>
-                  <span class="std_docNumber">16635</span>
-                  [B1]
+                  <span class="std_publisher">ISO</span>
+                   <span class="std_docNumber">16635</span>
+                  :-- [B1]
                </fmt-xref>
             </semx>
          </p>
@@ -1444,9 +1450,9 @@ RSpec.describe IsoDoc do
              <eref type="inline" bibitemid="ISO16635" citeas="REF4" id="_"/>
              <semx element="eref" source="_">
              <fmt-xref type="inline" target="ISO16635">
-            <span class="std_publisher">ISO </span>
-            <span class="std_docNumber">16635</span>
-            [B1]
+            <span class="std_publisher">ISO</span>
+             <span class="std_docNumber">16635</span>
+            :-- [B1]
          </fmt-xref>
              </semx>
              .
@@ -1757,8 +1763,8 @@ RSpec.describe IsoDoc do
             </eref>
             <semx element="eref" source="_">
                <fmt-xref type="inline" target="IETF_6281">
-                  <span class="std_publisher">IETF </span>
-                  <span class="std_docNumber">6281</span>
+                  <span class="std_publisher">IETF</span>
+                   <span class="std_docNumber">6281</span>
                   , 4–9
                </fmt-xref>
             </semx>
@@ -1772,8 +1778,8 @@ RSpec.describe IsoDoc do
             </eref>
             <semx element="eref" source="_">
                <fmt-xref type="inline" target="IETF_6281">
-                  <span class="std_publisher">IETF </span>
-                  <span class="std_docNumber">6281</span>
+                  <span class="std_publisher">IETF</span>
+                   <span class="std_docNumber">6281</span>
                   , Figure 4–9
                </fmt-xref>
             </semx>
