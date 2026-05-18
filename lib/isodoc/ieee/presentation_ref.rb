@@ -1,3 +1,5 @@
+require "pubid"
+
 module IsoDoc
   module Ieee
     class PresentationXMLConvert < IsoDoc::PresentationXMLConvert
@@ -96,6 +98,18 @@ module IsoDoc
 
       def expand_citeas(text)
         std_docid_semantic(super)
+      end
+
+      def annotate_docid?(_id)
+        true
+      end
+
+      def std_docid_span_classes(id)
+        id.gsub('class="publisher"', 'class="std_publisher"')
+          .gsub('class="doctype"', 'class="std_documentType"')
+          .gsub('class="docnumber"', 'class="std_docNumber"')
+          .gsub('class="part"', 'class="std_docNumber"')
+          .gsub('class="year"', 'class="std_year"')
       end
 
       def eref_localities_conflated(refs, target, node)

@@ -97,14 +97,14 @@ RSpec.describe IsoDoc::Ieee do
                 <locality type="clause">
                    <referenceFrom>1-2-3</referenceFrom>
                 </locality>
-                IEV, 1-2-3
+                IEV,  1-2-3
              </fmt-eref>
           </semx>
           <eref bibitemid="ISO712" citeas="ISO 712" type="inline" id="_"/>
           <semx element="eref" source="_">
              <fmt-xref type="inline" target="ISO712">
-                <span class="std_publisher">ISO </span>
-                <span class="std_docNumber">712</span>
+                <span class="std_publisher">ISO</span>
+                 <span class="std_docNumber">712</span>
              </fmt-xref>
           </semx>
           <eref bibitemid="ISO712" type="inline" id="_"/>
@@ -117,7 +117,7 @@ RSpec.describe IsoDoc::Ieee do
              </locality>
           </eref>
           <semx element="eref" source="_">
-             <fmt-xref type="inline" target="ISO712">ISO 712, Table 1</fmt-xref>
+             <fmt-xref type="inline" target="ISO712">ISO 712,  Table 1</fmt-xref>
           </semx>
           <eref bibitemid="ISO712" type="inline" id="_">
              <locality type="table">
@@ -126,7 +126,7 @@ RSpec.describe IsoDoc::Ieee do
              </locality>
           </eref>
           <semx element="eref" source="_">
-             <fmt-xref type="inline" target="ISO712">ISO 712, Table 1–1</fmt-xref>
+             <fmt-xref type="inline" target="ISO712">ISO 712,  Table 1–1</fmt-xref>
           </semx>
           <eref bibitemid="ISO712" type="inline" id="_">
              <locality type="clause">
@@ -137,7 +137,7 @@ RSpec.describe IsoDoc::Ieee do
              </locality>
           </eref>
           <semx element="eref" source="_">
-             <fmt-xref type="inline" target="ISO712">ISO 712, Clause 1, Table 1</fmt-xref>
+             <fmt-xref type="inline" target="ISO712">ISO 712,  Clause 1,  Table 1</fmt-xref>
           </semx>
           <eref bibitemid="ISO712" type="inline" id="_">
              <locality type="clause">
@@ -148,7 +148,7 @@ RSpec.describe IsoDoc::Ieee do
              </locality>
           </eref>
           <semx element="eref" source="_">
-             <fmt-xref type="inline" target="ISO712">ISO 712, Clause 1, List a)</fmt-xref>
+             <fmt-xref type="inline" target="ISO712">ISO 712,  Clause 1,  List a)</fmt-xref>
           </semx>
           <eref bibitemid="ISO712" type="inline" id="_">
              <locality type="clause">
@@ -156,7 +156,7 @@ RSpec.describe IsoDoc::Ieee do
              </locality>
           </eref>
           <semx element="eref" source="_">
-             <fmt-xref type="inline" target="ISO712">ISO 712, Clause 1</fmt-xref>
+             <fmt-xref type="inline" target="ISO712">ISO 712,  Clause 1</fmt-xref>
           </semx>
           <eref bibitemid="ISO712" type="inline" id="_">
              <locality type="clause">
@@ -164,7 +164,7 @@ RSpec.describe IsoDoc::Ieee do
              </locality>
           </eref>
           <semx element="eref" source="_">
-             <fmt-xref type="inline" target="ISO712">ISO 712, 1.5</fmt-xref>
+             <fmt-xref type="inline" target="ISO712">ISO 712,  1.5</fmt-xref>
           </semx>
           <eref bibitemid="ISO712" type="inline" id="_">
              <locality type="table">
@@ -180,7 +180,7 @@ RSpec.describe IsoDoc::Ieee do
              <locality type="whole"/>
           </eref>
           <semx element="eref" source="_">
-             <fmt-xref type="inline" target="ISO712">ISO 712, Whole of text</fmt-xref>
+             <fmt-xref type="inline" target="ISO712">ISO 712,  Whole of text</fmt-xref>
           </semx>
           <eref bibitemid="ISO712" type="inline" id="_">
              <locality type="locality:prelude">
@@ -188,7 +188,7 @@ RSpec.describe IsoDoc::Ieee do
              </locality>
           </eref>
           <semx element="eref" source="_">
-             <fmt-xref type="inline" target="ISO712">ISO 712, Prelude 7</fmt-xref>
+             <fmt-xref type="inline" target="ISO712">ISO 712,  Prelude 7</fmt-xref>
           </semx>
           <eref bibitemid="ISO712" citeas="ISO 712" type="inline" id="_">A</eref>
           <semx element="eref" source="_">
@@ -197,8 +197,8 @@ RSpec.describe IsoDoc::Ieee do
           <eref bibitemid="ISO712" citeas="ISO/IEC DIR 1" type="inline" id="_"/>
           <semx element="eref" source="_">
              <fmt-xref type="inline" target="ISO712">
-                <span class="std_publisher">ISO </span>
-                <span class="std_docNumber">712</span>
+                <span class="std_publisher">ISO</span>
+                 <span class="std_docNumber">712</span>
              </fmt-xref>
           </semx>
        </p>
@@ -292,7 +292,7 @@ RSpec.describe IsoDoc::Ieee do
                          <referenceFrom>5</referenceFrom>
                       </locality>
                    </localityStack>
-                   XYZ, Clauses 3
+                   XYZ,  Clauses 3
                    <span class="fmt-conn">to</span>
                    5
                 </fmt-eref>
@@ -321,7 +321,7 @@ RSpec.describe IsoDoc::Ieee do
                          <referenceFrom>5.1</referenceFrom>
                       </locality>
                    </localityStack>
-                   XYZ, 3.1
+                   XYZ,  3.1
                    <span class="fmt-conn">to</span>
                    5.1
                 </fmt-eref>
@@ -350,7 +350,7 @@ RSpec.describe IsoDoc::Ieee do
                          <referenceFrom>5</referenceFrom>
                       </locality>
                    </localityStack>
-                   XYZ, 3.1
+                   XYZ,  3.1
                    <span class="fmt-conn">to</span>
                    5
                 </fmt-eref>
@@ -379,7 +379,7 @@ RSpec.describe IsoDoc::Ieee do
                          <referenceFrom>5</referenceFrom>
                       </locality>
                    </localityStack>
-                   XYZ, 3.1
+                   XYZ,  3.1
                    <span class="fmt-conn">to</span>
                    Table 5
                 </fmt-eref>

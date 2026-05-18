@@ -101,11 +101,11 @@ RSpec.describe IsoDoc do
                                      <locality type="clause">
                                         <referenceFrom>3.1</referenceFrom>
                                      </locality>
-                                     <span class="std_publisher">ISO </span>
+                                     <span class="std_publisher">ISO</span> 
                                      <span class="std_docNumber">7301</span>
                                      :
                                      <span class="std_year">2011</span>
-                                     , 3.1
+                                     ,  3.1
                                   </fmt-origin>
                                </semx>
                                , modified —
@@ -286,11 +286,11 @@ RSpec.describe IsoDoc do
                                      <locality type="clause">
                                         <referenceFrom>3.1</referenceFrom>
                                      </locality>
-                                     <span class="std_publisher">ISO </span>
+                                     <span class="std_publisher">ISO</span> 
                                      <span class="std_docNumber">7301</span>
                                      :
                                      <span class="std_year">2011</span>
-                                     , 3.1
+                                     ,  3.1
                                   </fmt-origin>
                                </semx>
                                , modified —
