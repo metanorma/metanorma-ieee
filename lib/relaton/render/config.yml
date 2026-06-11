@@ -24,7 +24,7 @@ template:
   manual: book
   proceedings: book
   inproceedings: "{{ creatornames }}$$$ “{{ title }}$$$|” <em>{{host_title}}</em>$$$ {{place}}$$$ {{extent}}$$$ {{disambiguated_date}}$$$ {{ labels['viewed'] }}_{{date_accessed}}$$$ {% if uri %}{{ uri }}{% else %}{% if doi %}DOI: {{ doi | join: '$$$ ' }}{% endif %}{% endif %} $$$"
-  inbook: "{{ creatornames }}$$$ “{{ title }}$$$|” {{ labels['in'] }} {{ host_creatornames}} ({{ host_role}}) : <em>{{host_title}}</em>$$$ {{place}}: {{publisher}}$$$ {{disambiguated_date}}$$$ {{extent}}$$$ {{ labels['viewed'] }}_{{date_accessed}}$$$ {% if uri %}{{ uri }}{% else %}{% if doi %}DOI: {{ doi | join: '$$$ ' }}{% endif %}{% endif %} $$$"
+  inbook: "{{ creatornames }}$$$ “{{ title }}$$$|” {{ labels['in_document'] }} {{ host_creatornames}} ({{ host_role}}) : <em>{{host_title}}</em>$$$ {{place}}: {{publisher}}$$$ {{disambiguated_date}}$$$ {{extent}}$$$ {{ labels['viewed'] }}_{{date_accessed}}$$$ {% if uri %}{{ uri }}{% else %}{% if doi %}DOI: {{ doi | join: '$$$ ' }}{% endif %}{% endif %} $$$"
   incollection: inbook
   thesis: "{{ creatornames }} $$$ “{{ title }}$$$|” {{ medium | capitalize }}$$$ {{ publisher }}$$$ {{ disambiguated_date }}$$$ {{ labels['viewed'] }}_{{date_accessed}}$$$ {% if uri %}{{ uri }}{% else %}{% if doi %}DOI: {{ doi | join: '$$$ ' }}{% endif %}{% endif %} $$$"
   unpublished: thesis
