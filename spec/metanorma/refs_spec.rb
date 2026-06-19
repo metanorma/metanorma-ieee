@@ -343,7 +343,7 @@ RSpec.describe Metanorma::Ieee do
                <docidentifier type="ISO" primary="true">ISO 639:2023</docidentifier>
                <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
                <docidentifier type="iso-reference">ISO 639:2023(E)</docidentifier>
-               <docidentifier type="URN">urn:iso:std:iso:639:stage-60.60</docidentifier>
+               <docidentifier type="URN">urn:iso:std:iso:639</docidentifier>
                <docnumber>639</docnumber>
                <date type="published">
                  <on>2023-11-08</on>
@@ -945,7 +945,7 @@ RSpec.describe Metanorma::Ieee do
            <bibitem id="_" type="standard" anchor="ref21">
              <docidentifier type="ISO" primary="true">ISO/IEC 2382</docidentifier>
              <docidentifier type="iso-reference">ISO/IEC 2382(E)</docidentifier>
-             <docidentifier type="URN">urn:iso:std:iso-iec:2382:stage-90.60</docidentifier>
+             <docidentifier type="URN">urn:iso:std:iso-iec:2382:stage-90.92</docidentifier>
              <note type="Availability">
                 <p id="_">ISO/IEC documents are available from the International Organization for Standardization (https://www.iso.org/). ISO/IEC publications are also available in the United States from Global Engineering Documents (https://global.ihs.com/). Electronic copies are available in the United States from the American National Standards Institute (https://www.ansi.org/)</p>
               </note>
@@ -953,12 +953,12 @@ RSpec.describe Metanorma::Ieee do
            <bibitem id="_" type="standard" anchor="ref1">
              <docidentifier type="ISO" primary="true">ISO/IEC 27001</docidentifier>
              <docidentifier type="iso-reference">ISO/IEC 27001(E)</docidentifier>
-             <docidentifier type="URN">urn:iso:std:iso-iec:27001:stage-60.60</docidentifier>
+             <docidentifier type="URN">urn:iso:std:iso-iec:27001</docidentifier>
            </bibitem>
            <bibitem id="_" type="standard" anchor="ref2">
              <docidentifier type="ISO" primary="true">ISO 10642</docidentifier>
              <docidentifier type="iso-reference">ISO 10642(E)</docidentifier>
-             <docidentifier type="URN">urn:iso:std:iso:10642:stage-60.60</docidentifier>
+             <docidentifier type="URN">urn:iso:std:iso:10642</docidentifier>
              <note type="Availability">
                <p id="_">ISO publications are available from the International Organization for Standardization (https://www.iso.org/) and the American National Standards Institute (https://www.ansi.org/).</p>
              </note>
@@ -966,7 +966,7 @@ RSpec.describe Metanorma::Ieee do
            <bibitem id="_" type="standard" anchor="ref22">
              <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
              <docidentifier type="iso-reference">ISO 639(E)</docidentifier>
-             <docidentifier type="URN">urn:iso:std:iso:639:stage-60.60</docidentifier>
+             <docidentifier type="URN">urn:iso:std:iso:639</docidentifier>
            </bibitem>
            <bibitem id="_" type="standard" anchor="ref25">
              <docidentifier type="ITU" primary="true">ITU-R P.838-3</docidentifier>

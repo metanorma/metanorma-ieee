@@ -105,7 +105,7 @@ module IsoDoc
       def note_style_cleanup(docxml)
         docxml.xpath("//span[@class = 'note_label']").each do |s|
           multi = /^#{@i18n.note}\s+[A-Z0-9.]+/.match?(s.text)
-          div = s.at("./ancestor::div[@class = 'Note']")
+          div = s.at("./ancestor::div[contains(concat(' ', normalize-space(@class), ' '), ' Note ')]")
           if multi
             s.remove
             seq = notesequence(div)
