@@ -1558,9 +1558,7 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<fo:block xsl:use-attribute-sets="toc-title-style">
-					<xsl:if test="($current_template = 'standard' or $current_template = 'draft') and        ($stage = 'published' or $stage = 'approved' or $stage_published = 'true')">
-						<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
-					</xsl:if>
+					<xsl:call-template name="refine_toc-title-style"/>
 					<!-- Contents -->
 					<xsl:apply-templates/>
 				</fo:block>
@@ -15289,6 +15287,9 @@
 	</xsl:attribute-set>
 
 	<xsl:template name="refine_toc-title-style">
+		<xsl:if test="($current_template = 'standard' or $current_template = 'draft') and      ($stage = 'published' or $stage = 'approved' or $stage_published = 'true')">
+			<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
+		</xsl:if>
 	</xsl:template>
 
 	<xsl:attribute-set name="toc-title-page-style">
