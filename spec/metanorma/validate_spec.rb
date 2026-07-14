@@ -48,6 +48,34 @@ RSpec.describe Metanorma::Ieee, type: :validation do
     expect(errors).to include("pizza is not a recognised stage")
   end
 
+  it "Validates docstage against docstage-valid when a taste supplies it" do
+    errors = convert_and_capture_errors(<<~INPUT)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :docstage: pizza
+      :docstage-valid: pizza, calzone
+
+      text
+    INPUT
+    expect(errors).not_to include("pizza is not a recognised stage")
+
+    errors = convert_and_capture_errors(<<~INPUT)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :docstage: draft
+      :docstage-valid: pizza, calzone
+
+      text
+    INPUT
+    expect(errors).to include("draft is not a recognised stage")
+  end
+
   context "Capitalisation validation" do
     let(:uncapitalised_title) do
       convert_and_capture_errors(<<~INPUT)

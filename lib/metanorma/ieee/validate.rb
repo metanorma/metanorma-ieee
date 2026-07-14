@@ -36,7 +36,10 @@ module Metanorma
 
       def stage_validate(xmldoc)
         stage = xmldoc&.at("//bibdata/status/stage")&.text
-        %w(draft approved superseded withdrawn).include? stage or
+        # a taste's stage repertoire (:docstage-valid:) supersedes the
+        # flavour's own
+        stages = @docstage_valid || %w(draft approved superseded withdrawn)
+        stages.include? stage or
           @log.add("IEEE_7", nil, params: [stage])
       end
 
