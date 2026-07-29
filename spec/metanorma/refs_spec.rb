@@ -921,15 +921,15 @@ RSpec.describe Metanorma::Ieee do
              <docidentifier type="IEC" primary="true">IEC 61131-3</docidentifier>
              <docidentifier type="URN">urn:iec:std:iec:61131-3::::</docidentifier>
            </bibitem>
-     <bibitem anchor="ref26" id="_" type="standard">
-       <docidentifier primary="true" type="IEEE">IEEE Std 194-1977</docidentifier>
-       <docidentifier primary="true" scope="trademark" type="IEEE">IEEE Std 194™-1977</docidentifier>
-       <docidentifier type="ISBN">0-7381-4350-2</docidentifier>
-       <docidentifier type="DOI">10.1109/IEEESTD.1977.81098</docidentifier>
-       <note type="Availability">
-         <p id="_">IEEE Std 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).</p>
-       </note>
-     </bibitem>
+           <bibitem id="_" type="standard" anchor="ref26">
+             <docidentifier type="IEEE" primary="true">IEEE Std 194-1977</docidentifier>
+             <docidentifier type="IEEE" scope="trademark" primary="true">IEEE Std 194™-1977</docidentifier>
+             <docidentifier type="ISBN">0-7381-4350-2</docidentifier>
+             <docidentifier type="DOI">10.1109/IEEESTD.1977.81098</docidentifier>
+             <note type="Availability">
+               <p id="_">IEEE Std 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).</p>
+             </note>
+           </bibitem>
            <bibitem id="_" type="standard" anchor="ref6">
              <docidentifier type="IEEE" primary="true">IEEE Std 81-1983</docidentifier>
              <docidentifier type="IEEE" scope="trademark" primary="true">IEEE Std 81™-1983</docidentifier>
@@ -947,8 +947,8 @@ RSpec.describe Metanorma::Ieee do
              <docidentifier type="iso-reference">ISO/IEC 2382(E)</docidentifier>
              <docidentifier type="URN">urn:iso:std:iso-iec:2382:stage-90.92</docidentifier>
              <note type="Availability">
-                <p id="_">ISO/IEC documents are available from the International Organization for Standardization (https://www.iso.org/). ISO/IEC publications are also available in the United States from Global Engineering Documents (https://global.ihs.com/). Electronic copies are available in the United States from the American National Standards Institute (https://www.ansi.org/)</p>
-              </note>
+               <p id="_">ISO/IEC documents are available from the International Organization for Standardization (https://www.iso.org/). ISO/IEC publications are also available in the United States from Global Engineering Documents (https://global.ihs.com/). Electronic copies are available in the United States from the American National Standards Institute (https://www.ansi.org/)</p>
+             </note>
            </bibitem>
            <bibitem id="_" type="standard" anchor="ref1">
              <docidentifier type="ISO" primary="true">ISO/IEC 27001</docidentifier>
@@ -974,15 +974,6 @@ RSpec.describe Metanorma::Ieee do
            <bibitem id="_" type="standard" anchor="ref5">
              <docidentifier type="ITU" primary="true">ITU-R P.839-4</docidentifier>
            </bibitem>
-           <bibitem id="_" type="standard" anchor="ref4">
-             <docidentifier type="ITU" primary="true">ITU-T G.984.2</docidentifier>
-             <note type="Availability">
-               <p id="_">ITU-T publications are available from the International Telecommunications Union (http://www.itu.int/).</p>
-             </note>
-           </bibitem>
-           <bibitem id="_" type="standard" anchor="ref24">
-             <docidentifier type="ITU" primary="true">ITU-T K.20</docidentifier>
-           </bibitem>
            <bibitem id="_" type="standard" anchor="ref8">
              <docidentifier type="NIST" primary="true">NIST FIPS 140-2/Upd2</docidentifier>
              <docidentifier type="DOI">NIST.FIPS.140-2</docidentifier>
@@ -1005,11 +996,20 @@ RSpec.describe Metanorma::Ieee do
              <docidentifier type="NIST" primary="true">NIST SP 800-30</docidentifier>
              <docidentifier type="DOI">NIST.SP.800-30</docidentifier>
            </bibitem>
+           <bibitem anchor="ref4" id="_">
+             <docidentifier type="ITU">ITU-T G.984.2</docidentifier>
+             <note type="Availability">
+               <p id="_">ITU-T publications are available from the International Telecommunications Union (http://www.itu.int/).</p>
+             </note>
+           </bibitem>
            <bibitem anchor="ref7" id="_">
              <docidentifier type="IEEE">IEEE 43-2013 Redline</docidentifier>
            </bibitem>
            <bibitem anchor="ref10" id="_">
              <docidentifier type="W3C">W3C XPTR</docidentifier>
+           </bibitem>
+           <bibitem anchor="ref24" id="_">
+             <docidentifier type="ITU">ITU-T K.20</docidentifier>
            </bibitem>
            <bibitem id="_" type="standard" anchor="ref30">
              <docidentifier type="W3C" primary="true">W3C xml</docidentifier>
