@@ -7896,6 +7896,7 @@
 	<xsl:template match="mn:termexample/mn:p">
 		<xsl:variable name="element">inline
 			block
+			<xsl:value-of select="$example_display_in"/>
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="contains($element, 'block')">
