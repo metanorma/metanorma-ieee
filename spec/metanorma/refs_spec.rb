@@ -974,6 +974,15 @@ RSpec.describe Metanorma::Ieee do
            <bibitem id="_" type="standard" anchor="ref5">
              <docidentifier type="ITU" primary="true">ITU-R P.839-4</docidentifier>
            </bibitem>
+           <bibitem id="_" type="standard" anchor="ref4">
+             <docidentifier type="ITU" primary="true">ITU-T G.984.2</docidentifier>
+             <note type="Availability">
+               <p id="_">ITU-T publications are available from the International Telecommunications Union (http://www.itu.int/).</p>
+             </note>
+           </bibitem>
+           <bibitem id="_" type="standard" anchor="ref24">
+             <docidentifier type="ITU" primary="true">ITU-T K.20</docidentifier>
+           </bibitem>
            <bibitem id="_" type="standard" anchor="ref8">
              <docidentifier type="NIST" primary="true">NIST FIPS 140-2/Upd2</docidentifier>
              <docidentifier type="DOI">NIST.FIPS.140-2</docidentifier>
@@ -996,20 +1005,11 @@ RSpec.describe Metanorma::Ieee do
              <docidentifier type="NIST" primary="true">NIST SP 800-30</docidentifier>
              <docidentifier type="DOI">NIST.SP.800-30</docidentifier>
            </bibitem>
-           <bibitem anchor="ref4" id="_">
-             <docidentifier type="ITU">ITU-T G.984.2</docidentifier>
-             <note type="Availability">
-               <p id="_">ITU-T publications are available from the International Telecommunications Union (http://www.itu.int/).</p>
-             </note>
-           </bibitem>
            <bibitem anchor="ref7" id="_">
              <docidentifier type="IEEE">IEEE 43-2013 Redline</docidentifier>
            </bibitem>
            <bibitem anchor="ref10" id="_">
              <docidentifier type="W3C">W3C XPTR</docidentifier>
-           </bibitem>
-           <bibitem anchor="ref24" id="_">
-             <docidentifier type="ITU">ITU-T K.20</docidentifier>
            </bibitem>
            <bibitem id="_" type="standard" anchor="ref30">
              <docidentifier type="W3C" primary="true">W3C xml</docidentifier>
@@ -1019,6 +1019,8 @@ RSpec.describe Metanorma::Ieee do
            </bibitem>
          </references>
        </bibliography>
+     
+
     OUTPUT
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
       .at("//xmlns:bibliography")
