@@ -30,6 +30,9 @@ module IsoDoc
       def related_term(term)
         r = term.at(ns("./fmt-related"))
         r.xpath(ns(".//xref | .//eref | .//termref")).each(&:remove)
+        # generator-emitted term-resolution failure reports
+        # (metanorma-model-iso#144) render in boldface
+        r.xpath(ns(".//errormsg")).each { |e| e.name = "strong" }
         coll = sort_related(r.xpath(ns("./semx")))
         r.children = term_related_collapse(coll)
       end
