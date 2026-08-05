@@ -114,7 +114,8 @@ module IsoDoc
           orig = p.at(ns(".//semx[@element = 'related']"))
           p.add_first_child "<em>#{@i18n.relatedterms[orig['type']]}:</em> "
           p.xpath(ns(".//semx[@element = 'related']")).each do |r|
-            r.at(ns("./fmt-preferred")) or
+            # ./strong: flattened errormsg, already carries the failure report
+            r.at(ns("./fmt-preferred | ./strong")) or
               r.add_first_child "**RELATED TERM NOT FOUND**"
           end
         end

@@ -1934,6 +1934,35 @@ RSpec.describe IsoDoc do
       .to be_xml_equivalent_to output
   end
 
+  it "renders generator errormsg in related in boldface" do
+    input = <<~INPUT
+      <iso-standard xmlns='http://riboseinc.com/isoxml'>
+         <sections>
+           <terms id='A' obligation='normative'>
+             <title>Terms and definitions</title>
+             <term id='C'>
+             <preferred>Base Term</preferred>
+             <definition>Definition</definition>
+             <related type='contrast'><errormsg>term <tt>blah</tt> not resolved via ID <tt>blah</tt></errormsg></related>
+             </term>
+           </terms>
+         </sections>
+       </iso-standard>
+    INPUT
+    pres_output = IsoDoc::Ieee::PresentationXMLConvert
+      .new(presxml_options)
+      .convert("test", input, true)
+    xml = Nokogiri::XML(pres_output)
+    xml.remove_namespaces!
+    fmt = xml.at("//fmt-definition//semx[@element = 'related']/strong[tt]")
+    expect(fmt).not_to be_nil
+    expect(fmt.text).to include "not resolved via ID"
+    expect(xml.at("//fmt-definition").text)
+      .not_to include "RELATED TERM NOT FOUND"
+    expect(xml.at("//term/related/errormsg")).not_to be_nil
+    expect(xml.at("//fmt-definition//errormsg")).to be_nil
+  end
+
   it "processes termnotes with license information" do
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
