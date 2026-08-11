@@ -147,12 +147,15 @@ module Metanorma
       end
 
       def metadata_status(node, xml)
-        status = node.attr("status") || node.attr("docstage") ||
-          (node.attr("version") || node.attr("draft") ? "draft" : "approved")
         xml.status do |s|
-          add_noko_elem(s, "stage", status,
+          add_noko_elem(s, "stage", ieee_stage(node),
                         abbreviation: node.attr("docstage-abbrev"))
         end
+      end
+
+      def ieee_stage(node)
+        node.attr("status") || node.attr("docstage") ||
+          (node.attr("version") || node.attr("draft") ? "draft" : "approved")
       end
 
       def datetypes
@@ -175,6 +178,11 @@ module Metanorma
 
       def metadata_ext(node, xml)
         super
+        # Shadow of /bibdata/status/stage: the ext copy is validated
+        # against the IEEE stage vocabulary, status/stage staying
+        # schema-generic (metanorma-model-iso#156); slotted before
+        # trialuse per the ext grammar sequence
+        add_noko_elem(xml, "stage", ieee_stage(node))
         add_noko_elem(xml, "trial_use", node.attr("trial-use"))
         program(node, xml)
       end

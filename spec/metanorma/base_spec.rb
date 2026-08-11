@@ -254,6 +254,7 @@ RSpec.describe Metanorma::Ieee do
              <corrigendum>C1</corrigendum>
              <year>2000</year>
            </structuredidentifier>
+           <stage>inactive</stage>
            <program>HIJ</program>
          </ext>
        </bibdata>
@@ -336,6 +337,7 @@ RSpec.describe Metanorma::Ieee do
             <class>standard</class>
             <version>3</version>
           </structuredidentifier>
+          <stage>draft</stage>
         </ext>
       </bibdata>
     OUTPUT
@@ -394,6 +396,7 @@ RSpec.describe Metanorma::Ieee do
           <doctype>standard</doctype>
           <subdoctype>document</subdoctype>
            <flavor>ieee</flavor>
+           <stage>approved</stage>
         </ext>
       </bibdata>
     OUTPUT
@@ -451,6 +454,7 @@ RSpec.describe Metanorma::Ieee do
            <doctype>whitepaper</doctype>
            <subdoctype>industry-connection-report</subdoctype>
            <flavor>ieee</flavor>
+           <stage>approved</stage>
          </ext>
        </bibdata>
     OUTPUT
