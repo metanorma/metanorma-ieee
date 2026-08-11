@@ -628,7 +628,7 @@
 
 									<fo:block-container position="absolute" left="0.5mm" top="252mm">
 										<fo:block font-size="1">
-											<fo:instream-foreign-object content-width="38mm" content-height="2.5mm" scaling="non-uniform" fox:alt-text="Image Box">
+											<fo:instream-foreign-object content-width="38mm" content-height="2.5mm" scaling="non-uniform" fox:alt-text="Image Box" fox:placement="Block">
 												<xsl:call-template name="insertImageBoxSVG">
 													<xsl:with-param name="color"><xsl:value-of select="$color_blue"/></xsl:with-param>
 												</xsl:call-template>
@@ -2446,7 +2446,7 @@
 		<xsl:param name="width">57mm</xsl:param>
 		<xsl:param name="height">3mm</xsl:param>
 		<fo:block font-size="1" margin-top="3mm" margin-bottom="3mm">
-			<fo:instream-foreign-object content-width="57mm" content-height="3mm" scaling="non-uniform" fox:alt-text="Image Box">
+			<fo:instream-foreign-object content-width="57mm" content-height="3mm" scaling="non-uniform" fox:alt-text="Image Box" fox:placement="Block">
 				<xsl:call-template name="insertImageBoxSVG">
 					<xsl:with-param name="color"><xsl:value-of select="$color_blue"/></xsl:with-param>
 				</xsl:call-template>
@@ -3199,21 +3199,21 @@
 			<fo:static-content flow-name="header" role="artifact">
 				<fo:block-container position="absolute" left="14mm" top="17.8mm">
 					<fo:block font-size="1">
-						<fo:instream-foreign-object content-width="32.9mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image IEEE Logo">
+						<fo:instream-foreign-object content-width="32.9mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image IEEE Logo" fox:placement="Block">
 							<xsl:call-template name="insert_Image-IEEE2-Logo-svg"/>
 						</fo:instream-foreign-object>
 					</fo:block>
 				</fo:block-container>
 				<fo:block-container position="absolute" left="14.6mm" top="259mm">
 					<fo:block font-size="1">
-						<fo:instream-foreign-object content-width="20.8mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image IEEE Logo">
+						<fo:instream-foreign-object content-width="20.8mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image IEEE Logo" fox:placement="Block">
 							<xsl:copy-of select="$Image-IEEE-Logo-black-svg"/>
 						</fo:instream-foreign-object>
 					</fo:block>
 				</fo:block-container>
 				<fo:block-container position="absolute" left="191mm" top="-1mm" id="__internal_layout__covepage_bluebox_{generate-id()}">
 					<fo:block font-size="1">
-						<fo:instream-foreign-object content-width="26mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Boxes">
+						<fo:instream-foreign-object content-width="26mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Boxes" fox:placement="Block">
 							<xsl:copy-of select="$Image-Blue-Boxes-svg"/>
 						</fo:instream-foreign-object>
 					</fo:block>
@@ -3223,7 +3223,7 @@
 			<fo:static-content flow-name="right-region" role="artifact">
 				<fo:block-container font-family="Montserrat ExtraBold" font-weight="normal" reference-orientation="90" font-size="45.9pt" text-align="right">
 					<fo:block margin-right="-4mm" margin-top="0mm">
-						<fo:instream-foreign-object content-width="2.5mm" content-height="11.9mm" scaling="non-uniform" fox:alt-text="Image Box">
+						<fo:instream-foreign-object content-width="2.5mm" content-height="11.9mm" scaling="non-uniform" fox:alt-text="Image Box" fox:placement="Block">
 							<xsl:call-template name="insertImageBoxSVG">
 								<xsl:with-param name="color">rgb(38,172,226)</xsl:with-param>
 							</xsl:call-template>
@@ -3371,7 +3371,7 @@
 
 				<fo:block-container position="absolute" left="65.5mm" top="0mm" id="__internal_layout__covepage_bluebox_{generate-id()}">
 					<fo:block font-size="1">
-						<fo:instream-foreign-object content-height="93.5mm" content-width="64.1mm" fox:alt-text="Image Boxes">
+						<fo:instream-foreign-object content-height="93.5mm" content-width="64.1mm" fox:alt-text="Image Boxes" fox:placement="Block">
 							<xsl:copy-of select="$Image-Blue-Boxes-svg"/>
 						</fo:instream-foreign-object>
 					</fo:block>
@@ -3385,7 +3385,7 @@
 
 				<fo:block-container position="absolute" left="11mm" top="4.5mm">
 					<fo:block font-size="1">
-						<fo:instream-foreign-object content-width="27.2mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image IEEE Logo">
+						<fo:instream-foreign-object content-width="27.2mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image IEEE Logo" fox:placement="Block">
 							<xsl:call-template name="insert_Image-IEEE2-Logo-svg">
 								<xsl:with-param name="color">FFFFFF</xsl:with-param>
 							</xsl:call-template>
@@ -3395,7 +3395,7 @@
 
 				<fo:block-container position="absolute" left="10.6mm" top="242.8mm">
 					<fo:block font-size="1">
-						<fo:instream-foreign-object content-width="24.9mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Logo">
+						<fo:instream-foreign-object content-width="24.9mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Logo" fox:placement="Block">
 							<xsl:copy-of select="$Image-IEEE-Logo-white-svg"/>
 						</fo:instream-foreign-object>
 					</fo:block>
@@ -3403,7 +3403,7 @@
 
 				<fo:block-container position="absolute" left="0.5mm" top="217.3mm">
 					<fo:block font-size="1">
-						<fo:instream-foreign-object content-width="39.8mm" content-height="2.7mm" scaling="non-uniform" fox:alt-text="Image Box">
+						<fo:instream-foreign-object content-width="39.8mm" content-height="2.7mm" scaling="non-uniform" fox:alt-text="Image Box" fox:placement="Block">
 							<xsl:call-template name="insertImageBoxSVG">
 								<xsl:with-param name="color">rgb(80,197,216)</xsl:with-param>
 							</xsl:call-template>
@@ -3444,7 +3444,7 @@
 						<xsl:attribute name="left">76.5mm</xsl:attribute>
 					</xsl:if>
 					<fo:block font-size="1">
-						<fo:instream-foreign-object content-height="93.5mm" content-width="64mm" fox:alt-text="Image Boxes">
+						<fo:instream-foreign-object content-height="93.5mm" content-width="64mm" fox:alt-text="Image Boxes" fox:placement="Block">
 							<xsl:copy-of select="$Image-Blue-Boxes-svg"/>
 						</fo:instream-foreign-object>
 					</fo:block>
@@ -3468,7 +3468,7 @@
 						<xsl:attribute name="top">5mm</xsl:attribute>
 					</xsl:if>
 					<fo:block font-size="1">
-						<fo:instream-foreign-object content-width="27mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Logo">
+						<fo:instream-foreign-object content-width="27mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Logo" fox:placement="Block">
 
 							<xsl:choose>
 								<xsl:when test="$current_template = 'industry-connection-report'">
@@ -3489,7 +3489,7 @@
 						<xsl:attribute name="left">14mm</xsl:attribute>
 					</xsl:if>
 					<fo:block font-size="1">
-						<fo:instream-foreign-object content-width="23.5mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Logo">
+						<fo:instream-foreign-object content-width="23.5mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Logo" fox:placement="Block">
 							<xsl:choose>
 								<xsl:when test="$current_template = 'industry-connection-report'">
 									<xsl:attribute name="content-width">25mm</xsl:attribute>
@@ -3505,7 +3505,7 @@
 
 				<fo:block-container position="absolute" left="1.5mm" top="217mm">
 					<fo:block font-size="1">
-						<fo:instream-foreign-object content-width="40mm" content-height="2.6mm" scaling="non-uniform" fox:alt-text="Image Box">
+						<fo:instream-foreign-object content-width="40mm" content-height="2.6mm" scaling="non-uniform" fox:alt-text="Image Box" fox:placement="Block">
 							<xsl:call-template name="insertImageBoxSVG">
 								<xsl:with-param name="color">rgb(80,197,216)</xsl:with-param>
 							</xsl:call-template>
@@ -3593,21 +3593,21 @@
 			<fo:static-content flow-name="header" role="artifact">
 				<fo:block-container position="absolute" left="14mm" top="17.8mm">
 					<fo:block font-size="1">
-						<fo:instream-foreign-object content-width="32.9mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image IEEE Logo">
+						<fo:instream-foreign-object content-width="32.9mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image IEEE Logo" fox:placement="Block">
 							<xsl:call-template name="insert_Image-IEEE2-Logo-svg"/>
 						</fo:instream-foreign-object>
 					</fo:block>
 				</fo:block-container>
 				<fo:block-container position="absolute" left="21mm" top="256mm">
 					<fo:block font-size="1">
-						<fo:instream-foreign-object content-width="20.8mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image IEEE Logo">
+						<fo:instream-foreign-object content-width="20.8mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image IEEE Logo" fox:placement="Block">
 							<xsl:copy-of select="$Image-IEEE-Logo-black-svg"/>
 						</fo:instream-foreign-object>
 					</fo:block>
 				</fo:block-container>
 				<fo:block-container position="absolute" left="191mm" top="-1mm" id="__internal_layout__backpage_bluebox_{generate-id()}">
 					<fo:block font-size="1">
-						<fo:instream-foreign-object content-width="26mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Boxes">
+						<fo:instream-foreign-object content-width="26mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Boxes" fox:placement="Block">
 							<xsl:copy-of select="$Image-Blue-Boxes-svg"/>
 						</fo:instream-foreign-object>
 					</fo:block>
@@ -3622,7 +3622,7 @@
 					<fo:block>STANDARDS</fo:block>
 				</fo:block>
 				<fo:block font-size="1" space-before="6mm">
-					<fo:instream-foreign-object content-width="75mm" content-height="2.6mm" scaling="non-uniform" fox:alt-text="Image Box">
+					<fo:instream-foreign-object content-width="75mm" content-height="2.6mm" scaling="non-uniform" fox:alt-text="Image Box" fox:placement="Block">
 						<xsl:call-template name="insertImageBoxSVG">
 							<xsl:with-param name="color">rgb(38,172,226)</xsl:with-param>
 						</xsl:call-template>
@@ -3637,7 +3637,7 @@
 							<fo:table-row display-align="center" height="6mm">
 								<fo:table-cell>
 									<fo:block font-size="1">
-										<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Twitter-Logo))}" content-width="4.5mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Boxes"/>
+										<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Twitter-Logo))}" content-width="4.5mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Logo Twitter" fox:placement="Inline"/>
 									</fo:block>
 								</fo:table-cell>
 								<fo:table-cell>
@@ -3647,7 +3647,7 @@
 							<fo:table-row display-align="center" height="6mm">
 								<fo:table-cell>
 									<fo:block font-size="1">
-										<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-FB-Logo))}" content-width="5.5mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Boxes"/>
+										<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-FB-Logo))}" content-width="5.5mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Logo FB" fox:placement="Inline"/>
 									</fo:block>
 								</fo:table-cell>
 								<fo:table-cell>
@@ -3657,7 +3657,7 @@
 							<fo:table-row display-align="center" height="6mm">
 								<fo:table-cell>
 									<fo:block font-size="1">
-										<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-LinkedIn-Logo))}" content-width="5.2mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Boxes"/>
+										<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-LinkedIn-Logo))}" content-width="5.2mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Logo LinkedIn" fox:placement="Inline"/>
 									</fo:block>
 								</fo:table-cell>
 								<fo:table-cell>
@@ -3667,7 +3667,7 @@
 							<fo:table-row display-align="center" height="6mm">
 								<fo:table-cell>
 									<fo:block font-size="1">
-										<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Beyond-Logo))}" content-width="5mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Boxes"/>
+										<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Beyond-Logo))}" content-width="5mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Logo Beyond" fox:placement="Inline"/>
 									</fo:block>
 								</fo:table-cell>
 								<fo:table-cell>
@@ -3677,7 +3677,7 @@
 							<fo:table-row display-align="center" height="6mm">
 								<fo:table-cell>
 									<fo:block font-size="1">
-										<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Youtube-Logo))}" content-width="5mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Boxes"/>
+										<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Youtube-Logo))}" content-width="5mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Logo YouTube" fox:placement="Inline"/>
 									</fo:block>
 								</fo:table-cell>
 								<fo:table-cell>
@@ -3710,7 +3710,7 @@
 						<fo:block>STANDARDS</fo:block>
 					</fo:block>
 					<fo:block font-size="1" space-before="1mm">
-						<fo:instream-foreign-object content-width="56.8mm" content-height="2.7mm" scaling="non-uniform" fox:alt-text="Image Box">
+						<fo:instream-foreign-object content-width="56.8mm" content-height="2.7mm" scaling="non-uniform" fox:alt-text="Image Box" fox:placement="Block">
 							<xsl:call-template name="insertImageBoxSVG">
 								<xsl:with-param name="color"><xsl:value-of select="$color_blue"/></xsl:with-param>
 							</xsl:call-template>
@@ -3742,7 +3742,7 @@
 						<fo:block>STANDARDS</fo:block>
 					</fo:block>
 					<fo:block font-size="1" space-before="2mm" margin-left="-1.5mm">
-						<fo:instream-foreign-object content-width="56.8mm" content-height="2.7mm" scaling="non-uniform" fox:alt-text="Image Box">
+						<fo:instream-foreign-object content-width="56.8mm" content-height="2.7mm" scaling="non-uniform" fox:alt-text="Image Box" fox:placement="Block">
 							<xsl:call-template name="insertImageBoxSVG">
 								<xsl:with-param name="color"><xsl:value-of select="$color_blue"/></xsl:with-param>
 							</xsl:call-template>
@@ -6850,7 +6850,7 @@
 		<xsl:param name="value"/>
 		<xsl:variable name="add_width" select="string-length($value) * 20"/>
 		<xsl:variable name="maxwidth" select="60 + $add_width"/>
-			<fo:instream-foreign-object fox:alt-text="OpeningTag" baseline-shift="-10%"><!-- alignment-baseline="middle" -->
+			<fo:instream-foreign-object fox:alt-text="OpeningTag" baseline-shift="-10%" fox:placement="Inline"><!-- alignment-baseline="middle" -->
 				<xsl:attribute name="height">3.5mm</xsl:attribute> <!-- 5mm -->
 				<xsl:attribute name="content-width">100%</xsl:attribute>
 				<xsl:attribute name="content-width">scale-down-to-fit</xsl:attribute>
@@ -7083,7 +7083,7 @@
 						<xsl:attribute name="margin-top">0pt</xsl:attribute>
 						<xsl:attribute name="margin-bottom">0pt</xsl:attribute>
 					</xsl:if>
-					<fo:instream-foreign-object fox:alt-text="{.}" content-width="95%">
+					<fo:instream-foreign-object fox:alt-text="{.}" content-width="95%" fox:placement="Inline">
 						<math xmlns="http://www.w3.org/1998/Math/MathML">
 							<mtext><xsl:value-of select="."/></mtext>
 						</math>
@@ -12306,7 +12306,7 @@
 
 					<!-- debug scale='<xsl:value-of select="$scale"/>', indent='<xsl:value-of select="$indent"/>' -->
 
-					<fo:external-graphic src="{$src}" vertical-align="middle" fox:placement="inline">
+					<fo:external-graphic src="{$src}" vertical-align="middle" fox:placement="Inline">
 						<xsl:call-template name="addAltText"/>
 
 						<xsl:if test="parent::mn:logo"> <!-- publisher's logo -->
@@ -12371,7 +12371,7 @@
 					<xsl:choose>
 						<xsl:when test="$isDeleted = 'true'">
 							<!-- enclose in svg -->
-							<fo:instream-foreign-object>
+							<fo:instream-foreign-object fox:placement="Block">
 								<xsl:attribute name="width">100%</xsl:attribute>
 								<xsl:attribute name="content-height">100%</xsl:attribute>
 								<xsl:attribute name="content-width">scale-down-to-fit</xsl:attribute>
@@ -12392,7 +12392,7 @@
 							<xsl:value-of select="concat('scale=', $scale,', indent=', $indent)"/>
 							</fo:block> -->
 
-							<fo:external-graphic src="{$src}">
+							<fo:external-graphic src="{$src}" fox:placement="Block">
 								<xsl:call-template name="addAltText"/>
 
 								<xsl:choose>
@@ -12731,7 +12731,7 @@
 											</xsl:if>
 											<fo:block text-depth="0" line-height="0" font-size="0">
 
-												<fo:instream-foreign-object fox:alt-text="{$alt-text}">
+												<fo:instream-foreign-object fox:alt-text="{$alt-text}" fox:placement="Block">
 													<xsl:attribute name="width">100%</xsl:attribute>
 													<xsl:attribute name="content-height">100%</xsl:attribute>
 													<xsl:attribute name="content-width">scale-down-to-fit</xsl:attribute>
@@ -12780,7 +12780,7 @@
 					<xsl:copy>
 						<xsl:copy-of select="@*"/>
 					<!-- <fo:block xsl:use-attribute-sets="image-style"> -->
-						<fo:instream-foreign-object fox:alt-text="{$alt-text}">
+						<fo:instream-foreign-object fox:alt-text="{$alt-text}" fox:placement="Block">
 
 							<xsl:choose>
 								<xsl:when test="$image_class = 'corrigenda-tag'">
@@ -12846,7 +12846,7 @@
 							</xsl:if>
 
 							<xsl:if test="self::fo:inline">
-								<xsl:attribute name="fox:placement">inline</xsl:attribute>
+								<xsl:attribute name="fox:placement">Inline</xsl:attribute>
 							</xsl:if>
 
 							<xsl:copy-of select="$svg_content"/>
@@ -13186,6 +13186,18 @@
 	<xsl:template name="refine_mathml-style">
 	</xsl:template>
 
+	<xsl:attribute-set name="mathml-instream-foreign-object-style">
+		<xsl:attribute name="fox:alt-text">Math</xsl:attribute>
+		<xsl:attribute name="fox:actual-text">Math</xsl:attribute>
+		<xsl:attribute name="fox:placement">Inline</xsl:attribute>
+	</xsl:attribute-set> <!-- mathml-instream-foreign-object-style -->
+
+	<xsl:template name="refine_mathml-instream-foreign-object-style">
+		<xsl:if test="ancestor::mn:formula">
+			<xsl:attribute name="fox:placement">Block</xsl:attribute>
+		</xsl:if>
+	</xsl:template> <!-- refine_mathml-instream-foreign-object-style -->
+
 	<!-- ====== -->
 	<!-- formula  -->
 	<!-- ====== -->
@@ -13398,9 +13410,9 @@
 			<xsl:apply-templates select="." mode="mathml"/>
 		</xsl:variable>
 
-		<fo:instream-foreign-object fox:alt-text="Math" fox:actual-text="Math" fox:placement="inline">
+		<fo:instream-foreign-object xsl:use-attribute-sets="mathml-instream-foreign-object-style">
 
-			<xsl:call-template name="refine_mathml_insteam_object_style"/>
+			<xsl:call-template name="refine_mathml-instream-foreign-object-style"/>
 
 			<xsl:if test="$isGenerateTableIF = 'false'">
 				<!-- put MathML in Actual Text -->
@@ -13423,9 +13435,6 @@
 
 		</fo:instream-foreign-object>
 	</xsl:template>
-
-	<xsl:template name="refine_mathml_insteam_object_style">
-	</xsl:template> <!-- refine_mathml_insteam_object_style -->
 
 	<xsl:template match="mathml:*" mode="mathml_actual_text">
 		<!-- <xsl:text>a+b</xsl:text> -->
@@ -15336,7 +15345,7 @@
 			<xsl:call-template name="set_id_metanorma_form_item">
 				<xsl:with-param name="form_item_type" select="$form_item_type"/>
 			</xsl:call-template>
-			<fo:instream-foreign-object fox:alt-text="Box" baseline-shift="-10%">
+			<fo:instream-foreign-object fox:alt-text="Box" baseline-shift="-10%" fox:placement="Inline">
 				<xsl:attribute name="height">3.5mm</xsl:attribute>
 				<xsl:attribute name="content-width">100%</xsl:attribute>
 				<xsl:attribute name="content-width">scale-down-to-fit</xsl:attribute>
@@ -15363,7 +15372,7 @@
 			<xsl:call-template name="set_id_metanorma_form_item">
 				<xsl:with-param name="form_item_type" select="$form_item_type"/>
 			</xsl:call-template>
-			<fo:instream-foreign-object fox:alt-text="Box" baseline-shift="-10%">
+			<fo:instream-foreign-object fox:alt-text="Box" baseline-shift="-10%" fox:placement="Inline">
 				<xsl:attribute name="height">3.5mm</xsl:attribute>
 				<xsl:attribute name="content-width">100%</xsl:attribute>
 				<xsl:attribute name="content-width">scale-down-to-fit</xsl:attribute>
@@ -17590,7 +17599,7 @@
 
 	<xsl:template match="mn:blacksquare" name="blacksquare">
 		<fo:inline padding-right="2.5mm" baseline-shift="5%">
-			<fo:instream-foreign-object content-height="2mm" content-width="2mm" fox:alt-text="Quad">
+			<fo:instream-foreign-object content-height="2mm" content-width="2mm" fox:alt-text="Quad" fox:placement="Inline">
 					<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 2 2">
 						<rect x="0" y="0" width="2" height="2" fill="black"/>
 					</svg>
@@ -18546,13 +18555,13 @@
 		<xsl:param name="bitmap_width" select="$pageWidth"/>
 		<xsl:choose>
 			<xsl:when test="*[local-name() = 'svg'] or java:endsWith(java:java.lang.String.new(@src), '.svg')">
-				<fo:instream-foreign-object fox:alt-text="Image Front">
+				<fo:instream-foreign-object fox:alt-text="Image Front" fox:placement="Block">
 					<xsl:attribute name="content-height"><xsl:value-of select="$svg_content_height"/>mm</xsl:attribute>
 					<xsl:call-template name="getSVG"/>
 				</fo:instream-foreign-object>
 			</xsl:when>
 			<xsl:when test="starts-with(@src, 'data:application/pdf;base64')">
-				<fo:external-graphic src="{@src}" fox:alt-text="Image Front"/>
+				<fo:external-graphic src="{@src}" fox:alt-text="Image Front" fox:placement="Block"/>
 			</xsl:when>
 			<xsl:otherwise> <!-- bitmap image -->
 				<xsl:variable name="coverimage_src" select="normalize-space(@src)"/>
@@ -18562,7 +18571,7 @@
 							<xsl:with-param name="src" select="$coverimage_src"/>
 						</xsl:call-template>
 					</xsl:variable>
-					<fo:external-graphic src="{$coverpage}" width="{$bitmap_width}mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Front"/>
+					<fo:external-graphic src="{$coverpage}" width="{$bitmap_width}mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Front" fox:placement="Block"/>
 				</xsl:if>
 			</xsl:otherwise>
 		</xsl:choose>
