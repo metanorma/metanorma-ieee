@@ -1,4 +1,5 @@
 require "metanorma/ieee/version"
+require "metanorma/ieee/document"
 require "metanorma/ieee/processor"
 require "metanorma/ieee/converter"
 require "metanorma/ieee/cleanup"
