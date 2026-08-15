@@ -260,9 +260,9 @@ RSpec.describe Metanorma::Ieee do
                   <committee>Tech Committee</committee>
                 </editorialgroup>
                      <structuredidentifier>
-           <docnumber>1000</docnumber>
            <agency>IEEE</agency>
            <class>recommended-practice</class>
+           <docnumber>1000</docnumber>
            <edition>2</edition>
            <version>0.3.4</version>
            <amendment>A1</amendment>
@@ -606,9 +606,9 @@ RSpec.describe Metanorma::Ieee do
                   <committee>Tech Committee</committee>
                 </editorialgroup>
                      <structuredidentifier>
-           <docnumber>1000</docnumber>
            <agency>IEEE</agency>
            <class>recommended-practice</class>
+           <docnumber>1000</docnumber>
            <edition>2</edition>
            <version>0.3.4</version>
            <amendment>A1</amendment>

@@ -186,9 +186,9 @@ module Metanorma
       def structured_id(node, xml)
         node.attr("docnumber") or return
         xml.structuredidentifier do |i|
-          add_noko_elem(i, "docnumber", node.attr("docnumber"))
           add_noko_elem(i, "agency", "IEEE")
           i.class_ doctype(node)
+          add_noko_elem(i, "docnumber", node.attr("docnumber"))
           add_noko_elem(i, "edition", node.attr("edition"))
           add_noko_elem(i, "version", metadata_version_value(node))
           add_noko_elem(i, "amendment", node.attr("amendment-number"))
