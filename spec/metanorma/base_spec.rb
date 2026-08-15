@@ -245,9 +245,9 @@ RSpec.describe Metanorma::Ieee do
              <text>Dentistry in general</text>
            </ics>
            <structuredidentifier>
-             <docnumber>1000</docnumber>
              <agency>IEEE</agency>
              <class>recommended-practice</class>
+             <docnumber>1000</docnumber>
              <edition>2</edition>
              <version>0.3.4</version>
              <amendment>A1</amendment>
@@ -331,9 +331,9 @@ RSpec.describe Metanorma::Ieee do
           <subdoctype>document</subdoctype>
            <flavor>ieee</flavor>
           <structuredidentifier>
-            <docnumber>1000</docnumber>
             <agency>IEEE</agency>
             <class>standard</class>
+            <docnumber>1000</docnumber>
             <version>3</version>
           </structuredidentifier>
         </ext>
