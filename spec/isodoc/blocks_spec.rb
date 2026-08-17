@@ -820,7 +820,7 @@ RSpec.describe IsoDoc do
                 <fmt-title id="_" depth="1">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="a">1</semx>
-                      <span class="fmt-autonum-delim">.</span>
+                      <span class="fmt-clause-delim">.</span>
                    </span>
                    <span class="fmt-caption-delim">
                       <tab/>
@@ -883,7 +883,7 @@ RSpec.describe IsoDoc do
                 <fmt-title id="_" depth="1">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="b">2</semx>
-                      <span class="fmt-autonum-delim">.</span>
+                      <span class="fmt-clause-delim">.</span>
                    </span>
                    <span class="fmt-caption-delim">
                       <tab/>
@@ -921,7 +921,7 @@ RSpec.describe IsoDoc do
     html = <<~"OUTPUT"
       #{HTML_HDR}
           <div id='a'>
-            <h1>1.&#xa0; First </h1>
+            <h1>1<span class="fmt-clause-delim">.</span>&#xa0; First </h1>
             <div id='note1' class='Note'>
               <p>
                 <span class='note_label'>NOTE 1&#x2014;</span>
@@ -936,7 +936,7 @@ RSpec.describe IsoDoc do
             </div>
           </div>
           <div id='b'>
-            <h1>2.&#xa0; First </h1>
+            <h1>2<span class="fmt-clause-delim">.</span>&#xa0; First </h1>
             <div id='note3' class='Note'>
               <p>
                 <span class='note_label'>NOTE&#x2014;</span>
@@ -1417,7 +1417,7 @@ RSpec.describe IsoDoc do
          <fmt-title depth="1" id="_">
             <span class="fmt-caption-label">
                <semx element="autonum" source="A">1</semx>
-               <span class="fmt-autonum-delim">.</span>
+               <span class="fmt-clause-delim">.</span>
             </span>
             <span class="fmt-caption-delim">
                <tab/>

@@ -343,12 +343,12 @@ RSpec.describe Metanorma::Ieee do
           <verbal-definition id="_">
             <p id='_'>
               <concept>
-                <strong>
+                <errormsg>
                   symbol
                   <tt>thing1</tt>
                    not resolved via ID
                   <tt>thing1</tt>
-                </strong>
+                </errormsg>
               </concept>
             </p>
           </verbal-definition>

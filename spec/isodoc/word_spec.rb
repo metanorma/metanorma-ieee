@@ -352,7 +352,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                    <fmt-title depth="1" id="_">
                       <span class="fmt-caption-label">
                          <semx element="autonum" source="A">1</semx>
-                         <span class="fmt-autonum-delim">.</span>
+                         <span class="fmt-clause-delim">.</span>
                       </span>
                    </fmt-title>
                    <fmt-xref-label>
@@ -602,7 +602,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     word = <<~OUTPUT
         <div>
           <a name="A" id="A"></a>
-          <p class="IEEEStdsLevel1Header">1.</p>
+          <p class="IEEEStdsLevel1Header">1<span class="fmt-clause-delim">.</span></p>
           <p class="IEEEStdsParagraph">
       
       
@@ -687,7 +687,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     word = <<~OUTPUT
       <div>
           <a name="A" id="A"></a>
-          <p class="IEEESectionHeader">1.</p>
+          <p class="IEEESectionHeader">1<span class="fmt-clause-delim">.</span></p>
           <p class="MsoBodyText">
       
       
@@ -791,10 +791,10 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     word = <<~OUTPUT
         <div>
           <a name="A" id="A"></a>
-          <p class="IEEEStdsLevel1Header">1.</p>
+          <p class="IEEEStdsLevel1Header">1<span class="fmt-clause-delim">.</span></p>
           <div>
             <a name="B" id="B"></a>
-            <p class="IEEEStdsLevel2Header">1.1.</p>
+            <p class="IEEEStdsLevel2Header">1.1<span class="fmt-clause-delim">.</span></p>
             <div>
               <a name="n1" id="n1"></a>
               <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo1;">First</p>
@@ -808,7 +808,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
           </div>
           <div>
             <a name="C" id="C"></a>
-            <p class="IEEEStdsLevel2Header">1.2.</p>
+            <p class="IEEEStdsLevel2Header">1.2<span class="fmt-clause-delim">.</span></p>
             <div>
               <a name="n3" id="n3"></a>
               <p class="IEEEStdsSingleNote"><span class="note_label">NOTE—</span>Third</p>
@@ -817,7 +817,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
           </div>
           <div>
             <a name="D" id="D"></a>
-            <p class="IEEEStdsLevel2Header">1.3.</p>
+            <p class="IEEEStdsLevel2Header">1.3<span class="fmt-clause-delim">.</span></p>
             <div>
               <a name="n4" id="n4"></a>
               <p class="IEEEStdsMultipleNotes" style="mso-list:l17 level1 lfo2;">Fourth</p>
@@ -866,7 +866,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     word = <<~OUTPUT
            <div>
              <a name="A" id="A"></a>
-             <p class="IEEEStdsLevel1Header">1.</p>
+             <p class="IEEEStdsLevel1Header">1<span class="fmt-clause-delim">.</span></p>
              <p class="TermNum">
                <a name="B" id="B"></a>
              </p>
@@ -1075,7 +1075,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     output = <<~OUTPUT
       <div>
          <a name="a" id="a"></a>
-         <p class="IEEEStdsLevel1Header">1.</p>
+         <p class="IEEEStdsLevel1Header">1<span class="fmt-clause-delim">.</span></p>
          <div class="IEEEStdsImage" style="page-break-after: avoid;page-break-inside: avoid;">
             <a name="figureA-1" id="figureA-1"></a>
             <p class="IEEEStdsImage" style="page-break-after:avoid;">
@@ -1125,7 +1125,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     output = <<~OUTPUT
       <div>
          <a name="a" id="a"></a>
-         <p class="IEEESectionHeader">1.</p>
+         <p class="IEEESectionHeader">1<span class="fmt-clause-delim">.</span></p>
          <div class="MsoBodyText" style="page-break-after: avoid;page-break-inside: avoid;;text-align:center;">
             <a name="figureA-1" id="figureA-1"></a>
             <p class="FigureHeadings" style="text-align:center;">
@@ -1199,7 +1199,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
     output = <<~OUTPUT
         <div>
           <a name="a" id="a"></a>
-          <p class="IEEEStdsLevel1Header">1.</p>
+          <p class="IEEEStdsLevel1Header">1<span class="fmt-clause-delim">.</span></p>
           <p class="IEEEStdsRegularTableCaption" style="text-align:center;">—Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref" class="MsoFootnoteReference"><a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"></span></span></a></span></p>
           <div align="center" class="table_container">
             <table class="MsoISOTable" style="mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;page-break-after: avoid;page-break-inside: avoid;">
@@ -1290,7 +1290,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
          <body>
            <div>
              <a name="a" id="a"></a>
-             <p class="IEEESectionHeader">1.</p>
+             <p class="IEEESectionHeader">1<span class="fmt-clause-delim">.</span></p>
              <p class="TableTitles" style="text-align:center;">&#x2014;Split-it-right <i>sample</i> divider<span style="mso-bookmark:_Ref" class="MsoFootnoteReference"><a class="FootnoteRef" type="footnote" href="#_ftn1" style="mso-footnote-id:ftn1" name="_" title="" id="_"><span class="MsoFootnoteReference"><span style="mso-special-character:footnote"></span></span></a></span></p>
              <div align="center" class="table_container">
                <a name="figureA-1" id="figureA-1"></a>
@@ -1418,7 +1418,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                 <fmt-title id="_" depth="1">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="A">1</semx>
-                      <span class="fmt-autonum-delim">.</span>
+                      <span class="fmt-clause-delim">.</span>
                       </span>
                       <span class="fmt-caption-delim">
                          <tab/>
@@ -1437,7 +1437,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                          <semx element="autonum" source="A">1</semx>
                          <span class="fmt-autonum-delim">.</span>
                          <semx element="autonum" source="B">1</semx>
-                         <span class="fmt-autonum-delim">.</span>
+                         <span class="fmt-clause-delim">.</span>
                          </span>
                          <span class="fmt-caption-delim">
                             <tab/>
@@ -1500,7 +1500,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                 <fmt-title id="_" depth="1">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="A">1</semx>
-                      <span class="fmt-autonum-delim">.</span>
+                      <span class="fmt-clause-delim">.</span>
                       </span>
                       <span class="fmt-caption-delim">
                          <tab/>
@@ -1519,7 +1519,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                          <semx element="autonum" source="A">1</semx>
                          <span class="fmt-autonum-delim">.</span>
                          <semx element="autonum" source="B">1</semx>
-                         <span class="fmt-autonum-delim">.</span>
+                         <span class="fmt-clause-delim">.</span>
                          </span>
                          <span class="fmt-caption-delim">
                             <tab/>
@@ -1620,7 +1620,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                    <semx element="autonum" source="A">A</semx>
                    <span class="fmt-autonum-delim">.</span>
                    <semx element="autonum" source="B">1</semx>
-                   <span class="fmt-autonum-delim">.</span>
+                   <span class="fmt-clause-delim">.</span>
                 </span>
                 <span class="fmt-caption-delim">
                    <tab/>
@@ -1710,7 +1710,7 @@ RSpec.describe IsoDoc::Ieee::WordConvert do
                    <semx element="autonum" source="A">A</semx>
                    <span class="fmt-autonum-delim">.</span>
                    <semx element="autonum" source="B">1</semx>
-                   <span class="fmt-autonum-delim">.</span>
+                   <span class="fmt-clause-delim">.</span>
                 </span>
                 <span class="fmt-caption-delim">
                    <tab/>

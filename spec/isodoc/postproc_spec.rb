@@ -168,6 +168,34 @@ RSpec.describe IsoDoc::Ieee do
       .to be_html4_equivalent_to doc
   end
 
+  # isodoc's configurable caption delimiters (metanorma/isodoc#838) wrap the
+  # terminal clause delimiter in <span class="fmt-clause-delim">, between the
+  # autonumber and the tab; headings_strip must strip that too.
+  it "strips the clause autonumber from Word headings with and without the fmt-clause-delim span" do
+    mock_populate_template
+    input = <<~INPUT
+      <html>
+      <head></head>
+      <body>
+      <div class="WordSection1"><p></p></div>
+      <div class="WordSection2"><p></p></div>
+      <div class="main-section">
+      <div id="x"><h1>Clause</h1>
+      <h2>1.1<span class="fmt-clause-delim">.</span><span style="mso-tab-count:1">  </span>This is a subclause</h2>
+      <h2>1.2.<span style="mso-tab-count:1">  </span>Legacy delimiter</h2>
+      </div>
+      </div>
+      </body>
+      </html>
+    INPUT
+    out = IsoDoc::Ieee::WordConvert
+      .new(wordcoverpage: nil, wordintropage: nil, filename: "test")
+      .word_cleanup(Nokogiri::HTML5(input)).to_xhtml
+    hdrs = Nokogiri::HTML(out)
+      .xpath("//p[@class = 'IEEEStdsLevel2Header']").map { |h| h.text.strip }
+    expect(hdrs).to eq ["This is a subclause", "Legacy delimiter"]
+  end
+
   it "moves introductory material in Word" do
     mock_populate_template
     input = <<~INPUT

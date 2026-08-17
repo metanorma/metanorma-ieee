@@ -63,11 +63,18 @@ module IsoDoc
         end
       end
 
+      # Strip the leading autonumber run from a numbered heading: the number
+      # text, then the mso-tab-count tab separating it from the title. As of
+      # isodoc's configurable caption delimiters (metanorma/isodoc#838) the
+      # terminal delimiter is wrapped in a <span class="fmt-clause-delim">
+      # between the number and the tab, so tolerate that span being present.
       def headings_strip(hdr)
-        if hdr.children.size > 1 && hdr.children[1].name == "span" &&
-            hdr.children[1]["style"] == "mso-tab-count:1"
-          2.times { hdr.children.first.remove }
-        end
+        i = 1
+        hdr.children[i]&.name == "span" &&
+          hdr.children[i]["class"] == "fmt-clause-delim" and i += 1
+        hdr.children[i]&.name == "span" &&
+          hdr.children[i]["style"] == "mso-tab-count:1" or return
+        (i + 1).times { hdr.children.first.remove }
       end
 
       def div_cleanup(docxml)

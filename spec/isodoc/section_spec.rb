@@ -129,7 +129,7 @@ RSpec.describe IsoDoc::Ieee do
                 <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="D">1</semx>
-                      <span class="fmt-autonum-delim">.</span>
+                      <span class="fmt-clause-delim">.</span>
                    </span>
                    <span class="fmt-caption-delim">
                       <tab/>
@@ -148,7 +148,7 @@ RSpec.describe IsoDoc::Ieee do
                          <semx element="autonum" source="D">1</semx>
                          <span class="fmt-autonum-delim">.</span>
                          <semx element="autonum" source="D1">1</semx>
-                         <span class="fmt-autonum-delim">.</span>
+                         <span class="fmt-clause-delim">.</span>
                       </span>
                       <span class="fmt-caption-delim">
                          <tab/>
@@ -169,7 +169,7 @@ RSpec.describe IsoDoc::Ieee do
                          <semx element="autonum" source="D">1</semx>
                          <span class="fmt-autonum-delim">.</span>
                          <semx element="autonum" source="D2">2</semx>
-                         <span class="fmt-autonum-delim">.</span>
+                         <span class="fmt-clause-delim">.</span>
                       </span>
                       <span class="fmt-caption-delim">
                          <tab/>
@@ -189,7 +189,7 @@ RSpec.describe IsoDoc::Ieee do
                 <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="H">3</semx>
-                      <span class="fmt-autonum-delim">.</span>
+                      <span class="fmt-clause-delim">.</span>
                    </span>
                    <span class="fmt-caption-delim">
                       <tab/>
@@ -207,7 +207,7 @@ RSpec.describe IsoDoc::Ieee do
                          <semx element="autonum" source="H">3</semx>
                          <span class="fmt-autonum-delim">.</span>
                          <semx element="autonum" source="I">1</semx>
-                         <span class="fmt-autonum-delim">.</span>
+                         <span class="fmt-clause-delim">.</span>
                       </span>
                       <span class="fmt-caption-delim">
                          <tab/>
@@ -245,7 +245,7 @@ RSpec.describe IsoDoc::Ieee do
                          <semx element="autonum" source="H">3</semx>
                          <span class="fmt-autonum-delim">.</span>
                          <semx element="autonum" source="K">2</semx>
-                         <span class="fmt-autonum-delim">.</span>
+                         <span class="fmt-clause-delim">.</span>
                       </span>
                       <span class="fmt-caption-delim">
                          <tab/>
@@ -269,7 +269,7 @@ RSpec.describe IsoDoc::Ieee do
                 <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="L">4</semx>
-                      <span class="fmt-autonum-delim">.</span>
+                      <span class="fmt-clause-delim">.</span>
                    </span>
                    <span class="fmt-caption-delim">
                       <tab/>
@@ -290,7 +290,7 @@ RSpec.describe IsoDoc::Ieee do
                 <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="M">5</semx>
-                      <span class="fmt-autonum-delim">.</span>
+                      <span class="fmt-clause-delim">.</span>
                    </span>
                    <span class="fmt-caption-delim">
                       <tab/>
@@ -308,7 +308,7 @@ RSpec.describe IsoDoc::Ieee do
                          <semx element="autonum" source="M">5</semx>
                          <span class="fmt-autonum-delim">.</span>
                          <semx element="autonum" source="N">1</semx>
-                         <span class="fmt-autonum-delim">.</span>
+                         <span class="fmt-clause-delim">.</span>
                       </span>
                       <span class="fmt-caption-delim">
                          <tab/>
@@ -329,7 +329,7 @@ RSpec.describe IsoDoc::Ieee do
                          <semx element="autonum" source="M">5</semx>
                          <span class="fmt-autonum-delim">.</span>
                          <semx element="autonum" source="O">2</semx>
-                         <span class="fmt-autonum-delim">.</span>
+                         <span class="fmt-clause-delim">.</span>
                       </span>
                       <span class="fmt-caption-delim">
                          <tab/>
@@ -349,7 +349,7 @@ RSpec.describe IsoDoc::Ieee do
                 <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="R">2</semx>
-                      <span class="fmt-autonum-delim">.</span>
+                      <span class="fmt-clause-delim">.</span>
                    </span>
                    <span class="fmt-caption-delim">
                       <tab/>
@@ -401,7 +401,7 @@ RSpec.describe IsoDoc::Ieee do
                       <semx element="autonum" source="P">A</semx>
                       <span class="fmt-autonum-delim">.</span>
                       <semx element="autonum" source="Q">1</semx>
-                      <span class="fmt-autonum-delim">.</span>
+                      <span class="fmt-clause-delim">.</span>
                    </span>
                    <span class="fmt-caption-delim">
                       <tab/>
@@ -423,7 +423,7 @@ RSpec.describe IsoDoc::Ieee do
                          <semx element="autonum" source="Q">1</semx>
                          <span class="fmt-autonum-delim">.</span>
                          <semx element="autonum" source="Q1">1</semx>
-                         <span class="fmt-autonum-delim">.</span>
+                         <span class="fmt-clause-delim">.</span>
                       </span>
                       <span class="fmt-caption-delim">
                          <tab/>
@@ -447,7 +447,7 @@ RSpec.describe IsoDoc::Ieee do
                       <semx element="autonum" source="P">A</semx>
                       <span class="fmt-autonum-delim">.</span>
                       <semx element="autonum" source="Q3">2</semx>
-                      <span class="fmt-autonum-delim">.</span>
+                      <span class="fmt-clause-delim">.</span>
                    </span>
                    <span class="fmt-caption-delim">
                       <tab/>
@@ -499,27 +499,27 @@ RSpec.describe IsoDoc::Ieee do
              <p id="A">This is a preamble</p>
            </div>
            <div id="D">
-             <h1>1.&#xA0; Overview</h1>
+             <h1>1<span class="fmt-clause-delim">.</span>&#xA0; Overview</h1>
              <p id="E">Text</p>
-             <div id="D1" type="scope"><h2>1.1.&#xA0; Scope</h2>
+             <div id="D1" type="scope"><h2>1.1<span class="fmt-clause-delim">.</span>&#xA0; Scope</h2>
              </div>
-             <div id="D2" type="purpose"><h2>1.2.&#xA0; Purpose</h2>
+             <div id="D2" type="purpose"><h2>1.2<span class="fmt-clause-delim">.</span>&#xA0; Purpose</h2>
              </div>
            </div>
-           <div><h1>2.&#xA0; Normative References</h1>
+           <div><h1>2<span class="fmt-clause-delim">.</span>&#xA0; Normative References</h1>
            </div>
            <div id="H">
-             <h1>3.&#xA0; Terms, Definitions, Symbols and Abbreviated Terms</h1>
-             <div id="I"><h2>3.1.&#xA0; Normal Terms</h2>
+             <h1>3<span class="fmt-clause-delim">.</span>&#xA0; Terms, Definitions, Symbols and Abbreviated Terms</h1>
+             <div id="I"><h2>3.1<span class="fmt-clause-delim">.</span>&#xA0; Normal Terms</h2>
                <p class="TermNum" id="J"></p>
                <p><b><dfn>Term2</dfn></b>:  </p>
              </div>
-             <div id="K"><h2>3.2.&#xA0; Acronyms and abbreviations</h2>
+             <div id="K"><h2>3.2<span class="fmt-clause-delim">.</span>&#xA0; Acronyms and abbreviations</h2>
                <div class="figdl"><dl><dt><p>Symbol</p></dt><dd>Definition</dd></dl></div>
              </div>
            </div>
            <div id="L" class="Symbols">
-             <h1>4.&#xA0; Acronyms and abbreviations</h1>
+             <h1>4<span class="fmt-clause-delim">.</span>&#xA0; Acronyms and abbreviations</h1>
              <div class="figdl">
                <dl>
                  <dt>
@@ -530,10 +530,10 @@ RSpec.describe IsoDoc::Ieee do
              </div>
            </div>
            <div id="M">
-             <h1>5.&#xA0; Clause 4</h1>
-             <div id="N"><h2>5.1.&#xA0; Introduction</h2>
+             <h1>5<span class="fmt-clause-delim">.</span>&#xA0; Clause 4</h1>
+             <div id="N"><h2>5.1<span class="fmt-clause-delim">.</span>&#xA0; Introduction</h2>
              </div>
-             <div id="O"><h2>5.2.&#xA0; Clause 4.2</h2>
+             <div id="O"><h2>5.2<span class="fmt-clause-delim">.</span>&#xA0; Clause 4.2</h2>
              </div>
            </div>
            <br/>
@@ -546,11 +546,11 @@ RSpec.describe IsoDoc::Ieee do
                <b>Annex</b>
              </h1>
              <p style="display:none;" class="variant-title-toc">Annex A&#xA0; Annex</p>
-             <div id="Q"><h2>A.1.&#xA0; Annex A.1</h2>
-             <div id="Q1"><h3>A.1.1.&#xA0; Annex A.1a</h3>
+             <div id="Q"><h2>A.1<span class="fmt-clause-delim">.</span>&#xA0; Annex A.1</h2>
+             <div id="Q1"><h3>A.1.1<span class="fmt-clause-delim">.</span>&#xA0; Annex A.1a</h3>
              </div>
            </div>
-             <div><h2 class="Section3">A.2.&#xA0; Annex Bibliography</h2>
+             <div><h2 class="Section3">A.2<span class="fmt-clause-delim">.</span>&#xA0; Annex Bibliography</h2>
            </div>
            </div>
            <br/>
@@ -610,43 +610,37 @@ RSpec.describe IsoDoc::Ieee do
         <div class='WordSectionMain'>
           <div id='D'>
             <h1>
-              1.
-              <span style='mso-tab-count:1'>&#xa0; </span>
+              1<span class="fmt-clause-delim">.</span><span style='mso-tab-count:1'>&#xa0; </span>
               Overview
             </h1>
             <p id='E'>Text</p>
             <div id='D1' type='scope'>
               <h2>
-                1.1.
-                <span style='mso-tab-count:1'>&#xa0; </span>
+                1.1<span class="fmt-clause-delim">.</span><span style='mso-tab-count:1'>&#xa0; </span>
                 Scope
               </h2>
             </div>
             <div id='D2' type='purpose'>
               <h2>
-                1.2.
-                <span style='mso-tab-count:1'>&#xa0; </span>
+                1.2<span class="fmt-clause-delim">.</span><span style='mso-tab-count:1'>&#xa0; </span>
                 Purpose
               </h2>
             </div>
           </div>
           <div>
             <h1>
-              2.
-              <span style='mso-tab-count:1'>&#xa0; </span>
+              2<span class="fmt-clause-delim">.</span><span style='mso-tab-count:1'>&#xa0; </span>
               Normative References
             </h1>
           </div>
           <div id='H'>
             <h1>
-              3.
-              <span style='mso-tab-count:1'>&#xa0; </span>
+              3<span class="fmt-clause-delim">.</span><span style='mso-tab-count:1'>&#xa0; </span>
               Terms, Definitions, Symbols and Abbreviated Terms
             </h1>
             <div id='I'>
               <h2>
-                3.1.
-                <span style='mso-tab-count:1'>&#xa0; </span>
+                3.1<span class="fmt-clause-delim">.</span><span style='mso-tab-count:1'>&#xa0; </span>
                 Normal Terms
               </h2>
               <p class='TermNum' id='J'></p>
@@ -657,8 +651,7 @@ RSpec.describe IsoDoc::Ieee do
             </div>
             <div id='K'>
                    <h2>
-                      3.2.
-                      <span style="mso-tab-count:1">  </span>
+                      3.2<span class="fmt-clause-delim">.</span><span style="mso-tab-count:1">  </span>
                       Acronyms and abbreviations
                    </h2>
                    <div align="left">
@@ -675,8 +668,7 @@ RSpec.describe IsoDoc::Ieee do
           </div>
           <div id='L' class='Symbols'>
                 <h1>
-                   4.
-                   <span style="mso-tab-count:1">  </span>
+                   4<span class="fmt-clause-delim">.</span><span style="mso-tab-count:1">  </span>
                    Acronyms and abbreviations
                 </h1>
                 <div align="left">
@@ -692,21 +684,18 @@ RSpec.describe IsoDoc::Ieee do
           </div>
           <div id='M'>
             <h1>
-              5.
-              <span style='mso-tab-count:1'>&#xa0; </span>
+              5<span class="fmt-clause-delim">.</span><span style='mso-tab-count:1'>&#xa0; </span>
               Clause 4
             </h1>
             <div id='N'>
               <h2>
-                5.1.
-                <span style='mso-tab-count:1'>&#xa0; </span>
+                5.1<span class="fmt-clause-delim">.</span><span style='mso-tab-count:1'>&#xa0; </span>
                 Introduction
               </h2>
             </div>
             <div id='O'>
               <h2>
-                5.2.
-                <span style='mso-tab-count:1'>&#xa0; </span>
+                5.2<span class="fmt-clause-delim">.</span><span style='mso-tab-count:1'>&#xa0; </span>
                 Clause 4.2
               </h2>
             </div>
@@ -723,22 +712,19 @@ RSpec.describe IsoDoc::Ieee do
          </p>
             <div id='Q'>
               <h2>
-                A.1.
-                <span style='mso-tab-count:1'>&#xa0; </span>
+                A.1<span class="fmt-clause-delim">.</span><span style='mso-tab-count:1'>&#xa0; </span>
                 Annex A.1
               </h2>
               <div id='Q1'>
                 <h3>
-                  A.1.1.
-                  <span style='mso-tab-count:1'>&#xa0; </span>
+                  A.1.1<span class="fmt-clause-delim">.</span><span style='mso-tab-count:1'>&#xa0; </span>
                   Annex A.1a
                 </h3>
               </div>
             </div>
             <div>
               <h2 class='Section3'>
-                A.2.
-                <span style='mso-tab-count:1'>&#xa0; </span>
+                A.2<span class="fmt-clause-delim">.</span><span style='mso-tab-count:1'>&#xa0; </span>
                 Annex Bibliography
               </h2>
             </div>
@@ -798,7 +784,7 @@ RSpec.describe IsoDoc::Ieee do
              <fmt-title id="_" depth="1">
                 <span class="fmt-caption-label">
                    <semx element="autonum" source="_">1</semx>
-                   <span class="fmt-autonum-delim">.</span>
+                   <span class="fmt-clause-delim">.</span>
                 </span>
              </fmt-title>
              <fmt-xref-label>
@@ -816,7 +802,7 @@ RSpec.describe IsoDoc::Ieee do
          </div>
          <p class="zzSTDTitle1">Draft Recommended Practice for Title</p>
          <div id="_">
-           <h1>1.</h1>
+           <h1>1<span class="fmt-clause-delim">.</span></h1>
          </div>
        </div>
     OUTPUT

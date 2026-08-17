@@ -87,7 +87,7 @@ RSpec.describe IsoDoc do
                <fmt-title depth="1" id="_">
                   <span class="fmt-caption-label">
                      <semx element="autonum" source="_">1</semx>
-                     <span class="fmt-autonum-delim">.</span>
+                     <span class="fmt-clause-delim">.</span>
                   </span>
                   <span class="fmt-caption-delim">
                      <tab/>
@@ -530,7 +530,7 @@ RSpec.describe IsoDoc do
       <main class="main-section">
         <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button><br />
         <div id="_">
-          <h1 id="_"><a class="anchor" href="#_terms_and_definitions"></a><a class="header" href="#_terms_and_definitions">1.&#xA0; Terms and Definitions</a>
+          <h1 id="_"><a class="anchor" href="#_terms_and_definitions"></a><a class="header" href="#_terms_and_definitions">1<span class="fmt-clause-delim">.</span>&#xA0; Terms and Definitions</a>
           </h1>
           <p>For the purposes of this document, the following terms and definitions apply.</p>
           <div id="paddy1">
@@ -613,7 +613,7 @@ RSpec.describe IsoDoc do
         </p>
         <div class="WordSectionMain">
           <div id="_">
-            <h1>1.<span style="mso-tab-count:1">  </span>Terms and Definitions</h1>
+            <h1>1<span class="fmt-clause-delim">.</span><span style="mso-tab-count:1">  </span>Terms and Definitions</h1>
             <p>For the purposes of this document, the following terms and definitions apply.</p>
             <p class="TermNum" id="paddy1"></p>
             <p><b>paddy</b>, &lt;rice&gt;, &lt;in agriculture, dated&gt;<span class="fmt-termsource-delim">(</span><span class="std_publisher">ISO</span> <span class="std_docNumber">7301</span>:<span class="std_year">2011</span>,  3.1, modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here<span class="fmt-termsource-delim">)</span>: rice retaining its husk after threshing <span class="fmt-termsource-delim">(</span>adapted from t1, adapted; Termbase IEV, term ID xyz, adapted — with adjustments<span class="fmt-termsource-delim">)</span></p>
@@ -749,7 +749,7 @@ RSpec.describe IsoDoc do
                <fmt-title depth="1" id="_">
                   <span class="fmt-caption-label">
                      <semx element="autonum" source="_">1</semx>
-                     <span class="fmt-autonum-delim">.</span>
+                     <span class="fmt-clause-delim">.</span>
                   </span>
                   <span class="fmt-caption-delim">
                      <tab/>
@@ -957,7 +957,7 @@ RSpec.describe IsoDoc do
                <fmt-title depth="1" id="_">
                   <span class="fmt-caption-label">
                      <semx element="autonum" source="_">1</semx>
-                     <span class="fmt-autonum-delim">.</span>
+                     <span class="fmt-clause-delim">.</span>
                   </span>
                   <span class="fmt-caption-delim">
                      <tab/>
@@ -1109,7 +1109,7 @@ RSpec.describe IsoDoc do
                 <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="_">1</semx>
-                      <span class="fmt-autonum-delim">.</span>
+                      <span class="fmt-clause-delim">.</span>
                    </span>
                    <span class="fmt-caption-delim">
                       <tab/>
@@ -1290,7 +1290,7 @@ RSpec.describe IsoDoc do
                <fmt-title depth="1" id="_">
                   <span class="fmt-caption-label">
                      <semx element="autonum" source="A">1</semx>
-                     <span class="fmt-autonum-delim">.</span>
+                     <span class="fmt-clause-delim">.</span>
                   </span>
                   <span class="fmt-caption-delim">
                      <tab/>
@@ -1627,7 +1627,7 @@ RSpec.describe IsoDoc do
                <fmt-title depth="1" id="_">
                   <span class="fmt-caption-label">
                      <semx element="autonum" source="A">1</semx>
-                     <span class="fmt-autonum-delim">.</span>
+                     <span class="fmt-clause-delim">.</span>
                   </span>
                   <span class="fmt-caption-delim">
                      <tab/>
@@ -1875,7 +1875,7 @@ RSpec.describe IsoDoc do
                <fmt-title id="_" depth="1">
                   <span class="fmt-caption-label">
                      <semx element="autonum" source="A">1</semx>
-                     <span class="fmt-autonum-delim">.</span>
+                     <span class="fmt-clause-delim">.</span>
                   </span>
                   <span class="fmt-caption-delim">
                      <tab/>
@@ -2001,7 +2001,7 @@ RSpec.describe IsoDoc do
                <fmt-title depth="1" id="_">
                   <span class="fmt-caption-label">
                      <semx element="autonum" source="_">1</semx>
-                     <span class="fmt-autonum-delim">.</span>
+                     <span class="fmt-clause-delim">.</span>
                   </span>
                   <span class="fmt-caption-delim">
                      <tab/>
