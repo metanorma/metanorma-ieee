@@ -266,6 +266,7 @@ BLANK_HDR = <<~"HDR".freeze
            <doctype>standard</doctype>
            <subdoctype>document</subdoctype>
            <flavor>ieee</flavor>
+           <stage>approved</stage>
    </ext>
   </bibdata>
                     <metanorma-extension>

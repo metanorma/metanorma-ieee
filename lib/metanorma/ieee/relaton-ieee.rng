@@ -11,16 +11,6 @@
         <value>other</value>
       </choice>
     </define>
-    <define name="stage">
-      <element name="stage">
-        <choice>
-          <value>draft</value>
-          <value>approved</value>
-          <value>superseded</value>
-          <value>withdrawn</value>
-        </choice>
-      </element>
-    </define>
     <define name="DocumentSubtype">
       <choice>
         <value>amendment</value>
@@ -34,6 +24,16 @@
     </define>
   </include>
   <define name="BibDataExtensionType" combine="interleave">
+    <optional>
+      <element name="stage">
+        <a:documentation>The stage of the document being authored, validated against the flavor's stage vocabulary.
+This is a shadow of /bibdata/status/stage, which remains schema-generic:
+the status of cited bibliographic items carries the vocabulary of the SDO
+that published them, and is never constrained by the flavor
+(metanorma-model-iso#156)</a:documentation>
+        <ref name="StageType"/>
+      </element>
+    </optional>
     <optional>
       <ref name="trialuse">
         <a:documentation>Document published for a limited period of time.  Can apply to any of the document types
@@ -65,6 +65,14 @@ https://standards.ieee.org/about/policies/opman/sect5/</a:documentation>
         <a:documentation>Program under which a white paper was authored</a:documentation>
       </ref>
     </optional>
+  </define>
+  <define name="StageType">
+    <choice>
+      <value>draft</value>
+      <value>approved</value>
+      <value>superseded</value>
+      <value>withdrawn</value>
+    </choice>
   </define>
   <define name="standard_status">
     <element name="standard_status">
