@@ -20,6 +20,9 @@ module Metanorma
   end
 end
 
+require "metanorma/ieee/registers"
+Metanorma::Ieee::Registers.setup
+
 # OCP adoption: ONE registration in the metanorma-core flavor table
 require "metanorma-core"
 require "metanorma/iso/html"
