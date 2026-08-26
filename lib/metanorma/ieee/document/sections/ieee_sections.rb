@@ -11,7 +11,7 @@ module Metanorma
       #   }
       #
       # Differs from isodoc default by adding an optional leading note.
-      class IeeeSections < Metanorma::StandardDocument::Sections::Sections
+      class IeeeSections < Metanorma::Standoc::Document::Sections::Sections
         attribute :note,
                   Metanorma::Document::Components::Blocks::NoteBlock
 
@@ -21,9 +21,9 @@ module Metanorma
 
           map_element "note", to: :note
 
-          Metanorma::StandardDocument::SectionXmlMapping.apply_sections_elements(self)
+          Metanorma::Standoc::Document::SectionXmlMapping.apply_sections_elements(self)
 
-          Metanorma::StandardDocument::SectionXmlMapping.apply_sections_attributes(self)
+          Metanorma::Standoc::Document::SectionXmlMapping.apply_sections_attributes(self)
         end
       end
     end

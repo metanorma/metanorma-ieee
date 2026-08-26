@@ -9,6 +9,9 @@ end
 
 module Metanorma
   module Ieee::Document
+    autoload :Metadata, "metanorma/ieee/document/metadata"
+    autoload :Root, "metanorma/ieee/document/root"
+    autoload :Sections, "metanorma/ieee/document/sections"
   end
 end
 
@@ -32,5 +35,8 @@ Metanorma::Core::Flavors.register(Metanorma::Core::Flavor.new(
   gem: "metanorma-ieee",
   model_root: Metanorma::Ieee::Document::Root,
   pubid_module: :"Pubid::Ieee",
-  renderers: { html: Metanorma::Iso::Html::Renderer },
+  renderers: { html: lambda do |_document, **_options|
+    require "metanorma/iso/html"
+    Metanorma::Iso::Html::Renderer
+  end },
 ))
