@@ -1,5 +1,5 @@
 require "isoics"
-require "pubid-ieee"
+require "pubid/ieee"
 
 module Metanorma
   module Ieee

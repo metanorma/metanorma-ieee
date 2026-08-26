@@ -8,6 +8,7 @@ module Metanorma
   module Ieee
     ORGANIZATION_NAME_SHORT = "IEEE"
     ORGANIZATION_NAME_LONG = "Institute of Electrical and Electronics Engineers"
+    autoload :Document, "metanorma/ieee/document"
   end
 end
 
