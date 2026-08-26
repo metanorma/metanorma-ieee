@@ -8,3 +8,4 @@ require "metanorma-core"
 if defined? Metanorma::Registry
   Metanorma::Registry.instance.register(Metanorma::Ieee::Processor)
 end
+require "metanorma/ieee/document"
