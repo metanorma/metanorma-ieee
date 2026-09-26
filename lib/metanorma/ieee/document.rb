@@ -29,9 +29,9 @@ module Metanorma
   end
 end
 
-if defined?(Metanorma::Registers::Setup.setup_ieee_register)
-  Metanorma::Registers::Setup.setup_ieee_register
-end
+require_relative "registers"
+
+Metanorma::Ieee::Registers.setup
 
 module Metanorma
   deprecate_constant :IeeeDocument
