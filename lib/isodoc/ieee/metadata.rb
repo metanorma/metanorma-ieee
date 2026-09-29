@@ -28,11 +28,33 @@ module IsoDoc
         draft = isoxml.at(ns("//bibdata/date[@type = 'issued']")) ||
           isoxml.at(ns("//bibdata/date[@type = 'circulated']")) ||
           isoxml.at(ns("//bibdata/date[@type = 'created']")) ||
-          isoxml.at(ns("//bibdata/date[@type = 'updated']")) or return
+          isoxml.at(ns("//bibdata/date[@type = 'updated']/on")) ||
+          isoxml.at(ns("//bibdata/version/revision-date")) or return
         date = DateTime.parse(draft.text)
         set(:draft_month, date.strftime("%B"))
         set(:draft_year, date.strftime("%Y"))
       rescue StandardError
+      end
+
+      # isodoc's #version XPath expressions were regressed during the
+      # pubid-2 migration (version -> version/draft, version/revision-date
+      # -> date[@type='updated']/on). Restore the correct paths, and support
+      # both plain <version>text</version> and structured
+      # <version><draft>...</draft></version> forms.
+      def version(isoxml, _out)
+        set(:edition, isoxml.at(ns("//bibdata/edition#{NOLANG}"))&.text)
+        set(:edition_display,
+            isoxml.at(ns("//bibdata/edition#{currlang}"))&.text)
+        set(:docyear, isoxml.at(ns("//bibdata/copyright/from"))&.text)
+        draft = isoxml.at(ns("//bibdata/version/draft"))&.text ||
+          isoxml.at(ns("//bibdata/version[not(*)]"))&.text
+        set(:draft, draft)
+        revdate = isoxml.at(ns("//bibdata/version/revision-date"))&.text ||
+          isoxml.at(ns("//bibdata/date[@type='updated']/on"))&.text
+        set(:revdate, revdate)
+        set(:revdate_monthyear, monthyr(revdate))
+        set(:draftinfo,
+            draftinfo(get[:draft], get[:revdate]))
       end
 
       def doctype(isoxml, _out)

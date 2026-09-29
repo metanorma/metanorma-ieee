@@ -15,6 +15,16 @@ module Relaton
              "IEEE"].include?(r[:nonpersonal])
           end
         end
+
+        # Fall back to person contributors when none carry a recognised role;
+        # bibliographic entries with a person but no explicit role still
+        # need to sort by that person's name.
+        def creatornames1(doc)
+          cr = super
+          return cr unless cr.empty? && doc
+          persons = Array(doc.contributor).select(&:person)
+          persons.empty? ? Array(doc.contributor) : persons
+        end
       end
     end
   end

@@ -11,6 +11,8 @@ termnote: "<span class='fmt-element-name'>NOTE</span> %"
 example: Example
 table_of_contents: Contents
 viewed: accessed
+in: in
+in_document: in
 adapted_from: "adapted from "
 references: References
 no_identifier: null
