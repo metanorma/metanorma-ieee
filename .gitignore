@@ -1,0 +1,8 @@
+.DS_Store
+.byebug_history
+.rspec_status
+coverage/
+
+.rubocop-https--*
+
+/Gemfile.lock
