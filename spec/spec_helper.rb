@@ -301,7 +301,7 @@ HTML_HDR = <<~HDR.freeze
   <br/>
   <div class="main-section">
       <br/>
-    <div class="TOC" id="_">
+    <div id="_" class="TOC">
       <h1 class="IntroTitle">Contents</h1>
     </div>
 HDR

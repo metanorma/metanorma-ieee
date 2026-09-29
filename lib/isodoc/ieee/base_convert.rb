@@ -1,6 +1,21 @@
 require "isodoc"
 require "fileutils"
 
+# isodoc 3.7.x introduced fmt-clause-delim for clause title delimiters but
+# omitted it from SPAN_UNWRAP_CLASSES, so the span leaks into HTML/DOC output.
+# Fold it into the unwrap list.
+module IsoDoc
+  module Function
+    module Inline
+      remove_const(:SPAN_UNWRAP_CLASSES) if const_defined?(:SPAN_UNWRAP_CLASSES, false)
+      SPAN_UNWRAP_CLASSES =
+        (%w[fmt-caption-label fmt-label-delim fmt-caption-delim fmt-autonum-delim
+            fmt-element-name fmt-conn fmt-comma fmt-enum-comma fmt-obligation
+            fmt-xref-container fmt-designation-field fmt-clause-delim]).freeze
+    end
+  end
+end
+
 module IsoDoc
   module Ieee
     module BaseConvert

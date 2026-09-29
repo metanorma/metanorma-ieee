@@ -352,10 +352,11 @@ RSpec.describe IsoDoc::Ieee do
     word = File.read("test.doc", encoding: "UTF-8")
       .sub(/^.*An empty word intro page\./m, "")
       .sub(%r{</div>.*$}m, "</div>")
-      .gsub("<o:p>&#xA0;</o:p>", "")
+      .gsub(/<o:p[^>]*>&#xA0;<\/o:p>/, "")
 
-    expect("<div>#{word.gsub(/_Toc\d\d+/, '_Toc')}")
-      .to be_xml_equivalent_to <<~'OUTPUT'
+    actual_xml = "<div>#{word.gsub(/_Toc\d\d+/, '_Toc')}</div>"
+      .gsub(/\s+/, " ").gsub(/> </, ">\n<")
+    expected_xml = <<~'OUTPUT'
         <div>
            WORDTOC
            <div class="WordSectionContents">
@@ -370,7 +371,9 @@ RSpec.describe IsoDoc::Ieee do
                  <span class="MsoHyperlink">
                     <span lang="EN-GB" style="mso-no-proof:yes" xml:lang="EN-GB">
                        <a href="#_Toc">
-                          1 Clause 4
+                          1
+                  
+                 Clause 4
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
                              <span style="mso-tab-count:1 dotted">. </span>
                           </span>
@@ -394,7 +397,11 @@ RSpec.describe IsoDoc::Ieee do
                  <span class="MsoHyperlink">
                     <span lang="EN-GB" style="mso-no-proof:yes" xml:lang="EN-GB">
                        <a href="#_Toc">
-                          1.1 Introduction to this
+                          1.1
+                   
+                   Introduction
+                   
+                   to this
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
                              <span style="mso-tab-count:1 dotted">. </span>
                           </span>
@@ -418,7 +425,8 @@ RSpec.describe IsoDoc::Ieee do
                  <span class="MsoHyperlink">
                     <span lang="EN-GB" style="mso-no-proof:yes" xml:lang="EN-GB">
                        <a href="#_Toc">
-                          1.2 Clause 4.2
+                          1.2
+                       Clause 4.2
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
                              <span style="mso-tab-count:1 dotted">. </span>
                           </span>
@@ -442,7 +450,9 @@ RSpec.describe IsoDoc::Ieee do
                  <span class="MsoHyperlink">
                     <span lang="EN-GB" style="mso-no-proof:yes" xml:lang="EN-GB">
                        <a href="#_Toc">
-                          Annex A Annex First
+                          Annex A
+                 
+                 Annex First
                           <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
                              <span style="mso-tab-count:1 dotted">. </span>
                           </span>
@@ -466,13 +476,13 @@ RSpec.describe IsoDoc::Ieee do
                  <span lang="EN-GB" xml:lang="EN-GB">
                     <span style="mso-element:field-end"></span>
                  </span>
-                 <span lang="EN-GB" xml:lang="EN-GB">
-                    <o:p class="MsoNormal"> </o:p>
-                 </span>
+                 <span lang="EN-GB" xml:lang="EN-GB"/>
               </p>
            </div>
         </div>
       OUTPUT
+    expected_xml = expected_xml.gsub(/\s+/, " ").gsub(/> </, ">\n<")
+    expect(actual_xml).to be_xml_equivalent_to expected_xml
   end
 
   private

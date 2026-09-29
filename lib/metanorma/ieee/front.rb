@@ -1,5 +1,19 @@
 require "isoics"
-require "pubid-ieee"
+require "pubid"
+require "pubid/ieee"
+
+# relaton-iso 3.x still calls `base_identifier` and `part.value` from the
+# pubid 1.x API. pubid 2.x renamed `base_identifier` -> `base` and `part`
+# returns a bare String. Provide compatibility shims.
+module Pubid
+  class Identifier
+    alias_method :base_identifier, :base unless method_defined?(:base_identifier)
+  end
+end
+
+class String
+  alias_method :value, :itself unless method_defined?(:value)
+end
 
 module Metanorma
   module Ieee
@@ -111,7 +125,8 @@ module Metanorma
           { corrigendum: { version: a,
                            year: ieee_id_year(node, initial: false) } }
         elsif node.attr("amendment-number")
-          { amendment: pubid_select(core).create(**core) }
+          { amendment: { version: node.attr("amendment-number"),
+                         year: ieee_id_year(node, initial: false) } }
         end
       end
 
@@ -130,8 +145,66 @@ module Metanorma
 
       def ieee_id_out(xml, params)
         add_noko_elem(xml, "docidentifier",
-                      pubid_select(params).create(**params).to_s,
+                      pubid_create(params).to_s,
                       type: "IEEE", primary: "true")
+      end
+
+      # ── pubid 2.x construction layer ────────────────────────────────
+      #
+      # pubid 2 replaced pubid-ieee 1.x's `Identifier.create(**params)`
+      # with flavor-based identifier classes built from typed components
+      # (Pubid::Ieee::Identifiers::*). The helpers below translate the
+      # legacy params hash into those constructions.
+
+      def pubid_create(params)
+        base = pubid_standard(params)
+        if params[:corrigendum]
+          Pubid::Ieee::Identifiers::Corrigendum.new(
+            base: base,
+            number: params[:corrigendum][:version].to_s,
+            year: params[:corrigendum][:year].to_s,
+          )
+        elsif params[:amendment]
+          Pubid::Ieee::Identifiers::Amendment.new(
+            base: base,
+            number: params[:amendment][:version].to_s,
+            year: params[:amendment][:year].to_s,
+          )
+        else
+          base
+        end
+      end
+
+      def pubid_standard(params)
+        attrs = pubid_standard_attrs(params)
+        pubid_select(params).new(**attrs)
+      end
+
+      def pubid_standard_attrs(params)
+        attrs = {}
+        attrs[:number] = params[:number].to_s if params[:number]
+        if params[:part]
+          attrs[:parts] = [params[:part].to_s]
+          attrs[:separator] = "-"
+        end
+        attrs[:year] = params[:year].to_s if params[:year]
+        attrs[:publisher] = params[:publisher] if params[:publisher]
+        if params[:copublisher] && !Array(params[:copublisher]).empty?
+          attrs[:copublisher] = Array(params[:copublisher])
+        end
+        attrs[:redline] = true if params[:redline]
+        if params[:draft]
+          attrs[:draft] = pubid_draft_string(params[:draft])
+          attrs[:type] = "Draft Std"
+        end
+        attrs
+      end
+
+      def pubid_draft_string(draft)
+        return draft.to_s if draft.is_a?(String)
+        s = "D#{draft[:version]}"
+        s += ".#{draft[:revision]}" if draft[:revision]
+        s
       end
 
       def pubid_select(_params)
@@ -139,7 +212,7 @@ module Metanorma
       end
 
       def base_pubid
-        Pubid::Ieee::Identifier
+        Pubid::Ieee::Identifiers::Standard
       end
 
       def default_publisher
@@ -156,6 +229,25 @@ module Metanorma
       def ieee_stage(node)
         node.attr("status") || node.attr("docstage") ||
           (node.attr("version") || node.attr("draft") ? "draft" : "approved")
+      end
+
+      # Relaton schema: <version><revision-date>...</revision-date><draft>...</draft></version>
+      def metadata_version(node, xml)
+        metadata_edition(node, xml)
+        draft = metadata_version_value(node)
+        revdate = node.attr("revdate")
+        (draft || revdate) or return
+        xml.version do |v|
+          revdate and add_noko_elem(v, "revision-date", revdate)
+          draft and add_noko_elem(v, "draft", draft)
+        end
+      end
+
+      def metadata_version_value(node)
+        draft = node.attr("version") and return draft
+        draft = node.attr("draft") or return nil
+        draft.empty? and return nil
+        draft
       end
 
       def datetypes
@@ -198,7 +290,13 @@ module Metanorma
           i.class_ doctype(node)
           add_noko_elem(i, "docnumber", node.attr("docnumber"))
           add_noko_elem(i, "edition", node.attr("edition"))
-          add_noko_elem(i, "version", metadata_version_value(node))
+          draft = metadata_version_value(node)
+          revdate = node.attr("revdate")
+          (draft || revdate) and
+            i.version do |v|
+              revdate and add_noko_elem(v, "revision-date", revdate)
+              draft and add_noko_elem(v, "draft", draft)
+            end
           add_noko_elem(i, "amendment", node.attr("amendment-number"))
           add_noko_elem(i, "corrigendum", node.attr("corrigendum-number"))
           add_noko_elem(i, "year", node.attr("copyright-year"))
