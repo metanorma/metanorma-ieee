@@ -6,8 +6,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}" }
 
 gemspec
 
-gem "metanorma-core", github: "metanorma/metanorma-core", branch: "feat/flavor-table"
-gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "feat/model-validation-migration"
 
 # TEMPORARY: cross-PR branch pins so CI can resolve the in-flight
 # metanorma-standoc namespace rename (Metanorma::Standoc::Document)
@@ -15,15 +13,19 @@ gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "feat/model-vali
 # Revert each pin once the corresponding PR merges:
 #   - https://github.com/metanorma/metanorma-standoc/pull/1232
 #   - https://github.com/metanorma/metanorma-document/pull/45
-gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "feat/move-standard-document"
-gem "metanorma-document", github: "metanorma/metanorma-document", branch: "feat/model-validation-l1-declarations"
-gem "isodoc", github: "metanorma/isodoc", branch: "rt-pubid-2-migration"
+gem "metanorma-document", github: "metanorma/metanorma-document", branch: "main"
+# standoc main carries the Metanorma::Standoc::Document split and the
+# relaton 3 prerelease allowance; released 3.5.0 pins relaton-cli ~> 2.1.
+gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "main"
+# plugin-lutaml main carries LutamlDataPreprocessor (registered by
+# standoc main's converter); released 0.7.53 does not define it yet.
+gem "metanorma-plugin-lutaml", github: "metanorma/metanorma-plugin-lutaml", branch: "main"
+gem "isodoc", github: "metanorma/isodoc", branch: "main"
 gem "relaton-cli", ">= 3.0.0.pre.alpha.1"
 # Pin relaton: Its VERSION is the cache grammar_hash and it ships the ITU
 # scraper. A floating `>= 3.0.0.pre.alpha.1` (via metanorma-document) lets
 # CI resolve a newer pre-release, which wipes the vendored spec cache and
 # rewrites fixtures against live www.itu.int.
-gem "relaton", "3.0.0.pre.alpha.1"
-gem "pubid", "2.0.0.pre.alpha.13" # relaton 3.0.0.pre.alpha.1 pairs with pre-rename pubid; .alpha.9 renamed base_identifier->base
+gem "relaton", "~> 3.0.0.pre.alpha"
 
 eval_gemfile("Gemfile.devel") rescue nil
