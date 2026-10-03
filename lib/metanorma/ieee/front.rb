@@ -1,6 +1,9 @@
 require "isoics"
 require "pubid"
-require "pubid/ieee"
+
+# The pubid monogem: all flavors load through the registry — no
+# per-flavor gems (pubid-ieee is the legacy 1.x line).
+Pubid.eager_load_flavors!
 
 # relaton-iso 3.x still calls `base_identifier` and `part.value` from the
 # pubid 1.x API. pubid 2.x renamed `base_identifier` -> `base` and `part`
