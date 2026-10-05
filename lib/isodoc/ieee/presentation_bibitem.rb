@@ -1,4 +1,4 @@
-require_relative "../../relaton/render/general"
+require_relative "../../metanorma/ieee/relaton_render/general"
 
 module IsoDoc
   module Ieee
