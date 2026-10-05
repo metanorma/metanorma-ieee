@@ -22,6 +22,8 @@ module IsoDoc
       end
 
       def bibrenderer
+        require_relative "../../metanorma/ieee/relaton_render/general"
+
         ::Relaton::Render::Ieee::General
           .new(language: @lang, script: @script, i18nhash: @i18n.get)
       end
