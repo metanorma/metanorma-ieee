@@ -2,6 +2,8 @@
 
 require "spec_helper"
 
+require_relative "../../../lib/metanorma/ieee/relaton_render/general"
+
 RSpec.describe Relaton::Render::Ieee do
   it "renders book, five editors" do
     input = <<~INPUT
