@@ -1,4 +1,3 @@
-require_relative "../../metanorma/ieee/relaton_render/general"
 
 module IsoDoc
   module Ieee
