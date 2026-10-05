@@ -45,6 +45,8 @@ module IsoDoc
       end
 
       def creatornames(bib)
+        require_relative "../../metanorma/ieee/relaton_render/general"
+
         ::Relaton::Render::Ieee::General
           .new(language: @lang, i18nhash: @i18n.get,
                template: "{{ creatornames }}",
