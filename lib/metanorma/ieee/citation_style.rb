@@ -19,6 +19,7 @@ module Metanorma
         identifier: IeeeElements::IeeeIdentifier,
         component_part: IeeeElements::IeeeComponentPart,
         access: IeeeElements::IeeeAccess,
+        medium: IeeeElements::IeeeMedium,
       }.freeze
 
       # 1.x use_terminator?: home standards carry no bibliography
