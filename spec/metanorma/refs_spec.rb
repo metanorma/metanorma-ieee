@@ -261,8 +261,8 @@ RSpec.describe Metanorma::Ieee do
       <sections>
       </sections><bibliography><references id="_" normative="false" obligation="informative">
       <title id="_">Bibliography</title><p id="_">Bibliographical references are resources that provide additional or helpful material but do not need to be understood or used to implement this standard. Reference to these resources is made for informational use only.</p><bibitem id="_" type="standard" anchor="ref2">
-
-
+  
+  
       <title type="main">The “xml2rfc” Version 2 Vocabulary</title>
 
         <uri type="src">https://www.rfc-editor.org/info/rfc7749</uri>
@@ -275,7 +275,7 @@ RSpec.describe Metanorma::Ieee do
         <contributor>
           <role type="author"/>
           <person>
-
+      
       <name>                    <formatted-initials language="en" script="Latn">J.</formatted-initials>          <surname language="en" script="Latn">Reschke</surname>          <completename language="en" script="Latn">J. Reschke</completename>       </name>
 
           </person>
@@ -283,7 +283,7 @@ RSpec.describe Metanorma::Ieee do
         <contributor>
           <role type="publisher"/>
           <organization>
-
+      
       <name language="en">RFC Publisher</name>
 
           </organization>
@@ -291,7 +291,7 @@ RSpec.describe Metanorma::Ieee do
         <contributor>
           <role type="authorizer"/>
           <organization>
-
+      
       <name language="en">RFC Series</name>
 
           </organization>
@@ -317,15 +317,10 @@ RSpec.describe Metanorma::Ieee do
 
         </relation>
         <series>
-
+    
       <title>RFC</title>
 
           <number>7749</number>
-        </series>
-        <series type="stream">
-
-      <title>IAB</title>
-
         </series>
         <keyword>
           <vocab>XML</vocab>
@@ -343,17 +338,17 @@ RSpec.describe Metanorma::Ieee do
           <vocab>Vocabulary</vocab>
         </keyword>
       </bibitem><bibitem id="_" type="standard" anchor="ref1">
-
-
+  
+  
       <title language="en" script="Latn" type="title-main">Code for individual languages and language groups</title>
 
-
+  
       <title language="en" script="Latn" type="main">Code for individual languages and language groups</title>
 
-
+  
       <title language="fr" script="Latn" type="title-main">Code pour les langues individuelles et les groupes de langues</title>
 
-
+  
       <title language="fr" script="Latn" type="main">Code pour les langues individuelles et les groupes de langues</title>
 
         <uri type="src">https://www.iso.org/standard/74575.html</uri>
@@ -370,7 +365,7 @@ RSpec.describe Metanorma::Ieee do
         <contributor>
           <role type="publisher"/>
           <organization>
-
+      
       <name>International Organization for Standardization</name>
 
             <abbreviation>ISO</abbreviation>
@@ -382,11 +377,11 @@ RSpec.describe Metanorma::Ieee do
             <description>committee</description>
           </role>
           <organization>
-
+      
       <name>International Organization for Standardization</name>
 
             <subdivision type="technical-committee" subtype="TC">
-
+        
       <name>Terminology workflow and language coding</name>
 
               <identifier>ISO/TC 37/SC 2</identifier>
@@ -406,7 +401,7 @@ RSpec.describe Metanorma::Ieee do
           <from>2023</from>
           <owner>
             <organization>
-
+        
       <name>ISO</name>
 
             </organization>
@@ -499,6 +494,7 @@ RSpec.describe Metanorma::Ieee do
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:note | " \
               "//xmlns:metanorma-extension | //xmlns:fetched").remove
+    File.write("/tmp/m222_actual.xml", strip_guid(out.to_xml))
     expect(strip_guid(out.to_xml))
       .to be_xml_equivalent_to output
   end
