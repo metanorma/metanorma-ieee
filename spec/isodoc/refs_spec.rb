@@ -1763,7 +1763,7 @@ RSpec.describe IsoDoc do
             </localityStack>
           </eref>
           <semx element="eref" source="_">
-            <fmt-xref type="inline" target="IETF_6281">IETF&#xA0;6281,  4&#x2013;9</fmt-xref>
+            <fmt-xref type="inline" target="IETF_6281"><span class="std_publisher">IETF</span>&#xA0;<span class="std_docNumber">6281</span>,  4&#x2013;9</fmt-xref>
           </semx>
           <eref type="inline" bibitemid="IETF_6281" citeas="ISO 639:1967" id="_">
             <localityStack>
@@ -1774,7 +1774,7 @@ RSpec.describe IsoDoc do
             </localityStack>
           </eref>
           <semx element="eref" source="_">
-            <fmt-xref type="inline" target="IETF_6281">IETF&#xA0;6281,  Figure 4&#x2013;9</fmt-xref>
+            <fmt-xref type="inline" target="IETF_6281"><span class="std_publisher">IETF</span>&#xA0;<span class="std_docNumber">6281</span>,  Figure 4&#x2013;9</fmt-xref>
           </semx>
           <eref type="inline" bibitemid="Johns" citeas="ISO 639-2:1998" id="_">
             <localityStack>
