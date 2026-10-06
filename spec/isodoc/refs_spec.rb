@@ -1738,75 +1738,67 @@ RSpec.describe IsoDoc do
     INPUT
     presxml = <<~PRESXML
       <clause id="A" inline-header="false" obligation="normative" displayorder="3">
-         <title id="_">Clause</title>
-         <fmt-title depth="1" id="_">
-            <span class="fmt-caption-label">
-               <semx element="autonum" source="A">2</semx>
-               <span class="fmt-clause-delim">.</span>
-            </span>
-            <span class="fmt-caption-delim">
-               <tab/>
-            </span>
-            <semx element="title" source="_">Clause</semx>
-         </fmt-title>
-         <fmt-xref-label>
-            <span class="fmt-element-name">Clause</span>
+        <title id="_">Clause</title>
+        <fmt-title depth="1" id="_">
+          <span class="fmt-caption-label">
             <semx element="autonum" source="A">2</semx>
-         </fmt-xref-label>
-         <p id="_">
-            <eref type="inline" bibitemid="IETF_6281" citeas="ISO 639:1967" id="_">
-               <localityStack>
-                  <locality type="page">
-                     <referenceFrom>4</referenceFrom>
-                     <referenceTo>9</referenceTo>
-                  </locality>
-               </localityStack>
-            </eref>
-            <semx element="eref" source="_">
-               <fmt-xref type="inline" target="IETF_6281">
-                  <span class="std_publisher">IETF</span>
-                   <span class="std_docNumber">6281</span>
-                  , 4–9
-               </fmt-xref>
-            </semx>
-            <eref type="inline" bibitemid="IETF_6281" citeas="ISO 639:1967" id="_">
-               <localityStack>
-                  <locality type="figure">
-                     <referenceFrom>4</referenceFrom>
-                     <referenceTo>9</referenceTo>
-                  </locality>
-               </localityStack>
-            </eref>
-            <semx element="eref" source="_">
-               <fmt-xref type="inline" target="IETF_6281">
-                  <span class="std_publisher">IETF</span>
-                   <span class="std_docNumber">6281</span>
-                  , Figure 4–9
-               </fmt-xref>
-            </semx>
-            <eref type="inline" bibitemid="Johns" citeas="ISO 639-2:1998" id="_">
-               <localityStack>
-                  <locality type="page">
-                     <referenceFrom>4</referenceFrom>
-                     <referenceTo>9</referenceTo>
-                  </locality>
-               </localityStack>
-            </eref>
-            <semx element="eref" source="_">
-               <fmt-xref type="inline" style="author_date" target="Johns">Johns 2022,  4–9</fmt-xref>
-            </semx>
-            <eref type="inline" bibitemid="Johns" citeas="ISO 639-2:1998" id="_">
-               <localityStack>
-                  <locality type="figure">
-                     <referenceFrom>4</referenceFrom>
-                     <referenceTo>9</referenceTo>
-                  </locality>
-               </localityStack>
-            </eref>
-            <semx element="eref" source="_">
-               <fmt-xref type="inline" style="author_date" target="Johns">Johns 2022,  Figure 4–9</fmt-xref>
-            </semx>
-         </p>
+            <span class="fmt-clause-delim">.</span>
+          </span>
+          <span class="fmt-caption-delim">
+            <tab/>
+          </span>
+          <semx element="title" source="_">Clause</semx>
+        </fmt-title>
+        <fmt-xref-label>
+          <span class="fmt-element-name">Clause</span>
+          <semx element="autonum" source="A">2</semx>
+        </fmt-xref-label>
+        <p id="_">
+          <eref type="inline" bibitemid="IETF_6281" citeas="ISO 639:1967" id="_">
+            <localityStack>
+              <locality type="page">
+                <referenceFrom>4</referenceFrom>
+                <referenceTo>9</referenceTo>
+              </locality>
+            </localityStack>
+          </eref>
+          <semx element="eref" source="_">
+            <fmt-xref type="inline" target="IETF_6281">IETF&#xA0;6281,  4&#x2013;9</fmt-xref>
+          </semx>
+          <eref type="inline" bibitemid="IETF_6281" citeas="ISO 639:1967" id="_">
+            <localityStack>
+              <locality type="figure">
+                <referenceFrom>4</referenceFrom>
+                <referenceTo>9</referenceTo>
+              </locality>
+            </localityStack>
+          </eref>
+          <semx element="eref" source="_">
+            <fmt-xref type="inline" target="IETF_6281">IETF&#xA0;6281,  Figure 4&#x2013;9</fmt-xref>
+          </semx>
+          <eref type="inline" bibitemid="Johns" citeas="ISO 639-2:1998" id="_">
+            <localityStack>
+              <locality type="page">
+                <referenceFrom>4</referenceFrom>
+                <referenceTo>9</referenceTo>
+              </locality>
+            </localityStack>
+          </eref>
+          <semx element="eref" source="_">
+            <fmt-xref type="inline" style="author_date" target="Johns">Johns 2022,  4&#x2013;9</fmt-xref>
+          </semx>
+          <eref type="inline" bibitemid="Johns" citeas="ISO 639-2:1998" id="_">
+            <localityStack>
+              <locality type="figure">
+                <referenceFrom>4</referenceFrom>
+                <referenceTo>9</referenceTo>
+              </locality>
+            </localityStack>
+          </eref>
+          <semx element="eref" source="_">
+            <fmt-xref type="inline" style="author_date" target="Johns">Johns 2022,  Figure 4&#x2013;9</fmt-xref>
+          </semx>
+        </p>
       </clause>
     PRESXML
     out = Nokogiri::XML(

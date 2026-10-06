@@ -540,55 +540,55 @@ RSpec.describe Metanorma::Ieee do
       * [[[ref3,IEEE 802.1D-1990]]] REF2
     INPUT
     output = <<~OUTPUT
-         <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='#{Metanorma::Ieee::VERSION}' flavor="ieee">
-         <preface>
-            <introduction id="_" obligation="informative">
-               <title id="_">Introduction</title>
-               <admonition id="_">This introduction is not part of , IEEE Standard for Document title</admonition>
-               <p id="_">
-                  <eref type="inline" bibitemid="ref1" citeas="IEEE Std 1619™-2007"/>
-               </p>
-               <p id="_">
-                  <eref type="inline" bibitemid="ref2" citeas="ISO 639:2023"/>
-               </p>
-               <p id="_">
-                  <eref type="inline" bibitemid="ref1" citeas="IEEE Std 1619-2007"/>
-               </p>
-            </introduction>
-         </preface>
-         <sections>
-            <clause id="_" type="overview" inline-header="false" obligation="normative">
-               <title id="_">Overview</title>
-               <clause id="_" type="scope" inline-header="false" obligation="normative">
-                  <title id="_">Scope</title>
-                  <p id="_">
-                     <eref type="inline" bibitemid="ref1" citeas="IEEE Std 1619™-2007"/>
-                  </p>
-                  <p id="_">
-                     <eref type="inline" bibitemid="ref3" citeas="IEEE 802.1D-1990"/>
-                  </p>
-                  <p id="_">
-                     <eref type="inline" bibitemid="ref2" citeas="ISO 639:2023"/>
-                  </p>
-                  <p id="_">
-                     <eref type="inline" bibitemid="ref1" citeas="IEEE Std 1619-2007"/>
-                  </p>
-               </clause>
-            </clause>
-            <clause id="_" inline-header="false" obligation="normative">
-               <title id="_">Clause</title>
-               <p id="_">
-                  <eref type="inline" bibitemid="ref1" citeas="IEEE Std 1619-2007"/>
-               </p>
-            </clause>
-         </sections>
-         <annex id="_" inline-header="false" obligation="normative">
-            <title id="_">Annex</title>
+      <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="1.7.0" flavor="ieee">
+        <preface>
+          <introduction id="_" obligation="informative">
+            <title id="_">Introduction</title>
+            <admonition id="_">This introduction is not part of , IEEE Standard for Document title</admonition>
             <p id="_">
-               <eref type="inline" bibitemid="ref1" citeas="IEEE Std 1619-2007"/>
+              <eref type="inline" bibitemid="ref1" citeas="IEEE Std 1619™-2007"/>
             </p>
-         </annex>
-         <bibliography/>
+            <p id="_">
+              <eref type="inline" bibitemid="ref2" citeas="ISO 639:2023"/>
+            </p>
+            <p id="_">
+              <eref type="inline" bibitemid="ref1" citeas="IEEE Std 1619-2007"/>
+            </p>
+          </introduction>
+        </preface>
+        <sections>
+          <clause id="_" type="overview" inline-header="false" obligation="normative">
+            <title id="_">Overview</title>
+            <clause id="_" type="scope" inline-header="false" obligation="normative">
+              <title id="_">Scope</title>
+              <p id="_">
+                <eref type="inline" bibitemid="ref1" citeas="IEEE Std 1619™-2007"/>
+              </p>
+              <p id="_">
+                <eref type="inline" bibitemid="ref3" citeas="IEEE Std 802.1D®-1990"/>
+              </p>
+              <p id="_">
+                <eref type="inline" bibitemid="ref2" citeas="ISO 639:2023"/>
+              </p>
+              <p id="_">
+                <eref type="inline" bibitemid="ref1" citeas="IEEE Std 1619-2007"/>
+              </p>
+            </clause>
+          </clause>
+          <clause id="_" inline-header="false" obligation="normative">
+            <title id="_">Clause</title>
+            <p id="_">
+              <eref type="inline" bibitemid="ref1" citeas="IEEE Std 1619-2007"/>
+            </p>
+          </clause>
+        </sections>
+        <annex id="_" inline-header="false" obligation="normative">
+          <title id="_">Annex</title>
+          <p id="_">
+            <eref type="inline" bibitemid="ref1" citeas="IEEE Std 1619-2007"/>
+          </p>
+        </annex>
+        <bibliography/>
       </metanorma>
     OUTPUT
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
