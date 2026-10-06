@@ -109,3 +109,24 @@ module Metanorma
     end
   end
 end
+
+module Metanorma
+  module Ieee
+    module IeeeElements
+      # The IEEE medium, capitalized and carrying its own trailing
+      # comma ("Dataset,", "Preprint,")
+      class IeeeMedium < ::Relaton::Render::Iso690::Elements::Medium
+        private
+
+        def medium
+          m = @model.medium or return ""
+          text = m.carrier.to_s
+          text = m.genre.to_s if text.empty?
+          text = [m.form.to_s, m.size.to_s].reject(&:empty?)
+            .join(", ") if text.empty?
+          text.empty? ? "" : "#{text.sub(/^\w/) { |c| c.upcase }},"
+        end
+      end
+    end
+  end
+end

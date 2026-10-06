@@ -5,6 +5,7 @@
 name: "ISO 690 (metanorma-ieee flavour)"
 scheme:
   system: name-date
+  defaultKind: online
   homeDocidType: []
   nameForm:
     initials: true
@@ -23,9 +24,9 @@ scheme:
     labels:
       "and": "and"
       oxford_comma: ","
+      available_from: ""
       viewed: "accessed"
       no_place: "n.p."
-      available_from: "Available at:"
       edition: "edition"
       edition_1: "first edition"
       edition_2: "second edition"
@@ -52,7 +53,7 @@ perType:
     template: "{{title}}."
     title: "{{title}}"
   - type: report
-    template: "{{title}}. {{status}}. {{authorizer}}."
+    template: "{{title}}, {{location}}."
     title: "{{title}}"
   - type: monograph
     template: "{{creator}}, {{title}}, {{edition}}, {{production}}, {{disambiguateddate}}, {{identifier}}."
@@ -64,10 +65,10 @@ perType:
   - type: serial_part
     template: "{{creator}}, {{title}} {{series}}, {{extent}}, {{disambiguateddate}}, {{identifier}}."
     title: "&#x201C;{{title}},&#x201D;"
-    series: "<em>{{series_title}}</em> ({{series_run}})"
+    series: "<em><em>{{series_title}}</em> ({{series_run}})</em>"
   - type: online
-    template: "{{creator}}, {{title}} {{disambiguateddate}}, {{access}}, {{identifier}}."
+    template: "{{creator}}, {{title}} {{medium}} {{date}}{{disambiguator}}, {{access}}, {{location}}."
     title: "&#x201C;{{title}},&#x201D;"
   - type: webdoc
-    template: "{{creator}}, {{title}} {{medium}}. {{production}}. {{disambiguateddate}}. {{access}}."
-    title: "<span class='stddocTitle'>{{title}}</span>"
+    template: "{{creator}}, {{title}} {{production}}, {{disambiguateddate}}, {{access}}, {{location}}."
+    title: "&#x201C;{{title}},&#x201D;"
