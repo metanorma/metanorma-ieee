@@ -2,7 +2,7 @@ Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 
 source "https://rubygems.org"
-gem "relaton-render", "3.0.0.pre.alpha.16" # in-text casing, disambiguation, et-al
+gem "relaton-render", "3.0.0.pre.alpha.17" # title form, truncation
 
 git_source(:github) { |repo| "https://github.com/#{repo}" }
 
