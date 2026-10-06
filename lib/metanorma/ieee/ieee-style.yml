@@ -1,0 +1,64 @@
+# The metanorma-ieee CitationStyle instance (relaton-render 3.0.0.pre
+# Iso690 engine). IEEE name-and-date: the inverted first creator, the
+# initials-first direct subsequent creators joined with "and", the
+# batch-disambiguated date, and the standards cited by title alone.
+name: "ISO 690 (metanorma-ieee flavour)"
+scheme:
+  system: name-date
+  homeDocidType: []
+  nameForm:
+    initials: true
+    initialsSeparator: ""
+    initialsPeriod: true
+    invertedAll: false
+    surnameUpcase: false
+    completenameUpcase: false
+    orgUpcase: false
+    subsequentSurnameUpcase: false
+    etalCount: 3
+    editorsMarked: false
+  locale:
+    labels:
+      "and": "and"
+      oxford_comma: ","
+      no_place: "n.p."
+      available_from: "Available at:"
+      edition: "edition"
+      edition_1: "first edition"
+      edition_2: "second edition"
+      edition_3: "third edition"
+      edition_4: "fourth edition"
+      edition_5: "fifth edition"
+      edition_6: "sixth edition"
+      edition_7: "seventh edition"
+      edition_8: "eighth edition"
+      edition_9: "ninth edition"
+      edition_10: "tenth edition"
+templates:
+  titleOpen: "<em>"
+  titleClose: "</em>"
+  citation: "{{surname}}, {{disambiguateddate}}"
+  reference: "{{creator}}, {{title}}, {{edition}}, {{production}}, {{disambiguateddate}}, {{identifier}}."
+  name: "{{surname}}, {{givenNames}}"
+  uri: "<fmt-link target='{{uri}}'>{{uri}}</fmt-link>"
+perType:
+  - type: report
+    template: "{{title}}. {{status}}. {{authorizer}}."
+  - type: monograph
+    template: "{{creator}}, {{title}}, {{edition}}, {{production}}, {{disambiguateddate}}, {{identifier}}."
+    title: "<em>{{title}}</em>"
+  - type: component_part
+    template: "{{creator}}, {{title}}, {{componentpart}}, {{production}}, {{disambiguateddate}}. {{extent}}."
+    title: "<em>{{title}}</em>"
+  - type: continuing
+    template: "{{title}}, {{date}}."
+  - type: serial_part
+    template: "{{creator}}, {{title}}, {{series}}, {{disambiguateddate}}, {{extent}}."
+    title: "<em>{{title}}</em>"
+    series: "<em>{{series_title}}</em> ({{series_run}})"
+  - type: online
+    template: "{{creator}}, {{title}}, {{edition}}, {{medium}}, {{production}}, {{disambiguateddate}}. {{identifier}}."
+    title: "<em>{{title}}</em>"
+  - type: webdoc
+    template: "{{creator}}, {{title}} {{medium}}. {{production}}. {{disambiguateddate}}. {{access}}."
+    title: "<span class='stddocTitle'>{{title}}</span>"

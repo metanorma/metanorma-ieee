@@ -1,4 +1,5 @@
 require "spec_helper"
+require_relative "../../lib/metanorma/ieee/citation_style"
 
 RSpec.describe IsoDoc do
   it "processes biblio citations" do

@@ -2,6 +2,8 @@ Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 
 source "https://rubygems.org"
+gem "relaton-render", path: "/Users/mulgogi/src/relaton/relaton-render" # TEMP
+
 git_source(:github) { |repo| "https://github.com/#{repo}" }
 
 gemspec
@@ -21,6 +23,7 @@ gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "main"
 # standoc main's converter); released 0.7.53 does not define it yet.
 gem "metanorma-plugin-lutaml", github: "metanorma/metanorma-plugin-lutaml", branch: "main"
 gem "metanorma-utils", github: "metanorma/metanorma-utils", branch: "main" # GcBudget, unreleased past 2.0.7
+gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "main" # CitationStyle port, unreleased
 gem "isodoc", github: "metanorma/isodoc", branch: "main"
 gem "relaton-cli", ">= 3.0.0.pre.alpha.1"
 # Pin relaton: Its VERSION is the cache grammar_hash and it ships the ITU
