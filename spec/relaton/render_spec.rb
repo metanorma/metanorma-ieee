@@ -1,8 +1,9 @@
 # encoding: utf-8
 
 require "spec_helper"
+require_relative "../../lib/metanorma/ieee/citation_style"
 
-RSpec.describe Relaton::Render::Ieee do
+RSpec.describe Metanorma::Ieee::CitationStyle do
   it "renders book, five editors" do
     input = <<~INPUT
       <bibitem type="book">
@@ -626,6 +627,6 @@ RSpec.describe Relaton::Render::Ieee do
   def renderer
     i = IsoDoc::Ieee::PresentationXMLConvert.new({})
     i.i18n_init("en", "Latn", nil)
-    Relaton::Render::Ieee::General.new(i18nhash: i.i18n.get)
+    Metanorma::Ieee::CitationStyle.new(i18nhash: i.i18n.get)
   end
 end
