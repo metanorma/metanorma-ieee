@@ -20,6 +20,7 @@ gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "main"
 # plugin-lutaml main carries LutamlDataPreprocessor (registered by
 # standoc main's converter); released 0.7.53 does not define it yet.
 gem "metanorma-plugin-lutaml", github: "metanorma/metanorma-plugin-lutaml", branch: "main"
+gem "metanorma-utils", github: "metanorma/metanorma-utils", branch: "main" # GcBudget, unreleased past 2.0.7
 gem "isodoc", github: "metanorma/isodoc", branch: "main"
 gem "relaton-cli", ">= 3.0.0.pre.alpha.1"
 # Pin relaton: Its VERSION is the cache grammar_hash and it ships the ITU
