@@ -26,6 +26,7 @@ gem "relaton-cli", ">= 3.0.0.pre.alpha.1"
 # scraper. A floating `>= 3.0.0.pre.alpha.1` (via metanorma-document) lets
 # CI resolve a newer pre-release, which wipes the vendored spec cache and
 # rewrites fixtures against live www.itu.int.
-gem "relaton", "~> 3.0.0.pre.alpha"
+gem "relaton", ">= 3.0.0.pre.alpha.11" # ~> form resolves the stale alpha.5 + relaton-render 1.3.0 pair (the crashing one)
+
 
 eval_gemfile("Gemfile.devel") rescue nil
