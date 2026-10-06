@@ -1,4 +1,3 @@
-require_relative "../../relaton/render-ieee/general"
 
 module IsoDoc
   module Ieee
@@ -46,14 +45,13 @@ module IsoDoc
       end
 
       def creatornames(bib)
-        ::Relaton::Render::Ieee::General
-          .new(language: @lang, i18nhash: @i18n.get,
-               template: "{{ creatornames }}",
-               extenttemplate: { (bib["type"] || "misc").to_sym => "{{page}}" },
-               sizetemplate: { (bib["type"] || "misc").to_sym => "{{data}}" })
-          .render1(Relaton::Bib::Bibitem.from_xml(
+        require_relative "../../metanorma/ieee/citation_style"
+
+        Metanorma::Ieee::CitationStyle.new(language: @lang,
+                                           i18nhash: @i18n.get)
+          .creator_names(
             Nokogiri::XML(bib.to_xml).tap(&:remove_namespaces!).root.to_xml,
-                   ), false)
+          )
       end
 
       def bibliography_bibitem_number1(bibitem, idx, normative)
