@@ -1,4 +1,4 @@
-require "relaton-render"
+require "relaton/render-isodoc/general" # mirror isodoc's layout; relaton-render 3 changed the load graph
 require_relative "parse"
 
 module Relaton
