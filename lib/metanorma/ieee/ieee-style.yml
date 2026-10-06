@@ -18,6 +18,11 @@ scheme:
     subsequentSurnameUpcase: false
     etalCount: 6
     etalDisplay: 3
+    # The in-text cite truncates at its own threshold: IEEE cites
+    # three or more creators as "Aluffi et al." while listing six in
+    # the bibliography
+    inTextEtalCount: 3
+    inTextEtalDisplay: 1
     editorsMarked: false
     listStyle: serial
   locale:
