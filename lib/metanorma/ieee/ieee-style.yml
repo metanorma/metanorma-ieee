@@ -8,19 +8,22 @@ scheme:
   homeDocidType: []
   nameForm:
     initials: true
-    initialsSeparator: ""
+    initialsSeparator: ". "
     initialsPeriod: true
     invertedAll: false
     surnameUpcase: false
     completenameUpcase: false
     orgUpcase: false
     subsequentSurnameUpcase: false
-    etalCount: 3
+    etalCount: 6
+    etalDisplay: 3
     editorsMarked: false
+    listStyle: serial
   locale:
     labels:
       "and": "and"
       oxford_comma: ","
+      viewed: "accessed"
       no_place: "n.p."
       available_from: "Available at:"
       edition: "edition"
@@ -37,28 +40,34 @@ scheme:
 templates:
   titleOpen: "<em>"
   titleClose: "</em>"
+  identifierMode: first
   citation: "{{surname}}, {{disambiguateddate}}"
   reference: "{{creator}}, {{title}}, {{edition}}, {{production}}, {{disambiguateddate}}, {{identifier}}."
   name: "{{surname}}, {{givenNames}}"
   uri: "<fmt-link target='{{uri}}'>{{uri}}</fmt-link>"
 perType:
+  # home standards cite the plain title alone
+  - type: report
+    home: true
+    template: "{{title}}."
+    title: "{{title}}"
   - type: report
     template: "{{title}}. {{status}}. {{authorizer}}."
+    title: "{{title}}"
   - type: monograph
     template: "{{creator}}, {{title}}, {{edition}}, {{production}}, {{disambiguateddate}}, {{identifier}}."
-    title: "<em>{{title}}</em>"
   - type: component_part
-    template: "{{creator}}, {{title}}, {{componentpart}}, {{production}}, {{disambiguateddate}}. {{extent}}."
-    title: "<em>{{title}}</em>"
+    template: "{{creator}}, {{title}} {{componentpart}}, {{disambiguateddate}}, {{extent}}, {{access}}."
+    title: "&#x201C;{{title}},&#x201D;"
   - type: continuing
     template: "{{title}}, {{date}}."
   - type: serial_part
-    template: "{{creator}}, {{title}}, {{series}}, {{disambiguateddate}}, {{extent}}."
-    title: "<em>{{title}}</em>"
+    template: "{{creator}}, {{title}} {{series}}, {{extent}}, {{disambiguateddate}}, {{identifier}}."
+    title: "&#x201C;{{title}},&#x201D;"
     series: "<em>{{series_title}}</em> ({{series_run}})"
   - type: online
-    template: "{{creator}}, {{title}}, {{edition}}, {{medium}}, {{production}}, {{disambiguateddate}}. {{identifier}}."
-    title: "<em>{{title}}</em>"
+    template: "{{creator}}, {{title}} {{disambiguateddate}}, {{access}}, {{identifier}}."
+    title: "&#x201C;{{title}},&#x201D;"
   - type: webdoc
     template: "{{creator}}, {{title}} {{medium}}. {{production}}. {{disambiguateddate}}. {{access}}."
     title: "<span class='stddocTitle'>{{title}}</span>"

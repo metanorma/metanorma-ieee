@@ -17,6 +17,8 @@ module Metanorma
       # kind labels with a colon
       ELEMENTS = {
         identifier: IeeeElements::IeeeIdentifier,
+        component_part: IeeeElements::IeeeComponentPart,
+        access: IeeeElements::IeeeAccess,
       }.freeze
 
       # 1.x use_terminator?: home standards carry no bibliography
