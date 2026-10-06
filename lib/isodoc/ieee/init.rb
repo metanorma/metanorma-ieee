@@ -22,7 +22,9 @@ module IsoDoc
       end
 
       def bibrenderer
-        ::Relaton::Render::Ieee::General
+        require_relative "../../metanorma/ieee/citation_style"
+
+        Metanorma::Ieee::CitationStyle
           .new(language: @lang, script: @script, i18nhash: @i18n.get)
       end
 
