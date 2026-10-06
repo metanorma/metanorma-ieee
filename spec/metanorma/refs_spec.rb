@@ -875,652 +875,678 @@ RSpec.describe Metanorma::Ieee do
       <bibliography>
         <references id="_" normative="true" obligation="informative">
       <title id="_">Normative references</title><p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p><bibitem id="_" type="standard" anchor="ref11">
+  
+  
 
 
-
-
-
-
-        <docidentifier type="ETSI" primary="true">ETSI GS NFV 002 V1.1.1 (2013-10)</docidentifier>
-
-
-
-
-
+  
+  
+        <docidentifier type="ETSI" primary="true">ETSI GS NFV 002 V1.2.1 (2014-12)</docidentifier>
+  
+  
+  
+  
+  
         <note type="Availability"><p id="_">ETSI publications are available the European Telecommunications Standards Institute (http://www.etsi.org).</p></note>
-
-
-
-
-
+  
+  
+  
+  
+  
       </bibitem><bibitem id="_" type="standard" anchor="ref31">
+  
+  
 
 
-
-
-
-
+  
+  
         <docidentifier type="ETSI" primary="true">ETSI GS ZSM 012 V1.1.1 (2022-12)</docidentifier>
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       </bibitem><bibitem id="_" type="standard" anchor="ref23">
+  
+  
 
 
+  
 
 
+  
 
 
+  
 
 
+  
 
 
+  
 
 
-
-
-
-
-
-
-
-
+  
         <docidentifier type="IEC" primary="true">IEC 60050</docidentifier>
         <docidentifier type="URN">urn:iec:std:iec:60050::::</docidentifier>
-
-
-
+  
+  
+  
         <note type="Availability"><p id="_">IEC publications are available from the International Electrotechnical Commission (https://www.iec.ch) and the American National Standards Institute (https://www.ansi.org/).</p></note>
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
       </bibitem><bibitem id="_" type="standard" anchor="ref3">
+  
+  
 
 
+  
 
 
+  
 
 
+  
 
 
+  
 
 
-
-
-
-
-
-
-
-
+  
+  
         <docidentifier type="IEC" primary="true">IEC 61131-3</docidentifier>
         <docidentifier type="URN">urn:iec:std:iec:61131-3::::</docidentifier>
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       </bibitem><bibitem id="_" type="standard" anchor="ref26">
+  
+  
 
 
-
-
-
+  
         <docidentifier type="IEEE" primary="true">IEEE Std 194-1977</docidentifier>
         <docidentifier type="IEEE" scope="trademark" primary="true">IEEE Std 194™-1977</docidentifier>
         <docidentifier type="ISBN">0-7381-4350-2</docidentifier>
         <docidentifier type="DOI">10.1109/IEEESTD.1977.81098</docidentifier>
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
         <note type="Availability"><p id="_">IEEE Std 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).</p></note>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      </bibitem><bibitem id="_" type="standard" anchor="ref7">
+  
+  
 
 
+  
 
 
-
-
-
-
-
+  
+        <docidentifier type="IEEE" primary="true">IEEE Std 43-2013 — Redline</docidentifier>
+        <docidentifier type="IEEE" scope="trademark" primary="true">IEEE Std 43™-2013 — Redline</docidentifier>
+        <docidentifier type="ISBN">978-0-7381-9093-8</docidentifier>
+  
+  
+  
+  
+  
+  
+        <note type="Availability"><p id="_">The IEEE standards or products referred to in this clause are trademarks owned by The Institute of Electrical and Electronics Engineers, Incorporated.</p></note><note type="Availability"><p id="_">IEEE publications are available from The Institute of Electrical and Electronics Engineers (http://standards.ieee.org/).</p></note>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       </bibitem><bibitem id="_" type="standard" anchor="ref6">
+  
+  
 
 
-
-
-
+  
         <docidentifier type="IEEE" primary="true">IEEE Std 81-1983</docidentifier>
         <docidentifier type="IEEE" scope="trademark" primary="true">IEEE Std 81™-1983</docidentifier>
         <docidentifier type="ISBN">978-0-7381-0660-1</docidentifier>
         <docidentifier type="DOI">10.1109/IEEESTD.1983.82378</docidentifier>
-
-
-
-
-
-
-        <note type="Availability"><p id="_">The IEEE standards or products referred to in this clause are trademarks owned by The Institute of Electrical and Electronics Engineers, Incorporated.</p></note><note type="Availability"><p id="_">IEEE publications are available from The Institute of Electrical and Electronics Engineers (http://standards.ieee.org/).</p></note>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       </bibitem><bibitem id="_" type="standard" anchor="ref21">
+  
+  
 
 
+  
 
 
+  
 
 
+  
 
 
+  
 
 
+  
 
 
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
         <docidentifier type="ISO" primary="true">ISO/IEC 2382</docidentifier>
-        <docidentifier type="iso-undated">ISO/IEC 2382</docidentifier>
         <docidentifier type="iso-reference">ISO/IEC 2382(E)</docidentifier>
         <docidentifier type="URN">urn:iso:std:iso-iec:2382:stage-90.92</docidentifier>
-
-
-
-
-
+  
+  
+  
+  
+  
         <note type="Availability"><p id="_">ISO/IEC documents are available from the International Organization for Standardization (https://www.iso.org/). ISO/IEC publications are also available in the United States from Global Engineering Documents (https://global.ihs.com/). Electronic copies are available in the United States from the American National Standards Institute (https://www.ansi.org/)</p></note>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       </bibitem><bibitem id="_" type="standard" anchor="ref1">
+  
+  
 
 
+  
 
 
+  
 
 
+  
 
 
+  
 
 
+  
 
 
+  
 
 
+  
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
         <docidentifier type="ISO" primary="true">ISO/IEC 27001</docidentifier>
-        <docidentifier type="iso-undated">ISO/IEC 27001</docidentifier>
         <docidentifier type="iso-reference">ISO/IEC 27001(E)</docidentifier>
         <docidentifier type="URN">urn:iso:std:iso-iec:27001</docidentifier>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       </bibitem><bibitem id="_" type="standard" anchor="ref2">
+  
+  
 
 
+  
 
 
+  
 
 
+  
 
 
+  
 
 
+  
 
 
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
         <docidentifier type="ISO" primary="true">ISO 10642</docidentifier>
-        <docidentifier type="iso-undated">ISO 10642</docidentifier>
         <docidentifier type="iso-reference">ISO 10642(E)</docidentifier>
         <docidentifier type="URN">urn:iso:std:iso:10642</docidentifier>
-
-
-
-
+  
+  
+  
+  
         <note type="Availability"><p id="_">ISO publications are available from the International Organization for Standardization (https://www.iso.org/) and the American National Standards Institute (https://www.ansi.org/).</p></note>
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
       </bibitem><bibitem id="_" type="standard" anchor="ref22">
+  
+  
 
 
+  
 
 
+  
 
 
+  
 
 
-
-
-
-
-
-
-
-
+  
+  
+  
         <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
-        <docidentifier type="iso-undated">ISO 639</docidentifier>
         <docidentifier type="iso-reference">ISO 639(E)</docidentifier>
         <docidentifier type="URN">urn:iso:std:iso:639</docidentifier>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       </bibitem><bibitem id="_" type="standard" anchor="ref25">
+  
+  
 
 
-
-
-
+  
         <docidentifier type="ITU" primary="true">ITU-R P.838-3</docidentifier>
-
-
-
+  
+  
+  
       </bibitem><bibitem id="_" type="standard" anchor="ref5">
+  
+  
 
 
-
-
-
+  
         <docidentifier type="ITU" primary="true">ITU-R P.839-4</docidentifier>
-
-
-
+  
+  
+  
       </bibitem><bibitem id="_" type="standard" anchor="ref4">
+  
+  
 
 
-
-
-
-
-
-
-
+  
+  
         <docidentifier type="ITU" primary="true">ITU-T G.984.2</docidentifier>
-
-
-
+  
+  
+  
         <note type="Availability"><p id="_">ITU-T publications are available from the International Telecommunications Union (http://www.itu.int/).</p></note>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       </bibitem><bibitem id="_" type="standard" anchor="ref24">
+  
+  
 
 
-
-
-
-
-
-
-
+  
+  
         <docidentifier type="ITU" primary="true">ITU-T K.20</docidentifier>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       </bibitem><bibitem id="_" type="standard" anchor="ref9">
+  
+  
 
 
-
-
-
-
+  
+  
         <docidentifier type="NIST" primary="true">NIST SP 800-171/Upd2</docidentifier>
         <docidentifier type="DOI">NIST.SP.800-171</docidentifier>
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
         <note type="Availability"><p id="_">FIPS publications are available from the National Technical Information Service (NTIS) (http://csrc.nist.gov).</p></note>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       </bibitem><bibitem id="_" type="standard" anchor="ref29">
+  
+  
 
 
-
-
-
-
+  
+  
         <docidentifier type="NIST" primary="true">NIST SP 800-30</docidentifier>
         <docidentifier type="DOI">NIST.SP.800-30</docidentifier>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      </bibitem><bibitem anchor="ref7" id="_">
-
-        <docidentifier type="IEEE">IEEE 43-2013 Redline</docidentifier>
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       </bibitem><bibitem anchor="ref8" id="_">
-
+  
         <docidentifier type="NIST">FIPS 140-2</docidentifier>
-
+  
         <note type="Availability"><p id="_">NIST publications are available from the National Institute of Standards and Technology (http://www.nist.gov/).</p></note>
-
+  
       </bibitem><bibitem anchor="ref10" id="_">
-
+  
         <docidentifier type="W3C">W3C XPTR</docidentifier>
-
-
-
+  
+  
+  
       </bibitem><bibitem anchor="ref28" id="_">
-
+  
         <docidentifier type="NIST">FIPS 140-3</docidentifier>
-
-
-
+  
+  
+  
       </bibitem><bibitem id="_" type="standard" anchor="ref30">
+  
+  
 
 
-
-
-
+  
         <docidentifier type="W3C" primary="true">W3C xml</docidentifier>
-
-
+  
+  
         <note type="Availability"><p id="_">W3C recommendations are available from the World Wide Web Consortium (https://www.w3.org).</p></note>
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       </bibitem>
 
 
