@@ -1,34 +1,35 @@
-require "relaton/render-isodoc/general" # mirror isodoc's layout; relaton-render 3 changed the load graph
-require_relative "parse"
+require "relaton-render"
+require_relative "elements"
 
 module Relaton
   module Render
     module Ieee
-      class General < ::Relaton::Render::IsoDoc::General
-        def config_loc
-          YAML.load_file(File.join(File.dirname(__FILE__), "config.yml"))
-        end
+      # The IEEE flavor's citation renderer: the relaton-render General
+      # facade carrying this gem's CitationStyle instance (ieee-style.yml)
+      # and its element-map extensions. Supersedes the 1.x liquid
+      # template stack this directory carried.
+      class General < ::Relaton::Render::General
+        STYLE_PATH = File.join(__dir__, "ieee-style.yml")
 
-        def klass_initialize(_options)
+        def initialize(options = {})
           super
-          @parseklass = Relaton::Render::Ieee::Parse
+          options = deep_symbolize(options)
+          @renderer = ::Relaton::Render::Iso690::Renderer.new(
+            lang: @lang,
+            script: options[:script] || "Latn",
+            labels: options[:i18nhash] || {},
+            style: STYLE_PATH,
+            elements: Relaton::Render::Ieee::Elements::ELEMENTS,
+          )
         end
 
         # relaton-bib 2.x's Place model maps only structured children
         # (<city>/<region>/<country>/<formattedPlace>); a bare
         # <place>Cambridge, UK</place> text node is dropped. Rewrite those
-        # to the structured form before parsing.
-        def xml2relaton(bib)
-          super(normalize_place_elements(bib))
-        end
-
-        def sanitise_citations_input_string(bib)
-          super(normalize_place_string(bib))
-        end
-
-        def normalize_place_elements(bib)
-          xml = xml_string2noko(bib) or return bib
-          normalize_place_node(xml)
+        # to the structured form before the facade parses.
+        def facade_bibitems(bib)
+          bib = normalize_place_string(bib) if bib.is_a?(String)
+          super
         end
 
         def normalize_place_string(bib)

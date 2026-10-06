@@ -29,7 +29,7 @@ module IsoDoc
 
       def author_date(xml, renderings)
         author_date?(xml) or return
-        cit = renderings[xml["id"]][:citation][:author_date]
+        cit = renderings[xml["id"]][:citation][:short]
         xml << "<docidentifier type='author-date'>#{cit}</docidentifier>"
         xml.at(ns("./biblio-tag"))&.remove
         xml << "<biblio-tag>#{cit}, </biblio-tag>"
@@ -47,13 +47,10 @@ module IsoDoc
 
       def creatornames(bib)
         ::Relaton::Render::Ieee::General
-          .new(language: @lang, i18nhash: @i18n.get,
-               template: "{{ creatornames }}",
-               extenttemplate: { (bib["type"] || "misc").to_sym => "{{page}}" },
-               sizetemplate: { (bib["type"] || "misc").to_sym => "{{data}}" })
-          .render1(Relaton::Bib::Bibitem.from_xml(
+          .new(language: @lang, i18nhash: @i18n.get)
+          .creator_names(Relaton::Bib::Bibitem.from_xml(
             Nokogiri::XML(bib.to_xml).tap(&:remove_namespaces!).root.to_xml,
-                   ), false)
+                         ))
       end
 
       def bibliography_bibitem_number1(bibitem, idx, normative)

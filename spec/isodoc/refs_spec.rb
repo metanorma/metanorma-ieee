@@ -318,929 +318,328 @@ RSpec.describe IsoDoc do
 
     presxml = <<~PRESXML
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-          <preface>
-             <clause type="toc" id="_" displayorder="1">
-                <fmt-title depth="1" id="_">Contents</fmt-title>
-             </clause>
-          </preface>
-          <sections>
-             <clause id="A" inline-header="false" obligation="normative" displayorder="3">
-                <title id="_">Clause</title>
-                <fmt-title depth="1" id="_">
-                   <span class="fmt-caption-label">
-                      <semx element="autonum" source="A">2</semx>
-                      <span class="fmt-clause-delim">.</span>
-                   </span>
-                   <span class="fmt-caption-delim">
-                      <tab/>
-                   </span>
-                   <semx element="title" source="_">Clause</semx>
-                </fmt-title>
-                <fmt-xref-label>
-                   <span class="fmt-element-name">Clause</span>
-                   <semx element="autonum" source="A">2</semx>
-                </fmt-xref-label>
+                <preface><clause type="toc" id="_" displayorder="1"><fmt-title depth="1" id="_">Contents</fmt-title></clause>
+       </preface><sections>
+                <clause id="A" inline-header="false" obligation="normative" displayorder="3">
+                <title id="_">Clause</title><fmt-title depth="1" id="_"><span class="fmt-caption-label"><semx element="autonum" source="A">2</semx><span class="fmt-clause-delim">.</span></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_">Clause</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Clause</span> <semx element="autonum" source="A">2</semx></fmt-xref-label>
                 <p id="_">
-                   <eref bibitemid="ISO16634" id="_"/>
-                   <semx element="eref" source="_">
-                      <fmt-xref target="ISO16634">ISO 16634:--</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref1" citeas="ISO 639:1967" id="_"/>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" target="ref1">
-                         <span class="std_publisher">ISO</span>
-                          <span class="std_docNumber">639</span>
-                         :
-                         <span class="std_year">1967</span>
-                      </fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref7" citeas="ISO 639-2:1998" id="_"/>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" target="ref7">
-                         <span class="std_publisher">ISO</span>
-                          <span class="std_docNumber">639</span>
-                         -
-                         <span class="std_docNumber">2</span>
-                         :
-                         <span class="std_year">1998</span>
-                      </fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref2" citeas="Aluffi" id="_"/>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="author_date" target="ref2">
-                         Aluffi
-                         <em>et al.</em>
-                         2022a
-                      </fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref2" citeas="Aluffi" style="title" id="_"/>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="title" target="ref2">Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref3" citeas="REF4" id="_"/>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="author_date" target="ref3">
+                  <eref bibitemid="ISO16634" id="_"/><semx element="eref" source="_"><fmt-xref target="ISO16634">ISO&#xA0;16634:--</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref1" citeas="ISO 639:1967" id="_"/><semx element="eref" source="_"><fmt-xref type="inline" target="ref1"><span class="std_publisher">ISO</span>&#xA0;<span class="std_docNumber">639</span>:<span class="std_year">1967</span></fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref7" citeas="ISO 639-2:1998" id="_"/><semx element="eref" source="_"><fmt-xref type="inline" target="ref7"><span class="std_publisher">ISO</span>&#xA0;<span class="std_docNumber">639</span>-<span class="std_docNumber">2</span>:<span class="std_year">1998</span></fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref2" citeas="Aluffi" id="_"/><semx element="eref" source="_"><fmt-xref type="inline" style="author_date" target="ref2"><span class="std_publisher">Aluffi,</span>&#xA0;<span class="std_docNumber">2022</span></fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref2" citeas="Aluffi" style="title" id="_"/><semx element="eref" source="_"><fmt-xref type="inline" style="title" target="ref2"><span class="std_publisher">Aluffi,</span>&#xA0;<span class="std_docNumber">2022</span></fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref3" citeas="REF4" id="_"/><semx element="eref" source="_"><fmt-xref type="inline" style="author_date" target="ref3">REF4</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" id="_"/><semx element="eref" source="_"><fmt-xref type="inline" target="ref4"><span class="std_publisher">ISO</span>&#xA0;<span class="std_docNumber">639</span>:<span class="std_year">1967</span> [B3]</fmt-xref></semx><fn reference="4" original-reference="_" id="_" target="_"><p>The numbers in brackets correspond to those of the bibliography in Annex B.</p><fmt-fn-label><span class="fmt-caption-label"><sup><semx element="autonum" source="_">4</semx></sup></span></fmt-fn-label></fn>
 
-                         REF4
-
-                      </fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" id="_"/>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" target="ref4">
-                         <span class="std_publisher">ISO</span>
-                          <span class="std_docNumber">639</span>
-                         :
-                         <span class="std_year">1967</span>
-                         [B3]
-                      </fmt-xref>
-                   </semx>
-                   <fn reference="4" original-reference="_" id="_" target="_">
-                      <p>The numbers in brackets correspond to those of the bibliography in Annex B.</p>
-                      <fmt-fn-label>
-                         <span class="fmt-caption-label">
-                            <sup>
-                               <semx element="autonum" source="_">4</semx>
-                            </sup>
-                         </span>
-                      </fmt-fn-label>
-                   </fn>
-                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="title" id="_"/>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="title" target="ref4">
-                         <span class="std_publisher">ISO</span>
-                          <span class="std_docNumber">639</span>
-                         :
-                         <span class="std_year">1967</span>
-                         [B3]
-                      </fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="author" id="_"/>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="author" target="ref4">
-                         <span class="std_publisher">ISO</span>
-                          <span class="std_docNumber">639</span>
-                         :
-                         <span class="std_year">1967</span>
-                         [B3]
-                      </fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="no-biblio-tag" id="_"/>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="no-biblio-tag" target="ref4">
-                         <span class="std_publisher">ISO</span>
-                          <span class="std_docNumber">639</span>
-                         :
-                         <span class="std_year">1967</span>
-                      </fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" id="_">text1</eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" target="ref4">text1 [B3]</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="title" id="_">text2</eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="title" target="ref4">text2 [B3]</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="author" id="_">text3</eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="author" target="ref4">text3 [B3]</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="no-biblio-tag" id="_">text4</eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="no-biblio-tag" target="ref4">text4</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" id="_">
-                      <locality type="clause">
-                         <referenceFrom>1</referenceFrom>
-                      </locality>
-                   </eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" target="ref4">
-                         <span class="std_publisher">ISO</span>
-                          <span class="std_docNumber">639</span>
-                         :
-                         <span class="std_year">1967</span>
-                         [B3],  Clause 1
-                      </fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="title" id="_">
-                      <locality type="clause">
-                         <referenceFrom>2</referenceFrom>
-                      </locality>
-                   </eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="title" target="ref4">
-                         <span class="std_publisher">ISO</span>
-                          <span class="std_docNumber">639</span>
-                         :
-                         <span class="std_year">1967</span>
-                         [B3],  Clause 2
-                      </fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="author" id="_">
-                      <locality type="clause">
-                         <referenceFrom>3</referenceFrom>
-                      </locality>
-                   </eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="author" target="ref4">
-                         <span class="std_publisher">ISO</span>
-                          <span class="std_docNumber">639</span>
-                         :
-                         <span class="std_year">1967</span>
-                         [B3],  Clause 3
-                      </fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="no-biblio-tag" id="_">
-                      <locality type="clause">
-                         <referenceFrom>4</referenceFrom>
-                      </locality>
-                   </eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="no-biblio-tag" target="ref4">
-                         <span class="std_publisher">ISO</span>
-                          <span class="std_docNumber">639</span>
-                         :
-                         <span class="std_year">1967</span>
-                         ,  Clause 4
-                      </fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" id="_">
-                      <locality type="clause">
-                         <referenceFrom>1</referenceFrom>
-                      </locality>
-                      text1
-                   </eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" target="ref4">text1 [B3]</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="title" id="_">
-                      <locality type="clause">
-                         <referenceFrom>2</referenceFrom>
-                      </locality>
-                      text2
-                   </eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="title" target="ref4">text2 [B3]</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="author" id="_">
-                      <locality type="clause">
-                         <referenceFrom>3</referenceFrom>
-                      </locality>
-                      text3
-                   </eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="author" target="ref4">text3 [B3]</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="no-biblio-tag" id="_">
-                      <locality type="clause">
-                         <referenceFrom>4</referenceFrom>
-                      </locality>
-                      text4
-                   </eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="no-biblio-tag" target="ref4">text4</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="Johns" citeas="ISO 639:1967" id="_"/>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="author_date" target="Johns">Johns 2022</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref5" citeas="[B2]" id="_"/>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" target="ref5">
-                         Aluffi
-                         <em>et al.</em>
-                         [B2]
-                      </fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="title" id="_"/>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="title" target="ref5">Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday [B2]</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="author" id="_"/>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="author" target="ref5">
-                         Aluffi
-                         <em>et al.</em>
-                         [B2]
-                      </fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="no-biblio-tag" id="_"/>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="no-biblio-tag" target="ref5">
-                         Aluffi
-                         <em>et al.</em>
-                      </fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref5" citeas="[B2]" id="_">text1</eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" target="ref5">text1 [B2]</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="title" id="_">text2</eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="title" target="ref5">text2 [B2]</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="author" id="_">text3</eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="author" target="ref5">text3 [B2]</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="no-biblio-tag" id="_">text4</eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="no-biblio-tag" target="ref5">text4</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref5" citeas="[B2]" id="_">
-                      <locality type="clause">
-                         <referenceFrom>1</referenceFrom>
-                      </locality>
-                   </eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" target="ref5">
-                         Aluffi
-                         <em>et al.</em>
-                         [B2],  Clause 1
-                      </fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="title" id="_">
-                      <locality type="clause">
-                         <referenceFrom>2</referenceFrom>
-                      </locality>
-                   </eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="title" target="ref5">Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday [B2],  Clause 2</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="author" id="_">
-                      <locality type="clause">
-                         <referenceFrom>3</referenceFrom>
-                      </locality>
-                   </eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="author" target="ref5">
-                         Aluffi
-                         <em>et al.</em>
-                         [B2],  Clause 3
-                      </fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="no-biblio-tag" id="_">
-                      <locality type="clause">
-                         <referenceFrom>4</referenceFrom>
-                      </locality>
-                   </eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="no-biblio-tag" target="ref5">
-                         Aluffi
-                         <em>et al.</em>
-                         ,  Clause 4
-                      </fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref5" citeas="[B2]" id="_">
-                      <locality type="clause">
-                         <referenceFrom>1</referenceFrom>
-                      </locality>
-                      text1
-                   </eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" target="ref5">text1 [B2]</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="title" id="_">
-                      <locality type="clause">
-                         <referenceFrom>2</referenceFrom>
-                      </locality>
-                      text2
-                   </eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="title" target="ref5">text2 [B2]</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="author" id="_">
-                      <locality type="clause">
-                         <referenceFrom>3</referenceFrom>
-                      </locality>
-                      text3
-                   </eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="author" target="ref5">text3 [B2]</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref5" citeas="[B2]" style="no-biblio-tag" id="_">
-                      <locality type="clause">
-                         <referenceFrom>4</referenceFrom>
-                      </locality>
-                      text4
-                   </eref>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="no-biblio-tag" target="ref5">text4</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref6" citeas="[B1]" id="_"/>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" target="ref6">Title REF4</fmt-xref>
-                   </semx>
-                   <eref type="inline" bibitemid="ref8" citeas="[B4]" id="_"/>
-                   <semx element="eref" source="_">
-                      <fmt-xref type="inline" target="ref8">[B4]</fmt-xref>
-                   </semx>
+                  <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="title" id="_"/><semx element="eref" source="_"><fmt-xref type="inline" style="title" target="ref4"><span class="std_publisher">ISO</span>&#xA0;<span class="std_docNumber">639</span>:<span class="std_year">1967</span> [B3]</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="author" id="_"/><semx element="eref" source="_"><fmt-xref type="inline" style="author" target="ref4"><span class="std_publisher">ISO</span>&#xA0;<span class="std_docNumber">639</span>:<span class="std_year">1967</span> [B3]</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="no-biblio-tag" id="_"/><semx element="eref" source="_"><fmt-xref type="inline" style="no-biblio-tag" target="ref4"><span class="std_publisher">ISO</span>&#xA0;<span class="std_docNumber">639</span>:<span class="std_year">1967</span></fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" id="_">text1</eref><semx element="eref" source="_"><fmt-xref type="inline" target="ref4">text1 [B3]</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="title" id="_">text2</eref><semx element="eref" source="_"><fmt-xref type="inline" style="title" target="ref4">text2 [B3]</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="author" id="_">text3</eref><semx element="eref" source="_"><fmt-xref type="inline" style="author" target="ref4">text3 [B3]</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="no-biblio-tag" id="_">text4</eref><semx element="eref" source="_"><fmt-xref type="inline" style="no-biblio-tag" target="ref4">text4</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" id="_"><locality type="clause"><referenceFrom>1</referenceFrom></locality></eref><semx element="eref" source="_"><fmt-xref type="inline" target="ref4"><span class="std_publisher">ISO</span>&#xA0;<span class="std_docNumber">639</span>:<span class="std_year">1967</span> [B3],  Clause 1</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="title" id="_"><locality type="clause"><referenceFrom>2</referenceFrom></locality></eref><semx element="eref" source="_"><fmt-xref type="inline" style="title" target="ref4"><span class="std_publisher">ISO</span>&#xA0;<span class="std_docNumber">639</span>:<span class="std_year">1967</span> [B3],  Clause 2</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="author" id="_"><locality type="clause"><referenceFrom>3</referenceFrom></locality></eref><semx element="eref" source="_"><fmt-xref type="inline" style="author" target="ref4"><span class="std_publisher">ISO</span>&#xA0;<span class="std_docNumber">639</span>:<span class="std_year">1967</span> [B3],  Clause 3</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="no-biblio-tag" id="_"><locality type="clause"><referenceFrom>4</referenceFrom></locality></eref><semx element="eref" source="_"><fmt-xref type="inline" style="no-biblio-tag" target="ref4"><span class="std_publisher">ISO</span>&#xA0;<span class="std_docNumber">639</span>:<span class="std_year">1967</span>,  Clause 4</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" id="_"><locality type="clause"><referenceFrom>1</referenceFrom></locality>text1</eref><semx element="eref" source="_"><fmt-xref type="inline" target="ref4">text1 [B3]</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="title" id="_"><locality type="clause"><referenceFrom>2</referenceFrom></locality>text2</eref><semx element="eref" source="_"><fmt-xref type="inline" style="title" target="ref4">text2 [B3]</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="author" id="_"><locality type="clause"><referenceFrom>3</referenceFrom></locality>text3</eref><semx element="eref" source="_"><fmt-xref type="inline" style="author" target="ref4">text3 [B3]</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" style="no-biblio-tag" id="_"><locality type="clause"><referenceFrom>4</referenceFrom></locality>text4</eref><semx element="eref" source="_"><fmt-xref type="inline" style="no-biblio-tag" target="ref4">text4</fmt-xref></semx>
+                  <eref type="inline" bibitemid="Johns" citeas="ISO 639:1967" id="_"/><semx element="eref" source="_"><fmt-xref type="inline" style="author_date" target="Johns"><span class="std_publisher">Johns,</span>&#xA0;<span class="std_docNumber">2022</span></fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref5" citeas="[B2]" id="_"/><semx element="eref" source="_"><fmt-xref type="inline" target="ref5">Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday [B2]</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref5" citeas="[B2]" style="title" id="_"/><semx element="eref" source="_"><fmt-xref type="inline" style="title" target="ref5">Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday [B2]</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref5" citeas="[B2]" style="author" id="_"/><semx element="eref" source="_"><fmt-xref type="inline" style="author" target="ref5">Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday [B2]</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref5" citeas="[B2]" style="no-biblio-tag" id="_"/><semx element="eref" source="_"><fmt-xref type="inline" style="no-biblio-tag" target="ref5">Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref5" citeas="[B2]" id="_">text1</eref><semx element="eref" source="_"><fmt-xref type="inline" target="ref5">text1 [B2]</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref5" citeas="[B2]" style="title" id="_">text2</eref><semx element="eref" source="_"><fmt-xref type="inline" style="title" target="ref5">text2 [B2]</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref5" citeas="[B2]" style="author" id="_">text3</eref><semx element="eref" source="_"><fmt-xref type="inline" style="author" target="ref5">text3 [B2]</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref5" citeas="[B2]" style="no-biblio-tag" id="_">text4</eref><semx element="eref" source="_"><fmt-xref type="inline" style="no-biblio-tag" target="ref5">text4</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref5" citeas="[B2]" id="_"><locality type="clause"><referenceFrom>1</referenceFrom></locality></eref><semx element="eref" source="_"><fmt-xref type="inline" target="ref5">Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday [B2],  Clause 1</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref5" citeas="[B2]" style="title" id="_"><locality type="clause"><referenceFrom>2</referenceFrom></locality></eref><semx element="eref" source="_"><fmt-xref type="inline" style="title" target="ref5">Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday [B2],  Clause 2</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref5" citeas="[B2]" style="author" id="_"><locality type="clause"><referenceFrom>3</referenceFrom></locality></eref><semx element="eref" source="_"><fmt-xref type="inline" style="author" target="ref5">Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday [B2],  Clause 3</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref5" citeas="[B2]" style="no-biblio-tag" id="_"><locality type="clause"><referenceFrom>4</referenceFrom></locality></eref><semx element="eref" source="_"><fmt-xref type="inline" style="no-biblio-tag" target="ref5">Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday,  Clause 4</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref5" citeas="[B2]" id="_"><locality type="clause"><referenceFrom>1</referenceFrom></locality>text1</eref><semx element="eref" source="_"><fmt-xref type="inline" target="ref5">text1 [B2]</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref5" citeas="[B2]" style="title" id="_"><locality type="clause"><referenceFrom>2</referenceFrom></locality>text2</eref><semx element="eref" source="_"><fmt-xref type="inline" style="title" target="ref5">text2 [B2]</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref5" citeas="[B2]" style="author" id="_"><locality type="clause"><referenceFrom>3</referenceFrom></locality>text3</eref><semx element="eref" source="_"><fmt-xref type="inline" style="author" target="ref5">text3 [B2]</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref5" citeas="[B2]" style="no-biblio-tag" id="_"><locality type="clause"><referenceFrom>4</referenceFrom></locality>text4</eref><semx element="eref" source="_"><fmt-xref type="inline" style="no-biblio-tag" target="ref5">text4</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref6" citeas="[B1]" id="_"/><semx element="eref" source="_"><fmt-xref type="inline" target="ref6">Title REF4</fmt-xref></semx>
+                  <eref type="inline" bibitemid="ref8" citeas="[B4]" id="_"/><semx element="eref" source="_"><fmt-xref type="inline" target="ref8">[B4]</fmt-xref></semx>
                 </p>
-             </clause>
-             <references id="_" normative="true" obligation="informative" displayorder="2">
-                <title id="_">Normative References</title>
-                <fmt-title depth="1" id="_">
-                   <semx element="title" source="_">Normative References</semx>
-                </fmt-title>
-                <bibitem id="ISO16634" type="standard">
-                   <biblio-tag>
-                      ISO 16634:-- (all parts)
-                      <fn id="_" reference="1" original-reference="_" target="_">
-                         <p>Under preparation. (Stage at the time of publication ISO/DIS 16634)</p>
-                         <fmt-fn-label>
-                            <span class="fmt-caption-label">
-                               <sup>
-                                  <semx element="autonum" source="_">1</semx>
-                               </sup>
-                            </span>
-                         </fmt-fn-label>
-                      </fn>
-                      ,
-                   </biblio-tag>
-                   <formattedref>Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs.</formattedref>
-                   <title format="text/plain" language="x">Cereals, pulses, milled cereal products, xxxx, oilseeds and animal feeding stuffs</title>
-                   <title format="text/plain" language="en">Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</title>
-                   <docidentifier type="ISO">ISO 16634:-- (all parts)</docidentifier>
-                   <docidentifier scope="biblio-tag">ISO 16634:-- (all parts)</docidentifier>
-                   <date type="published">
-                      <on>--</on>
-                   </date>
-                   <contributor>
-                      <role type="publisher"/>
-                      <organization>
-                         <name>ISO</name>
-                      </organization>
-                   </contributor>
-                   <note format="text/plain" reference="1" type="Unpublished-Status">Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
-                   <extent type="part">
-                      <referenceFrom>all</referenceFrom>
-                   </extent>
-                </bibitem>
-                <bibitem id="IETF_6281" type="standard">
-                   <biblio-tag>ISO 639, </biblio-tag>
-                   <formattedref>Code for the representation of names of languages.</formattedref>
-                   <fetched/>
-                   <title type="title-main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
-                   <title type="main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
-                   <uri type="src">https://www.iso.org/standard/4766.html</uri>
-                   <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4766.detail.rss</uri>
-                   <docidentifier type="ISO" primary="true">ISO 639</docidentifier>
-                   <docidentifier type="URN">URN urn:iso:std:iso:639:ed-1</docidentifier>
-                   <docidentifier scope="biblio-tag">ISO 639</docidentifier>
-                   <docnumber>639</docnumber>
-                   <contributor>
-                      <role type="publisher"/>
-                      <organization>
+              </clause>
+            <references id="_" normative="true" obligation="informative" displayorder="2">
+                   <title id="_">Normative References</title><fmt-title depth="1" id="_"><semx element="title" source="_">Normative References</semx></fmt-title>
+          <bibitem id="ISO16634" type="standard"><biblio-tag>ISO&#xA0;16634:--&#xA0;(all&#xA0;parts)<fn id="_" reference="1" original-reference="_" target="_"><p>Under preparation. (Stage at the time of publication ISO/DIS 16634)</p><fmt-fn-label><span class="fmt-caption-label"><sup><semx element="autonum" source="_">1</semx></sup></span></fmt-fn-label></fn>
+      , </biblio-tag><formattedref>Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs.</formattedref>
+            <title format="text/plain" language="x">Cereals, pulses, milled cereal products, xxxx, oilseeds and animal feeding stuffs</title>
+            <title format="text/plain" language="en">Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</title>
+            <docidentifier type="ISO">ISO&#xA0;16634:--&#xA0;(all&#xA0;parts)</docidentifier><docidentifier scope="biblio-tag">ISO&#xA0;16634:--&#xA0;(all&#xA0;parts)</docidentifier>
+            <date type="published">
+              <on>--</on>
+            </date>
+            <contributor>
+              <role type="publisher"/>
+              <organization>
+                <name>ISO</name>
+              </organization>
+            </contributor>
+            <note format="text/plain" reference="1" type="Unpublished-Status">Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
+            <extent type="part">
+              <referenceFrom>all</referenceFrom>
+            </extent>
+          </bibitem>
+                   <bibitem id="IETF_6281" type="standard"><biblio-tag>ISO&#xA0;639, </biblio-tag><formattedref>Code for the representation of names of languages.</formattedref>  <fetched/>
+      <title type="title-main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
+
+      <title type="main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
+        <uri type="src">https://www.iso.org/standard/4766.html</uri>  <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4766.detail.rss</uri>  <docidentifier type="ISO" primary="true">ISO&#xA0;639</docidentifier>  <docidentifier type="URN">URN&#xA0;urn:iso:std:iso:639:ed-1</docidentifier><docidentifier scope="biblio-tag">ISO&#xA0;639</docidentifier>  <docnumber>639</docnumber>  <contributor>    <role type="publisher"/>    <organization>
+      <name>International Organization for Standardization</name>
+            <abbreviation>ISO</abbreviation>      <uri>www.iso.org</uri>    </organization>  </contributor>  <edition>1</edition>  <language>en</language>  <script>Latn</script>  <status>    <stage>95</stage>    <substage>99</substage>  </status>  <copyright>    <from>1988</from>    <owner>      <organization>
+      <name>ISO</name>
+            </organization>    </owner>  </copyright>  <relation type="updates">    <bibitem type="standard">      <formattedref format="text/plain">ISO 639-1:2002</formattedref>      <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>      <date type="circulated">        <on>2002-07-18</on>      </date>    </bibitem>
+        </relation>  <relation type="instance">    <bibitem type="standard">      <fetched/>
+      <title type="title-main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
+
+      <title type="main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
+            <uri type="src">https://www.iso.org/standard/4766.html</uri>      <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4766.detail.rss</uri>      <docidentifier type="ISO" primary="true">ISO 639:1988</docidentifier>      <docidentifier type="URN">urn:iso:std:iso:639:ed-1</docidentifier>      <docnumber>639</docnumber>      <date type="published">        <on>1988-03</on>      </date>      <contributor>        <role type="publisher"/>        <organization>
+      <name>International Organization for Standardization</name>
+                <abbreviation>ISO</abbreviation>          <uri>www.iso.org</uri>        </organization>      </contributor>      <edition>1</edition>      <language>en</language>      <script>Latn</script>      <abstract format="text/plain" language="en" script="Latn">Gives a two-letter lower-case code. The symbols were devised primarily for use in terminology, lexicography and linguistic, but they may be used for any application. It also includes guidance on the use of language symbols in some of these applications. The annex includes a classified list of languages and their symbols arranged by families.</abstract>      <status>        <stage>95</stage>        <substage>99</substage>      </status>      <copyright>        <from>1988</from>        <owner>          <organization>
+      <name>ISO</name>
+                </organization>        </owner>      </copyright>      <relation type="updates">        <bibitem type="standard">          <formattedref format="text/plain">ISO 639-1:2002</formattedref>          <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>          <date type="circulated">            <on>2002-07-18</on>          </date>        </bibitem>
+            </relation>      <place><formattedPlace>Geneva</formattedPlace></place>    </bibitem>
+        </relation>  <place><formattedPlace>Geneva</formattedPlace></place></bibitem>
+        <bibitem id="ref7" type="standard"><biblio-tag>ISO&#xA0;639-2:1998, </biblio-tag><formattedref>Codes for the representation of names of languages - Part 2: Alpha-3 code.</formattedref>
+          <title type="title-main" format="text/plain" language="en" script="Latn">Codes for the representation of names of languages</title>
+          <title type="title-part" format="text/plain" language="en" script="Latn">Part 2: Alpha-3 code</title>
+          <title type="main" format="text/plain" language="en" script="Latn">Codes for the representation of names of languages - Part 2: Alpha-3 code</title>
+          <title type="title-main" format="text/plain" language="fr" script="Latn">Codes pour la repr&#xE9;sentation des noms de langue</title>
+          <title type="title-part" format="text/plain" language="fr" script="Latn">Partie 2: Code alpha-3</title>
+          <title type="main" format="text/plain" language="fr" script="Latn">Codes pour la repr&#xE9;sentation des noms de langue - Partie 2: Code alpha-3</title>
+          <uri type="src">https://www.iso.org/standard/4767.html</uri>
+          <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4767.detail.rss</uri>
+          <docidentifier type="ISO" primary="true">ISO&#xA0;639-2:1998</docidentifier>
+          <docidentifier type="iso-reference">iso-reference&#xA0;ISO&#xA0;639-2(E)</docidentifier>
+          <docidentifier type="URN">URN&#xA0;urn:iso:std:iso:639:-2:stage-95.99:ed-1</docidentifier><docidentifier scope="biblio-tag">ISO&#xA0;639-2:1998</docidentifier>
+          <docnumber>639</docnumber>
+          <contributor>
+            <role type="publisher"/>
+            <organization>
+              <name>International Organization for Standardization</name>
+              <abbreviation>ISO</abbreviation>
+              <uri>www.iso.org</uri>
+            </organization>
+          </contributor>
+          <edition>1</edition>
+          <language>en</language>
+          <language>fr</language>
+          <script>Latn</script>
+          <status>
+            <stage>95</stage>
+            <substage>99</substage>
+          </status>
+          <copyright>
+            <from>1998</from>
+            <owner>
+              <organization>
+                <name>ISO</name>
+              </organization>
+            </owner>
+          </copyright>
+        </bibitem>
+                   <bibitem id="ref3"><biblio-tag>REF4, </biblio-tag>
+                     <formattedref format="application/x-isodoc+xml">REF4</formattedref>
+                     <docidentifier>REF4</docidentifier>
+                     <docidentifier scope="biblio-tag">REF4</docidentifier>
+                     <docnumber>4</docnumber>
+                   </bibitem>
+                   <bibitem type="book" id="ref2"><biblio-tag>Aluffi, 2022 </biblio-tag><formattedref>Aluffi, P., D. Anderson, M. Hering, M. Musta&#x163;&#x103;, and S. Payne, <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022, DOI: https://doi.org/10.1017/9781108877831.<fn id="_" reference="2" original-reference="_" target="_"><p>
+               IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
+       
+             </p><fmt-fn-label><span class="fmt-caption-label"><sup><semx element="autonum" source="_">2</semx></sup></span></fmt-fn-label></fn><fn id="_" reference="3" original-reference="_" target="_"><p>
+               This is a second availability note
+             </p><fmt-fn-label><span class="fmt-caption-label"><sup><semx element="autonum" source="_">3</semx></sup></span></fmt-fn-label></fn></formattedref>
+              <title>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</title>
+              <docidentifier type="DOI">https://doi.org/10.1017/9781108877831</docidentifier>
+              <docidentifier type="ISBN">ISBN&#xA0;9781108877831</docidentifier>
+              <date type="published"><on>2022</on></date>
+              <contributor>
+                <role type="editor"/>
+                <person>
+                  <name><surname>Aluffi</surname><forename>Paolo</forename></name>
+                </person>
+              </contributor>
+                      <contributor>
+                <role type="editor"/>
+                <person>
+                  <name><surname>Anderson</surname><forename>David</forename></name>
+                </person>
+              </contributor>
+              <contributor>
+                <role type="editor"/>
+                <person>
+                  <name><surname>Hering</surname><forename>Milena</forename></name>
+                </person>
+              </contributor>
+              <contributor>
+                <role type="editor"/>
+                <person>
+                  <name><surname>Musta&#x163;&#x103;</surname><forename>Mircea</forename></name>
+                </person>
+              </contributor>
+              <contributor>
+                <role type="editor"/>
+                <person>
+                  <name><surname>Payne</surname><forename>Sam</forename></name>
+                </person>
+              </contributor>
+             <note type="Availability">
+               <p id="_">IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
+       </p>
+             </note>
+             <note type="Availability">
+               <p id="_">This is a second availability note</p>
+             </note>
+              <edition>1</edition>
+              <series>
+              <title>London Mathematical Society Lecture Note Series</title>
+              <number>472</number>
+              </series>
+                  <contributor>
+                    <role type="publisher"/>
+                    <organization>
+                      <name>Cambridge University Press</name>
+                    </organization>
+                  </contributor>
+                  <place><formattedPlace>Cambridge, UK</formattedPlace></place>
+                <size><value type="volume">1</value></size>
+            <docidentifier type="author-date">Aluffi, 2022</docidentifier><biblio-tag>Aluffi, 2022, </biblio-tag></bibitem>
+                   <bibitem type="standard" id="ref1"><biblio-tag>ISO&#xA0;639:1967, </biblio-tag><formattedref>Indiana Jones and the Last Crusade.</formattedref>
+                     <fetched/>
+                     <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
+                     <title type="title-main" format="text/plain">Indiana Jones and the Last Crusade</title>
+                     <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
+                     <docidentifier type="ISO">ISO&#xA0;639:1967</docidentifier>
+                     <docidentifier scope="biblio-tag">ISO&#xA0;639:1967</docidentifier>
+                     <contributor>
+                       <role type="publisher"/>
+                       <organization>
                          <name>International Organization for Standardization</name>
                          <abbreviation>ISO</abbreviation>
-                         <uri>www.iso.org</uri>
-                      </organization>
-                   </contributor>
-                   <edition>1</edition>
-                   <language>en</language>
-                   <script>Latn</script>
-                   <status>
-                      <stage>95</stage>
-                      <substage>99</substage>
-                   </status>
-                   <copyright>
-                      <from>1988</from>
-                      <owner>
-                         <organization>
-                            <name>ISO</name>
-                         </organization>
-                      </owner>
-                   </copyright>
-                   <relation type="updates">
-                      <bibitem type="standard">
-                         <formattedref format="text/plain">ISO 639-1:2002</formattedref>
-                         <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>
-                         <date type="circulated">
-                            <on>2002-07-18</on>
-                         </date>
-                      </bibitem>
-                   </relation>
-                   <relation type="instance">
-                      <bibitem type="standard">
-                         <fetched/>
-                         <title type="title-main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
-                         <title type="main" format="text/plain" language="en" script="Latn">Code for the representation of names of languages</title>
-                         <uri type="src">https://www.iso.org/standard/4766.html</uri>
-                         <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4766.detail.rss</uri>
-                         <docidentifier type="ISO" primary="true">ISO 639:1988</docidentifier>
-                         <docidentifier type="URN">urn:iso:std:iso:639:ed-1</docidentifier>
-                         <docnumber>639</docnumber>
-                         <date type="published">
-                            <on>1988-03</on>
-                         </date>
-                         <contributor>
-                            <role type="publisher"/>
-                            <organization>
-                               <name>International Organization for Standardization</name>
-                               <abbreviation>ISO</abbreviation>
-                               <uri>www.iso.org</uri>
-                            </organization>
-                         </contributor>
-                         <edition>1</edition>
-                         <language>en</language>
-                         <script>Latn</script>
-                         <abstract format="text/plain" language="en" script="Latn">Gives a two-letter lower-case code. The symbols were devised primarily for use in terminology, lexicography and linguistic, but they may be used for any application. It also includes guidance on the use of language symbols in some of these applications. The annex includes a classified list of languages and their symbols arranged by families.</abstract>
-                         <status>
-                            <stage>95</stage>
-                            <substage>99</substage>
-                         </status>
-                         <copyright>
-                            <from>1988</from>
-                            <owner>
-                               <organization>
-                                  <name>ISO</name>
-                               </organization>
-                            </owner>
-                         </copyright>
-                         <relation type="updates">
-                            <bibitem type="standard">
-                               <formattedref format="text/plain">ISO 639-1:2002</formattedref>
-                               <docidentifier type="ISO" primary="true">ISO 639-1:2002</docidentifier>
-                               <date type="circulated">
-                                  <on>2002-07-18</on>
-                               </date>
-                            </bibitem>
-                         </relation>
-                         <place><formattedPlace>Geneva</formattedPlace></place>
-                      </bibitem>
-                   </relation>
-                   <place><formattedPlace>Geneva</formattedPlace></place>
-                </bibitem>
-                <bibitem id="ref7" type="standard">
-                   <biblio-tag>ISO 639-2:1998, </biblio-tag>
-                   <formattedref>Codes for the representation of names of languages - Part 2: Alpha-3 code.</formattedref>
-                   <title type="title-main" format="text/plain" language="en" script="Latn">Codes for the representation of names of languages</title>
-                   <title type="title-part" format="text/plain" language="en" script="Latn">Part 2: Alpha-3 code</title>
-                   <title type="main" format="text/plain" language="en" script="Latn">Codes for the representation of names of languages - Part 2: Alpha-3 code</title>
-                   <title type="title-main" format="text/plain" language="fr" script="Latn">Codes pour la représentation des noms de langue</title>
-                   <title type="title-part" format="text/plain" language="fr" script="Latn">Partie 2: Code alpha-3</title>
-                   <title type="main" format="text/plain" language="fr" script="Latn">Codes pour la représentation des noms de langue - Partie 2: Code alpha-3</title>
-                   <uri type="src">https://www.iso.org/standard/4767.html</uri>
-                   <uri type="rss">https://www.iso.org/contents/data/standard/00/47/4767.detail.rss</uri>
-                   <docidentifier type="ISO" primary="true">ISO 639-2:1998</docidentifier>
-                   <docidentifier type="iso-reference">iso-reference ISO 639-2(E)</docidentifier>
-                   <docidentifier type="URN">URN urn:iso:std:iso:639:-2:stage-95.99:ed-1</docidentifier>
-                   <docidentifier scope="biblio-tag">ISO 639-2:1998</docidentifier>
-                   <docnumber>639</docnumber>
-                   <contributor>
-                      <role type="publisher"/>
-                      <organization>
+                       </organization>
+                     </contributor>
+                     <contributor>
+                       <role type="author"/>
+                       <person>
+                         <name>
+                           <forename>Indiana</forename>
+                           <surname>Jones</surname>
+                         </name>
+                       </person>
+                     </contributor>
+                   </bibitem>
+                            <bibitem id="Johns" type="book"><biblio-tag>Johns, 2022 </biblio-tag><formattedref>Johns, <em>Title 1</em>. 2022.</formattedref>
+         <title>Title 1</title>
+         <date type="published"><on>2022</on></date>
+         <contributor><role type="author"/><person><name><surname>Johns</surname></name></person></contributor>
+         <docidentifier type="author-date">Johns, 2022</docidentifier><biblio-tag>Johns, 2022, </biblio-tag></bibitem>
+                 </references></sections>
+            <bibliography>
+                 
+                 <references id="_" normative="false" obligation="informative" displayorder="4">
+                   <title id="_">Bibliography</title><fmt-title depth="1" id="_"><semx element="title" source="_">Bibliography</semx></fmt-title>
+                   <bibitem id="ref6"><biblio-tag>[B1]<tab/>REF4, </biblio-tag>
+                     <formattedref format="application/x-isodoc+xml">Title</formattedref>
+                     <docidentifier type="metanorma-ordinal">[B1]</docidentifier><docidentifier>REF4</docidentifier>
+                     <docidentifier scope="biblio-tag">REF4</docidentifier>
+                     <docnumber>4</docnumber>
+                   </bibitem>
+                         <bibitem type="book" id="ref5"><biblio-tag>[B2]<tab/></biblio-tag><formattedref>Aluffi, P., D. Anderson, M. Hering, M. Musta&#x163;&#x103;, and S. Payne, <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022, DOI: https://doi.org/10.1017/9781108877831.</formattedref>
+              <title>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</title>
+              <docidentifier type="metanorma-ordinal">[B2]</docidentifier><docidentifier type="DOI">https://doi.org/10.1017/9781108877831</docidentifier>
+              <docidentifier type="ISBN">ISBN&#xA0;9781108877831</docidentifier>
+                     
+              <date type="published"><on>2022</on></date>
+              <contributor>
+                <role type="editor"/>
+                <person>
+                  <name><surname>Aluffi</surname><forename>Paolo</forename></name>
+                </person>
+              </contributor>
+                      <contributor>
+                <role type="editor"/>
+                <person>
+                  <name><surname>Anderson</surname><forename>David</forename></name>
+                </person>
+              </contributor>
+              <contributor>
+                <role type="editor"/>
+                <person>
+                  <name><surname>Hering</surname><forename>Milena</forename></name>
+                </person>
+              </contributor>
+              <contributor>
+                <role type="editor"/>
+                <person>
+                  <name><surname>Musta&#x163;&#x103;</surname><forename>Mircea</forename></name>
+                </person>
+              </contributor>
+              <contributor>
+                <role type="editor"/>
+                <person>
+                  <name><surname>Payne</surname><forename>Sam</forename></name>
+                </person>
+              </contributor>
+              <edition>1</edition>
+              <series>
+              <title>London Mathematical Society Lecture Note Series</title>
+              <number>472</number>
+              </series>
+                  <contributor>
+                    <role type="publisher"/>
+                    <organization>
+                      <name>Cambridge University Press</name>
+                    </organization>
+                  </contributor>
+                  <place><formattedPlace>Cambridge, UK</formattedPlace></place>
+                <size><value type="volume">1</value></size>
+            </bibitem>
+                   <bibitem type="standard" id="ref4"><biblio-tag>[B3]<tab/>ISO&#xA0;639:1967, </biblio-tag><formattedref>Indiana Jones and the Last Crusade.</formattedref>
+                     <fetched/>
+                     <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
+                     <title type="title-main" format="text/plain">Indiana Jones and the Last Crusade</title>
+                     <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
+                     <docidentifier type="metanorma-ordinal">[B3]</docidentifier><docidentifier type="ISO">ISO&#xA0;639:1967</docidentifier>
+                     <docidentifier scope="biblio-tag">ISO&#xA0;639:1967</docidentifier>
+                     <contributor>
+                       <role type="publisher"/>
+                       <organization>
                          <name>International Organization for Standardization</name>
                          <abbreviation>ISO</abbreviation>
-                         <uri>www.iso.org</uri>
-                      </organization>
-                   </contributor>
-                   <edition>1</edition>
-                   <language>en</language>
-                   <language>fr</language>
-                   <script>Latn</script>
-                   <status>
-                      <stage>95</stage>
-                      <substage>99</substage>
-                   </status>
-                   <copyright>
-                      <from>1998</from>
-                      <owner>
-                         <organization>
-                            <name>ISO</name>
-                         </organization>
-                      </owner>
-                   </copyright>
-                </bibitem>
-                <bibitem id="ref3">
-                   <biblio-tag>REF4, </biblio-tag>
-                   <formattedref format="application/x-isodoc+xml">REF4</formattedref>
-                   <docidentifier>REF4</docidentifier>
-                   <docidentifier scope="biblio-tag">REF4</docidentifier>
-                   <docnumber>4</docnumber>
-                </bibitem>
-                <bibitem type="book" id="ref2">
-                   <biblio-tag>
-                      Aluffi
-                      <em>et al.</em>
-                      2022a
-                   </biblio-tag>
-                   <formattedref>
-                      Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne,
-                      <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>
-                      , first edition, Cambridge, UK: Cambridge University Press, 2022a, DOI: https://doi.org/10.1017/9781108877831.
-                      <fn id="_" reference="2" original-reference="_" target="_">
-                         <p>
-                IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
-      #{'  '}
-              </p>
-                         <fmt-fn-label>
-                            <span class="fmt-caption-label">
-                               <sup>
-                                  <semx element="autonum" source="_">2</semx>
-                               </sup>
-                            </span>
-                         </fmt-fn-label>
-                      </fn>
-                      <fn id="_" reference="3" original-reference="_" target="_">
-                         <p>
-                This is a second availability note
-              </p>
-                         <fmt-fn-label>
-                            <span class="fmt-caption-label">
-                               <sup>
-                                  <semx element="autonum" source="_">3</semx>
-                               </sup>
-                            </span>
-                         </fmt-fn-label>
-                      </fn>
-                   </formattedref>
-                   <title>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</title>
-                   <docidentifier type="DOI">https://doi.org/10.1017/9781108877831</docidentifier>
-                   <docidentifier type="ISBN">ISBN 9781108877831</docidentifier>
-                   <date type="published">
-                      <on>2022</on>
-                   </date>
-                   <contributor>
-                      <role type="editor"/>
-                      <person>
+                       </organization>
+                     </contributor>
+                     <contributor>
+                       <role type="author"/>
+                       <person>
                          <name>
-                            <surname>Aluffi</surname>
-                            <forename>Paolo</forename>
+                           <forename>Indiana</forename>
+                           <surname>Jones</surname>
                          </name>
-                      </person>
-                   </contributor>
-                   <contributor>
-                      <role type="editor"/>
-                      <person>
-                         <name>
-                            <surname>Anderson</surname>
-                            <forename>David</forename>
-                         </name>
-                      </person>
-                   </contributor>
-                   <contributor>
-                      <role type="editor"/>
-                      <person>
-                         <name>
-                            <surname>Hering</surname>
-                            <forename>Milena</forename>
-                         </name>
-                      </person>
-                   </contributor>
-                   <contributor>
-                      <role type="editor"/>
-                      <person>
-                         <name>
-                            <surname>Mustaţă</surname>
-                            <forename>Mircea</forename>
-                         </name>
-                      </person>
-                   </contributor>
-                   <contributor>
-                      <role type="editor"/>
-                      <person>
-                         <name>
-                            <surname>Payne</surname>
-                            <forename>Sam</forename>
-                         </name>
-                      </person>
-                   </contributor>
-                   <note type="Availability">
-                      <p id="_">IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
-        </p>
-                   </note>
-                   <note type="Availability">
-                      <p id="_">This is a second availability note</p>
-                   </note>
-                   <edition>1</edition>
-                   <series>
-                      <title>London Mathematical Society Lecture Note Series</title>
-                      <number>472</number>
-                   </series>
-                   <contributor>
-                      <role type="publisher"/>
-                      <organization>
-                         <name>Cambridge University Press</name>
-                      </organization>
-                   </contributor>
-                   <place><formattedPlace>Cambridge, UK</formattedPlace></place>
-                   <size>
-                      <value type="volume">1</value>
-                   </size>
-                   <docidentifier type="author-date">
-                      Aluffi
-                      <em>et al.</em>
-                      2022a
-                   </docidentifier>
-                   <biblio-tag>
-                      Aluffi
-                      <em>et al.</em>
-                      2022a,
-                   </biblio-tag>
-                </bibitem>
-                <bibitem type="standard" id="ref1">
-                   <biblio-tag>ISO 639:1967, </biblio-tag>
-                   <formattedref>Indiana Jones and the Last Crusade.</formattedref>
-                   <fetched/>
-                   <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
-                   <title type="title-main" format="text/plain">Indiana Jones and the Last Crusade</title>
-                   <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
-                   <docidentifier type="ISO">ISO 639:1967</docidentifier>
-                   <docidentifier scope="biblio-tag">ISO 639:1967</docidentifier>
-                   <contributor>
-                      <role type="publisher"/>
-                      <organization>
-                         <name>International Organization for Standardization</name>
-                         <abbreviation>ISO</abbreviation>
-                      </organization>
-                   </contributor>
-                   <contributor>
-                      <role type="author"/>
-                      <person>
-                         <name>
-                            <forename>Indiana</forename>
-                            <surname>Jones</surname>
-                         </name>
-                      </person>
-                   </contributor>
-                </bibitem>
-                <bibitem id="Johns" type="book">
-                   <biblio-tag>Johns 2022 </biblio-tag>
-                   <formattedref>
-                      Johns,
-                      <em>Title 1</em>
-                      , 2022.
-                   </formattedref>
-                   <title>Title 1</title>
-                   <date type="published">
-                      <on>2022</on>
-                   </date>
-                   <contributor>
-                      <role type="author"/>
-                      <person>
-                         <name>
-                            <surname>Johns</surname>
-                         </name>
-                      </person>
-                   </contributor>
-                   <docidentifier type="author-date">Johns 2022</docidentifier>
-                   <biblio-tag>Johns 2022, </biblio-tag>
-                </bibitem>
-             </references>
-          </sections>
-          <bibliography>
-             <references id="_" normative="false" obligation="informative" displayorder="4">
-                <title id="_">Bibliography</title>
-                <fmt-title depth="1" id="_">
-                   <semx element="title" source="_">Bibliography</semx>
-                </fmt-title>
-                <bibitem id="ref6">
-                   <biblio-tag>
-                      [B1]
-                      <tab/>
-                      REF4,
-                   </biblio-tag>
-                   <formattedref format="application/x-isodoc+xml">Title</formattedref>
-                   <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
-                   <docidentifier>REF4</docidentifier>
-                   <docidentifier scope="biblio-tag">REF4</docidentifier>
-                   <docnumber>4</docnumber>
-                </bibitem>
-                <bibitem type="book" id="ref5">
-                   <biblio-tag>
-                      [B2]
-                      <tab/>
-                   </biblio-tag>
-                   <formattedref>
-                      Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne,
-                      <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>
-                      , first edition, Cambridge, UK: Cambridge University Press, 2022b, DOI: https://doi.org/10.1017/9781108877831.
-                   </formattedref>
-                   <title>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</title>
-                   <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
-                   <docidentifier type="DOI">https://doi.org/10.1017/9781108877831</docidentifier>
-                   <docidentifier type="ISBN">ISBN 9781108877831</docidentifier>
-                   <date type="published">
-                      <on>2022</on>
-                   </date>
-                   <contributor>
-                      <role type="editor"/>
-                      <person>
-                         <name>
-                            <surname>Aluffi</surname>
-                            <forename>Paolo</forename>
-                         </name>
-                      </person>
-                   </contributor>
-                   <contributor>
-                      <role type="editor"/>
-                      <person>
-                         <name>
-                            <surname>Anderson</surname>
-                            <forename>David</forename>
-                         </name>
-                      </person>
-                   </contributor>
-                   <contributor>
-                      <role type="editor"/>
-                      <person>
-                         <name>
-                            <surname>Hering</surname>
-                            <forename>Milena</forename>
-                         </name>
-                      </person>
-                   </contributor>
-                   <contributor>
-                      <role type="editor"/>
-                      <person>
-                         <name>
-                            <surname>Mustaţă</surname>
-                            <forename>Mircea</forename>
-                         </name>
-                      </person>
-                   </contributor>
-                   <contributor>
-                      <role type="editor"/>
-                      <person>
-                         <name>
-                            <surname>Payne</surname>
-                            <forename>Sam</forename>
-                         </name>
-                      </person>
-                   </contributor>
-                   <edition>1</edition>
-                   <series>
-                      <title>London Mathematical Society Lecture Note Series</title>
-                      <number>472</number>
-                   </series>
-                   <contributor>
-                      <role type="publisher"/>
-                      <organization>
-                         <name>Cambridge University Press</name>
-                      </organization>
-                   </contributor>
-                   <place><formattedPlace>Cambridge, UK</formattedPlace></place>
-                   <size>
-                      <value type="volume">1</value>
-                   </size>
-                </bibitem>
-                <bibitem type="standard" id="ref4">
-                   <biblio-tag>
-                      [B3]
-                      <tab/>
-                      ISO 639:1967,
-                   </biblio-tag>
-                   <formattedref>Indiana Jones and the Last Crusade.</formattedref>
-                   <fetched/>
-                   <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
-                   <title type="title-main" format="text/plain">Indiana Jones and the Last Crusade</title>
-                   <title type="main" format="text/plain">Indiana Jones and the Last Crusade</title>
-                   <docidentifier type="metanorma-ordinal">[B3]</docidentifier>
-                   <docidentifier type="ISO">ISO 639:1967</docidentifier>
-                   <docidentifier scope="biblio-tag">ISO 639:1967</docidentifier>
-                   <contributor>
-                      <role type="publisher"/>
-                      <organization>
-                         <name>International Organization for Standardization</name>
-                         <abbreviation>ISO</abbreviation>
-                      </organization>
-                   </contributor>
-                   <contributor>
-                      <role type="author"/>
-                      <person>
-                         <name>
-                            <forename>Indiana</forename>
-                            <surname>Jones</surname>
-                         </name>
-                      </person>
-                   </contributor>
-                </bibitem>
-                <bibitem id="ref8" type="standard">
-                   <biblio-tag>
-                      [B4]
-                      <tab/>
-                   </biblio-tag>
-                   <formattedref>OpenXR.</formattedref>
-                   <title>OpenXR</title>
-                   <docidentifier type="metanorma-ordinal">[B4]</docidentifier>
-                   <docnumber>4</docnumber>
-                </bibitem>
-             </references>
-          </bibliography>
-          <fmt-footnote-container>
-             <fmt-fn-body id="_" target="_" reference="1">
-                <semx element="fn" source="_">
-                   <p>
-                      <fmt-fn-label>
-                         <span class="fmt-caption-label">
-                            <sup>
-                               <semx element="autonum" source="_">1</semx>
-                            </sup>
-                         </span>
-                         <span class="fmt-caption-delim">
-                            <tab/>
-                         </span>
-                      </fmt-fn-label>
-                      Under preparation. (Stage at the time of publication ISO/DIS 16634)
-                   </p>
-                </semx>
-             </fmt-fn-body>
-             <fmt-fn-body id="_" target="_" reference="2">
-                <semx element="fn" source="_">
-                   <p>
-                      <fmt-fn-label>
-                         <span class="fmt-caption-label">
-                            <sup>
-                               <semx element="autonum" source="_">2</semx>
-                            </sup>
-                         </span>
-                         <span class="fmt-caption-delim">
-                            <tab/>
-                         </span>
-                      </fmt-fn-label>
-                      IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
-                   </p>
-                </semx>
-             </fmt-fn-body>
-             <fmt-fn-body id="_" target="_" reference="3">
-                <semx element="fn" source="_">
-                   <p>
-                      <fmt-fn-label>
-                         <span class="fmt-caption-label">
-                            <sup>
-                               <semx element="autonum" source="_">3</semx>
-                            </sup>
-                         </span>
-                         <span class="fmt-caption-delim">
-                            <tab/>
-                         </span>
-                      </fmt-fn-label>
-                      This is a second availability note
-                   </p>
-                </semx>
-             </fmt-fn-body>
-             <fmt-fn-body id="_" target="" reference="4">
-                <semx element="fn" source="_">
-                   <p>
-                      <fmt-fn-label>
-                         <span class="fmt-caption-label">
-                            <sup>
-                               <semx element="autonum" source="_">4</semx>
-                            </sup>
-                         </span>
-                         <span class="fmt-caption-delim">
-                            <tab/>
-                         </span>
-                      </fmt-fn-label>
-                      The numbers in brackets correspond to those of the bibliography in Annex B.
-                   </p>
-                </semx>
-             </fmt-fn-body>
-          </fmt-footnote-container>
-       </iso-standard>
+                       </person>
+                     </contributor>
+                   </bibitem>
+                   <bibitem id="ref8" type="standard"><biblio-tag>[B4]<tab/></biblio-tag><formattedref>OpenXR.</formattedref>
+                   <title>OpenXR</title><docidentifier type="metanorma-ordinal">[B4]</docidentifier>
+                     
+                     <docnumber>4</docnumber>
+                   </bibitem>
+                 </references>
+               </bibliography>
+             <fmt-footnote-container><fmt-fn-body id="_" target="_" reference="1"><semx element="fn" source="_"><p><fmt-fn-label><span class="fmt-caption-label"><sup><semx element="autonum" source="_">1</semx></sup></span><span class="fmt-caption-delim"><tab/></span></fmt-fn-label>Under preparation. (Stage at the time of publication ISO/DIS 16634)</p></semx></fmt-fn-body><fmt-fn-body id="_" target="_" reference="2"><semx element="fn" source="_"><p><fmt-fn-label><span class="fmt-caption-label"><sup><semx element="autonum" source="_">2</semx></sup></span><span class="fmt-caption-delim"><tab/></span></fmt-fn-label>
+               IEEE 194-1977 has been withdrawn; however, copies can be obtained from Global Engineering, 15 Inverness Way East, Englewood, CO 80112-5704, USA, tel. (303) 792-2181 (http://global.ihs.com/).
+       
+             </p></semx></fmt-fn-body><fmt-fn-body id="_" target="_" reference="3"><semx element="fn" source="_"><p><fmt-fn-label><span class="fmt-caption-label"><sup><semx element="autonum" source="_">3</semx></sup></span><span class="fmt-caption-delim"><tab/></span></fmt-fn-label>
+               This is a second availability note
+             </p></semx></fmt-fn-body><fmt-fn-body id="_" target="" reference="4"><semx element="fn" source="_"><p><fmt-fn-label><span class="fmt-caption-label"><sup><semx element="autonum" source="_">4</semx></sup></span><span class="fmt-caption-delim"><tab/></span></fmt-fn-label>The numbers in brackets correspond to those of the bibliography in Annex B.</p></semx></fmt-fn-body></fmt-footnote-container></iso-standard>
     PRESXML
     out = Nokogiri::XML(
       IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
@@ -1505,57 +904,28 @@ RSpec.describe IsoDoc do
     INPUT
     presxml = <<~PRESXML
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-         <preface>
-            <clause type="toc" id="_" displayorder="1">
-               <fmt-title id="_" depth="1">Contents</fmt-title>
-            </clause>
-         </preface>
-         <sections/>
-         <bibliography>
-            <references id="_" normative="false" obligation="informative" displayorder="2">
-               <title id="_">Normative References</title>
-               <fmt-title id="_" depth="1">
-                     <semx element="title" source="_">Normative References</semx>
-               </fmt-title>
-               <bibitem id="IETF_6281" type="standard">
-                  <formattedref>Title 1.</formattedref>
-                  <title>Title 1</title>
-                  <docidentifier type="metanorma-ordinal">[B1]</docidentifier>
-                  <docidentifier>ABC</docidentifier>
-                  <docidentifier scope="biblio-tag">ABC</docidentifier>
-                  <biblio-tag>
-                     [B1]
-                     <tab/>
-                     ABC,
-                  </biblio-tag>
-               </bibitem>
-               <bibitem id="IETF_6282" type="standard">
-                  <formattedref>Title 1.</formattedref>
-                  <title>Title 1</title>
-                  <docidentifier type="metanorma-ordinal">[B2]</docidentifier>
-                  <docidentifier>DEF</docidentifier>
-                  <docidentifier scope="biblio-tag">DEF</docidentifier>
-                  <biblio-tag>
-                     [B2]
-                     <tab/>
-                     DEF,
-                  </biblio-tag>
-               </bibitem>
-               <bibitem id="IETF_6283" type="standard">
-                  <formattedref>Title 2.</formattedref>
-                  <title>Title 2</title>
-                  <docidentifier type="metanorma-ordinal">[B3]</docidentifier>
-                  <docidentifier>GHI</docidentifier>
-                  <docidentifier scope="biblio-tag">GHI</docidentifier>
-                  <biblio-tag>
-                     [B3]
-                     <tab/>
-                     GHI,
-                  </biblio-tag>
-               </bibitem>
-            </references>
+      <preface><clause type="toc" id="_" displayorder="1"><fmt-title depth="1" id="_">Contents</fmt-title></clause>
+       </preface><sections/>
+      <bibliography>
+       <references id="_" normative="false" obligation="informative" displayorder="2">
+         <title id="_">Normative References</title><fmt-title depth="1" id="_"><semx element="title" source="_">Normative References</semx></fmt-title>
+         <bibitem id="IETF_6281" type="standard"><biblio-tag>[B1]<tab/>ABC, </biblio-tag><formattedref>Title 1.</formattedref>
+         <title>Title 1</title>
+         <docidentifier type="metanorma-ordinal">[B1]</docidentifier><docidentifier>ABC</docidentifier><docidentifier scope="biblio-tag">ABC</docidentifier>
+         </bibitem>
+         <bibitem id="IETF_6282" type="standard"><biblio-tag>[B2]<tab/>DEF, </biblio-tag><formattedref>Title 1.</formattedref>
+         <title>Title 1</title>
+         <docidentifier type="metanorma-ordinal">[B2]</docidentifier><docidentifier>DEF</docidentifier>
+         <docidentifier scope="biblio-tag">DEF</docidentifier>
+         </bibitem>
+         <bibitem id="IETF_6283" type="standard"><biblio-tag>[B3]<tab/>GHI, </biblio-tag><formattedref>Title 2.</formattedref>
+         <title>Title 2</title>
+         <docidentifier type="metanorma-ordinal">[B3]</docidentifier><docidentifier>GHI</docidentifier>
+         <docidentifier scope="biblio-tag">GHI</docidentifier>
+         </bibitem>
+         </references>
          </bibliography>
-      </iso-standard>
+         </iso-standard>
     PRESXML
     out = Nokogiri::XML(
       IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
@@ -1737,76 +1107,22 @@ RSpec.describe IsoDoc do
     INPUT
     presxml = <<~PRESXML
       <clause id="A" inline-header="false" obligation="normative" displayorder="3">
-         <title id="_">Clause</title>
-         <fmt-title depth="1" id="_">
-            <span class="fmt-caption-label">
-               <semx element="autonum" source="A">2</semx>
-               <span class="fmt-clause-delim">.</span>
-            </span>
-            <span class="fmt-caption-delim">
-               <tab/>
-            </span>
-            <semx element="title" source="_">Clause</semx>
-         </fmt-title>
-         <fmt-xref-label>
-            <span class="fmt-element-name">Clause</span>
-            <semx element="autonum" source="A">2</semx>
-         </fmt-xref-label>
-         <p id="_">
-            <eref type="inline" bibitemid="IETF_6281" citeas="ISO 639:1967" id="_">
-               <localityStack>
-                  <locality type="page">
-                     <referenceFrom>4</referenceFrom>
-                     <referenceTo>9</referenceTo>
-                  </locality>
-               </localityStack>
-            </eref>
-            <semx element="eref" source="_">
-               <fmt-xref type="inline" target="IETF_6281">
-                  <span class="std_publisher">IETF</span>
-                   <span class="std_docNumber">6281</span>
-                  , 4–9
-               </fmt-xref>
-            </semx>
-            <eref type="inline" bibitemid="IETF_6281" citeas="ISO 639:1967" id="_">
-               <localityStack>
-                  <locality type="figure">
-                     <referenceFrom>4</referenceFrom>
-                     <referenceTo>9</referenceTo>
-                  </locality>
-               </localityStack>
-            </eref>
-            <semx element="eref" source="_">
-               <fmt-xref type="inline" target="IETF_6281">
-                  <span class="std_publisher">IETF</span>
-                   <span class="std_docNumber">6281</span>
-                  , Figure 4–9
-               </fmt-xref>
-            </semx>
-            <eref type="inline" bibitemid="Johns" citeas="ISO 639-2:1998" id="_">
-               <localityStack>
-                  <locality type="page">
-                     <referenceFrom>4</referenceFrom>
-                     <referenceTo>9</referenceTo>
-                  </locality>
-               </localityStack>
-            </eref>
-            <semx element="eref" source="_">
-               <fmt-xref type="inline" style="author_date" target="Johns">Johns 2022,  4–9</fmt-xref>
-            </semx>
-            <eref type="inline" bibitemid="Johns" citeas="ISO 639-2:1998" id="_">
-               <localityStack>
-                  <locality type="figure">
-                     <referenceFrom>4</referenceFrom>
-                     <referenceTo>9</referenceTo>
-                  </locality>
-               </localityStack>
-            </eref>
-            <semx element="eref" source="_">
-               <fmt-xref type="inline" style="author_date" target="Johns">Johns 2022,  Figure 4–9</fmt-xref>
-            </semx>
-         </p>
-      </clause>
+                  <title id="_">Clause</title><fmt-title depth="1" id="_"><span class="fmt-caption-label"><semx element="autonum" source="A">2</semx><span class="fmt-clause-delim">.</span></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_">Clause</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Clause</span> <semx element="autonum" source="A">2</semx></fmt-xref-label>
+                  <p id="_">
+                    <eref type="inline" bibitemid="IETF_6281" citeas="ISO 639:1967" id="_">
+                    <localityStack><locality type="page"><referenceFrom>4</referenceFrom><referenceTo>9</referenceTo></locality></localityStack>
+                    </eref><semx element="eref" source="_"><fmt-xref type="inline" target="IETF_6281">IETF&#xA0;6281,  4&#x2013;9</fmt-xref></semx>
+                    <eref type="inline" bibitemid="IETF_6281" citeas="ISO 639:1967" id="_">
+                    <localityStack><locality type="figure"><referenceFrom>4</referenceFrom><referenceTo>9</referenceTo></locality></localityStack>
+                    </eref><semx element="eref" source="_"><fmt-xref type="inline" target="IETF_6281">IETF&#xA0;6281,  Figure 4&#x2013;9</fmt-xref></semx>
+                    <eref type="inline" bibitemid="Johns" citeas="ISO 639-2:1998" id="_">
+                    <localityStack><locality type="page"><referenceFrom>4</referenceFrom><referenceTo>9</referenceTo></locality></localityStack>
+                    </eref><semx element="eref" source="_"><fmt-xref type="inline" style="author_date" target="Johns"><span class="std_publisher">Johns,</span>&#xA0;<span class="std_docNumber">2022</span>,  4&#x2013;9</fmt-xref></semx>
+                    <eref type="inline" bibitemid="Johns" citeas="ISO 639-2:1998" id="_">
+                    <localityStack><locality type="figure"><referenceFrom>4</referenceFrom><referenceTo>9</referenceTo></locality></localityStack>
+                    </eref><semx element="eref" source="_"><fmt-xref type="inline" style="author_date" target="Johns"><span class="std_publisher">Johns,</span>&#xA0;<span class="std_docNumber">2022</span>,  Figure 4&#x2013;9</fmt-xref></semx>
+                  </p>
+                </clause>
     PRESXML
     out = Nokogiri::XML(
       IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)
@@ -1977,285 +1293,161 @@ RSpec.describe IsoDoc do
     INPUT
     presxml = <<~PRESXML
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-         <bibdata>
-            <language current="true">en</language>
-         </bibdata>
-         <preface>
-            <clause type="toc" id="_" displayorder="1">
-               <fmt-title depth="1" id="_">Contents</fmt-title>
-            </clause>
-            <foreword id="_" displayorder="2">
-               <title id="_">Foreword</title>
-               <fmt-title depth="1" id="_">
-                  <semx element="title" source="_">Foreword</semx>
-               </fmt-title>
-               <p id="_">
-                  <eref bibitemid="ref1" id="_"/>
-                  <semx element="eref" source="_">
-                     <fmt-xref target="ref1">ISO 712</fmt-xref>
-                  </semx>
-                  <eref bibitemid="ref2" id="_"/>
-                  <semx element="eref" source="_">
-                     <fmt-xref target="ref2">ISO 713</fmt-xref>
-                  </semx>
-                  <eref bibitemid="ref3" id="_"/>
-                  <semx element="eref" source="_">
-                     <fmt-xref target="ref3">International Organization for Standardization 2000c</fmt-xref>
-                  </semx>
-                  <eref bibitemid="ref4" id="_"/>
-                  <semx element="eref" source="_">
-                     <fmt-xref target="ref4">International Organization for Standardization 2000d</fmt-xref>
-                  </semx>
-                  <eref bibitemid="ref5" id="_"/>
-                  <semx element="eref" source="_">
-                     <fmt-xref target="ref5">ISO 712</fmt-xref>
-                  </semx>
-                  <eref bibitemid="ref6" id="_"/>
-                  <semx element="eref" source="_">
-                     <fmt-xref target="ref6">ISO 713</fmt-xref>
-                  </semx>
-                  <eref bibitemid="ref7" id="_"/>
-                  <semx element="eref" source="_">
-                     <fmt-xref target="ref7">International Organization for Standardization 2000g</fmt-xref>
-                  </semx>
-                  <eref bibitemid="ref8" id="_"/>
-                  <semx element="eref" source="_">
-                     <fmt-xref target="ref8">International Organization for Standardization 2000h</fmt-xref>
-                  </semx>
-               </p>
-            </foreword>
-         </preface>
-         <sections>
-            <references id="_" obligation="informative" normative="true" displayorder="3">
-               <title id="_">Normative References</title>
-               <fmt-title depth="1" id="_">
-                  <span class="fmt-caption-label">
-                     <semx element="autonum" source="_">1</semx>
-                     <span class="fmt-clause-delim">.</span>
-                  </span>
-                  <span class="fmt-caption-delim">
-                     <tab/>
-                  </span>
-                  <semx element="title" source="_">Normative References</semx>
-               </fmt-title>
-               <fmt-xref-label>
-                  <span class="fmt-element-name">Clause</span>
-                  <semx element="autonum" source="_">1</semx>
-               </fmt-xref-label>
-               <bibitem id="ref1" type="standard">
-                  <biblio-tag>ISO 712, </biblio-tag>
-                  <formattedref>Cereals and cereal products.</formattedref>
-                  <title type="main" format="text/plain">Cereals and cereal products</title>
-                  <docidentifier type="ISO">ISO 712</docidentifier>
-                  <docidentifier scope="biblio-tag">ISO 712</docidentifier>
-                  <contributor>
-                     <role type="author"/>
-                     <organization>
-                        <name>International Organization for Standardization</name>
-                     </organization>
-                  </contributor>
-                  <contributor>
-                     <role type="publisher"/>
-                     <organization>
-                        <name>International Organization for Standardization</name>
-                     </organization>
-                  </contributor>
-                  <date type="published">
-                     <on>2000</on>
-                  </date>
-               </bibitem>
-               <bibitem id="ref2" type="standard">
-                  <biblio-tag>ISO 713, </biblio-tag>
-                  <formattedref>Books and book products.</formattedref>
-                  <title type="main" format="text/plain">Books and book products</title>
-                  <docidentifier type="ISO">ISO 713</docidentifier>
-                  <docidentifier scope="biblio-tag">ISO 713</docidentifier>
-                  <contributor>
-                     <role type="author"/>
-                     <organization>
-                        <name>International Organization for Standardization</name>
-                     </organization>
-                  </contributor>
-                  <contributor>
-                     <role type="publisher"/>
-                     <organization>
-                        <name>International Organization for Standardization</name>
-                     </organization>
-                  </contributor>
-                  <date type="published">
-                     <on>2000</on>
-                  </date>
-               </bibitem>
-               <bibitem id="ref3" type="book">
-                  <biblio-tag>International Organization for Standardization 2000c </biblio-tag>
-                  <formattedref>
-                     International Organization for Standardization,
-                     <em>Cereals and cereal products</em>
-                     , International Organization for Standardization, 2000c.
-                  </formattedref>
-                  <title type="main" format="text/plain">Cereals and cereal products</title>
-                  <contributor>
-                     <role type="author"/>
-                     <organization>
-                        <name>International Organization for Standardization</name>
-                     </organization>
-                  </contributor>
-                  <contributor>
-                     <role type="publisher"/>
-                     <organization>
-                        <name>International Organization for Standardization</name>
-                     </organization>
-                  </contributor>
-                  <date type="published">
-                     <on>2000</on>
-                  </date>
-                  <docidentifier type="author-date">International Organization for Standardization 2000c</docidentifier>
-                  <biblio-tag>International Organization for Standardization 2000c, </biblio-tag>
-               </bibitem>
-               <bibitem id="ref4" type="book">
-                  <biblio-tag>International Organization for Standardization 2000d </biblio-tag>
-                  <formattedref>
-                     International Organization for Standardization,
-                     <em>Books and book products</em>
-                     , International Organization for Standardization, 2000d.
-                  </formattedref>
-                  <title type="main" format="text/plain">Books and book products</title>
-                  <contributor>
-                     <role type="author"/>
-                     <organization>
-                        <name>International Organization for Standardization</name>
-                     </organization>
-                  </contributor>
-                  <contributor>
-                     <role type="publisher"/>
-                     <organization>
-                        <name>International Organization for Standardization</name>
-                     </organization>
-                  </contributor>
-                  <date type="published">
-                     <on>2000</on>
-                  </date>
-                  <docidentifier type="author-date">International Organization for Standardization 2000d</docidentifier>
-                  <biblio-tag>International Organization for Standardization 2000d, </biblio-tag>
-               </bibitem>
-            </references>
-            <references id="_" obligation="informative" normative="true">
-               <title id="_">Normative References</title>
-               <fmt-title depth="1" id="_">
-                  <span class="fmt-caption-label">
-                     <semx element="autonum" source="_">1</semx>
-                     <span class="fmt-clause-delim">.</span>
-                  </span>
-                  <span class="fmt-caption-delim">
-                     <tab/>
-                  </span>
-                  <semx element="title" source="_">Normative References</semx>
-               </fmt-title>
-               <fmt-xref-label>
-                  <span class="fmt-element-name">Clause</span>
-                  <semx element="autonum" source="_">1</semx>
-               </fmt-xref-label>
-               <bibitem id="ref5" type="standard">
-                  <biblio-tag>ISO 712, </biblio-tag>
-                  <formattedref>Cereals and cereal products.</formattedref>
-                  <title type="main" format="text/plain">Cereals and cereal products</title>
-                  <docidentifier type="ISO">ISO 712</docidentifier>
-                  <docidentifier scope="biblio-tag">ISO 712</docidentifier>
-                  <contributor>
-                     <role type="author"/>
-                     <organization>
-                        <name>International Organization for Standardization</name>
-                     </organization>
-                  </contributor>
-                  <contributor>
-                     <role type="publisher"/>
-                     <organization>
-                        <name>International Organization for Standardization</name>
-                     </organization>
-                  </contributor>
-                  <date type="published">
-                     <on>2000</on>
-                  </date>
-               </bibitem>
-               <bibitem id="ref6" type="standard">
-                  <biblio-tag>ISO 713, </biblio-tag>
-                  <formattedref>Books and book products.</formattedref>
-                  <title type="main" format="text/plain">Books and book products</title>
-                  <docidentifier type="ISO">ISO 713</docidentifier>
-                  <docidentifier scope="biblio-tag">ISO 713</docidentifier>
-                  <contributor>
-                     <role type="author"/>
-                     <organization>
-                        <name>International Organization for Standardization</name>
-                     </organization>
-                  </contributor>
-                  <contributor>
-                     <role type="publisher"/>
-                     <organization>
-                        <name>International Organization for Standardization</name>
-                     </organization>
-                  </contributor>
-                  <date type="published">
-                     <on>2000</on>
-                  </date>
-               </bibitem>
-               <bibitem id="ref7" type="book">
-                  <biblio-tag>International Organization for Standardization 2000g </biblio-tag>
-                  <formattedref>
-                     International Organization for Standardization,
-                     <em>Cereals and cereal products</em>
-                     , International Organization for Standardization, 2000g.
-                  </formattedref>
-                  <title type="main" format="text/plain">Cereals and cereal products</title>
-                  <contributor>
-                     <role type="author"/>
-                     <organization>
-                        <name>International Organization for Standardization</name>
-                     </organization>
-                  </contributor>
-                  <contributor>
-                     <role type="publisher"/>
-                     <organization>
-                        <name>International Organization for Standardization</name>
-                     </organization>
-                  </contributor>
-                  <date type="published">
-                     <on>2000</on>
-                  </date>
-                  <docidentifier type="author-date">International Organization for Standardization 2000g</docidentifier>
-                  <biblio-tag>International Organization for Standardization 2000g, </biblio-tag>
-               </bibitem>
-               <bibitem id="ref8" type="book">
-                  <biblio-tag>International Organization for Standardization 2000h </biblio-tag>
-                  <formattedref>
-                     International Organization for Standardization,
-                     <em>Books and book products</em>
-                     , International Organization for Standardization, 2000h.
-                  </formattedref>
-                  <title type="main" format="text/plain">Books and book products</title>
-                  <contributor>
-                     <role type="author"/>
-                     <organization>
-                        <name>International Organization for Standardization</name>
-                     </organization>
-                  </contributor>
-                  <contributor>
-                     <role type="publisher"/>
-                     <organization>
-                        <name>International Organization for Standardization</name>
-                     </organization>
-                  </contributor>
-                  <date type="published">
-                     <on>2000</on>
-                  </date>
-                  <docidentifier type="author-date">International Organization for Standardization 2000h</docidentifier>
-                  <biblio-tag>International Organization for Standardization 2000h, </biblio-tag>
-               </bibitem>
-            </references>
-         </sections>
-         <bibliography>
+          <bibdata>
+          <language current="true">en</language>
+          </bibdata>
+          <preface><clause type="toc" id="_" displayorder="1"><fmt-title depth="1" id="_">Contents</fmt-title></clause>
+      <foreword id="_" displayorder="2"><title id="_">Foreword</title><fmt-title depth="1" id="_"><semx element="title" source="_">Foreword</semx></fmt-title>
+        <p id="_">
+        <eref bibitemid="ref1" id="_"/><semx element="eref" source="_"><fmt-xref target="ref1">ISO&#xA0;712</fmt-xref></semx>
+        <eref bibitemid="ref2" id="_"/><semx element="eref" source="_"><fmt-xref target="ref2">ISO&#xA0;713</fmt-xref></semx>
+        <eref bibitemid="ref3" id="_"/><semx element="eref" source="_"><fmt-xref target="ref3">International&#xA0;Organization&#xA0;for&#xA0;Standardization,&#xA0;2000</fmt-xref></semx>
+        <eref bibitemid="ref4" id="_"/><semx element="eref" source="_"><fmt-xref target="ref4">International&#xA0;Organization&#xA0;for&#xA0;Standardization,&#xA0;2000</fmt-xref></semx>
+        <eref bibitemid="ref5" id="_"/><semx element="eref" source="_"><fmt-xref target="ref5">ISO&#xA0;712</fmt-xref></semx>
+        <eref bibitemid="ref6" id="_"/><semx element="eref" source="_"><fmt-xref target="ref6">ISO&#xA0;713</fmt-xref></semx>
+        <eref bibitemid="ref7" id="_"/><semx element="eref" source="_"><fmt-xref target="ref7">International&#xA0;Organization&#xA0;for&#xA0;Standardization,&#xA0;2000</fmt-xref></semx>
+        <eref bibitemid="ref8" id="_"/><semx element="eref" source="_"><fmt-xref target="ref8">International&#xA0;Organization&#xA0;for&#xA0;Standardization,&#xA0;2000</fmt-xref></semx>
+        </p>
+          </foreword></preface><sections><references id="_" obligation="informative" normative="true" displayorder="3"><title id="_">Normative References</title><fmt-title depth="1" id="_"><span class="fmt-caption-label"><semx element="autonum" source="_">1</semx><span class="fmt-clause-delim">.</span></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_">Normative References</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Clause</span> <semx element="autonum" source="_">1</semx></fmt-xref-label>
+      <bibitem id="ref1" type="standard"><biblio-tag>ISO&#xA0;712, </biblio-tag><formattedref>Cereals and cereal products.</formattedref>
+        <title type="main" format="text/plain">Cereals and cereal products</title>
+        <docidentifier type="ISO">ISO&#xA0;712</docidentifier><docidentifier scope="biblio-tag">ISO&#xA0;712</docidentifier>
+        <contributor>
+          <role type="author"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <date type="published"><on>2000</on></date>
+      </bibitem>
+      <bibitem id="ref2" type="standard"><biblio-tag>ISO&#xA0;713, </biblio-tag><formattedref>Books and book products.</formattedref>
+        <title type="main" format="text/plain">Books and book products</title>
+        <docidentifier type="ISO">ISO&#xA0;713</docidentifier><docidentifier scope="biblio-tag">ISO&#xA0;713</docidentifier>
+        <contributor>
+          <role type="author"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <date type="published"><on>2000</on></date>
+      </bibitem>
+      <bibitem id="ref3" type="book"><biblio-tag>International Organization for Standardization, 2000 </biblio-tag><formattedref>International Organization for Standardization, <em>Cereals and cereal products</em>, International Organization for Standardization, 2000.</formattedref>
+        <title type="main" format="text/plain">Cereals and cereal products</title>
+        <contributor>
+          <role type="author"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <date type="published"><on>2000</on></date>
+      <docidentifier type="author-date">International Organization for Standardization, 2000</docidentifier><biblio-tag>International Organization for Standardization, 2000, </biblio-tag></bibitem>
+            <bibitem id="ref4" type="book"><biblio-tag>International Organization for Standardization, 2000 </biblio-tag><formattedref>International Organization for Standardization, <em>Books and book products</em>, International Organization for Standardization, 2000.</formattedref>
+        <title type="main" format="text/plain">Books and book products</title>
+        <contributor>
+          <role type="author"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <date type="published"><on>2000</on></date>
+      <docidentifier type="author-date">International Organization for Standardization, 2000</docidentifier><biblio-tag>International Organization for Standardization, 2000, </biblio-tag></bibitem>
+       </references><references id="_" obligation="informative" normative="true"><title id="_">Normative References</title><fmt-title depth="1" id="_"><span class="fmt-caption-label"><semx element="autonum" source="_">1</semx><span class="fmt-clause-delim">.</span></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_">Normative References</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Clause</span> <semx element="autonum" source="_">1</semx></fmt-xref-label>
+      <bibitem id="ref5" type="standard"><biblio-tag>ISO&#xA0;712, </biblio-tag><formattedref>Cereals and cereal products.</formattedref>
+        <title type="main" format="text/plain">Cereals and cereal products</title>
+        <docidentifier type="ISO">ISO&#xA0;712</docidentifier><docidentifier scope="biblio-tag">ISO&#xA0;712</docidentifier>
+        <contributor>
+          <role type="author"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <date type="published"><on>2000</on></date>
+      </bibitem>
+      <bibitem id="ref6" type="standard"><biblio-tag>ISO&#xA0;713, </biblio-tag><formattedref>Books and book products.</formattedref>
+        <title type="main" format="text/plain">Books and book products</title>
+        <docidentifier type="ISO">ISO&#xA0;713</docidentifier><docidentifier scope="biblio-tag">ISO&#xA0;713</docidentifier>
+        <contributor>
+          <role type="author"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <date type="published"><on>2000</on></date>
+      </bibitem>
+      <bibitem id="ref7" type="book"><biblio-tag>International Organization for Standardization, 2000 </biblio-tag><formattedref>International Organization for Standardization, <em>Cereals and cereal products</em>, International Organization for Standardization, 2000.</formattedref>
+        <title type="main" format="text/plain">Cereals and cereal products</title>
+        <contributor>
+          <role type="author"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <date type="published"><on>2000</on></date>
+      <docidentifier type="author-date">International Organization for Standardization, 2000</docidentifier><biblio-tag>International Organization for Standardization, 2000, </biblio-tag></bibitem>
+      <bibitem id="ref8" type="book"><biblio-tag>International Organization for Standardization, 2000 </biblio-tag><formattedref>International Organization for Standardization, <em>Books and book products</em>, International Organization for Standardization, 2000.</formattedref>
+        <title type="main" format="text/plain">Books and book products</title>
+        <contributor>
+          <role type="author"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Organization for Standardization</name>
+          </organization>
+        </contributor>
+        <date type="published"><on>2000</on></date>
+      <docidentifier type="author-date">International Organization for Standardization, 2000</docidentifier><biblio-tag>International Organization for Standardization, 2000, </biblio-tag></bibitem>
+       </references></sections>
+          <bibliography>
+        
+       
        </bibliography>
-      </iso-standard>
+       </iso-standard>
     PRESXML
     pres_output = Nokogiri::XML(
       IsoDoc::Ieee::PresentationXMLConvert.new(presxml_options)

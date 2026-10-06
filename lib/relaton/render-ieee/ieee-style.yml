@@ -1,0 +1,84 @@
+# The metanorma-ieee CitationStyle instance (relaton-render 3 Iso690
+# engine). Translates the IEEE reference style the gem carried as
+# relaton-render 1.x liquid templates (config.yml): comma-separated
+# elements, quoted analytic titles against emphasised hosts and series,
+# initials-first names, "et al." past six creators, accessed dates and
+# linked locations.
+name: "IEEE reference style"
+scheme:
+  system: author-date
+  nameForm:
+    initials: true
+    initialsSeparator: " "
+    surnameUpcase: false
+    subsequentSurnameUpcase: false
+    orgUpcase: false
+    listStyle: "serial"
+    etalCount: 6
+    etalDisplay: 3
+    editorsMarked: false
+  homeDocidType:
+    - ISO
+    - IEC
+    - IEEE
+  defaultKind: online
+  locale:
+    labels:
+      and: "and"
+      oxford_comma: ","
+      in: "in"
+      ed: "(ed.)"
+      eds: "(eds.)"
+      edition: "edition"
+      edition_1: "first edition"
+      edition_2: "second edition"
+      edition_3: "third edition"
+      edition_4: "fourth edition"
+      edition_5: "fifth edition"
+      edition_6: "sixth edition"
+      edition_7: "seventh edition"
+      edition_8: "eighth edition"
+      edition_9: "ninth edition"
+      edition_10: "tenth edition"
+      volume: "vol."
+      issue: "no."
+      page: "pp."
+      pages: "pp."
+      date_range: "–"
+      available_from: ""
+      medium_unpublished: "Preprint"
+      medium_dataset: "Dataset"
+templates:
+  titleOpen: "<em>"
+  titleClose: "</em>"
+  citation: "{{surname}}, {{date}}{{disambiguator}}"
+  reference: "{{creator}}, {{title}}, {{date}}."
+  name: "{{surname}}, {{givenNames}}"
+  uri: "<fmt-link target='{{uri}}'>{{uri}}</fmt-link>"
+  identifierMode: "first"
+perType:
+  - type: monograph
+    template: "{{creator}}, {{title}}, {{edprod}}, {{date}}, {{identifier}}."
+  - type: continuing
+    template: "{{title}}, {{date}}."
+  - type: serial_part
+    template: "{{creator}}, {{title}} {{series}}, {{extentdate}}, {{identifier}}."
+    title: "“{{title}},”"
+    series: "<em><em>{{seriestitle}}</em> ({{seriesrun}})</em>"
+  - type: component_part
+    template: "{{creator}}, {{title}} {{componentpart}}, {{dateextent}}, {{access}}."
+    title: "“{{title}},”"
+  - type: online
+    template: "{{creator}}, {{title}} {{mediumdate}}, {{accloc}}."
+    title: "“{{title}},”"
+  - type: webdoc
+    template: "{{creator}}, {{title}} {{proddate}}, {{accloc}}."
+    title: "“{{title}},”"
+  - type: report
+    template: "{{title}}, {{location}}."
+    title: "{{title}}"
+    home: false
+  - type: report
+    template: "{{title}}."
+    title: "{{title}}"
+    home: true
