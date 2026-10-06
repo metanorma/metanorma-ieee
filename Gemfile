@@ -2,7 +2,7 @@ Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 
 source "https://rubygems.org"
-gem "relaton-render", "3.0.0.pre.alpha.18" # kind routing, title form
+gem "relaton-render", "3.0.0.pre.alpha.19" # renderings contract, segment join, in-text et-al
 
 git_source(:github) { |repo| "https://github.com/#{repo}" }
 
@@ -24,7 +24,7 @@ gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "main"
 gem "metanorma-plugin-lutaml", github: "metanorma/metanorma-plugin-lutaml", branch: "main"
 gem "metanorma-utils", github: "metanorma/metanorma-utils", branch: "main" # GcBudget, unreleased past 2.0.7
 gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "main" # CitationStyle port, unreleased
-gem "isodoc", github: "metanorma/isodoc", branch: "main"
+gem "isodoc", github: "metanorma/isodoc", branch: "main" # publisher-token miss guard (#849)
 gem "relaton-cli", ">= 3.0.0.pre.alpha.1"
 # Pin relaton: Its VERSION is the cache grammar_hash and it ships the ITU
 # scraper. A floating `>= 3.0.0.pre.alpha.1` (via metanorma-document) lets
