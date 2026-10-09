@@ -2,7 +2,7 @@ Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 
 source "https://rubygems.org"
-gem "relaton-render", "3.0.0.pre.alpha.31" # canonical ieee-sa pack # renderings contract, segment join, in-text et-al
+gem "relaton-render", "3.0.0.pre.alpha.33" # canonical ieee-sa pack; delta merge, edition precedence, named ieee_* rules
 
 git_source(:github) { |repo| "https://github.com/#{repo}" }
 

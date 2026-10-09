@@ -45,6 +45,11 @@ scheme:
       edition_8: "eighth edition"
       edition_9: "ninth edition"
       edition_10: "tenth edition"
+rules:
+  identifier: ieee_identifier
+  component_part: ieee_component_part
+  access: ieee_access
+  medium: ieee_medium
 templates:
   titleOpen: "<em>"
   titleClose: "</em>"

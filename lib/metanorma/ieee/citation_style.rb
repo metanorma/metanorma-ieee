@@ -12,15 +12,10 @@ module Metanorma
     class CitationStyle < ::Relaton::Render::General
       STYLE_PATH = File.join(__dir__, "ieee-style.yml")
 
-      # The IEEE data elements, scoped to this renderer alone: the
-      # home-standard resolution by publisher name and the DOI/ISBN
-      # kind labels with a colon
-      ELEMENTS = {
-        identifier: IeeeElements::IeeeIdentifier,
-        component_part: IeeeElements::IeeeComponentPart,
-        access: IeeeElements::IeeeAccess,
-        medium: IeeeElements::IeeeMedium,
-      }.freeze
+      # The IEEE presentation-of-models rules are engine-registered
+      # (ieee_identifier, ieee_component_part, ieee_access,
+      # ieee_medium) and selected as pack data in ieee-style.yml; this
+      # facade carries only the home-standard resolution
 
       # 1.x use_terminator?: home standards carry no bibliography
       # terminator
@@ -38,7 +33,6 @@ module Metanorma
           script: options[:script] || "Latn",
           labels: options[:i18nhash] || {},
           style: options[:style] || STYLE_PATH,
-          elements: ELEMENTS,
         )
       end
     end
