@@ -1,8 +1,10 @@
-# The metanorma-ieee CitationStyle instance (relaton-render 3.0.0.pre
-# Iso690 engine). IEEE name-and-date: the inverted first creator, the
-# initials-first direct subsequent creators joined with "and", the
+# The metanorma-ieee CitationStyle instance: the canonical IEEE-SA
+# pack with the IEEE name-and-date deltas - the inverted first
+# creator, the direct subsequent creators joined with "and", the
 # batch-disambiguated date, and the standards cited by title alone.
 name: "ISO 690 (metanorma-ieee flavour)"
+family: ieee-sa
+extends: ieee-sa
 scheme:
   system: name-date
   defaultKind: online
@@ -47,7 +49,7 @@ templates:
   titleOpen: "<em>"
   titleClose: "</em>"
   identifierMode: first
-  citation: "{{surname}}, {{disambiguateddate}}"
+  citation: "{{surname}} {{disambiguateddate}}"
   reference: "{{creator}}, {{title}}, {{edition}}, {{production}}, {{disambiguateddate}}, {{identifier}}."
   name: "{{surname}}, {{givenNames}}"
   uri: "<fmt-link target='{{uri}}'>{{uri}}</fmt-link>"
