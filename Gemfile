@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-gem "relaton-render", "3.0.0.pre.alpha.33" # canonical ieee-sa pack; delta merge, edition precedence, named ieee_* rules
+gem "relaton-render", "= 3.0.0.pre.alpha.43" # canonical ieee-sa pack; delta merge, edition precedence, named ieee_* rules
 
 git_source(:github) { |repo| "https://github.com/#{repo}" }
 
@@ -15,7 +15,7 @@ gem "metanorma-mirror", "~> 1.0"
 gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "feat/term-grammar-coverage" # TEMPORARY audit chain (stacked)
 gem "metanorma-document", github: "metanorma/metanorma-document", branch: "main" # TEMPORARY audit chain
 gem "isodoc", github: "metanorma/isodoc", branch: "main" # merged as #825
-gem "relaton-bib", "~> 2.2.0.pre.alpha.1"
+gem "relaton-bib", "2.2.0.pre.alpha.1"
 gem "pubid", github: "pubid/pubid", branch: "main"
 
 eval_gemfile("Gemfile.devel") rescue nil
