@@ -380,11 +380,7 @@ RSpec.describe IsoDoc do
                    </semx>
                    <eref type="inline" bibitemid="ref3" citeas="REF4" id="_"/>
                    <semx element="eref" source="_">
-                      <fmt-xref type="inline" style="author_date" target="ref3">
-
-                         REF4
-
-                      </fmt-xref>
+                      <fmt-xref type="inline" style="author_date" target="ref3">REF4</fmt-xref>
                    </semx>
                    <eref type="inline" bibitemid="ref4" citeas="ISO 639:1967" id="_"/>
                    <semx element="eref" source="_">
@@ -866,7 +862,7 @@ RSpec.describe IsoDoc do
                    <biblio-tag>
                       Aluffi
                       <em>et al.</em>
-                      2022a
+                      2022a,
                    </biblio-tag>
                    <formattedref>
                       Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne,
@@ -976,6 +972,7 @@ RSpec.describe IsoDoc do
                       <em>et al.</em>
                       2022a
                    </docidentifier>
+                   <docidentifier scope="biblio-tag">Aluffi <em>et al.</em> 2022a</docidentifier>
                    <biblio-tag>
                       Aluffi
                       <em>et al.</em>
