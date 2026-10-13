@@ -58,15 +58,9 @@ RSpec.describe Metanorma::Ieee::Processor do
         <main class="main-section">
           <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
           <div id="_">
-            <h1 id="_">
-              <a class="anchor" href="#_"/>
-              <a class="header" href="#_">Terms</a>
-            </h1>
+            <h1 id="_"><a class="anchor" href="#_"></a><a class="header" href="#_">Terms</a></h1>
             <div id="_">
-              <h2 class="TermNum" id="_">
-                <a class="anchor" href="#_"/>
-                <a class="header" href="#_">1.1.</a>
-              </h2>
+              <h2 class="TermNum" id="_"><a class="anchor" href="#_"></a><a class="header" href="#_">1.1.</a></h2>
             </div>
             <p class="Terms" style="text-align:left;">Term2</p>
           </div>

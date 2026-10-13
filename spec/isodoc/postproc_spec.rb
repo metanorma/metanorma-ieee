@@ -25,7 +25,7 @@ RSpec.describe IsoDoc::Ieee do
       <main class='main-section'>
         <br/>
         <div id='x' class='abstract'>
-          <h1 class='AbstractTitle'><a class="anchor" href="#x"></a><a class="header" href="#x">Abstract</a></h1>
+          <h1 class='AbstractTitle'><a class="anchor" href="#x"/><a class="header" href="#x">Abstract</a></h1>
           <p>Abstract text</p>
         </div>
         <hr/>
@@ -96,7 +96,8 @@ RSpec.describe IsoDoc::Ieee do
       <br/>
       <div id="x" class="abstract"></div>
       <hr/>
-      <div id="abstract-destination"></div>
+      <div id="abstract-destination">
+</div>
       </div>
       </body>
       </html>
@@ -132,7 +133,8 @@ RSpec.describe IsoDoc::Ieee do
       <p>Abstract text</p>
       </div>
       <hr/>
-      <div id="abstract-destination"></div>
+      <div id="abstract-destination">
+</div>
       </div>
       </body>
       </html>

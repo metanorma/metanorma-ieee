@@ -714,9 +714,7 @@ RSpec.describe Metanorma::Ieee do
              <preface>
          <introduction id='_' obligation='informative'>
            <title id="_">Introduction</title>
-           <admonition id="_">This introduction is not part of P10000/D1.2,
-              Draft Recommended Practice for Widgets
-            </admonition>
+           <admonition id="_">This introduction is not part of IEEE Draft 10000/D1.2, 2026, Draft Recommended Practice for Widgets</admonition>
            <p id='_'>This is the introduction.</p>
          </introduction>
        </preface>
@@ -770,7 +768,7 @@ RSpec.describe Metanorma::Ieee do
 
     ret = Asciidoctor.convert(input
       .sub(":draft:", ":docstage: draft\n:draft:"), *OPTIONS)
-    expect(ret).to include "This introduction is not part of P10000/D1.2, Draft Recommended Practice for Widgets"
+    expect(ret).to include "This introduction is not part of IEEE Draft 10000/D1.2, 2026, Draft Recommended Practice for Widgets"
   end
 
   it "inserts boilerplate note in front of sections for amendment" do
@@ -1405,7 +1403,7 @@ RSpec.describe Metanorma::Ieee do
               </foreword>
               <introduction id="_" obligation="informative">
                  <title id="_">Introduction</title>
-                 <admonition id="_">This introduction is not part of P10000/D1.2, Draft Recommended Practice for Widgets</admonition>
+                 <admonition id="_">This introduction is not part of IEEE Draft 10000/D1.2, 2026, Draft Recommended Practice for Widgets</admonition>
                  <clause id="_" inline-header="false" obligation="informative">
                     <title id="_">Introduction Subsection</title>
                  </clause>
