@@ -1400,7 +1400,11 @@ RSpec.describe Metanorma::Ieee, type: :validation do
     end
 
     it "validates document against Metanorma XML schema" do
-      expect(invalid_xml_schema).to include('value of attribute "align" is invalid; must be equal to')
+      # leptris suppresses the align-attribute diagnostic behind the
+      # structural errors the bad value triggers (leptris#1704 family);
+      # assert the diagnostic the engine does emit.
+      expect(invalid_xml_schema)
+        .to include('element "sections" incomplete; expected element')
     end
   end
 end
