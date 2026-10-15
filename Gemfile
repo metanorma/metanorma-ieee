@@ -1,5 +1,11 @@
 source "https://rubygems.org"
 gem "relaton-render", "= 3.0.0.pre.alpha.43" # canonical ieee-sa pack; delta merge, edition precedence, named ieee_* rules
+# the lockfile is not tracked; without an exact pin CI floats the monogem
+# to newer alphas whose rendering differs, flipping fixture baselines
+gem "relaton", "= 3.0.0.pre.alpha.14"
+# leptris 1.9.359 drops Leptris::XML::Declaration#to_xml (blocks_spec);
+# 1.9.356 is the last rendering-green line until leptris restores it
+gem "leptris", "1.9.356.0"
 
 git_source(:github) { |repo| "https://github.com/#{repo}" }
 
