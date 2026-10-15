@@ -1095,8 +1095,9 @@ RSpec.describe Metanorma::Ieee do
   
   
   
-        <docidentifier type="IEC" primary="true">ISO/IEC 2382</docidentifier>
-        <docidentifier type="URN">urn:iec:std:iso-iec:2382::::</docidentifier>
+        <docidentifier type="ISO" primary="true">ISO/IEC 2382</docidentifier>
+        <docidentifier type="iso-reference">ISO/IEC 2382(E)</docidentifier>
+        <docidentifier type="URN">urn:iso:std:iso-iec:2382:stage-90.92</docidentifier>
   
   
   
@@ -1186,8 +1187,9 @@ RSpec.describe Metanorma::Ieee do
   
   
   
-        <docidentifier type="IEC" primary="true">ISO/IEC 27001</docidentifier>
-        <docidentifier type="URN">urn:iec:std:iso-iec:27001::::</docidentifier>
+        <docidentifier type="ISO" primary="true">ISO/IEC 27001</docidentifier>
+        <docidentifier type="iso-reference">ISO/IEC 27001(E)</docidentifier>
+        <docidentifier type="URN">urn:iso:std:iso-iec:27001</docidentifier>
   
   
   
