@@ -2,10 +2,9 @@ source "https://rubygems.org"
 gem "relaton-render", "= 3.0.0.pre.alpha.43" # canonical ieee-sa pack; delta merge, edition precedence, named ieee_* rules
 # the lockfile is not tracked; without an exact pin CI floats the monogem
 # to newer alphas whose rendering differs, flipping fixture baselines
-gem "relaton", "= 3.0.0.pre.alpha.14"
+gem "relaton", "~> 3.0.0.pre.alpha" # prerelease line: alpha.17 carries the singular_tolerance declarations
 # leptris 1.9.359 drops Leptris::XML::Declaration#to_xml (blocks_spec);
 # 1.9.356 is the last rendering-green line until leptris restores it
-gem "leptris", "1.9.356.0"
 
 git_source(:github) { |repo| "https://github.com/#{repo}" }
 
@@ -33,4 +32,3 @@ gem "metanorma-core", github: "metanorma/metanorma-core", branch: "feat/flavor-t
 # moxml 0.5.138's leptris adapter references Leptris::XML::Declaration,
 # which only exists in leptris 1.9.359 (the to_xml regression pair,
 # leptris#1733); pin the coherent 1.9.356-era moxml line
-gem "moxml", "~> 0.5.84", "< 0.5.138"
