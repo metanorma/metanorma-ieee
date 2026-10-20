@@ -494,7 +494,6 @@ RSpec.describe Metanorma::Ieee do
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     out.xpath("//xmlns:bibdata | //xmlns:boilerplate | //xmlns:note | " \
               "//xmlns:metanorma-extension | //xmlns:fetched").remove
-    File.write("/tmp/m222_actual.xml", strip_guid(out.to_xml))
     expect(strip_guid(out.to_xml))
       .to be_xml_equivalent_to output
   end
