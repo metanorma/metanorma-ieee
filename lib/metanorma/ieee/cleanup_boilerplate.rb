@@ -76,22 +76,45 @@ module Metanorma
       end
 
       def populate_participants(xml, target, subtitle)
-        t = xml.at("//clause[@anchor = '#{target}']/membership") or return
+        clause = xml.at("//clause[@anchor = '#{target}']") or return
         s = xml.xpath("//clause[@type = 'participants']/clause").detect do |x|
           n = x.at("./title") and n.text.strip.downcase == subtitle
         end
-        t.replace(populate_participants1(s || t))
+        if s
+          content = populate_participants1(s)
+          lead = clause.at("./p")
+          if lead
+            lead.xpath("./following-sibling::*").each do |n|
+              n["type"] == "emeritus_sign" or n.remove
+            end
+            lead.add_next_sibling(content)
+          else
+            clause.children.each(&:remove)
+            clause.add_child(content)
+          end
+        else
+          populate_participants_clause(clause)
+        end
+      end
+
+      def populate_participants_clause(clause)
+        clause.xpath("./membership").each { |m| m.replace(m.children) }
+        populate_participants_lists(clause)
       end
 
       def populate_participants1(clause)
+        populate_participants_lists(clause)
+        clause.at("./title")&.remove
+        clause.children.to_xml
+      end
+
+      def populate_participants_lists(clause)
         participants_dl_to_ul(clause)
         clause.xpath(".//ul | .//ol").each do |ul|
           ul.name = "ul"
           ul.xpath("./li").each { |li| populate_participants2(li) }
           ul.xpath(".//p[normalize-space() = '']").each(&:remove)
         end
-        clause.at("./title")&.remove
-        clause.children.to_xml
       end
 
       def participants_dl_to_ul(clause)

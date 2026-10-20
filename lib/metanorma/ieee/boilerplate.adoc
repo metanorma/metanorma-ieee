@@ -192,9 +192,6 @@ Technologies, application of technologies, and recommended procedures in various
 ==== {blank}
 At the time this draft {{ doctype | downcase }} was completed, the {{ working_group }} had the following membership:
 
-++++
-<membership>
-++++
 
 * {blank}
 name::: &#x3c;Chair Name&#x3e;
@@ -230,17 +227,11 @@ role::: Member
 name::: Participant9
 role::: Member
 
-++++
-</membership>
-++++
 
 [[boilerplate-participants-bg]]
 ==== {blank}
 The following members of the {{ balloting_group_type }} {{ balloting_group }} Standards Association balloting group voted on this {{ doctype | downcase }}. Balloters may have voted for approval, disapproval, or abstention.
 
-++++
-<membership>
-++++
 
 * {blank}
 name::: Balloter1
@@ -270,18 +261,12 @@ role::: Member
 name::: Balloter9
 role::: Member
 
-++++
-</membership>
-++++
 
 [[boilerplate-participants-sb]]
 ==== {blank}
 
 When the IEEE SA Standards Board approved this {{ doctype | downcase }} on {{ ieee_sasb_approveddate }}, it had the following membership:
 
-++++
-<membership>
-++++
 
 * {blank}
 name::: &#x3c;Name&#x3e;
@@ -323,9 +308,6 @@ role::: Member
 name::: SBMember9
 role::: Member
 
-++++
-</membership>
-++++
 
 [type=emeritus_sign]
 span:cite_fn[*]Member Emeritus
