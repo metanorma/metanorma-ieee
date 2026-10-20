@@ -64,9 +64,6 @@ This Work is published with the understanding that IEEE and the {{ working_group
 
 Special thanks are given to the following reviewers of this paper:
 
-++++
-<membership>
-++++
 
 * {blank}
 name::: Balloter1
@@ -96,7 +93,4 @@ role::: Member
 name::: Balloter9
 role::: Member
 
-++++
-</membership>
-++++
 
