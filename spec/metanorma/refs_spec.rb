@@ -256,7 +256,7 @@ RSpec.describe Metanorma::Ieee do
     INPUT
     output = <<~OUTPUT
       <?xml version="1.0" encoding="UTF-8"?>
-      <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="1.7.0" flavor="ieee">
+      <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Ieee::VERSION}" flavor="ieee">
 
       <sections>
       </sections><bibliography><references id="_" normative="false" obligation="informative">
@@ -539,7 +539,7 @@ RSpec.describe Metanorma::Ieee do
       * [[[ref3,IEEE 802.1D-1990]]] REF2
     INPUT
     output = <<~OUTPUT
-      <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="1.7.0" flavor="ieee">
+      <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Ieee::VERSION}" flavor="ieee">
         <preface>
           <introduction id="_" obligation="informative">
             <title id="_">Introduction</title>
