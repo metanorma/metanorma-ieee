@@ -152,7 +152,7 @@ RSpec.describe Metanorma::Ieee::CitationStyle do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref>Aluffi, P., D. Anderson, M. Hering <em>et al.</em>, <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022, DOI: https://doi.org/10.1017/9781108877831.</formattedref>
+      <formattedref>Aluffi, P., D. Anderson, M. Hering, et al., <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022, DOI: https://doi.org/10.1017/9781108877831.</formattedref>
     OUTPUT
     expect(renderer.render(input))
       .to be_equivalent_to output
