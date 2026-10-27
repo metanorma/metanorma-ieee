@@ -69,11 +69,27 @@ module Metanorma
         normative_dated_refs(root)
       end
 
-      # Style manual 12.3.1
+      # Style manual 12.3.1. A reference that names a stage ("ISO/IEC/IEEE
+      # FDIS 42010") is sufficient identification on its own: staged documents
+      # have no publication date, and the stage is how the in-progress
+      # citation identifies itself (relaton-iso#120).
       def normative_dated_refs(root)
         root.xpath("//references[@normative = 'true']/bibitem").each do |b|
+          next if staged_reference?(b)
+
           b.at(".//date") or
             @log.add("IEEE_10", b, params: [b.at("./@anchor")&.text])
+        end
+      end
+
+      ISO_STAGE_ABBREVIATIONS =
+        %w(PWI NP NWIP DP WD AWI preCD PreCD CD CDV DIS FDIS Fpr PRF DAM).freeze
+
+      def staged_reference?(bibitem)
+        bibitem.xpath(".//docidentifier").any? do |d|
+          ISO_STAGE_ABBREVIATIONS.any? do |st|
+            d.text.match?(/(?<=[\s\/])#{st}(?=[\s\/.:-]|$)/)
+          end
         end
       end
 
