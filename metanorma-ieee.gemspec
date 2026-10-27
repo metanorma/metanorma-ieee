@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "metanorma-standoc", ">= 3.4.2" # audit chain
   spec.add_dependency "mnconvert", "~> 1.20"
-  spec.add_dependency "pubid", "~> 2.0.0.pre.alpha"
+  spec.add_dependency "pubid", "~> 2.0"
 
   spec.add_development_dependency "debug"
   spec.add_development_dependency "equivalent-xml", "~> 0.6"
