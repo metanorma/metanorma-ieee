@@ -279,9 +279,29 @@ RSpec.describe Metanorma::Ieee, type: :validation do
       INPUT
     end
 
+    let(:staged_reference) do
+      convert_and_capture_errors(<<~"INPUT")
+        #{VALIDATING_BLANK_HDR}
+
+        == Scope
+        <<iso123,clause=1>>
+
+        [bibliography]
+        == Normative References
+        * [[[iso123,ISO/IEC/IEEE FDIS 42010]]] _Standard_
+      INPUT
+    end
+
     it "warns of undated reference in normative references" do
       expect(undated_reference).to include("Normative reference iso123 is not dated")
       expect(dated_reference).not_to include("Normative reference iso123 is not dated")
+    end
+
+    # relaton-iso#120: a staged reference ("ISO/IEC/IEEE FDIS 42010") is
+    # sufficient identification on its own — staged documents have no
+    # publication date.
+    it "does not warn for a staged reference" do
+      expect(staged_reference).not_to include("Normative reference iso123 is not dated")
     end
 
     it "warns that undated reference has locality" do
