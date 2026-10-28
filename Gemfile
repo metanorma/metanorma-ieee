@@ -26,7 +26,7 @@ gem "pubid", "~> 2.0"
 
 eval_gemfile("Gemfile.devel") rescue nil
 gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "main"
-gem "metanorma-core", github: "metanorma/metanorma-core", branch: "feat/flavor-table" # TEMPORARY audit chain
+gem "metanorma-core", "~> 0.2.5.pre.alpha" # published flavor/taste table (metanorma-core#18)
 # moxml 0.5.138's leptris adapter references Leptris::XML::Declaration,
 # which only exists in leptris 1.9.359 (the to_xml regression pair,
 # leptris#1733); pin the coherent 1.9.356-era moxml line
