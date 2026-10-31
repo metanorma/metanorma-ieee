@@ -63,7 +63,7 @@ RSpec.describe Metanorma::Ieee do
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     expect(out.xpath("//xmlns:references/xmlns:bibitem/@anchor")
       .map(&:value))
-      .to be_equivalent_to ["ref2", "ref1", "ref4", "ref5", "ref3"]
+      .to be_xml_equivalent_to ["ref2", "ref1", "ref4", "ref5", "ref3"]
   end
 
   it "sorts bibliography" do
@@ -133,7 +133,7 @@ RSpec.describe Metanorma::Ieee do
     out = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     expect(out.xpath("//xmlns:references/xmlns:bibitem/@anchor")
       .map(&:value))
-      .to be_equivalent_to ["ref2", "ref1", "ref4", "ref5", "khronos_openxr",
+      .to be_xml_equivalent_to ["ref2", "ref1", "ref4", "ref5", "khronos_openxr",
                             "ref3"]
   end
 
