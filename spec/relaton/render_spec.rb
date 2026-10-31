@@ -60,7 +60,7 @@ RSpec.describe Metanorma::Ieee::CitationStyle do
       <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne, <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022, DOI: https://doi.org/10.1017/9781108877831.</formattedref>
     OUTPUT
     expect(renderer.render(input))
-      .to be_equivalent_to output
+      .to be_xml_equivalent_to output
   end
 
   it "renders book, eleven editors" do
@@ -155,7 +155,7 @@ RSpec.describe Metanorma::Ieee::CitationStyle do
       <formattedref>Aluffi, P., D. Anderson, M. Hering, et al., <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>, first edition, Cambridge, UK: Cambridge University Press, 2022, DOI: https://doi.org/10.1017/9781108877831.</formattedref>
     OUTPUT
     expect(renderer.render(input))
-      .to be_equivalent_to output
+      .to be_xml_equivalent_to output
   end
 
   it "renders incollection, two authors" do
@@ -231,7 +231,7 @@ RSpec.describe Metanorma::Ieee::CitationStyle do
       <formattedref>Ramsey, J. K., and W. C. McGrew, “Object play in great apes: Studies in nature and captivity,” in Pellegrini, A. D., and P. K. Smith (eds.): <em>The nature of play: Great apes and humans</em>, New York, NY: Guilford Press, 2005, pp. 89–112, accessed September 3, 2019.</formattedref>
     OUTPUT
     expect(renderer.render(input))
-      .to be_equivalent_to output
+      .to be_xml_equivalent_to output
   end
 
   it "renders journal" do
@@ -245,7 +245,7 @@ RSpec.describe Metanorma::Ieee::CitationStyle do
       <formattedref><em>Nature</em>, 2005&#x2013;2009.</formattedref>
     OUTPUT
     expect(renderer.render(input))
-      .to be_equivalent_to output
+      .to be_xml_equivalent_to output
   end
 
   it "renders article" do
@@ -315,7 +315,7 @@ RSpec.describe Metanorma::Ieee::CitationStyle do
       <formattedref>Aluffi, P., D. Anderson, M. Hering, M. Mustaţă, and S. Payne, “Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday,” <em><em>London Mathematical Society Lecture Note Series</em> (N.S.)</em>, vol. 1 no. 7, pp. 89–112, 2022, DOI: https://doi.org/10.1017/9781108877831.</formattedref>
     OUTPUT
     expect(renderer.render(input))
-      .to be_equivalent_to output
+      .to be_xml_equivalent_to output
   end
 
   it "renders software" do
@@ -344,7 +344,7 @@ RSpec.describe Metanorma::Ieee::CitationStyle do
       <formattedref>Ribose Inc., “metanorma-standoc,” 2019, accessed September 6, 2023, <fmt-link target='https://github.com/metanorma/metanorma-standoc'>https://github.com/metanorma/metanorma-standoc</fmt-link>.</formattedref>
     OUTPUT
     expect(renderer.render(input))
-      .to be_equivalent_to output
+      .to be_xml_equivalent_to output
   end
 
   it "renders home standard" do
@@ -413,7 +413,7 @@ RSpec.describe Metanorma::Ieee::CitationStyle do
       <formattedref>Latex, rubber - Determination of total solids content.</formattedref>
     OUTPUT
     expect(renderer.render(input))
-      .to be_equivalent_to output
+      .to be_xml_equivalent_to output
   end
 
   it "renders external standard" do
@@ -482,7 +482,7 @@ RSpec.describe Metanorma::Ieee::CitationStyle do
       <formattedref>Intellectual Property Rights in IETF Technology, <fmt-link target='https://www.rfc-editor.org/info/rfc3979'>https://www.rfc-editor.org/info/rfc3979</fmt-link>.</formattedref>
     OUTPUT
     expect(renderer.render(input))
-      .to be_equivalent_to output
+      .to be_xml_equivalent_to output
   end
 
   it "renders dataset" do
@@ -523,7 +523,7 @@ RSpec.describe Metanorma::Ieee::CitationStyle do
       <formattedref>Portes, A., and R. G. Rumbaut, “Children of Immigrants. Longitudinal Sudy (CILS) 1991–2006 ICPSR20520,” Dataset, 2012, accessed May 6, 2018, <fmt-link target='https://doi.org/10.3886/ICPSR20520.v2'>https://doi.org/10.3886/ICPSR20520.v2</fmt-link>.</formattedref>
     OUTPUT
     expect(renderer.render(input))
-      .to be_equivalent_to output
+      .to be_xml_equivalent_to output
   end
 
   it "renders website" do
@@ -557,7 +557,7 @@ RSpec.describe Metanorma::Ieee::CitationStyle do
       <formattedref>Liberman, M., and G. Pullum, “Language Log,” University of Pennsylvania, 2003–, accessed September 3, 2019, <fmt-link target='https://languagelog.ldc.upenn.edu/nll/'>https://languagelog.ldc.upenn.edu/nll/</fmt-link>.</formattedref>
     OUTPUT
     expect(renderer.render(input))
-      .to be_equivalent_to output
+      .to be_xml_equivalent_to output
   end
 
   it "renders unpublished" do
@@ -588,7 +588,7 @@ RSpec.describe Metanorma::Ieee::CitationStyle do
       <formattedref>Jenkins, S., and J. Ruostekoski, “Controlled manipulation of light by cooperativeresponse of atoms in an optical lattice,” Preprint, 2012, accessed June 24, 2020, <fmt-link target='https://eprints.soton.ac.uk/338797/'>https://eprints.soton.ac.uk/338797/</fmt-link>.</formattedref>
     OUTPUT
     expect(renderer.render(input))
-      .to be_equivalent_to output
+      .to be_xml_equivalent_to output
   end
 
   it "renders untyped" do
@@ -619,7 +619,7 @@ RSpec.describe Metanorma::Ieee::CitationStyle do
       <formattedref>Jenkins, S., and J. Ruostekoski, “Controlled manipulation of light by cooperativeresponse of atoms in an optical lattice,” Preprint, 2012, accessed June 24, 2020, <fmt-link target='https://eprints.soton.ac.uk/338797/'>https://eprints.soton.ac.uk/338797/</fmt-link>.</formattedref>
     OUTPUT
     expect(renderer.render(input))
-      .to be_equivalent_to output
+      .to be_xml_equivalent_to output
   end
 
   private

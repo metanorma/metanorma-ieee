@@ -360,7 +360,7 @@ RSpec.describe Metanorma::Ieee do
         wp_image008_emz: File.join(logoloc, "wp_image008.emz") }
     docxml, = csdc.convert_init(input, "test", true)
     expect(metadata(csdc.info(docxml, nil)))
-      .to be_equivalent_to(output)
+      .to eq(output)
   end
 
   it "processes ICAP, ICR metadata" do
@@ -629,7 +629,7 @@ RSpec.describe Metanorma::Ieee do
     INPUT
     docxml, = csdc.convert_init(input, "test", true)
     expect(metadata(csdc.info(docxml, nil)))
-      .to be_equivalent_to(
+      .to eq(
         { accesseddate: "XXX",
           adapteddate: "XXX",
           agency: "IEEE",
@@ -703,7 +703,7 @@ RSpec.describe Metanorma::Ieee do
     docxml, = csdc.convert_init(input
       .sub(">icap<", ">industry-connection-report<"), "test", true)
     expect(metadata(csdc.info(docxml, nil)))
-      .to be_equivalent_to(
+      .to eq(
         { accesseddate: "XXX",
           adapteddate: "XXX",
           agency: "IEEE",
@@ -844,9 +844,9 @@ RSpec.describe Metanorma::Ieee do
       </ieee-standard>
     INPUT
     # expect(htmlencode(metadata(csdc.info(docxml, nil))#.to_s
-    # .gsub(", :", ",\n:"))).to be_equivalent_to <<~"OUTPUT"
+    # .gsub(", :", ",\n:"))).to be_xml_equivalent_to <<~"OUTPUT"
     expect(metadata(csdc.info(docxml, nil)))
-      .to be_equivalent_to(
+      .to be_xml_equivalent_to(
         { accesseddate: "XXX",
           adapteddate: "XXX",
           announceddate: "XXX",
