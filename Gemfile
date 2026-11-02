@@ -1,12 +1,9 @@
 source "https://rubygems.org"
 gem "relaton-render", "~> 3.0" # canonical ieee-sa pack; delta merge, edition precedence, named ieee_* rules
 gem "relaton", "~> 3.0" # 3.0.0 final carries the singular_tolerance declarations
-# parsanol 1.3.110 shipped the v2 named-tree dialect as the default: every
-# uncaptured rule reference surfaces as a capture, so pubid parses plain
-# references as per-atom lists ("ISO 8888" -> {number: "[{digit:..."}},
-# "Unknown parameter type: space"). The v2 migration is pubid-side work in
-# flight; pin the last classic-dialect release until it lands (parsanol#352).
-gem "parsanol", "1.3.109"
+# parsanol 1.3.123 is the current pubid-compatible line (pubid pins ~> 1.3.12x);
+# 1.3.123 restores the 1.3.121 binding behaviour (parsanol#421).
+gem "parsanol", "~> 1.3.123" # pubid ~> 2.0.3 requires the 1.3.12x line; 1.3.123 carries the JIS binding fix (parsanol#421)
 # leptris 1.9.359 drops Leptris::XML::Declaration#to_xml (blocks_spec);
 # 1.9.356 is the last rendering-green line until leptris restores it
 
