@@ -1,5 +1,5 @@
 module Metanorma
   module Ieee
-    VERSION = "1.7.1".freeze
+    VERSION = "1.7.2".freeze
   end
 end
