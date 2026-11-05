@@ -18,7 +18,6 @@ gem "metanorma-standoc", "~> 3.5.1.pre.alpha" # Standoc::Document rename
 gem "metanorma-plugin-lutaml", github: "metanorma/metanorma-plugin-lutaml", branch: "main"
 gem "metanorma-document", "~> 0.5.2.pre.alpha"
 gem "isodoc", "~> 3.7.4.pre.alpha"
-gem "relaton-bib", "2.2.0.pre.alpha.1"
 gem "pubid", "~> 2.0"
 
 eval_gemfile("Gemfile.devel") rescue nil
