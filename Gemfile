@@ -1,6 +1,5 @@
 source "https://rubygems.org"
-gem "relaton-render", "~> 3.0" # canonical ieee-sa pack; delta merge, edition precedence, named ieee_* rules
-gem "relaton", "~> 3.0" # 3.0.0 final carries the singular_tolerance declarations
+gem "relaton", "~> 3.1.1"
 # parsanol 1.3.123 is the current pubid-compatible line (pubid pins ~> 1.3.12x);
 # 1.3.123 restores the 1.3.121 binding behaviour (parsanol#421).
 gem "parsanol", "~> 1.3.123" # pubid ~> 2.0.3 requires the 1.3.12x line; 1.3.123 carries the JIS binding fix (parsanol#421)
