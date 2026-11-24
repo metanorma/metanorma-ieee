@@ -1,8 +1,6 @@
 source "https://rubygems.org"
 gem "relaton", "~> 3.1.1"
-# parsanol 1.3.123 is the current pubid-compatible line (pubid pins ~> 1.3.12x);
-# 1.3.123 restores the 1.3.121 binding behaviour (parsanol#421).
-gem "parsanol", "~> 1.3.123" # pubid ~> 2.0.3 requires the 1.3.12x line; 1.3.123 carries the JIS binding fix (parsanol#421)
+gem "parsanol", "~> 1.5.0" # pubid 2.0.50 and lutaml 0.11.8 both require the 1.5 line
 # leptris 1.9.359 drops Leptris::XML::Declaration#to_xml (blocks_spec);
 # 1.9.356 is the last rendering-green line until leptris restores it
 
