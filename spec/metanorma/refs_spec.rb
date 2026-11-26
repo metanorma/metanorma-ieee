@@ -869,7 +869,7 @@ RSpec.describe Metanorma::Ieee do
     output = <<~OUTPUT
       <bibliography>
         <references id="_" normative="true" obligation="informative">
-      <title id="_">Normative references</title><p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p><bibitem id="_" type="standard" anchor="ref11">
+      <title id="_">Normative references</title><p id="_">The following referenced documents are indispensable for the application of this document (i.e., they must be understood and used, so each referenced document is cited in text and its relationship to this document is explained). For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments or corrigenda) applies.</p>      <bibitem id="_" type="standard" anchor="ref11">
   
   
 
@@ -888,7 +888,8 @@ RSpec.describe Metanorma::Ieee do
   
   
   
-      </bibitem><bibitem id="_" type="standard" anchor="ref31">
+      </bibitem>
+      <bibitem id="_" type="standard" anchor="ref31">
   
   
 
@@ -908,7 +909,8 @@ RSpec.describe Metanorma::Ieee do
   
   
   
-      </bibitem><bibitem id="_" type="standard" anchor="ref23">
+      </bibitem>
+      <bibitem id="_" type="standard" anchor="ref23">
   
   
 
@@ -941,7 +943,8 @@ RSpec.describe Metanorma::Ieee do
   
   
   
-      </bibitem><bibitem id="_" type="standard" anchor="ref3">
+      </bibitem>
+      <bibitem id="_" type="standard" anchor="ref3">
   
   
 
@@ -972,7 +975,8 @@ RSpec.describe Metanorma::Ieee do
   
   
   
-      </bibitem><bibitem id="_" type="standard" anchor="ref26">
+      </bibitem>
+      <bibitem id="_" type="standard" anchor="ref26">
   
   
 
@@ -998,7 +1002,8 @@ RSpec.describe Metanorma::Ieee do
   
   
   
-      </bibitem><bibitem id="_" type="standard" anchor="ref7">
+      </bibitem>
+      <bibitem id="_" type="standard" anchor="ref7">
   
   
 
@@ -1040,7 +1045,8 @@ RSpec.describe Metanorma::Ieee do
   
   
   
-      </bibitem><bibitem id="_" type="standard" anchor="ref6">
+      </bibitem>
+      <bibitem id="_" type="standard" anchor="ref6">
   
   
 
@@ -1071,7 +1077,8 @@ RSpec.describe Metanorma::Ieee do
   
   
   
-      </bibitem><bibitem id="_" type="standard" anchor="ref21">
+      </bibitem>
+      <bibitem id="_" type="standard" anchor="ref21">
   
   
 
@@ -1157,7 +1164,8 @@ RSpec.describe Metanorma::Ieee do
   
   
   
-      </bibitem><bibitem id="_" type="standard" anchor="ref1">
+      </bibitem>
+      <bibitem id="_" type="standard" anchor="ref1">
   
   
 
@@ -1205,7 +1213,8 @@ RSpec.describe Metanorma::Ieee do
   
   
   
-      </bibitem><bibitem id="_" type="standard" anchor="ref2">
+      </bibitem>
+      <bibitem id="_" type="standard" anchor="ref2">
   
   
 
@@ -1243,7 +1252,8 @@ RSpec.describe Metanorma::Ieee do
   
   
   
-      </bibitem><bibitem id="_" type="standard" anchor="ref22">
+      </bibitem>
+      <bibitem id="_" type="standard" anchor="ref22">
   
   
 
@@ -1278,7 +1288,8 @@ RSpec.describe Metanorma::Ieee do
   
   
   
-      </bibitem><bibitem id="_" type="standard" anchor="ref25">
+      </bibitem>
+      <bibitem id="_" type="standard" anchor="ref25">
   
   
 
@@ -1288,7 +1299,8 @@ RSpec.describe Metanorma::Ieee do
   
   
   
-      </bibitem><bibitem id="_" type="standard" anchor="ref5">
+      </bibitem>
+      <bibitem id="_" type="standard" anchor="ref5">
   
   
 
@@ -1298,7 +1310,8 @@ RSpec.describe Metanorma::Ieee do
   
   
   
-      </bibitem><bibitem id="_" type="standard" anchor="ref4">
+      </bibitem>
+      <bibitem id="_" type="standard" anchor="ref4">
   
   
 
@@ -1384,7 +1397,8 @@ RSpec.describe Metanorma::Ieee do
   
   
   
-      </bibitem><bibitem id="_" type="standard" anchor="ref24">
+      </bibitem>
+      <bibitem id="_" type="standard" anchor="ref24">
   
   
 
@@ -1431,7 +1445,24 @@ RSpec.describe Metanorma::Ieee do
   
   
   
-      </bibitem><bibitem id="_" type="standard" anchor="ref9">
+      </bibitem>
+      <bibitem id="_" type="standard" anchor="ref8">
+  
+        <docidentifier type="NIST" primary="true">FIPS PUB 140-2/Upd2</docidentifier>
+      <docidentifier type="DOI">NIST.FIPS.140-2</docidentifier>
+  
+        <note type="Availability"><p id="_">NIST publications are available from the National Institute of Standards and Technology (http://www.nist.gov/).</p></note>
+  
+      </bibitem>
+      <bibitem id="_" type="standard" anchor="ref28">
+  
+        <docidentifier type="NIST" primary="true">FIPS PUB 140-3</docidentifier>
+      <docidentifier type="DOI">NIST.FIPS.140-3</docidentifier>
+  
+  
+  
+      </bibitem>
+      <bibitem id="_" type="standard" anchor="ref9">
   
   
 
@@ -1469,7 +1500,8 @@ RSpec.describe Metanorma::Ieee do
   
   
   
-      </bibitem><bibitem id="_" type="standard" anchor="ref29">
+      </bibitem>
+      <bibitem id="_" type="standard" anchor="ref29">
   
   
 
@@ -1501,25 +1533,15 @@ RSpec.describe Metanorma::Ieee do
   
   
   
-      </bibitem><bibitem anchor="ref8" id="_">
-  
-        <docidentifier type="NIST">FIPS 140-2</docidentifier>
-  
-        <note type="Availability"><p id="_">NIST publications are available from the National Institute of Standards and Technology (http://www.nist.gov/).</p></note>
-  
-      </bibitem><bibitem anchor="ref10" id="_">
+      </bibitem>
+      <bibitem anchor="ref10" id="_">
   
         <docidentifier type="W3C">W3C XPTR</docidentifier>
   
   
   
-      </bibitem><bibitem anchor="ref28" id="_">
-  
-        <docidentifier type="NIST">FIPS 140-3</docidentifier>
-  
-  
-  
-      </bibitem><bibitem id="_" type="standard" anchor="ref30">
+      </bibitem>
+      <bibitem id="_" type="standard" anchor="ref30">
   
   
 
